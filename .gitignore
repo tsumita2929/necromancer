@@ -1,0 +1,19 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+.vite/
+*.tsbuildinfo
+
+# Test and browser artefacts
+playwright-report/
+test-results/
+
+# Local environment and logs
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# Note: /.kiro (specs, hooks, steering) is part of the submission. Never ignore it.

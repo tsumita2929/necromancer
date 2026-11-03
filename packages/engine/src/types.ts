@@ -1,0 +1,166 @@
+/**
+ * Necromancer shared contract.
+ *
+ * Every package and app codes against these types. Owner: packages/engine.
+ * A change needs the lead's agreement first (see .kiro/steering/structure.md).
+ */
+
+/** Package ecosystems Necromancer understands. */
+export type Ecosystem = 'npm' | 'pypi';
+
+/** Manifest formats the engine parses. */
+export type ManifestKind =
+  | 'package.json'
+  | 'package-lock.json'
+  | 'requirements.txt'
+  | 'pyproject.toml';
+
+/** A manifest file handed to the engine. */
+export interface ManifestFile {
+  kind: ManifestKind;
+  /** Path inside the scanned project, e.g. "apps/api/package.json". */
+  path: string;
+  content: string;
+}
+
+/** One dependency as the scanned project declares it. */
+export interface DependencyRef {
+  ecosystem: Ecosystem;
+  /** Package name: npm as published, PyPI normalised per PEP 503. */
+  name: string;
+  /** Range or pin exactly as written, e.g. "^2.88.0" or "==1.3.7". Empty when none. */
+  spec: string;
+  /** Exact version when a lockfile provides one. */
+  resolved?: string;
+  /** true when the project declares it, false when it is only transitive. */
+  direct: boolean;
+  scope: 'main' | 'dev' | 'optional' | 'peer';
+  /** Manifest path that declared it. */
+  declaredIn: string;
+}
+
+/** What parsing one manifest produced. */
+export interface ParseResult {
+  dependencies: DependencyRef[];
+  /** Why parts of the file were skipped, in plain English. Empty when all of it was read. */
+  problems: string[];
+}
+
+/**
+ * Verdict scale, healthiest first. The order is part of the contract:
+ * adding evidence of death never moves a dependency to an earlier entry.
+ *
+ * - alive:  maintained, no blocking signal.
+ * - dying:  stale signals only (no release for a long time, low maintenance score).
+ * - dead:   a definitive end-of-life signal (deprecated, archived, yanked, inactive).
+ * - ghost:  dead, and its source repository is gone or unreachable.
+ * - zombie: dead or ghost, and a known advisory affects the version in use.
+ */
+export const VERDICTS = ['alive', 'dying', 'dead', 'ghost', 'zombie'] as const;
+export type Verdict = (typeof VERDICTS)[number];
+
+/** Public sources the engine reads. */
+export type SourceId =
+  | 'npm'
+  | 'pypi'
+  | 'deps.dev'
+  | 'osv'
+  | 'scorecard'
+  | 'github'
+  | 'module-replacements'
+  | 'curated';
+
+/** One signal behind a verdict. Rendered as an epitaph line. */
+export interface Evidence {
+  /** Stable machine code, e.g. "npm-deprecated", "repo-archived", "no-release", "osv-advisory". */
+  code: string;
+  /** One plain English sentence for people. */
+  message: string;
+  source: SourceId;
+  url?: string;
+  /** ISO-8601 date the signal refers to, when there is one. */
+  date?: string;
+}
+
+/** A way out for a dead dependency. */
+export interface Successor {
+  /** Package name, or the platform API for kind "native" (e.g. "String.prototype.padStart"). */
+  name: string;
+  ecosystem: Ecosystem;
+  /**
+   * - package: switch to another maintained package.
+   * - native:  use a built-in platform API instead of any package.
+   * - raise:   rebuild the dead package as a modern drop-in the project owns.
+   */
+  kind: 'package' | 'native' | 'raise';
+  /** One sentence: why this successor. */
+  reason: string;
+  source: SourceId;
+  url?: string;
+}
+
+/** The engine's finding for one dependency. */
+export interface Diagnosis {
+  dependency: DependencyRef;
+  verdict: Verdict;
+  /** Most important first. Never empty unless the verdict is "alive". */
+  evidence: Evidence[];
+  /** OSV ids affecting the version in use. */
+  advisories: string[];
+  /** Best first. Empty when none is known. */
+  successors: Successor[];
+  latest?: { version: string; date?: string };
+}
+
+/** A whole scan. */
+export interface AutopsyReport {
+  /** What was scanned, e.g. "github:expressjs/express" or "upload:package.json". */
+  subject: string;
+  /** ISO-8601. */
+  scannedAt: string;
+  manifests: Array<{ kind: ManifestKind; path: string }>;
+  diagnoses: Diagnosis[];
+  /** Manifest parts that could not be read. */
+  problems: Array<{ path: string; message: string }>;
+  /** Sources that could not be reached. The report is partial for them. */
+  unavailable: Array<{ source: SourceId; reason: string }>;
+  /** Count per verdict; every verdict key is present. */
+  summary: Record<Verdict, number>;
+}
+
+/** The three files of a Kiro spec. */
+export interface KiroSpec {
+  'requirements.md': string;
+  'design.md': string;
+  'tasks.md': string;
+}
+
+/** Minimal fetch shape, injected so the engine runs offline in tests. */
+export type FetchLike = (
+  url: string,
+  init?: { method?: string; headers?: Record<string, string>; body?: string },
+) => Promise<{
+  ok: boolean;
+  status: number;
+  json(): Promise<unknown>;
+  text(): Promise<string>;
+}>;
+
+export interface EngineOptions {
+  fetch: FetchLike;
+  /** Injectable clock for deterministic tests. */
+  now?: () => Date;
+}
+
+/** The engine's public surface. */
+export interface Engine {
+  /** Never throws, whatever the content. */
+  parseManifest(file: ManifestFile): ParseResult;
+  diagnose(deps: DependencyRef[]): Promise<Diagnosis[]>;
+  autopsy(input: { subject: string; files: ManifestFile[] }): Promise<AutopsyReport>;
+  /** A Kiro spec for moving the project off one dead dependency onto one successor. */
+  resurrectionSpec(diagnosis: Diagnosis, successor: Successor): KiroSpec;
+}
+
+/** Factory every consumer uses. */
+export type CreateEngine = (options: EngineOptions) => Engine;
