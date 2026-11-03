@@ -6,10 +6,21 @@ import { chromium } from 'playwright';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { mkdir, mkdtemp, readFile } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { serveDist } from './serve.mjs';
+import { bigLockfile } from './lib/biglock.mjs';
+
+const recorded = (id) => JSON.parse(readFileSync(fileURLToPath(new URL(`../src/data/recorded/${id}.json`, import.meta.url)), 'utf8'));
+const DVNA = recorded('appsecco-dvna');
+const MICROBLOG = recorded('miguelgrinberg-microblog');
+// First dependency with a way out, in the order the page shows them (worst verdict first).
+const ORDER = ['zombie', 'ghost', 'dead', 'dying', 'alive'];
+const RESURRECTABLE = ORDER.flatMap((v) => DVNA.diagnoses.filter((d) => d.verdict === v && d.successors.length > 0))[0];
+const MKEY = `${MICROBLOG.diagnoses[0].dependency.ecosystem}:${MICROBLOG.diagnoses[0].dependency.name}`;
+const RKEY = `${RESURRECTABLE.dependency.ecosystem}:${RESURRECTABLE.dependency.name}`;
 
 const require = createRequire(import.meta.url);
 const AXE = require.resolve('axe-core/axe.min.js');
@@ -70,10 +81,10 @@ for (const vp of VIEWPORTS) {
   // --- one action from landing to a populated graveyard
   const landingViolations = await axeRun(page);
   check(`axe: landing has no violations`, landingViolations.length === 0, landingViolations.join('; '));
-  await page.getByRole('button', { name: /Revenant API/ }).click();
+  await page.locator('.sample', { hasText: 'appsecco/dvna' }).click();
   await page.waitForSelector('[data-testid="group-zombie"]');
   const tombCount = await page.locator('li.tomb').count();
-  check('one action reaches a populated graveyard', tombCount === 27, `${tombCount} tombstones after 1 click`);
+  check('one action reaches a populated graveyard', tombCount === DVNA.diagnoses.length, `${tombCount} tombstones after 1 click`);
   const zombieVisible = await page.locator('[data-testid="group-zombie"] .tomb__btn').first().isVisible();
   check('graveyard is rendered with zombies', zombieVisible);
 
@@ -102,18 +113,18 @@ for (const vp of VIEWPORTS) {
   check('axe: graveyard has no violations', graveyardViolations.length === 0, graveyardViolations.join('; '));
 
   // --- keyboard-only path to Resurrect
-  await page.goto(`${server.url}#/graveyard?src=sample:revenant-api`);
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna`);
   await page.reload();
   await page.waitForSelector('[data-testid="group-zombie"]');
   await page.evaluate(() => document.activeElement instanceof HTMLElement && document.activeElement.blur());
   let tabs = 0;
-  for (; tabs < 60; tabs += 1) {
+  for (; tabs < 80; tabs += 1) {
     await page.keyboard.press('Tab');
-    const onTomb = await page.evaluate(() => document.activeElement?.classList.contains('tomb__btn') ?? false);
-    if (onTomb) break;
+    const onTarget = await page.evaluate((key) => document.activeElement?.dataset?.depKey === key, RKEY);
+    if (onTarget) break;
   }
   const firstTombKey = await page.evaluate(() => document.activeElement?.dataset.depKey);
-  check('keyboard: Tab reaches the first tombstone', tabs < 60, `${tabs + 1} Tab presses to ${firstTombKey}`);
+  check(`keyboard: Tab reaches the first dependency that has a way out (${RKEY})`, tabs < 80, `${tabs + 1} Tab presses from the top of the page`);
   const ring = await page.evaluate(() => {
     const s = getComputedStyle(document.activeElement);
     return { style: s.outlineStyle, width: Number.parseFloat(s.outlineWidth) };
@@ -132,8 +143,8 @@ for (const vp of VIEWPORTS) {
   });
   check('keyboard: Resurrect shows a focus ring', ring2.style !== 'none' && ring2.width >= 2, `${ring2.style} ${ring2.width}px`);
   await page.keyboard.press('Enter');
-  await page.waitForSelector('.spec__text');
-  check('keyboard: Enter on Resurrect shows the spec', (await page.locator('.spec__text').innerText()).includes('# Requirements'));
+  await page.waitForSelector('pre.spec__text', { timeout: 20000 });
+  check('keyboard: Enter on Resurrect shows the engine spec', (await page.locator('pre.spec__text').innerText()).includes('# Requirements'));
   const detailViolations = await axeRun(page);
   check('axe: detail panel with spec has no violations', detailViolations.length === 0, detailViolations.join('; '));
   await page.keyboard.press('Escape');
@@ -157,18 +168,18 @@ for (const vp of VIEWPORTS) {
   await second.close();
 
   // --- zip download
-  await page.goto(`${server.url}#/graveyard?src=sample:revenant-api&open=npm:request&spec=0`);
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna&open=${RKEY}&spec=0`);
   await page.reload();
-  await page.waitForSelector('.spec__text');
+  await page.waitForSelector('pre.spec__text', { timeout: 20000 });
   const [download] = await Promise.all([page.waitForEvent('download'), page.getByRole('button', { name: /download spec/i }).click()]);
   const zipPath = join(await mkdtemp(join(tmpdir(), 'necro-')), download.suggestedFilename());
   await download.saveAs(zipPath);
   const zipBytes = await readFile(zipPath);
   const magic = zipBytes.subarray(0, 4).toString('hex');
-  check('download: spec zip has a valid header and the three files', magic === '504b0304' && zipBytes.includes('.kiro/specs/migrate-request-to-fetch/design.md'), `${download.suggestedFilename()} ${zipBytes.length} bytes`);
+  check('download: spec zip has a valid header and the three files', magic === '504b0304' && zipBytes.includes('.kiro/specs/migrate-md5-to-node-crypto/design.md'), `${download.suggestedFilename()} ${zipBytes.length} bytes`);
 
   // --- overflow, targets
-  await page.goto(`${server.url}#/graveyard?src=sample:revenant-api`);
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna`);
   await page.reload();
   await page.waitForSelector('[data-testid="group-zombie"]');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
@@ -186,24 +197,26 @@ for (const vp of VIEWPORTS) {
     check('touch targets are at least 44x44 on the graveyard', small.length === 0, small.slice(0, 5).join('; '));
   }
 
-  // --- tombstone boxes hold long names (the sprawl sample has a 125-character scoped name)
+  // --- 320 dependencies through the real engine (stubbed network answers at once)
+  const bigPage = await context.newPage();
+  await bigPage.route((url) => /(npmjs|deps\.dev|osv\.dev|github|pypi\.org)/.test(url.hostname), (route) =>
+    route.fulfill({ status: route.request().method() === 'POST' ? 200 : 404, headers: { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'content-type': 'application/json' }, body: route.request().method() === 'POST' ? JSON.stringify({ results: [] }) : '{}' }),
+  );
+  await bigPage.goto(server.url);
+  await bigPage.waitForSelector('h1');
   const start = Date.now();
-  await page.goto(`${server.url}#/graveyard?src=sample:sprawl`);
-  await page.reload();
-  await page.waitForFunction(() => document.querySelectorAll('li.tomb').length >= 300);
-  const sprawlMs = Date.now() - start;
-  check('300 dependencies render (reload to 300 tombstones)', true, `${sprawlMs} ms including page load`);
-  const sprawlOverflow = await page.evaluate(() => ({
+  await bigPage.locator('input[type="file"]').setInputFiles({ name: 'package-lock.json', mimeType: 'application/json', buffer: Buffer.from(bigLockfile(320)) });
+  await bigPage.waitForFunction(() => document.querySelectorAll('li.tomb').length >= 320, null, { timeout: 120000 });
+  const bigMs = Date.now() - start;
+  check('320 dependencies render through the real engine', true, `${bigMs} ms from the file choice to 320 tombstones`);
+  const bigOverflow = await bigPage.evaluate(() => ({
     page: document.documentElement.scrollWidth - document.documentElement.clientWidth,
-    culprits: [...document.querySelectorAll('body *')]
-      .filter((e) => !e.closest('.atmosphere') && e.getBoundingClientRect().right > document.documentElement.clientWidth + 1)
-      .slice(0, 4)
-      .map((e) => `${e.tagName}.${e.className}`),
     boxes: [...document.querySelectorAll('.tomb__btn')].filter((b) => b.scrollWidth > b.clientWidth + 1).length,
   }));
-  check('300 dependencies and the long name cause no overflow', sprawlOverflow.page <= 0 && sprawlOverflow.boxes === 0, JSON.stringify(sprawlOverflow));
-  const sprawlViolations = await axeRun(page);
-  check('axe: 300-dependency graveyard has no violations', sprawlViolations.length === 0, sprawlViolations.join('; '));
+  check('320 dependencies cause no overflow', bigOverflow.page <= 0 && bigOverflow.boxes === 0, JSON.stringify(bigOverflow));
+  const bigViolations = await axeRun(bigPage);
+  check('axe: 320-dependency graveyard has no violations', bigViolations.length === 0, bigViolations.join('; '));
+  await bigPage.close();
 
   // --- privacy
   const stored = await page.evaluate(() => ({ cookie: document.cookie, local: localStorage.length, session: sessionStorage.length }));
@@ -216,14 +229,15 @@ for (const vp of VIEWPORTS) {
 // --- partial notice only where the report is partial
 {
   const { context, page } = await newPage(VIEWPORTS[0]);
-  await page.goto(`${server.url}#/graveyard?src=sample:revenant-api`);
-  await page.waitForSelector('[data-testid="group-zombie"]');
-  check('partial report shows the notice', (await page.getByText('This report is partial').count()) === 1);
-  await page.goto(`${server.url}#/graveyard?src=sample:evergreen-site`);
-  await page.reload();
-  await page.waitForSelector('[data-testid="group-alive"]');
-  check('complete report shows no partial notice', (await page.getByText('This report is partial').count()) === 0);
-  check('5-dependency report renders 5 tombstones', (await page.locator('li.tomb').count()) === 5);
+  for (const report of [DVNA, MICROBLOG]) {
+    const id = `${report.subject.replace('github:', '').replace('/', '-')}`.toLowerCase();
+    await page.goto(`${server.url}#/graveyard?src=sample:${id}`);
+    await page.reload();
+    await page.waitForSelector('[data-testid^="group-"]');
+    const expectPartial = report.unavailable.length > 0;
+    check(`${report.subject}: the partial notice is shown exactly when the report has unavailable sources`, ((await page.getByText('This report is partial').count()) === 1) === expectPartial, `${report.unavailable.length} unavailable`);
+    check(`${report.subject}: says when it was recorded and offers to run it live`, (await page.getByText(/Recorded on \d/).count()) === 1 && (await page.getByRole('button', { name: 'Run it live now' }).count()) === 1);
+  }
   await context.close();
 }
 
@@ -235,13 +249,13 @@ for (const [label, preference] of [['no preference', 'no-preference'], ['reduce'
   await page.goto(server.url);
   await page.waitForSelector('h1');
   counts.landing = await page.evaluate(() => document.getAnimations().length);
-  await page.goto(`${server.url}#/graveyard?src=sample:revenant-api`);
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna`);
   await page.reload();
   await page.waitForSelector('[data-testid="group-zombie"]');
-  await page.locator('[data-dep-key="npm:request"]').hover();
+  await page.locator(`[data-dep-key="${RKEY}"]`).hover();
   await page.waitForTimeout(50);
   counts.graveyard = await page.evaluate(() => document.getAnimations().length);
-  await page.locator('[data-dep-key="npm:request"]').click();
+  await page.locator(`[data-dep-key="${RKEY}"]`).click();
   await page.waitForSelector('dialog[open]');
   counts.detail = await page.evaluate(() => document.getAnimations().length);
   const fogHidden = await page.evaluate(() => [...document.querySelectorAll('.fog')].every((f) => getComputedStyle(f).display === 'none'));
@@ -270,18 +284,18 @@ for (const vp of VIEWPORTS) {
   });
   await page.goto(subServer.url);
   await page.waitForSelector('h1');
-  await page.getByRole('button', { name: /Py Fossil/ }).click();
-  await page.waitForSelector('[data-testid="group-zombie"]');
+  await page.locator('.sample', { hasText: 'miguelgrinberg/microblog' }).click();
+  await page.waitForSelector('[data-testid^="group-"]');
   const n = await page.locator('li.tomb').count();
   const fonts = await page.evaluate(async () => {
     await document.fonts.ready;
     return [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family);
   });
-  check(`sub-path ${vp.tag}: sample opens (${n} tombstones) and fonts load`, n === 16, `${fonts.length} font faces loaded`);
-  await page.goto(`${subServer.url}#/graveyard?src=sample:py-fossil&open=pypi:pycrypto`);
+  check(`sub-path ${vp.tag}: sample opens (${n} tombstones) and fonts load`, n === MICROBLOG.diagnoses.length, `${fonts.length} font faces loaded`);
+  await page.goto(`${subServer.url}#/graveyard?src=sample:miguelgrinberg-microblog&open=${MKEY}`);
   await page.reload();
   await page.waitForSelector('dialog[open]');
-  check(`sub-path ${vp.tag}: deep link to a dependency works after reload`, (await page.locator('dialog h2').innerText()).toLowerCase() === 'pycrypto');
+  check(`sub-path ${vp.tag}: deep link to a dependency works after reload`, (await page.locator('dialog h2').innerText()).toLowerCase() === MICROBLOG.diagnoses[0].dependency.name.toLowerCase());
   await page.goto(`${subServer.url}licenses/Source-Sans-3-OFL.txt`);
   check(`sub-path ${vp.tag}: licence files are served`, (await page.content()).includes('Open Font License'));
   check(`sub-path ${vp.tag}: no failed requests`, bad.length === 0, bad.join('; '));

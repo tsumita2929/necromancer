@@ -267,6 +267,7 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
     <div className="page">
       <ReportHeader report={report} canShare={!filesPayloadTooLong} />
 
+      <div className="notices">
       {sample ? (
         <Callout kind="info" title={`Recorded on ${formatDate(report.scannedAt)}`} role="status">
           <p>
@@ -292,7 +293,8 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
         </Callout>
       ))}
 
-      <PartialNotice report={report} />
+        <PartialNotice report={report} />
+      </div>
 
       {filesPayloadTooLong ? (
         <Callout kind="info" title="This link cannot carry your files" role="status">
@@ -417,7 +419,7 @@ function ReportHeader({ report, canShare }: { report: AutopsyReport; canShare: b
     <header className="report">
       <div>
         <p className="eyebrow">Autopsy report</p>
-        <h1 className="report__title">{subjectLabel(report.subject)}</h1>
+        <h1 className={`report__title${report.subject.startsWith('github:') ? ' report__title--repo' : ''}`}>{subjectLabel(report.subject)}</h1>
         <p className="report__meta">
           {plural(total, 'dependency', 'dependencies')} in {plural(report.manifests.length, 'manifest')}
           {report.scannedAt ? <> · examined {formatDate(report.scannedAt)}</> : null}
@@ -436,7 +438,7 @@ function ReportHeader({ report, canShare }: { report: AutopsyReport; canShare: b
 function PartialNotice({ report }: { report: AutopsyReport }) {
   if (report.unavailable.length === 0 && report.problems.length === 0) return null;
   return (
-    <div className="notices">
+    <>
       {report.unavailable.length > 0 ? (
         <Callout kind="warning" title="This report is partial" role="status">
           <p>
@@ -468,7 +470,7 @@ function PartialNotice({ report }: { report: AutopsyReport }) {
           </details>
         </Callout>
       ) : null}
-    </div>
+    </>
   );
 }
 

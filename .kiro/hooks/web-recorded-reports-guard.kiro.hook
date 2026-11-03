@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Web: recorded sample reports are engine output, not hand-written",
+  "description": "The samples on the landing page are real reports. An edit by hand would put invented facts in front of visitors.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["apps/web/src/data/recorded/*.json", "apps/web/src/data/samples.generated.ts"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A recorded sample report under apps/web/src/data/recorded/ (or its index samples.generated.ts) was edited. These files must be the engine's own output. Undo any hand edit and regenerate them with `node scripts/record-samples.mjs --budget 6 owner/repo ...` in apps/web (it runs the engine on public repositories; GitHub allows 60 calls an hour per IP, so check https://api.github.com/rate_limit first). Then run `npm test`."
+  }
+}

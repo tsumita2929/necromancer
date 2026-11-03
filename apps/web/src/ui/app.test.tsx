@@ -414,6 +414,15 @@ describe('R4, R5, R6 nearby inputs', () => {
     expect(document.body.textContent).not.toMatch(/undefined|NaN|null/);
   });
 
+  it('R3.7 an alive dependency the engine could not examine says "Not checked"', () => {
+    const unknown = d(pkg('mystery', '^1.0.0', '1.0.0'), 'alive', {
+      evidence: [ev('unchecked', 'Could not be checked: Failed to fetch.', 'npm')],
+    });
+    const { container } = renderReport(makeReport({ subject: 'github:x/y', manifests: [], diagnoses: [unknown, alive('fine')] }));
+    expect(container.querySelector('[data-dep-key="npm:mystery"]')).toHaveTextContent('Not checked');
+    expect(container.querySelector('[data-dep-key="npm:fine"]')).not.toHaveTextContent('Not checked');
+  });
+
   it('handles a 140-character package name', () => {
     const long = 'x'.repeat(140);
     const { container } = renderReport(

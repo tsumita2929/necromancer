@@ -18,6 +18,8 @@ export const Tombstone = memo(function Tombstone({ diagnosis, onOpen }: Tombston
   const key = depKey(dependency);
   const version = displayVersion(dependency);
   const epitaph = evidence[0]?.message;
+  // The engine marks a dependency it could not examine with an "unchecked" line; do not let "Alive" stand alone.
+  const unchecked = verdict === 'alive' && evidence.some((e) => e.code === 'unchecked');
   const behind = latest && latest.version !== dependency.resolved ? latest.version : '';
   return (
     <li className={`tomb tomb--${verdict}`}>
@@ -28,6 +30,7 @@ export const Tombstone = memo(function Tombstone({ diagnosis, onOpen }: Tombston
         </span>
         <span className="tomb__name">{dependency.name}</span>
         {version ? <span className="tomb__version mono">{version}</span> : null}
+        {unchecked ? <span className="tomb__unchecked">Not checked</span> : null}
         {epitaph && verdict !== 'alive' ? <span className="tomb__epitaph">{epitaph}</span> : null}
         {verdict !== 'alive' && (advisories.length > 0 || evidence.length > 0 || behind) ? (
           <span className="tomb__foot">

@@ -203,7 +203,7 @@ export function Landing({ go }: LandingProps) {
                     <span className="sample__blurb">
                       {plural(sample.total, 'dependency', 'dependencies')}.{' '}
                       {urgent > 0
-                        ? `${sample.summary.zombie > 0 ? `${plural(sample.summary.zombie, 'zombie')}, ` : ''}${sample.summary.ghost > 0 ? `${plural(sample.summary.ghost, 'ghost')}, ` : ''}${plural(sample.summary.dead, 'dead one')}, ${sample.summary.dying} dying.`
+                        ? `${sample.summary.zombie > 0 ? `${plural(sample.summary.zombie, 'zombie')}, ` : ''}${sample.summary.ghost > 0 ? `${plural(sample.summary.ghost, 'ghost')}, ` : ''}${sample.summary.dead} dead, ${sample.summary.dying} dying.`
                         : `${sample.summary.dying} dying, ${sample.summary.alive} alive.`}
                     </span>
                     <span className="sample__go" aria-hidden="true">

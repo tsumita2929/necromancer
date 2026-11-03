@@ -126,7 +126,11 @@ export async function runAutopsy(input: AutopsyInput, options: AutopsyOptions = 
       try {
         engine = await enginePromise;
       } catch {
-        throw new AutopsyError('unreachable', 'The engine could not be loaded.', 'Reload the page and try again.');
+        throw new AutopsyError(
+          'unreachable',
+          'The part of Necromancer that examines packages could not be loaded.',
+          'Check the connection, then press Try again or reload the page.',
+        );
       }
       const report = await engine.autopsy({ subject, files });
       if (input.kind === 'repo') {

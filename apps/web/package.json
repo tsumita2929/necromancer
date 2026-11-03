@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "screenshots": "node scripts/screenshots.mjs",
-    "verify:browser": "node scripts/verify-browser.mjs"
+    "verify:browser": "node scripts/verify-browser.mjs",
+    "verify:live": "node scripts/verify-live.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
