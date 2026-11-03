@@ -142,14 +142,176 @@ export interface EngineOptions {
   now?: () => Date;
 }
 
+// ---------------------------------------------------------------------------------------
+// Usage scan and séance (round 2). Additive: new types and optional members only.
+// ---------------------------------------------------------------------------------------
+
+/** A source file handed to the usage scan. */
+export interface SourceFile {
+  /** Path inside the project, e.g. "src/pad.ts". The extension picks the language. */
+  path: string;
+  content: string;
+}
+
+/** How a dependency is imported. */
+export type ImportForm =
+  | 'default'
+  | 'named'
+  | 'namespace'
+  | 'side-effect'
+  | 'require'
+  | 'import-equals'
+  | 'dynamic'
+  | 're-export'
+  | 're-export-all'
+  | 'python-import'
+  | 'python-from'
+  | 'python-star';
+
+/** One import statement of the dependency. */
+export interface UsageImport {
+  file: string;
+  /** 1-based. */
+  line: number;
+  /** The module specifier as written, e.g. "lodash/fp/get" or "toml". */
+  specifier: string;
+  form: ImportForm;
+  /** The local name bound by the import, when there is one. */
+  local?: string;
+  /** The exported name imported (named, from-import). */
+  member?: string;
+  /** The part of the specifier after the package, e.g. "fp/get". */
+  subpath?: string;
+  /** `import type` and `import { type A }`: erased at run time. */
+  typeOnly: boolean;
+  /** Python: the import sits inside try/except, a function, or an if block. */
+  guarded?: boolean;
+}
+
+/** A literal argument seen at a call site. */
+export interface LiteralArg {
+  kind: 'string' | 'number' | 'boolean' | 'null' | 'undefined' | 'other';
+  /** Source text of the literal (clipped), absent for "other". */
+  text?: string;
+}
+
+/** One place a member is used. */
+export interface UsageSite {
+  file: string;
+  line: number;
+  column: number;
+  kind: 'call' | 'access' | 'reference' | 're-export';
+  /** Positional argument count of a call. */
+  args?: number;
+  /** A call with a spread argument (`f(...xs)`): `args` is then a minimum. */
+  spread?: boolean;
+  /** Python keyword argument names. */
+  keywords?: string[];
+  /** One entry per positional argument. */
+  literals?: LiteralArg[];
+}
+
+/** Everything the project does with one member of the dependency. */
+export interface MemberUsage {
+  /**
+   * The exported name ("padStart"), a dotted path ("decoder.TomlDecodeError"), "default" for the
+   * module itself or its default export, or "*" for a namespace used as a value.
+   */
+  member: string;
+  calls: number;
+  accesses: number;
+  references: number;
+  /** Distinct positional argument counts seen, ascending. */
+  argCounts: number[];
+  keywords: string[];
+  /** At most 50 sites. */
+  sites: UsageSite[];
+}
+
+/** How a project uses one dependency. */
+export interface DependencyUsage {
+  ecosystem: Ecosystem;
+  name: string;
+  filesScanned: number;
+  filesUsing: string[];
+  imports: UsageImport[];
+  members: MemberUsage[];
+  /** Imported at run time but no member is ever called. */
+  neverCalled: boolean;
+  /** `import(x)` with a specifier that is not a string literal. */
+  unresolvedDynamicImports: number;
+  /** Why parts of the input were skipped, in plain English. */
+  problems: string[];
+}
+
+/** What the usage scan needs to know about the dependency. */
+export interface UsageTarget {
+  ecosystem: Ecosystem;
+  /** The package name as in the manifest. */
+  name: string;
+  /** Python import names when they differ from the distribution name. */
+  importNames?: string[];
+}
+
+/** One file of a generated séance. */
+export interface SeanceFile {
+  /** Path relative to the project root, e.g. "seance/left-pad/seance.test.mjs". */
+  path: string;
+  content: string;
+  role: 'test' | 'replacement' | 'readme' | 'helper';
+}
+
+/** A difference between the old package and its successor that a recipe knows about. */
+export interface KnownDifference {
+  /** The input, as code. */
+  input: string;
+  /** What the old package answers. */
+  old: string;
+  /** What the naive replacement answers. */
+  naive: string;
+  /** How the generated replacement handles it. */
+  handled: string;
+}
+
+/** A runnable differential property-based test for one migration. */
+export interface SeanceBundle {
+  language: 'javascript' | 'python';
+  /** Curated recipe id, or null for the generic template. */
+  recipe: string | null;
+  title: string;
+  files: SeanceFile[];
+  /** Commands that install what the séance needs. */
+  install: string[];
+  /** The command that runs it. */
+  run: string;
+  /** What it compares, and what it ignores (the normalisations). */
+  compares: string[];
+  knownDifferences: KnownDifference[];
+  /** Members covered by the séance. */
+  members: string[];
+  /** Number of `TODO(necromancer)` markers left in the files. */
+  todos: number;
+}
+
 /** The engine's public surface. */
 export interface Engine {
   /** Never throws, whatever the content. */
   parseManifest(file: ManifestFile): ParseResult;
   diagnose(deps: DependencyRef[]): Promise<Diagnosis[]>;
   autopsy(input: { subject: string; files: ManifestFile[] }): Promise<AutopsyReport>;
-  /** A Kiro spec for moving the project off one dead dependency onto one successor. */
-  resurrectionSpec(diagnosis: Diagnosis, successor: Successor): KiroSpec;
+  /**
+   * A Kiro spec for moving the project off one dead dependency onto one successor. With a usage
+   * it also describes the séance for that project.
+   */
+  resurrectionSpec(
+    diagnosis: Diagnosis,
+    successor: Successor,
+    options?: { usage?: DependencyUsage },
+  ): KiroSpec;
+  /** How the given source files use a dependency. Never throws. */
+  scanUsage?(files: SourceFile[], target: UsageTarget): DependencyUsage;
+  /** The differential property-based test for a migration. Never throws. */
+  seance?(diagnosis: Diagnosis, successor: Successor, usage?: DependencyUsage): SeanceBundle;
 }
 
 /** Factory every consumer uses. */
