@@ -1,0 +1,285 @@
+/* Design system components. Product layout lives in ../ui/app.css. */
+
+/* ---------- Atmosphere ---------- */
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(60rem 38rem at 86% -8%, rgb(205 216 232 / 0.13), transparent 60%),
+    radial-gradient(50rem 30rem at 8% 108%, rgb(70 100 140 / 0.2), transparent 65%),
+    linear-gradient(180deg, #0a0f17 0%, var(--ink-950) 55%, #06080c 100%);
+}
+
+.fog {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 34vh;
+  opacity: 0.55;
+  background:
+    radial-gradient(ellipse 18% 50% at 10% 50%, rgb(150 175 205 / 0.16), transparent 70%),
+    radial-gradient(ellipse 22% 60% at 35% 40%, rgb(150 175 205 / 0.12), transparent 70%),
+    radial-gradient(ellipse 16% 50% at 60% 60%, rgb(150 175 205 / 0.15), transparent 70%),
+    radial-gradient(ellipse 24% 55% at 85% 45%, rgb(150 175 205 / 0.12), transparent 70%);
+  filter: blur(18px);
+  will-change: transform;
+}
+.fog--a {
+  bottom: -4vh;
+  animation: drift var(--drift-a) linear infinite;
+}
+.fog--b {
+  bottom: 14vh;
+  opacity: 0.35;
+  animation: drift var(--drift-b) linear infinite reverse;
+}
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ---------- Candle ---------- */
+.candle {
+  display: inline-block;
+  width: 1.6rem;
+  height: 3.2rem;
+  flex: none;
+}
+.candle__flame {
+  transform-origin: 50% 90%;
+  animation: flicker var(--flicker) ease-in-out infinite;
+}
+.candle__glow {
+  animation: flicker-glow var(--flicker) ease-in-out infinite;
+}
+@keyframes flicker {
+  0%, 100% { transform: scale(1, 1) rotate(0deg); }
+  18% { transform: scale(0.96, 1.05) rotate(-1.5deg); }
+  37% { transform: scale(1.03, 0.97) rotate(1deg); }
+  61% { transform: scale(0.97, 1.04) rotate(-0.8deg); }
+  82% { transform: scale(1.02, 0.99) rotate(1.4deg); }
+}
+@keyframes flicker-glow {
+  0%, 100% { opacity: 0.85; }
+  40% { opacity: 0.6; }
+  70% { opacity: 0.95; }
+}
+
+/* ---------- Button ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border-control);
+  background: var(--surface-raised);
+  color: var(--text);
+  font-weight: 600;
+  font-size: var(--text-md);
+  text-decoration: none;
+  transition: background var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease), transform var(--dur-fast) var(--ease), box-shadow var(--dur-base) var(--ease);
+}
+.btn:hover {
+  background: var(--ink-700);
+  border-color: var(--fog-400);
+  color: var(--text);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn--primary {
+  background: var(--candle-400);
+  border-color: var(--candle-400);
+  color: var(--ink-950);
+  box-shadow: var(--glow-candle);
+}
+.btn--primary:hover {
+  background: var(--candle-300);
+  border-color: var(--candle-300);
+  color: var(--ink-950);
+  box-shadow: 0 0 30px rgb(244 185 90 / 0.5);
+}
+.btn--quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--candle-300);
+  padding: 0 var(--space-3);
+}
+.btn--quiet:hover {
+  background: var(--ink-800);
+  border-color: var(--border);
+  color: #fff;
+}
+.btn--large {
+  min-height: 3.25rem;
+  padding: 0 var(--space-6);
+  font-size: var(--text-lg);
+}
+.btn[disabled],
+.btn[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---------- Verdict badge ---------- */
+.verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--v);
+  line-height: 1;
+}
+.verdict__icon {
+  width: 1.45em;
+  height: 1.45em;
+  flex: none;
+}
+.verdict--lg {
+  font-size: var(--text-sm);
+}
+.verdict--alive { --v: var(--alive); --v-wash: var(--alive-wash); }
+.verdict--dying { --v: var(--dying); --v-wash: var(--dying-wash); }
+.verdict--dead { --v: var(--dead); --v-wash: var(--dead-wash); }
+.verdict--ghost { --v: var(--ghost); --v-wash: var(--ghost-wash); }
+.verdict--zombie { --v: var(--zombie); --v-wash: var(--zombie-wash); }
+
+/* ---------- Toggle chip (filters) ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--tap);
+  padding: 0 var(--space-4);
+  border-radius: 999px;
+  border: 1px solid var(--border-control);
+  background: var(--surface-panel);
+  color: var(--text);
+  font-weight: 600;
+  transition: background var(--dur-base) var(--ease), border-color var(--dur-base) var(--ease);
+}
+.chip:hover {
+  background: var(--ink-800);
+}
+.chip[aria-pressed='true'] {
+  background: var(--v-wash);
+  border-color: var(--v);
+  box-shadow: 0 0 0 1px var(--v) inset;
+}
+
+/* ---------- Callout ---------- */
+.callout {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-radius: var(--radius-panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--c, var(--fog-400));
+  background: var(--surface-panel);
+  color: var(--text);
+}
+.callout--warning {
+  --c: var(--dying);
+  background: linear-gradient(90deg, var(--dying-wash), transparent 70%), var(--surface-panel);
+}
+.callout--info {
+  --c: var(--moon-200);
+}
+.callout--error {
+  --c: var(--zombie);
+  background: linear-gradient(90deg, var(--zombie-wash), transparent 70%), var(--surface-panel);
+}
+.callout__icon {
+  flex: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--c);
+  margin-top: 0.1rem;
+}
+.callout__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--heading);
+  margin-bottom: var(--space-1);
+}
+.callout ul {
+  margin-top: var(--space-2);
+  display: grid;
+  gap: var(--space-1);
+}
+
+/* ---------- Field ---------- */
+.field {
+  display: grid;
+  gap: var(--space-2);
+}
+.field__label {
+  font-weight: 600;
+  color: var(--text);
+}
+.input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border-control);
+  background: var(--ink-950);
+  color: var(--text);
+  font-size: var(--text-lg);
+}
+.input::placeholder {
+  color: var(--fog-400);
+  opacity: 1;
+}
+.input:hover {
+  border-color: var(--fog-400);
+}
+.input[aria-invalid='true'] {
+  border-color: var(--zombie);
+}
+.field__error {
+  color: var(--zombie);
+  font-weight: 600;
+}
+.field__hint {
+  color: var(--text-quiet);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Mono text, small tags ---------- */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+.tag {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--border-control);
+  border-radius: 999px;
+  color: var(--text-quiet);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+/* ---------- Divider with a fog fade ---------- */
+.fade-rule {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--ink-600), transparent);
+  margin: 0;
+}
