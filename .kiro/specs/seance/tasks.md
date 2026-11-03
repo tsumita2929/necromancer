@@ -1,0 +1,29 @@
+# Tasks: Séance generator
+
+- [x] 1. Spec: requirements.md, design.md, this file
+- [ ] 2. Types: additive contract types and optional Engine members (R4.1)
+- [ ] 3. Usage scan, JavaScript and TypeScript (R1.1 to R1.7, R1.11 to R1.15)
+  - [ ] 3.1 Lexer
+  - [ ] 3.2 Import and binding recogniser
+  - [ ] 3.3 Site recogniser: calls, accesses, references, arguments
+  - [ ] 3.4 Examples for nearby inputs and property tests
+- [ ] 4. Usage scan, Python (R1.8 to R1.10, R1.16)
+  - [ ] 4.1 Lexer and statement splitter
+  - [ ] 4.2 Import recogniser, import-name table
+  - [ ] 4.3 Examples and property tests
+- [x] 5. Explore real differences in the scratch directory: left-pad, querystring, mkdirp, is-odd (JS done; toml, pycrypto pending) (R5.3)
+- [ ] 6. Emit helpers and the generic template (R2.7, R2.12, R2.13)
+- [ ] 7. Curated recipes (R2.5, R2.6, R2.8)
+  - [ ] 7.1 left-pad to padStart (JS, native)
+  - [ ] 7.2 querystring to URLSearchParams (JS, native)
+  - [ ] 7.3 mkdirp to fs.mkdirSync (JS, native, filesystem effect)
+  - [ ] 7.4 is-odd, raised (JS, raise)
+  - [ ] 7.5 toml to tomli (Python)
+  - [ ] 7.6 pycrypto to pycryptodome (Python)
+- [ ] 8. Property tests for the generator: deterministic, valid syntax, no injection (R2.10 to R2.12)
+- [ ] 9. Real runs and mutant runs in the scratch directory; harness script (R5.1, R5.2)
+- [ ] 10. resurrectionSpec includes the séance (R3)
+- [ ] 11. Engine members and exports from src/index.ts, in a green commit (R4.3)
+- [ ] 12. Hook for the new modules
+- [ ] 13. Web and crew typechecks against the final tree, read-only
+- [ ] 14. Run everything; write docs/verification/seance.md
