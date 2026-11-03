@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/benjaminp/six"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "benjaminp/six",
+  "html_url": "https://github.com/benjaminp/six",
+  "archived": false,
+  "disabled": false,
+  "pushed_at": "2026-02-23T02:19:45Z",
+  "stargazers_count": 1033,
+  "default_branch": "main"
+ }
+}

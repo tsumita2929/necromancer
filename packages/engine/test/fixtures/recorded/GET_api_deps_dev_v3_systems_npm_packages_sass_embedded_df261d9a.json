@@ -1,0 +1,1368 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/systems/npm/packages/sass-embedded"
+ },
+ "status": 200,
+ "body": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "sass-embedded"
+  },
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.0.0-beta.0"
+    },
+    "publishedAt": "2021-04-16T16:48:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.0.0-beta.1"
+    },
+    "publishedAt": "2021-04-19T19:02:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.0.0-beta.3"
+    },
+    "publishedAt": "2021-08-17T21:54:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.0.0-beta.4"
+    },
+    "publishedAt": "2021-09-29T22:08:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.0.0-beta.5"
+    },
+    "publishedAt": "2021-11-08T17:55:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.0.0-beta.7"
+    },
+    "publishedAt": "2021-12-29T22:59:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.0.0-beta.8"
+    },
+    "publishedAt": "2022-01-06T00:26:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.0.0-rc.1"
+    },
+    "publishedAt": "2022-01-20T22:36:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.100.0"
+    },
+    "publishedAt": "2026-05-22T00:56:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.102.0"
+    },
+    "publishedAt": "2026-08-12T20:36:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.103.1"
+    },
+    "publishedAt": "2026-08-20T22:49:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.104.0"
+    },
+    "publishedAt": "2026-09-03T23:50:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.104.1"
+    },
+    "publishedAt": "2026-09-12T07:58:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.105.0"
+    },
+    "publishedAt": "2026-09-22T17:44:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.105.1"
+    },
+    "publishedAt": "2026-09-29T22:22:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.105.2"
+    },
+    "publishedAt": "2026-10-16T00:52:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.106.0"
+    },
+    "publishedAt": "2026-10-21T02:03:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.106.1"
+    },
+    "publishedAt": "2026-10-21T22:13:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.107.0"
+    },
+    "publishedAt": "2026-10-28T22:28:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.107.1"
+    },
+    "publishedAt": "2026-10-30T22:21:19Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.49.11"
+    },
+    "publishedAt": "2022-04-01T23:13:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.49.7"
+    },
+    "publishedAt": "2022-02-01T22:32:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.49.8"
+    },
+    "publishedAt": "2022-02-17T21:52:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.49.9"
+    },
+    "publishedAt": "2022-02-24T20:55:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.50.0"
+    },
+    "publishedAt": "2022-04-07T02:53:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.50.1"
+    },
+    "publishedAt": "2022-04-19T01:19:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.51.0"
+    },
+    "publishedAt": "2022-05-12T21:36:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.52.1"
+    },
+    "publishedAt": "2022-05-20T22:34:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.52.2"
+    },
+    "publishedAt": "2022-06-03T02:53:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.52.3"
+    },
+    "publishedAt": "2022-06-09T00:20:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.53.0"
+    },
+    "publishedAt": "2022-06-22T20:01:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.54.2"
+    },
+    "publishedAt": "2022-08-04T00:18:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.54.3"
+    },
+    "publishedAt": "2022-08-04T21:20:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.54.4"
+    },
+    "publishedAt": "2022-08-10T01:22:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.54.8"
+    },
+    "publishedAt": "2022-08-31T22:21:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.54.9"
+    },
+    "publishedAt": "2022-09-07T22:01:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.55.0"
+    },
+    "publishedAt": "2022-09-22T23:01:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.56.1"
+    },
+    "publishedAt": "2022-11-09T22:21:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.56.2"
+    },
+    "publishedAt": "2022-12-08T23:14:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.57.1"
+    },
+    "publishedAt": "2022-12-20T00:23:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.58.2"
+    },
+    "publishedAt": "2023-02-17T02:10:53Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "Broken release, please use another version"
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.58.3"
+    },
+    "publishedAt": "2023-02-18T01:10:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.59.2"
+    },
+    "publishedAt": "2023-03-11T01:48:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.59.3"
+    },
+    "publishedAt": "2023-03-14T21:50:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.60.0"
+    },
+    "publishedAt": "2023-03-23T23:44:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.61.0"
+    },
+    "publishedAt": "2023-04-06T22:29:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.62.0"
+    },
+    "publishedAt": "2023-04-11T23:25:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.63.5"
+    },
+    "publishedAt": "2023-06-21T01:31:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.63.6"
+    },
+    "publishedAt": "2023-06-21T22:31:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.64.0"
+    },
+    "publishedAt": "2023-07-20T00:35:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.64.1"
+    },
+    "publishedAt": "2023-07-22T00:29:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.64.2"
+    },
+    "publishedAt": "2023-08-01T00:00:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.66.0"
+    },
+    "publishedAt": "2023-08-17T19:51:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.66.1"
+    },
+    "publishedAt": "2023-08-18T22:22:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.67.0"
+    },
+    "publishedAt": "2023-09-14T01:09:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.69.1"
+    },
+    "publishedAt": "2023-10-10T00:22:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.69.2"
+    },
+    "publishedAt": "2023-10-10T19:07:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.69.4"
+    },
+    "publishedAt": "2023-10-17T22:02:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.69.5"
+    },
+    "publishedAt": "2023-10-26T01:18:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.69.6"
+    },
+    "publishedAt": "2023-12-29T00:43:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.69.7"
+    },
+    "publishedAt": "2024-01-02T22:31:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.70.0"
+    },
+    "publishedAt": "2024-01-18T03:20:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.71.0"
+    },
+    "publishedAt": "2024-02-16T02:03:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.71.1"
+    },
+    "publishedAt": "2024-02-21T02:12:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.72.0"
+    },
+    "publishedAt": "2024-03-13T21:23:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.74.1"
+    },
+    "publishedAt": "2024-04-04T01:20:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.75.0"
+    },
+    "publishedAt": "2024-04-11T23:25:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.76.0"
+    },
+    "publishedAt": "2024-04-30T21:50:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.77.0"
+    },
+    "publishedAt": "2024-05-07T01:20:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.77.1"
+    },
+    "publishedAt": "2024-05-10T23:18:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.77.2"
+    },
+    "publishedAt": "2024-05-16T22:33:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.77.5"
+    },
+    "publishedAt": "2024-06-12T00:08:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.77.8"
+    },
+    "publishedAt": "2024-07-11T20:15:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.78.0"
+    },
+    "publishedAt": "2024-09-03T23:16:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.79.1"
+    },
+    "publishedAt": "2024-09-18T00:37:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.79.2"
+    },
+    "publishedAt": "2024-09-19T23:13:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.79.3"
+    },
+    "publishedAt": "2024-09-20T21:24:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.79.4"
+    },
+    "publishedAt": "2024-09-28T03:32:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.79.5"
+    },
+    "publishedAt": "2024-10-12T00:35:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.79.6"
+    },
+    "publishedAt": "2024-10-16T23:39:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.80.0"
+    },
+    "publishedAt": "2024-10-17T00:35:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.80.1"
+    },
+    "publishedAt": "2024-10-17T03:29:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.80.2"
+    },
+    "publishedAt": "2024-10-17T21:04:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.80.3"
+    },
+    "publishedAt": "2024-10-19T00:01:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.80.4"
+    },
+    "publishedAt": "2024-10-23T23:04:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.80.5"
+    },
+    "publishedAt": "2024-10-29T22:22:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.80.6"
+    },
+    "publishedAt": "2024-11-01T23:36:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.80.7"
+    },
+    "publishedAt": "2024-11-12T23:42:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.81.0"
+    },
+    "publishedAt": "2024-11-15T01:50:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.81.1"
+    },
+    "publishedAt": "2024-12-03T01:45:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.82.0"
+    },
+    "publishedAt": "2024-12-03T23:26:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.83.0"
+    },
+    "publishedAt": "2024-12-12T22:52:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.83.1"
+    },
+    "publishedAt": "2025-01-04T01:45:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.83.2"
+    },
+    "publishedAt": "2025-01-14T01:09:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.83.3"
+    },
+    "publishedAt": "2025-01-14T02:00:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.83.4"
+    },
+    "publishedAt": "2025-01-14T06:51:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.85.0"
+    },
+    "publishedAt": "2025-02-14T00:54:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.85.1"
+    },
+    "publishedAt": "2025-02-25T01:41:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.86.0"
+    },
+    "publishedAt": "2025-03-17T22:10:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.86.1"
+    },
+    "publishedAt": "2025-03-31T21:21:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.86.2"
+    },
+    "publishedAt": "2025-04-02T23:30:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.86.3"
+    },
+    "publishedAt": "2025-04-04T00:31:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.87.0"
+    },
+    "publishedAt": "2025-04-21T23:20:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.88.0"
+    },
+    "publishedAt": "2025-05-10T22:49:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.89.0"
+    },
+    "publishedAt": "2025-05-16T01:06:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.89.1"
+    },
+    "publishedAt": "2025-05-31T00:08:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.89.2"
+    },
+    "publishedAt": "2025-06-09T19:42:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.90.0"
+    },
+    "publishedAt": "2025-08-05T22:28:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.91.0"
+    },
+    "publishedAt": "2025-08-25T21:41:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.92.0"
+    },
+    "publishedAt": "2025-09-02T20:52:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.92.1"
+    },
+    "publishedAt": "2025-09-06T00:10:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.93.0"
+    },
+    "publishedAt": "2025-09-19T22:43:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.93.1"
+    },
+    "publishedAt": "2025-09-22T22:31:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.93.2"
+    },
+    "publishedAt": "2025-09-23T21:57:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.93.3"
+    },
+    "publishedAt": "2025-10-31T17:33:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.95.1"
+    },
+    "publishedAt": "2025-12-10T00:11:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.96.0"
+    },
+    "publishedAt": "2025-12-11T00:35:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.97.0"
+    },
+    "publishedAt": "2025-12-16T06:54:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.97.1"
+    },
+    "publishedAt": "2025-12-19T21:50:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.97.2"
+    },
+    "publishedAt": "2026-01-06T01:00:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.97.3"
+    },
+    "publishedAt": "2026-01-21T23:52:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.98.0"
+    },
+    "publishedAt": "2026-03-10T23:16:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass-embedded",
+     "version": "1.99.0"
+    },
+    "publishedAt": "2026-04-02T23:57:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ }
+}

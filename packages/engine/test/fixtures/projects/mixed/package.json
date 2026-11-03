@@ -1,0 +1,12 @@
+{
+  "name": "mixed-fixture",
+  "dependencies": {
+    "@babel/core": "^7.24.0",
+    "legacy-pad": "npm:left-pad@^1.3.0",
+    "internal": "git+https://github.com/example/internal.git",
+    "shared": "workspace:*"
+  },
+  "devDependencies": {
+    "mkdirp": "^1.0.4"
+  }
+}

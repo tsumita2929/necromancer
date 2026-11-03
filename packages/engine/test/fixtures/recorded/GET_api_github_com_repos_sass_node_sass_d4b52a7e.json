@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/sass/node-sass"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "sass/node-sass",
+  "html_url": "https://github.com/sass/node-sass",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2024-07-24T21:59:31Z",
+  "stargazers_count": 8436,
+  "default_branch": "master"
+ }
+}

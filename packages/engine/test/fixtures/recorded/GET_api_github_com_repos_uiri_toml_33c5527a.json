@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/uiri/toml"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "uiri/toml",
+  "html_url": "https://github.com/uiri/toml",
+  "archived": false,
+  "disabled": false,
+  "pushed_at": "2024-06-26T18:59:56Z",
+  "stargazers_count": 1139,
+  "default_branch": "master"
+ }
+}

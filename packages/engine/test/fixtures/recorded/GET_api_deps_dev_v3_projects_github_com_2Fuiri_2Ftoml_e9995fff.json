@@ -1,0 +1,110 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fuiri%2Ftoml"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/uiri/toml"
+  },
+  "openIssuesCount": 153,
+  "starsCount": 1138,
+  "forksCount": 205,
+  "license": "MIT",
+  "description": "Python lib for TOML",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/uiri/toml",
+    "commit": "65bab7582ce14c55cdeec2244c65ea23039c9e6f"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "score": 7,
+     "reason": "Found 20/26 approved changesets -- score normalized to 7"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected"
+    },
+    {
+     "name": "Maintained",
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0"
+    },
+    {
+     "name": "Packaging",
+     "score": -1,
+     "reason": "packaging workflow not detected"
+    },
+    {
+     "name": "Token-Permissions",
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions"
+    },
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 0,
+     "reason": "security policy file not detected"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 10,
+     "reason": "project is fuzzed"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": -1,
+     "reason": "no releases found"
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": 1,
+     "reason": "dependency not pinned by hash detected -- score normalized to 1"
+    },
+    {
+     "name": "Branch-Protection",
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md"
+    },
+    {
+     "name": "SAST",
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0"
+    }
+   ],
+   "overallScore": 4.7,
+   "metadata": []
+  },
+  "ossFuzz": {
+   "lineCount": 728,
+   "lineCoverCount": 149,
+   "date": "2026-10-27T00:00:00Z",
+   "configUrl": "https://github.com/google/oss-fuzz/tree/master/projects/toml"
+  }
+ }
+}

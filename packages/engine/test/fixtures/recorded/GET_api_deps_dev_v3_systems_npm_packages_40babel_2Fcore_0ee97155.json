@@ -1,0 +1,2600 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/systems/npm/packages/%40babel%2Fcore"
+ },
+ "status": 200,
+ "body": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "@babel/core"
+  },
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "6.0.0-bridge.1"
+    },
+    "publishedAt": "2018-08-24T22:02:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0"
+    },
+    "publishedAt": "2018-08-27T21:45:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.31"
+    },
+    "publishedAt": "2017-11-03T20:04:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.32"
+    },
+    "publishedAt": "2017-11-12T13:34:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.33"
+    },
+    "publishedAt": "2017-12-01T14:29:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.34"
+    },
+    "publishedAt": "2017-12-02T14:40:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.35"
+    },
+    "publishedAt": "2017-12-14T21:48:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.36"
+    },
+    "publishedAt": "2017-12-25T19:05:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.37"
+    },
+    "publishedAt": "2018-01-08T16:03:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.38"
+    },
+    "publishedAt": "2018-01-17T16:32:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.39"
+    },
+    "publishedAt": "2018-01-30T20:28:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.4"
+    },
+    "publishedAt": "2017-10-30T18:36:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.40"
+    },
+    "publishedAt": "2018-02-12T16:42:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.41"
+    },
+    "publishedAt": "2018-03-14T16:27:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.42"
+    },
+    "publishedAt": "2018-03-15T20:52:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.43"
+    },
+    "publishedAt": "2018-04-02T16:49:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.44"
+    },
+    "publishedAt": "2018-04-02T22:20:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.45"
+    },
+    "publishedAt": "2018-04-23T01:58:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.46"
+    },
+    "publishedAt": "2018-04-23T04:33:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.47"
+    },
+    "publishedAt": "2018-05-15T00:18:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.48"
+    },
+    "publishedAt": "2018-05-24T19:24:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.49"
+    },
+    "publishedAt": "2018-05-25T16:04:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.5"
+    },
+    "publishedAt": "2017-10-30T20:57:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.50"
+    },
+    "publishedAt": "2018-06-12T19:48:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.51"
+    },
+    "publishedAt": "2018-06-12T21:20:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.52"
+    },
+    "publishedAt": "2018-07-06T00:59:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.53"
+    },
+    "publishedAt": "2018-07-11T13:40:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.54"
+    },
+    "publishedAt": "2018-07-16T18:00:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.55"
+    },
+    "publishedAt": "2018-07-28T22:08:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-beta.56"
+    },
+    "publishedAt": "2018-08-04T01:09:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-rc.0"
+    },
+    "publishedAt": "2018-08-09T16:00:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-rc.1"
+    },
+    "publishedAt": "2018-08-09T20:10:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-rc.2"
+    },
+    "publishedAt": "2018-08-21T19:26:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-rc.3"
+    },
+    "publishedAt": "2018-08-24T18:09:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.0-rc.4"
+    },
+    "publishedAt": "2018-08-27T16:46:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.0.1"
+    },
+    "publishedAt": "2018-09-11T20:51:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.1.0"
+    },
+    "publishedAt": "2018-09-17T19:31:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.1.1"
+    },
+    "publishedAt": "2018-09-28T20:03:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.1.2"
+    },
+    "publishedAt": "2018-09-28T22:20:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.1.5"
+    },
+    "publishedAt": "2018-11-06T22:22:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.1.6"
+    },
+    "publishedAt": "2018-11-13T21:10:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.10.0"
+    },
+    "publishedAt": "2020-05-26T21:43:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.10.1"
+    },
+    "publishedAt": "2020-05-27T22:08:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.10.2"
+    },
+    "publishedAt": "2020-05-30T19:25:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.10.3"
+    },
+    "publishedAt": "2020-06-19T20:54:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.10.4"
+    },
+    "publishedAt": "2020-06-30T13:13:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.10.5"
+    },
+    "publishedAt": "2020-07-14T18:18:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.11.0"
+    },
+    "publishedAt": "2020-07-30T21:22:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.11.1"
+    },
+    "publishedAt": "2020-08-04T22:05:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.11.4"
+    },
+    "publishedAt": "2020-08-20T18:59:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.11.5"
+    },
+    "publishedAt": "2020-08-31T20:02:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.11.6"
+    },
+    "publishedAt": "2020-09-03T15:54:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.0"
+    },
+    "publishedAt": "2020-10-14T20:03:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.1"
+    },
+    "publishedAt": "2020-10-15T22:42:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.10"
+    },
+    "publishedAt": "2020-12-09T22:48:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.13"
+    },
+    "publishedAt": "2021-02-03T01:12:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.16"
+    },
+    "publishedAt": "2021-02-11T22:47:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.17"
+    },
+    "publishedAt": "2021-02-18T15:13:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.3"
+    },
+    "publishedAt": "2020-10-16T21:14:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.7"
+    },
+    "publishedAt": "2020-11-20T21:06:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.8"
+    },
+    "publishedAt": "2020-11-23T22:29:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.12.9"
+    },
+    "publishedAt": "2020-11-24T21:02:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.13.0"
+    },
+    "publishedAt": "2021-02-22T22:50:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.13.1"
+    },
+    "publishedAt": "2021-02-23T01:19:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.13.10"
+    },
+    "publishedAt": "2021-03-08T22:36:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.13.13"
+    },
+    "publishedAt": "2021-03-26T21:20:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.13.14"
+    },
+    "publishedAt": "2021-03-29T14:15:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.13.15"
+    },
+    "publishedAt": "2021-04-08T15:50:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.13.16"
+    },
+    "publishedAt": "2021-04-20T11:21:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.13.8"
+    },
+    "publishedAt": "2021-02-26T23:39:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.14.0"
+    },
+    "publishedAt": "2021-04-29T20:10:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.14.2"
+    },
+    "publishedAt": "2021-05-12T17:09:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.14.3"
+    },
+    "publishedAt": "2021-05-17T20:44:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.14.5"
+    },
+    "publishedAt": "2021-06-09T23:13:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.14.6"
+    },
+    "publishedAt": "2021-06-14T21:57:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.14.8"
+    },
+    "publishedAt": "2021-07-20T18:02:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.15.0"
+    },
+    "publishedAt": "2021-08-04T21:13:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.15.4"
+    },
+    "publishedAt": "2021-09-02T21:39:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.15.5"
+    },
+    "publishedAt": "2021-09-04T08:58:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.15.8"
+    },
+    "publishedAt": "2021-10-06T20:54:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.16.0"
+    },
+    "publishedAt": "2021-10-29T23:47:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.16.10"
+    },
+    "publishedAt": "2022-01-19T18:39:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.16.12"
+    },
+    "publishedAt": "2022-01-22T15:10:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.16.5"
+    },
+    "publishedAt": "2021-12-13T22:28:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.16.7"
+    },
+    "publishedAt": "2021-12-31T00:23:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.0"
+    },
+    "publishedAt": "2022-02-02T23:05:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.10"
+    },
+    "publishedAt": "2022-04-29T16:37:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.12"
+    },
+    "publishedAt": "2022-05-16T19:33:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.2"
+    },
+    "publishedAt": "2022-02-08T15:35:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.3"
+    },
+    "publishedAt": "2022-02-15T15:44:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.4"
+    },
+    "publishedAt": "2022-02-15T22:38:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.5"
+    },
+    "publishedAt": "2022-02-17T16:28:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.7"
+    },
+    "publishedAt": "2022-03-14T17:07:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.8"
+    },
+    "publishedAt": "2022-03-18T20:31:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.17.9"
+    },
+    "publishedAt": "2022-04-06T15:55:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.18.0"
+    },
+    "publishedAt": "2022-05-19T18:16:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.18.10"
+    },
+    "publishedAt": "2022-08-01T18:46:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.18.13"
+    },
+    "publishedAt": "2022-08-22T16:05:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.18.2"
+    },
+    "publishedAt": "2022-05-25T09:16:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.18.5"
+    },
+    "publishedAt": "2022-06-13T06:40:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.18.6"
+    },
+    "publishedAt": "2022-06-27T19:50:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.18.9"
+    },
+    "publishedAt": "2022-07-18T09:17:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.19.0"
+    },
+    "publishedAt": "2022-09-05T19:02:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.19.1"
+    },
+    "publishedAt": "2022-09-14T15:29:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.19.3"
+    },
+    "publishedAt": "2022-09-27T18:36:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.19.6"
+    },
+    "publishedAt": "2022-10-20T09:03:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.2.0"
+    },
+    "publishedAt": "2018-12-03T19:02:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.2.2"
+    },
+    "publishedAt": "2018-12-15T10:05:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.20.12"
+    },
+    "publishedAt": "2023-01-04T16:02:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.20.2"
+    },
+    "publishedAt": "2022-11-04T18:51:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.20.5"
+    },
+    "publishedAt": "2022-11-28T10:12:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.20.7"
+    },
+    "publishedAt": "2022-12-22T09:45:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.0"
+    },
+    "publishedAt": "2023-02-20T15:31:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.3"
+    },
+    "publishedAt": "2023-03-14T14:59:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.4"
+    },
+    "publishedAt": "2023-03-31T09:02:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.4-esm"
+    },
+    "publishedAt": "2023-04-04T14:09:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.4-esm.1"
+    },
+    "publishedAt": "2023-04-04T14:21:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.4-esm.2"
+    },
+    "publishedAt": "2023-04-04T14:39:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.4-esm.3"
+    },
+    "publishedAt": "2023-04-04T14:56:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.4-esm.4"
+    },
+    "publishedAt": "2023-04-04T15:13:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.5"
+    },
+    "publishedAt": "2023-04-28T19:50:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.21.8"
+    },
+    "publishedAt": "2023-05-02T15:15:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.0"
+    },
+    "publishedAt": "2023-05-26T13:45:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.1"
+    },
+    "publishedAt": "2023-05-26T16:34:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.10"
+    },
+    "publishedAt": "2023-08-07T17:25:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.11"
+    },
+    "publishedAt": "2023-08-24T13:08:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.15"
+    },
+    "publishedAt": "2023-09-04T12:25:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.17"
+    },
+    "publishedAt": "2023-09-08T13:53:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.18"
+    },
+    "publishedAt": "2023-09-14T15:59:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.19"
+    },
+    "publishedAt": "2023-09-14T16:32:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.20"
+    },
+    "publishedAt": "2023-09-16T16:28:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.5"
+    },
+    "publishedAt": "2023-06-08T18:21:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.6"
+    },
+    "publishedAt": "2023-07-04T07:49:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.7"
+    },
+    "publishedAt": "2023-07-06T09:04:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.8"
+    },
+    "publishedAt": "2023-07-06T12:34:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.22.9"
+    },
+    "publishedAt": "2023-07-12T16:54:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.23.0"
+    },
+    "publishedAt": "2023-09-25T08:11:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.23.2"
+    },
+    "publishedAt": "2023-10-12T00:34:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.23.3"
+    },
+    "publishedAt": "2023-11-09T07:04:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.23.5"
+    },
+    "publishedAt": "2023-11-29T10:25:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.23.6"
+    },
+    "publishedAt": "2023-12-11T13:10:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.23.7"
+    },
+    "publishedAt": "2023-12-29T20:01:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.23.9"
+    },
+    "publishedAt": "2024-01-25T16:57:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.0"
+    },
+    "publishedAt": "2024-02-28T11:47:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.1"
+    },
+    "publishedAt": "2024-03-19T09:49:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.3"
+    },
+    "publishedAt": "2024-03-20T12:08:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.4"
+    },
+    "publishedAt": "2024-04-03T16:53:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.5"
+    },
+    "publishedAt": "2024-04-29T18:34:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.6"
+    },
+    "publishedAt": "2024-05-24T12:25:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.7"
+    },
+    "publishedAt": "2024-06-05T13:15:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.8"
+    },
+    "publishedAt": "2024-07-11T14:54:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.24.9"
+    },
+    "publishedAt": "2024-07-15T10:34:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.25.2"
+    },
+    "publishedAt": "2024-07-30T02:54:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.25.7"
+    },
+    "publishedAt": "2024-10-02T15:15:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.25.8"
+    },
+    "publishedAt": "2024-10-10T13:25:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.25.9"
+    },
+    "publishedAt": "2024-10-22T15:21:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.26.0"
+    },
+    "publishedAt": "2024-10-25T13:30:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.26.10"
+    },
+    "publishedAt": "2025-03-11T17:55:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.26.7"
+    },
+    "publishedAt": "2025-01-24T15:05:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.26.8"
+    },
+    "publishedAt": "2025-02-08T09:59:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.26.9"
+    },
+    "publishedAt": "2025-02-14T11:48:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.27.1"
+    },
+    "publishedAt": "2025-04-30T15:09:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.27.3"
+    },
+    "publishedAt": "2025-05-27T08:39:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.27.4"
+    },
+    "publishedAt": "2025-05-30T15:01:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.27.7"
+    },
+    "publishedAt": "2025-06-26T14:03:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.28.0"
+    },
+    "publishedAt": "2025-07-02T08:38:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.28.3"
+    },
+    "publishedAt": "2025-08-14T12:36:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.28.4"
+    },
+    "publishedAt": "2025-09-05T14:53:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.28.5"
+    },
+    "publishedAt": "2025-10-23T15:17:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.28.6"
+    },
+    "publishedAt": "2026-01-12T17:50:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.29.0"
+    },
+    "publishedAt": "2026-01-31T17:39:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.29.6"
+    },
+    "publishedAt": "2026-05-25T10:55:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.29.7"
+    },
+    "publishedAt": "2026-05-25T11:16:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.3.3"
+    },
+    "publishedAt": "2019-02-15T21:14:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.3.4"
+    },
+    "publishedAt": "2019-02-25T18:35:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.4.0"
+    },
+    "publishedAt": "2019-03-19T20:45:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.4.3"
+    },
+    "publishedAt": "2019-04-02T19:56:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.4.4"
+    },
+    "publishedAt": "2019-04-26T21:04:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.4.5"
+    },
+    "publishedAt": "2019-05-21T17:46:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.5.0"
+    },
+    "publishedAt": "2019-07-04T12:58:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.5.4"
+    },
+    "publishedAt": "2019-07-09T18:56:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.5.5"
+    },
+    "publishedAt": "2019-07-17T21:21:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.6.0"
+    },
+    "publishedAt": "2019-09-06T17:34:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.6.2"
+    },
+    "publishedAt": "2019-09-23T21:21:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.6.3"
+    },
+    "publishedAt": "2019-10-08T19:49:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.6.4"
+    },
+    "publishedAt": "2019-10-10T14:29:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.7.0"
+    },
+    "publishedAt": "2019-11-05T10:54:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.7.2"
+    },
+    "publishedAt": "2019-11-06T23:27:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.7.4"
+    },
+    "publishedAt": "2019-11-22T23:33:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.7.5"
+    },
+    "publishedAt": "2019-12-06T13:17:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.7.7"
+    },
+    "publishedAt": "2019-12-19T00:53:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.8.0"
+    },
+    "publishedAt": "2020-01-12T00:17:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.8.3"
+    },
+    "publishedAt": "2020-01-13T21:42:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.8.4"
+    },
+    "publishedAt": "2020-01-30T12:37:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.8.6"
+    },
+    "publishedAt": "2020-02-27T12:21:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.8.7"
+    },
+    "publishedAt": "2020-03-05T01:56:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.9.0"
+    },
+    "publishedAt": "2020-03-20T15:40:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "7.9.6"
+    },
+    "publishedAt": "2020-04-29T18:38:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0"
+    },
+    "publishedAt": "2026-06-16T13:33:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.0"
+    },
+    "publishedAt": "2023-07-20T14:00:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.1"
+    },
+    "publishedAt": "2023-07-24T17:53:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.10"
+    },
+    "publishedAt": "2024-06-04T11:20:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.11"
+    },
+    "publishedAt": "2024-06-07T09:16:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.12"
+    },
+    "publishedAt": "2024-07-26T17:33:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.13"
+    },
+    "publishedAt": "2024-10-25T13:54:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.14"
+    },
+    "publishedAt": "2024-12-06T16:54:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.15"
+    },
+    "publishedAt": "2025-01-10T17:25:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.16"
+    },
+    "publishedAt": "2025-02-14T11:59:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.17"
+    },
+    "publishedAt": "2025-03-11T18:25:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.2"
+    },
+    "publishedAt": "2023-08-09T15:15:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.3"
+    },
+    "publishedAt": "2023-09-26T14:57:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.4"
+    },
+    "publishedAt": "2023-10-12T02:06:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.5"
+    },
+    "publishedAt": "2023-12-11T15:19:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.6"
+    },
+    "publishedAt": "2024-01-26T16:14:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.7"
+    },
+    "publishedAt": "2024-02-28T14:05:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.8"
+    },
+    "publishedAt": "2024-04-04T13:20:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-alpha.9"
+    },
+    "publishedAt": "2024-06-03T14:05:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-beta.0"
+    },
+    "publishedAt": "2025-05-30T15:51:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-beta.1"
+    },
+    "publishedAt": "2025-07-02T09:04:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-beta.2"
+    },
+    "publishedAt": "2025-09-05T15:06:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-beta.3"
+    },
+    "publishedAt": "2025-10-23T14:45:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-beta.4"
+    },
+    "publishedAt": "2026-01-12T17:32:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-rc.1"
+    },
+    "publishedAt": "2026-01-31T17:48:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-rc.2"
+    },
+    "publishedAt": "2026-02-15T20:23:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-rc.3"
+    },
+    "publishedAt": "2026-03-16T20:25:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-rc.4"
+    },
+    "publishedAt": "2026-04-29T21:41:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-rc.5"
+    },
+    "publishedAt": "2026-05-12T14:52:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.0-rc.6"
+    },
+    "publishedAt": "2026-05-25T10:23:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.1"
+    },
+    "publishedAt": "2026-06-17T09:44:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.10"
+    },
+    "publishedAt": "2026-10-29T16:35:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.5"
+    },
+    "publishedAt": "2026-09-10T21:13:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.6"
+    },
+    "publishedAt": "2026-09-18T13:48:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.7"
+    },
+    "publishedAt": "2026-10-07T09:59:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.0.9"
+    },
+    "publishedAt": "2026-10-23T15:11:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "@babel/core",
+     "version": "8.1.0"
+    },
+    "publishedAt": "2026-11-02T12:07:55Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ }
+}

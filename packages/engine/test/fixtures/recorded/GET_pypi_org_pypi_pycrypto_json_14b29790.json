@@ -1,0 +1,103 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://pypi.org/pypi/pycrypto/json"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "PyPI payload reduced to the fields the engine reads",
+  "info": {
+   "name": "pycrypto",
+   "version": "2.6.1",
+   "classifiers": [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: Public Domain",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: Unix",
+    "Programming Language :: Python :: 2",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security :: Cryptography"
+   ],
+   "project_urls": {
+    "Homepage": "http://www.pycrypto.org/"
+   },
+   "home_page": "http://www.pycrypto.org/",
+   "download_url": "",
+   "project_url": "https://pypi.org/project/pycrypto/",
+   "summary": "Cryptographic modules for Python.",
+   "yanked": false,
+   "yanked_reason": null
+  },
+  "releases": {
+   "1.9a2": [],
+   "1.9a5": [],
+   "1.9a6": [],
+   "2.0": [],
+   "2.0.1": [
+    {
+     "upload_time_iso_8601": "2013-08-11T11:19:28.592712Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ],
+   "2.1.0": [
+    {
+     "upload_time_iso_8601": "2013-08-11T11:20:08.658397Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ],
+   "2.2": [
+    {
+     "upload_time_iso_8601": "2013-08-11T11:20:32.313484Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ],
+   "2.3": [
+    {
+     "upload_time_iso_8601": "2010-12-17T03:18:31.767626Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ],
+   "2.4": [
+    {
+     "upload_time_iso_8601": "2011-10-22T22:01:31.684520Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ],
+   "2.4.1": [
+    {
+     "upload_time_iso_8601": "2011-11-04T20:31:00.898283Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ],
+   "2.5": [
+    {
+     "upload_time_iso_8601": "2012-01-13T18:31:25.949014Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ],
+   "2.6": [
+    {
+     "upload_time_iso_8601": "2012-05-24T15:09:51.090707Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ],
+   "2.6.1": [
+    {
+     "upload_time_iso_8601": "2014-06-20T08:10:20.813938Z",
+     "yanked": false,
+     "yanked_reason": null
+    }
+   ]
+  }
+ }
+}

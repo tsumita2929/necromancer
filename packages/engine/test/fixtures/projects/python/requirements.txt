@@ -1,0 +1,10 @@
+# Legacy service requirements
+requests==2.31.0
+pycrypto==2.6.1          # unmaintained since 2014
+nose>=1.3
+pep8
+six[extra]==1.16.0 ; python_version < "3.12"
+simplejson>=3.0,<4
+-r dev.txt
+--index-url https://pypi.org/simple
+-e .

@@ -1,0 +1,104 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fsass%2Fnode-sass"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/sass/node-sass"
+  },
+  "openIssuesCount": 187,
+  "starsCount": 8438,
+  "forksCount": 1296,
+  "license": "MIT",
+  "description": ":rainbow: Node.js bindings to libsass",
+  "homepage": "https://npmjs.org/package/node-sass",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/sass/node-sass",
+    "commit": "107ded9434cfca43dbd9dfbaeb5c349228bf5cee"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "score": 0,
+     "reason": "project is archived"
+    },
+    {
+     "name": "Code-Review",
+     "score": 4,
+     "reason": "Found 8/17 approved changesets -- score normalized to 4"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected"
+    },
+    {
+     "name": "Packaging",
+     "score": -1,
+     "reason": "packaging workflow not detected"
+    },
+    {
+     "name": "Token-Permissions",
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected"
+    },
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 0,
+     "reason": "security policy file not detected"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 0,
+     "reason": "project is not fuzzed"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Branch-Protection",
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": 0,
+     "reason": "Project has not signed or included provenance with any releases."
+    },
+    {
+     "name": "SAST",
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0"
+    }
+   ],
+   "overallScore": 3.2,
+   "metadata": []
+  }
+ }
+}

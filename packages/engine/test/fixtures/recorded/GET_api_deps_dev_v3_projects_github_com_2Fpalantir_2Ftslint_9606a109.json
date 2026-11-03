@@ -1,0 +1,104 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fpalantir%2Ftslint"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/palantir/tslint"
+  },
+  "openIssuesCount": 1,
+  "starsCount": 5893,
+  "forksCount": 872,
+  "license": "Apache-2.0",
+  "description": ":vertical_traffic_light: An extensible linter for the TypeScript language",
+  "homepage": "http://palantir.github.io/tslint/",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/palantir/tslint",
+    "commit": "285fc1db18d1fd24680d6a2282c6445abf1566ee"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Maintained",
+     "score": 0,
+     "reason": "project is archived"
+    },
+    {
+     "name": "Token-Permissions",
+     "score": -1,
+     "reason": "No tokens found"
+    },
+    {
+     "name": "Code-Review",
+     "score": 5,
+     "reason": "Found 17/30 approved changesets -- score normalized to 5"
+    },
+    {
+     "name": "Packaging",
+     "score": -1,
+     "reason": "packaging workflow not detected"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": -1,
+     "reason": "no workflows found"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected"
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": -1,
+     "reason": "no dependencies found"
+    },
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 0,
+     "reason": "security policy file not detected"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 0,
+     "reason": "project is not fuzzed"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": -1,
+     "reason": "no releases found"
+    },
+    {
+     "name": "Branch-Protection",
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md"
+    },
+    {
+     "name": "SAST",
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0"
+    }
+   ],
+   "overallScore": 3.2,
+   "metadata": []
+  }
+ }
+}

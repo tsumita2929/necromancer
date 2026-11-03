@@ -1,0 +1,2017 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/systems/npm/packages/tslint"
+ },
+ "status": 200,
+ "body": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "tslint"
+  },
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.1.0"
+    },
+    "publishedAt": "2013-07-28T02:08:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.1.1"
+    },
+    "publishedAt": "2013-07-28T02:14:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.1.2"
+    },
+    "publishedAt": "2013-08-01T19:50:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.1.3"
+    },
+    "publishedAt": "2013-08-03T20:54:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.1.4"
+    },
+    "publishedAt": "2013-08-08T00:45:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.1.5"
+    },
+    "publishedAt": "2013-08-10T17:37:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.1.6"
+    },
+    "publishedAt": "2013-08-13T00:04:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.0"
+    },
+    "publishedAt": "2013-08-15T22:35:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.1"
+    },
+    "publishedAt": "2013-08-15T22:51:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.10"
+    },
+    "publishedAt": "2013-08-30T03:39:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.3"
+    },
+    "publishedAt": "2013-08-16T20:21:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.4"
+    },
+    "publishedAt": "2013-08-20T21:57:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.5"
+    },
+    "publishedAt": "2013-08-22T04:52:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.6"
+    },
+    "publishedAt": "2013-08-22T06:03:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.7"
+    },
+    "publishedAt": "2013-08-22T14:15:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.8"
+    },
+    "publishedAt": "2013-08-22T14:32:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.2.9"
+    },
+    "publishedAt": "2013-08-22T15:09:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.3.0"
+    },
+    "publishedAt": "2013-09-23T03:56:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.3.1"
+    },
+    "publishedAt": "2013-10-06T17:51:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.3.2"
+    },
+    "publishedAt": "2013-10-06T18:57:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.3.3"
+    },
+    "publishedAt": "2013-10-10T03:52:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.0"
+    },
+    "publishedAt": "2013-12-10T00:31:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.1"
+    },
+    "publishedAt": "2014-01-15T19:00:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.10"
+    },
+    "publishedAt": "2014-06-13T16:05:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.11"
+    },
+    "publishedAt": "2014-06-27T17:30:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.12"
+    },
+    "publishedAt": "2014-07-20T17:41:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.13"
+    },
+    "publishedAt": "2014-10-10T19:53:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.14"
+    },
+    "publishedAt": "2014-10-15T23:27:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.2"
+    },
+    "publishedAt": "2014-01-18T18:20:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.3"
+    },
+    "publishedAt": "2014-02-10T23:09:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.4"
+    },
+    "publishedAt": "2014-02-11T20:09:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.5"
+    },
+    "publishedAt": "2014-02-13T20:41:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.6"
+    },
+    "publishedAt": "2014-03-03T21:10:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.7"
+    },
+    "publishedAt": "2014-03-14T19:55:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.8"
+    },
+    "publishedAt": "2014-04-14T18:21:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "0.4.9"
+    },
+    "publishedAt": "2014-05-15T21:34:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "1.0.0"
+    },
+    "publishedAt": "2014-11-13T00:43:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "1.0.1"
+    },
+    "publishedAt": "2014-11-13T17:37:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "1.2.0"
+    },
+    "publishedAt": "2015-01-12T19:45:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.0.0"
+    },
+    "publishedAt": "2015-02-02T23:36:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.0.1"
+    },
+    "publishedAt": "2015-02-02T23:40:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.1.0"
+    },
+    "publishedAt": "2015-02-05T15:46:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.1.1"
+    },
+    "publishedAt": "2015-02-11T19:45:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.2.0-beta"
+    },
+    "publishedAt": "2015-05-05T20:59:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.3.0-beta"
+    },
+    "publishedAt": "2015-06-18T14:17:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.3.1-beta"
+    },
+    "publishedAt": "2015-06-26T22:07:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.4.0"
+    },
+    "publishedAt": "2015-07-20T16:32:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.4.1"
+    },
+    "publishedAt": "2015-07-22T17:00:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.4.2"
+    },
+    "publishedAt": "2015-07-22T17:17:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.4.3"
+    },
+    "publishedAt": "2015-08-21T20:43:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.4.4"
+    },
+    "publishedAt": "2015-08-26T03:28:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.4.5"
+    },
+    "publishedAt": "2015-08-28T19:22:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.5.0"
+    },
+    "publishedAt": "2015-09-17T15:19:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.5.0-beta"
+    },
+    "publishedAt": "2015-09-03T14:58:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.5.0-dev.1"
+    },
+    "publishedAt": "2015-08-06T19:53:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.5.0-dev.2"
+    },
+    "publishedAt": "2015-08-11T21:59:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.5.0-dev.3"
+    },
+    "publishedAt": "2015-08-21T20:53:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.5.0-dev.4"
+    },
+    "publishedAt": "2015-08-26T03:27:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.5.0-dev.5"
+    },
+    "publishedAt": "2015-08-28T19:20:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.5.1"
+    },
+    "publishedAt": "2015-10-02T17:45:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.6.0-dev.1"
+    },
+    "publishedAt": "2015-09-24T18:17:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "2.6.0-dev.2"
+    },
+    "publishedAt": "2015-10-05T14:35:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.0.0"
+    },
+    "publishedAt": "2015-11-20T01:36:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.0.0-dev.1"
+    },
+    "publishedAt": "2015-10-27T14:45:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.0.0-dev.2"
+    },
+    "publishedAt": "2015-11-04T01:05:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.0.0-dev.3"
+    },
+    "publishedAt": "2015-11-16T18:22:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.1.0"
+    },
+    "publishedAt": "2015-12-01T01:22:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.1.0-dev.1"
+    },
+    "publishedAt": "2015-11-25T18:33:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.1.1"
+    },
+    "publishedAt": "2015-12-01T04:08:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.10.0"
+    },
+    "publishedAt": "2016-05-10T17:15:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.10.0-dev.0"
+    },
+    "publishedAt": "2016-05-10T17:10:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.10.0-dev.1"
+    },
+    "publishedAt": "2016-05-11T04:14:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.10.0-dev.2"
+    },
+    "publishedAt": "2016-05-14T00:12:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.10.0-dev.3"
+    },
+    "publishedAt": "2016-05-28T12:33:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.10.1"
+    },
+    "publishedAt": "2016-05-11T04:15:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.10.2"
+    },
+    "publishedAt": "2016-05-14T00:12:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.11.0"
+    },
+    "publishedAt": "2016-06-08T21:19:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.11.0-dev.0"
+    },
+    "publishedAt": "2016-06-08T21:07:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.12.0"
+    },
+    "publishedAt": "2016-06-25T20:09:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.12.0-dev.0"
+    },
+    "publishedAt": "2016-06-25T20:01:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.12.0-dev.1"
+    },
+    "publishedAt": "2016-06-25T23:06:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.12.0-dev.2"
+    },
+    "publishedAt": "2016-06-28T18:01:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.12.1"
+    },
+    "publishedAt": "2016-06-25T23:10:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.13.0"
+    },
+    "publishedAt": "2016-07-01T01:30:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.13.0-dev.0"
+    },
+    "publishedAt": "2016-07-01T01:23:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.14.0"
+    },
+    "publishedAt": "2016-07-27T22:50:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.14.0-dev.0"
+    },
+    "publishedAt": "2016-07-14T00:44:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.14.0-dev.1"
+    },
+    "publishedAt": "2016-07-27T22:47:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.15.0"
+    },
+    "publishedAt": "2016-08-22T15:19:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.15.0-dev.0"
+    },
+    "publishedAt": "2016-08-22T15:16:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.15.1"
+    },
+    "publishedAt": "2016-08-22T20:02:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.2.0"
+    },
+    "publishedAt": "2015-12-11T01:22:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.2.0-dev.1"
+    },
+    "publishedAt": "2015-12-07T19:33:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.2.0-dev.2"
+    },
+    "publishedAt": "2015-12-10T20:33:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.2.1"
+    },
+    "publishedAt": "2015-12-18T21:29:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.2.1-dev.1"
+    },
+    "publishedAt": "2015-12-18T21:28:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.2.2"
+    },
+    "publishedAt": "2016-01-18T15:12:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.2.2-dev.1"
+    },
+    "publishedAt": "2016-01-16T19:01:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.3.0"
+    },
+    "publishedAt": "2016-01-22T23:14:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.3.0-dev.1"
+    },
+    "publishedAt": "2016-01-22T23:10:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.3.0-dev.2"
+    },
+    "publishedAt": "2016-01-26T20:17:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.4.0"
+    },
+    "publishedAt": "2016-02-19T23:24:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.4.0-dev.1"
+    },
+    "publishedAt": "2016-02-08T22:46:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.4.0-dev.2"
+    },
+    "publishedAt": "2016-02-19T23:22:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.5.0"
+    },
+    "publishedAt": "2016-02-23T19:56:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.5.0-dev.1"
+    },
+    "publishedAt": "2016-02-23T19:55:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.6.0"
+    },
+    "publishedAt": "2016-03-12T18:16:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.6.0-dev.1"
+    },
+    "publishedAt": "2016-03-12T18:03:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.0"
+    },
+    "publishedAt": "2016-04-04T15:58:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.0-dev.1"
+    },
+    "publishedAt": "2016-04-04T15:56:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.0-dev.2"
+    },
+    "publishedAt": "2016-04-05T15:58:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.0-dev.3"
+    },
+    "publishedAt": "2016-04-11T19:16:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.0-dev.4"
+    },
+    "publishedAt": "2016-04-12T00:12:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.0-dev.5"
+    },
+    "publishedAt": "2016-04-12T19:25:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.1"
+    },
+    "publishedAt": "2016-04-05T15:59:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.2"
+    },
+    "publishedAt": "2016-04-11T19:18:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.3"
+    },
+    "publishedAt": "2016-04-12T00:11:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.7.4"
+    },
+    "publishedAt": "2016-04-12T19:26:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.8.0"
+    },
+    "publishedAt": "2016-04-21T23:41:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.8.0-dev.0"
+    },
+    "publishedAt": "2016-04-21T23:37:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.8.0-dev.1"
+    },
+    "publishedAt": "2016-04-25T02:15:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.8.1"
+    },
+    "publishedAt": "2016-04-25T02:17:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.9.0"
+    },
+    "publishedAt": "2016-05-03T21:09:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "3.9.0-dev.0"
+    },
+    "publishedAt": "2016-05-03T21:08:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.0.0"
+    },
+    "publishedAt": "2016-11-19T02:21:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.0.0-dev.0"
+    },
+    "publishedAt": "2016-10-04T19:34:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.0.0-dev.1"
+    },
+    "publishedAt": "2016-11-03T14:52:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.0.0-dev.2"
+    },
+    "publishedAt": "2016-11-19T02:47:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.0.0-dev.3"
+    },
+    "publishedAt": "2016-11-23T17:02:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.0.1"
+    },
+    "publishedAt": "2016-11-20T00:31:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.0.2"
+    },
+    "publishedAt": "2016-11-23T16:33:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.1.0"
+    },
+    "publishedAt": "2016-12-15T21:15:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.1.0-dev.0"
+    },
+    "publishedAt": "2016-12-17T05:05:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.1.1"
+    },
+    "publishedAt": "2016-12-16T16:56:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.2.0"
+    },
+    "publishedAt": "2016-12-23T06:41:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.2.0-dev.0"
+    },
+    "publishedAt": "2016-12-23T16:24:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.3.0"
+    },
+    "publishedAt": "2017-01-06T05:16:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.3.0-dev.0"
+    },
+    "publishedAt": "2017-01-06T17:46:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.3.1"
+    },
+    "publishedAt": "2017-01-06T09:48:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.4.0"
+    },
+    "publishedAt": "2017-01-25T21:01:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.4.1"
+    },
+    "publishedAt": "2017-01-25T22:01:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.4.2"
+    },
+    "publishedAt": "2017-01-26T14:40:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.5.0"
+    },
+    "publishedAt": "2017-02-27T19:11:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.5.1"
+    },
+    "publishedAt": "2017-02-28T21:33:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "4.5.1-dev.0"
+    },
+    "publishedAt": "2017-03-04T01:02:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.0.0"
+    },
+    "publishedAt": "2017-03-29T19:09:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.0.0-dev.0"
+    },
+    "publishedAt": "2017-03-04T01:37:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.1.0"
+    },
+    "publishedAt": "2017-04-10T19:44:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.10.0"
+    },
+    "publishedAt": "2018-05-03T23:36:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.11.0"
+    },
+    "publishedAt": "2018-07-16T17:36:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.12.0"
+    },
+    "publishedAt": "2018-12-18T11:13:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.12.1"
+    },
+    "publishedAt": "2019-01-10T22:37:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.13.0"
+    },
+    "publishedAt": "2019-02-23T22:03:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.13.1"
+    },
+    "publishedAt": "2019-03-01T02:57:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.14.0"
+    },
+    "publishedAt": "2019-03-13T04:07:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.15.0"
+    },
+    "publishedAt": "2019-04-01T22:51:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.16.0"
+    },
+    "publishedAt": "2019-04-16T22:03:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.17.0"
+    },
+    "publishedAt": "2019-05-30T20:01:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.18.0"
+    },
+    "publishedAt": "2019-06-21T15:02:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.19.0"
+    },
+    "publishedAt": "2019-08-20T19:50:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.2.0"
+    },
+    "publishedAt": "2017-05-03T20:00:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.20.0"
+    },
+    "publishedAt": "2019-09-10T00:43:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.20.1"
+    },
+    "publishedAt": "2019-11-05T17:51:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.3.0"
+    },
+    "publishedAt": "2017-05-22T22:24:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.3.2"
+    },
+    "publishedAt": "2017-05-23T03:00:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.4.0"
+    },
+    "publishedAt": "2017-05-31T22:24:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.4.1"
+    },
+    "publishedAt": "2017-06-01T15:41:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.4.2"
+    },
+    "publishedAt": "2017-06-01T18:36:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.4.3"
+    },
+    "publishedAt": "2017-06-06T16:28:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.5.0"
+    },
+    "publishedAt": "2017-07-05T18:49:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.6.0"
+    },
+    "publishedAt": "2017-08-07T22:24:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.7.0"
+    },
+    "publishedAt": "2017-08-25T23:27:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.8.0"
+    },
+    "publishedAt": "2017-10-20T19:05:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.9.0"
+    },
+    "publishedAt": "2018-01-10T19:34:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "5.9.1"
+    },
+    "publishedAt": "2018-01-10T22:22:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "6.0.0"
+    },
+    "publishedAt": "2020-01-21T19:55:15Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "TSLint has been deprecated in favor of ESLint. Please see https://github.com/palantir/tslint/issues/4534 for more information."
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "6.0.0-beta0"
+    },
+    "publishedAt": "2019-11-03T18:17:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "6.0.0-beta1"
+    },
+    "publishedAt": "2019-11-05T17:57:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "6.1.0"
+    },
+    "publishedAt": "2020-03-11T18:35:44Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "TSLint has been deprecated in favor of ESLint. Please see https://github.com/palantir/tslint/issues/4534 for more information."
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "6.1.1"
+    },
+    "publishedAt": "2020-04-02T02:25:44Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "TSLint has been deprecated in favor of ESLint. Please see https://github.com/palantir/tslint/issues/4534 for more information."
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "6.1.2"
+    },
+    "publishedAt": "2020-04-27T02:21:04Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "TSLint has been deprecated in favor of ESLint. Please see https://github.com/palantir/tslint/issues/4534 for more information."
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "tslint",
+     "version": "6.1.3"
+    },
+    "publishedAt": "2020-07-31T17:25:07Z",
+    "isDefault": true,
+    "isDeprecated": true,
+    "deprecatedReason": "TSLint has been deprecated in favor of ESLint. Please see https://github.com/palantir/tslint/issues/4534 for more information."
+   }
+  ]
+ }
+}

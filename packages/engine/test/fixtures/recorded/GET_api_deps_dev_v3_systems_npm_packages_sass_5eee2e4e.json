@@ -1,0 +1,3667 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/systems/npm/packages/sass"
+ },
+ "status": 200,
+ "body": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "sass"
+  },
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "0.4.0"
+    },
+    "publishedAt": "2017-06-06T20:36:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "0.4.1"
+    },
+    "publishedAt": "2017-06-06T20:36:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "0.4.2"
+    },
+    "publishedAt": "2017-06-06T20:36:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "0.4.3"
+    },
+    "publishedAt": "2017-06-06T20:36:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "0.5.0"
+    },
+    "publishedAt": "2017-06-06T20:36:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0"
+    },
+    "publishedAt": "2018-03-26T20:04:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0-beta.1"
+    },
+    "publishedAt": "2017-06-06T22:11:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0-beta.2"
+    },
+    "publishedAt": "2017-07-15T01:57:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0-beta.3"
+    },
+    "publishedAt": "2017-11-03T21:53:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0-beta.4"
+    },
+    "publishedAt": "2017-12-08T23:57:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0-beta.5.1"
+    },
+    "publishedAt": "2018-02-03T01:43:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0-beta.5.2"
+    },
+    "publishedAt": "2018-02-04T03:39:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0-beta.5.3"
+    },
+    "publishedAt": "2018-03-06T00:49:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.0.0-rc.1"
+    },
+    "publishedAt": "2018-03-16T23:49:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.1.0"
+    },
+    "publishedAt": "2018-03-27T21:02:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.1.1"
+    },
+    "publishedAt": "2018-03-27T21:34:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.10.0"
+    },
+    "publishedAt": "2018-07-18T22:52:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.10.1"
+    },
+    "publishedAt": "2018-07-25T00:35:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.10.2"
+    },
+    "publishedAt": "2018-08-02T23:45:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.10.3"
+    },
+    "publishedAt": "2018-08-03T21:50:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.10.4"
+    },
+    "publishedAt": "2018-08-10T00:02:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.100.0"
+    },
+    "publishedAt": "2026-05-22T00:37:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.101.0"
+    },
+    "publishedAt": "2026-06-11T21:16:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.101.3"
+    },
+    "publishedAt": "2026-07-21T01:53:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.101.4"
+    },
+    "publishedAt": "2026-07-22T22:02:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.101.5"
+    },
+    "publishedAt": "2026-07-22T22:45:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.101.6"
+    },
+    "publishedAt": "2026-07-22T23:51:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.101.7"
+    },
+    "publishedAt": "2026-07-23T21:46:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.102.0"
+    },
+    "publishedAt": "2026-07-25T00:08:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.103.0"
+    },
+    "publishedAt": "2026-08-20T00:21:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.103.1"
+    },
+    "publishedAt": "2026-08-20T22:26:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.104.0"
+    },
+    "publishedAt": "2026-09-03T23:17:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.104.1"
+    },
+    "publishedAt": "2026-09-12T07:37:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.105.0"
+    },
+    "publishedAt": "2026-09-22T17:25:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.105.1"
+    },
+    "publishedAt": "2026-09-29T22:02:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.105.2"
+    },
+    "publishedAt": "2026-10-16T00:34:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.106.0"
+    },
+    "publishedAt": "2026-10-21T01:45:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.106.1"
+    },
+    "publishedAt": "2026-10-21T21:53:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.107.0"
+    },
+    "publishedAt": "2026-10-28T22:06:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.107.1"
+    },
+    "publishedAt": "2026-10-30T22:01:15Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.11.0"
+    },
+    "publishedAt": "2018-08-13T20:51:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.12.0"
+    },
+    "publishedAt": "2018-08-15T20:52:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.13.0"
+    },
+    "publishedAt": "2018-08-17T21:00:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.13.1"
+    },
+    "publishedAt": "2018-09-01T00:43:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.13.2"
+    },
+    "publishedAt": "2018-09-05T22:59:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.13.3"
+    },
+    "publishedAt": "2018-09-11T19:42:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.13.4"
+    },
+    "publishedAt": "2018-09-11T22:04:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.14.0"
+    },
+    "publishedAt": "2018-09-19T21:11:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.14.1"
+    },
+    "publishedAt": "2018-09-27T01:32:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.14.2"
+    },
+    "publishedAt": "2018-10-11T22:36:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.14.3"
+    },
+    "publishedAt": "2018-10-18T00:26:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.15.0"
+    },
+    "publishedAt": "2018-11-14T22:11:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.15.1"
+    },
+    "publishedAt": "2018-11-16T22:24:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.15.2"
+    },
+    "publishedAt": "2018-12-06T23:37:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.15.3"
+    },
+    "publishedAt": "2019-01-04T21:05:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.16.0"
+    },
+    "publishedAt": "2019-01-10T00:48:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.16.0-dev"
+    },
+    "publishedAt": "2019-01-09T21:29:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.16.1"
+    },
+    "publishedAt": "2019-01-17T23:38:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.17.0"
+    },
+    "publishedAt": "2019-02-04T21:55:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.17.1"
+    },
+    "publishedAt": "2019-02-20T22:15:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.17.2"
+    },
+    "publishedAt": "2019-02-23T00:27:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.17.3"
+    },
+    "publishedAt": "2019-03-15T20:23:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.17.4"
+    },
+    "publishedAt": "2019-04-03T08:50:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.18.0"
+    },
+    "publishedAt": "2019-04-08T22:24:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.19.0"
+    },
+    "publishedAt": "2019-04-19T01:11:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.2.0"
+    },
+    "publishedAt": "2018-04-14T23:26:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.2.1"
+    },
+    "publishedAt": "2018-04-19T22:35:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.20.1"
+    },
+    "publishedAt": "2019-05-03T21:40:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.20.3"
+    },
+    "publishedAt": "2019-05-31T16:45:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.21.0"
+    },
+    "publishedAt": "2019-06-06T21:04:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.0"
+    },
+    "publishedAt": "2019-06-25T00:25:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.1"
+    },
+    "publishedAt": "2019-06-27T00:06:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.10"
+    },
+    "publishedAt": "2019-08-16T21:16:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.12"
+    },
+    "publishedAt": "2019-09-11T21:23:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.2"
+    },
+    "publishedAt": "2019-07-01T21:22:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.3"
+    },
+    "publishedAt": "2019-07-04T01:37:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.4"
+    },
+    "publishedAt": "2019-07-12T01:52:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.5"
+    },
+    "publishedAt": "2019-07-15T22:24:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.6"
+    },
+    "publishedAt": "2019-07-17T23:12:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.7"
+    },
+    "publishedAt": "2019-07-18T21:32:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.22.9"
+    },
+    "publishedAt": "2019-07-29T22:23:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.23.0"
+    },
+    "publishedAt": "2019-10-02T01:29:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.23.0-module.beta.1"
+    },
+    "publishedAt": "2019-09-03T20:04:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.23.1"
+    },
+    "publishedAt": "2019-10-23T00:32:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.23.2"
+    },
+    "publishedAt": "2019-10-30T19:30:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.23.3"
+    },
+    "publishedAt": "2019-11-01T06:33:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.23.5"
+    },
+    "publishedAt": "2019-11-16T00:34:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.23.6"
+    },
+    "publishedAt": "2019-11-16T01:46:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.23.7"
+    },
+    "publishedAt": "2019-11-19T23:31:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.24.0"
+    },
+    "publishedAt": "2019-12-20T18:52:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.24.1"
+    },
+    "publishedAt": "2020-01-03T00:51:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.24.2"
+    },
+    "publishedAt": "2020-01-04T00:17:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.24.3"
+    },
+    "publishedAt": "2020-01-07T22:41:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.24.4"
+    },
+    "publishedAt": "2020-01-09T21:57:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.24.5"
+    },
+    "publishedAt": "2020-01-16T22:27:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.25.0"
+    },
+    "publishedAt": "2020-01-17T23:48:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.25.1-test.1"
+    },
+    "publishedAt": "2020-01-25T01:29:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.0"
+    },
+    "publishedAt": "2020-02-24T20:21:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.0-test.1"
+    },
+    "publishedAt": "2020-02-08T02:33:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.0-test.2"
+    },
+    "publishedAt": "2020-02-14T00:47:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.0-test.3"
+    },
+    "publishedAt": "2020-02-19T22:21:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.1"
+    },
+    "publishedAt": "2020-02-25T22:46:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.10"
+    },
+    "publishedAt": "2020-07-06T23:18:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.11"
+    },
+    "publishedAt": "2020-09-18T01:43:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.12"
+    },
+    "publishedAt": "2020-10-06T03:25:09Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "JS API regression"
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.2"
+    },
+    "publishedAt": "2020-02-29T00:29:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.3"
+    },
+    "publishedAt": "2020-03-11T22:55:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.5"
+    },
+    "publishedAt": "2020-04-24T02:34:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.6"
+    },
+    "publishedAt": "2020-05-28T21:49:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.7"
+    },
+    "publishedAt": "2020-05-29T00:25:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.8"
+    },
+    "publishedAt": "2020-06-05T00:43:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.26.9"
+    },
+    "publishedAt": "2020-06-22T22:11:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.27.0"
+    },
+    "publishedAt": "2020-10-08T00:43:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.27.1"
+    },
+    "publishedAt": "2020-10-28T23:41:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.27.2"
+    },
+    "publishedAt": "2020-10-29T21:34:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.28.0"
+    },
+    "publishedAt": "2020-10-29T23:34:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.29.0"
+    },
+    "publishedAt": "2020-11-05T01:03:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.3.0"
+    },
+    "publishedAt": "2018-04-26T01:33:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.3.1"
+    },
+    "publishedAt": "2018-05-03T00:21:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.3.2"
+    },
+    "publishedAt": "2018-05-04T00:34:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.30.0"
+    },
+    "publishedAt": "2020-12-04T23:26:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.0"
+    },
+    "publishedAt": "2020-12-30T00:15:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.1"
+    },
+    "publishedAt": "2021-01-06T21:43:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.10"
+    },
+    "publishedAt": "2021-04-16T23:56:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.11"
+    },
+    "publishedAt": "2021-04-19T20:01:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.12"
+    },
+    "publishedAt": "2021-04-28T21:50:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.13"
+    },
+    "publishedAt": "2021-05-12T16:28:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.2"
+    },
+    "publishedAt": "2021-01-07T00:04:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.3"
+    },
+    "publishedAt": "2021-01-12T00:30:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.4"
+    },
+    "publishedAt": "2021-01-12T02:03:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.5"
+    },
+    "publishedAt": "2021-01-20T04:43:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.6"
+    },
+    "publishedAt": "2021-02-01T23:25:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.7"
+    },
+    "publishedAt": "2021-02-10T01:08:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.8"
+    },
+    "publishedAt": "2021-02-18T22:07:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.32.9"
+    },
+    "publishedAt": "2021-04-16T20:29:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.33.0"
+    },
+    "publishedAt": "2021-05-21T00:59:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.34.0"
+    },
+    "publishedAt": "2021-05-22T06:18:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.34.1"
+    },
+    "publishedAt": "2021-06-02T22:09:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.35.0"
+    },
+    "publishedAt": "2021-06-15T00:59:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.35.1"
+    },
+    "publishedAt": "2021-06-15T20:54:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.35.2"
+    },
+    "publishedAt": "2021-07-07T19:33:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.36.0"
+    },
+    "publishedAt": "2021-07-23T21:24:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.37.0"
+    },
+    "publishedAt": "2021-07-30T23:52:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.37.1"
+    },
+    "publishedAt": "2021-08-02T22:03:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.37.2"
+    },
+    "publishedAt": "2021-08-03T00:17:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.37.3"
+    },
+    "publishedAt": "2021-08-03T22:07:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.37.4"
+    },
+    "publishedAt": "2021-08-03T23:43:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.37.5"
+    },
+    "publishedAt": "2021-08-04T01:44:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.38.0"
+    },
+    "publishedAt": "2021-08-17T00:15:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.38.1"
+    },
+    "publishedAt": "2021-08-23T23:53:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.38.2"
+    },
+    "publishedAt": "2021-08-28T08:11:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.39.0"
+    },
+    "publishedAt": "2021-09-02T01:08:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.39.1"
+    },
+    "publishedAt": "2021-09-09T23:17:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.39.2"
+    },
+    "publishedAt": "2021-09-10T00:06:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.4.0"
+    },
+    "publishedAt": "2018-05-28T22:03:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.40.0"
+    },
+    "publishedAt": "2021-09-13T23:54:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.40.1"
+    },
+    "publishedAt": "2021-09-14T09:01:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.41.0"
+    },
+    "publishedAt": "2021-09-14T23:18:42Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.41.1"
+    },
+    "publishedAt": "2021-09-16T22:15:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.42.0"
+    },
+    "publishedAt": "2021-09-21T00:18:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.42.1"
+    },
+    "publishedAt": "2021-09-22T07:29:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.43.2"
+    },
+    "publishedAt": "2021-10-13T22:31:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.43.3"
+    },
+    "publishedAt": "2021-10-21T20:57:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.43.4"
+    },
+    "publishedAt": "2021-10-26T21:25:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.43.5"
+    },
+    "publishedAt": "2021-11-24T23:37:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.44.0"
+    },
+    "publishedAt": "2021-11-30T02:18:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.45.0"
+    },
+    "publishedAt": "2021-12-10T22:44:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.45.0-rc.1"
+    },
+    "publishedAt": "2021-11-30T23:48:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.45.0-rc.2"
+    },
+    "publishedAt": "2021-12-02T23:16:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.45.1"
+    },
+    "publishedAt": "2021-12-21T00:33:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.45.2"
+    },
+    "publishedAt": "2021-12-31T00:20:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.46.0"
+    },
+    "publishedAt": "2022-01-06T00:58:24Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.47.0"
+    },
+    "publishedAt": "2022-01-07T23:29:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.48.0"
+    },
+    "publishedAt": "2022-01-13T02:56:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.0"
+    },
+    "publishedAt": "2022-01-18T22:53:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.1"
+    },
+    "publishedAt": "2022-01-31T23:54:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.10"
+    },
+    "publishedAt": "2022-03-30T22:25:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.11"
+    },
+    "publishedAt": "2022-04-01T22:47:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.2"
+    },
+    "publishedAt": "2022-02-01T00:39:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.3"
+    },
+    "publishedAt": "2022-02-01T01:00:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.4"
+    },
+    "publishedAt": "2022-02-01T01:38:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.5"
+    },
+    "publishedAt": "2022-02-01T20:30:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.6"
+    },
+    "publishedAt": "2022-02-01T21:11:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.7"
+    },
+    "publishedAt": "2022-02-01T22:05:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.8"
+    },
+    "publishedAt": "2022-02-17T21:34:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.49.9"
+    },
+    "publishedAt": "2022-02-24T20:38:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.5.0"
+    },
+    "publishedAt": "2018-05-31T01:20:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.5.1"
+    },
+    "publishedAt": "2018-06-01T01:04:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.50.0"
+    },
+    "publishedAt": "2022-04-07T02:30:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.50.1"
+    },
+    "publishedAt": "2022-04-19T00:57:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.51.0"
+    },
+    "publishedAt": "2022-04-26T02:31:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.52.0"
+    },
+    "publishedAt": "2022-05-20T00:04:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.52.1"
+    },
+    "publishedAt": "2022-05-20T22:13:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.52.2"
+    },
+    "publishedAt": "2022-06-03T02:31:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.52.3"
+    },
+    "publishedAt": "2022-06-08T23:59:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.53.0"
+    },
+    "publishedAt": "2022-06-22T19:35:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.0"
+    },
+    "publishedAt": "2022-07-22T21:38:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.1"
+    },
+    "publishedAt": "2022-08-02T23:51:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.2"
+    },
+    "publishedAt": "2022-08-03T23:50:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.3"
+    },
+    "publishedAt": "2022-08-04T20:46:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.4"
+    },
+    "publishedAt": "2022-08-10T00:56:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.5"
+    },
+    "publishedAt": "2022-08-19T22:48:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.6"
+    },
+    "publishedAt": "2022-08-29T23:26:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.7"
+    },
+    "publishedAt": "2022-08-31T00:01:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.8"
+    },
+    "publishedAt": "2022-08-31T21:55:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.54.9"
+    },
+    "publishedAt": "2022-09-07T21:36:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.55.0"
+    },
+    "publishedAt": "2022-09-21T22:47:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.56.0"
+    },
+    "publishedAt": "2022-11-04T00:18:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.56.1"
+    },
+    "publishedAt": "2022-11-09T01:58:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.56.2"
+    },
+    "publishedAt": "2022-12-08T21:42:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.57.0"
+    },
+    "publishedAt": "2022-12-17T00:48:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.57.1"
+    },
+    "publishedAt": "2022-12-19T23:52:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.58.0"
+    },
+    "publishedAt": "2023-02-01T01:08:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.58.1"
+    },
+    "publishedAt": "2023-02-14T00:55:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.58.2"
+    },
+    "publishedAt": "2023-02-17T01:37:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.58.3"
+    },
+    "publishedAt": "2023-02-18T00:38:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.59.0"
+    },
+    "publishedAt": "2023-03-10T22:34:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.59.1"
+    },
+    "publishedAt": "2023-03-10T23:46:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.59.2"
+    },
+    "publishedAt": "2023-03-11T01:18:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.59.3"
+    },
+    "publishedAt": "2023-03-14T21:19:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.6.0"
+    },
+    "publishedAt": "2018-06-15T00:29:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.6.1"
+    },
+    "publishedAt": "2018-06-15T21:58:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.6.2"
+    },
+    "publishedAt": "2018-06-20T01:12:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.60.0"
+    },
+    "publishedAt": "2023-03-23T23:11:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.61.0"
+    },
+    "publishedAt": "2023-04-06T21:53:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.62.0"
+    },
+    "publishedAt": "2023-04-11T22:54:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.62.1"
+    },
+    "publishedAt": "2023-04-25T23:30:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.63.0"
+    },
+    "publishedAt": "2023-06-07T20:54:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.63.1"
+    },
+    "publishedAt": "2023-06-08T00:27:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.63.2"
+    },
+    "publishedAt": "2023-06-08T01:40:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.63.3"
+    },
+    "publishedAt": "2023-06-09T15:55:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.63.4"
+    },
+    "publishedAt": "2023-06-14T00:49:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.63.5"
+    },
+    "publishedAt": "2023-06-21T01:13:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.63.6"
+    },
+    "publishedAt": "2023-06-21T22:10:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.64.0"
+    },
+    "publishedAt": "2023-07-20T00:13:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.64.1"
+    },
+    "publishedAt": "2023-07-22T00:10:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.64.2"
+    },
+    "publishedAt": "2023-07-31T23:39:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.65.0"
+    },
+    "publishedAt": "2023-08-09T21:45:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.65.1"
+    },
+    "publishedAt": "2023-08-09T22:58:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.66.0"
+    },
+    "publishedAt": "2023-08-17T19:26:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.66.1"
+    },
+    "publishedAt": "2023-08-18T22:00:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.67.0"
+    },
+    "publishedAt": "2023-09-14T00:46:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.68.0"
+    },
+    "publishedAt": "2023-09-21T01:05:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.69.0"
+    },
+    "publishedAt": "2023-10-05T22:48:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.69.1"
+    },
+    "publishedAt": "2023-10-09T23:51:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.69.2"
+    },
+    "publishedAt": "2023-10-10T18:47:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.69.3"
+    },
+    "publishedAt": "2023-10-12T00:06:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.69.4"
+    },
+    "publishedAt": "2023-10-17T21:42:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.69.5"
+    },
+    "publishedAt": "2023-10-26T00:55:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.69.6"
+    },
+    "publishedAt": "2023-12-28T23:26:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.69.7"
+    },
+    "publishedAt": "2024-01-02T22:13:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.7.0"
+    },
+    "publishedAt": "2018-06-22T20:04:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.7.1"
+    },
+    "publishedAt": "2018-06-25T20:33:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.7.2"
+    },
+    "publishedAt": "2018-06-27T20:30:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.7.3"
+    },
+    "publishedAt": "2018-06-28T01:12:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.70.0"
+    },
+    "publishedAt": "2024-01-18T03:05:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.71.0"
+    },
+    "publishedAt": "2024-02-16T01:47:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.71.1"
+    },
+    "publishedAt": "2024-02-21T01:53:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.72.0"
+    },
+    "publishedAt": "2024-03-13T21:03:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.74.1"
+    },
+    "publishedAt": "2024-04-04T01:02:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.75.0"
+    },
+    "publishedAt": "2024-04-11T23:05:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.76.0"
+    },
+    "publishedAt": "2024-04-30T21:34:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.0"
+    },
+    "publishedAt": "2024-05-07T01:03:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.1"
+    },
+    "publishedAt": "2024-05-10T23:02:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.2"
+    },
+    "publishedAt": "2024-05-16T22:18:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.3"
+    },
+    "publishedAt": "2024-05-29T21:52:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.4"
+    },
+    "publishedAt": "2024-05-30T23:37:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.5"
+    },
+    "publishedAt": "2024-06-11T23:51:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.6"
+    },
+    "publishedAt": "2024-06-17T20:54:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.7"
+    },
+    "publishedAt": "2024-07-09T21:53:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.77.8"
+    },
+    "publishedAt": "2024-07-11T19:59:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.78.0"
+    },
+    "publishedAt": "2024-09-03T22:54:07Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.79.0"
+    },
+    "publishedAt": "2024-09-17T23:11:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.79.1"
+    },
+    "publishedAt": "2024-09-18T00:20:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.79.2"
+    },
+    "publishedAt": "2024-09-19T22:57:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.79.3"
+    },
+    "publishedAt": "2024-09-20T21:07:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.79.4"
+    },
+    "publishedAt": "2024-09-28T03:11:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.79.5"
+    },
+    "publishedAt": "2024-10-11T00:27:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.79.6"
+    },
+    "publishedAt": "2024-10-16T23:00:16Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.8.0"
+    },
+    "publishedAt": "2018-06-30T01:42:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.80.0"
+    },
+    "publishedAt": "2024-10-17T00:18:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.80.1"
+    },
+    "publishedAt": "2024-10-17T03:11:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.80.2"
+    },
+    "publishedAt": "2024-10-17T20:46:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.80.3"
+    },
+    "publishedAt": "2024-10-18T23:44:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.80.4"
+    },
+    "publishedAt": "2024-10-23T22:42:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.80.5"
+    },
+    "publishedAt": "2024-10-29T22:02:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.80.6"
+    },
+    "publishedAt": "2024-11-01T23:16:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.80.7"
+    },
+    "publishedAt": "2024-11-12T23:22:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.81.0"
+    },
+    "publishedAt": "2024-11-15T01:30:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.81.1"
+    },
+    "publishedAt": "2024-12-03T01:25:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.82.0"
+    },
+    "publishedAt": "2024-12-03T23:06:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.83.0"
+    },
+    "publishedAt": "2024-12-12T22:31:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.83.1"
+    },
+    "publishedAt": "2025-01-04T01:25:18Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.83.2"
+    },
+    "publishedAt": "2025-01-14T00:50:11Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.83.3"
+    },
+    "publishedAt": "2025-01-14T01:42:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.83.4"
+    },
+    "publishedAt": "2025-01-14T06:32:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.84.0"
+    },
+    "publishedAt": "2025-02-06T00:11:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.85.0"
+    },
+    "publishedAt": "2025-02-14T00:34:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.85.1"
+    },
+    "publishedAt": "2025-02-25T01:19:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.86.0"
+    },
+    "publishedAt": "2025-03-17T21:46:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.86.1"
+    },
+    "publishedAt": "2025-03-31T20:58:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.86.2"
+    },
+    "publishedAt": "2025-04-02T23:10:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.86.3"
+    },
+    "publishedAt": "2025-04-04T00:11:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.87.0"
+    },
+    "publishedAt": "2025-04-21T23:00:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.88.0"
+    },
+    "publishedAt": "2025-05-10T22:29:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.89.0"
+    },
+    "publishedAt": "2025-05-16T00:46:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.89.1"
+    },
+    "publishedAt": "2025-05-30T23:49:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.89.2"
+    },
+    "publishedAt": "2025-06-09T19:19:19Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.9.0"
+    },
+    "publishedAt": "2018-07-04T00:43:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.9.1"
+    },
+    "publishedAt": "2018-07-11T21:15:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.9.2"
+    },
+    "publishedAt": "2018-07-13T18:46:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.90.0"
+    },
+    "publishedAt": "2025-08-05T22:09:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.91.0"
+    },
+    "publishedAt": "2025-08-25T21:21:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.92.0"
+    },
+    "publishedAt": "2025-09-02T20:32:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.92.1"
+    },
+    "publishedAt": "2025-09-05T23:50:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.93.0"
+    },
+    "publishedAt": "2025-09-19T22:24:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.93.1"
+    },
+    "publishedAt": "2025-09-22T22:12:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.93.2"
+    },
+    "publishedAt": "2025-09-23T21:36:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.93.3"
+    },
+    "publishedAt": "2025-10-31T14:46:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.94.0"
+    },
+    "publishedAt": "2025-11-10T23:58:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.94.1"
+    },
+    "publishedAt": "2025-11-18T01:42:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.94.2"
+    },
+    "publishedAt": "2025-11-19T23:03:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.94.3"
+    },
+    "publishedAt": "2025-12-08T18:18:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.95.0"
+    },
+    "publishedAt": "2025-12-08T19:23:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.95.1"
+    },
+    "publishedAt": "2025-12-09T23:48:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.96.0"
+    },
+    "publishedAt": "2025-12-11T00:17:14Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.97.0"
+    },
+    "publishedAt": "2025-12-16T06:38:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.97.1"
+    },
+    "publishedAt": "2025-12-19T21:35:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.97.2"
+    },
+    "publishedAt": "2026-01-06T00:43:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.97.3"
+    },
+    "publishedAt": "2026-01-21T23:35:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.98.0"
+    },
+    "publishedAt": "2026-03-10T22:58:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "sass",
+     "version": "1.99.0"
+    },
+    "publishedAt": "2026-04-02T23:38:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ }
+}

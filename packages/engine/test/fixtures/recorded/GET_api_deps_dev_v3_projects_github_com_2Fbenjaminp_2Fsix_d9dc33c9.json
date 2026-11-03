@@ -1,0 +1,110 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fbenjaminp%2Fsix"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/benjaminp/six"
+  },
+  "openIssuesCount": 114,
+  "starsCount": 1033,
+  "forksCount": 278,
+  "license": "MIT",
+  "description": "Python 2 and 3 compatibility library",
+  "homepage": "https://six.readthedocs.io/",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/benjaminp/six",
+    "commit": "c8e394065cd541a16c040515dc0afb85cf22a7c3"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "Token-Permissions",
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions"
+    },
+    {
+     "name": "Code-Review",
+     "score": 2,
+     "reason": "Found 7/30 approved changesets -- score normalized to 2"
+    },
+    {
+     "name": "Packaging",
+     "score": -1,
+     "reason": "packaging workflow not detected"
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0"
+    },
+    {
+     "name": "Maintained",
+     "score": 0,
+     "reason": "0 commit(s) and 0 issue activity found in the last 90 days -- score normalized to 0"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 0,
+     "reason": "security policy file not detected"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 10,
+     "reason": "project is fuzzed"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": -1,
+     "reason": "no releases found"
+    },
+    {
+     "name": "Branch-Protection",
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches"
+    },
+    {
+     "name": "SAST",
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0"
+    }
+   ],
+   "overallScore": 3.7,
+   "metadata": []
+  },
+  "ossFuzz": {
+   "lineCount": 553,
+   "lineCoverCount": 293,
+   "date": "2026-10-27T00:00:00Z",
+   "configUrl": "https://github.com/google/oss-fuzz/tree/master/projects/six"
+  }
+ }
+}

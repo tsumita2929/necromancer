@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/palantir/tslint"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "palantir/tslint",
+  "html_url": "https://github.com/palantir/tslint",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2021-03-25T15:41:38Z",
+  "stargazers_count": 5891,
+  "default_branch": "master"
+ }
+}
