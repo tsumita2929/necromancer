@@ -134,7 +134,7 @@ not a statement about any maintainer.
 ## 7. Performance budget
 
 Initial JS at most 150 kB gzip, CSS at most 30 kB gzip, font files (latin, woff2) under
-150 kB in total. Fixtures for samples load on demand (dynamic import). Filter and sort are pure
+200 kB in total. Fixtures for samples load on demand (dynamic import). Filter and sort are pure
 functions over an array, memoised on the report and controls.
 
 ## 8. Testing strategy

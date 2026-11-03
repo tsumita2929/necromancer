@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Web: check contrast when the design tokens change",
+  "description": "Colour tokens are the accessibility contract. When they change, the WCAG 2.2 AA contrast test must still pass.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["apps/web/src/design/tokens.css"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "The design tokens in apps/web/src/design/tokens.css changed. Run `npx vitest run src/design/tokens.test.ts` in apps/web. Every text pair must stay at 4.5:1 and every control border, focus ring and verdict icon at 3:1. If a pair fails, adjust the token that moved, not the threshold, and update the colour table in .kiro/specs/graveyard-web/design.md."
+  }
+}

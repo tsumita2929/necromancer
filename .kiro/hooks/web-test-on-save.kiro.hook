@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Web: run the tests when the app source changes",
+  "description": "Keeps the graveyard web app honest: the contrast, URL, data-seam, rendering and property tests run after every source edit.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["apps/web/src/**/*.ts", "apps/web/src/**/*.tsx", "apps/web/src/**/*.css"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A file under apps/web/src changed. In apps/web run `npm run typecheck` and `npm test`. Report the 'Tests ... passed' line. If a test fails, fix the cause in apps/web/src (not the test) unless the test is wrong, and run it again. Do not edit packages/engine or apps/crew."
+  }
+}

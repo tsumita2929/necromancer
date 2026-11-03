@@ -356,6 +356,7 @@
   display: grid;
   gap: var(--space-3);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  align-items: start;
   margin-bottom: var(--space-4);
 }
 .notices .callout {
@@ -1132,5 +1133,24 @@
   }
   .page {
     padding-top: var(--space-4);
+  }
+}
+
+@media (max-width: 36rem) {
+  .site-header__inner {
+    gap: var(--space-2);
+  }
+  .brand {
+    gap: var(--space-2);
+  }
+  .brand__name {
+    font-size: var(--text-lg);
+    letter-spacing: 0.04em;
+  }
+  .nav {
+    gap: 0;
+  }
+  .nav a {
+    padding: 0 var(--space-2);
   }
 }
