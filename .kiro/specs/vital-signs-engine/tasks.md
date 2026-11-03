@@ -28,5 +28,5 @@ Tick each box when the task is done and its tests pass.
 - [x] 16. Hostile-fetch fuzz test (R3.5, R3.10)
 - [x] 17. Kiro hook: run engine tests when engine source changes
 - [x] 18. Measure CORS per source (R8.3)
-- [ ] 19. Adversarial review by a fresh subagent; fix what it finds
-- [ ] 20. Run typecheck, tests, build; write docs/verification/engine.md (R8)
+- [x] 19. Adversarial review by a fresh subagent; fix what it finds
+- [x] 20. Run typecheck, tests, build; write docs/verification/engine.md (R8)
