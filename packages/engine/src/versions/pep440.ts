@@ -15,7 +15,16 @@ export interface PepVersion {
 const VERSION =
   /^\s*v?(?:(\d{1,9})!)?(\d{1,9}(?:\.\d{1,9}){0,15})(?:[-_.]?(alpha|beta|preview|pre|rc|a|b|c)[-_.]?(\d{0,9}))?(?:-(\d{1,9})|[-_.]?(post|rev|r)[-_.]?(\d{0,9}))?(?:[-_.]?dev[-_.]?(\d{0,9}))?(?:\+[a-z0-9]+(?:[-_.][a-z0-9]+)*)?\s*$/i;
 
-const PRE_RANK: Record<string, number> = { a: 0, alpha: 0, b: 1, beta: 1, c: 2, rc: 2, pre: 2, preview: 2 };
+const PRE_RANK: Record<string, number> = {
+  a: 0,
+  alpha: 0,
+  b: 1,
+  beta: 1,
+  c: 2,
+  rc: 2,
+  pre: 2,
+  preview: 2,
+};
 
 export function parsePepVersion(text: string): PepVersion | null {
   const m = VERSION.exec(text);
@@ -126,7 +135,12 @@ function clausesFor(raw: string): Clause[] | null {
     if (!parsed || parsed.release.length < 2) return null;
     return [
       { op: '>=', version: parsed, text },
-      { op: '==', version: mk(parsed.release.slice(0, -1)), prefix: parsed.release.slice(0, -1), text },
+      {
+        op: '==',
+        version: mk(parsed.release.slice(0, -1)),
+        prefix: parsed.release.slice(0, -1),
+        text,
+      },
     ];
   }
   if (op === '==' || op === '!=') {

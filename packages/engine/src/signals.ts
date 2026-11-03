@@ -38,7 +38,10 @@ export function isoDay(iso: string | undefined): string | undefined {
   return Number.isFinite(time) ? new Date(time).toISOString().slice(0, 10) : undefined;
 }
 
-type Line = Omit<Evidence, 'date' | 'url'> & { date?: string | undefined; url?: string | undefined };
+type Line = Omit<Evidence, 'date' | 'url'> & {
+  date?: string | undefined;
+  url?: string | undefined;
+};
 
 function line(base: Line): Evidence {
   const out: Evidence = { code: base.code, message: base.message, source: base.source };
@@ -48,7 +51,12 @@ function line(base: Line): Evidence {
   return out;
 }
 
-export function npmDeprecated(message: string, source: SourceId, name: string, date?: string): Evidence {
+export function npmDeprecated(
+  message: string,
+  source: SourceId,
+  name: string,
+  date?: string,
+): Evidence {
   return line({
     code: 'npm-deprecated',
     message: `Deprecated on npm: "${clip(message, 160)}"`,
@@ -58,7 +66,12 @@ export function npmDeprecated(message: string, source: SourceId, name: string, d
   });
 }
 
-export function versionDeprecated(message: string, version: string, source: SourceId, name: string): Evidence {
+export function versionDeprecated(
+  message: string,
+  version: string,
+  source: SourceId,
+  name: string,
+): Evidence {
   return line({
     code: 'version-deprecated',
     message: `The version in use (${version}) is deprecated: "${clip(message, 140)}"`,
@@ -97,7 +110,10 @@ export function releaseAge(
   return undefined;
 }
 
-export function lowMaintenance(score: number, scorecardDate: string | undefined): Evidence | undefined {
+export function lowMaintenance(
+  score: number,
+  scorecardDate: string | undefined,
+): Evidence | undefined {
   if (score > THRESHOLDS.scorecardLow) return undefined;
   return line({
     code: 'low-maintenance',

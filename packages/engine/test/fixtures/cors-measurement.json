@@ -1,0 +1,109 @@
+{
+  "measuredAt": "2026-11-03T07:33:27.113Z",
+  "origin": "https://necromancer.example.github.io",
+  "rows": [
+    {
+      "source": "npm",
+      "url": "https://registry.npmjs.org/left-pad/latest",
+      "method": "GET",
+      "status": 200,
+      "allowOrigin": "*",
+      "exposeHeaders": null,
+      "browserOk": true
+    },
+    {
+      "source": "npm (abbreviated, Accept header)",
+      "url": "https://registry.npmjs.org/left-pad",
+      "method": "GET",
+      "status": 200,
+      "allowOrigin": "*",
+      "exposeHeaders": null,
+      "browserOk": true
+    },
+    {
+      "source": "pypi",
+      "url": "https://pypi.org/pypi/requests/json",
+      "method": "GET",
+      "status": 200,
+      "allowOrigin": "*",
+      "exposeHeaders": "X-PyPI-Last-Serial",
+      "browserOk": true
+    },
+    {
+      "source": "deps.dev package",
+      "url": "https://api.deps.dev/v3/systems/npm/packages/left-pad",
+      "method": "GET",
+      "status": 200,
+      "allowOrigin": "*",
+      "exposeHeaders": null,
+      "browserOk": true
+    },
+    {
+      "source": "deps.dev project (Scorecard)",
+      "url": "https://api.deps.dev/v3/projects/github.com%2Frequest%2Frequest",
+      "method": "GET",
+      "status": 200,
+      "allowOrigin": "*",
+      "exposeHeaders": null,
+      "browserOk": true
+    },
+    {
+      "source": "osv (querybatch, POST)",
+      "url": "https://api.osv.dev/v1/querybatch",
+      "method": "POST",
+      "preflightStatus": 200,
+      "preflightAllowOrigin": "https://necromancer.example.github.io",
+      "preflightAllowHeaders": "DNT,User-Agent,X-User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
+      "preflightAllowMethods": "GET,POST,OPTIONS",
+      "status": 200,
+      "allowOrigin": "https://necromancer.example.github.io",
+      "exposeHeaders": "Content-Length,Content-Range",
+      "browserOk": true
+    },
+    {
+      "source": "github api",
+      "url": "https://api.github.com/repos/request/request",
+      "method": "GET",
+      "status": 200,
+      "allowOrigin": "*",
+      "exposeHeaders": "ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset, Warning",
+      "browserOk": true
+    },
+    {
+      "source": "raw.githubusercontent.com (e18e)",
+      "url": "https://raw.githubusercontent.com/es-tooling/module-replacements/main/manifests/native.json",
+      "method": "GET",
+      "status": 200,
+      "allowOrigin": "*",
+      "exposeHeaders": null,
+      "browserOk": true
+    }
+  ],
+  "notFound": [
+    {
+      "source": "npm",
+      "status": 404,
+      "allowOrigin": "*"
+    },
+    {
+      "source": "pypi",
+      "status": 404,
+      "allowOrigin": "*"
+    },
+    {
+      "source": "deps.dev package",
+      "status": 404,
+      "allowOrigin": "*"
+    },
+    {
+      "source": "deps.dev project",
+      "status": 404,
+      "allowOrigin": "*"
+    },
+    {
+      "source": "github api",
+      "status": 404,
+      "allowOrigin": "*"
+    }
+  ]
+}

@@ -46,7 +46,11 @@ function docUrl(entry: UnknownRecord | undefined, mapping: UnknownRecord): strin
   return undefined;
 }
 
-function toSuccessor(id: string, manifest: Manifest, mapping: UnknownRecord): Successor | undefined {
+function toSuccessor(
+  id: string,
+  manifest: Manifest,
+  mapping: UnknownRecord,
+): Successor | undefined {
   const rawEntry = getOwn(manifest.replacements, id);
   const entry = isRecord(rawEntry) ? rawEntry : undefined;
   const url = docUrl(entry, mapping);

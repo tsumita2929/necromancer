@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { parseManifest } from '../src/manifest/index.js';
 import type { DependencyRef, ManifestKind } from '../src/types.js';
 
-const parse = (kind: ManifestKind, content: string, path = kind) =>
+const parse = (kind: ManifestKind, content: string, path: string = kind) =>
   parseManifest({ kind, path, content });
 const names = (deps: DependencyRef[]) => deps.map((d) => d.name);
 const byName = (deps: DependencyRef[], name: string) => deps.find((d) => d.name === name);
@@ -26,11 +26,22 @@ describe('R1.1 package.json', () => {
       ['fsevents', '2.3.3', 'optional', true],
       ['react', '>=18 <20', 'peer', true],
     ]);
-    expect(r.dependencies.every((d) => d.declaredIn === 'package.json' && d.ecosystem === 'npm')).toBe(true);
+    expect(
+      r.dependencies.every((d) => d.declaredIn === 'package.json' && d.ecosystem === 'npm'),
+    ).toBe(true);
   });
 
   it('R1.7 resolves npm aliases to the real package and keeps the text', () => {
-    const r = parse('package.json', JSON.stringify({ dependencies: { str: 'npm:string-width@^4.2.0', sc: 'npm:@scope/real@1.0.0', bare: 'npm:left-pad' } }));
+    const r = parse(
+      'package.json',
+      JSON.stringify({
+        dependencies: {
+          str: 'npm:string-width@^4.2.0',
+          sc: 'npm:@scope/real@1.0.0',
+          bare: 'npm:left-pad',
+        },
+      }),
+    );
     expect(r.dependencies.map((d) => [d.name, d.spec])).toEqual([
       ['string-width', 'npm:string-width@^4.2.0'],
       ['@scope/real', 'npm:@scope/real@1.0.0'],
@@ -64,7 +75,12 @@ describe('R1.1 package.json', () => {
   });
 
   it('R1.12 rejects names that could not be registry names', () => {
-    const r = parse('package.json', JSON.stringify({ dependencies: { '../evil': '1', 'a b': '1', '.hidden': '1', 'ok-name': '1' } }));
+    const r = parse(
+      'package.json',
+      JSON.stringify({
+        dependencies: { '../evil': '1', 'a b': '1', '.hidden': '1', 'ok-name': '1' },
+      }),
+    );
     expect(names(r.dependencies)).toEqual(['ok-name']);
     expect(r.problems).toHaveLength(3);
   });
@@ -88,7 +104,10 @@ describe('R1.2 package-lock.json', () => {
     lockfileVersion: 3,
     packages: {
       '': { dependencies: { express: '^4.18.0' }, devDependencies: { vitest: '^1.0.0' } },
-      'node_modules/express': { version: '4.18.2', resolved: 'https://registry.npmjs.org/express/-/express-4.18.2.tgz' },
+      'node_modules/express': {
+        version: '4.18.2',
+        resolved: 'https://registry.npmjs.org/express/-/express-4.18.2.tgz',
+      },
       'node_modules/vitest': { version: '1.0.0', dev: true },
       'node_modules/accepts': { version: '1.3.8' },
       'node_modules/express/node_modules/accepts': { version: '1.3.7' },
@@ -103,11 +122,26 @@ describe('R1.2 package-lock.json', () => {
   it('reads v3: resolved versions, direct only for root declarations, nested copies as transitive', () => {
     const r = parse('package-lock.json', JSON.stringify(v3));
     const express = byName(r.dependencies, 'express');
-    expect(express).toMatchObject({ resolved: '4.18.2', spec: '^4.18.0', direct: true, scope: 'main' });
-    expect(byName(r.dependencies, 'vitest')).toMatchObject({ scope: 'dev', direct: true, spec: '^1.0.0' });
+    expect(express).toMatchObject({
+      resolved: '4.18.2',
+      spec: '^4.18.0',
+      direct: true,
+      scope: 'main',
+    });
+    expect(byName(r.dependencies, 'vitest')).toMatchObject({
+      scope: 'dev',
+      direct: true,
+      spec: '^1.0.0',
+    });
     const accepts = r.dependencies.filter((d) => d.name === 'accepts');
-    expect(accepts.map((d) => [d.resolved, d.direct])).toEqual([['1.3.8', false], ['1.3.7', false]]);
-    expect(byName(r.dependencies, '@scope/pkg')).toMatchObject({ scope: 'optional', direct: false });
+    expect(accepts.map((d) => [d.resolved, d.direct])).toEqual([
+      ['1.3.8', false],
+      ['1.3.7', false],
+    ]);
+    expect(byName(r.dependencies, '@scope/pkg')).toMatchObject({
+      scope: 'optional',
+      direct: false,
+    });
     expect(byName(r.dependencies, 'real-pkg')?.resolved).toBe('3.0.0');
     expect(byName(r.dependencies, 'linked')).toBeUndefined();
     expect(byName(r.dependencies, 'gitdep')).toBeUndefined();
@@ -115,15 +149,29 @@ describe('R1.2 package-lock.json', () => {
   });
 
   it('reads v2 (packages plus dependencies) from the packages map', () => {
-    const r = parse('package-lock.json', JSON.stringify({ ...v3, lockfileVersion: 2, dependencies: { express: { version: '4.18.2' } } }));
+    const r = parse(
+      'package-lock.json',
+      JSON.stringify({
+        ...v3,
+        lockfileVersion: 2,
+        dependencies: { express: { version: '4.18.2' } },
+      }),
+    );
     expect(byName(r.dependencies, 'express')?.direct).toBe(true);
   });
 
   it('reads v1 nested dependencies, without direct flags', () => {
-    const r = parse('package-lock.json', JSON.stringify({
-      lockfileVersion: 1,
-      dependencies: { a: { version: '1.0.0', dependencies: { b: { version: '2.0.0', dev: true } } }, c: { version: 'file:../c' }, d: { version: 'npm:real@4.0.0' } },
-    }));
+    const r = parse(
+      'package-lock.json',
+      JSON.stringify({
+        lockfileVersion: 1,
+        dependencies: {
+          a: { version: '1.0.0', dependencies: { b: { version: '2.0.0', dev: true } } },
+          c: { version: 'file:../c' },
+          d: { version: 'npm:real@4.0.0' },
+        },
+      }),
+    );
     expect(r.dependencies.map((d) => [d.name, d.resolved, d.direct, d.scope])).toEqual([
       ['a', '1.0.0', false, 'main'],
       ['b', '2.0.0', false, 'dev'],
@@ -201,16 +249,25 @@ describe('R1.3 and R1.4 requirements.txt', () => {
   });
 
   it('infers dev scope from the file name', () => {
-    expect(parse('requirements.txt', 'a', 'requirements/dev.txt').dependencies[0]?.scope).toBe('dev');
-    expect(parse('requirements.txt', 'a', 'requirements-test.txt').dependencies[0]?.scope).toBe('dev');
+    expect(parse('requirements.txt', 'a', 'requirements/dev.txt').dependencies[0]?.scope).toBe(
+      'dev',
+    );
+    expect(parse('requirements.txt', 'a', 'requirements-test.txt').dependencies[0]?.scope).toBe(
+      'dev',
+    );
     expect(parse('requirements.txt', 'a', 'requirements.txt').dependencies[0]?.scope).toBe('main');
-    expect(parse('requirements.txt', 'a', 'devops/requirements.txt').dependencies[0]?.scope).toBe('main');
+    expect(parse('requirements.txt', 'a', 'devops/requirements.txt').dependencies[0]?.scope).toBe(
+      'main',
+    );
   });
 
   it('skips unreadable lines with the line number', () => {
     const r = parse('requirements.txt', 'good==1\n!!!\nbad name here==2\nfine');
     expect(names(r.dependencies)).toEqual(['good', 'fine']);
-    expect(r.problems).toEqual([expect.stringMatching(/^Line 2/), expect.stringMatching(/^Line 3/)]);
+    expect(r.problems).toEqual([
+      expect.stringMatching(/^Line 2/),
+      expect.stringMatching(/^Line 3/),
+    ]);
   });
 });
 
@@ -240,8 +297,14 @@ postgres = ["psycopg2-binary"]
   });
 
   it('reads PEP 735 dependency groups and ignores include-group', () => {
-    const r = parse('pyproject.toml', `[dependency-groups]\ntest = ["pytest", {include-group = "lint"}]\nlint = ["ruff>=0.1"]\n`);
-    expect(r.dependencies.map((d) => [d.name, d.scope])).toEqual([['pytest', 'dev'], ['ruff', 'dev']]);
+    const r = parse(
+      'pyproject.toml',
+      `[dependency-groups]\ntest = ["pytest", {include-group = "lint"}]\nlint = ["ruff>=0.1"]\n`,
+    );
+    expect(r.dependencies.map((d) => [d.name, d.scope])).toEqual([
+      ['pytest', 'dev'],
+      ['ruff', 'dev'],
+    ]);
   });
 
   it('reads Poetry main, legacy dev and group dependencies', () => {
@@ -283,14 +346,41 @@ extra-main = "1.0"
   });
 
   it('reads TOML string forms and escapes', () => {
-    const r = parse('pyproject.toml', `[project]\ndependencies = ['lit==1', """multi==2""", "esc\\u0061==3"]\n`);
-    expect(r.dependencies.map((d) => [d.name, d.spec])).toEqual([['lit', '==1'], ['multi', '==2'], ['esca', '==3']]);
+    const r = parse(
+      'pyproject.toml',
+      `[project]\ndependencies = ['lit==1', """multi==2""", "esc\\u0061==3"]\n`,
+    );
+    expect(r.dependencies.map((d) => [d.name, d.spec])).toEqual([
+      ['lit', '==1'],
+      ['multi', '==2'],
+      ['esca', '==3'],
+    ]);
   });
 });
 
 describe('R1.10 edge inputs never throw', () => {
-  const kinds: ManifestKind[] = ['package.json', 'package-lock.json', 'requirements.txt', 'pyproject.toml'];
-  const inputs = ['', ' ', '\0\0', '{', '[', 'null', '"x"', '0', '{"dependencies":null}', '[[[[[[[[', '\ud800', 'a'.repeat(100000), '['.repeat(100000), '{"a":'.repeat(50000)];
+  const kinds: ManifestKind[] = [
+    'package.json',
+    'package-lock.json',
+    'requirements.txt',
+    'pyproject.toml',
+  ];
+  const inputs = [
+    '',
+    ' ',
+    '\0\0',
+    '{',
+    '[',
+    'null',
+    '"x"',
+    '0',
+    '{"dependencies":null}',
+    '[[[[[[[[',
+    '\ud800',
+    'a'.repeat(100000),
+    '['.repeat(100000),
+    '{"a":'.repeat(50000),
+  ];
   for (const kind of kinds) {
     it(`${kind}`, () => {
       for (const input of inputs) {
@@ -302,8 +392,12 @@ describe('R1.10 edge inputs never throw', () => {
     });
   }
   it('unknown kind and non-string content', () => {
-    expect(() => parseManifest({ kind: 'nope' as ManifestKind, path: 'x', content: '' })).not.toThrow();
-    expect(() => parseManifest({ kind: 'package.json', path: 'x', content: undefined as unknown as string })).not.toThrow();
+    expect(() =>
+      parseManifest({ kind: 'nope' as ManifestKind, path: 'x', content: '' }),
+    ).not.toThrow();
+    expect(() =>
+      parseManifest({ kind: 'package.json', path: 'x', content: undefined as unknown as string }),
+    ).not.toThrow();
     expect(() => parseManifest(null as never)).not.toThrow();
   });
 });

@@ -31,7 +31,8 @@ export function resolveVersionInUse(
   if (dep.resolved) return { version: dep.resolved, how: 'lockfile' };
   const spec = dep.ecosystem === 'npm' ? npmRange(dep.spec) : dep.spec.trim();
   if (dep.ecosystem === 'npm') {
-    if (/^(?:|\*|x|latest)$/i.test(spec)) return latest ? { version: latest, how: 'latest' } : undefined;
+    if (/^(?:|\*|x|latest)$/i.test(spec))
+      return latest ? { version: latest, how: 'latest' } : undefined;
     const best = maxSatisfying(available, spec);
     if (best) return { version: best, how: 'range' };
     // A single known latest may satisfy the range even when no list is available.
@@ -43,7 +44,10 @@ export function resolveVersionInUse(
   const best = maxSatisfyingPep(available, spec);
   if (best) return { version: best, how: 'range' };
   const clauses = parseSpecifier(spec);
-  const pin = clauses && clauses.length === 1 && clauses[0] ? /^={2,3}\s*([^*\s]+)$/.exec(clauses[0].text.trim()) : null;
+  const pin =
+    clauses && clauses.length === 1 && clauses[0]
+      ? /^={2,3}\s*([^*\s]+)$/.exec(clauses[0].text.trim())
+      : null;
   if (pin?.[1]) return { version: pin[1], how: 'range' };
   return latest ? { version: latest, how: 'latest' } : undefined;
 }

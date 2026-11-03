@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Engine: guard the shared contract",
+  "description": "packages/engine/src/types.ts is used by the web app and the Crew app. A change needs the lead's agreement.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["packages/engine/src/types.ts"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "types.ts is the shared contract for apps/web and apps/crew. Before keeping this change, check that it only adds optional fields or new exports, list the diff, and report it to the lead as a question. Then run `npm run typecheck` in packages/engine, apps/web and apps/crew."
+  }
+}

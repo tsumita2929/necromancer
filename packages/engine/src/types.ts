@@ -10,10 +10,7 @@ export type Ecosystem = 'npm' | 'pypi';
 
 /** Manifest formats the engine parses. */
 export type ManifestKind =
-  | 'package.json'
-  | 'package-lock.json'
-  | 'requirements.txt'
-  | 'pyproject.toml';
+  'package.json' | 'package-lock.json' | 'requirements.txt' | 'pyproject.toml';
 
 /** A manifest file handed to the engine. */
 export interface ManifestFile {
@@ -61,14 +58,7 @@ export type Verdict = (typeof VERDICTS)[number];
 
 /** Public sources the engine reads. */
 export type SourceId =
-  | 'npm'
-  | 'pypi'
-  | 'deps.dev'
-  | 'osv'
-  | 'scorecard'
-  | 'github'
-  | 'module-replacements'
-  | 'curated';
+  'npm' | 'pypi' | 'deps.dev' | 'osv' | 'scorecard' | 'github' | 'module-replacements' | 'curated';
 
 /** One signal behind a verdict. Rendered as an epitaph line. */
 export interface Evidence {

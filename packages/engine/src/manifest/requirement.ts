@@ -24,8 +24,11 @@ export function parseRequirement(raw: string): RequirementParse {
   }
   const semicolon = text.indexOf(';');
   const beforeMarker = (semicolon >= 0 ? text.slice(0, semicolon) : text).trim();
-  const at = /^([A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?)\s*(?:\[[^\]]*\])?\s*@\s*\S/.exec(beforeMarker);
-  if (at) return { kind: 'skip', label: 'a direct URL reference', name: normalizePypiName(at[1] ?? '') };
+  const at = /^([A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?)\s*(?:\[[^\]]*\])?\s*@\s*\S/.exec(
+    beforeMarker,
+  );
+  if (at)
+    return { kind: 'skip', label: 'a direct URL reference', name: normalizePypiName(at[1] ?? '') };
   if (/\.(?:whl|tar\.gz|zip|tgz)$/i.test(beforeMarker) && !SPECIFIER.test(beforeMarker)) {
     return { kind: 'skip', label: 'a local archive' };
   }
@@ -33,9 +36,13 @@ export function parseRequirement(raw: string): RequirementParse {
   if (!m) return { kind: 'invalid', message: `cannot read "${clip(text, 60)}"` };
   const name = m[1] ?? '';
   const rest = (m[2] ?? '').trim();
-  if (!isValidPypiName(name)) return { kind: 'invalid', message: `invalid package name "${clip(name, 60)}"` };
+  if (!isValidPypiName(name))
+    return { kind: 'invalid', message: `invalid package name "${clip(name, 60)}"` };
   if (rest !== '' && !SPECIFIER.test(rest)) {
-    return { kind: 'invalid', message: `cannot read the version of "${clip(name, 60)}": "${clip(rest, 60)}"` };
+    return {
+      kind: 'invalid',
+      message: `cannot read the version of "${clip(name, 60)}": "${clip(rest, 60)}"`,
+    };
   }
   const spec = rest.replace(/^\(\s*/, '').replace(/\s*\)$/, '');
   return { kind: 'ok', name: normalizePypiName(name), spec };

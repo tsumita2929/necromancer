@@ -6,9 +6,7 @@ const PYPI_NAME = /^[a-z0-9](?:[a-z0-9._-]*[a-z0-9])?$/i;
 
 /** True for names the npm registry could hold (legacy upper-case names included). */
 export function isValidNpmName(name: string): boolean {
-  return (
-    name.length > 0 && name.length <= 214 && NPM_NAME.test(name) && !NPM_RESERVED.has(name)
-  );
+  return name.length > 0 && name.length <= 214 && NPM_NAME.test(name) && !NPM_RESERVED.has(name);
 }
 
 /** True for names PyPI accepts (PEP 508 name grammar). */

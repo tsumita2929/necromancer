@@ -20,17 +20,24 @@ interface Requirement {
 }
 
 /** Text that is safe inside a Markdown line and inline code. */
-function safe(text: unknown, fallback: string, max = 120): string {
-  const flat = String(text ?? '')
+function flatten(text: unknown): string {
+  return String(text ?? '')
     .replace(/[\r\n\t`]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
-  if (flat === '') return fallback;
+}
+
+function safe(text: unknown, fallback: string, max = 120): string {
+  // The fallback can itself be untrusted (an evidence code), so it is flattened too.
+  const flat = flatten(text) || flatten(fallback) || '(unnamed)';
   return flat.length > max ? `${flat.slice(0, max - 1)}…` : flat;
 }
 
 function slug(text: string): string {
-  const s = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  const s = text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
   return s === '' ? 'dependency' : s.slice(0, 60);
 }
 
@@ -42,8 +49,14 @@ function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): 
     title: 'Know how the project uses the dependency',
     story: `As a maintainer, I want a list of every way the project uses \`${old}\`, so that the migration covers all of it and nothing more.`,
     criteria: [
-      { id: 'R1.1', text: `WHEN the project is searched, THE migration SHALL list every import, require and call of \`${old}\` with the exported names used.` },
-      { id: 'R1.2', text: 'THE list SHALL be saved in the repository so reviewers can check it against the diff.' },
+      {
+        id: 'R1.1',
+        text: `WHEN the project is searched, THE migration SHALL list every import, require and call of \`${old}\` with the exported names used.`,
+      },
+      {
+        id: 'R1.2',
+        text: 'THE list SHALL be saved in the repository so reviewers can check it against the diff.',
+      },
     ],
   });
   reqs.push({
@@ -51,10 +64,22 @@ function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): 
     title: 'Same behaviour before and after',
     story: `As a maintainer, I want proof that \`${nextName}\` answers like \`${old}\` for the way the project uses it, so that the switch is safe.`,
     criteria: [
-      { id: 'R2.1', text: `THE project SHALL have a differential property-based test (a séance) that asks \`${old}\` and \`${nextName}\` the same generated questions over each API in R1.1.` },
-      { id: 'R2.2', text: 'WHEN the two answers differ, THE test SHALL fail and print the input and both answers.' },
-      { id: 'R2.3', text: 'WHERE both throw, THE test SHALL compare the kind of error, not the message text.' },
-      { id: 'R2.4', text: 'THE test SHALL pass with the old implementation on both sides before any code is changed.' },
+      {
+        id: 'R2.1',
+        text: `THE project SHALL have a differential property-based test (a séance) that asks \`${old}\` and \`${nextName}\` the same generated questions over each API in R1.1.`,
+      },
+      {
+        id: 'R2.2',
+        text: 'WHEN the two answers differ, THE test SHALL fail and print the input and both answers.',
+      },
+      {
+        id: 'R2.3',
+        text: 'WHERE both throw, THE test SHALL compare the kind of error, not the message text.',
+      },
+      {
+        id: 'R2.4',
+        text: 'THE test SHALL pass with the old implementation on both sides before any code is changed.',
+      },
     ],
   });
   if (next.kind === 'native') {
@@ -64,7 +89,10 @@ function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): 
       story: `As a maintainer, I want the code to call \`${nextName}\` directly, so that the project carries no package for it.`,
       criteria: [
         { id: 'R3.1', text: `THE code SHALL call \`${nextName}\` where it called \`${old}\`.` },
-        { id: 'R3.2', text: `THE project's supported runtimes (Node version, browser list) SHALL all provide \`${nextName}\`.` },
+        {
+          id: 'R3.2',
+          text: `THE project's supported runtimes (Node version, browser list) SHALL all provide \`${nextName}\`.`,
+        },
       ],
     });
   } else if (next.kind === 'raise') {
@@ -73,9 +101,18 @@ function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): 
       title: 'Own a small replacement',
       story: `As a maintainer, I want a small implementation of what the project uses from \`${old}\`, so that the project owns that code.`,
       criteria: [
-        { id: 'R3.1', text: `THE project SHALL contain its own typed, dependency-free implementation of the APIs listed in R1.1 at \`src/vendor/${slug(old)}.ts\`.` },
-        { id: 'R3.2', text: 'THE implementation SHALL have example tests for edge cases found in R1.1 in addition to the séance.' },
-        { id: 'R3.3', text: `WHERE the licence of \`${old}\` requires attribution, THE project SHALL keep it.` },
+        {
+          id: 'R3.1',
+          text: `THE project SHALL contain its own typed, dependency-free implementation of the APIs listed in R1.1 at \`src/vendor/${slug(old)}.ts\`.`,
+        },
+        {
+          id: 'R3.2',
+          text: 'THE implementation SHALL have example tests for edge cases found in R1.1 in addition to the séance.',
+        },
+        {
+          id: 'R3.3',
+          text: `WHERE the licence of \`${old}\` requires attribution, THE project SHALL keep it.`,
+        },
       ],
     });
   } else {
@@ -84,18 +121,33 @@ function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): 
       title: 'Move to a living package',
       story: `As a maintainer, I want the project on \`${nextName}\`, which is maintained, so that it receives fixes.`,
       criteria: [
-        { id: 'R3.1', text: `THE project SHALL declare \`${nextName}\` in its manifest with a version range that has no known advisory.` },
-        { id: 'R3.2', text: `THE code SHALL import \`${nextName}\` where it imported \`${old}\`, adapting calls where the API differs.` },
+        {
+          id: 'R3.1',
+          text: `THE project SHALL declare \`${nextName}\` in its manifest with a version range that has no known advisory.`,
+        },
+        {
+          id: 'R3.2',
+          text: `THE code SHALL import \`${nextName}\` where it imported \`${old}\`, adapting calls where the API differs.`,
+        },
       ],
     });
   }
   const removal: Criterion[] = [
-    { id: 'R4.1', text: `THE project SHALL NOT declare \`${old}\` in any manifest or lockfile after the migration.` },
+    {
+      id: 'R4.1',
+      text: `THE project SHALL NOT declare \`${old}\` in any manifest or lockfile after the migration.`,
+    },
     { id: 'R4.2', text: 'THE build, type check and test suite SHALL pass after the migration.' },
   ];
   if (diagnosis.advisories.length > 0) {
-    const ids = diagnosis.advisories.slice(0, 5).map((a) => safe(a, 'advisory', 40)).join(', ');
-    removal.push({ id: 'R4.3', text: `THE dependency audit SHALL no longer report ${ids} for this project.` });
+    const ids = diagnosis.advisories
+      .slice(0, 5)
+      .map((a) => safe(a, 'advisory', 40))
+      .join(', ');
+    removal.push({
+      id: 'R4.3',
+      text: `THE dependency audit SHALL no longer report ${ids} for this project.`,
+    });
   }
   reqs.push({
     id: 'R4',
@@ -106,24 +158,35 @@ function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): 
   reqs.push({
     id: 'R5',
     title: 'Safe to undo',
-    story: 'As a maintainer, I want each step in its own commit, so that I can revert one step without losing the others.',
+    story:
+      'As a maintainer, I want each step in its own commit, so that I can revert one step without losing the others.',
     criteria: [
-      { id: 'R5.1', text: 'THE migration SHALL be made in small commits: test first, then the switch, then the removal.' },
+      {
+        id: 'R5.1',
+        text: 'THE migration SHALL be made in small commits: test first, then the switch, then the removal.',
+      },
     ],
   });
   return reqs;
 }
 
-function renderRequirements(old: string, next: Successor, diagnosis: Diagnosis, reqs: Requirement[]): string {
+function renderRequirements(
+  old: string,
+  next: Successor,
+  diagnosis: Diagnosis,
+  reqs: Requirement[],
+): string {
   const lines: string[] = [
     `# Requirements: Move off ${old}`,
     '',
-    `Generated by Necromancer. \`${old}\` is **${diagnosis.verdict}**; the chosen successor is \`${safe(next.name, 'the successor')}\` (${next.kind}).`,
+    `Generated by Necromancer. \`${old}\` is **${safe(diagnosis.verdict, 'dead', 20)}**; the chosen successor is \`${safe(next.name, 'the successor')}\` (${safe(next.kind, 'package', 20)}).`,
     '',
     '## Why',
     '',
     ...(diagnosis.evidence.length > 0
-      ? diagnosis.evidence.map((e) => `- ${safe(e.message, e.code, 220)} (${e.source})`)
+      ? diagnosis.evidence.map(
+          (e) => `- ${safe(e.message, e.code, 220)} (${safe(e.source, 'unknown', 30)})`,
+        )
       : ['- No evidence was recorded.']),
     '',
     `Why this successor: ${safe(next.reason, 'no reason recorded', 220)}`,
@@ -140,7 +203,8 @@ function renderRequirements(old: string, next: Successor, diagnosis: Diagnosis, 
 function renderDesign(old: string, next: Successor, diagnosis: Diagnosis): string {
   const nextName = safe(next.name, 'the successor');
   const eco = diagnosis.dependency.ecosystem === 'npm' ? 'JavaScript / TypeScript' : 'Python';
-  const test = diagnosis.dependency.ecosystem === 'npm' ? 'fast-check with Vitest' : 'Hypothesis with pytest';
+  const test =
+    diagnosis.dependency.ecosystem === 'npm' ? 'fast-check with Vitest' : 'Hypothesis with pytest';
   const how =
     next.kind === 'native'
       ? `Replace calls to \`${old}\` with \`${nextName}\`. No package is added.`
@@ -170,7 +234,9 @@ function renderDesign(old: string, next: Successor, diagnosis: Diagnosis): strin
     '',
     '- A behaviour that the inventory missed. The test only covers the APIs it lists.',
     '- Differences the project relies on by accident (error messages, key order). Decide per case whether to match or to change the caller.',
-    ...(next.kind === 'native' ? ['- A runtime that lacks the platform API. Check the supported runtime list first.'] : []),
+    ...(next.kind === 'native'
+      ? ['- A runtime that lacks the platform API. Check the supported runtime list first.']
+      : []),
     '',
     '## Order of work',
     '',
@@ -232,7 +298,14 @@ export function resurrectionSpec(diagnosis: Diagnosis, successor: Successor): Ki
     reason: safe(successor?.reason, 'no reason recorded', 220),
   };
   const safeDiagnosis: Diagnosis = {
-    dependency: diagnosis?.dependency ?? { ecosystem: 'npm', name: old, spec: '', direct: true, scope: 'main', declaredIn: '' },
+    dependency: diagnosis?.dependency ?? {
+      ecosystem: 'npm',
+      name: old,
+      spec: '',
+      direct: true,
+      scope: 'main',
+      declaredIn: '',
+    },
     verdict: diagnosis?.verdict ?? 'dead',
     evidence: Array.isArray(diagnosis?.evidence) ? diagnosis.evidence : [],
     advisories: Array.isArray(diagnosis?.advisories) ? diagnosis.advisories : [],

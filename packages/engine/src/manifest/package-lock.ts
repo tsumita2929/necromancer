@@ -1,5 +1,12 @@
 import type { DependencyRef, ManifestFile, ParseResult } from '../types.js';
-import { asString, clip, errorMessage, getOwn, isRecord, type UnknownRecord } from '../util/guards.js';
+import {
+  asString,
+  clip,
+  errorMessage,
+  getOwn,
+  isRecord,
+  type UnknownRecord,
+} from '../util/guards.js';
 import { isValidNpmName } from '../util/names.js';
 import { parseVersion } from '../versions/semver.js';
 import { emptyResult } from './common.js';
@@ -46,7 +53,12 @@ export function parsePackageLock(file: ManifestFile): ParseResult {
     skipped = readPackagesMap(packages, file, result.dependencies);
   } else if (isRecord(getOwn(json, 'dependencies'))) {
     // lockfileVersion 1: nested "dependencies" tree. It does not say which are direct.
-    skipped = readLegacyTree(getOwn(json, 'dependencies') as UnknownRecord, file, result.dependencies, 0);
+    skipped = readLegacyTree(
+      getOwn(json, 'dependencies') as UnknownRecord,
+      file,
+      result.dependencies,
+      0,
+    );
   } else {
     result.problems.push(`${file.path} has no "packages" or "dependencies" section.`);
   }
@@ -58,7 +70,11 @@ export function parsePackageLock(file: ManifestFile): ParseResult {
   return result;
 }
 
-function readPackagesMap(packages: UnknownRecord, file: ManifestFile, out: DependencyRef[]): number {
+function readPackagesMap(
+  packages: UnknownRecord,
+  file: ManifestFile,
+  out: DependencyRef[],
+): number {
   const root = getOwn(packages, '');
   const declared = new Map<string, { spec: string; scope: Scope }>();
   if (isRecord(root)) {
@@ -127,7 +143,12 @@ function readLegacyTree(
         version = target.slice(at + 1);
       }
     }
-    if (!version || !parseVersion(version) || !isValidNpmName(name) || !isRegistryResolved(raw['resolved'])) {
+    if (
+      !version ||
+      !parseVersion(version) ||
+      !isValidNpmName(name) ||
+      !isRegistryResolved(raw['resolved'])
+    ) {
       skipped++;
     } else {
       out.push({

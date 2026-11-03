@@ -29,7 +29,15 @@ export interface FakeWorld {
   github: string[];
 }
 
-export function fakeWorld(pkgs: FakeNpm[], extra?: { override?: (url: string, init?: { method?: string; body?: string }) => ReturnType<typeof reply> | undefined }): FakeWorld {
+export function fakeWorld(
+  pkgs: FakeNpm[],
+  extra?: {
+    override?: (
+      url: string,
+      init?: { method?: string; body?: string },
+    ) => ReturnType<typeof reply> | undefined;
+  },
+): FakeWorld {
   const byName = new Map(pkgs.map((p) => [p.name, p]));
   const calls: string[] = [];
   const github: string[] = [];
@@ -67,26 +75,53 @@ export function fakeWorld(pkgs: FakeNpm[], extra?: { override?: (url: string, in
     if (m) {
       const p = byName.get(decodeURIComponent(m[1] ?? ''));
       if (!p) return reply(404, {});
-      return reply(200, p.repo ? { links: [{ label: 'SOURCE_REPO', url: p.repo }] } : { links: [] });
+      return reply(
+        200,
+        p.repo ? { links: [{ label: 'SOURCE_REPO', url: p.repo }] } : { links: [] },
+      );
     }
     m = /^https:\/\/api\.deps\.dev\/v3\/projects\/(.+)$/.exec(url);
     if (m) {
       const id = decodeURIComponent(m[1] ?? '');
-      const p = pkgs.find((x) => x.repo && id.endsWith(x.repo.replace(/^.*github\.com[/:]/, '').replace(/\.git$/, '')));
+      const p = pkgs.find(
+        (x) =>
+          x.repo && id.endsWith(x.repo.replace(/^.*github\.com[/:]/, '').replace(/\.git$/, '')),
+      );
       if (!p || p.scorecardMaintained === undefined) return reply(404, {});
-      return reply(200, { starsCount: 1, scorecard: { date: '2026-10-01T00:00:00Z', checks: [{ name: 'Maintained', score: p.scorecardMaintained }] } });
+      return reply(200, {
+        starsCount: 1,
+        scorecard: {
+          date: '2026-10-01T00:00:00Z',
+          checks: [{ name: 'Maintained', score: p.scorecardMaintained }],
+        },
+      });
     }
     m = /^https:\/\/api\.github\.com\/repos\/(.+)$/.exec(url);
     if (m) {
       github.push(m[1] ?? '');
       const slug = decodeURIComponent(m[1] ?? '').toLowerCase();
-      const p = pkgs.find((x) => x.repo && slug === x.repo.replace(/^.*github\.com[/:]/, '').replace(/\.git$/, '').toLowerCase());
+      const p = pkgs.find(
+        (x) =>
+          x.repo &&
+          slug ===
+            x.repo
+              .replace(/^.*github\.com[/:]/, '')
+              .replace(/\.git$/, '')
+              .toLowerCase(),
+      );
       const g = p?.github ?? { status: 404 };
       if (g.status && g.status !== 200) return reply(g.status, {});
-      return reply(200, { archived: g.archived ?? false, pushed_at: g.pushedAt ?? '2020-01-01T00:00:00Z' });
+      return reply(200, {
+        archived: g.archived ?? false,
+        pushed_at: g.pushedAt ?? '2020-01-01T00:00:00Z',
+      });
     }
     if (url === 'https://api.osv.dev/v1/querybatch') {
-      const queries = (JSON.parse(init?.body ?? '{}') as { queries: Array<{ package: { name: string }; version: string }> }).queries;
+      const queries = (
+        JSON.parse(init?.body ?? '{}') as {
+          queries: Array<{ package: { name: string }; version: string }>;
+        }
+      ).queries;
       return reply(200, {
         results: queries.map((q) => {
           const ids = byName.get(q.package.name)?.advisories?.[q.version] ?? [];

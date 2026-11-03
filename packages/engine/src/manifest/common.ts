@@ -7,8 +7,7 @@ export function emptyResult(): ParseResult {
 }
 
 export type NpmSpecClass =
-  | { kind: 'registry'; name: string; spec: string }
-  | { kind: 'skip'; label: string };
+  { kind: 'registry'; name: string; spec: string } | { kind: 'skip'; label: string };
 
 const LOCAL = /^(?:file:|link:|portal:|\.{1,2}(?:\/|$)|\/|~\/)/;
 const GIT = /^(?:git(?:\+[a-z]+)?:|github:|gitlab:|bitbucket:|gist:|ssh:)/i;

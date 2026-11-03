@@ -11,14 +11,13 @@ export interface SemVer {
   pre: Array<string | number>;
 }
 
-const VERSION = /^[v=\s]*(\d{1,15})\.(\d{1,15})\.(\d{1,15})(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?\s*$/;
+const VERSION =
+  /^[v=\s]*(\d{1,15})\.(\d{1,15})\.(\d{1,15})(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?\s*$/;
 
 export function parseVersion(text: string): SemVer | null {
   const m = VERSION.exec(text);
   if (!m) return null;
-  const pre = m[4]
-    ? m[4].split('.').map((id) => (/^\d+$/.test(id) ? Number(id) : id))
-    : [];
+  const pre = m[4] ? m[4].split('.').map((id) => (/^\d+$/.test(id) ? Number(id) : id)) : [];
   return { major: Number(m[1]), minor: Number(m[2]), patch: Number(m[3]), pre };
 }
 
@@ -75,7 +74,8 @@ interface Partial3 {
   pre: Array<string | number>;
 }
 
-const PARTIAL = /^[v=\s]*(x|X|\*|\d{1,15})(?:\.(x|X|\*|\d{1,15})(?:\.(x|X|\*|\d{1,15})(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?)?)?$/;
+const PARTIAL =
+  /^[v=\s]*(x|X|\*|\d{1,15})(?:\.(x|X|\*|\d{1,15})(?:\.(x|X|\*|\d{1,15})(?:-([0-9A-Za-z.-]+))?(?:\+[0-9A-Za-z.-]+)?)?)?$/;
 
 function parsePartial(text: string): Partial3 | null {
   const m = PARTIAL.exec(text.trim());
@@ -85,7 +85,10 @@ function parsePartial(text: string): Partial3 | null {
   const major = part(m[1]);
   const minor = major === undefined ? undefined : part(m[2]);
   const patch = minor === undefined ? undefined : part(m[3]);
-  const pre = patch !== undefined && m[4] ? m[4].split('.').map((id) => (/^\d+$/.test(id) ? Number(id) : id)) : [];
+  const pre =
+    patch !== undefined && m[4]
+      ? m[4].split('.').map((id) => (/^\d+$/.test(id) ? Number(id) : id))
+      : [];
   return { major, minor, patch, pre };
 }
 

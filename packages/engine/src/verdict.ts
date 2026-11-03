@@ -16,7 +16,8 @@ import type { Evidence, Verdict } from './types.js';
  * - advisory:    a known advisory; turns dead into zombie, never causes death.
  * - info:        shown, never changes the verdict.
  */
-export type EvidenceClass = 'gone' | 'strong' | 'derived' | 'conditional' | 'weak' | 'advisory' | 'info';
+export type EvidenceClass =
+  'gone' | 'strong' | 'derived' | 'conditional' | 'weak' | 'advisory' | 'info';
 
 export const EVIDENCE_CLASS: Readonly<Record<string, EvidenceClass>> = {
   'repo-gone': 'gone',

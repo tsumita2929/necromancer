@@ -57,7 +57,11 @@ export class Http {
     }
   }
 
-  private async attempt(url: string, init: RequestInit | undefined, key: string): Promise<HttpResult> {
+  private async attempt(
+    url: string,
+    init: RequestInit | undefined,
+    key: string,
+  ): Promise<HttpResult> {
     this.sent.push(key.trim());
     let result = await this.once(url, init);
     if (!result.ok && this.isTransient(result)) {
@@ -89,7 +93,12 @@ export class Http {
         try {
           return { ok: true, status, data: await response.json() };
         } catch {
-          return { ok: false, status, kind: 'unavailable', reason: 'the answer was not valid JSON' };
+          return {
+            ok: false,
+            status,
+            kind: 'unavailable',
+            reason: 'the answer was not valid JSON',
+          };
         }
       })();
       run.catch(() => undefined); // a late failure after the timeout must not go unhandled
@@ -105,7 +114,14 @@ export class Http {
 function failure(status: number, reason: string): HttpResult {
   if (status === 404 || status === 410) return { ok: false, status, kind: 'not-found', reason };
   if (status === 451) return { ok: false, status, kind: 'gone', reason };
-  if (status === 429) return { ok: false, status, kind: 'rate-limited', reason: 'rate limit reached (HTTP 429)' };
-  if (status === 403) return { ok: false, status, kind: 'rate-limited', reason: 'access refused or rate limit reached (HTTP 403)' };
+  if (status === 429)
+    return { ok: false, status, kind: 'rate-limited', reason: 'rate limit reached (HTTP 429)' };
+  if (status === 403)
+    return {
+      ok: false,
+      status,
+      kind: 'rate-limited',
+      reason: 'access refused or rate limit reached (HTTP 403)',
+    };
   return { ok: false, status, kind: 'unavailable', reason };
 }

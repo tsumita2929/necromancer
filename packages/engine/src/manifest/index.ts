@@ -14,7 +14,10 @@ export function parseManifest(file: ManifestFile): ParseResult {
     const content = typeof file.content === 'string' ? file.content : '';
     const path = typeof file.path === 'string' ? file.path : '(unnamed)';
     if (content.length > MAX_MANIFEST_CHARS) {
-      return { dependencies: [], problems: [`${path} is larger than ${MAX_MANIFEST_CHARS / 1_000_000} MB and was not read.`] };
+      return {
+        dependencies: [],
+        problems: [`${path} is larger than ${MAX_MANIFEST_CHARS / 1_000_000} MB and was not read.`],
+      };
     }
     const safe: ManifestFile = { kind: file.kind, path, content };
     let result: ParseResult;

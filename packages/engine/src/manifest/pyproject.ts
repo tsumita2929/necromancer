@@ -7,7 +7,8 @@ import { parseRequirement } from './requirement.js';
 
 type Scope = DependencyRef['scope'];
 
-const DEV_GROUP = /^(?:dev|devel|develop|development|test|tests|testing|lint|linting|docs?|ci|typing|types|check|checks|qa)$/i;
+const DEV_GROUP =
+  /^(?:dev|devel|develop|development|test|tests|testing|lint|linting|docs?|ci|typing|types|check|checks|qa)$/i;
 
 function table(value: unknown, ...path: string[]): UnknownRecord | undefined {
   let node: unknown = value;
@@ -43,7 +44,9 @@ export function parsePyproject(file: ManifestFile): ParseResult {
         declaredIn: file.path,
       });
     } else if (parsed.kind === 'skip') {
-      result.problems.push(`Skipped ${parsed.name ? `"${parsed.name}"` : `"${clip(text, 50)}"`} in ${where}: it is ${parsed.label}.`);
+      result.problems.push(
+        `Skipped ${parsed.name ? `"${parsed.name}"` : `"${clip(text, 50)}"`} in ${where}: it is ${parsed.label}.`,
+      );
     } else {
       result.problems.push(`Skipped an entry in ${where}: ${parsed.message}.`);
     }
@@ -67,7 +70,11 @@ export function parsePyproject(file: ManifestFile): ParseResult {
     const optional = table(project, 'optional-dependencies');
     if (optional) {
       for (const [group, list] of Object.entries(optional)) {
-        addList(list, DEV_GROUP.test(group) ? 'dev' : 'optional', `project.optional-dependencies.${clip(group, 30)}`);
+        addList(
+          list,
+          DEV_GROUP.test(group) ? 'dev' : 'optional',
+          `project.optional-dependencies.${clip(group, 30)}`,
+        );
       }
     }
   }
@@ -124,10 +131,18 @@ export function parsePyproject(file: ManifestFile): ParseResult {
         }
         if (!isRecord(alt)) continue;
         if (alt['git'] !== undefined || alt['path'] !== undefined || alt['url'] !== undefined) {
-          skipLabel = alt['git'] !== undefined ? 'a git source' : alt['url'] !== undefined ? 'a URL' : 'a local path';
+          skipLabel =
+            alt['git'] !== undefined
+              ? 'a git source'
+              : alt['url'] !== undefined
+                ? 'a URL'
+                : 'a local path';
           continue;
         }
-        picked = { spec: asString(alt['version'])?.trim() ?? '', optional: alt['optional'] === true };
+        picked = {
+          spec: asString(alt['version'])?.trim() ?? '',
+          optional: alt['optional'] === true,
+        };
         break;
       }
       if (!picked) {

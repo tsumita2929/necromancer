@@ -36,7 +36,9 @@ export function parsePackageJson(file: ManifestFile): ParseResult {
     for (const [name, value] of Object.entries(table)) {
       const spec = asString(value);
       if (spec === undefined) {
-        result.problems.push(`Skipped "${clip(name, 60)}" in "${field}": its version is not a string.`);
+        result.problems.push(
+          `Skipped "${clip(name, 60)}" in "${field}": its version is not a string.`,
+        );
         continue;
       }
       const classified = classifyNpmSpec(name, spec);

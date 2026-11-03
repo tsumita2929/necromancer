@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Engine: re-record fixtures when a source client changes",
+  "description": "Offline tests replay recorded API responses. A change to a source client may need new recordings.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["packages/engine/src/sources/*.ts"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A source client in packages/engine/src/sources changed. Run `npm test` in packages/engine. If a test reports 'No fixture for ...', run `npm run build && npm run record-fixtures` (needs network; it keeps existing recordings) and commit the new files in test/fixtures/recorded. GitHub allows 60 unauthenticated calls per hour, so never use --refresh unless needed."
+  }
+}

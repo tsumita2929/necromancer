@@ -2,7 +2,13 @@ import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
 import { comparePep, maxSatisfyingPep, parsePepVersion } from '../../src/versions/pep440.js';
 import { resolveVersionInUse } from '../../src/versions/resolve.js';
-import { compareVersions, maxSatisfying, parseRange, parseVersion, satisfies } from '../../src/versions/semver.js';
+import {
+  compareVersions,
+  maxSatisfying,
+  parseRange,
+  parseVersion,
+  satisfies,
+} from '../../src/versions/semver.js';
 
 type Triple = [number, number, number];
 const cmp = (a: Triple, b: Triple): number => a[0] - b[0] || a[1] - b[1] || a[2] - b[2];
@@ -11,18 +17,49 @@ const triple: fc.Arbitrary<Triple> = fc.tuple(fc.nat(4), fc.nat(4), fc.nat(4));
 const triples = fc.uniqueArray(triple, { selector: text, minLength: 1, maxLength: 40 });
 
 /** Independent oracle: each range form written out as plain arithmetic. */
-const forms: Array<{ name: string; range: (v: Triple) => string; test: (x: Triple, v: Triple) => boolean }> = [
-  { name: 'caret', range: (v) => `^${text(v)}`, test: (x, v) => cmp(x, v) >= 0 && (v[0] > 0 ? x[0] === v[0] : v[1] > 0 ? x[0] === 0 && x[1] === v[1] : x[0] === 0 && x[1] === 0 && x[2] === v[2]) },
-  { name: 'tilde', range: (v) => `~${text(v)}`, test: (x, v) => cmp(x, v) >= 0 && x[0] === v[0] && x[1] === v[1] },
+const forms: Array<{
+  name: string;
+  range: (v: Triple) => string;
+  test: (x: Triple, v: Triple) => boolean;
+}> = [
+  {
+    name: 'caret',
+    range: (v) => `^${text(v)}`,
+    test: (x, v) =>
+      cmp(x, v) >= 0 &&
+      (v[0] > 0
+        ? x[0] === v[0]
+        : v[1] > 0
+          ? x[0] === 0 && x[1] === v[1]
+          : x[0] === 0 && x[1] === 0 && x[2] === v[2]),
+  },
+  {
+    name: 'tilde',
+    range: (v) => `~${text(v)}`,
+    test: (x, v) => cmp(x, v) >= 0 && x[0] === v[0] && x[1] === v[1],
+  },
   { name: 'exact', range: (v) => text(v), test: (x, v) => cmp(x, v) === 0 },
   { name: '>=', range: (v) => `>=${text(v)}`, test: (x, v) => cmp(x, v) >= 0 },
   { name: '>', range: (v) => `>${text(v)}`, test: (x, v) => cmp(x, v) > 0 },
   { name: '<=', range: (v) => `<=${text(v)}`, test: (x, v) => cmp(x, v) <= 0 },
   { name: '<', range: (v) => `<${text(v)}`, test: (x, v) => cmp(x, v) < 0 },
-  { name: 'x-minor', range: (v) => `${v[0]}.${v[1]}.x`, test: (x, v) => x[0] === v[0] && x[1] === v[1] },
+  {
+    name: 'x-minor',
+    range: (v) => `${v[0]}.${v[1]}.x`,
+    test: (x, v) => x[0] === v[0] && x[1] === v[1],
+  },
   { name: 'x-major', range: (v) => `${v[0]}.x`, test: (x, v) => x[0] === v[0] },
-  { name: 'partial-minor', range: (v) => `${v[0]}.${v[1]}`, test: (x, v) => x[0] === v[0] && x[1] === v[1] },
-  { name: 'caret-partial', range: (v) => `^${v[0]}.${v[1]}`, test: (x, v) => cmp(x, [v[0], v[1], 0]) >= 0 && (v[0] > 0 ? x[0] === v[0] : x[0] === 0 && x[1] === v[1]) },
+  {
+    name: 'partial-minor',
+    range: (v) => `${v[0]}.${v[1]}`,
+    test: (x, v) => x[0] === v[0] && x[1] === v[1],
+  },
+  {
+    name: 'caret-partial',
+    range: (v) => `^${v[0]}.${v[1]}`,
+    test: (x, v) =>
+      cmp(x, [v[0], v[1], 0]) >= 0 && (v[0] > 0 ? x[0] === v[0] : x[0] === 0 && x[1] === v[1]),
+  },
   { name: 'tilde-major', range: (v) => `~${v[0]}`, test: (x, v) => x[0] === v[0] },
   { name: 'star', range: () => '*', test: () => true },
   { name: 'spaced-op', range: (v) => `>= ${text(v)}`, test: (x, v) => cmp(x, v) >= 0 },
@@ -34,7 +71,9 @@ describe('R2.13 npm range resolution', () => {
       fc.assert(
         fc.property(triples, triple, (list, v) => {
           const expectedList = list.filter((x) => form.test(x, v)).sort(cmp);
-          const expected = expectedList.length ? text(expectedList[expectedList.length - 1] as Triple) : null;
+          const expected = expectedList.length
+            ? text(expectedList[expectedList.length - 1] as Triple)
+            : null;
           expect(maxSatisfying(list.map(text), form.range(v))).toBe(expected);
         }),
         { numRuns: 300 },
@@ -60,10 +99,17 @@ describe('R2.13 npm range resolution', () => {
         const union = maxSatisfying(vs, `^${text(a)} || ^${text(b)}`);
         const left = maxSatisfying(vs, `^${text(a)}`);
         const right = maxSatisfying(vs, `^${text(b)}`);
-        const best = [left, right].filter((x): x is string => x !== null).sort((x, y) => compareVersions(parseVersion(x)!, parseVersion(y)!)).pop() ?? null;
+        const best =
+          [left, right]
+            .filter((x): x is string => x !== null)
+            .sort((x, y) => compareVersions(parseVersion(x)!, parseVersion(y)!))
+            .pop() ?? null;
         expect(union).toBe(best);
         const both = maxSatisfying(vs, `>=${text(a)} <=${text(b)}`);
-        const oracle = list.filter((x) => cmp(x, a) >= 0 && cmp(x, b) <= 0).sort(cmp).pop();
+        const oracle = list
+          .filter((x) => cmp(x, a) >= 0 && cmp(x, b) <= 0)
+          .sort(cmp)
+          .pop();
         expect(both).toBe(oracle ? text(oracle) : null);
       }),
       { numRuns: 300 },
@@ -77,14 +123,30 @@ describe('R2.13 npm range resolution', () => {
   });
 
   it('R2.13 version ordering is a total order consistent with the sort', () => {
-    const v = fc.tuple(triple, fc.option(fc.array(fc.oneof(fc.nat(5), fc.constantFrom('alpha', 'beta', 'rc')), { minLength: 1, maxLength: 3 }), { nil: undefined }))
+    const v = fc
+      .tuple(
+        triple,
+        fc.option(
+          fc.array(fc.oneof(fc.nat(5), fc.constantFrom('alpha', 'beta', 'rc')), {
+            minLength: 1,
+            maxLength: 3,
+          }),
+          { nil: undefined },
+        ),
+      )
       .map(([t, pre]) => `${text(t)}${pre ? `-${pre.join('.')}` : ''}`);
     fc.assert(
       fc.property(v, v, v, (a, b, c) => {
-        const [x, y, z] = [a, b, c].map((s) => parseVersion(s)!) as [NonNullable<ReturnType<typeof parseVersion>>, NonNullable<ReturnType<typeof parseVersion>>, NonNullable<ReturnType<typeof parseVersion>>];
-        expect(Math.sign(compareVersions(x, y))).toBe(-Math.sign(compareVersions(y, x)));
+        const [x, y, z] = [a, b, c].map((s) => parseVersion(s)!) as [
+          NonNullable<ReturnType<typeof parseVersion>>,
+          NonNullable<ReturnType<typeof parseVersion>>,
+          NonNullable<ReturnType<typeof parseVersion>>,
+        ];
+        // `+ 0` turns -0 into 0, which Object.is treats as different.
+        expect(Math.sign(compareVersions(x, y)) + 0).toBe(-Math.sign(compareVersions(y, x)) + 0);
         expect(compareVersions(x, x)).toBe(0);
-        if (compareVersions(x, y) <= 0 && compareVersions(y, z) <= 0) expect(compareVersions(x, z)).toBeLessThanOrEqual(0);
+        if (compareVersions(x, y) <= 0 && compareVersions(y, z) <= 0)
+          expect(compareVersions(x, z)).toBeLessThanOrEqual(0);
       }),
       { numRuns: 500 },
     );
@@ -96,7 +158,8 @@ describe('R2.13 npm range resolution', () => {
         expect(() => parseRange(s)).not.toThrow();
         expect(() => maxSatisfying(['1.0.0', '2.0.0-rc.1'], s)).not.toThrow();
         const r = parseRange(s);
-        if (r) expect(typeof satisfies({ major: 1, minor: 0, patch: 0, pre: [] }, r)).toBe('boolean');
+        if (r)
+          expect(typeof satisfies({ major: 1, minor: 0, patch: 0, pre: [] }, r)).toBe('boolean');
       }),
       { numRuns: 1000 },
     );
@@ -116,9 +179,13 @@ describe('R2.13 PEP 440 resolution', () => {
         expect(maxSatisfyingPep(vs, `==${text(v)}`)).toBe(max((x) => cmp(x, v) === 0));
         expect(maxSatisfyingPep(vs, `>=${text(v)}`)).toBe(max((x) => cmp(x, v) >= 0));
         expect(maxSatisfyingPep(vs, `<${text(v)}`)).toBe(max((x) => cmp(x, v) < 0));
-        expect(maxSatisfyingPep(vs, `>${text(v)},<=${text([v[0] + 1, 0, 0])}`)).toBe(max((x) => cmp(x, v) > 0 && cmp(x, [v[0] + 1, 0, 0]) <= 0));
+        expect(maxSatisfyingPep(vs, `>${text(v)},<=${text([v[0] + 1, 0, 0])}`)).toBe(
+          max((x) => cmp(x, v) > 0 && cmp(x, [v[0] + 1, 0, 0]) <= 0),
+        );
         expect(maxSatisfyingPep(vs, `!=${text(v)}`)).toBe(max((x) => cmp(x, v) !== 0));
-        expect(maxSatisfyingPep(vs, `~=${v[0]}.${v[1]}`)).toBe(max((x) => x[0] === v[0] && x[1] >= v[1]));
+        expect(maxSatisfyingPep(vs, `~=${v[0]}.${v[1]}`)).toBe(
+          max((x) => x[0] === v[0] && x[1] >= v[1]),
+        );
         expect(maxSatisfyingPep(vs, `==${v[0]}.*`)).toBe(max((x) => x[0] === v[0]));
       }),
       { numRuns: 300 },
@@ -133,9 +200,17 @@ describe('R2.13 PEP 440 resolution', () => {
           const ok = list.filter(pred).sort(cmp);
           return ok.length ? text(ok[ok.length - 1] as Triple) : null;
         };
-        const caret = (x: Triple) => cmp(x, v) >= 0 && (v[0] > 0 ? x[0] === v[0] : v[1] > 0 ? x[0] === 0 && x[1] === v[1] : x[0] === 0 && x[1] === 0 && x[2] === v[2]);
+        const caret = (x: Triple) =>
+          cmp(x, v) >= 0 &&
+          (v[0] > 0
+            ? x[0] === v[0]
+            : v[1] > 0
+              ? x[0] === 0 && x[1] === v[1]
+              : x[0] === 0 && x[1] === 0 && x[2] === v[2]);
         expect(maxSatisfyingPep(vs, `^${text(v)}`)).toBe(max(caret));
-        expect(maxSatisfyingPep(vs, `~${text(v)}`)).toBe(max((x) => cmp(x, v) >= 0 && x[0] === v[0] && x[1] === v[1]));
+        expect(maxSatisfyingPep(vs, `~${text(v)}`)).toBe(
+          max((x) => cmp(x, v) >= 0 && x[0] === v[0] && x[1] === v[1]),
+        );
         expect(maxSatisfyingPep(vs, `${text(v)}`)).toBe(max((x) => cmp(x, v) === 0));
       }),
       { numRuns: 300 },
@@ -143,7 +218,9 @@ describe('R2.13 PEP 440 resolution', () => {
   });
 
   it('R2.13 releases order below final: dev < alpha < beta < rc < final < post', () => {
-    const order = ['1.0.dev1', '1.0a1', '1.0b2', '1.0rc1', '1.0', '1.0.post1', '1.0.1'].map((s) => parsePepVersion(s)!);
+    const order = ['1.0.dev1', '1.0a1', '1.0b2', '1.0rc1', '1.0', '1.0.post1', '1.0.1'].map((s) =>
+      parsePepVersion(s)!,
+    );
     for (let i = 0; i < order.length; i++) {
       for (let j = 0; j < order.length; j++) {
         expect(Math.sign(comparePep(order[i]!, order[j]!))).toBe(Math.sign(i - j));
@@ -154,7 +231,14 @@ describe('R2.13 PEP 440 resolution', () => {
   });
 
   it('R2.13 spellings of the same version compare equal', () => {
-    for (const [a, b] of [['1.0', '1.0.0'], ['1.0rc1', '1.0-rc.1'], ['1.0.post1', '1.0-1'], ['1.0a1', '1.0alpha1'], ['v1.0', '1.0'], ['1!1.0', '1!1.0.0']] as const) {
+    for (const [a, b] of [
+      ['1.0', '1.0.0'],
+      ['1.0rc1', '1.0-rc.1'],
+      ['1.0.post1', '1.0-1'],
+      ['1.0a1', '1.0alpha1'],
+      ['v1.0', '1.0'],
+      ['1!1.0', '1!1.0.0'],
+    ] as const) {
       expect(comparePep(parsePepVersion(a)!, parsePepVersion(b)!), `${a} vs ${b}`).toBe(0);
     }
   });
@@ -173,9 +257,18 @@ describe('R2.13 PEP 440 resolution', () => {
 describe('R2.13 version in use', () => {
   it('R2.13 the lockfile version always wins', () => {
     fc.assert(
-      fc.property(fc.string(), fc.string({ minLength: 1 }), fc.array(fc.string()), fc.constantFrom('npm', 'pypi'), (spec, resolved, available, ecosystem) => {
-        expect(resolveVersionInUse({ ecosystem, spec, resolved }, available, '9.9.9')).toEqual({ version: resolved, how: 'lockfile' });
-      }),
+      fc.property(
+        fc.string(),
+        fc.string({ minLength: 1 }),
+        fc.array(fc.string()),
+        fc.constantFrom('npm', 'pypi'),
+        (spec, resolved, available, ecosystem) => {
+          expect(resolveVersionInUse({ ecosystem, spec, resolved }, available, '9.9.9')).toEqual({
+            version: resolved,
+            how: 'lockfile',
+          });
+        },
+      ),
     );
   });
 
@@ -185,7 +278,11 @@ describe('R2.13 version in use', () => {
         const available = list.map(text);
         const latest = text([...list].sort(cmp).pop() as Triple);
         const spec = `${op}${text(v)}`;
-        const got = resolveVersionInUse({ ecosystem: 'npm', spec, resolved: undefined }, available, latest);
+        const got = resolveVersionInUse(
+          { ecosystem: 'npm', spec, resolved: undefined },
+          available,
+          latest,
+        );
         expect(got).toBeDefined();
         if (got?.how === 'range') {
           expect(satisfies(parseVersion(got.version)!, parseRange(spec)!)).toBe(true);
@@ -200,10 +297,18 @@ describe('R2.13 version in use', () => {
   });
 
   it('R2.13 an npm alias is resolved by its range', () => {
-    expect(resolveVersionInUse({ ecosystem: 'npm', spec: 'npm:left-pad@^1.0.0', resolved: undefined }, ['1.0.0', '1.3.0', '2.0.0'], '2.0.0')).toEqual({ version: '1.3.0', how: 'range' });
+    expect(
+      resolveVersionInUse(
+        { ecosystem: 'npm', spec: 'npm:left-pad@^1.0.0', resolved: undefined },
+        ['1.0.0', '1.3.0', '2.0.0'],
+        '2.0.0',
+      ),
+    ).toEqual({ version: '1.3.0', how: 'range' });
   });
 
   it('R2.13 an exact PyPI pin that the release list lacks is still used', () => {
-    expect(resolveVersionInUse({ ecosystem: 'pypi', spec: '==2.6.1', resolved: undefined }, [], '3.0')).toEqual({ version: '2.6.1', how: 'range' });
+    expect(
+      resolveVersionInUse({ ecosystem: 'pypi', spec: '==2.6.1', resolved: undefined }, [], '3.0'),
+    ).toEqual({ version: '2.6.1', how: 'range' });
   });
 });

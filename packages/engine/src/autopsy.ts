@@ -22,10 +22,22 @@ export function mergeDependencies(all: readonly DependencyRef[]): DependencyRef[
     const locked = group.filter((d) => d.resolved !== undefined);
     const declared = group.filter((d) => d.resolved === undefined);
     const topLevel = locked.filter((d) => d.direct);
-    const target = topLevel.length === 1 ? topLevel[0] : locked.length === 1 ? locked[0] : undefined;
+    const target =
+      topLevel.length === 1 ? topLevel[0] : locked.length === 1 ? locked[0] : undefined;
     const merged = new Map<string, DependencyRef>();
     const add = (d: DependencyRef): void => {
-      merged.set(JSON.stringify([d.ecosystem, d.name, d.spec, d.resolved ?? '', d.scope, d.declaredIn, d.direct]), d);
+      merged.set(
+        JSON.stringify([
+          d.ecosystem,
+          d.name,
+          d.spec,
+          d.resolved ?? '',
+          d.scope,
+          d.declaredIn,
+          d.direct,
+        ]),
+        d,
+      );
     };
     let mergedTarget: DependencyRef | undefined = target ? { ...target } : undefined;
     for (const decl of declared) {

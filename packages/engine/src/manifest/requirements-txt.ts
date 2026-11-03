@@ -3,7 +3,8 @@ import { clip } from '../util/guards.js';
 import { emptyResult } from './common.js';
 import { parseRequirement } from './requirement.js';
 
-const DEV_PATH = /(?:^|[/_.-])(?:dev|devel|test|tests|testing|lint|linting|docs?|ci|typing|types)(?:[/_.-]|$)/i;
+const DEV_PATH =
+  /(?:^|[/_.-])(?:dev|devel|test|tests|testing|lint|linting|docs?|ci|typing|types)(?:[/_.-]|$)/i;
 
 export function scopeFromPath(path: string): DependencyRef['scope'] {
   return DEV_PATH.test(path) ? 'dev' : 'main';

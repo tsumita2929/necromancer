@@ -15,7 +15,14 @@ import { repoKey, repoUrl, type RepoRef } from './sources/repo.js';
 import { loadReplacements, type ReplacementIndex } from './sources/replacements.js';
 import type { Fetched } from './sources/result.js';
 import { findSuccessors } from './successors.js';
-import type { DependencyRef, Diagnosis, Evidence, EngineOptions, SourceId, Verdict } from './types.js';
+import type {
+  DependencyRef,
+  Diagnosis,
+  Evidence,
+  EngineOptions,
+  SourceId,
+  Verdict,
+} from './types.js';
 import { VERDICTS } from './types.js';
 import { errorMessage } from './util/guards.js';
 import { resolveVersionInUse } from './versions/resolve.js';
@@ -134,7 +141,10 @@ export class Core {
         const f = facts.get(pkgKey(dep));
         if (!f) throw new Error('missing facts');
         const version = inUse[i];
-        const advisories = version ? (osv.advisories.get(osvKey({ ecosystem: dep.ecosystem, name: dep.name, version })) ?? []) : [];
+        const advisories = version
+          ? (osv.advisories.get(osvKey({ ecosystem: dep.ecosystem, name: dep.name, version })) ??
+            [])
+          : [];
         const decision = this.verdictFor(f, version, advisories);
         if (decision.verdict !== 'alive') needsSuccessors.add(i);
         return { dep, f, version, advisories, decision };
@@ -169,10 +179,15 @@ export class Core {
               ecosystem: dep.ecosystem,
               name: dep.name,
               ...(f.deprecatedLatest
-                ? { deprecation: f.deprecatedLatest.message, deprecationSource: f.deprecatedLatest.source }
+                ? {
+                    deprecation: f.deprecatedLatest.message,
+                    deprecationSource: f.deprecatedLatest.source,
+                  }
                 : {}),
               replacements: index && dep.ecosystem === 'npm' ? index.lookup(dep.name) : [],
-              ...(this.tuning.verifySuccessors ? { verifyPackage: (n: string) => this.packageIsAlive(n) } : {}),
+              ...(this.tuning.verifySuccessors
+                ? { verifyPackage: (n: string) => this.packageIsAlive(n) }
+                : {}),
             });
           } catch (error) {
             note(run, 'module-replacements', `successor lookup failed: ${errorMessage(error)}`);
@@ -226,7 +241,10 @@ export class Core {
         ...(rel.yankedReason ? { yankedReason: rel.yankedReason } : {}),
       }));
       const latestRelease = p.releases.find((x) => x.version === p.latest);
-      facts.latest = { version: p.latest, ...(latestRelease?.date ? { date: latestRelease.date } : {}) };
+      facts.latest = {
+        version: p.latest,
+        ...(latestRelease?.date ? { date: latestRelease.date } : {}),
+      };
       facts.inactive = p.inactive;
       if (p.latestYanked) facts.latestYanked = p.yankedReason ? { reason: p.yankedReason } : {};
       if (p.repo) facts.repo = p.repo;
@@ -300,16 +318,36 @@ export class Core {
     const now = this.now();
     if (f.notFound) out.push(signals.registryNotFound(f.notFound, f.name));
     if (f.deprecatedLatest) {
-      out.push(signals.npmDeprecated(f.deprecatedLatest.message, f.deprecatedLatest.source, f.name, f.latest?.date));
+      out.push(
+        signals.npmDeprecated(
+          f.deprecatedLatest.message,
+          f.deprecatedLatest.source,
+          f.name,
+          f.latest?.date,
+        ),
+      );
     } else if (inUse) {
       const used = f.versions.find((v) => v.version === inUse);
-      if (used?.deprecated) out.push(signals.versionDeprecated(used.deprecated, inUse, f.registrySource === 'npm' ? 'deps.dev' : f.registrySource, f.name));
-      if (used?.yanked && !f.latestYanked) out.push(signals.versionYanked(f.name, inUse, used.yankedReason));
+      if (used?.deprecated)
+        out.push(
+          signals.versionDeprecated(
+            used.deprecated,
+            inUse,
+            f.registrySource === 'npm' ? 'deps.dev' : f.registrySource,
+            f.name,
+          ),
+        );
+      if (used?.yanked && !f.latestYanked)
+        out.push(signals.versionYanked(f.name, inUse, used.yankedReason));
     }
     if (f.inactive) out.push(signals.pypiInactive(f.name));
-    if (f.latestYanked && f.latest) out.push(signals.pypiYanked(f.name, f.latest.version, f.latestYanked.reason));
+    if (f.latestYanked && f.latest)
+      out.push(signals.pypiYanked(f.name, f.latest.version, f.latestYanked.reason));
     if (f.latest) {
-      const url = f.ecosystem === 'npm' ? `https://www.npmjs.com/package/${f.name}` : `https://pypi.org/project/${f.name}/`;
+      const url =
+        f.ecosystem === 'npm'
+          ? `https://www.npmjs.com/package/${f.name}`
+          : `https://pypi.org/project/${f.name}/`;
       const age = signals.releaseAge(f.latest.version, f.latest.date, now, f.registrySource, url);
       if (age) out.push(age);
     }
@@ -353,7 +391,10 @@ export class Core {
 
     // GitHub, only for packages that already look unhealthy, worst first, within the budget.
     const rank = (f: PackageFacts): number => {
-      const evidence = [...this.registryEvidence(f, versionByPackage.get(pkgKey(f))), ...this.scorecardEvidence(f)];
+      const evidence = [
+        ...this.registryEvidence(f, versionByPackage.get(pkgKey(f))),
+        ...this.scorecardEvidence(f),
+      ];
       return VERDICTS.indexOf(decide(evidence, []).verdict);
     };
     const wanted = candidates
@@ -387,7 +428,11 @@ export class Core {
     };
     await Promise.all(Array.from({ length: Math.min(GITHUB_POOL, queue.length) }, worker));
     if (skipped > 0) {
-      note(run, 'github', `GitHub budget reached (${this.tuning.githubBudget} calls per scan, limit is 60 per hour): ${skipped} ${skipped === 1 ? 'repository was' : 'repositories were'} not checked`);
+      note(
+        run,
+        'github',
+        `GitHub budget reached (${this.tuning.githubBudget} calls per scan, limit is 60 per hour): ${skipped} ${skipped === 1 ? 'repository was' : 'repositories were'} not checked`,
+      );
     }
   }
 
@@ -415,10 +460,17 @@ export class Core {
     } else if (f.github?.state === 'gone' && f.repo) {
       evidence.push(signals.repoGone(repoUrl(f.repo), f.github.reason));
     }
-    if (f.repoLookedUp && !f.repo && f.gotData) evidence.push(signals.noRepository(f.registrySource));
-    if (advisories.length > 0 && version) evidence.push(signals.advisoryEvidence(advisories, version));
+    if (f.repoLookedUp && !f.repo && f.gotData)
+      evidence.push(signals.noRepository(f.registrySource));
+    if (advisories.length > 0 && version)
+      evidence.push(signals.advisoryEvidence(advisories, version));
     if (!f.gotData && !f.notFound) {
-      evidence.push(signals.unchecked(f.registrySource, f.failures.length ? f.failures : ['no source answered']));
+      evidence.push(
+        signals.unchecked(
+          f.registrySource,
+          f.failures.length ? f.failures : ['no source answered'],
+        ),
+      );
     }
     return decide(evidence, advisories);
   }
@@ -428,7 +480,8 @@ export class Core {
   private loadIndex(run: RunReport): Promise<ReplacementIndex> {
     this.replacements ??= loadReplacements(this.http);
     return this.replacements.then((index) => {
-      for (const f of index.failures) note(run, 'module-replacements', `${f.manifest}: ${f.reason}`);
+      for (const f of index.failures)
+        note(run, 'module-replacements', `${f.manifest}: ${f.reason}`);
       return index;
     });
   }

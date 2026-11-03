@@ -6,7 +6,10 @@ import { fixtureFetch, loadProject, recordedAt } from './helpers/fixture-fetch.j
 async function scan(project: string) {
   const fetch = fixtureFetch();
   const engine = createEngine({ fetch, now: () => recordedAt }, { sleep: async () => {} });
-  const report = await engine.autopsy({ subject: `fixture:${project}`, files: loadProject(project) });
+  const report = await engine.autopsy({
+    subject: `fixture:${project}`,
+    files: loadProject(project),
+  });
   return { report, fetch };
 }
 const find = (report: AutopsyReport, name: string): Diagnosis => {
@@ -28,9 +31,9 @@ describe('R8.2 acceptance fixture: request, node-sass, tslint, left-pad, moment,
       expect(deprecated, name).toBeDefined();
       expect(deprecated?.source).toBe('npm');
     }
-    expect(find(report, 'left-pad').evidence.find((e) => e.code === 'npm-deprecated')?.message).toContain(
-      'String.prototype.padStart',
-    );
+    expect(
+      find(report, 'left-pad').evidence.find((e) => e.code === 'npm-deprecated')?.message,
+    ).toContain('String.prototype.padStart');
   });
 
   it('left-pad gets the native successor String.prototype.padStart first', async () => {
@@ -41,7 +44,11 @@ describe('R8.2 acceptance fixture: request, node-sass, tslint, left-pad, moment,
 
   it('express is alive and moment is not flagged', async () => {
     const { report } = await scan('acceptance');
-    expect(find(report, 'express')).toMatchObject({ verdict: 'alive', evidence: [], successors: [] });
+    expect(find(report, 'express')).toMatchObject({
+      verdict: 'alive',
+      evidence: [],
+      successors: [],
+    });
     expect(find(report, 'moment').verdict).toBe('alive');
   });
 
@@ -62,7 +69,11 @@ describe('R8.2 acceptance fixture: request, node-sass, tslint, left-pad, moment,
     const { report } = await scan('acceptance');
     const names = report.diagnoses.map((d) => d.dependency.name);
     expect(new Set(names).size).toBe(names.length);
-    expect(find(report, 'request').dependency).toMatchObject({ spec: '^2.88.2', resolved: '2.88.2', direct: true });
+    expect(find(report, 'request').dependency).toMatchObject({
+      spec: '^2.88.2',
+      resolved: '2.88.2',
+      direct: true,
+    });
     expect(find(report, 'qs').dependency.direct).toBe(false);
   });
 

@@ -170,7 +170,8 @@ class Reader {
     const path = this.readKeyPath();
     this.skipSpaces();
     if (isArray) {
-      if (this.peek() !== ']' || this.peek(1) !== ']') this.fail('Unclosed array-of-tables header.');
+      if (this.peek() !== ']' || this.peek(1) !== ']')
+        this.fail('Unclosed array-of-tables header.');
       this.pos += 2;
       const parent = this.descend(this.root, path.slice(0, -1));
       const last = path[path.length - 1] ?? '';
@@ -231,14 +232,16 @@ class Reader {
     }
     if (token === 'true') return true;
     if (token === 'false') return false;
-    if (/^[+-]?(inf|nan)$/.test(token)) return Number(token.replace('nan', 'NaN').replace('inf', 'Infinity'));
+    if (/^[+-]?(inf|nan)$/.test(token))
+      return Number(token.replace('nan', 'NaN').replace('inf', 'Infinity'));
     if (/^[+-]?(0x[0-9a-f_]+|0o[0-7_]+|0b[01_]+)$/i.test(token)) {
       return Number(token.replace(/_/g, '').replace(/^\+/, ''));
     }
     if (/^[+-]?\d[\d_]*(\.\d[\d_]*)?([eE][+-]?\d+)?$/.test(token)) {
       return Number(token.replace(/_/g, ''));
     }
-    if (/^\d{4}-\d\d-\d\d([Tt ]\d\d:\d\d(:\d\d(\.\d+)?)?([Zz]|[+-]\d\d:\d\d)?)?$/.test(token)) return token;
+    if (/^\d{4}-\d\d-\d\d([Tt ]\d\d:\d\d(:\d\d(\.\d+)?)?([Zz]|[+-]\d\d:\d\d)?)?$/.test(token))
+      return token;
     if (/^\d\d:\d\d(:\d\d(\.\d+)?)?$/.test(token)) return token;
     return this.fail(`Unrecognised value "${token.slice(0, 20)}".`);
   }

@@ -42,7 +42,11 @@ export function fixtureFetch(): FixtureFetch {
     const method = init?.method ?? 'GET';
     requests.push(`${method} ${url}`);
     if (method === 'POST' && url === 'https://api.osv.dev/v1/querybatch') {
-      const queries = (JSON.parse(init?.body ?? '{}') as { queries: Array<{ package: { name: string; ecosystem: string }; version: string }> }).queries;
+      const queries = (
+        JSON.parse(init?.body ?? '{}') as {
+          queries: Array<{ package: { name: string; ecosystem: string }; version: string }>;
+        }
+      ).queries;
       const results = queries.map((q) => {
         const key = `${q.package.ecosystem === 'PyPI' ? 'pypi' : 'npm'}:${q.package.name}@${q.version}`;
         const vulns = osvStore[key];
@@ -65,9 +69,20 @@ export function fixtureFetch(): FixtureFetch {
   return Object.assign(impl, { missing, requests });
 }
 
-export function loadProject(name: string): Array<{ kind: 'package.json' | 'package-lock.json' | 'requirements.txt' | 'pyproject.toml'; path: string; content: string }> {
+export function loadProject(
+  name: string,
+): Array<{
+  kind: 'package.json' | 'package-lock.json' | 'requirements.txt' | 'pyproject.toml';
+  path: string;
+  content: string;
+}> {
   const dir = join(root, 'projects', name);
-  const kinds = ['package.json', 'package-lock.json', 'requirements.txt', 'pyproject.toml'] as const;
+  const kinds = [
+    'package.json',
+    'package-lock.json',
+    'requirements.txt',
+    'pyproject.toml',
+  ] as const;
   return kinds
     .filter((k) => existsSync(join(dir, k)))
     .map((k) => ({ kind: k, path: k, content: readFileSync(join(dir, k), 'utf8') }));

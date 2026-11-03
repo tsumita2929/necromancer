@@ -4,8 +4,7 @@ import type { RepoRef } from './repo.js';
 import { badShape, fail, type Fetched } from './result.js';
 
 export type GithubRepo =
-  | { state: 'ok'; archived: boolean; pushedAt?: string }
-  | { state: 'gone'; reason: string };
+  { state: 'ok'; archived: boolean; pushedAt?: string } | { state: 'gone'; reason: string };
 
 /** `GET api.github.com/repos/{owner}/{repo}`. 404 and 451 mean the repository is gone. */
 export async function getGithubRepo(http: Http, repo: RepoRef): Promise<Fetched<GithubRepo>> {

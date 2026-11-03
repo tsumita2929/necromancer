@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Engine: run the tests when engine source changes",
+  "description": "The verdict rules are checked by property tests that cite requirement ids. Any change under packages/engine/src must keep them green.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["packages/engine/src/**/*.ts"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Engine source changed. In packages/engine run `npm run typecheck` and `npm test`. Report the 'Tests' summary line. If a property test fails, keep the counterexample it prints: fix the code or, if the requirement was wrong, change .kiro/specs/vital-signs-engine/requirements.md first and say why. Never edit a test only to make it pass."
+  }
+}

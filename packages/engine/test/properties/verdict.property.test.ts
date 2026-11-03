@@ -5,7 +5,16 @@ import { VERDICTS, type Evidence, type SourceId, type Verdict } from '../../src/
 
 const idx = (v: Verdict): number => VERDICTS.indexOf(v);
 const CODES = [...Object.keys(EVIDENCE_CLASS), 'something-new', 'x'];
-const SOURCES: SourceId[] = ['npm', 'pypi', 'deps.dev', 'osv', 'scorecard', 'github', 'module-replacements', 'curated'];
+const SOURCES: SourceId[] = [
+  'npm',
+  'pypi',
+  'deps.dev',
+  'osv',
+  'scorecard',
+  'github',
+  'module-replacements',
+  'curated',
+];
 
 const evidence: fc.Arbitrary<Evidence> = fc.record({
   code: fc.constantFrom(...CODES),
@@ -31,7 +40,9 @@ describe('R2.2 monotonic verdict', () => {
   it('R2.2 adding an advisory never moves the verdict to an earlier entry', () => {
     fc.assert(
       fc.property(evidenceList, advisoryList, fc.string({ minLength: 1 }), (base, adv, id) => {
-        expect(idx(decide(base, [...adv, id]).verdict)).toBeGreaterThanOrEqual(idx(decide(base, adv).verdict));
+        expect(idx(decide(base, [...adv, id]).verdict)).toBeGreaterThanOrEqual(
+          idx(decide(base, adv).verdict),
+        );
       }),
       { numRuns: 1000 },
     );
@@ -40,7 +51,9 @@ describe('R2.2 monotonic verdict', () => {
   it('R2.2 every superset of the evidence is at least as severe as the subset', () => {
     fc.assert(
       fc.property(evidenceList, evidenceList, advisoryList, (a, b, adv) => {
-        expect(idx(decide([...a, ...b], adv).verdict)).toBeGreaterThanOrEqual(idx(decide(a, adv).verdict));
+        expect(idx(decide([...a, ...b], adv).verdict)).toBeGreaterThanOrEqual(
+          idx(decide(a, adv).verdict),
+        );
       }),
       { numRuns: 1500 },
     );
@@ -84,7 +97,8 @@ describe('R2.3 evidence accompanies every non-alive verdict', () => {
     fc.assert(
       fc.property(evidenceList, advisoryList, (list, adv) => {
         const d = decide(list, adv);
-        if (idx(d.verdict) >= idx('dead')) expect(['gone', 'strong', 'derived']).toContain(classOf(d.evidence[0]?.code ?? ''));
+        if (idx(d.verdict) >= idx('dead'))
+          expect(['gone', 'strong', 'derived']).toContain(classOf(d.evidence[0]?.code ?? ''));
       }),
       { numRuns: 1500 },
     );
@@ -102,13 +116,22 @@ describe('R2.3 evidence accompanies every non-alive verdict', () => {
 });
 
 describe('R2.4 zombie if and only if dead-class with an advisory', () => {
-  const deadCodes = ['npm-deprecated', 'repo-archived', 'pypi-inactive', 'pypi-yanked', 'registry-not-found', 'repo-gone', 'abandoned'];
+  const deadCodes = [
+    'npm-deprecated',
+    'repo-archived',
+    'pypi-inactive',
+    'pypi-yanked',
+    'registry-not-found',
+    'repo-gone',
+    'abandoned',
+  ];
   it('R2.4 zombie exactly when a death signal and an advisory are both present', () => {
     fc.assert(
       fc.property(evidenceList, advisoryList, (list, adv) => {
         const d = decide(list, adv);
         const codes = new Set(list.map((e) => e.code));
-        const corroborated = codes.has('no-release-long') && CORROBORATION.some((c) => codes.has(c));
+        const corroborated =
+          codes.has('no-release-long') && CORROBORATION.some((c) => codes.has(c));
         const dead = deadCodes.some((c) => codes.has(c)) || corroborated;
         const advisory = adv.length > 0 || codes.has('osv-advisory');
         expect(d.verdict === 'zombie').toBe(dead && advisory);
@@ -118,20 +141,39 @@ describe('R2.4 zombie if and only if dead-class with an advisory', () => {
   });
   it('R2.4 an advisory with no death signal never makes a zombie', () => {
     fc.assert(
-      fc.property(fc.array(fc.constantFrom('no-release', 'low-maintenance', 'repo-inactive', 'no-repository', 'version-deprecated', 'osv-advisory', 'unchecked'), { maxLength: 6 }), advisoryList, (codes, adv) => {
-        expect(decide(codes.map(ev), adv).verdict).not.toBe('zombie');
-        expect(idx(decide(codes.map(ev), adv).verdict)).toBeLessThanOrEqual(idx('dying'));
-      }),
+      fc.property(
+        fc.array(
+          fc.constantFrom(
+            'no-release',
+            'low-maintenance',
+            'repo-inactive',
+            'no-repository',
+            'version-deprecated',
+            'osv-advisory',
+            'unchecked',
+          ),
+          { maxLength: 6 },
+        ),
+        advisoryList,
+        (codes, adv) => {
+          expect(decide(codes.map(ev), adv).verdict).not.toBe('zombie');
+          expect(idx(decide(codes.map(ev), adv).verdict)).toBeLessThanOrEqual(idx('dying'));
+        },
+      ),
     );
   });
 });
 
 describe('R2.1 to R2.12 rule table', () => {
   const v = (codes: string[], adv: string[] = []) => decide(codes.map(ev), adv).verdict;
-  it('R2.5 deprecated latest release is at least dead', () => expect(v(['npm-deprecated'])).toBe('dead'));
-  it('R2.6 an archived repository is at least dead', () => expect(v(['repo-archived'])).toBe('dead'));
-  it('R2.7 the PyPI Inactive classifier is at least dead', () => expect(v(['pypi-inactive'])).toBe('dead'));
-  it('R2.8 a yanked latest release is at least dead', () => expect(v(['pypi-yanked'])).toBe('dead'));
+  it('R2.5 deprecated latest release is at least dead', () =>
+    expect(v(['npm-deprecated'])).toBe('dead'));
+  it('R2.6 an archived repository is at least dead', () =>
+    expect(v(['repo-archived'])).toBe('dead'));
+  it('R2.7 the PyPI Inactive classifier is at least dead', () =>
+    expect(v(['pypi-inactive'])).toBe('dead'));
+  it('R2.8 a yanked latest release is at least dead', () =>
+    expect(v(['pypi-yanked'])).toBe('dead'));
   it('R2.9 a 2-year-old release is dying, a 5-year-old release alone is dying', () => {
     expect(v(['no-release'])).toBe('dying');
     expect(v(['no-release-long'])).toBe('dying');
