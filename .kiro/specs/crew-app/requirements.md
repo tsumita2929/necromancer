@@ -135,7 +135,7 @@ dependency on a local branch, so that I review a diff instead of doing the work.
    the new implementation on the same generated inputs and fails on any difference,
    over the API surface the project uses.
 4. THE agent SHALL perform the migration task by task, run the project's tests, and
-   commit on a new local branch named `necromancer/<dependency>`.
+   commit on a new local branch named `resurrect/<dependency>`.
 5. THE agent SHALL NEVER push, add a remote, change git configuration, or touch a
    branch other than the one it created.
 6. IF the working tree has uncommitted changes THEN the agent SHALL stop and ask.
