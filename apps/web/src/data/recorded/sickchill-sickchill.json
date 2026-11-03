@@ -1,0 +1,2557 @@
+{
+  "subject": "github:SickChill/sickchill",
+  "scannedAt": "2026-11-03T14:14:44.192Z",
+  "manifests": [
+    {
+      "kind": "package.json",
+      "path": "package.json"
+    },
+    {
+      "kind": "pyproject.toml",
+      "path": "pyproject.toml"
+    }
+  ],
+  "diagnoses": [
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "appdirs",
+        "spec": ">=1.4.4",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.4.4) is 6.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2020-05-11"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.4.4) is 6.5 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/appdirs/",
+          "date": "2020-05-11"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.4.4",
+        "date": "2020-05-11T07:59:49.499913Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "browser-env",
+        "spec": "^3.3.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (3.3.0) is 7.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2019-11-05"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (3.3.0) is 7.0 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/browser-env",
+          "date": "2019-11-05"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.3.0",
+        "date": "2019-11-05T14:52:00Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "gntp",
+        "spec": ">=1.0.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.0.3) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2016-03-06"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.3) is 10 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/gntp/",
+          "date": "2016-03-06"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0.3",
+        "date": "2016-03-06T22:48:31.506473Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "grunt-contrib-copy",
+        "spec": "^1.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.0.0) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2016-03-04"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.0) is 10 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/grunt-contrib-copy",
+          "date": "2016-03-04"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0.0",
+        "date": "2016-03-04T20:52:10Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "grunt-exec",
+        "spec": "^3.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (3.0.0) is 9.3 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2017-07-27"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (3.0.0) is 9.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/grunt-exec",
+          "date": "2017-07-27"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.0.0",
+        "date": "2017-07-27T15:54:02Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "html5lib",
+        "spec": ">=1.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.1) is 6.4 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2020-06-22"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.1) is 6.4 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/html5lib/",
+          "date": "2020-06-22"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.1",
+        "date": "2020-06-22T23:32:36.781398Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "load-grunt-tasks",
+        "spec": "^5.1.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (5.1.0) is 7.3 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2019-07-31"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (5.1.0) is 7.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/load-grunt-tasks",
+          "date": "2019-07-31"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.1.0",
+        "date": "2019-07-31T15:23:28Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "po2json",
+        "spec": ">=0.2.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (0.2.2) is 7.6 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2019-03-13"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (0.2.2) is 7.6 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/po2json/",
+          "date": "2019-03-13"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.2.2",
+        "date": "2019-03-13T16:10:21.688530Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pyaes",
+        "spec": ">=1.6.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.6.1) is 9.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2017-09-20"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.6.1) is 9.1 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/pyaes/",
+          "date": "2017-09-20"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.6.1",
+        "date": "2017-09-20T21:17:54.230245Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pynma",
+        "spec": ">=1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.0) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2016-01-10"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0) is 10 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/pynma/",
+          "date": "2016-01-10"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0",
+        "date": "2016-01-10T05:03:34.031055Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "python-twitter",
+        "spec": ">=3.5",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (3.5) is 8.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2018-11-03"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (3.5) is 8.0 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/python-twitter/",
+          "date": "2018-11-03"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.5",
+        "date": "2018-11-03T12:32:06.177910Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "python3-fanart",
+        "spec": ">=2.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (2.0.0) is 7.6 years old and nothing shows it is still looked after (no source repository).",
+          "source": "pypi",
+          "date": "2019-03-12"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (2.0.0) is 7.6 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/python3-fanart/",
+          "date": "2019-03-12"
+        },
+        {
+          "code": "no-repository",
+          "message": "No source repository is linked, so nobody can review or fix the code in the open.",
+          "source": "pypi"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.0.0",
+        "date": "2019-03-12T10:05:50.017010Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "win-inet-pton",
+        "spec": ">=1.1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.1.0) is 7.7 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2019-02-19"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.1.0) is 7.7 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/win-inet-pton/",
+          "date": "2019-02-19"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.1.0",
+        "date": "2019-02-19T17:46:22.182794Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@popperjs/core",
+        "spec": "^2.11.8",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (2.11.8) is 3.4 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/@popperjs/core",
+          "date": "2023-05-26"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.11.8",
+        "date": "2023-05-26T17:27:25Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "babelfish",
+        "spec": ">=0.6.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.6.1) is 2.5 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/babelfish/",
+          "date": "2024-05-09"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.6.1",
+        "date": "2024-05-09T21:16:22.633604Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "beekeeper-alt",
+        "spec": ">=2022.9.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (2022.9.3) is 4.2 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/beekeeper-alt/",
+          "date": "2022-09-03"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2022.9.3",
+        "date": "2022-09-03T07:20:46.495650Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "bower",
+        "spec": "^1.8.14",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.8.14) is 4.6 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/bower",
+          "date": "2022-03-14"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [
+        {
+          "name": "npm",
+          "kind": "package",
+          "reason": "Bower recommends moving to npm or yarn.",
+          "ecosystem": "npm",
+          "source": "curated"
+        }
+      ],
+      "latest": {
+        "version": "1.8.14",
+        "date": "2022-03-14T15:41:33Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "configobj",
+        "spec": ">=5.0.9",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (5.0.9) is 2.1 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/configobj/",
+          "date": "2024-09-21"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.0.9",
+        "date": "2024-09-21T12:47:46.315473Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "deluge-client",
+        "spec": ">=1.10.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.10.2) is 2.7 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/deluge-client/",
+          "date": "2024-02-17"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.10.2",
+        "date": "2024-02-17T15:15:38.561093Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "enzyme",
+        "spec": ">=0.5.2,<0.6.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.5.2) is 2.4 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/enzyme/",
+          "date": "2024-06-25"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.5.2",
+        "date": "2024-06-25T21:35:04.705504Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-sqlalchemy",
+        "spec": ">=3.1.1,<4.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (3.1.1) is 3.1 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/flask-sqlalchemy/",
+          "date": "2023-09-11"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.1.1",
+        "date": "2023-09-11T21:42:34.514878Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "grunt-bower-task",
+        "spec": "^0.6.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.6.2) is 4.5 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/grunt-bower-task",
+          "date": "2022-04-27"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.6.2",
+        "date": "2022-04-27T15:04:20Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "grunt-cli",
+        "spec": "^1.4.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.5.0) is 2.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/grunt-cli",
+          "date": "2024-07-20"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.5.0",
+        "date": "2024-07-20T19:21:20Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "grunt-contrib-clean",
+        "spec": "^2.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (2.0.1) is 4.6 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/grunt-contrib-clean",
+          "date": "2022-04-16"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.0.1",
+        "date": "2022-04-16T01:13:08Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "grunt-contrib-cssmin",
+        "spec": "^5.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (5.0.0) is 3.5 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/grunt-contrib-cssmin",
+          "date": "2023-04-30"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.0.0",
+        "date": "2023-04-30T21:24:27Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "grunt-contrib-uglify",
+        "spec": "^5.2.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (5.2.2) is 4.4 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/grunt-contrib-uglify",
+          "date": "2022-06-21"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.2.2",
+        "date": "2022-06-21T11:57:10Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "ifaddr",
+        "spec": ">=0.2.0,<0.3.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.2.0) is 4.4 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/ifaddr/",
+          "date": "2022-06-15"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.2.0",
+        "date": "2022-06-15T21:40:25.756202Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "js2py",
+        "spec": ">=0.74,<0.75",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.74) is 4.0 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/js2py/",
+          "date": "2022-11-06"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "2 known advisories affect version 0.74: GHSA-h95x-26f3-88hr, PYSEC-2026-1476.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-h95x-26f3-88hr"
+        }
+      ],
+      "advisories": [
+        "GHSA-h95x-26f3-88hr",
+        "PYSEC-2026-1476"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "0.74",
+        "date": "2022-11-06T10:43:50.988014Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "kodipydent-alt",
+        "spec": ">=2022.9.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (2022.9.3) is 4.2 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/kodipydent-alt/",
+          "date": "2022-09-03"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2022.9.3",
+        "date": "2022-09-03T07:27:50.989106Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "mock",
+        "spec": ">=5.2.0,<6.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [
+        {
+          "name": "unittest.mock",
+          "kind": "native",
+          "reason": "The mock library lives in the standard library since Python 3.3.",
+          "ecosystem": "pypi",
+          "source": "curated"
+        }
+      ],
+      "latest": {
+        "version": "5.2.0",
+        "date": "2025-03-03T12:31:41.518128Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "new-rtorrent-python",
+        "spec": ">=1.0.1-alpha.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.1a0) is 6.2 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/new-rtorrent-python/",
+          "date": "2020-09-07"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0.1a0",
+        "date": "2020-09-07T18:55:37.776081Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "profilehooks",
+        "spec": ">=1.13.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.13.0) is 2.1 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/profilehooks/",
+          "date": "2024-10-09"
+        },
+        {
+          "code": "no-repository",
+          "message": "No source repository is linked, so nobody can review or fix the code in the open.",
+          "source": "pypi"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.13.0",
+        "date": "2024-10-09T13:20:21.445462Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "putio-py",
+        "spec": ">=8.8.0,<9.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.8.0",
+        "date": "2025-02-26T12:12:25.211875Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pymediainfo",
+        "spec": ">=7.0.1,<8.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.0.1",
+        "date": "2025-02-12T14:33:10.543992Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pytest-timeout",
+        "spec": ">=2.4.0,<3.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "version-yanked",
+          "message": "The version in use (2.5.0) is yanked on PyPI: \"accidental breaking change (probably)\".",
+          "source": "pypi",
+          "url": "https://pypi.org/project/pytest-timeout/2.5.0/"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.4.0",
+        "date": "2025-05-05T19:44:33.502941Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "stylelint-config-idiomatic-order",
+        "spec": "^10.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (10.0.0) is 2.9 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/stylelint-config-idiomatic-order",
+          "date": "2023-12-09"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "10.0.0",
+        "date": "2023-12-09T11:15:33Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "timeago",
+        "spec": ">=1.0.16",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.0.16) is 4.2 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/timeago/",
+          "date": "2022-08-18"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0.16",
+        "date": "2022-08-18T21:54:38.399256Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-attrs",
+        "spec": ">=19.1.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release-long",
+          "message": "The latest release (19.1.0) is 5.4 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/types-attrs/",
+          "date": "2021-06-06"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "19.1.0",
+        "date": "2021-06-06T15:28:56.120613Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-chardet",
+        "spec": ">=5.0.4.6",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (5.0.4.6) is 3.5 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/types-chardet/",
+          "date": "2023-05-10"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.0.4.6",
+        "date": "2023-05-10T15:22:19.797037Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-pyopenssl",
+        "spec": ">=24.1.0.20240722,<26.3.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (24.1.0.20240722) is 2.3 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/types-pyopenssl/",
+          "date": "2024-07-22"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "24.1.0.20240722",
+        "date": "2024-07-22T02:32:21.232158Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-python-slugify",
+        "spec": ">=8.0.2.20240310,<9.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (8.0.2.20240310) is 2.7 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/types-python-slugify/",
+          "date": "2024-03-10"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.0.2.20240310",
+        "date": "2024-03-10T02:19:02.575490Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/core",
+        "spec": "^7.29.7",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.1.0",
+        "date": "2026-11-02T12:07:55Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/preset-env",
+        "spec": "^7.29.7",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.0.7",
+        "date": "2026-10-07T09:59:22Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "ava",
+        "spec": "^8.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.3.0",
+        "date": "2026-10-31T20:25:03Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "babel",
+        "spec": ">=2.18.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.18.0",
+        "date": "2026-02-01T12:30:53.445172Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "babel-loader",
+        "spec": "^10.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "10.1.1",
+        "date": "2026-03-09T17:58:03Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "beautifulsoup4",
+        "spec": ">=4.15.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.15.0",
+        "date": "2026-06-07T16:44:20.453113Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "bencode-py",
+        "spec": ">=4.1.0,<5.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.1.0",
+        "date": "2026-07-07T10:06:17.660502Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "bootstrap",
+        "spec": "^5.3.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.3.8",
+        "date": "2025-08-26T14:39:00Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "cachecontrol",
+        "spec": ">=0.14.4,<0.15.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.14.4",
+        "date": "2025-11-14T04:32:11.733599Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "coveralls",
+        "spec": ">=4.1.0,<5.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.1.0",
+        "date": "2026-02-28T15:16:46.181621Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "css-loader",
+        "spec": "^7.1.5",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.1.5",
+        "date": "2026-08-28T12:13:52Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint",
+        "spec": "^10.11.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "10.14.0",
+        "date": "2026-10-30T14:12:27Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask",
+        "spec": ">=3.1.3,<4.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.1.3",
+        "date": "2026-02-19T05:00:56.027585Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "globals",
+        "spec": "^17.13.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "17.14.0",
+        "date": "2026-11-01T11:01:01Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "greenlet",
+        "spec": ">=3.0.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.5.6",
+        "date": "2026-09-14T14:21:31.962676Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "grunt",
+        "spec": "^1.6.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.6.3",
+        "date": "2026-07-28T12:57:23Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "guessit",
+        "spec": ">=4.4.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.4.0",
+        "date": "2026-07-31T22:39:28.126411Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "imagesize",
+        "spec": ">=1.5.0,<2.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.0.1",
+        "date": "2026-08-24T12:35:12.548956Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "imdbpie",
+        "spec": ">=5.7.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.7.1",
+        "date": "2026-07-06T16:18:35.683849Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "jquery",
+        "spec": "^3.7.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.0.0",
+        "date": "2026-01-18T00:28:13Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "jsonrpclib-pelix",
+        "spec": ">=1.2.0,<1.3.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.2.0",
+        "date": "2026-08-11T18:36:12.280988Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "lxml",
+        "spec": ">=6.1.3,<7.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "6.1.3",
+        "date": "2026-09-02T14:46:05.131728Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "mako",
+        "spec": ">=1.4.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.4.3",
+        "date": "2026-09-22T20:54:31.509149Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "markdown2",
+        "spec": ">=2.5.5",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.5.5",
+        "date": "2026-03-02T20:46:52.032236Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "mini-css-extract-plugin",
+        "spec": "^2.8.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.10.2",
+        "date": "2026-03-26T12:29:35Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "packaging",
+        "spec": ">=26.3,<27.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "26.3",
+        "date": "2026-08-04T18:15:27.159957Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "poethepoet",
+        "spec": ">=0.48.0,<0.49",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.49.0",
+        "date": "2026-10-15T06:08:55.332899Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pre-commit",
+        "spec": ">=4.6.2,<5.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.7.0",
+        "date": "2026-10-12T20:45:38.858255Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pyopenssl",
+        "spec": ">=20.0.1,<26.4.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "26.4.0",
+        "date": "2026-08-01T19:50:48.940195Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pytest",
+        "spec": ">=9.1.1,<10.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "9.2.0",
+        "date": "2026-10-27T21:30:19.131148Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pytest-cov",
+        "spec": ">=3,<8",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.1.0",
+        "date": "2026-03-21T20:11:14.438324Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "python-dateutil",
+        "spec": ">=2.9.0.post0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.0.0",
+        "date": "2026-11-01T07:02:40.797470Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "python-slugify",
+        "spec": ">=9.1.2,<10.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "9.1.3",
+        "date": "2026-10-07T01:06:18.891997Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "qbittorrent-api",
+        "spec": ">=2026.8.1,<2027.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2026.10.1",
+        "date": "2026-10-21T05:49:59.167845Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "rarfile",
+        "spec": ">=4.5",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.5",
+        "date": "2026-08-02T20:45:52.212872Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "requests",
+        "spec": ">=2.34.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.34.2",
+        "date": "2026-05-14T19:25:26.443000Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "ruff",
+        "spec": ">=0.16.10,<1.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.17.3",
+        "date": "2026-10-27T00:33:29.822177Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "sass",
+        "spec": "^1.105.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.107.1",
+        "date": "2026-10-30T22:01:15Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "sass-loader",
+        "spec": "^17.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "17.1.0",
+        "date": "2026-10-27T17:03:24Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "send2trash",
+        "spec": ">=2.1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.1.0",
+        "date": "2026-01-14T06:27:35.218466Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "snyk",
+        "spec": "^1.1307.4",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.1308.3",
+        "date": "2026-10-23T10:51:46Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "sqlalchemy",
+        "spec": ">=2.0.54,<3.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.1.6",
+        "date": "2026-10-21T16:25:06.497882Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "stevedore",
+        "spec": ">=5.1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.9.1",
+        "date": "2026-08-20T15:25:13.602455Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "stylelint",
+        "spec": "^16.2.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "18.0.0",
+        "date": "2026-11-03T12:45:50Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "subliminal",
+        "spec": ">=2.6.0,<2.7.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.8.0",
+        "date": "2026-10-13T22:42:01.504969Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "tmdbsimple",
+        "spec": ">=2.9.8",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.9.8",
+        "date": "2026-07-30T05:22:22.118145Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "toml",
+        "spec": "^5.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.0.1",
+        "date": "2026-10-12T23:01:48Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "tornado",
+        "spec": ">=6.5.10",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "6.6",
+        "date": "2026-10-21T15:30:05.528285Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "tus-py",
+        "spec": ">=1.3.4,<2.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.4.0",
+        "date": "2026-10-31T18:57:32.887526Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-python-dateutil",
+        "spec": ">=2.9.0.20260807",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.9.0.20261029",
+        "date": "2026-10-29T07:44:21.529542Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-pytz",
+        "spec": ">=2026.4.0.20260926,<2027.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2026.6.0.20261031",
+        "date": "2026-10-31T07:39:12.391218Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-requests",
+        "spec": ">=2.33.0.20260906",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.33.0.20261030",
+        "date": "2026-10-30T07:50:38.247855Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-setuptools",
+        "spec": ">=84.0.0.20260812",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "84.0.0.20261006",
+        "date": "2026-10-06T08:15:26.289512Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "types-six",
+        "spec": ">=1.17.0.20260724",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.17.0.20261008",
+        "date": "2026-10-08T08:06:41.575772Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "typescript",
+        "spec": "^7.0.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.0.2",
+        "date": "2026-07-08T15:55:18Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "unidecode",
+        "spec": ">=1.4.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "no-repository",
+          "message": "No source repository is linked, so nobody can review or fix the code in the open.",
+          "source": "pypi"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.4.0",
+        "date": "2025-04-24T08:45:01.609169Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "urllib3",
+        "spec": "<3.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.8.0",
+        "date": "2026-09-15T19:29:34.577402Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "validators",
+        "spec": ">=0.30.0,<0.36.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.36.0",
+        "date": "2026-10-11T11:01:30.269487Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "virtualenv",
+        "spec": ">=21.14.5",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "pyproject.toml"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "21.15.2",
+        "date": "2026-10-30T19:18:01.134751Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "webpack",
+        "spec": "^5.111.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.112.2",
+        "date": "2026-10-23T12:18:11Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "webpack-cli",
+        "spec": "^7.2.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.3.1",
+        "date": "2026-10-30T19:33:42Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "webpack-dev-server",
+        "spec": "^6.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "6.1.0",
+        "date": "2026-10-18T22:09:21Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "workbox-webpack-plugin",
+        "spec": "^7.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.4.1",
+        "date": "2026-05-04T20:21:45Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "xo",
+        "spec": "^5.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.0.1",
+        "date": "2026-09-18T12:09:51Z"
+      }
+    }
+  ],
+  "problems": [
+    {
+      "path": "package.json",
+      "message": "Skipped \"grunt-bower-concat\": its source is a git source (\"git+https://github.com/miigotu/grunt-bower-concat.git\"), which is not checked against a registry."
+    },
+    {
+      "path": "package.json",
+      "message": "Skipped \"grunt-po2json\": its source is a git source (\"git+https://github.com/rockykitamura/grunt-po2json.git\"), which is not checked against a registry."
+    }
+  ],
+  "unavailable": [
+    {
+      "source": "github",
+      "reason": "GitHub budget reached (0 calls per scan, limit is 60 per hour): 39 repositories were not checked"
+    }
+  ],
+  "summary": {
+    "alive": 64,
+    "dying": 28,
+    "dead": 13,
+    "ghost": 0,
+    "zombie": 0
+  }
+}

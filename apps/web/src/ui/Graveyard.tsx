@@ -4,7 +4,17 @@ import { Button, Callout, plural, useAnnounce, formatDate } from '../design/cont
 import { LinkIcon, SearchIcon } from '../design/icons';
 import { VERDICT_META } from '../design/Verdict';
 import { VerdictIcon } from '../design/icons';
-import { ENGINE_MODE, SAMPLES, runAutopsy } from '../data/autopsy';
+import {
+  AutopsyError,
+  SAMPLES,
+  STAGES,
+  isAbort,
+  runAutopsy,
+  type Note,
+  type Progress,
+  type SampleMeta,
+} from '../data/autopsy';
+import { emptyProgress } from '../data/net';
 import {
   GROUP_ORDER,
   SORT_KEYS,
@@ -16,7 +26,7 @@ import {
   type Controls,
   type SortKey,
 } from '../state/model';
-import { MAX_SHARE_PAYLOAD, formatSource, type Route, type ViewState } from '../state/url';
+import { MAX_SHARE_PAYLOAD, defaultView, formatSource, type Route, type ViewState } from '../state/url';
 import { DetailPanel, SOURCE_NAMES } from './DetailPanel';
 import { Tombstone } from './Tombstone';
 
@@ -27,48 +37,72 @@ interface GraveyardProps {
 
 type Load =
   | { status: 'loading' }
-  | { status: 'ready'; report: AutopsyReport }
-  | { status: 'error'; message: string };
+  | { status: 'ready'; report: AutopsyReport; notes: Note[] }
+  | { status: 'error'; message: string; hint: string; code: string };
 
 export function subjectLabel(subject: string): string {
   const colon = subject.indexOf(':');
   if (colon < 0) return subject;
   const kind = subject.slice(0, colon);
   const rest = subject.slice(colon + 1);
-  if (kind === 'sample') return SAMPLES.find((sample) => sample.id === rest)?.title ?? rest;
   if (kind === 'github') return rest;
   if (kind === 'upload') return `Upload: ${rest}`;
   return subject;
 }
 
 function sourceLabel(source: ViewState['source']): string {
-  if (source.kind === 'sample') return SAMPLES.find((sample) => sample.id === source.id)?.title ?? source.id;
-  if (source.kind === 'repo') return `${source.owner}/${source.name}`;
+  if (source.kind === 'sample') return SAMPLES.find((sample) => sample.id === source.id)?.repository ?? source.id;
+  if (source.kind === 'repo') return `${source.owner}/${source.name}${source.ref !== undefined ? ` (${source.ref})` : ''}`;
   return 'your files';
+}
+
+function sampleOf(source: ViewState['source']): SampleMeta | undefined {
+  return source.kind === 'sample' ? SAMPLES.find((sample) => sample.id === source.id) : undefined;
 }
 
 export function Graveyard({ view, navigate }: GraveyardProps) {
   const announce = useAnnounce();
   const [load, setLoad] = useState<Load>({ status: 'loading' });
+  const [progress, setProgress] = useState<Progress>(emptyProgress);
+  const [attempt, setAttempt] = useState(0);
+  const cancel = useRef<AbortController | null>(null);
   const sourceKey = formatSource(view.source);
   const source = useMemo(() => view.source, [sourceKey]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const controller = new AbortController();
+    cancel.current = controller;
+    const notes: Note[] = [];
     setLoad({ status: 'loading' });
-    runAutopsy(source, { signal: controller.signal }).then(
+    setProgress(emptyProgress());
+    runAutopsy(source, {
+      signal: controller.signal,
+      onProgress: (next) => {
+        if (!controller.signal.aborted) setProgress(next);
+      },
+      onNote: (note) => notes.push(note),
+    }).then(
       (report) => {
         if (controller.signal.aborted) return;
-        setLoad({ status: 'ready', report });
+        setLoad({ status: 'ready', report, notes });
         announce(`Autopsy ready. ${plural(report.diagnoses.length, 'dependency', 'dependencies')} examined.`);
       },
       (error: unknown) => {
-        if (controller.signal.aborted) return;
-        setLoad({ status: 'error', message: error instanceof Error ? error.message : 'The autopsy failed.' });
+        if (controller.signal.aborted || isAbort(error)) return;
+        if (error instanceof AutopsyError) {
+          setLoad({ status: 'error', message: error.message, hint: error.hint, code: error.code });
+        } else {
+          setLoad({
+            status: 'error',
+            message: error instanceof Error ? error.message : 'The autopsy failed.',
+            hint: 'Try again, or go back and pick another project.',
+            code: 'unknown',
+          });
+        }
       },
     );
     return () => controller.abort();
-  }, [source, announce]);
+  }, [source, announce, attempt]);
 
   const update = useCallback(
     (patch: Partial<ViewState>, replace = true) => {
@@ -77,29 +111,97 @@ export function Graveyard({ view, navigate }: GraveyardProps) {
     [navigate, view],
   );
 
-  if (load.status === 'loading') return <Loading label={sourceLabel(source)} />;
+  if (load.status === 'loading') {
+    return (
+      <Loading
+        label={sourceLabel(source)}
+        live={source.kind !== 'sample'}
+        progress={progress}
+        onCancel={() => {
+          cancel.current?.abort();
+          navigate({ name: 'landing' });
+        }}
+      />
+    );
+  }
   if (load.status === 'error') {
     return (
-      <div className="page page--narrow">
+      <div className="page page--narrow" data-testid="autopsy-error" data-code={load.code}>
         <Callout kind="error" title="The autopsy could not finish" role="alert">
           <p>{load.message}</p>
+          {load.hint ? <p className="quiet">{load.hint}</p> : null}
         </Callout>
-        <p className="back">
+        <p className="back error__actions">
           <Button variant="primary" onClick={() => navigate({ name: 'landing' })}>
             Back to the start
           </Button>
+          {load.code !== 'invalid' && load.code !== 'too-large' ? (
+            <Button onClick={() => setAttempt((n) => n + 1)}>Try again</Button>
+          ) : null}
         </p>
       </div>
     );
   }
-  return <ReportView report={load.report} view={view} update={update} navigate={navigate} />;
+  return <ReportView report={load.report} notes={load.notes} view={view} update={update} navigate={navigate} />;
 }
 
-function Loading({ label }: { label: string }) {
+const STAGE_LABELS: Record<(typeof STAGES)[number], { title: string; detail: string }> = {
+  manifests: { title: 'Manifests', detail: 'Reading the project files from GitHub' },
+  registries: { title: 'Package registries', detail: 'Release dates and deprecation notices' },
+  advisories: { title: 'Advisories', detail: 'Known vulnerabilities for the versions in use' },
+  repositories: { title: 'Repository checks', detail: 'Archived or missing source, maintenance scores' },
+};
+
+function Loading({
+  label,
+  live,
+  progress,
+  onCancel,
+}: {
+  label: string;
+  live: boolean;
+  progress: Progress;
+  onCancel: () => void;
+}) {
+  const current = [...STAGES].reverse().find((stage) => progress[stage].active > 0 || progress[stage].answered + progress[stage].failed > 0);
   return (
-    <div className="page" role="status" aria-live="polite">
+    <div className="page" data-testid="loading">
+      <p className="eyebrow">Autopsy in progress</p>
       <h1 className="loading__title">Digging up {label}…</h1>
-      <p className="quiet">Reading registries, advisories and repositories.</p>
+      <p className="sr-only" role="status" aria-live="polite">
+        {current ? `${STAGE_LABELS[current].title}: ${STAGE_LABELS[current].detail}.` : 'Starting.'}
+      </p>
+      {live ? (
+        <>
+          <p className="quiet">Your browser is asking the public sources directly. Nothing goes through a server of ours.</p>
+          <ol className="stages" aria-label="Progress">
+            {STAGES.map((stage) => {
+              const count = progress[stage];
+              const started = count.active + count.answered + count.failed > 0;
+              return (
+                <li key={stage} className={`stage${count.active > 0 ? ' stage--active' : ''}${started && count.active === 0 ? ' stage--done' : ''}`} data-stage={stage}>
+                  <span className="stage__title">{STAGE_LABELS[stage].title}</span>
+                  <span className="stage__detail">{STAGE_LABELS[stage].detail}</span>
+                  <span className="stage__count">
+                    {started ? (
+                      <>
+                        {plural(count.answered, 'answer')}
+                        {count.active > 0 ? `, ${count.active} waiting` : ''}
+                        {count.failed > 0 ? `, ${count.failed} did not answer` : ''}
+                      </>
+                    ) : (
+                      'Waiting'
+                    )}
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+          <div className="loading__actions">
+            <Button onClick={onCancel}>Cancel</Button>
+          </div>
+        </>
+      ) : null}
       <ul className="tomb-grid tomb-grid--loading" aria-hidden="true">
         {Array.from({ length: 6 }, (_, index) => (
           <li key={index} className="tomb tomb--skeleton" />
@@ -114,9 +216,11 @@ export interface ReadyProps {
   view: ViewState;
   update: (patch: Partial<ViewState>, replace?: boolean) => void;
   navigate: GraveyardProps['navigate'];
+  /** Facts about the result that are not in the report (what was read, what was skipped). */
+  notes?: Note[];
 }
 
-export function ReportView({ report, view, update, navigate }: ReadyProps) {
+export function ReportView({ report, view, update, navigate, notes = [] }: ReadyProps) {
   const announce = useAnnounce();
   const controls: Controls = { verdicts: view.verdicts, q: view.q, sort: view.sort };
   const groups = useMemo(() => buildGroups(report.diagnoses, controls), [report.diagnoses, view.verdicts, view.q, view.sort]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -156,22 +260,37 @@ export function ReportView({ report, view, update, navigate }: ReadyProps) {
     }
   };
 
-  const isFixtureInput = ENGINE_MODE === 'fixtures' && view.source.kind !== 'sample';
+  const sample = sampleOf(view.source);
   const filesPayloadTooLong = view.source.kind === 'files' && formatSource(view.source).length > MAX_SHARE_PAYLOAD;
 
   return (
     <div className="page">
       <ReportHeader report={report} canShare={!filesPayloadTooLong} />
 
-      {isFixtureInput ? (
-        <Callout kind="info" title="Preview data" role="status">
+      {sample ? (
+        <Callout kind="info" title={`Recorded on ${formatDate(report.scannedAt)}`} role="status">
           <p>
-            This build shows sample findings while the engine is being connected. Your{' '}
-            {view.source.kind === 'repo' ? 'repository' : 'files'} {view.source.kind === 'repo' ? 'was' : 'were'} not
-            scanned yet.
+            This is the engine's report for <span className="mono">{sample.repository}</span>, saved on that day.
+            Today's answer may differ.
+          </p>
+          <p className="callout__action">
+            <Button
+              onClick={() => {
+                const [owner, name] = sample.repository.split('/');
+                if (owner && name) navigate({ name: 'graveyard', view: defaultView({ kind: 'repo', owner, name }) });
+              }}
+            >
+              Run it live now
+            </Button>
           </p>
         </Callout>
       ) : null}
+
+      {notes.map((note, index) => (
+        <Callout key={`${note.title}-${index}`} kind={note.kind} title={note.title} role="status">
+          <p>{note.text}</p>
+        </Callout>
+      ))}
 
       <PartialNotice report={report} />
 

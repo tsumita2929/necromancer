@@ -1,4 +1,4 @@
-import { useId, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react';
 import type { Diagnosis, KiroSpec } from '@contract';
 import { Button, useAnnounce } from '../design/controls';
 import { DownloadIcon } from '../design/icons';
@@ -19,6 +19,8 @@ export function kindLabel(kind: keyof typeof KIND_LABEL): string {
   return KIND_LABEL[kind];
 }
 
+type SpecState = { status: 'loading' } | { status: 'ready'; spec: KiroSpec } | { status: 'error' };
+
 interface SpecViewerProps {
   diagnosis: Diagnosis;
   successorIndex: number;
@@ -33,15 +35,32 @@ export function SpecViewer({ diagnosis, successorIndex, onChooseSuccessor, onBac
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const chosen = diagnosis.successors[successorIndex] ?? diagnosis.successors[0];
 
-  const spec: KiroSpec | null = useMemo(
-    () => (chosen ? resurrectionSpec(diagnosis, chosen) : null),
-    [diagnosis, chosen],
-  );
+  const [state, setState] = useState<SpecState>({ status: 'loading' });
 
-  if (!chosen || !spec) return null;
+  // The engine loads lazily, so the spec arrives a moment after the first press of Resurrect.
+  useEffect(() => {
+    if (!chosen) return;
+    let current = true;
+    setState({ status: 'loading' });
+    resurrectionSpec(diagnosis, chosen).then(
+      (spec) => {
+        if (current) setState({ status: 'ready', spec });
+      },
+      () => {
+        if (current) setState({ status: 'error' });
+      },
+    );
+    return () => {
+      current = false;
+    };
+  }, [diagnosis, chosen]);
+
+  if (!chosen) return null;
+  const spec: KiroSpec | null = state.status === 'ready' ? state.spec : null;
   const slug = specSlug(diagnosis, chosen);
 
   const download = () => {
+    if (!spec) return;
     const bytes = makeZip(FILES.map((name) => ({ path: `.kiro/specs/${slug}/${name}`, content: spec[name] })));
     const blob = new Blob([bytes.buffer as ArrayBuffer], { type: 'application/zip' });
     const url = URL.createObjectURL(blob);
@@ -56,6 +75,7 @@ export function SpecViewer({ diagnosis, successorIndex, onChooseSuccessor, onBac
   };
 
   const copy = async () => {
+    if (!spec) return;
     try {
       await navigator.clipboard.writeText(spec[file]);
       announce(`Copied ${file}.`);
@@ -140,17 +160,30 @@ export function SpecViewer({ diagnosis, successorIndex, onChooseSuccessor, onBac
         aria-labelledby={`${groupId}-tab-${FILES.indexOf(file)}`}
         className="spec__panel"
       >
-        <pre className="spec__text" tabIndex={0} aria-label={`Contents of ${file}`}>
-          {spec[file]}
-        </pre>
+        {spec ? (
+          <pre className="spec__text" tabIndex={0} aria-label={`Contents of ${file}`}>
+            {spec[file]}
+          </pre>
+        ) : state.status === 'error' ? (
+          <p className="spec__text spec__text--note" role="alert">
+            The engine could not be loaded, so the spec cannot be written. Go back to the evidence, reload the
+            page and try again.
+          </p>
+        ) : (
+          <p className="spec__text spec__text--note" role="status">
+            Loading the engine that writes the spec…
+          </p>
+        )}
       </div>
 
       <div className="spec__actions">
-        <Button variant="primary" onClick={download}>
+        <Button variant="primary" onClick={download} disabled={!spec}>
           <DownloadIcon className="btn__icon" />
           Download spec (.zip)
         </Button>
-        <Button onClick={() => void copy()}>Copy {file}</Button>
+        <Button onClick={() => void copy()} disabled={!spec}>
+          Copy {file}
+        </Button>
       </div>
       <p className="spec__hint">
         The zip unpacks to <span className="mono">.kiro/specs/{slug}/</span>.

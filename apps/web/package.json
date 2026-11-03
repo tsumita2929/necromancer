@@ -18,6 +18,7 @@
     "@fontsource-variable/source-sans-3": "^5.3.1",
     "@fontsource/im-fell-english": "^5.3.0",
     "@fontsource/im-fell-english-sc": "^5.3.0",
+    "@necromancer/engine": "file:../../packages/engine",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },

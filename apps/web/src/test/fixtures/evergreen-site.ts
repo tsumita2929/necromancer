@@ -3,7 +3,7 @@ import { diagnosis as d, ev, pkg, report, successor } from './build';
 
 /** A small, healthy static site: five dependencies, one of them fading. */
 export const evergreenSite: AutopsyReport = report({
-  subject: 'sample:evergreen-site',
+  subject: 'github:fixtures/evergreen-site',
   manifests: [{ kind: 'package.json', path: 'package.json' }],
   diagnoses: [
     d(pkg('react', '^19.0.0', '19.0.0'), 'alive', { latest: { version: '19.2.0', date: '2025-10-01' } }),

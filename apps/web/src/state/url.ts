@@ -66,7 +66,7 @@ export function formatSource(source: AutopsyInput): string {
     case 'sample':
       return `sample:${source.id}`;
     case 'repo':
-      return `repo:${source.owner}/${source.name}`;
+      return `repo:${source.owner}/${source.name}${source.ref !== undefined ? `@${source.ref}` : ''}`;
     case 'files':
       return `files:${encodeFiles(source.files)}`;
   }
@@ -80,7 +80,10 @@ export function parseSource(text: string | null): AutopsyInput | null {
   const rest = text.slice(colon + 1);
   if (kind === 'sample') return isSampleId(rest) ? { kind: 'sample', id: rest } : null;
   if (kind === 'repo') {
-    const repo = parseRepoInput(rest);
+    const at = rest.indexOf('@');
+    const base = at < 0 ? rest : rest.slice(0, at);
+    const ref = at < 0 ? '' : rest.slice(at + 1);
+    const repo = parseRepoInput(ref === '' ? base : `${base}/tree/${ref}`);
     return repo ? { kind: 'repo', ...repo } : null;
   }
   if (kind === 'files') {
@@ -94,7 +97,7 @@ export function parseSource(text: string | null): AutopsyInput | null {
 
 function tidy(query: string): string {
   // Keep the link readable: these characters are safe in a fragment.
-  return query.replace(/%3A/gi, ':').replace(/%2F/gi, '/').replace(/%2C/gi, ',');
+  return query.replace(/%3A/gi, ':').replace(/%2F/gi, '/').replace(/%2C/gi, ',').replace(/%40/gi, '@');
 }
 
 export function formatHash(route: Route): string {

@@ -12,7 +12,7 @@ const pySuccessor = (name: string, kind: 'package' | 'native' | 'raise', reason:
 
 /** A Python data pipeline pinned in 2017 and never revisited. Lockfile-pinned, PyPI only. */
 export const pyFossil: AutopsyReport = report({
-  subject: 'sample:py-fossil',
+  subject: 'github:fixtures/py-fossil',
   manifests: [
     { kind: 'requirements.txt', path: 'requirements.txt' },
     { kind: 'requirements.txt', path: 'requirements-dev.txt' },

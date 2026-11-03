@@ -107,7 +107,7 @@ export function buildSprawl(): AutopsyReport {
     }
   }
   return report({
-    subject: 'sample:sprawl',
+    subject: 'github:fixtures/sprawl',
     manifests: [
       { kind: 'package-lock.json', path: 'package-lock.json' },
       { kind: 'package.json', path: 'package.json' },

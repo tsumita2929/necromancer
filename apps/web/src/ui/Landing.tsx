@@ -4,7 +4,8 @@ import { Button } from '../design/controls';
 import { Candle, GraveyardScene } from '../design/Atmosphere';
 import { UploadIcon } from '../design/icons';
 import { VERDICT_META, VerdictBadge } from '../design/Verdict';
-import { SAMPLES, checkManifestFile, parseRepoInput, type SampleId } from '../data/autopsy';
+import { MAX_FILE_BYTES, SAMPLES, checkManifestFile, parseRepoInput, type SampleId } from '../data/autopsy';
+import { formatDate, plural } from '../design/controls';
 import { defaultView, type Route } from '../state/url';
 import { GROUP_ORDER } from '../state/model';
 
@@ -45,7 +46,7 @@ export function Landing({ go }: LandingProps) {
     const bad: Refusal[] = [];
     for (const file of Array.from(list)) {
       const check =
-        file.size > 2 * 1024 * 1024
+        file.size > MAX_FILE_BYTES
           ? checkManifestFile(file.name, file.size, 'x')
           : checkManifestFile(file.name, file.size, await file.text());
       if (check.ok) good.push(check.file);
@@ -108,7 +109,14 @@ export function Landing({ go }: LandingProps) {
                 <p id={errorId} className="field__error" role="alert">
                   {repoError}
                 </p>
-              ) : null}
+              ) : (
+                <p className="field__hint">
+                  Reads <span className="mono">package.json</span>, <span className="mono">package-lock.json</span>,{' '}
+                  <span className="mono">requirements.txt</span> and <span className="mono">pyproject.toml</span> from the
+                  root of the repository. Sub-folders are not read. Add <span className="mono">/tree/branch</span> for a
+                  branch.
+                </p>
+              )}
             </div>
           </form>
 
@@ -142,6 +150,11 @@ export function Landing({ go }: LandingProps) {
             />
           </div>
 
+          <p className="privacy">
+            Your files stay in your browser. Only package names and versions go to the public registries and advisory
+            services, to find out how each package is doing.
+          </p>
+
           {refusals.length > 0 ? (
             <div className="refusals" role="alert">
               <p className="refusals__title">
@@ -169,23 +182,37 @@ export function Landing({ go }: LandingProps) {
 
       <div className="page">
         <section className="band" aria-labelledby="samples-title">
-          <h2 id="samples-title">No repository at hand? Visit a sample.</h2>
+          <h2 id="samples-title">No repository at hand? Visit a real one.</h2>
+          <p className="band__note band__note--top">
+            Each sample is a public repository. The engine examined it on the day shown, and the report is kept as it
+            was.
+          </p>
           <ul className="samples">
-            {SAMPLES.map((sample) => (
-              <li key={sample.id}>
-                <button type="button" className="sample" onClick={() => openSample(sample.id)}>
-                  <span className="sample__top">
-                    <span className="tag">{sample.ecosystem === 'npm' ? 'npm' : 'PyPI'}</span>
-                    {sample.stress ? <span className="tag tag--stress">Stress test</span> : null}
-                  </span>
-                  <span className="sample__title">{sample.title}</span>
-                  <span className="sample__blurb">{sample.blurb}</span>
-                  <span className="sample__go" aria-hidden="true">
-                    Open the graveyard →
-                  </span>
-                </button>
-              </li>
-            ))}
+            {SAMPLES.map((sample) => {
+              const urgent = sample.summary.zombie + sample.summary.ghost + sample.summary.dead;
+              return (
+                <li key={sample.id}>
+                  <button type="button" className="sample" onClick={() => openSample(sample.id)}>
+                    <span className="sample__top">
+                      <span className="tag">
+                        {sample.ecosystem === 'npm' ? 'npm' : sample.ecosystem === 'pypi' ? 'PyPI' : 'npm and PyPI'}
+                      </span>
+                      <span className="tag">Recorded {formatDate(sample.recordedAt)}</span>
+                    </span>
+                    <span className="sample__title mono">{sample.repository}</span>
+                    <span className="sample__blurb">
+                      {plural(sample.total, 'dependency', 'dependencies')}.{' '}
+                      {urgent > 0
+                        ? `${sample.summary.zombie > 0 ? `${plural(sample.summary.zombie, 'zombie')}, ` : ''}${sample.summary.ghost > 0 ? `${plural(sample.summary.ghost, 'ghost')}, ` : ''}${plural(sample.summary.dead, 'dead one')}, ${sample.summary.dying} dying.`
+                        : `${sample.summary.dying} dying, ${sample.summary.alive} alive.`}
+                    </span>
+                    <span className="sample__go" aria-hidden="true">
+                      Open the graveyard →
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         </section>
 

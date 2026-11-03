@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import fc from 'fast-check';
+import { SAMPLES } from '../data/autopsy';
 import { GROUP_ORDER, SORT_KEYS } from './model';
+
+const SAMPLE = SAMPLES[0]!.id;
 import {
   decodeFiles,
   defaultView,
@@ -16,7 +19,7 @@ import {
 describe('R9 URL state', () => {
   it('round trips a rich view', () => {
     const view: ViewState = {
-      source: { kind: 'sample', id: 'revenant-api' },
+      source: { kind: 'sample', id: SAMPLE },
       verdicts: ['zombie', 'dead'],
       q: 'req uest&',
       sort: 'name',
@@ -24,6 +27,13 @@ describe('R9 URL state', () => {
       spec: 1,
     };
     expect(parseHash(formatHash({ name: 'graveyard', view }))).toEqual({ name: 'graveyard', view });
+  });
+
+  it('R6.1 a live repository link carries the branch and keeps the owner and repository case', () => {
+    const source = { kind: 'repo' as const, owner: 'ExpressJS', name: 'Express', ref: 'feature/x' };
+    const hash = formatHash({ name: 'graveyard', view: defaultView(source) });
+    expect(hash).toBe('#/graveyard?src=repo:ExpressJS/Express@feature/x');
+    expect(parseHash(hash)).toEqual({ name: 'graveyard', view: defaultView(source) });
   });
 
   it('keeps the link readable', () => {
@@ -37,9 +47,9 @@ describe('R9 URL state', () => {
   it('omits defaults and the spec index when nothing is open', () => {
     const hash = formatHash({
       name: 'graveyard',
-      view: { ...defaultView({ kind: 'sample', id: 'py-fossil' }), spec: 2 },
+      view: { ...defaultView({ kind: 'sample', id: SAMPLE }), spec: 2 },
     });
-    expect(hash).toBe('#/graveyard?src=sample:py-fossil');
+    expect(hash).toBe(`#/graveyard?src=sample:${SAMPLE}`);
   });
 
   it('R9.4 carries files through the fragment', () => {
@@ -68,10 +78,10 @@ describe('R9 URL state', () => {
   });
 
   it('ignores unknown verdicts, sorts and bad spec indexes', () => {
-    const route = parseHash('#/graveyard?src=sample:py-fossil&v=zombie,wizard,zombie&sort=chaos&open=npm:x&spec=-4');
+    const route = parseHash(`#/graveyard?src=sample:${SAMPLE}&v=zombie,wizard,zombie&sort=chaos&open=npm:x&spec=-4`);
     expect(route).toEqual({
       name: 'graveyard',
-      view: { source: { kind: 'sample', id: 'py-fossil' }, verdicts: ['zombie'], q: '', sort: 'urgency', open: 'npm:x' },
+      view: { source: { kind: 'sample', id: SAMPLE }, verdicts: ['zombie'], q: '', sort: 'urgency', open: 'npm:x' },
     });
   });
 
@@ -99,7 +109,7 @@ describe('R9 URL state', () => {
         fc.subarray([...GROUP_ORDER]),
         fc.constantFrom(...SORT_KEYS),
         (q, verdicts, sort) => {
-          const view: ViewState = { source: { kind: 'sample', id: 'sprawl' }, verdicts, q, sort };
+          const view: ViewState = { source: { kind: 'sample', id: SAMPLE }, verdicts, q, sort };
           const back = parseHash(formatHash({ name: 'graveyard', view }));
           if (back.name !== 'graveyard') return false;
           const expectedQ = q.trim() === '' ? '' : q;

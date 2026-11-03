@@ -6,7 +6,7 @@ const OSV = 'https://osv.dev/vulnerability/';
 
 /** An npm API service from the request-and-callbacks era. Has zombies, ghosts and a partial scan. */
 export const revenantApi: AutopsyReport = report({
-  subject: 'sample:revenant-api',
+  subject: 'github:fixtures/revenant-api',
   manifests: [
     { kind: 'package-lock.json', path: 'package-lock.json' },
     { kind: 'package.json', path: 'package.json' },

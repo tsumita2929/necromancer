@@ -2,7 +2,7 @@ import { cleanup, render } from '@testing-library/react';
 import fc from 'fast-check';
 import { describe, it } from 'vitest';
 import { VERDICTS, type AutopsyReport, type Diagnosis, type SourceId } from '@contract';
-import { summarize } from '../data/fixtures/build';
+import { summarize } from '../test/fixtures/build';
 import { defaultView } from '../state/url';
 import { ReportView } from './Graveyard';
 
@@ -17,7 +17,7 @@ const evidenceArb = fc.record(
     message: text(200, 1),
     source: fc.constantFrom(...SOURCES),
     url: fc.webUrl(),
-    date: fc.oneof(fc.date({ min: new Date('2000-01-01'), max: new Date('2030-01-01') }).map((d) => d.toISOString()), text(12)),
+    date: fc.oneof(fc.date({ min: new Date('2000-01-01'), max: new Date('2030-01-01'), noInvalidDate: true }).map((d) => d.toISOString()), text(12)),
   },
   { requiredKeys: ['code', 'message', 'source'] },
 );

@@ -1,0 +1,1478 @@
+{
+  "subject": "github:miguelgrinberg/microblog",
+  "scannedAt": "2026-11-03T14:14:42.127Z",
+  "manifests": [
+    {
+      "kind": "requirements.txt",
+      "path": "requirements.txt"
+    }
+  ],
+  "diagnoses": [
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "defusedxml",
+        "spec": "==0.7.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (0.7.1) is 5.7 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2021-03-08"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (0.7.1) is 5.7 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/defusedxml/",
+          "date": "2021-03-08"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.7.1",
+        "date": "2021-03-08T10:59:24.450195Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "langdetect",
+        "spec": "==1.0.9",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.0.9) is 5.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2021-05-07"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.9) is 5.5 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/langdetect/",
+          "date": "2021-05-07"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0.9",
+        "date": "2021-05-07T07:54:10.843555Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pysocks",
+        "spec": "==1.7.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.7.1) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "pypi",
+          "date": "2019-09-20"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.7.1) is 7.1 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/pysocks/",
+          "date": "2019-09-20"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.7.1",
+        "date": "2019-09-20T02:06:20.927323Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "aiosmtpd",
+        "spec": "==1.4.4.post2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.4.6) is 2.5 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/aiosmtpd/",
+          "date": "2024-05-18"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "4 known advisories affect version 1.4.4.post2: GHSA-pr2m-px7j-xg65, GHSA-wgjv-9j3q-jhg8, PYSEC-2024-221 and 1 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-pr2m-px7j-xg65"
+        }
+      ],
+      "advisories": [
+        "GHSA-pr2m-px7j-xg65",
+        "GHSA-wgjv-9j3q-jhg8",
+        "PYSEC-2024-221",
+        "PYSEC-2026-1111"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "1.4.6",
+        "date": "2024-05-18T11:37:47.877442Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "email-validator",
+        "spec": "==2.1.0.post1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 1 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.3.0",
+        "date": "2025-08-26T13:09:05.858779Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-babel",
+        "spec": "==4.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (4.0.0) is 3.1 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/flask-babel/",
+          "date": "2023-10-02"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.0.0",
+        "date": "2023-10-02T01:10:48.580444Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-httpauth",
+        "spec": "==4.8.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "2 known advisories affect version 4.8.0: GHSA-p44q-vqpr-4xmg, PYSEC-2026-2152.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-p44q-vqpr-4xmg"
+        }
+      ],
+      "advisories": [
+        "GHSA-p44q-vqpr-4xmg",
+        "PYSEC-2026-2152"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "4.8.1",
+        "date": "2026-03-28T19:45:23.155793Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-login",
+        "spec": "==0.6.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.6.3) is 3.0 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/flask-login/",
+          "date": "2023-10-30"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.6.3",
+        "date": "2023-10-30T14:53:19.636262Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-mail",
+        "spec": "==0.9.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.10.0) is 2.4 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/flask-mail/",
+          "date": "2024-05-23"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.10.0",
+        "date": "2024-05-23T22:30:10.962706Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-migrate",
+        "spec": "==4.0.5",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.1.0",
+        "date": "2025-01-10T18:51:09.527073Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-moment",
+        "spec": "==1.0.5",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.0.6) is 2.4 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/flask-moment/",
+          "date": "2024-05-28"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0.6",
+        "date": "2024-05-28T22:20:40.303364Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-sqlalchemy",
+        "spec": "==3.1.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (3.1.1) is 3.1 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/flask-sqlalchemy/",
+          "date": "2023-09-11"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.1.1",
+        "date": "2023-09-11T21:42:34.514878Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "httpie",
+        "spec": "==3.2.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (3.2.4) is 2.0 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/httpie/",
+          "date": "2024-11-01"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "2 known advisories affect version 3.2.2: GHSA-8r96-8889-qg2x, PYSEC-2023-242.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-8r96-8889-qg2x"
+        }
+      ],
+      "advisories": [
+        "GHSA-8r96-8889-qg2x",
+        "PYSEC-2023-242"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "3.2.4",
+        "date": "2024-11-01T17:31:22.962271Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "itsdangerous",
+        "spec": "==2.1.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (2.2.0) is 2.5 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/itsdangerous/",
+          "date": "2024-04-16"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.2.0",
+        "date": "2024-04-16T21:28:14.499616Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "mdurl",
+        "spec": "==0.1.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.1.2) is 4.2 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/mdurl/",
+          "date": "2022-08-14"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.1.2",
+        "date": "2022-08-14T12:40:09.779676Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pyjwt",
+        "spec": "==2.8.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 1 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "28 known advisories affect version 2.8.0: GHSA-2gx3-rcp4-g85q, GHSA-42vr-xj54-vc7v, GHSA-752w-5fwx-jx9f and 25 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-2gx3-rcp4-g85q"
+        }
+      ],
+      "advisories": [
+        "GHSA-2gx3-rcp4-g85q",
+        "GHSA-42vr-xj54-vc7v",
+        "GHSA-752w-5fwx-jx9f",
+        "GHSA-993g-76c3-p5m4",
+        "GHSA-9v7f-9g4p-ffgj",
+        "GHSA-ffc3-869f-jxw9",
+        "GHSA-fhv5-28vv-h8m8",
+        "GHSA-hxm8-2xgr-2p9m",
+        "GHSA-jwrc-g2q2-pq5p",
+        "GHSA-p4g4-x82p-q773",
+        "GHSA-pxh4-856f-4h89",
+        "GHSA-w7vc-732c-9m39",
+        "GHSA-x33g-cr3x-6449",
+        "GHSA-xgmm-8j9v-c9wx",
+        "PYSEC-2025-183",
+        "PYSEC-2026-120",
+        "PYSEC-2026-175",
+        "PYSEC-2026-177",
+        "PYSEC-2026-178",
+        "PYSEC-2026-179",
+        "PYSEC-2026-4140",
+        "PYSEC-2026-4141",
+        "PYSEC-2026-4144",
+        "PYSEC-2026-4145",
+        "PYSEC-2026-4147",
+        "PYSEC-2026-4148",
+        "PYSEC-2026-4149",
+        "PYSEC-2026-4183"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "2.15.1",
+        "date": "2026-09-28T18:40:41.429003Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "requests-toolbelt",
+        "spec": "==1.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.0.0) is 3.5 years old.",
+          "source": "pypi",
+          "url": "https://pypi.org/project/requests-toolbelt/",
+          "date": "2023-05-01"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0.0",
+        "date": "2023-05-01T04:11:28.427086Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "six",
+        "spec": "==1.16.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.17.0",
+        "date": "2024-12-04T17:35:26.475808Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "alembic",
+        "spec": "==1.12.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.20.1",
+        "date": "2026-10-22T03:24:35.930159Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "atpublic",
+        "spec": "==4.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "9.0.0",
+        "date": "2026-10-13T01:49:05.070673Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "attrs",
+        "spec": "==23.1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "26.1.0",
+        "date": "2026-03-19T14:22:23.645947Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "babel",
+        "spec": "==2.13.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.18.0",
+        "date": "2026-02-01T12:30:53.445172Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "blinker",
+        "spec": "==1.7.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.9.0",
+        "date": "2024-11-08T17:25:46.184412Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "certifi",
+        "spec": "==2023.11.17",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "4 known advisories affect version 2023.11.17: GHSA-248v-346w-9cwc, GHSA-6q48-6c7w-9gw2, PYSEC-2024-230 and 1 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-248v-346w-9cwc"
+        }
+      ],
+      "advisories": [
+        "GHSA-248v-346w-9cwc",
+        "GHSA-6q48-6c7w-9gw2",
+        "PYSEC-2024-230",
+        "PYSEC-2026-4320"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "2026.10.23",
+        "date": "2026-10-23T11:36:14.763067Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "charset-normalizer",
+        "spec": "==3.3.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.5.2",
+        "date": "2026-09-30T04:34:42.843457Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "click",
+        "spec": "==8.1.7",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.5.0",
+        "date": "2026-08-26T13:33:12.928043Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "dnspython",
+        "spec": "==2.4.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "3 known advisories affect version 2.4.2: GHSA-3rq5-2g8h-59hc, GHSA-45c3-73f7-pv4m, PYSEC-2026-1307.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-3rq5-2g8h-59hc"
+        }
+      ],
+      "advisories": [
+        "GHSA-3rq5-2g8h-59hc",
+        "GHSA-45c3-73f7-pv4m",
+        "PYSEC-2026-1307"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "2.9.1",
+        "date": "2026-10-29T18:05:10.206681Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "elastic-transport",
+        "spec": "==8.10.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "9.4.2",
+        "date": "2026-06-16T15:27:15.875874Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "elasticsearch",
+        "spec": "==8.11.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "9.5.1",
+        "date": "2026-09-09T20:17:00.180072Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask",
+        "spec": "==3.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "2 known advisories affect version 3.0.0: GHSA-68rp-wp8r-4726, PYSEC-2026-2151.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-68rp-wp8r-4726"
+        }
+      ],
+      "advisories": [
+        "GHSA-68rp-wp8r-4726",
+        "PYSEC-2026-2151"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "3.1.3",
+        "date": "2026-02-19T05:00:56.027585Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "flask-wtf",
+        "spec": "==1.2.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.3.0",
+        "date": "2026-04-23T07:41:53.828605Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "greenlet",
+        "spec": "==3.0.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.5.6",
+        "date": "2026-09-14T14:21:31.962676Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "gunicorn",
+        "spec": "==21.2.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "4 known advisories affect version 21.2.0: GHSA-hc5x-x2vx-497g, GHSA-w3h3-4rj7-4ph4, PYSEC-2026-1433 and 1 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-hc5x-x2vx-497g"
+        }
+      ],
+      "advisories": [
+        "GHSA-hc5x-x2vx-497g",
+        "GHSA-w3h3-4rj7-4ph4",
+        "PYSEC-2026-1433",
+        "PYSEC-2026-1434"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "26.2.0",
+        "date": "2026-08-24T15:05:57.670955Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "idna",
+        "spec": "==3.4",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "4 known advisories affect version 3.4: GHSA-65pc-fj4g-8rjx, GHSA-jjg7-2v4v-x38h, PYSEC-2024-60 and 1 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-65pc-fj4g-8rjx"
+        }
+      ],
+      "advisories": [
+        "GHSA-65pc-fj4g-8rjx",
+        "GHSA-jjg7-2v4v-x38h",
+        "PYSEC-2024-60",
+        "PYSEC-2026-215"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "3.20",
+        "date": "2026-09-17T14:11:03.168153Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "jinja2",
+        "spec": "==3.1.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "10 known advisories affect version 3.1.2: GHSA-cpwx-vrp4-4pq7, GHSA-gmj6-6f8f-6699, GHSA-h5c8-rqwp-cp95 and 7 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-cpwx-vrp4-4pq7"
+        }
+      ],
+      "advisories": [
+        "GHSA-cpwx-vrp4-4pq7",
+        "GHSA-gmj6-6f8f-6699",
+        "GHSA-h5c8-rqwp-cp95",
+        "GHSA-h75v-3vvj-5mfj",
+        "GHSA-q2x7-8rv6-6q7h",
+        "PYSEC-2026-1471",
+        "PYSEC-2026-1472",
+        "PYSEC-2026-1473",
+        "PYSEC-2026-1474",
+        "PYSEC-2026-1475"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "3.1.6",
+        "date": "2025-03-05T20:05:00.369721Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "mako",
+        "spec": "==1.3.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "6 known advisories affect version 1.3.0: GHSA-2h4p-vjrc-8xpq, GHSA-5639-2j2p-m4mx, GHSA-v92g-xgxw-vvmm and 3 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-2h4p-vjrc-8xpq"
+        }
+      ],
+      "advisories": [
+        "GHSA-2h4p-vjrc-8xpq",
+        "GHSA-5639-2j2p-m4mx",
+        "GHSA-v92g-xgxw-vvmm",
+        "PYSEC-2026-2617",
+        "PYSEC-2026-4243",
+        "PYSEC-2026-88"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "1.4.3",
+        "date": "2026-09-22T20:54:31.509149Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "markdown-it-py",
+        "spec": "==3.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.2.0",
+        "date": "2026-05-07T12:08:27.182789Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "markupsafe",
+        "spec": "==2.1.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.0.4",
+        "date": "2026-10-02T23:04:20.141728Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "multidict",
+        "spec": "==6.0.4",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.2.1",
+        "date": "2026-10-24T20:40:02.481283Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "packaging",
+        "spec": "==23.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "26.3",
+        "date": "2026-08-04T18:15:27.159957Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "psycopg2-binary",
+        "spec": "==2.9.9",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.9.13",
+        "date": "2026-09-09T23:54:05.509581Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pygments",
+        "spec": "==2.17.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "2 known advisories affect version 2.17.1: GHSA-5239-wwwm-4pmq, PYSEC-2026-2987.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-5239-wwwm-4pmq"
+        }
+      ],
+      "advisories": [
+        "GHSA-5239-wwwm-4pmq",
+        "PYSEC-2026-2987"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "2.21.0",
+        "date": "2026-08-17T08:02:44.912148Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "python-dotenv",
+        "spec": "==1.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "2 known advisories affect version 1.0.0: GHSA-mf9w-mj56-hr94, PYSEC-2026-2270.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-mf9w-mj56-hr94"
+        }
+      ],
+      "advisories": [
+        "GHSA-mf9w-mj56-hr94",
+        "PYSEC-2026-2270"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "1.2.4",
+        "date": "2026-10-01T05:36:08.633003Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "pytz",
+        "spec": "==2023.3.post1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2026.6",
+        "date": "2026-10-29T09:05:45.140432Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "redis",
+        "spec": "==5.0.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.1.0",
+        "date": "2026-07-30T08:50:58.497552Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "requests",
+        "spec": "==2.31.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "6 known advisories affect version 2.31.0: GHSA-9hjg-9r4m-mvj7, GHSA-9wx4-h78v-vm56, GHSA-gc5v-m9x4-r6x2 and 3 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-9hjg-9r4m-mvj7"
+        }
+      ],
+      "advisories": [
+        "GHSA-9hjg-9r4m-mvj7",
+        "GHSA-9wx4-h78v-vm56",
+        "GHSA-gc5v-m9x4-r6x2",
+        "PYSEC-2026-1872",
+        "PYSEC-2026-1873",
+        "PYSEC-2026-2275"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "2.34.2",
+        "date": "2026-05-14T19:25:26.443000Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "rich",
+        "spec": "==13.7.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "15.0.0",
+        "date": "2026-04-12T08:24:00.750018Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "rq",
+        "spec": "==1.15.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.0.0",
+        "date": "2026-10-28T15:32:52.626646Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "setuptools",
+        "spec": "==68.2.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "7 known advisories affect version 68.2.2: GHSA-5rjg-fvgr-3xxf, GHSA-cx63-2mw6-8hw5, GHSA-h35f-9h28-mq5c and 4 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-5rjg-fvgr-3xxf"
+        }
+      ],
+      "advisories": [
+        "GHSA-5rjg-fvgr-3xxf",
+        "GHSA-cx63-2mw6-8hw5",
+        "GHSA-h35f-9h28-mq5c",
+        "GHSA-xmj3-9gf7-h52w",
+        "PYSEC-2025-49",
+        "PYSEC-2026-1918",
+        "PYSEC-2026-3447"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "84.2.1",
+        "date": "2026-10-20T19:01:35.678013Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "sqlalchemy",
+        "spec": "==2.0.23",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.1.6",
+        "date": "2026-10-21T16:25:06.497882Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "typing-extensions",
+        "spec": "==4.8.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.16.0",
+        "date": "2026-07-02T08:40:04.659120Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "urllib3",
+        "spec": "==2.1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "16 known advisories affect version 2.1.0: GHSA-2xpw-w6gg-jr37, GHSA-34jh-p97f-mpxf, GHSA-38jv-5279-wg99 and 13 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-2xpw-w6gg-jr37"
+        }
+      ],
+      "advisories": [
+        "GHSA-2xpw-w6gg-jr37",
+        "GHSA-34jh-p97f-mpxf",
+        "GHSA-38jv-5279-wg99",
+        "GHSA-8988-9cw3-xx77",
+        "GHSA-gm62-xv2j-4w53",
+        "GHSA-pq67-6m6q-mj2v",
+        "GHSA-qccp-gfcp-xxvc",
+        "GHSA-vxq7-64xx-v4gw",
+        "PYSEC-2026-141",
+        "PYSEC-2026-1994",
+        "PYSEC-2026-1995",
+        "PYSEC-2026-1996",
+        "PYSEC-2026-1998",
+        "PYSEC-2026-1999",
+        "PYSEC-2026-4175",
+        "PYSEC-2026-4177"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "2.8.0",
+        "date": "2026-09-15T19:29:34.577402Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "werkzeug",
+        "spec": "==3.0.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "14 known advisories affect version 3.0.1: GHSA-29vq-49wr-vm6x, GHSA-2g68-c3qc-8985, GHSA-87hc-h4r5-73f7 and 11 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-29vq-49wr-vm6x"
+        }
+      ],
+      "advisories": [
+        "GHSA-29vq-49wr-vm6x",
+        "GHSA-2g68-c3qc-8985",
+        "GHSA-87hc-h4r5-73f7",
+        "GHSA-f9vj-2wh5-fj8j",
+        "GHSA-g6x2-hccm-hh4m",
+        "GHSA-hgf8-39gv-g3f2",
+        "GHSA-q34m-jh98-gwm2",
+        "PYSEC-2026-2043",
+        "PYSEC-2026-2044",
+        "PYSEC-2026-2045",
+        "PYSEC-2026-2046",
+        "PYSEC-2026-2320",
+        "PYSEC-2026-3417",
+        "PYSEC-2026-4312"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "3.1.9",
+        "date": "2026-09-27T18:33:39.685530Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "pypi",
+        "name": "wtforms",
+        "spec": "==3.1.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "requirements.txt"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.3.2",
+        "date": "2026-11-01T21:06:21.136933Z"
+      }
+    }
+  ],
+  "problems": [],
+  "unavailable": [
+    {
+      "source": "github",
+      "reason": "GitHub budget reached (0 calls per scan, limit is 60 per hour): 31 repositories were not checked"
+    }
+  ],
+  "summary": {
+    "alive": 36,
+    "dying": 15,
+    "dead": 3,
+    "ghost": 0,
+    "zombie": 0
+  }
+}

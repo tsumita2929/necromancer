@@ -1,0 +1,714 @@
+{
+  "subject": "github:appsecco/dvna",
+  "scannedAt": "2026-11-03T14:14:40.549Z",
+  "manifests": [
+    {
+      "kind": "package.json",
+      "path": "package.json"
+    }
+  ],
+  "diagnoses": [
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "node-serialize",
+        "spec": "0.0.4",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "zombie",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (0.0.4) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2014-05-26"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (0.0.4) is 12 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/node-serialize",
+          "date": "2014-05-26"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "1 known advisory affects version 0.0.4: GHSA-q4v7-4rhw-9hqm.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-q4v7-4rhw-9hqm"
+        }
+      ],
+      "advisories": [
+        "GHSA-q4v7-4rhw-9hqm"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "0.0.4",
+        "date": "2014-05-26T12:10:25Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "csurf",
+        "spec": "^1.9.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "npm-deprecated",
+          "message": "Deprecated on npm: \"This package is archived and no longer maintained. For support, visit https://github.com/expressjs/express/discussions\"",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/csurf",
+          "date": "2020-01-19"
+        },
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.11.0) is 6.8 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2020-01-19"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.11.0) is 6.8 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/csurf",
+          "date": "2020-01-19"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.11.0",
+        "date": "2020-01-19T04:28:49Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "express-flash",
+        "spec": "0.0.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (0.0.2) is 13 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2013-07-13"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (0.0.2) is 13 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/express-flash",
+          "date": "2013-07-13"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.0.2",
+        "date": "2013-07-13T22:24:15Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "flash",
+        "spec": "^1.1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.1.0) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2014-09-11"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.1.0) is 12 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/flash",
+          "date": "2014-09-11"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.1.0",
+        "date": "2014-09-11T02:53:38Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "md5",
+        "spec": "^2.2.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (2.3.0) is 6.3 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2020-08-02"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (2.3.0) is 6.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/md5",
+          "date": "2020-08-02"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [
+        {
+          "name": "node:crypto",
+          "ecosystem": "npm",
+          "kind": "native",
+          "reason": "node:crypto is built into the platform, so the package is not needed.",
+          "source": "module-replacements",
+          "url": "https://nodejs.org/api/crypto.html"
+        }
+      ],
+      "latest": {
+        "version": "2.3.0",
+        "date": "2020-08-02T10:29:33Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "passport-local",
+        "spec": "^1.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned: the latest release (1.0.0) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2014-03-08"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.0) is 12 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/passport-local",
+          "date": "2014-03-08"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.0.0",
+        "date": "2014-03-08T19:05:10Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "bcrypt",
+        "spec": "^1.0.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "version-deprecated",
+          "message": "The version in use (1.0.3) is deprecated: \"versions < v5.0.0 do not handle NUL in passwords properly\"",
+          "source": "deps.dev",
+          "url": "https://www.npmjs.com/package/bcrypt/v/1.0.3"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "1 known advisory affects version 1.0.3: GHSA-5wg4-74h6-q47v.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-5wg4-74h6-q47v"
+        }
+      ],
+      "advisories": [
+        "GHSA-5wg4-74h6-q47v"
+      ],
+      "successors": [
+        {
+          "name": "bcryptjs",
+          "ecosystem": "npm",
+          "kind": "package",
+          "reason": "bcryptjs is the package e18e recommends instead.",
+          "source": "module-replacements",
+          "url": "https://e18e.dev/docs/replacements/bcrypt.html"
+        },
+        {
+          "name": "node:crypto",
+          "ecosystem": "npm",
+          "kind": "native",
+          "reason": "node:crypto is built into the platform, so the package is not needed.",
+          "source": "module-replacements",
+          "url": "https://nodejs.org/api/crypto.html"
+        },
+        {
+          "name": "crypto",
+          "ecosystem": "npm",
+          "kind": "native",
+          "reason": "crypto is built into the platform, so the package is not needed.",
+          "source": "module-replacements",
+          "url": "https://developer.mozilla.org/docs/Web/API/Web_Crypto_API"
+        },
+        {
+          "name": "Bun.CryptoHasher",
+          "ecosystem": "npm",
+          "kind": "native",
+          "reason": "Bun.CryptoHasher is built into the platform, so the package is not needed.",
+          "source": "module-replacements"
+        }
+      ],
+      "latest": {
+        "version": "6.0.0",
+        "date": "2025-05-11T18:06:24Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "ejs",
+        "spec": "^2.5.7",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 2 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "2 known advisories affect version 2.7.4: GHSA-ghr5-ch3p-vcr6, GHSA-phwq-j96m-2c2q.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-ghr5-ch3p-vcr6"
+        }
+      ],
+      "advisories": [
+        "GHSA-ghr5-ch3p-vcr6",
+        "GHSA-phwq-j96m-2c2q"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "7.0.2",
+        "date": "2026-10-18T04:07:24Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "express-fileupload",
+        "spec": "^0.4.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "version-deprecated",
+          "message": "The version in use (0.4.0) is deprecated: \"Please upgrade express-fileupload to version 1.1.8+ due to a security vulnerability with the parseNested option\"",
+          "source": "deps.dev",
+          "url": "https://www.npmjs.com/package/express-fileupload/v/0.4.0"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "3 known advisories affect version 0.4.0: GHSA-9wcg-jrwf-8gg7, GHSA-q3w9-g74q-vp5f, GHSA-w4m6-x6c2-j5c9.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-9wcg-jrwf-8gg7"
+        }
+      ],
+      "advisories": [
+        "GHSA-9wcg-jrwf-8gg7",
+        "GHSA-q3w9-g74q-vp5f",
+        "GHSA-w4m6-x6c2-j5c9"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "1.5.2",
+        "date": "2025-07-05T13:36:31Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "libxmljs",
+        "spec": "^0.19.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (1.0.11) is 3.0 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/libxmljs",
+          "date": "2023-10-18"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "3 known advisories affect version 0.19.10: GHSA-6433-x5p4-8jc7, GHSA-jv72-59wq-8rxm, GHSA-mg49-jqgw-gcj6.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-6433-x5p4-8jc7"
+        }
+      ],
+      "advisories": [
+        "GHSA-6433-x5p4-8jc7",
+        "GHSA-jv72-59wq-8rxm",
+        "GHSA-mg49-jqgw-gcj6"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "1.0.11",
+        "date": "2023-10-18T14:43:16Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "passport",
+        "spec": "^0.4.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.7.0) is 2.9 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/passport",
+          "date": "2023-11-27"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10.",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "1 known advisory affects version 0.4.1: GHSA-v923-w3x8-wh69.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-v923-w3x8-wh69"
+        }
+      ],
+      "advisories": [
+        "GHSA-v923-w3x8-wh69"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "0.7.0",
+        "date": "2023-11-27T22:57:38Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "sequelize",
+        "spec": "^4.13.10",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "version-deprecated",
+          "message": "The version in use (4.44.4) is deprecated: \"Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html\"",
+          "source": "deps.dev",
+          "url": "https://www.npmjs.com/package/sequelize/v/4.44.4"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "5 known advisories affect version 4.44.4: GHSA-8c25-f3mj-v6h8, GHSA-f598-mfpv-gmfx, GHSA-v8fg-2rw7-q452 and 2 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-8c25-f3mj-v6h8"
+        }
+      ],
+      "advisories": [
+        "GHSA-8c25-f3mj-v6h8",
+        "GHSA-f598-mfpv-gmfx",
+        "GHSA-v8fg-2rw7-q452",
+        "GHSA-vqfx-gj96-3w95",
+        "GHSA-wrh9-cjv3-2hpw"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "6.37.8",
+        "date": "2026-03-07T18:44:43Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "x-xss-protection",
+        "spec": "^1.1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release-long",
+          "message": "The latest release (2.0.0) is 6.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/x-xss-protection",
+          "date": "2020-08-02"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.0.0",
+        "date": "2020-08-02T16:58:53Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "express",
+        "spec": "^4.16.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.3.0",
+        "date": "2026-10-09T12:56:54Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "express-session",
+        "spec": "^1.15.6",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.19.0",
+        "date": "2026-01-22T14:46:26Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "mathjs",
+        "spec": "3.10.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "3 known advisories affect version 3.10.1: GHSA-pv8x-p9hq-j328, GHSA-vx5c-87qx-cv6c, GHSA-x2fc-mxcx-w4mf.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-pv8x-p9hq-j328"
+        }
+      ],
+      "advisories": [
+        "GHSA-pv8x-p9hq-j328",
+        "GHSA-vx5c-87qx-cv6c",
+        "GHSA-x2fc-mxcx-w4mf"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "15.2.0",
+        "date": "2026-04-07T14:35:09Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "morgan",
+        "spec": "^1.9.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.12.1",
+        "date": "2026-09-11T08:57:42Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "mysql2",
+        "spec": "^1.4.2",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "7 known advisories affect version 1.7.0: GHSA-3f6p-5ww8-9rcr, GHSA-49j4-86m8-q2jw, GHSA-4rch-2fh8-94vw and 4 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-3f6p-5ww8-9rcr"
+        }
+      ],
+      "advisories": [
+        "GHSA-3f6p-5ww8-9rcr",
+        "GHSA-49j4-86m8-q2jw",
+        "GHSA-4rch-2fh8-94vw",
+        "GHSA-fpw7-j2hg-69v5",
+        "GHSA-mqr2-w7wj-jjgr",
+        "GHSA-pmh2-wpjm-fj45",
+        "GHSA-rgwj-5xj2-c3m3"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "3.24.6",
+        "date": "2026-10-13T14:33:39Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "winston",
+        "spec": "^3.0.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.19.0",
+        "date": "2025-12-07T07:37:16Z"
+      }
+    }
+  ],
+  "problems": [],
+  "unavailable": [
+    {
+      "source": "github",
+      "reason": "GitHub budget reached (0 calls per scan, limit is 60 per hour): 15 repositories were not checked"
+    }
+  ],
+  "summary": {
+    "alive": 6,
+    "dying": 7,
+    "dead": 5,
+    "ghost": 0,
+    "zombie": 1
+  }
+}
