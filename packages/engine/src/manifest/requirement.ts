@@ -13,7 +13,16 @@ const CLAUSE = '(?:===|==|!=|~=|<=|>=|<|>)\\s*[A-Za-z0-9*+!._-]+';
 const SPECIFIER = new RegExp(`^\\(?\\s*${CLAUSE}(?:\\s*,\\s*${CLAUSE})*\\s*\\)?$`);
 
 /** Parse "Name[extra]>=1,<2 ; python_version < '3.9'". Extras and markers are dropped. */
+/** Longest requirement text read. Longer text is refused, which also bounds regex work. */
+export const MAX_REQUIREMENT_CHARS = 2000;
+
 export function parseRequirement(raw: string): RequirementParse {
+  if (raw.length > MAX_REQUIREMENT_CHARS) {
+    return {
+      kind: 'invalid',
+      message: `a requirement longer than ${MAX_REQUIREMENT_CHARS} characters`,
+    };
+  }
   // Per-requirement options such as "--hash=sha256:..." are not part of the requirement.
   let text = raw.split(/\s+--?[A-Za-z]/)[0] ?? '';
   text = text.trim();

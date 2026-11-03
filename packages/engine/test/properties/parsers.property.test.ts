@@ -29,12 +29,10 @@ const mutated = fc
       content: `${seed.content.slice(0, i)}${junk}${seed.content.slice(j)}`,
     };
   });
-const truncated = fc
-  .tuple(fc.constantFrom(...seeds), fc.nat())
-  .map(([seed, n]) => ({
-    kind: seed.kind,
-    content: seed.content.slice(0, n % (seed.content.length + 1)),
-  }));
+const truncated = fc.tuple(fc.constantFrom(...seeds), fc.nat()).map(([seed, n]) => ({
+  kind: seed.kind,
+  content: seed.content.slice(0, n % (seed.content.length + 1)),
+}));
 const arbitraryText = fc
   .tuple(
     kindArb,

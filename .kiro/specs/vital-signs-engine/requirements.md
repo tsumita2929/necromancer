@@ -52,6 +52,10 @@ they declare, even when some files are malformed or use unusual syntax.
 - R1.11 THE parsers SHALL be deterministic and keep file order. **[PBT]**
 - R1.12 IF an npm name is not a valid package name, THEN THE engine SHALL skip it
   with a problem (so it never reaches a registry URL). **[PBT]**
+- R1.13 THE parsers SHALL run in time linear in the input size: a requirement longer
+  than 2000 characters, or a line longer than 20000, is skipped with a problem.
+- R1.14 THE parsers SHALL accept a byte-order mark and SHALL skip `jsr:`, `patch:` and
+  `exec:` specs like other non-registry sources.
 
 ## R2. Verdicts
 
@@ -84,8 +88,17 @@ can defend with evidence, and I want the verdict never to hide a warning.
   dependency, THE verdict SHALL stay `alive`, the advisory ids SHALL be listed in
   `advisories`, and an evidence line SHALL record it.
 - R2.13 THE engine SHALL pick the version in use as: lockfile version, else the
-  highest stable version that satisfies the declared range, else the latest stable
-  version. **[PBT]** (range resolution)
+  highest stable version that satisfies the declared range. WHEN the spec is not a range
+  (a dist-tag such as `next`), THE version in use SHALL be the latest. WHEN the spec is a
+  valid range that no known version satisfies, THE version SHALL be unresolved and no
+  advisory SHALL be claimed. **[PBT]** (range resolution)
+- R2.14 WHEN the registry has no package of that name, THE verdict SHALL be `dying`
+  with evidence `registry-not-found` (the package may be removed, private or
+  misspelled; the engine cannot tell which).
+- R2.15 WHEN no source repository is linked, THE engine SHALL show that as evidence but
+  SHALL NOT lower the verdict by it alone; it only supports R2.9.
+- R2.16 WHEN an advisory affects the version in use, THE engine SHALL check the
+  repository even if the latest release is under a year old.
 
 ## R3. Sources and degradation
 
@@ -98,8 +111,8 @@ sources, stay inside their limits, and tell me what it could not check.
   (PyPI), deps.dev project data including OpenSSF Scorecard, OSV.dev batch query
   (advisories), GitHub repository metadata, and the e18e module-replacements data.
 - R3.3 THE engine SHALL call GitHub only for dependencies that already look
-  unhealthy, at most once per repository, and at most `githubBudget` (default 20)
-  calls per engine instance, so one scan stays far below 60 calls per hour.
+  unhealthy (or have an advisory), at most once per repository, and at most `githubBudget` (default 20)
+  calls per engine instance per hour, so one scan stays far below 60 calls per hour.
 - R3.4 WHEN GitHub answers 403 or 429, THE engine SHALL stop calling GitHub for
   the rest of that run and list `github` in `unavailable`.
 - R3.5 WHEN a source fails (network error, timeout, 5xx, rate limit, invalid JSON,
@@ -110,7 +123,9 @@ sources, stay inside their limits, and tell me what it could not check.
   "package not found" and add evidence `registry-not-found` instead of listing the
   source as unavailable.
 - R3.7 THE engine SHALL send each distinct request once per engine instance
-  (in-flight and completed requests are shared) and SHALL limit concurrency.
+  (in-flight requests, successes and "not found" answers are shared), SHALL NOT keep
+  a failed request (network, timeout, 5xx, rate limit) so that a long-lived engine
+  recovers, and SHALL limit concurrency.
 - R3.8 THE engine SHALL query OSV in batches with the version in use, so an
   advisory is reported only when it affects that version.
 - R3.9 WHEN a request fails with a network error, a timeout, 429 or 5xx, THE

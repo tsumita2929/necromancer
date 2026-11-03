@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/ljharb/qs"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "ljharb/qs",
+  "html_url": "https://github.com/ljharb/qs",
+  "archived": false,
+  "disabled": false,
+  "pushed_at": "2026-10-28T23:42:05Z",
+  "stargazers_count": 8952,
+  "default_branch": "main"
+ }
+}

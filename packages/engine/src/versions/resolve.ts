@@ -1,6 +1,6 @@
 import type { DependencyRef } from '../types.js';
-import { maxSatisfyingPep, parseSpecifier } from './pep440.js';
-import { maxSatisfying } from './semver.js';
+import { maxSatisfyingPep, parseSpecifier, parseSpecifierSet } from './pep440.js';
+import { maxSatisfying, parseRange } from './semver.js';
 
 export type HowResolved = 'lockfile' | 'range' | 'latest';
 
@@ -20,8 +20,8 @@ export function npmRange(spec: string): string {
 
 /**
  * The version in use (R2.13): the lockfile version, else the highest version that
- * satisfies the declared range, else the latest. `available` is every known version.
- * Returns undefined only when nothing is known at all.
+ * satisfies the declared range, else the latest when the spec is not a range at all.
+ * Returns undefined when nothing is known, or when a valid range matches no known version.
  */
 export function resolveVersionInUse(
   dep: Pick<DependencyRef, 'ecosystem' | 'spec' | 'resolved'>,
@@ -37,7 +37,10 @@ export function resolveVersionInUse(
     if (best) return { version: best, how: 'range' };
     // A single known latest may satisfy the range even when no list is available.
     if (latest && maxSatisfying([latest], spec)) return { version: latest, how: 'range' };
-    // The range is unusable or nothing matches (a dist-tag such as "next"): use the latest.
+    // A valid range that no known version satisfies is unresolved: guessing the latest would
+    // check advisories for a version the project cannot install. A dist-tag such as "next"
+    // is not a range, so it means the latest.
+    if (parseRange(spec)) return undefined;
     return latest ? { version: latest, how: 'latest' } : undefined;
   }
   if (spec === '' || spec === '*') return latest ? { version: latest, how: 'latest' } : undefined;
@@ -49,5 +52,6 @@ export function resolveVersionInUse(
       ? /^={2,3}\s*([^*\s]+)$/.exec(clauses[0].text.trim())
       : null;
   if (pin?.[1]) return { version: pin[1], how: 'range' };
+  if (parseSpecifierSet(spec)) return undefined; // valid, but nothing known satisfies it
   return latest ? { version: latest, how: 'latest' } : undefined;
 }

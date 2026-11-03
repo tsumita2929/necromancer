@@ -38,6 +38,14 @@ export class Http {
     if (cached) return cached;
     const pending = this.schedule(() => this.attempt(url, init, key));
     this.cache.set(key, pending);
+    // Successes and "not found" are shared for the life of the instance. Failures that
+    // may pass (network, timeout, 5xx, rate limit) are forgotten, so a long-lived engine
+    // recovers on the next scan.
+    void pending.then((result) => {
+      if (!result.ok && (result.kind === 'unavailable' || result.kind === 'rate-limited')) {
+        if (this.cache.get(key) === pending) this.cache.delete(key);
+      }
+    });
     return pending;
   }
 

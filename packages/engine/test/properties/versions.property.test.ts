@@ -272,7 +272,7 @@ describe('R2.13 version in use', () => {
     );
   });
 
-  it('R2.13 a range result satisfies the range; otherwise the latest is used', () => {
+  it('R2.13 a range result satisfies the range; a range nothing satisfies is unresolved', () => {
     fc.assert(
       fc.property(triples, triple, fc.constantFrom('^', '~', '>=', '<', ''), (list, v, op) => {
         const available = list.map(text);
@@ -283,13 +283,12 @@ describe('R2.13 version in use', () => {
           available,
           latest,
         );
-        expect(got).toBeDefined();
-        if (got?.how === 'range') {
+        if (maxSatisfying(available, spec) === null) {
+          // A valid range that no known version satisfies is unresolved, not "latest".
+          expect(got).toBeUndefined();
+        } else if (got?.how === 'range') {
           expect(satisfies(parseVersion(got.version)!, parseRange(spec)!)).toBe(true);
           expect(available).toContain(got.version);
-        } else {
-          expect(got?.version).toBe(latest);
-          expect(maxSatisfying(available, spec)).toBeNull();
         }
       }),
       { numRuns: 300 },

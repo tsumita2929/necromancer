@@ -28,6 +28,9 @@ export function classifyNpmSpec(name: string, specRaw: string): NpmSpecClass {
   }
   if (/^workspace:/i.test(spec)) return { kind: 'skip', label: 'a workspace link' };
   if (/^catalog:/i.test(spec)) return { kind: 'skip', label: 'a catalog entry' };
+  if (/^jsr:/i.test(spec)) return { kind: 'skip', label: 'a JSR package' };
+  if (/^(?:patch|exec):/i.test(spec))
+    return { kind: 'skip', label: 'a patched or generated package' };
   if (GIT.test(spec)) return { kind: 'skip', label: 'a git source' };
   if (/^https?:\/\//i.test(spec)) return { kind: 'skip', label: 'a URL' };
   if (LOCAL.test(spec)) return { kind: 'skip', label: 'a local path' };

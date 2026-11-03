@@ -81,7 +81,16 @@ describe('R2.3 evidence accompanies every non-alive verdict', () => {
   });
 
   it('R2.3 the evidence is ordered most important first, without repeated codes', () => {
-    const rank = ['gone', 'strong', 'derived', 'conditional', 'weak', 'advisory', 'info'];
+    const rank = [
+      'gone',
+      'strong',
+      'derived',
+      'conditional',
+      'weak',
+      'support',
+      'advisory',
+      'info',
+    ];
     fc.assert(
       fc.property(evidenceList, advisoryList, (list, adv) => {
         const d = decide(list, adv);
@@ -121,7 +130,7 @@ describe('R2.4 zombie if and only if dead-class with an advisory', () => {
     'repo-archived',
     'pypi-inactive',
     'pypi-yanked',
-    'registry-not-found',
+
     'repo-gone',
     'abandoned',
   ];

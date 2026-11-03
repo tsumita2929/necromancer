@@ -69,9 +69,7 @@ export function fixtureFetch(): FixtureFetch {
   return Object.assign(impl, { missing, requests });
 }
 
-export function loadProject(
-  name: string,
-): Array<{
+export function loadProject(name: string): Array<{
   kind: 'package.json' | 'package-lock.json' | 'requirements.txt' | 'pyproject.toml';
   path: string;
   content: string;

@@ -1,0 +1,109 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fljharb%2Fqs"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/ljharb/qs"
+  },
+  "openIssuesCount": 39,
+  "starsCount": 8950,
+  "forksCount": 971,
+  "license": "BSD-3-Clause",
+  "description": "A querystring parser and serializer with nesting support",
+  "homepage": "",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/ljharb/qs",
+    "commit": "3a890d4ecd3deb72a45d90be36f4f8c5970467c7"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "score": 2,
+     "reason": "Found 7/30 approved changesets -- score normalized to 2"
+    },
+    {
+     "name": "Maintained",
+     "score": 10,
+     "reason": "17 commit(s) and 3 issue activity found in the last 90 days -- score normalized to 10"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected"
+    },
+    {
+     "name": "Packaging",
+     "score": -1,
+     "reason": "packaging workflow not detected"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 10,
+     "reason": "security policy file detected"
+    },
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "Token-Permissions",
+     "score": 0,
+     "reason": "detected GitHub workflow tokens with excessive permissions"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 5,
+     "reason": "badge detected: Passing"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 0,
+     "reason": "project is not fuzzed"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": -1,
+     "reason": "no releases found"
+    },
+    {
+     "name": "Branch-Protection",
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md"
+    },
+    {
+     "name": "SAST",
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0"
+    }
+   ],
+   "overallScore": 5.4,
+   "metadata": []
+  },
+  "ossFuzz": {
+   "lineCount": 0,
+   "lineCoverCount": 0,
+   "configUrl": "https://github.com/google/oss-fuzz/tree/master/projects/qs"
+  }
+ }
+}

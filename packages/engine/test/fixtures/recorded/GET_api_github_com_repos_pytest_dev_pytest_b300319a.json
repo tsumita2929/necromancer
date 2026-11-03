@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/pytest-dev/pytest"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "pytest-dev/pytest",
+  "html_url": "https://github.com/pytest-dev/pytest",
+  "archived": false,
+  "disabled": false,
+  "pushed_at": "2026-11-02T23:43:42Z",
+  "stargazers_count": 14662,
+  "default_branch": "main"
+ }
+}

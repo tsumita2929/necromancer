@@ -1,0 +1,104 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fpytest-dev%2Fpytest"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/pytest-dev/pytest"
+  },
+  "openIssuesCount": 896,
+  "starsCount": 14654,
+  "forksCount": 3563,
+  "license": "MIT",
+  "description": "The pytest framework makes it easy to write small tests, yet scales to support complex functional testing",
+  "homepage": "https://pytest.org",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/pytest-dev/pytest",
+    "commit": "28549a5f6b82bc916bb2ec5cb9fbfffe9b79fc66"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "score": 10,
+     "reason": "all changesets reviewed"
+    },
+    {
+     "name": "Maintained",
+     "score": 10,
+     "reason": "30 commit(s) and 17 issue activity found in the last 90 days -- score normalized to 10"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 9,
+     "reason": "security policy file detected"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected"
+    },
+    {
+     "name": "Token-Permissions",
+     "score": 9,
+     "reason": "detected GitHub workflow tokens with excessive permissions"
+    },
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": 10,
+     "reason": "all dependencies are pinned"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 0,
+     "reason": "project is not fuzzed"
+    },
+    {
+     "name": "Packaging",
+     "score": 10,
+     "reason": "packaging workflow detected"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": 0,
+     "reason": "Project has not signed or included provenance with any releases."
+    },
+    {
+     "name": "Branch-Protection",
+     "score": 4,
+     "reason": "branch protection is not maximal on development and all release branches"
+    },
+    {
+     "name": "SAST",
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0"
+    }
+   ],
+   "overallScore": 7,
+   "metadata": []
+  }
+ }
+}

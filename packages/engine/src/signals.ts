@@ -193,7 +193,7 @@ export function versionYanked(name: string, version: string, reason?: string): E
 export function registryNotFound(source: SourceId, name: string): Evidence {
   return line({
     code: 'registry-not-found',
-    message: `${source === 'pypi' ? 'PyPI' : source === 'npm' ? 'The npm registry' : 'deps.dev'} has no package named "${clip(name, 80)}".`,
+    message: `${source === 'pypi' ? 'PyPI' : source === 'npm' ? 'The npm registry' : 'deps.dev'} has no package named "${clip(name, 80)}". It may be removed, private or misspelled.`,
     source,
   });
 }

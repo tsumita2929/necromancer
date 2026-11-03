@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/psf/requests"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "psf/requests",
+  "html_url": "https://github.com/psf/requests",
+  "archived": false,
+  "disabled": false,
+  "pushed_at": "2026-11-02T16:55:12Z",
+  "stargazers_count": 54594,
+  "default_branch": "main"
+ }
+}

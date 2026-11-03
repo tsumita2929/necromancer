@@ -13,11 +13,12 @@ import type { Evidence, Verdict } from './types.js';
  * - strong:      a definitive end-of-life signal (dead).
  * - conditional: counts as death only together with a weak signal (see `decide`).
  * - weak:        a stale signal (dying).
+ * - support:     shown, and counts only as support for `no-release-long`; never causes dying alone.
  * - advisory:    a known advisory; turns dead into zombie, never causes death.
  * - info:        shown, never changes the verdict.
  */
 export type EvidenceClass =
-  'gone' | 'strong' | 'derived' | 'conditional' | 'weak' | 'advisory' | 'info';
+  'gone' | 'strong' | 'derived' | 'conditional' | 'weak' | 'support' | 'advisory' | 'info';
 
 export const EVIDENCE_CLASS: Readonly<Record<string, EvidenceClass>> = {
   'repo-gone': 'gone',
@@ -25,13 +26,13 @@ export const EVIDENCE_CLASS: Readonly<Record<string, EvidenceClass>> = {
   'repo-archived': 'strong',
   'pypi-inactive': 'strong',
   'pypi-yanked': 'strong',
-  'registry-not-found': 'strong',
+  'registry-not-found': 'weak',
   abandoned: 'derived',
   'no-release-long': 'conditional',
   'no-release': 'weak',
   'low-maintenance': 'weak',
   'repo-inactive': 'weak',
-  'no-repository': 'weak',
+  'no-repository': 'support',
   'version-deprecated': 'weak',
   'version-yanked': 'weak',
   'osv-advisory': 'advisory',
@@ -44,8 +45,9 @@ const RANK: Record<EvidenceClass, number> = {
   derived: 2,
   conditional: 3,
   weak: 4,
-  advisory: 5,
-  info: 6,
+  support: 5,
+  advisory: 6,
+  info: 7,
 };
 
 /** Weak signals that make a very old latest release count as abandonment. */
@@ -63,7 +65,12 @@ export interface Decision {
   evidence: Evidence[];
 }
 
-export function decide(input: readonly Evidence[], advisories: readonly string[]): Decision {
+export function decide(
+  input: readonly Evidence[] | null | undefined,
+  advisories: readonly string[] | null | undefined,
+): Decision {
+  input = Array.isArray(input) ? input : [];
+  advisories = Array.isArray(advisories) ? advisories : [];
   const seen = new Set<string>();
   const evidence: Evidence[] = [];
   for (const line of input) {

@@ -11,7 +11,8 @@ export const MAX_MANIFEST_CHARS = 20_000_000;
 /** Parse one manifest. Never throws: any failure becomes a problem. */
 export function parseManifest(file: ManifestFile): ParseResult {
   try {
-    const content = typeof file.content === 'string' ? file.content : '';
+    const rawContent = typeof file.content === 'string' ? file.content : '';
+    const content = rawContent.charCodeAt(0) === 0xfeff ? rawContent.slice(1) : rawContent;
     const path = typeof file.path === 'string' ? file.path : '(unnamed)';
     if (content.length > MAX_MANIFEST_CHARS) {
       return {

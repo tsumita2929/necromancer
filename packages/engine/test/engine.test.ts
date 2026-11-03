@@ -26,6 +26,7 @@ const fresh = (name: string): FakeNpm => ({
   name,
   versions: [{ version: '2.0.0', date: daysAgo(30) }],
   repo: `https://github.com/org/${name}`,
+  github: { pushedAt: daysAgo(5) },
 });
 
 describe('R2.10 ghost', () => {
@@ -137,9 +138,9 @@ describe('R2.6, R2.9 and R2.11 rules through the engine', () => {
     expect(d?.advisories).toEqual(['GHSA-old']);
     expect(d?.latest?.version).toBe('2.0.0');
   });
-  it('R2.5 an unknown package is dead with registry-not-found', async () => {
+  it('R2.5 an unknown package is dying with registry-not-found (removed, private or misspelled)', async () => {
     const [d] = await engineFor(fakeWorld([]).fetch).diagnose([dep('does-not-exist')]);
-    expect(d?.verdict).toBe('dead');
+    expect(d?.verdict).toBe('dying');
     expect(d?.evidence[0]?.code).toBe('registry-not-found');
   });
 });

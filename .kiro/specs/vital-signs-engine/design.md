@@ -57,6 +57,11 @@ the deprecation message of the latest release. deps.dev is the only one that giv
 all version dates in one small response. If one fails, the other still gives a
 verdict, and the failure is listed in `unavailable`.
 
+A package whose latest release is under a year old, which is not deprecated and has no
+advisory against the version in use, skips
+the repository, Scorecard and GitHub lookups: it cannot be dying. This keeps healthy
+trees cheap.
+
 GitHub is the scarce source (60 calls per hour without a token). The engine only asks
 GitHub when a dependency already shows a weak or strong signal and its repository is on
 GitHub, and never twice for one repository. Scorecard through deps.dev covers the
@@ -69,7 +74,8 @@ GitHub, and never twice for one repository. Scorecard through deps.dev covers th
    (npm ranges: `^ ~ x * || - <= >= < >`, tags such as `latest` mean the default
    version; `npm:` aliases are unwrapped; PyPI: PEP 440 specifiers `== != ~= >= <= < > ===`
    and wildcards; Poetry `^` and `~`).
-3. Otherwise the latest stable version.
+3. Otherwise, for a spec that is not a range (a dist-tag), the latest version. A valid range
+   that no known version satisfies is unresolved: no advisory is claimed.
 
 OSV is asked about that version only. If the version is unknown (no source answered),
 OSV is not asked and the diagnosis lists `osv` as skipped in the evidence-free way:
@@ -90,12 +96,13 @@ class. The rules are the whole definition of the verdict.
 | `no-release` | weak | npm, pypi, deps.dev | Latest release is 2 years old or older (and under 5) |
 | `low-maintenance` | weak | scorecard | Scorecard `Maintained` score is 0 to 2 on a repository older than 90 days |
 | `repo-inactive` | weak | github | `pushed_at` is 2 years old or older |
-| `no-repository` | weak | npm, pypi | No source repository is linked |
+| `no-repository` | support | npm, pypi | No source repository is linked. Shown; never lowers the verdict alone |
+| `unchecked` | info | npm, pypi | No registry answered at all; shown on an `alive` diagnosis so the gap is visible |
 | `version-deprecated` | weak | npm, deps.dev | Only the version in use is deprecated |
 | `version-yanked` | weak | pypi | Only the version in use is yanked |
 | `repo-gone` | gone | github | Repository returns 404 or 451 |
 | `osv-advisory` | advisory | osv | An advisory affects the version in use |
-| `registry-not-found` | strong | npm, pypi, deps.dev | The registry says the package does not exist |
+| `registry-not-found` | weak | npm, pypi, deps.dev | The registry says the package does not exist (removed, private or misspelled) |
 
 `decide(evidence)`:
 
@@ -119,9 +126,9 @@ can only turn a test from false to true. The verdict is the highest rule that fi
 That is exactly what R2.2 asks, and it is checked by a property test that adds random
 evidence to random evidence sets.
 
-`registry-not-found` is a strong signal because a dependency that no registry knows
-cannot be resurrected by upgrading. It does not add `ghost`: ghost is about the
-source repository.
+`registry-not-found` is weak: a 404 can mean removed, private or misspelled, and the
+adversarial review showed that calling every 404 `dead` makes a private-registry project
+look dead. It does not add `ghost`: ghost is about the source repository.
 
 An advisory on a healthy package is shown as evidence but does not make it dead
 (R2.12). A vulnerable maintained package is fixed by upgrading; a dead one is not.
@@ -150,7 +157,8 @@ At most three are checked per dependency.
 ## Caching, limits, retries
 
 `Http` keeps a `Map<key, Promise<Response>>` per engine instance, keyed by method, URL
-and body. A fixed-size queue runs at most 8 requests at once. A request that throws,
+and body. Failed results (network, timeout, 5xx, rate limit) are dropped from the map after
+they settle, so a long-lived engine recovers. The GitHub budget resets each hour. A fixed-size queue runs at most 8 requests at once. GitHub calls run in a pool of 3, so a refusal (403 or 429) stops the calls that have not started. A request that throws,
 times out (15 s), or returns 429 or 5xx is retried once after 400 ms. Responses 4xx
 other than 429 are final. JSON that fails to parse becomes a `SourceFailure`.
 `now` and the sleep function are injectable (`EngineTuning`) so tests run instantly.

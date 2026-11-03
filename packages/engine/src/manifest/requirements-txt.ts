@@ -10,17 +10,33 @@ export function scopeFromPath(path: string): DependencyRef['scope'] {
   return DEV_PATH.test(path) ? 'dev' : 'main';
 }
 
-/** Join lines that end with a backslash, remembering the first line number of each. */
+const MAX_LOGICAL_LINE = 20_000;
+
+/**
+ * Join lines that end with a backslash, remembering the first line number of each.
+ * Like pip, a comment line is never continued. Linear time: parts are collected and
+ * joined once, and a runaway continuation is cut at MAX_LOGICAL_LINE characters.
+ */
 function logicalLines(content: string): Array<{ no: number; text: string }> {
   const raw = content.split(/\r\n|\r|\n/);
   const out: Array<{ no: number; text: string }> = [];
   for (let i = 0; i < raw.length; i++) {
-    let text = raw[i] ?? '';
     const no = i + 1;
-    while (/\\$/.test(text) && i + 1 < raw.length) {
-      text = `${text.slice(0, -1)} ${raw[++i] ?? ''}`;
+    let line = raw[i] ?? '';
+    const parts: string[] = [];
+    let total = line.length;
+    while (
+      line.endsWith('\\') &&
+      !line.trimStart().startsWith('#') &&
+      i + 1 < raw.length &&
+      total <= MAX_LOGICAL_LINE
+    ) {
+      parts.push(line.slice(0, -1));
+      line = raw[++i] ?? '';
+      total += line.length;
     }
-    out.push({ no, text });
+    parts.push(line);
+    out.push({ no, text: parts.join(' ') });
   }
   return out;
 }
@@ -32,11 +48,17 @@ export function parseRequirementsTxt(file: ManifestFile): ParseResult {
   const result = emptyResult();
   const scope = scopeFromPath(file.path);
   for (const { no, text: rawLine } of logicalLines(file.content)) {
+    if (rawLine.length > MAX_LOGICAL_LINE + 1000) {
+      result.problems.push(
+        `Line ${no}: skipped, it is longer than ${MAX_LOGICAL_LINE} characters.`,
+      );
+      continue;
+    }
     const line = rawLine.replace(/(^|\s)#.*$/, '').trim();
     if (line === '') continue;
     if (line.startsWith('-')) {
-      if (/^(?:-r|--requirement|-c|--constraint)\b/.test(line)) {
-        const target = line.replace(/^\S+\s*=?\s*/, '');
+      if (/^(?:-r|--requirement|-c|--constraint)(?:\s|=|(?=[^\s-]))/.test(line)) {
+        const target = line.replace(/^(?:--requirement|--constraint|-r|-c)\s*=?\s*/, '');
         result.problems.push(
           `Line ${no}: "${clip(line, 60)}" includes ${clip(target, 40) || 'another file'}, which is read only when it is also provided as a manifest.`,
         );

@@ -95,6 +95,7 @@ const pkgKey = (d: Pick<DependencyRef, 'ecosystem' | 'name'>): string => `${d.ec
 export class Core {
   readonly http: Http;
   private githubRequested = new Set<string>();
+  private githubWindowStart = 0;
   private githubBlockedUntil = 0;
   private replacements: Promise<ReplacementIndex> | undefined;
 
@@ -132,7 +133,21 @@ export class Core {
     const osv = await this.guardedOsv(queries, run);
 
     // Phase C: repository facts for packages that are not obviously fresh.
-    await this.repositoryFacts([...facts.values()], deps, inUse, run);
+    // A package with an advisory against the version in use is always worth a repository
+    // check, even when its latest release is fresh: an archived repository plus an advisory
+    // is a zombie.
+    const withAdvisory = new Set<string>();
+    deps.forEach((dep, i) => {
+      const version = inUse[i];
+      if (
+        version &&
+        (osv.advisories.get(osvKey({ ecosystem: dep.ecosystem, name: dep.name, version }))
+          ?.length ?? 0) > 0
+      ) {
+        withAdvisory.add(pkgKey(dep));
+      }
+    });
+    await this.repositoryFacts([...facts.values()], deps, inUse, withAdvisory, run);
 
     // Phase D: verdicts and successors.
     const needsSuccessors = new Set<number>();
@@ -307,7 +322,8 @@ export class Core {
 
   // --- Phase C ------------------------------------------------------------------------------
 
-  private isFresh(f: PackageFacts): boolean {
+  private isFresh(f: PackageFacts, withAdvisory: ReadonlySet<string>): boolean {
+    if (withAdvisory.has(pkgKey(f))) return false;
     if (f.deprecatedLatest || f.inactive || f.latestYanked || f.notFound) return false;
     const age = signals.ageInDays(f.latest?.date, this.now());
     return age !== undefined && age < signals.THRESHOLDS.freshDays;
@@ -358,13 +374,16 @@ export class Core {
     all: PackageFacts[],
     deps: readonly DependencyRef[],
     inUse: Array<string | undefined>,
+    withAdvisory: ReadonlySet<string>,
     run: RunReport,
   ): Promise<void> {
     const versionByPackage = new Map<string, string | undefined>();
     deps.forEach((dep, i) => {
       if (!versionByPackage.has(pkgKey(dep))) versionByPackage.set(pkgKey(dep), inUse[i]);
     });
-    const candidates = all.filter((f) => f.gotData && !f.notFound && !this.isFresh(f));
+    const candidates = all.filter(
+      (f) => f.gotData && !f.notFound && !this.isFresh(f, withAdvisory),
+    );
 
     // Repository link and Scorecard (deps.dev has no hard limit; GitHub does).
     await Promise.all(
@@ -400,8 +419,13 @@ export class Core {
     const wanted = candidates
       .filter((f) => f.repo?.host === 'github.com')
       .map((f) => ({ f, rank: rank(f) }))
-      .filter((x) => x.rank > 0)
+      .filter((x) => x.rank > 0 || withAdvisory.has(pkgKey(x.f)))
       .sort((a, b) => b.rank - a.rank);
+    // GitHub counts calls per hour, so the budget is per hour too.
+    if (this.now().getTime() - this.githubWindowStart >= 3_600_000) {
+      this.githubRequested = new Set<string>();
+      this.githubWindowStart = this.now().getTime();
+    }
     let skipped = 0;
     const queue = [...wanted];
     // A small pool, so a refusal from GitHub stops the calls that have not started yet.
@@ -478,8 +502,10 @@ export class Core {
   // --- helpers ------------------------------------------------------------------------------
 
   private loadIndex(run: RunReport): Promise<ReplacementIndex> {
-    this.replacements ??= loadReplacements(this.http);
-    return this.replacements.then((index) => {
+    const loading = (this.replacements ??= loadReplacements(this.http));
+    return loading.then((index) => {
+      // A partial load is not kept, so the next scan tries again.
+      if (index.failures.length > 0 && this.replacements === loading) this.replacements = undefined;
       for (const f of index.failures)
         note(run, 'module-replacements', `${f.manifest}: ${f.reason}`);
       return index;

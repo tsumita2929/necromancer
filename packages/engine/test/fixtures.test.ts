@@ -91,7 +91,8 @@ describe('R8.2 acceptance fixture: request, node-sass, tslint, left-pad, moment,
   it('uses GitHub only for packages that look unhealthy, once each', async () => {
     const { fetch } = await scan('acceptance');
     const github = fetch.requests.filter((r) => r.includes('api.github.com'));
-    expect(github).toHaveLength(4);
+    // The four deprecated packages, plus qs: it has an advisory, so its repository is checked.
+    expect(github).toHaveLength(5);
     expect(github.some((r) => r.includes('expressjs') || r.includes('moment'))).toBe(false);
   });
 });

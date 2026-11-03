@@ -21,10 +21,22 @@ interface Requirement {
 
 /** Text that is safe inside a Markdown line and inline code. */
 function flatten(text: unknown): string {
-  return String(text ?? '')
-    .replace(/[\r\n\t`]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  let raw: string;
+  try {
+    raw = String(text ?? '');
+  } catch {
+    raw = '';
+  }
+  return (
+    raw
+      // Controls (C0, C1), line and paragraph separators, backticks: one flat line.
+      .replace(/[\u0000-\u001f\u007f-\u009f\u2028\u2029`]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      // Untrusted text must not become links, images or HTML in a Markdown viewer.
+      .replace(/[<>]/g, (c) => (c === '<' ? '&lt;' : '&gt;'))
+      .replace(/[[\]!]/g, (c) => `\\${c}`)
+      .trim()
+  );
 }
 
 function safe(text: unknown, fallback: string, max = 120): string {
@@ -185,7 +197,8 @@ function renderRequirements(
     '',
     ...(diagnosis.evidence.length > 0
       ? diagnosis.evidence.map(
-          (e) => `- ${safe(e.message, e.code, 220)} (${safe(e.source, 'unknown', 30)})`,
+          (e) =>
+            `- Evidence: ${safe(e?.message, e?.code, 220)} (${safe(e?.source, 'unknown', 30)})`,
         )
       : ['- No evidence was recorded.']),
     '',
@@ -291,6 +304,15 @@ function renderTasks(old: string, next: Successor, reqs: Requirement[]): string 
 
 /** A Kiro spec for moving the project off `diagnosis.dependency` onto `successor`. */
 export function resurrectionSpec(diagnosis: Diagnosis, successor: Successor): KiroSpec {
+  try {
+    return buildSpec(diagnosis, successor);
+  } catch {
+    // Malformed input (for example an object whose properties throw): spec the bare names.
+    return buildSpec(undefined as never, undefined as never);
+  }
+}
+
+function buildSpec(diagnosis: Diagnosis, successor: Successor): KiroSpec {
   const old = safe(diagnosis?.dependency?.name, 'the dependency', 80);
   const next: Successor = {
     ...successor,
@@ -307,7 +329,9 @@ export function resurrectionSpec(diagnosis: Diagnosis, successor: Successor): Ki
       declaredIn: '',
     },
     verdict: diagnosis?.verdict ?? 'dead',
-    evidence: Array.isArray(diagnosis?.evidence) ? diagnosis.evidence : [],
+    evidence: Array.isArray(diagnosis?.evidence)
+      ? diagnosis.evidence.filter((e) => typeof e === 'object' && e !== null)
+      : [],
     advisories: Array.isArray(diagnosis?.advisories) ? diagnosis.advisories : [],
     successors: [],
     ...(diagnosis?.latest ? { latest: diagnosis.latest } : {}),
