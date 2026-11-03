@@ -81,6 +81,8 @@ async function guard<T>(task: () => Promise<Fetched<T>>): Promise<Fetched<T>> {
   }
 }
 
+const GITHUB_POOL = 3;
+
 const pkgKey = (d: Pick<DependencyRef, 'ecosystem' | 'name'>): string => `${d.ecosystem}:${d.name}`;
 
 export class Core {
@@ -360,33 +362,30 @@ export class Core {
       .filter((x) => x.rank > 0)
       .sort((a, b) => b.rank - a.rank);
     let skipped = 0;
-    const jobs: Array<Promise<void>> = [];
-    for (const { f } of wanted) {
-      const repo = f.repo as RepoRef;
-      const key = repoKey(repo);
-      if (this.now().getTime() < this.githubBlockedUntil) {
-        skipped++;
-        continue;
-      }
-      if (!this.githubRequested.has(key)) {
-        if (this.githubRequested.size >= this.tuning.githubBudget) {
-          skipped++;
-          continue;
-        }
-        this.githubRequested.add(key);
-      }
-      jobs.push(
-        (async () => {
-          const g = await guard(() => getGithubRepo(this.http, repo));
-          if (g.ok) f.github = g.value;
-          else {
-            if (g.kind === 'rate-limited') this.githubBlockedUntil = this.now().getTime() + 3_600_000;
-            note(run, 'github', g.reason);
+    const queue = [...wanted];
+    // A small pool, so a refusal from GitHub stops the calls that have not started yet.
+    const worker = async (): Promise<void> => {
+      for (let next = queue.shift(); next; next = queue.shift()) {
+        const f = next.f;
+        const repo = f.repo as RepoRef;
+        const key = repoKey(repo);
+        if (this.now().getTime() < this.githubBlockedUntil) continue; // already reported
+        if (!this.githubRequested.has(key)) {
+          if (this.githubRequested.size >= this.tuning.githubBudget) {
+            skipped++;
+            continue;
           }
-        })(),
-      );
-    }
-    await Promise.all(jobs);
+          this.githubRequested.add(key);
+        }
+        const g = await guard(() => getGithubRepo(this.http, repo));
+        if (g.ok) f.github = g.value;
+        else {
+          if (g.kind === 'rate-limited') this.githubBlockedUntil = this.now().getTime() + 3_600_000;
+          note(run, 'github', g.reason);
+        }
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(GITHUB_POOL, queue.length) }, worker));
     if (skipped > 0) {
       note(run, 'github', `GitHub budget reached (${this.tuning.githubBudget} calls per scan, limit is 60 per hour): ${skipped} ${skipped === 1 ? 'repository was' : 'repositories were'} not checked`);
     }
