@@ -11,7 +11,7 @@ GitHub API calls: **0**.
 
 | Finding | Fix | Evidence |
 | --- | --- | --- |
-| QA-30 README says "Replays 1 distinct call from the project's 4 calls ... Left out 2 calls" | Every call the scan counted is put in exactly one class, and the README says each class and then adds them up: `Count: 1 replayed + 2 left out + 1 with an argument that is not a plain literal = 4 calls.` The left-out line gives its count by reason (host, file path, command). | 14 new tests, section 2 |
+| QA-30 README says "Replays 1 distinct call from the project's 4 calls ... Left out 2 calls" | Every call the scan counted is put in exactly one class, and the README says each class and then adds them up: `Count: 1 replayed + 2 left out + 1 with an argument that is not a plain literal = 4 calls.` The left-out line gives its count by reason (host, file path, command). | 15 new tests, section 2 |
 | QA-26 `*.log` hides the run logs the hook and the docs name | The logs are tracked. One negation line in `.gitignore`: `!packages/engine/test/fixtures/seance-runs/*.log`. The six logs were re-recorded with the six `.json` records (`--record`) and committed. | fresh clone: 6 logs present, `git check-ignore` exit 1 (not ignored) |
 | QA-24 hook names this host's scratch folder | The hook prompt names no path. It says `run-seances.mjs` builds its own scratch, `NECROMANCER_SEANCE_SCRATCH` reuses one, `--keep` keeps the temporary one, the counterexample is in `<scratch>/records/<recipe>.log`, and `--record` rewrites the tracked `.json` and `.log`. | no `/home/` in the hook, `packages/engine/{src,scripts,test}` or the new logs |
 | `types.ts` `basis` comment | Comment-only edit (approved): "hard" no longer lists an advisory, a deprecated or yanked version in use, or an unknown package; a zombie's basis is the basis of the death; dying is always heuristic. | `git diff` shows only comment lines changed; typecheck clean |
@@ -82,7 +82,7 @@ Work was done in a fresh clone of the shared repository; the commit was applied 
 | --- | --- |
 | `npx prettier --check .` (engine) | `All matched files use Prettier code style!` |
 | `npm run typecheck` (engine) | clean |
-| `npx vitest run` (engine) | `Test Files 29 passed (29)`, `Tests 642 passed` in the shared tree with a scratch folder; 632 passed and 10 skipped in a clone without one (627 before; 14 new in `seance-counts.test.ts`, one fewer plus-or-minus for the two edited) |
+| `npx vitest run` (engine) | `Test Files 29 passed (29)`, `Tests 642 passed` in the shared tree with a scratch folder; 632 passed and 10 skipped in a clone without one (627 before; 15 new in `seance-counts.test.ts`, two older tests edited) |
 | `cd apps/web && npx tsc --noEmit && npx vitest run` | clean; `Test Files 13 passed (13)`, `Tests 338 passed (338)` |
 | `cd apps/crew && npx tsc --noEmit && npx vitest run` | clean; `Test Files 13 passed (13)`, `Tests 200 passed (200)` |
 | `node scripts/run-seances.mjs --record` (existing scratch) | `OK` for left-pad, querystring, mkdirp, is-odd, toml, pep8; wrote the six `.json` and six `.log` |
