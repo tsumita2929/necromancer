@@ -146,8 +146,10 @@ export function decide(
   let verdict: Verdict;
   let basis: Basis | undefined;
   if (dead && hasAdvisory) {
+    // The basis follows the evidence of the death, not the advisory: a zombie whose death rests on the
+    // abandoned rule is heuristic; the advisory stays in the evidence as the hard fact (round 5).
     verdict = 'zombie';
-    basis = 'hard';
+    basis = hard ? 'hard' : 'heuristic';
   } else if (classes.has('gone')) {
     verdict = 'ghost';
     basis = 'hard';

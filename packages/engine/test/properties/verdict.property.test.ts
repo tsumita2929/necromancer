@@ -236,6 +236,22 @@ describe('R2.1 to R2.12 rule table', () => {
     expect(v(['osv-advisory'], ['GHSA-xxxx'])).toBe('alive');
     expect(v([], ['GHSA-xxxx'])).toBe('alive');
   });
+  it('R2.19 a zombie that rests on the abandoned rule is heuristic; with a hard signal it is hard (expr-eval, extract-zip)', () => {
+    const abandoned = decide(
+      [ev('no-release-long'), ev('no-repository'), ev('osv-advisory')],
+      ['GHSA-aaaa-bbbb-cccc'],
+    );
+    expect(abandoned.verdict).toBe('zombie');
+    expect(abandoned.basis).toBe('heuristic');
+    expect(abandoned.evidence.map((e) => e.code)).toContain('osv-advisory');
+    const archived = decide([ev('repo-archived'), ev('no-release-long')], ['GHSA-aaaa-bbbb-cccc']);
+    expect(archived).toMatchObject({ verdict: 'zombie', basis: 'hard' });
+    const readme = decide([ev('readme-unmaintained')], ['GHSA-aaaa-bbbb-cccc']);
+    expect(readme).toMatchObject({ verdict: 'zombie', basis: 'hard' });
+    const gone = decide([ev('repo-gone')], ['GHSA-aaaa-bbbb-cccc']);
+    expect(gone).toMatchObject({ verdict: 'zombie', basis: 'hard' });
+  });
+
   it('R2.4 dead plus an advisory is zombie; ghost plus an advisory is zombie', () => {
     expect(v(['npm-deprecated'], ['GHSA-xxxx'])).toBe('zombie');
     expect(v(['repo-gone'], ['GHSA-xxxx'])).toBe('zombie');
@@ -358,7 +374,10 @@ describe('R2.19 every verdict says what it rests on', () => {
         }
         const classes = new Set(d.evidence.map((e) => classOf(e.code)));
         expect(d.basis).toBeDefined();
-        if (d.verdict === 'zombie' || d.verdict === 'ghost') expect(d.basis).toBe('hard');
+        if (d.verdict === 'ghost') expect(d.basis).toBe('hard');
+        // A zombie's basis follows the evidence of its death, not the advisory (round 5).
+        if (d.verdict === 'zombie')
+          expect(d.basis).toBe(classes.has('strong') || classes.has('gone') ? 'hard' : 'heuristic');
         if (d.verdict === 'dead')
           expect(d.basis).toBe(classes.has('strong') || classes.has('gone') ? 'hard' : 'heuristic');
         // Dying rests on staleness only; a fact about the version in use no longer makes it.
