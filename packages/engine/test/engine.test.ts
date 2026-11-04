@@ -163,10 +163,29 @@ describe('R2.6, R2.9 and R2.11 rules through the engine', () => {
     expect(d?.advisories).toEqual(['GHSA-old']);
     expect(d?.latest?.version).toBe('2.0.0');
   });
-  it('R2.5 an unknown package is dying with registry-not-found (removed, private or misspelled)', async () => {
+  it('R2.5 / QA-07 an unknown package is alive, marked not found and not checked (removed, private or misspelled)', async () => {
     const [d] = await engineFor(fakeWorld([]).fetch).diagnose([dep('does-not-exist')]);
-    expect(d?.verdict).toBe('dying');
-    expect(d?.evidence[0]?.code).toBe('registry-not-found');
+    expect(d?.verdict).toBe('alive');
+    expect(d?.notFound).toBe(true);
+    expect(d?.evidence.map((e) => e.code)).toEqual(['registry-not-found', 'unchecked']);
+    expect(d?.evidence[0]?.message).toMatch(/removed, private or misspelled/);
+    expect(d?.successors).toEqual([]);
+  });
+  it('QA-07 a private scoped package that answers 404 is not dying either', async () => {
+    const [d] = await engineFor(fakeWorld([]).fetch).diagnose([dep('@corp/internal-tool')]);
+    expect(d).toMatchObject({ verdict: 'alive', notFound: true });
+  });
+  it('QA-07 a registry failure (not a 404) is "unchecked" without the not-found flag', async () => {
+    const down = async () => ({
+      ok: false,
+      status: 503,
+      json: async () => ({}),
+      text: async () => '',
+    });
+    const [d] = await engineFor(down).diagnose([dep('whatever')]);
+    expect(d?.verdict).toBe('alive');
+    expect(d?.notFound).toBeUndefined();
+    expect(d?.evidence.map((e) => e.code)).toContain('unchecked');
   });
 });
 

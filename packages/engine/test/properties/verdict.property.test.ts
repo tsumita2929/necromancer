@@ -289,7 +289,7 @@ describe('R2.17 evidence of life', () => {
     fc.assert(
       fc.property(
         deathList,
-        fc.constantFrom('version-deprecated', 'version-yanked', 'registry-not-found'),
+        fc.constantFrom('version-deprecated', 'version-yanked'),
         (base, code) => {
           expect(idx(decide([...base, ev(code), recent], []).verdict)).toBeGreaterThanOrEqual(
             idx('dying'),

@@ -222,6 +222,7 @@ export class Core {
           successors,
         };
         if (decision.basis) out.basis = decision.basis;
+        if (f.notFound) out.notFound = true;
         if (f.latest) out.latest = f.latest;
         return out;
       }),
@@ -596,6 +597,12 @@ export class Core {
       evidence.push(signals.noRepository(f.registrySource));
     if (advisories.length > 0 && version)
       evidence.push(signals.advisoryEvidence(advisories, version));
+    if (f.notFound) {
+      // Nothing was examined, so nothing is claimed: alive, marked "Not checked" (QA-07).
+      evidence.push(
+        signals.unchecked(f.registrySource, ['the registry has no record of this package']),
+      );
+    }
     if (!f.gotData && !f.notFound) {
       evidence.push(
         signals.unchecked(

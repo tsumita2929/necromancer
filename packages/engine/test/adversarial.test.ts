@@ -92,7 +92,7 @@ describe('F3 protocols that are not npm registry packages', () => {
     expect(r.dependencies.map((d) => d.name)).toEqual(['ok']);
     expect(r.problems).toHaveLength(3);
   });
-  it('a 404 from every source does not turn the whole tree dead', async () => {
+  it('a 404 from every source does not turn the whole tree dead, or dying: nothing is claimed (QA-07)', async () => {
     const report = await engineFor(fakeWorld([]).fetch).autopsy({
       subject: 's',
       files: [
@@ -104,7 +104,13 @@ describe('F3 protocols that are not npm registry packages', () => {
       ],
     });
     expect(report.summary.dead + report.summary.ghost + report.summary.zombie).toBe(0);
-    expect(report.summary.dying).toBe(3);
+    expect(report.summary.dying).toBe(0);
+    expect(report.summary.alive).toBe(3);
+    for (const d of report.diagnoses) {
+      expect(d.notFound).toBe(true);
+      expect(d.basis).toBeUndefined();
+      expect(d.evidence.map((e) => e.code)).toEqual(['registry-not-found', 'unchecked']);
+    }
     expect(report.diagnoses[0]?.evidence[0]?.message).toMatch(/removed, private or misspelled/);
   });
 });

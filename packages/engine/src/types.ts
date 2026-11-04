@@ -47,9 +47,12 @@ export interface ParseResult {
  * Verdict scale, healthiest first. The order is part of the contract:
  * adding evidence of death never moves a dependency to an earlier entry.
  *
- * - alive:  maintained, no blocking signal.
- * - dying:  stale signals only (no release for a long time, low maintenance score).
- * - dead:   a definitive end-of-life signal (deprecated, archived, yanked, inactive).
+ * - alive:  no blocking signal found. A package the registry does not know, or that could not be
+ *           checked, is also "alive" and carries an "unchecked" evidence line.
+ * - dying:  stale signals (no release for a long time, a quiet repository), or a deprecated or
+ *           yanked version in use. `basis` says which.
+ * - dead:   a hard end-of-life signal (deprecated, archived, yanked, inactive) or, with `basis`
+ *           "heuristic", the abandoned guess: a very old release and nothing that shows care.
  * - ghost:  dead, and its source repository is gone or unreachable.
  * - zombie: dead or ghost, and a known advisory affects the version in use.
  */
@@ -109,6 +112,12 @@ export interface Diagnosis {
    * Absent for "alive".
    */
   basis?: 'hard' | 'heuristic';
+  /**
+   * True when the registry has no package of this name (removed, private or misspelled; the engine
+   * cannot tell which). The verdict is then "alive" with an "unchecked" line: nothing was examined,
+   * so nothing is claimed.
+   */
+  notFound?: boolean;
 }
 
 /** A whole scan. */

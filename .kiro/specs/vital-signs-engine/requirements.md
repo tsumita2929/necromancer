@@ -97,9 +97,10 @@ can defend with evidence, and I want the verdict never to hide a warning.
   (a dist-tag such as `next`), THE version in use SHALL be the latest. WHEN the spec is a
   valid range that no known version satisfies, THE version SHALL be unresolved and no
   advisory SHALL be claimed. **[PBT]** (range resolution)
-- R2.14 WHEN the registry has no package of that name, THE verdict SHALL be `dying`
-  with evidence `registry-not-found` (the package may be removed, private or
-  misspelled; the engine cannot tell which).
+- R2.14 WHEN the registry has no package of that name, THE verdict SHALL be `alive`, the
+  diagnosis SHALL have `notFound: true`, and the evidence SHALL be `registry-not-found` (the package
+  may be removed, private or misspelled; the engine cannot tell which) followed by `unchecked`, so
+  that no staleness is claimed for a package nothing was read about. (Amended in R4: it was `dying`.)
 - R2.15 WHEN no source repository is linked, THE engine SHALL show that as evidence but
   SHALL NOT lower the verdict by it alone; it only supports R2.9.
 - R2.16 WHEN an advisory affects the version in use, THE engine SHALL check the

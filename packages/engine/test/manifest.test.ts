@@ -401,3 +401,17 @@ describe('R1.10 edge inputs never throw', () => {
     expect(() => parseManifest(null as never)).not.toThrow();
   });
 });
+
+describe('QA-16 the skipped-entry message names the package, not its version', () => {
+  it('an invalid package name is named, and the version is not quoted as its source', () => {
+    const r = parse('package.json', JSON.stringify({ dependencies: { '@a/<b>': '1' } }));
+    expect(r.dependencies).toEqual([]);
+    expect(r.problems).toEqual([
+      'Skipped "@a/<b>": it is not a valid package name, so it is not checked against a registry.',
+    ]);
+  });
+  it('other skips still say what the source is', () => {
+    const r = parse('package.json', JSON.stringify({ dependencies: { x: 'git+https://h/x.git' } }));
+    expect(r.problems[0]).toMatch(/^Skipped "x": its source is a git source/);
+  });
+});

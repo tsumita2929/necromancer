@@ -17,17 +17,20 @@ import type { Evidence, Verdict } from './types.js';
 
 /**
  * - gone:        the source repository is gone (ghost).
- * - strong:      a definitive end-of-life signal (dead). A hard signal.
- * - derived:     the abandoned heuristic (dead). Not a hard signal.
+ * - strong:      a fact from a source that ends a package's life: deprecated, archived, inactive or
+ *                yanked (dead, `basis` hard).
+ * - derived:     the abandoned guess (dead, `basis` heuristic): a very old release and nothing that
+ *                shows care. Not a hard signal, and not to be described as definitive.
  * - notice:      a fact that makes the dependency dying and is not a staleness guess: the version in
- *                use is deprecated or yanked, or the registry does not know the package. A hard signal.
+ *                use is deprecated or yanked. A hard signal.
  * - conditional: counts as death only together with a supporting signal (see `decide`).
  * - weak:        a stale signal (dying).
  * - support:     shown, and counts only as support for `no-release-long`; never causes dying alone.
  *                A Scorecard score belongs here: it lags and does not decide a verdict by itself.
  * - advisory:    a known advisory; turns dead into zombie, never causes death.
  * - life:        a sign of life; lifts staleness-only verdicts back to alive.
- * - info:        shown, never changes the verdict.
+ * - info:        shown, never changes the verdict. A package the registry does not know
+ *                (`registry-not-found`) is here: nothing was examined, so nothing is claimed.
  */
 export type EvidenceClass =
   | 'gone'
@@ -48,7 +51,7 @@ export const EVIDENCE_CLASS: Readonly<Record<string, EvidenceClass>> = {
   'pypi-inactive': 'strong',
   'pypi-yanked': 'strong',
   abandoned: 'derived',
-  'registry-not-found': 'notice',
+  'registry-not-found': 'info',
   'version-deprecated': 'notice',
   'version-yanked': 'notice',
   'no-release-long': 'conditional',

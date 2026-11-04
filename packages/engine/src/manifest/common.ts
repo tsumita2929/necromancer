@@ -41,5 +41,9 @@ export function classifyNpmSpec(name: string, specRaw: string): NpmSpecClass {
 }
 
 export function skipProblem(name: string, label: string, spec: string): string {
+  // The name itself is the problem; the quoted value would be the version, which is not.
+  if (label === 'an invalid package name') {
+    return `Skipped "${clip(name, 60)}": it is not a valid package name, so it is not checked against a registry.`;
+  }
   return `Skipped "${clip(name, 60)}": its source is ${label} ("${clip(spec, 60)}"), which is not checked against a registry.`;
 }
