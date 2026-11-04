@@ -54,6 +54,29 @@ for (const size of SIZES) {
     await context.close();
   }
 
+  // --- the séance for left-pad: the engine's acceptance project, uploaded; the source folder as well
+  {
+    const context = await browser.newContext(options);
+    await installWorld(context, {});
+    const page = await context.newPage();
+    await page.goto(server.url);
+    await page.waitForSelector('h1');
+    await page.locator('input[aria-label="Manifest and source files"]').setInputFiles([projectFile('acceptance', 'package.json'), projectFile('acceptance', 'package-lock.json')]);
+    await page.waitForSelector('[data-testid^="group-"]');
+    await page.locator('[data-dep-key="npm:left-pad"]').click();
+    await page.waitForSelector('dialog[open]');
+    await page.getByRole('button', { name: 'Resurrect' }).click();
+    await page.waitForSelector('[data-testid="usage-note"]');
+    await page.waitForTimeout(200);
+    await page.screenshot({ path: `${out}seance-top-${size.tag}.png` });
+    await page.locator('.spec__filesheading').scrollIntoViewIfNeeded();
+    await page.getByRole('tab', { name: 'seance.test.mjs' }).click();
+    await page.locator('.spec__filesheading').evaluate((el) => el.scrollIntoView({ block: 'start' }));
+    await page.waitForTimeout(150);
+    await page.screenshot({ path: `${out}seance-files-${size.tag}.png` });
+    await context.close();
+  }
+
   // --- progress, stubbed (the registries answer slowly so the panel holds still)
   {
     const context = await browser.newContext(options);

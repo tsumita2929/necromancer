@@ -35,6 +35,8 @@ vi.mock('../data/autopsy', async (importOriginal) => {
     ...real,
     SAMPLES: samples,
     isSampleId: (value: string) => ids.includes(value),
+    // No source files here: the séance is written without usage (R3.2). Reading sources is tested in src/data.
+    getProjectSources: () => Promise.resolve(null),
     runAutopsy: (input: any, options: any) => {
       if (mocks.run) return mocks.run(input, options);
       if (input.kind === 'sample') return Promise.resolve(fixture(input.id));
@@ -332,7 +334,7 @@ describe('R7 detail panel and resurrection with the real engine', () => {
     const dialog = await screen.findByRole('dialog', { name: 'request' });
     await user.click(within(dialog).getByRole('button', { name: 'Resurrect' }));
     expect(window.location.hash).toContain('spec=0');
-    expect(within(dialog).getAllByRole('tab')).toHaveLength(3);
+    expect((await within(dialog).findAllByRole('tab', {}, { timeout: 8000 })).slice(0, 3).map((t) => t.textContent)).toEqual(['requirements.md', 'design.md', 'tasks.md']);
     const requirements = await within(dialog).findByLabelText('Contents of requirements.md', {}, { timeout: 5000 });
     expect(requirements).toHaveTextContent('# Requirements: Move off request');
     await user.click(within(dialog).getByRole('tab', { name: 'design.md' }));
@@ -343,7 +345,7 @@ describe('R7 detail panel and resurrection with the real engine', () => {
     const create = vi.fn(() => 'blob:fake');
     Object.assign(URL, { createObjectURL: create, revokeObjectURL: vi.fn() });
     const click = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
-    await user.click(within(dialog).getByRole('button', { name: /download spec/i }));
+    await user.click(within(dialog).getByRole('button', { name: /download spec and séance/i }));
     expect(create).toHaveBeenCalledTimes(1);
     expect(click).toHaveBeenCalled();
     await waitFor(() => expect(screen.getByTestId('live-region')).toHaveTextContent(/migrate-request-to-got\.zip/));
@@ -353,7 +355,7 @@ describe('R7 detail panel and resurrection with the real engine', () => {
     const user = userEvent.setup();
     renderAt('#/graveyard?src=sample:revenant-api&open=npm:babel-eslint&spec=0');
     const dialog = await screen.findByRole('dialog', { name: 'babel-eslint' });
-    const first = within(dialog).getByRole('tab', { name: 'requirements.md' });
+    const first = await within(dialog).findByRole('tab', { name: 'requirements.md' }, { timeout: 8000 });
     first.focus();
     await user.keyboard('{ArrowRight}');
     expect(within(dialog).getByRole('tab', { name: 'design.md' })).toHaveAttribute('aria-selected', 'true');

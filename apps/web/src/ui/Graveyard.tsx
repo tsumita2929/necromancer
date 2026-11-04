@@ -230,6 +230,16 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
   const filtering = isFiltering(controls);
   const urgent = report.summary.zombie + report.summary.ghost + report.summary.dead;
   const opened = findByKey(report.diagnoses, view.open);
+  const sourceContext = useMemo(
+    () => ({
+      source: view.source,
+      ecosystems: new Set(report.diagnoses.map((d) => d.dependency.ecosystem)),
+      pythonDependencies: new Set(
+        report.diagnoses.filter((d) => d.dependency.ecosystem === 'pypi').map((d) => d.dependency.name.toLowerCase().replace(/-/g, '_')),
+      ),
+    }),
+    [view.source, report.diagnoses],
+  );
 
   // Announce the result count after the visitor changes a filter, not on first render.
   const first = useRef(true);
@@ -390,6 +400,7 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
           key={view.open}
           diagnosis={opened}
           specIndex={view.spec}
+          context={sourceContext}
           onClose={close}
           onSpec={(index) => update({ spec: index }, false)}
         />

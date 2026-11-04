@@ -4,6 +4,7 @@ import { Button, ExtLink, formatDate } from '../design/controls';
 import { CloseIcon } from '../design/icons';
 import { VERDICT_META, VerdictBadge } from '../design/Verdict';
 import { displayVersion } from '../state/model';
+import type { SourceContext } from '../data/autopsy';
 import { SpecViewer, kindLabel } from './SpecViewer';
 
 export const SOURCE_NAMES: Record<SourceId, string> = {
@@ -21,11 +22,13 @@ interface DetailPanelProps {
   diagnosis: Diagnosis;
   /** Index of the successor whose spec is on screen, or undefined for the evidence view. */
   specIndex: number | undefined;
+  /** Where the project's source files can come from, for the séance. */
+  context: SourceContext;
   onClose: () => void;
   onSpec: (index: number | undefined) => void;
 }
 
-export function DetailPanel({ diagnosis, specIndex, onClose, onSpec }: DetailPanelProps) {
+export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: DetailPanelProps) {
   const dialog = useRef<HTMLDialogElement>(null);
   const title = useRef<HTMLHeadingElement>(null);
   const titleId = useId();
@@ -81,6 +84,7 @@ export function DetailPanel({ diagnosis, specIndex, onClose, onSpec }: DetailPan
           <SpecViewer
             diagnosis={diagnosis}
             successorIndex={specIndex}
+            context={context}
             onChooseSuccessor={(index) => onSpec(index)}
             onBack={() => onSpec(undefined)}
           />

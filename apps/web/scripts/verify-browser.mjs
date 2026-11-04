@@ -49,16 +49,23 @@ async function newPage(vp, options = {}) {
     hasTouch: vp.hasTouch ?? false,
     ...options,
   });
+  // Resurrect reads a few source files from raw.githubusercontent.com for the séance. The browser checks
+  // must not depend on the real internet, so those reads get a 404 here; they are the only requests
+  // allowed to leave the origin, and api.github.com never.
+  await context.route((url) => url.hostname === 'raw.githubusercontent.com', (route) =>
+    route.fulfill({ status: 404, headers: { 'access-control-allow-origin': '*' }, body: '404: Not Found' }),
+  );
   const page = await context.newPage();
   const foreign = [];
   const failed = [];
   page.on('request', (req) => {
-    if (!req.url().startsWith('data:') && !req.url().startsWith('blob:') && new URL(req.url()).origin !== server.origin) {
-      foreign.push(req.url());
-    }
+    const url = new URL(req.url());
+    if (req.url().startsWith('data:') || req.url().startsWith('blob:') || url.origin === server.origin) return;
+    if (url.hostname === 'raw.githubusercontent.com') return;
+    foreign.push(req.url());
   });
   page.on('response', (res) => {
-    if (res.status() >= 400) failed.push(`${res.status()} ${res.url()}`);
+    if (res.status() >= 400 && new URL(res.url()).hostname !== 'raw.githubusercontent.com') failed.push(`${res.status()} ${res.url()}`);
   });
   page.on('pageerror', (error) => failed.push(`pageerror ${error.message}`));
   return { context, page, foreign, failed };
@@ -205,7 +212,7 @@ for (const vp of VIEWPORTS) {
   await bigPage.goto(server.url);
   await bigPage.waitForSelector('h1');
   const start = Date.now();
-  await bigPage.locator('input[type="file"]').setInputFiles({ name: 'package-lock.json', mimeType: 'application/json', buffer: Buffer.from(bigLockfile(320)) });
+  await bigPage.locator('input[aria-label="Manifest and source files"]').setInputFiles({ name: 'package-lock.json', mimeType: 'application/json', buffer: Buffer.from(bigLockfile(320)) });
   await bigPage.waitForFunction(() => document.querySelectorAll('li.tomb').length >= 320, null, { timeout: 120000 });
   const bigMs = Date.now() - start;
   check('320 dependencies render through the real engine', true, `${bigMs} ms from the file choice to 320 tombstones`);

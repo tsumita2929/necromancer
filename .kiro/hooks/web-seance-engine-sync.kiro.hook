@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Web: re-check the séance in the page when the engine's séance code changes",
+  "description": "The Resurrect view shows exactly what the engine's generateSeance writes. When the engine's séance, usage scan or spec code changes, the page's equality tests and the scratch run must still pass.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["packages/engine/src/seance/**/*.ts", "packages/engine/src/usage/**/*.ts", "packages/engine/src/spec.ts"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "The engine's séance, usage scan or spec code changed. In apps/web run `npm test` (src/ui/seance.test.tsx compares what the page shows with generateSeance byte for byte), then `npm run build` and `npm run verify:seance` (runs the downloaded left-pad and toml séances in the scratch directory, then each mutant). Report the result lines. Do not edit packages/engine; if the page needs an engine change, report a question with the exact diff."
+  }
+}

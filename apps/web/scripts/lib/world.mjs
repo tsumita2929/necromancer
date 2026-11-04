@@ -21,6 +21,15 @@ export function projectFile(project, file) {
   return `${PROJECTS}${project}/${file}`;
 }
 
+/** A `fetch` that answers from the engine's recordings, for running the engine in Node on the same data. */
+export function replayFetch() {
+  return async (url, init) => {
+    const answer = replay(init?.method ?? 'GET', url, init?.body);
+    const text = JSON.stringify(answer.body);
+    return { ok: answer.status >= 200 && answer.status < 300, status: answer.status, json: async () => JSON.parse(text), text: async () => text };
+  };
+}
+
 const CORS = {
   'access-control-allow-origin': '*',
   'access-control-allow-methods': 'GET,POST,OPTIONS',

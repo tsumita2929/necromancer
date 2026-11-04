@@ -250,7 +250,7 @@ let notFoundText = '';
 {
   const { context, page, errors } = await newPage(DESKTOP, { raw: {} });
   const t0 = Date.now();
-  await page.locator('input[type="file"]').setInputFiles([projectFile('acceptance', 'package.json'), projectFile('acceptance', 'package-lock.json')]);
+  await page.locator('input[aria-label="Manifest and source files"]').setInputFiles([projectFile('acceptance', 'package.json'), projectFile('acceptance', 'package-lock.json')]);
   await graveyard(page);
   const ms = Date.now() - t0;
   const verdicts = Object.fromEntries(await Promise.all(['request', 'node-sass', 'tslint', 'left-pad', 'express'].map(async (n) => [n, await verdictOf(page, `npm:${n}`)])));
@@ -260,8 +260,8 @@ let notFoundText = '';
   const firstWay = await page.locator('dialog .ways li').first().innerText();
   check("acceptance project (upload): left-pad's first successor is String.prototype.padStart", /String\.prototype\.padStart/.test(firstWay), firstWay.replace(/\s+/g, ' ').slice(0, 100));
   await page.getByRole('button', { name: 'Resurrect' }).click();
-  await page.waitForSelector('.spec__text');
-  const spec = await page.locator('.spec__text').innerText();
+  await page.waitForSelector('pre.spec__text');
+  const spec = await page.locator('pre.spec__text').innerText();
   check('Resurrect shows the real engine spec', /# Requirements: Move off left-pad/.test(spec) && /padStart/.test(spec), spec.split('\n')[0]);
   check('upload: no page error', errors.length === 0, errors.join('; '));
   await context.close();
@@ -270,7 +270,7 @@ let notFoundText = '';
   const lock = bigLockfile(320);
   const { context, page } = await newPage(DESKTOP, { raw: {} });
   const t0 = Date.now();
-  await page.locator('input[type="file"]').setInputFiles({ name: 'package-lock.json', mimeType: 'application/json', buffer: Buffer.from(lock) });
+  await page.locator('input[aria-label="Manifest and source files"]').setInputFiles({ name: 'package-lock.json', mimeType: 'application/json', buffer: Buffer.from(lock) });
   await graveyard(page, 120000);
   const ms = Date.now() - t0;
   const n = await tombCount(page);
@@ -342,7 +342,7 @@ if (LIVE) {
   });
   if (want('acceptance')) await run(DESKTOP, async (page) => {
     const t0 = Date.now();
-    await page.locator('input[type="file"]').setInputFiles([projectFile('acceptance', 'package.json'), projectFile('acceptance', 'package-lock.json')]);
+    await page.locator('input[aria-label="Manifest and source files"]').setInputFiles([projectFile('acceptance', 'package.json'), projectFile('acceptance', 'package-lock.json')]);
     await page.waitForSelector('[data-testid^="group-"]', { timeout: 120000 });
     const ms = Date.now() - t0;
     const verdicts = Object.fromEntries(await Promise.all(['request', 'node-sass', 'tslint', 'left-pad', 'express'].map(async (n) => [n, await verdictOf(page, `npm:${n}`)])));

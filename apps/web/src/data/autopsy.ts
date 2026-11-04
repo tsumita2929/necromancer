@@ -4,16 +4,29 @@
  * Reports come from the real engine, running in the browser through the browser's `fetch`
  * (see engine.ts, loaded lazily), or from a recorded report of a real repository.
  */
-import type { AutopsyReport, Diagnosis, KiroSpec, ManifestFile, ManifestKind, Successor } from '@contract';
+import type {
+  AutopsyReport,
+  DependencyUsage,
+  Diagnosis,
+  KiroSpec,
+  ManifestFile,
+  ManifestKind,
+  SeanceBundle,
+  Successor,
+} from '@contract';
 import { loadEngine, setActiveRun, getActiveRun } from './engine';
 import { AutopsyError, isAbort, type Note } from './errors';
 import { MAX_FILE_BYTES, MAX_FILE_LABEL, parseRepoInput, readRepository, type RawFetch } from './github';
 import { createRun, emptyProgress, type Progress } from './net';
 import { RECORDED_SAMPLES, type RecordedSample } from './samples.generated';
+import { readRepositorySources } from './crawl';
+import { recallSources, type ProjectSources } from './sources';
+import { candidateFiles, describeNoSources, describeUsage, type UsageNote } from './usage';
 
 export { AutopsyError, isAbort, parseRepoInput, MAX_FILE_BYTES, MAX_FILE_LABEL };
 export type { Note, Progress };
 export { STAGES } from './net';
+export type { ProjectSources, UsageNote };
 
 export type SampleId = string;
 
@@ -121,6 +134,14 @@ export async function runAutopsy(input: AutopsyInput, options: AutopsyOptions = 
       } else {
         files = input.files;
         subject = `upload:${input.files[0]?.path ?? 'manifest'}`;
+        const folder = recallSources(input.files);
+        if (folder) {
+          onNote?.({
+            kind: 'info',
+            title: 'Source files read from your folder',
+            text: `${folder.files.length.toLocaleString('en')} source file${folder.files.length === 1 ? '' : 's'} stay in this browser and are used for the séance. ${folder.notes.join(' ')}`.trim(),
+          });
+        }
       }
       let engine;
       try {
@@ -149,7 +170,110 @@ export async function runAutopsy(input: AutopsyInput, options: AutopsyOptions = 
 }
 
 /** A Kiro spec for moving off one dead dependency onto one successor, from the engine. */
-export async function resurrectionSpec(diagnosis: Diagnosis, chosen: Successor): Promise<KiroSpec> {
+export async function resurrectionSpec(
+  diagnosis: Diagnosis,
+  chosen: Successor,
+  options: { usage?: DependencyUsage } = {},
+): Promise<KiroSpec> {
   const engine = await loadEngine();
-  return engine.resurrectionSpec(diagnosis, chosen);
+  return engine.resurrectionSpec(diagnosis, chosen, options.usage ? { usage: options.usage } : undefined);
+}
+
+// --- the séance: project sources, usage, spec and test together ---------------------------------
+
+/** What the page knows about where the project's source files can come from. */
+export interface SourceContext {
+  source: AutopsyInput;
+  /** Ecosystems present in the report, so only the useful languages are looked for. */
+  ecosystems: ReadonlySet<'npm' | 'pypi'>;
+  /** Normalised PyPI names of the project's dependencies. */
+  pythonDependencies: ReadonlySet<string>;
+}
+
+const crawlCache = new Map<string, Promise<ProjectSources | null>>();
+
+function repoOf(source: AutopsyInput): { owner: string; name: string; ref?: string } | null {
+  if (source.kind === 'repo') {
+    return { owner: source.owner, name: source.name, ...(source.ref !== undefined ? { ref: source.ref } : {}) };
+  }
+  if (source.kind === 'sample') {
+    const repository = SAMPLES.find((sample) => sample.id === source.id)?.repository;
+    const [owner, name] = repository?.split('/') ?? [];
+    return owner && name ? { owner, name } : null;
+  }
+  return null;
+}
+
+/**
+ * The project's source files, when this page can get them (R3.5): a folder uploaded in this page,
+ * or a bounded read from raw.githubusercontent.com for a repository or a recorded sample. Null
+ * when there are none. Never calls api.github.com.
+ */
+export async function getProjectSources(
+  context: SourceContext,
+  options: { signal?: AbortSignal; fetchImpl?: typeof fetch } = {},
+): Promise<ProjectSources | null> {
+  const { source } = context;
+  if (source.kind === 'files') return recallSources(source.files) ?? null;
+  const repo = repoOf(source);
+  if (!repo) return null;
+  const key = `${repo.owner}/${repo.name}@${repo.ref ?? 'HEAD'}:${[...context.ecosystems].sort().join(',')}`;
+  const cached = crawlCache.get(key);
+  if (cached) return cached;
+  const base = options.fetchImpl ?? ((input: string, init?: RequestInit) => globalThis.fetch(input, init));
+  const fetchRaw: RawFetch = (url) => base(url, { signal: options.signal ?? null });
+  const pending = readRepositorySources(repo, fetchRaw, {
+    ...(options.signal ? { signal: options.signal } : {}),
+    languages: { js: context.ecosystems.has('npm'), py: context.ecosystems.has('pypi') },
+    externalPython: context.pythonDependencies,
+  }).catch((error: unknown) => {
+    crawlCache.delete(key);
+    throw error;
+  });
+  crawlCache.set(key, pending);
+  return pending;
+}
+
+export function forgetCrawls(): void {
+  crawlCache.clear();
+}
+
+/** Everything the Resurrect view shows and offers for one dependency and one successor. */
+export interface ResurrectionKit {
+  spec: KiroSpec;
+  seance: SeanceBundle;
+  usage?: DependencyUsage;
+  usageNote: UsageNote;
+}
+
+/**
+ * The spec and the séance for one migration, built from the same usage (R1.6). With source files
+ * the engine reads how the project uses the dependency; without, both are written generically and
+ * the note says so (R3.2).
+ */
+export async function resurrectionKit(
+  diagnosis: Diagnosis,
+  chosen: Successor,
+  sources: ProjectSources | null,
+  hint: 'upload' | 'github' | 'none' = 'none',
+): Promise<ResurrectionKit> {
+  const engine = await loadEngine();
+  const origin = sources ? sources.origin : hint;
+  let usage: DependencyUsage | undefined;
+  let usageNote: UsageNote;
+  if (!sources || sources.files.length === 0) {
+    usageNote = describeNoSources(sources, origin);
+  } else {
+    const candidates = candidateFiles(sources.files, diagnosis.dependency);
+    const scanned = engine.scanUsage?.(candidates, {
+      ecosystem: diagnosis.dependency.ecosystem,
+      name: diagnosis.dependency.name,
+    });
+    usageNote = describeUsage(scanned, diagnosis.dependency.name, sources.files.length, sources.notes);
+    if (usageNote.state === 'used') usage = scanned;
+  }
+  const spec = engine.resurrectionSpec(diagnosis, chosen, usage ? { usage } : undefined);
+  if (!engine.seance) throw new AutopsyError('unreachable', 'This version of the engine cannot write a séance.');
+  const seance = engine.seance(diagnosis, chosen, usage);
+  return { spec, seance, ...(usage ? { usage } : {}), usageNote };
 }

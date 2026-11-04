@@ -4,7 +4,9 @@ import { Button } from '../design/controls';
 import { Candle, GraveyardScene } from '../design/Atmosphere';
 import { UploadIcon } from '../design/icons';
 import { VERDICT_META, VerdictBadge } from '../design/Verdict';
-import { MAX_FILE_BYTES, SAMPLES, checkManifestFile, parseRepoInput, type SampleId } from '../data/autopsy';
+import { SAMPLES, parseRepoInput, type SampleId } from '../data/autopsy';
+import { dropEntries, fileEntries, readProject } from '../data/folder';
+import { rememberSources, type ProjectSources } from '../data/sources';
 import { formatDate, plural } from '../design/controls';
 import { defaultView, type Route } from '../state/url';
 import { GROUP_ORDER } from '../state/model';
@@ -27,6 +29,7 @@ export function Landing({ go }: LandingProps) {
   const [accepted, setAccepted] = useState<ManifestFile[]>([]);
   const [dragging, setDragging] = useState(false);
   const fileInput = useRef<HTMLInputElement>(null);
+  const folderInput = useRef<HTMLInputElement>(null);
 
   const openSample = (id: SampleId) => go({ name: 'graveyard', view: defaultView({ kind: 'sample', id }) });
 
@@ -41,28 +44,60 @@ export function Landing({ go }: LandingProps) {
     go({ name: 'graveyard', view: defaultView({ kind: 'repo', ...parsed }) });
   };
 
-  const readFiles = async (list: FileList | File[]) => {
-    const good: ManifestFile[] = [];
-    const bad: Refusal[] = [];
-    for (const file of Array.from(list)) {
-      const check =
-        file.size > MAX_FILE_BYTES
-          ? checkManifestFile(file.name, file.size, 'x')
-          : checkManifestFile(file.name, file.size, await file.text());
-      if (check.ok) good.push(check.file);
-      else bad.push({ name: check.name, reason: check.reason });
-    }
-    setRefusals(bad);
-    setAccepted(good);
-    if (good.length > 0 && bad.length === 0) {
-      go({ name: 'graveyard', view: defaultView({ kind: 'files', files: good }) });
+  const [reading, setReading] = useState(false);
+  const [sourceSummary, setSourceSummary] = useState('');
+  const [pending, setPending] = useState<{ manifests: ManifestFile[]; sources: ProjectSources } | null>(null);
+
+  const openFiles = (manifests: ManifestFile[], sources: ProjectSources) => {
+    if (sources.files.length > 0) rememberSources(manifests, sources);
+    go({ name: 'graveyard', view: defaultView({ kind: 'files', files: manifests }) });
+  };
+
+  /** Reads chosen or dropped files: manifests, and source files for the séance (R4). */
+  const readEntries = async (entries: ReturnType<typeof fileEntries>, fromFolder: boolean, truncated = false) => {
+    setReading(true);
+    setRefusals([]);
+    setPending(null);
+    try {
+      const read = await readProject(entries, { fromFolder, truncated });
+      setRefusals(read.refusals);
+      setAccepted(read.manifests);
+      setSourceSummary(
+        read.sources.files.length > 0
+          ? `${read.sources.files.length.toLocaleString('en')} source file${read.sources.files.length === 1 ? '' : 's'} read, kept in this browser.`
+          : '',
+      );
+      if (read.manifests.length === 0 && fromFolder && read.refusals.length === 0) {
+        setRefusals([
+          {
+            name: 'The folder',
+            reason:
+              'has no package.json, package-lock.json, requirements.txt or pyproject.toml within three folders of its top (outside node_modules and build folders).',
+          },
+        ]);
+        return;
+      }
+      if (read.manifests.length > 0 && read.refusals.length === 0) openFiles(read.manifests, read.sources);
+      else if (read.manifests.length > 0) setPending({ manifests: read.manifests, sources: read.sources });
+    } finally {
+      setReading(false);
     }
   };
 
-  const onDrop = (event: DragEvent) => {
+  const readFiles = (list: FileList | File[]) => {
+    const files = Array.from(list);
+    const fromFolder = files.some((file) => ((file as File & { webkitRelativePath?: string }).webkitRelativePath ?? '').includes('/'));
+    return readEntries(fileEntries(files), fromFolder);
+  };
+
+  const onDrop = async (event: DragEvent) => {
     event.preventDefault();
     setDragging(false);
-    void readFiles(event.dataTransfer.files);
+    // The browser empties the drop once this handler yields, so take everything from it first.
+    const loose = Array.from(event.dataTransfer.files);
+    const { entries, hasFolder, truncated } = await dropEntries(event.dataTransfer.items);
+    if (entries.length > 0 || hasFolder) await readEntries(entries, hasFolder, truncated);
+    else await readFiles(loose);
   };
 
   return (
@@ -127,22 +162,42 @@ export function Landing({ go }: LandingProps) {
               setDragging(true);
             }}
             onDragLeave={() => setDragging(false)}
-            onDrop={onDrop}
+            onDrop={(event) => void onDrop(event)}
           >
             <UploadIcon className="drop__icon" />
             <p>
-              Or drop <span className="mono">package.json</span>, <span className="mono">package-lock.json</span>,{' '}
-              <span className="mono">requirements.txt</span> or <span className="mono">pyproject.toml</span> here.
+              Or drop a project folder, or <span className="mono">package.json</span>,{' '}
+              <span className="mono">package-lock.json</span>, <span className="mono">requirements.txt</span> or{' '}
+              <span className="mono">pyproject.toml</span> here.
             </p>
-            <Button onClick={() => fileInput.current?.click()}>Choose files</Button>
+            <div className="drop__buttons">
+              <Button onClick={() => folderInput.current?.click()} disabled={reading}>
+                Choose a folder
+              </Button>
+              <Button onClick={() => fileInput.current?.click()} disabled={reading}>
+                Choose files
+              </Button>
+            </div>
             <input
               ref={fileInput}
               className="sr-only"
               type="file"
               multiple
-              accept=".json,.txt,.toml"
+              accept=".json,.txt,.toml,.js,.mjs,.cjs,.jsx,.ts,.mts,.cts,.tsx,.py"
               tabIndex={-1}
-              aria-label="Manifest files"
+              aria-label="Manifest and source files"
+              onChange={(event) => {
+                if (event.target.files) void readFiles(event.target.files);
+                event.target.value = '';
+              }}
+            />
+            <input
+              ref={folderInput}
+              className="sr-only"
+              type="file"
+              tabIndex={-1}
+              aria-label="Project folder"
+              {...({ webkitdirectory: '' } as Record<string, string>)}
               onChange={(event) => {
                 if (event.target.files) void readFiles(event.target.files);
                 event.target.value = '';
@@ -152,8 +207,18 @@ export function Landing({ go }: LandingProps) {
 
           <p className="privacy">
             Your files stay in your browser. Only package names and versions go to the public registries and advisory
-            services, to find out how each package is doing.
+            services, to find out how each package is doing. A project folder also gives the séance your own calls: its
+            source files are read here and never sent anywhere.
           </p>
+          {reading ? (
+            <p className="privacy" role="status">
+              Reading the folder…
+            </p>
+          ) : sourceSummary && refusals.length > 0 ? (
+            <p className="privacy" role="status">
+              {sourceSummary}
+            </p>
+          ) : null}
 
           {refusals.length > 0 ? (
             <div className="refusals" role="alert">
@@ -167,12 +232,9 @@ export function Landing({ go }: LandingProps) {
                   </li>
                 ))}
               </ul>
-              {accepted.length > 0 ? (
-                <Button
-                  variant="primary"
-                  onClick={() => go({ name: 'graveyard', view: defaultView({ kind: 'files', files: accepted }) })}
-                >
-                  Continue with the {accepted.length} readable {accepted.length === 1 ? 'file' : 'files'}
+              {pending && accepted.length > 0 ? (
+                <Button variant="primary" onClick={() => openFiles(pending.manifests, pending.sources)}>
+                  Continue with the {accepted.length} readable {accepted.length === 1 ? 'manifest' : 'manifests'}
                 </Button>
               ) : null}
             </div>
