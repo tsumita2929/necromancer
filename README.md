@@ -222,7 +222,7 @@ npm run build
 node scripts/smoke-node.mjs
 ```
 
-Engine: 531 tests, including property tests with fast-check. They never touch the network.
+Engine: 521 tests, including property tests with fast-check. They never touch the network.
 <!-- claim:T01 -->
 
 ```sh

@@ -181,7 +181,7 @@ worker session took each one. See the next section for how each Kiro feature was
 - A census of 100 real projects, with a hand-checked precision figure and its limits stated.
 - Six séances run against real packages, each with deliberately wrong replacements that fail.
 - Four real GitHub repositories recorded as samples, replayed through the engine field by field in a check.
-- 531 engine tests, 337 web tests (129, 67, 29 and 63 checks in a real browser and against the real
+- 521 engine tests, 337 web tests (129, 67, 29 and 63 checks in a real browser and against the real
   packages) and 200 Crew app tests. Every package is type-checked, and CI runs them all, including the
   séance check.
   <!-- claim:T01 --><!-- claim:T02 --><!-- claim:T03 --><!-- claim:T04 -->

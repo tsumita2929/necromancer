@@ -77,10 +77,10 @@ Not quoted, as section 9.8 asks: 51 of 100, 198 of 3,201, 34 of 100, 98.2% and 8
 
 | ID | Claim | Drafts | Source | Checked |
 | --- | --- | --- | --- | --- |
-| T01 | Engine: 531 tests | README, devpost | `engine-upgrade.md` section 1 | RESULT-T01 |
-| T02 | Web: 337 unit tests | README, devpost | `web-samples-r4.md` section 1 | RESULT-T02 |
-| T03 | Browser checks: 129, 67, 29 and 63 (`verify:browser`, `verify:live`, `verify:samples`, `verify:seance`) | README, devpost | `web-samples-r4.md` section 1 | RESULT-T03 |
-| T04 | Crew app: 200 tests | README, devpost | `crew-r4c.md` section 2 | RESULT-T04 |
+| T01 | Engine: 521 tests | README, devpost | README run in a fresh clone of `8acb23e` (`docs/verification/engine-upgrade.md` said 531 at `52c808c`; the count moved with later engine commits) | `run-readme.py` block 6: `vitest tests=521`; `check-drafts.mjs --run-tests` compares it with the README |
+| T02 | Web: 337 unit tests | README, devpost | `web-samples-r4.md` section 1 | `run-readme.py` block 7 in a fresh clone of `8acb23e`: `vitest tests=337` |
+| T03 | Browser checks: 129, 67, 29 and 63 (`verify:browser`, `verify:live`, `verify:samples`, `verify:seance`) | README, devpost | `web-samples-r4.md` section 1 | block 8 printed `PASS lines=288 FAIL lines=0` and four `ALL CHECKS PASSED`; 288 = 129 + 67 + 29 + 63 (each script's own total in `web-samples-r4.md` section 1) |
+| T04 | Crew app: 200 tests | README, devpost | `crew-r4c.md` section 2 | block 9: `vitest tests=200` |
 
 ### The Crew app, Kiro usage, limits
 
