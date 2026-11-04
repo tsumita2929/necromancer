@@ -50,8 +50,9 @@ its last release is old, and I want the quiet period counted from real commits.
 - T3.1 THE `Diagnosis` SHALL carry `basis`: `"hard"` when a hard signal decides the verdict,
   `"heuristic"` when staleness decides it, absent for `alive`.
 - T3.2 THE verdict `zombie` and `ghost` SHALL have basis `hard`; `dead` SHALL be `hard` exactly when
-  a deprecated, archived, inactive or yanked signal is present; `dying` SHALL be `hard` exactly when the
-  version in use is deprecated or yanked or the registry does not know the package. **[PBT]**
+  a deprecated, archived, inactive or yanked signal is present; `dying` SHALL be `heuristic`. *(Round 4b:
+  `dying` was `hard` when the version in use was deprecated or yanked. That is now an upgrade notice on
+  an `alive` verdict, see `.kiro/specs/engine-upgrade-notice/`.)* **[PBT]**
 - T3.3 THE evidence line of the abandoned rule SHALL say it is a heuristic.
 
 ## T4. The generated spec

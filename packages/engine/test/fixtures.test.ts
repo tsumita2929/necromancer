@@ -217,9 +217,13 @@ describe('Q7 moved repositories, recorded from the real sources', () => {
       verdict: 'dying',
       basis: 'heuristic',
     });
-    // npm itself marks this version deprecated: a hard fact, unrelated to the move.
-    expect(find(report, 'codemirror')).toMatchObject({ verdict: 'dying', basis: 'hard' });
-    expect(codes(find(report, 'codemirror'))).toContain('version-deprecated');
+    // npm marks the version in use deprecated (6.65.7, mis-tagged above the real 6.0.2): that is a fact
+    // about the version, so an upgrade notice on an alive verdict, not dying.
+    const cm = find(report, 'codemirror');
+    expect(cm.verdict).toBe('alive');
+    expect(cm.basis).toBeUndefined();
+    expect(codes(cm)).toContain('version-deprecated');
+    expect(cm.upgradeTo).toEqual({ version: '6.0.2', sameMajor: true, older: true });
   });
 
   it('cross-env is archived by its maintainer and not moved: still dead, on a hard signal', async () => {

@@ -261,6 +261,19 @@ function buildRequirements(
 
 /** What the verdict rests on, in words: a hard signal, or a guess from staleness. */
 function basisPhrase(diagnosis: Diagnosis): string {
+  // The rule of round 4b (R2.11): a deprecated or yanked version in use is an upgrade notice on a
+  // package that is itself alive. Say so, so the spec is not read as "this package is dying".
+  const notice = Array.isArray(diagnosis.evidence)
+    ? diagnosis.evidence.find(
+        (e) => e?.code === 'version-deprecated' || e?.code === 'version-yanked',
+      )
+    : undefined;
+  if (notice && diagnosis.verdict === 'alive') {
+    const to = diagnosis.upgradeTo;
+    const what = notice.code === 'version-yanked' ? 'yanked' : 'deprecated';
+    const where = to ? `; upgrade to ${safe(to.version, 'a newer release', 40)} first` : '';
+    return ` (a maintained package: only the version in use is ${what}, which is an upgrade notice and not a sign of death${where})`;
+  }
   if (diagnosis.basis === 'hard') return ' (a hard signal: see the evidence)';
   if (diagnosis.basis === 'heuristic') return ' (a heuristic from staleness, not a hard signal)';
   return '';
@@ -522,6 +535,14 @@ function buildSpec(
     advisories: Array.isArray(diagnosis?.advisories) ? diagnosis.advisories : [],
     successors: [],
     ...(diagnosis?.latest ? { latest: diagnosis.latest } : {}),
+    ...(typeof diagnosis?.upgradeTo?.version === 'string'
+      ? {
+          upgradeTo: {
+            version: diagnosis.upgradeTo.version,
+            sameMajor: diagnosis.upgradeTo.sameMajor === true,
+          },
+        }
+      : {}),
     ...(diagnosis?.basis === 'hard' || diagnosis?.basis === 'heuristic'
       ? { basis: diagnosis.basis }
       : {}),

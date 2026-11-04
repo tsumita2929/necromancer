@@ -2,7 +2,7 @@
  * Turns facts from the sources into Evidence lines. Every threshold lives here.
  */
 
-import type { Evidence, SourceId } from './types.js';
+import type { Evidence, SourceId, UpgradeTarget } from './types.js';
 import { clip } from './util/guards.js';
 
 export const DAY_MS = 86_400_000;
@@ -71,15 +71,25 @@ export function npmDeprecated(
   });
 }
 
+/** The sentence that says where to upgrade to; same text for deprecated and yanked versions. */
+export function upgradeSentence(upgradeTo: UpgradeTarget | undefined): string {
+  if (!upgradeTo) return 'No newer stable release that is not deprecated or yanked is known.';
+  const how = upgradeTo.sameMajor ? 'same major version' : 'another major version';
+  return upgradeTo.older
+    ? `Use ${upgradeTo.version} (${how}). It is older than the version in use: no newer stable release is free of deprecation or yanking.`
+    : `Upgrade to ${upgradeTo.version} (${how}).`;
+}
+
 export function versionDeprecated(
   message: string,
   version: string,
   source: SourceId,
   name: string,
+  upgradeTo?: UpgradeTarget,
 ): Evidence {
   return line({
     code: 'version-deprecated',
-    message: `The version in use (${version}) is deprecated: "${clip(message, 140)}"`,
+    message: `The version in use (${version}) is deprecated: "${clip(message, 140)}" The package itself is not; this is an upgrade notice. ${upgradeSentence(upgradeTo)}`,
     source,
     url: `https://www.npmjs.com/package/${name}/v/${version}`,
   });
@@ -245,10 +255,15 @@ export function pypiYanked(name: string, version: string, reason?: string): Evid
   });
 }
 
-export function versionYanked(name: string, version: string, reason?: string): Evidence {
+export function versionYanked(
+  name: string,
+  version: string,
+  reason?: string,
+  upgradeTo?: UpgradeTarget,
+): Evidence {
   return line({
     code: 'version-yanked',
-    message: `The version in use (${version}) is yanked on PyPI${reason ? `: "${clip(reason, 120)}"` : ''}.`,
+    message: `The version in use (${version}) is yanked on PyPI${reason ? `: "${clip(reason, 120)}"` : ''}. The project itself is not; this is an upgrade notice. ${upgradeSentence(upgradeTo)}`,
     source: 'pypi',
     url: `https://pypi.org/project/${name}/${version}/`,
   });

@@ -123,7 +123,7 @@ describe('R2.6, R2.9 and R2.11 rules through the engine', () => {
       expect.arrayContaining(['abandoned', 'no-repository']),
     );
   });
-  it('R2.11 a deprecated version in use under a healthy latest release is dying', async () => {
+  it('R2.11 a deprecated version in use under a healthy latest release is an upgrade notice on an alive verdict', async () => {
     const world = fakeWorld([
       {
         name: 'moving',
@@ -135,8 +135,11 @@ describe('R2.6, R2.9 and R2.11 rules through the engine', () => {
       },
     ]);
     const [d] = await engineFor(world.fetch).diagnose([dep('moving', { spec: '^1.0.0' })]);
-    expect(d?.verdict).toBe('dying');
+    expect(d?.verdict).toBe('alive');
+    expect(d?.basis).toBeUndefined();
     expect(d?.evidence[0]?.code).toBe('version-deprecated');
+    expect(d?.evidence[0]?.message).toContain('Upgrade to 2.0.0');
+    expect(d?.upgradeTo).toEqual({ version: '2.0.0', sameMajor: false });
   });
   it('R2.12 an advisory on a fresh package keeps it alive', async () => {
     const world = fakeWorld([
@@ -453,7 +456,7 @@ describe('PyPI signals', () => {
     expect(d?.verdict).toBe('dead');
     expect(d?.evidence[0]?.message).toContain('broken build');
   });
-  it('R2.11 a yanked version in use under a healthy latest is dying', async () => {
+  it('R2.11 a yanked version in use under a healthy latest is an upgrade notice on an alive verdict', async () => {
     const f = pypi(
       { version: '2.0', project_urls: { Source: 'https://github.com/o/r' } },
       {
@@ -462,8 +465,9 @@ describe('PyPI signals', () => {
       },
     );
     const [d] = await engineFor(f).diagnose([py('thing', '==1.0')]);
-    expect(d?.verdict).toBe('dying');
+    expect(d?.verdict).toBe('alive');
     expect(d?.evidence[0]?.code).toBe('version-yanked');
+    expect(d?.upgradeTo).toEqual({ version: '2.0', sameMajor: false });
   });
   it('R2.13 PEP 440 ranges pick the version for the advisory lookup', async () => {
     const f = pypi(

@@ -86,8 +86,16 @@ can defend with evidence, and I want the verdict never to hide a warning.
   push, and the evidence says which).
 - R2.10 WHEN the source repository returns "not found" or "unavailable for legal
   reasons", THE verdict SHALL be at least `ghost`.
-- R2.11 WHEN only the version in use is deprecated or yanked and the latest release
-  is healthy, THE verdict SHALL be at least `dying`, with the upgrade as the way out.
+- R2.11 *(amended in round 4b, `.kiro/specs/engine-upgrade-notice/`)* WHEN the version in use is
+  deprecated (npm) or yanked (PyPI) and the package itself is not (its latest release is neither),
+  THE verdict SHALL NOT be changed by it: a signal about the version in use is an upgrade notice on the
+  verdict that the signals about the package give, as an advisory is. THE evidence `version-deprecated`
+  or `version-yanked` SHALL be added, SHALL say what to upgrade to, and `Diagnosis.upgradeTo` SHALL name
+  that release: the newest stable release newer than the one in use that is neither deprecated nor
+  yanked, in the same major version when there is one. WHEN the latest release is deprecated or
+  yanked, THE verdict rules R2.6 and R2.8 apply as before (`dead`, and `zombie` with an advisory).
+  (Before round 4b this requirement made the package `dying`; the census found it the main source of
+  overstated flags.) **[PBT]**
 - R2.12 WHEN an advisory affects the version in use of an otherwise healthy
   dependency, THE verdict SHALL stay `alive`, the advisory ids SHALL be listed in
   `advisories`, and an evidence line SHALL record it. An advisory SHALL never be
@@ -96,7 +104,9 @@ can defend with evidence, and I want the verdict never to hide a warning.
   highest stable version that satisfies the declared range. WHEN the spec is not a range
   (a dist-tag such as `next`), THE version in use SHALL be the latest. WHEN the spec is a
   valid range that no known version satisfies, THE version SHALL be unresolved and no
-  advisory SHALL be claimed. **[PBT]** (range resolution)
+  advisory SHALL be claimed. *(Round 4b)* FOR PyPI, a range without a lockfile SHALL NOT pick a yanked
+  release when another release satisfies it (PEP 592: an installer skips yanked releases unless the
+  specifier pins one with `==`). **[PBT]** (range resolution)
 - R2.14 WHEN the registry has no package of that name, THE verdict SHALL be `alive`, the
   diagnosis SHALL have `notFound: true`, and the evidence SHALL be `registry-not-found` (the package
   may be removed, private or misspelled; the engine cannot tell which) followed by `unchecked`, so
@@ -107,8 +117,9 @@ can defend with evidence, and I want the verdict never to hide a warning.
   repository even if the latest release is under a year old.
 - R2.17 WHEN the default branch has a commit less than a year old and no advisory affects
   the version in use, THE evidence `recent-activity` SHALL be added and the verdict
-  SHALL be `alive` unless a hard signal (deprecated, archived, inactive, yanked, gone, a
-  deprecated or yanked version in use, an unknown package) is present. **[PBT]**
+  SHALL be `alive` unless a hard signal (deprecated, archived, inactive, yanked, gone, an
+  unknown package) is present. A deprecated or yanked version in use is not a signal about the package
+  (R2.11). **[PBT]**
 - R2.18 WHEN the only signal is a low Scorecard Maintained score (with or without a
   missing repository link), THE verdict SHALL be `alive` and the evidence SHALL be shown.
   **[PBT]**

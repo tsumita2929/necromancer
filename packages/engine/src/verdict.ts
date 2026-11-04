@@ -7,6 +7,11 @@
  * present, and adding a code can turn a test from false to true, never the other way
  * (requirement R2.2, checked by `test/properties/verdict.property.test.ts`).
  *
+ * A deprecated or yanked version in use (`version-deprecated`, `version-yanked`) is evidence about the
+ * version, not the package. It is shown and moves nothing (requirement R2.11, amended in round 4b). A
+ * package whose latest release is deprecated or yanked is a different fact (`npm-deprecated`,
+ * `pypi-yanked`), and that one ends its life.
+ *
  * Evidence of life (`recent-activity`: a commit to the default branch in the last year) can only
  * move a verdict earlier, and only the verdicts that rest on staleness. It never lifts a verdict
  * that rests on a hard signal, and it does nothing when an advisory affects the version in use
@@ -21,8 +26,9 @@ import type { Evidence, Verdict } from './types.js';
  *                yanked (dead, `basis` hard).
  * - derived:     the abandoned guess (dead, `basis` heuristic): a very old release and nothing that
  *                shows care. Not a hard signal: never describe it as an end of life that is certain.
- * - notice:      a fact that makes the dependency dying and is not a staleness guess: the version in
- *                use is deprecated or yanked. A hard signal.
+ * - notice:      a fact about the version in use: it is deprecated (npm) or yanked (PyPI). An upgrade
+ *                notice. Shown, never changes the verdict: signals about the package decide whether it
+ *                is alive, signals about the version in use (this, an advisory) do not.
  * - conditional: counts as death only together with a supporting signal (see `decide`).
  * - weak:        a stale signal (dying).
  * - support:     shown, and counts only as support for `no-release-long`; never causes dying alone.
@@ -146,9 +152,6 @@ export function decide(
   } else if (dead) {
     verdict = 'dead';
     basis = hard ? 'hard' : 'heuristic';
-  } else if (classes.has('notice')) {
-    verdict = 'dying';
-    basis = 'hard';
   } else if (!lifted && (classes.has('weak') || classes.has('conditional'))) {
     verdict = 'dying';
     basis = 'heuristic';

@@ -135,11 +135,28 @@ export interface Diagnosis {
    */
   basis?: 'hard' | 'heuristic';
   /**
+   * Present when the version in use is deprecated (npm) or yanked (PyPI): the release to move to. A
+   * deprecated or yanked version in use is an upgrade notice (evidence `version-deprecated` or
+   * `version-yanked`), never a reason for a verdict other than "alive" by itself. Absent when the version
+   * in use is fine, or when no newer release is both stable and not deprecated or yanked.
+   */
+  upgradeTo?: UpgradeTarget;
+  /**
    * True when the registry has no package of this name (removed, private or misspelled; the engine
    * cannot tell which). The verdict is then "alive" with an "unchecked" line: nothing was examined,
    * so nothing is claimed.
    */
   notFound?: boolean;
+}
+
+/** The release to upgrade to (see `Diagnosis.upgradeTo`). */
+export interface UpgradeTarget {
+  /** The newest stable release that is not deprecated or yanked, in the same major version as the one in use when there is one. */
+  version: string;
+  /** True when it has the same major version as the one in use (the smaller step, preferred when there is one). */
+  sameMajor: boolean;
+  /** True (and only then present) when the target is older than the version in use, because no newer stable release is free of deprecation or yanking. */
+  older?: true;
 }
 
 /** A whole scan. */

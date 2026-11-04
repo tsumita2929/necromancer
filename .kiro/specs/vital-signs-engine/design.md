@@ -98,8 +98,8 @@ class. The rules are the whole definition of the verdict.
 | `repo-inactive` | weak | github | `pushed_at` is 2 years old or older |
 | `no-repository` | support | npm, pypi | No source repository is linked. Shown; never lowers the verdict alone |
 | `unchecked` | info | npm, pypi | No registry answered at all; shown on an `alive` diagnosis so the gap is visible |
-| `version-deprecated` | weak | npm, deps.dev | Only the version in use is deprecated |
-| `version-yanked` | weak | pypi | Only the version in use is yanked |
+| `version-deprecated` | notice | npm, deps.dev | Only the version in use is deprecated. An upgrade notice: shown with the release to upgrade to; never changes the verdict (R2.11, round 4b) |
+| `version-yanked` | notice | pypi | Only the version in use is yanked. Same |
 | `repo-gone` | gone | github | Repository returns 404 or 451 |
 | `osv-advisory` | advisory | osv | An advisory affects the version in use |
 | `registry-not-found` | weak | npm, pypi, deps.dev | The registry says the package does not exist (removed, private or misspelled) |

@@ -222,9 +222,13 @@ describe('R2.1 to R2.12 rule table', () => {
     expect(v(['repo-gone'])).toBe('ghost');
     expect(v(['repo-gone', 'npm-deprecated'])).toBe('ghost');
   });
-  it('R2.11 only a deprecated or yanked version in use is dying', () => {
-    expect(v(['version-deprecated'])).toBe('dying');
-    expect(v(['version-yanked'])).toBe('dying');
+  it('R2.11 only a deprecated or yanked version in use is an upgrade notice: alive', () => {
+    expect(v(['version-deprecated'])).toBe('alive');
+    expect(v(['version-yanked'])).toBe('alive');
+    // The notice stays in the evidence.
+    expect(decide([ev('version-deprecated')], []).evidence.map((e) => e.code)).toEqual([
+      'version-deprecated',
+    ]);
   });
   it('R2.12 an advisory on a healthy package keeps it alive', () => {
     expect(v(['osv-advisory'], ['GHSA-xxxx'])).toBe('alive');
@@ -285,18 +289,22 @@ describe('R2.17 evidence of life', () => {
     );
   });
 
-  it('R2.17 a fact about the version in use keeps a package at dying at least, life or not', () => {
+  it('R2.11 R2.17 a fact about the version in use never changes the verdict or its basis, life or not', () => {
     fc.assert(
       fc.property(
         deathList,
         fc.constantFrom('version-deprecated', 'version-yanked'),
-        (base, code) => {
-          expect(idx(decide([...base, ev(code), recent], []).verdict)).toBeGreaterThanOrEqual(
-            idx('dying'),
-          );
+        fc.boolean(),
+        (base, code, withLife) => {
+          const plain = withLife ? [...base, recent] : base;
+          const a = decide(plain, []);
+          const b = decide([...plain, ev(code)], []);
+          expect(b.verdict).toBe(a.verdict);
+          expect(b.basis).toBe(a.basis);
+          expect(b.evidence.map((e) => e.code)).toContain(code);
         },
       ),
-      { numRuns: 1000 },
+      { numRuns: 1500 },
     );
   });
 
@@ -351,8 +359,8 @@ describe('R2.19 every verdict says what it rests on', () => {
         if (d.verdict === 'zombie' || d.verdict === 'ghost') expect(d.basis).toBe('hard');
         if (d.verdict === 'dead')
           expect(d.basis).toBe(classes.has('strong') || classes.has('gone') ? 'hard' : 'heuristic');
-        if (d.verdict === 'dying')
-          expect(d.basis).toBe(classes.has('notice') ? 'hard' : 'heuristic');
+        // Dying rests on staleness only; a fact about the version in use no longer makes it.
+        if (d.verdict === 'dying') expect(d.basis).toBe('heuristic');
       }),
       { numRuns: 3000 },
     );

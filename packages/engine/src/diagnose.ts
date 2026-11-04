@@ -27,7 +27,8 @@ import type {
 import { VERDICTS } from './types.js';
 import { errorMessage } from './util/guards.js';
 import { resolveVersionInUse } from './versions/resolve.js';
-import { decide } from './verdict.js';
+import { upgradeTarget } from './versions/upgrade.js';
+import { classOf, decide } from './verdict.js';
 
 interface VersionInfo {
   version: string;
@@ -132,6 +133,13 @@ export class Core {
       const f = facts.get(pkgKey(dep));
       if (!f || f.notFound) return undefined;
       const available = f.versions.map((v) => v.version);
+      if (dep.ecosystem === 'pypi' && !dep.resolved) {
+        // PEP 592: an installer skips yanked releases unless the specifier pins one with "==" or no
+        // other release satisfies it. A range must not pick a release that pip would never install.
+        const usable = f.versions.filter((v) => !v.yanked).map((v) => v.version);
+        const pick = resolveVersionInUse(dep, usable, f.latest?.version);
+        if (pick) return pick.version;
+      }
       return resolveVersionInUse(dep, available, f.latest?.version)?.version;
     });
     const queries: OsvQuery[] = [];
@@ -226,6 +234,10 @@ export class Core {
           successors,
         };
         if (decision.basis) out.basis = decision.basis;
+        if (p.version && decision.evidence.some((e) => classOf(e.code) === 'notice')) {
+          const upgradeTo = upgradeTarget(f.ecosystem, f.versions, p.version);
+          if (upgradeTo) out.upgradeTo = upgradeTo;
+        }
         if (advisoryAliases) out.advisoryAliases = advisoryAliases;
         if (f.notFound) out.notFound = true;
         if (f.latest) out.latest = f.latest;
@@ -370,18 +382,24 @@ export class Core {
         ),
       );
     } else if (inUse) {
+      // A deprecated or yanked version in use of a package that is itself fine: an upgrade notice. It
+      // never makes the package dying (the verdict reads signals about the package, not the version).
       const used = f.versions.find((v) => v.version === inUse);
-      if (used?.deprecated)
-        out.push(
-          signals.versionDeprecated(
-            used.deprecated,
-            inUse,
-            f.registrySource === 'npm' ? 'deps.dev' : f.registrySource,
-            f.name,
-          ),
-        );
-      if (used?.yanked && !f.latestYanked)
-        out.push(signals.versionYanked(f.name, inUse, used.yankedReason));
+      const yanked = used?.yanked === true && !f.latestYanked;
+      if (used && (used.deprecated || yanked)) {
+        const upgradeTo = upgradeTarget(f.ecosystem, f.versions, inUse);
+        if (used.deprecated)
+          out.push(
+            signals.versionDeprecated(
+              used.deprecated,
+              inUse,
+              f.registrySource === 'npm' ? 'deps.dev' : f.registrySource,
+              f.name,
+              upgradeTo,
+            ),
+          );
+        if (yanked) out.push(signals.versionYanked(f.name, inUse, used.yankedReason, upgradeTo));
+      }
     }
     if (f.inactive) out.push(signals.pypiInactive(f.name));
     if (f.latestYanked && f.latest)
@@ -449,7 +467,11 @@ export class Core {
         ...this.registryEvidence(f, versionByPackage.get(pkgKey(f))),
         ...this.scorecardEvidence(f),
       ];
-      return VERDICTS.indexOf(decide(evidence, []).verdict);
+      const verdictRank = VERDICTS.indexOf(decide(evidence, []).verdict);
+      // A deprecated or yanked version in use no longer makes a package dying, but the repository is
+      // still read for it: an archived or abandoned package is found the same way as before.
+      const notice = evidence.some((e) => classOf(e.code) === 'notice');
+      return notice ? Math.max(verdictRank, VERDICTS.indexOf('dying')) : verdictRank;
     };
     const wanted = candidates
       .filter((f) => f.repo?.host === 'github.com')

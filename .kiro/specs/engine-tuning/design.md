@@ -24,7 +24,7 @@ Evidence classes (`src/verdict.ts`):
 | Class | Codes | Effect |
 | --- | --- | --- |
 | strong, gone | `npm-deprecated`, `repo-archived`, `pypi-inactive`, `pypi-yanked`, `repo-gone` | dead or ghost; basis hard |
-| notice | `version-deprecated`, `version-yanked`, `registry-not-found` | dying; basis hard |
+| notice | `version-deprecated`, `version-yanked` | shown with the release to upgrade to; never changes the verdict (changed in round 4b: it was dying, basis hard). `registry-not-found` is `info` |
 | conditional | `no-release-long` | dying; dead (heuristic) with support |
 | weak | `no-release`, `repo-inactive` | dying; basis heuristic |
 | support | `low-maintenance`, `no-repository` | shown; never dying alone; supports `no-release-long` |
