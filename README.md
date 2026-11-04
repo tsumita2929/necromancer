@@ -355,8 +355,10 @@ been fired.
   <!-- claim:L04 -->
 - **Input.** Root manifests only (not sub-folders). `yarn.lock`, `pnpm-lock.yaml`, `poetry.lock`,
   `Pipfile` and `uv.lock` are not read.
-- **Upgrade notices** name a newer release without reading the project's declared range or `engines`.
-  36 of the 41 census notices point to another major version.
+- **Upgrade notices** prefer a good release inside the declared range and name the Node version the
+  target needs (`engines.node`), but they do not check it against the Node your project runs.
+  36 of the 41 census notices still point to another major version, because every release inside
+  their declared range is deprecated.
   <!-- claim:Q10 --><!-- claim:L05 -->
 - **Console noise.** The browser console shows red 404 lines for the lockfile probes on
   `raw.githubusercontent.com`; JavaScript cannot silence them. The page shows no error.
