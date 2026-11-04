@@ -1,11 +1,11 @@
-// (Part of the successor research; paths point at the scratch space.) Gathers primary facts for each dead-or-worse package (registry, repository page, commit feed, README hints).
+// (Part of the successor research; the cache folder comes from paths.mjs.) Gathers primary facts for each dead-or-worse package (registry, repository page, commit feed, README hints).
 // Usage: node facts.mjs [packages.json] -> facts.json. Cached on disk by URL. No GitHub REST calls.
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { successorsDir } from './paths.mjs';
 
-const ROOT = '/home/ec2-user/.kiro/crew/kiroween2026/scratch/successors';
+const ROOT = successorsDir;
 const CACHE = `${ROOT}/cache`;
-mkdirSync(CACHE, { recursive: true });
 const UA = 'necromancer-successor-research/0.1 (public data)';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const slow = (u) => /github\.com|githubusercontent/.test(u);
@@ -21,7 +21,7 @@ export async function get(url, accept = 'application/json') {
   } catch (e) {
     return { status: 0, text: '', error: String(e) };
   }
-  if (out.status === 200 || out.status === 404) writeFileSync(p, JSON.stringify(out));
+  if (out.status === 200 || out.status === 404) { mkdirSync(CACHE, { recursive: true }); writeFileSync(p, JSON.stringify(out)); }
   if (slow(url)) await sleep(900);
   return out;
 }

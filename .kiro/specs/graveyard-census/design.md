@@ -19,7 +19,9 @@ search windows (R1.7) --> candidate counts --> seeded draw --> ordered list per 
                    recompute.mjs --> numbers in census.md
 ```
 
-All code lives in the scratch space `/home/ec2-user/.kiro/crew/kiroween2026/scratch/census/`.
+All code lives in the scratch space: the folder named by `NECROMANCER_CENSUS_DIR`
+(default: `necromancer-scratch/census/`, a sibling of the repository folder). No path of one machine is written in the scripts;
+`docs/research/scripts/README.md` lists the variables.
 The scripts that make the committed data are copied to `docs/research/scripts/` when the run is done,
 so a reader can rerun them.
 

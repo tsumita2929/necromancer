@@ -3,9 +3,9 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 
-export const SCRATCH = process.env.SUCC_SCRATCH ?? '/home/ec2-user/.kiro/crew/kiroween2026/scratch/successors';
+import { successorsDir } from './paths.mjs';
+export const SCRATCH = process.env.SUCC_SCRATCH ?? successorsDir; // see paths.mjs for the default and the variables
 export const CACHE = `${SCRATCH}/cache`;
-mkdirSync(CACHE, { recursive: true });
 const UA = 'necromancer-successor-research/0.1 (public data)';
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const slow = (u) => /github\.com|githubusercontent/.test(u);
@@ -22,7 +22,10 @@ export async function get(url, accept = 'application/json') {
   } catch (e) {
     return { status: 0, text: '', error: String(e) };
   }
-  if (out.status === 200 || out.status === 404) writeFileSync(p, JSON.stringify(out));
+  if (out.status === 200 || out.status === 404) {
+    mkdirSync(CACHE, { recursive: true });
+    writeFileSync(p, JSON.stringify(out));
+  }
   if (slow(url)) await sleep(900);
   return out;
 }

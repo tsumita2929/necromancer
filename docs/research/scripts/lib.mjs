@@ -2,12 +2,19 @@
 import { createHash } from 'node:crypto';
 import { mkdirSync, existsSync, readFileSync, writeFileSync, renameSync } from 'node:fs';
 import { gzipSync, gunzipSync } from 'node:zlib';
-import { join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-export const ROOT = '/home/ec2-user/.kiro/crew/kiroween2026/scratch/census';
+// The census scratch folder (cache, GitHub ledger, per-project results, sample list). No machine path is written here:
+// NECROMANCER_CENSUS_DIR, else <repository>/../necromancer-scratch/census (this file is <repository>/docs/research/scripts/lib.mjs).
+// The same rule is in paths.mjs; this file repeats it because the engine's evaluation scripts copy lib.mjs on its own.
+const HERE = dirname(fileURLToPath(import.meta.url));
+export const ROOT = process.env.NECROMANCER_CENSUS_DIR
+  ? resolve(process.env.NECROMANCER_CENSUS_DIR)
+  : resolve(process.env.NECROMANCER_SCRATCH ?? join(HERE, '..', '..', '..', '..', 'necromancer-scratch'), 'census');
 export const CACHE = join(ROOT, 'cache');
 export const LEDGER = join(ROOT, 'ledger.json');
-mkdirSync(CACHE, { recursive: true });
+// Folders are made when something is written, not when the file is imported.
 
 export const UA = 'necromancer-census/0.1 (kiroween research; public data; unauthenticated)';
 export const GITHUB_CORE_LIMIT_PER_HOUR = 55; // lead ruling 2026-11-04: web item finished, up to 55 per hour
@@ -27,6 +34,7 @@ function readLedger() {
   }
 }
 function writeLedger(l) {
+  mkdirSync(ROOT, { recursive: true });
   const tmp = LEDGER + '.tmp';
   writeFileSync(tmp, JSON.stringify(l));
   renameSync(tmp, LEDGER);

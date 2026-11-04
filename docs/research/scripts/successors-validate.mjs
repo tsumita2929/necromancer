@@ -3,14 +3,18 @@
 // Needs the engine built from a copy of commit b7e33341dd34362119f49a31c3361888d63b6bff:
 //   git archive b7e33341dd34362119f49a31c3361888d63b6bff packages/engine | tar -x -C <dir>
 //   (cd <dir>/packages/engine && npm ci && npm run build)
-// and SUCC_ENGINE=<dir>/packages/engine (default: the scratch copy used for this item).
-import { readFileSync } from 'node:fs';
+// and SUCC_ENGINE=<dir>/packages/engine (default: see paths.mjs, `<scratch>/successors/engine-b7e3334/packages/engine`).
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { engineCopyDir as engineDir } from './paths.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const research = join(here, '..');
-const engineDir = process.env.SUCC_ENGINE ?? '/home/ec2-user/.kiro/crew/kiroween2026/scratch/successors/engine-b7e3334/packages/engine';
+if (!existsSync(join(engineDir, 'dist', 'index.js'))) {
+  console.error(`error: no built engine in ${engineDir}. Build one from commit b7e33341dd34362119f49a31c3361888d63b6bff:\n  mkdir -p <dir> && git archive b7e33341dd34362119f49a31c3361888d63b6bff packages/engine | tar -x -C <dir>\n  (cd <dir>/packages/engine && npm ci && npm run build)\nthen set SUCC_ENGINE=<dir>/packages/engine (or put it at the default place, see docs/research/scripts/README.md).`);
+  process.exit(2);
+}
 const engine = await import(pathToFileURL(join(engineDir, 'dist/index.js')).href);
 const curated = await import(pathToFileURL(join(engineDir, 'dist/curated.js')).href);
 const typesText = readFileSync(join(engineDir, 'src/types.ts'), 'utf8');
