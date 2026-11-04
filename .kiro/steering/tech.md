@@ -19,7 +19,8 @@ inclusion: always
 - **Web** (`apps/web`): Vite + React + TypeScript. Static output that works under a
   sub-path (GitHub Pages). No backend.
 - **Crew app** (`apps/crew`): a Kiro Crew app built with the app kit documented in
-  `/home/ec2-user/kirocrew/docs/app-kit/` (start with `getting-started.md`).
+  the Kiro Crew install under `docs/app-kit/` (on the build host `~/kirocrew/docs/app-kit/`;
+  start with `getting-started.md`).
   `@kirocrew/app-sdk`, React and ReactDOM are provided by the host and never bundled.
 - **Data sources** (public, no key): npm registry, PyPI JSON API, deps.dev API v3
   (including OpenSSF Scorecard), OSV.dev API, GitHub REST (unauthenticated,
