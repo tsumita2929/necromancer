@@ -49,7 +49,7 @@ its last release is old, and I want the quiet period counted from real commits.
 
 - T3.1 THE `Diagnosis` SHALL carry `basis`: `"hard"` when a hard signal decides the verdict,
   `"heuristic"` when staleness decides it, absent for `alive`.
-- T3.2 THE verdict `zombie` and `ghost` SHALL have basis `hard`; `dead` SHALL be `hard` exactly when
+- T3.2 THE verdict `ghost` SHALL have basis `hard`; `zombie` SHALL have the basis of the evidence of its death, `hard` or `heuristic` (round 5, `.kiro/specs/engine-r5/` E2: it was always `hard`); `dead` SHALL be `hard` exactly when
   a deprecated, archived, inactive or yanked signal is present; `dying` SHALL be `heuristic`. *(Round 4b:
   `dying` was `hard` when the version in use was deprecated or yanked. That is now an upgrade notice on
   an `alive` verdict, see `.kiro/specs/engine-upgrade-notice/`.)* **[PBT]**
