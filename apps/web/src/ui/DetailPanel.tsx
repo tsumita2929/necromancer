@@ -165,6 +165,7 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                       <p className="evidence__msg">{item.message}</p>
                       <p className="evidence__meta">
                         {item.code === 'repo-moved' ? <span className="evidence__tag">Moved, not dead</span> : null}
+                        {item.code === 'repo-link' ? <span className="evidence__tag">Where the source was found</span> : null}
                         {item.code === 'unchecked' || item.code === 'registry-not-found' ? <span className="evidence__tag">No claim made</span> : null}
                         <span>{SOURCE_NAMES[item.source] ?? item.source}</span>
                         {item.date ? <span>{formatDate(item.date)}</span> : null}

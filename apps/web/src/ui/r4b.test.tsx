@@ -261,3 +261,18 @@ describe('an alive dependency whose version in use is deprecated or yanked shows
     expect(dialog.textContent).toMatch(/Upgrade to 8\.57\.2, in the same major version\. Also, 1 known advisory affects the version in use\./);
   });
 });
+
+describe('a repository found in an unusual PyPI field is explained, not alarming', () => {
+  it('tags the repo-link line and keeps the dependency alive', async () => {
+    const user = userEvent.setup();
+    const mako = d(pkg('mako', '==1.3.0', '1.3.0', { ecosystem: 'pypi' }), 'alive', {
+      evidence: [ev('repo-link', 'The source repository https://github.com/sqlalchemy/mako was found in the PyPI field "Issue Tracker", not in a source or homepage link.', 'pypi', { url: 'https://github.com/sqlalchemy/mako' })],
+    });
+    render(<Harness report={makeReport({ subject: 'x', manifests: [], diagnoses: [mako] })} />);
+    expect(document.querySelector('[data-dep-key="pypi:mako"]')).toHaveAccessibleName(/Alive/);
+    await user.click(document.querySelector<HTMLElement>('[data-dep-key="pypi:mako"]')!);
+    const dialog = await screen.findByRole('dialog', { name: 'mako' });
+    expect(dialog.textContent).toMatch(/Where the source was found/);
+    expect(dialog.textContent).toMatch(/Maintained: no end-of-life signal\./);
+  });
+});

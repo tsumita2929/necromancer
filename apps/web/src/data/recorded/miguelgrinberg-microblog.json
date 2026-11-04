@@ -1,6 +1,6 @@
 {
   "subject": "github:miguelgrinberg/microblog",
-  "scannedAt": "2026-11-04T12:59:55.893Z",
+  "scannedAt": "2026-11-04T15:14:45.431Z",
   "manifests": [
     {
       "kind": "requirements.txt",
@@ -1136,6 +1136,12 @@
           "message": "3 known advisories affect version 1.3.0: GHSA-2h4p-vjrc-8xpq, GHSA-5639-2j2p-m4mx, GHSA-v92g-xgxw-vvmm.",
           "source": "osv",
           "url": "https://osv.dev/vulnerability/GHSA-2h4p-vjrc-8xpq"
+        },
+        {
+          "code": "repo-link",
+          "message": "The source repository https://github.com/sqlalchemy/mako was found in the PyPI field \"Issue Tracker\", not in a source or homepage link.",
+          "source": "pypi",
+          "url": "https://github.com/sqlalchemy/mako"
         }
       ],
       "advisories": [

@@ -1,6 +1,6 @@
 {
   "subject": "github:SickChill/sickchill",
-  "scannedAt": "2026-11-04T14:00:22.465Z",
+  "scannedAt": "2026-11-04T15:15:03.210Z",
   "manifests": [
     {
       "kind": "package.json",
@@ -226,10 +226,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 5.6 years (last push 2021-03-25); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 9.3 years (last commit 2017-07-27).",
           "source": "github",
           "url": "https://github.com/jharding/grunt-exec",
-          "date": "2021-03-25"
+          "date": "2017-07-27"
         },
         {
           "code": "low-maintenance",
@@ -320,10 +320,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 3.0 years (last push 2023-10-19); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 6.3 years (last commit 2020-07-28).",
           "source": "github",
           "url": "https://github.com/sickchill/rtorrent-python",
-          "date": "2023-10-19"
+          "date": "2020-07-28"
         },
         {
           "code": "repo-moved",
@@ -366,7 +366,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 7.6 years (last push 2019-03-13); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 7.6 years (last commit 2019-03-13).",
           "source": "github",
           "url": "https://github.com/eventray/po2json",
           "date": "2019-03-13"
@@ -419,10 +419,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.8 years (last push 2024-01-17); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 9.1 years (last commit 2017-09-20).",
           "source": "github",
           "url": "https://github.com/ricmoo/pyaes",
-          "date": "2024-01-17"
+          "date": "2017-09-20"
         },
         {
           "code": "low-maintenance",
@@ -466,10 +466,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 8.5 years (last push 2018-05-03); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 10 years (last commit 2016-01-12).",
           "source": "github",
           "url": "https://github.com/uskr/pynma",
-          "date": "2018-05-03"
+          "date": "2016-01-12"
         },
         {
           "code": "low-maintenance",
@@ -598,10 +598,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 5.9 years (last push 2020-12-22); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 7.7 years (last commit 2019-02-19).",
           "source": "github",
           "url": "https://github.com/hickeroar/win_inet_pton",
-          "date": "2020-12-22"
+          "date": "2019-02-19"
         },
         {
           "code": "low-maintenance",
@@ -639,7 +639,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 1.7 years (last push 2025-02-09); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 1.7 years (last commit 2025-02-09).",
           "source": "github",
           "url": "https://github.com/Diaoul/babelfish",
           "date": "2025-02-09"
@@ -680,7 +680,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 4.2 years (last push 2022-09-03); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 4.2 years (last commit 2022-09-03).",
           "source": "github",
           "url": "https://github.com/miigotu/beekeeper",
           "date": "2022-09-03"
@@ -721,7 +721,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.1 years (last push 2024-10-13); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 2.1 years (last commit 2024-10-13).",
           "source": "github",
           "url": "https://github.com/bower/bower",
           "date": "2024-10-13"
@@ -804,10 +804,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.4 years (last push 2024-05-29); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 2.7 years (last commit 2024-02-17).",
           "source": "github",
           "url": "https://github.com/JohnDoee/deluge-client",
-          "date": "2024-05-29"
+          "date": "2024-02-17"
         },
         {
           "code": "low-maintenance",
@@ -845,10 +845,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 3.8 years (last push 2023-01-12); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 4.5 years (last commit 2022-04-27).",
           "source": "github",
           "url": "https://github.com/yatskevich/grunt-bower-task",
-          "date": "2023-01-12"
+          "date": "2022-04-27"
         },
         {
           "code": "low-maintenance",
@@ -886,7 +886,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.3 years (last push 2024-07-20); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 2.3 years (last commit 2024-07-20).",
           "source": "github",
           "url": "https://github.com/gruntjs/grunt-cli",
           "date": "2024-07-20"
@@ -982,7 +982,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 4.2 years (last push 2022-09-03); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 4.2 years (last commit 2022-09-03).",
           "source": "github",
           "url": "https://github.com/miigotu/kodipydent",
           "date": "2022-09-03"
@@ -1016,7 +1016,7 @@
       "evidence": [
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 1.7 years (last push 2025-03-03); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 1.7 years (last commit 2025-03-03).",
           "source": "github",
           "url": "https://github.com/testing-cabal/mock",
           "date": "2025-03-03"
@@ -1090,7 +1090,7 @@
       "evidence": [
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 1.7 years (last push 2025-02-26); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 1.7 years (last commit 2025-02-26).",
           "source": "github",
           "url": "https://github.com/cenkalti/putio.py",
           "date": "2025-02-26"
@@ -1131,10 +1131,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.2 years (last push 2024-09-01); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 3.1 years (last commit 2023-10-02).",
           "source": "github",
           "url": "https://github.com/ream88/stylelint-config-idiomatic-order",
-          "date": "2024-09-01"
+          "date": "2023-10-02"
         },
         {
           "code": "low-maintenance",
@@ -1172,10 +1172,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 4.1 years (last push 2022-09-14); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 4.2 years (last commit 2022-08-18).",
           "source": "github",
           "url": "https://github.com/hustcc/timeago",
-          "date": "2022-09-14"
+          "date": "2022-08-18"
         }
       ],
       "advisories": [],
@@ -1903,7 +1903,14 @@
         "declaredIn": "pyproject.toml"
       },
       "verdict": "alive",
-      "evidence": [],
+      "evidence": [
+        {
+          "code": "repo-link",
+          "message": "The source repository https://github.com/sqlalchemy/mako was found in the PyPI field \"Issue Tracker\", not in a source or homepage link.",
+          "source": "pypi",
+          "url": "https://github.com/sqlalchemy/mako"
+        }
+      ],
       "advisories": [],
       "successors": [],
       "latest": {
@@ -2849,12 +2856,7 @@
       "message": "Skipped \"grunt-po2json\": its source is a git source (\"git+https://github.com/rockykitamura/grunt-po2json.git\"), which is not checked against a registry."
     }
   ],
-  "unavailable": [
-    {
-      "source": "github",
-      "reason": "GitHub budget reached (50 calls per scan, limit is 60 per hour): 17 commit dates were not read"
-    }
-  ],
+  "unavailable": [],
   "summary": {
     "alive": 78,
     "dying": 14,
