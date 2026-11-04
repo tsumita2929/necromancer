@@ -1,0 +1,162 @@
+{
+ "kept": [
+  {
+   "name": "@idealyst/cli",
+   "repo": "IdealystIO/idealyst-framework",
+   "was": "This project is no longer maintained",
+   "now": "This project is no longer maintained",
+   "kind": "subject"
+  },
+  {
+   "name": "oxc-plugin-react-compiler",
+   "repo": "eve0415/oxc-plugin-react-compiler",
+   "was": "This repo is no longer maintained.",
+   "now": "This repo is no longer maintained.",
+   "kind": "subject"
+  },
+  {
+   "name": "@oxc-plugin-react-compiler/binding-linux-x64-gnu",
+   "repo": "eve0415/oxc-plugin-react-compiler",
+   "was": "This repo is no longer maintained.",
+   "now": "This repo is no longer maintained.",
+   "kind": "subject"
+  },
+  {
+   "name": "html-webpack-partials-plugin",
+   "repo": "colbyfayock/html-webpack-partials-plugin",
+   "was": "This project is no longer actively maintained",
+   "now": "This project is no longer actively maintained",
+   "kind": "subject"
+  },
+  {
+   "name": "css-minimizer-webpack-plugin",
+   "repo": "webpack/css-minimizer-webpack-plugin",
+   "was": "DEPRECATED.",
+   "now": "DEPRECATED.",
+   "kind": "banner"
+  },
+  {
+   "name": "compression-webpack-plugin",
+   "repo": "webpack/compression-webpack-plugin",
+   "was": "This plugin is deprecated.",
+   "now": "This plugin is deprecated.",
+   "kind": "subject"
+  },
+  {
+   "name": "@microsoft/eslint-plugin-sdl",
+   "repo": "microsoft/eslint-plugin-sdl",
+   "was": "This project is no longer actively maintained.",
+   "now": "This project is no longer actively maintained.",
+   "kind": "subject"
+  },
+  {
+   "name": "react-json-view",
+   "repo": "mac-s-g/react-json-view",
+   "was": "This project is no longer being maintained",
+   "now": "This project is no longer being maintained",
+   "kind": "subject"
+  },
+  {
+   "name": "webpack-react-component-name",
+   "repo": "runreflect/webpack-react-component-name",
+   "was": "Note: This plugin is no longer supported",
+   "now": "Note: This plugin is no longer supported",
+   "kind": "subject"
+  },
+  {
+   "name": "react-date-range",
+   "repo": "hypeserver/react-date-range",
+   "was": "This project is currently unmaintained because the original maintainers are busy with other things.",
+   "now": "This project is currently unmaintained because the original maintainers are busy with other things.",
+   "kind": "subject"
+  },
+  {
+   "name": "html-webpack-plugin",
+   "repo": "jantimon/html-webpack-plugin",
+   "was": "html-webpack-plugin is deprecated — webpack scaffolds the HTML around your bundles itself and no longer needs it.",
+   "now": "html-webpack-plugin is deprecated — webpack scaffolds the HTML around your bundles itself and no longer needs it.",
+   "kind": "name"
+  },
+  {
+   "name": "@sanity/block-content-to-react",
+   "repo": "sanity-io/block-content-to-react",
+   "was": "Note: This package is deprecated.",
+   "now": "Note: This package is deprecated.",
+   "kind": "subject"
+  },
+  {
+   "name": "@vue/babel-plugin-transform-vue-jsx",
+   "repo": "vuejs/jsx",
+   "was": "Vue 2 has reached EOL, and this project is no longer actively maintained.",
+   "now": "Vue 2 has reached EOL, and this project is no longer actively maintained.",
+   "kind": "subject"
+  },
+  {
+   "name": "babel-plugin-idx",
+   "repo": "facebook/idx",
+   "was": "This module is deprecated and no longer maintained.",
+   "now": "This module is deprecated and no longer maintained.",
+   "kind": "subject"
+  },
+  {
+   "name": "image-minimizer-webpack-plugin",
+   "repo": "webpack/image-minimizer-webpack-plugin",
+   "was": "This plugin is deprecated.",
+   "now": "This plugin is deprecated.",
+   "kind": "subject"
+  },
+  {
+   "name": "@usulpro/react-json-view",
+   "repo": "mac-s-g/react-json-view",
+   "was": "This project is no longer being maintained",
+   "now": "This project is no longer being maintained",
+   "kind": "subject"
+  },
+  {
+   "name": "babel-plugin-treat",
+   "repo": "seek-oss/treat",
+   "was": "NOTE: This project has been deprecated in favour of Vanilla Extract..",
+   "now": "NOTE: This project has been deprecated in favour of Vanilla Extract..",
+   "kind": "subject"
+  },
+  {
+   "name": "@hackmd/i18next-express-middleware",
+   "repo": "i18next/i18next-express-middleware",
+   "was": "DEPRECATED",
+   "now": "DEPRECATED",
+   "kind": "banner"
+  },
+  {
+   "name": "oidc-client",
+   "repo": "IdentityModel/oidc-client-js",
+   "was": "No Longer Maintained",
+   "now": "No Longer Maintained",
+   "kind": "banner"
+  },
+  {
+   "name": "percy-client",
+   "repo": "percy/percy-js",
+   "was": "This package has been deprecated in favor of @percy/client",
+   "now": "This package has been deprecated in favor of @percy/client",
+   "kind": "subject"
+  },
+  {
+   "name": "arbundles",
+   "repo": "Bundlr-Network/arbundles",
+   "was": "DEPRECATED",
+   "now": "DEPRECATED",
+   "kind": "banner"
+  },
+  {
+   "name": "xdate",
+   "repo": "arshaw/xdate",
+   "was": "This package is no longer actively maintained",
+   "now": "This package is no longer actively maintained",
+   "kind": "subject"
+  }
+ ],
+ "lost": [],
+ "unreadable": [],
+ "fresh": [],
+ "mentionRead": 88
+}

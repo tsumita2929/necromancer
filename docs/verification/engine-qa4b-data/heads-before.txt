@@ -1,0 +1,21 @@
+ok   FAQ: is it dead?                  
+FLAG quoted complaint                  subject: Some people say "this project is deprecated".
+FLAG platform                          subject: This tool is no longer supported on macOS 10.12.
+FLAG one mode                          subject: This library is deprecated for use with Webpack 4.
+ok   one sub-module                    
+ok   community took over               
+FLAG maintained elsewhere              subject: This package is no longer maintained here.
+ok   legacy wording                    
+ok   changelog in README               
+FLAG lowercase banner                  banner: Deprecated: use the --new flag instead of --old.
+FLAG banner for a flag                 banner: DEPRECATED: the --old flag.
+ok   LOUD banner not about project     
+FLAG name is deprecated (flag)         name: foo is deprecated on Windows 7.
+ok   name is deprecated (typing)       
+FLAG Name with dots                    name: lodash.get is deprecated in favor of optional chaining in the lan
+FLAG truly dead                        subject: This package is deprecated.
+FLAG truly dead, caps                  subject: THIS PROJECT IS NO LONGER MAINTAINED.
+FLAG negation after                    subject: This project is deprecated, just kidding, it is not.
+ok   conditional                       
+ok   other project                     
+FLAG maintainers wanted far away       subject: This project is unmaintained.

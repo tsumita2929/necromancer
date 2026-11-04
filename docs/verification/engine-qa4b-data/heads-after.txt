@@ -1,0 +1,21 @@
+ok   FAQ: is it dead?                  
+ok   quoted complaint                  
+ok   platform                          
+ok   one mode                          
+ok   one sub-module                    
+ok   community took over               
+ok   maintained elsewhere              
+ok   legacy wording                    
+ok   changelog in README               
+ok   lowercase banner                  
+ok   banner for a flag                 
+ok   LOUD banner not about project     
+ok   name is deprecated (flag)         
+ok   name is deprecated (typing)       
+FLAG Name with dots                    name: lodash.get is deprecated in favor of optional chaining in the lan
+FLAG truly dead                        subject: This package is deprecated.
+FLAG truly dead, caps                  subject: THIS PROJECT IS NO LONGER MAINTAINED.
+ok   negation after                    
+ok   conditional                       
+ok   other project                     
+ok   maintainers wanted far away       
