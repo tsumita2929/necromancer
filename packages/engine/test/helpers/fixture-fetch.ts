@@ -15,6 +15,10 @@ const osvStore = JSON.parse(readFileSync(join(root, 'recorded', 'osv.json'), 'ut
   unknown[]
 >;
 
+const osvRecords = JSON.parse(
+  readFileSync(join(root, 'recorded', 'osv-records.json'), 'utf8'),
+) as Record<string, unknown[]>;
+
 function reply(status: number, body: unknown) {
   const text = typeof body === 'string' ? body : JSON.stringify(body);
   return {
@@ -41,6 +45,19 @@ export function fixtureFetch(): FixtureFetch {
   const impl: FetchLike = async (url, init) => {
     const method = init?.method ?? 'GET';
     requests.push(`${method} ${url}`);
+    if (method === 'POST' && url === 'https://api.osv.dev/v1/query') {
+      const q = JSON.parse(init?.body ?? '{}') as {
+        package: { name: string; ecosystem: string };
+        version: string;
+      };
+      const key = `${q.package.ecosystem === 'PyPI' ? 'pypi' : 'npm'}:${q.package.name}@${q.version}`;
+      const vulns = osvRecords[key];
+      if (!vulns) {
+        missing.push(`OSV records ${key}`);
+        throw new Error(`No OSV records fixture for ${key}`);
+      }
+      return reply(200, { vulns });
+    }
     if (method === 'POST' && url === 'https://api.osv.dev/v1/querybatch') {
       const queries = (
         JSON.parse(init?.body ?? '{}') as {

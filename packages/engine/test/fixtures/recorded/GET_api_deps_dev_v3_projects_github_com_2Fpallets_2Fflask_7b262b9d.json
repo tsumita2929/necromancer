@@ -1,0 +1,110 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fpallets%2Fflask"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/pallets/flask"
+  },
+  "openIssuesCount": 4,
+  "starsCount": 74936,
+  "forksCount": 17195,
+  "license": "BSD-3-Clause",
+  "description": "The Python micro framework for building web applications.",
+  "homepage": "https://flask.palletsprojects.com",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/pallets/flask",
+    "commit": "d318b683471101618febed18996405ad26462110"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "score": 0,
+     "reason": "Found 2/25 approved changesets -- score normalized to 0"
+    },
+    {
+     "name": "Maintained",
+     "score": 10,
+     "reason": "18 commit(s) and 19 issue activity found in the last 90 days -- score normalized to 10"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected"
+    },
+    {
+     "name": "Packaging",
+     "score": 10,
+     "reason": "packaging workflow detected"
+    },
+    {
+     "name": "Branch-Protection",
+     "score": 3,
+     "reason": "branch protection is not maximal on development and all release branches"
+    },
+    {
+     "name": "Token-Permissions",
+     "score": 10,
+     "reason": "GitHub workflow tokens follow principle of least privilege"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 9,
+     "reason": "security policy file detected"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": 6,
+     "reason": "3 out of the last 5 releases have a total of 3 signed artifacts."
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": 8,
+     "reason": "dependency not pinned by hash detected -- score normalized to 8"
+    },
+    {
+     "name": "SAST",
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0"
+    },
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 10,
+     "reason": "project is fuzzed"
+    }
+   ],
+   "overallScore": 7.1,
+   "metadata": []
+  },
+  "ossFuzz": {
+   "lineCount": 6747,
+   "lineCoverCount": 2840,
+   "date": "2026-10-22T00:00:00Z",
+   "configUrl": "https://github.com/google/oss-fuzz/tree/master/projects/flask"
+  }
+ }
+}

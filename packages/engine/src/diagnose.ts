@@ -162,13 +162,14 @@ export class Core {
         const f = facts.get(pkgKey(dep));
         if (!f) throw new Error('missing facts');
         const version = inUse[i];
-        const advisories = version
-          ? (osv.advisories.get(osvKey({ ecosystem: dep.ecosystem, name: dep.name, version })) ??
-            [])
-          : [];
+        const osvId = version
+          ? osvKey({ ecosystem: dep.ecosystem, name: dep.name, version })
+          : undefined;
+        const advisories = osvId ? (osv.advisories.get(osvId) ?? []) : [];
+        const advisoryAliases = osvId ? osv.aliases.get(osvId) : undefined;
         const decision = this.verdictFor(f, version, advisories);
         if (decision.verdict !== 'alive') needsSuccessors.add(i);
-        return { dep, f, version, advisories, decision };
+        return { dep, f, version, advisories, advisoryAliases, decision };
       } catch (error) {
         note(run, dep.ecosystem, `internal error: ${errorMessage(error)}`);
         return undefined;
@@ -192,7 +193,7 @@ export class Core {
             successors: [],
           };
         }
-        const { f, decision, advisories } = p;
+        const { f, decision, advisories, advisoryAliases } = p;
         let successors: Diagnosis['successors'] = [];
         if (decision.verdict !== 'alive') {
           try {
@@ -222,6 +223,7 @@ export class Core {
           successors,
         };
         if (decision.basis) out.basis = decision.basis;
+        if (advisoryAliases) out.advisoryAliases = advisoryAliases;
         if (f.notFound) out.notFound = true;
         if (f.latest) out.latest = f.latest;
         return out;
@@ -333,7 +335,12 @@ export class Core {
       return outcome;
     } catch (error) {
       note(run, 'osv', errorMessage(error));
-      return { advisories: new Map<string, string[]>(), missing: new Set<string>() };
+      return {
+        advisories: new Map<string, string[]>(),
+        aliases: new Map<string, Record<string, string[]>>(),
+        missing: new Set<string>(),
+        unmerged: new Set<string>(),
+      };
     }
   }
 

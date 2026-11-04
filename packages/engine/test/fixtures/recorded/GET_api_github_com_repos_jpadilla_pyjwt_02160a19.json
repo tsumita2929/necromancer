@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/jpadilla/pyjwt"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "jpadilla/pyjwt",
+  "html_url": "https://github.com/jpadilla/pyjwt",
+  "archived": false,
+  "disabled": false,
+  "pushed_at": "2026-11-03T11:52:48Z",
+  "stargazers_count": 5722,
+  "default_branch": "master"
+ }
+}

@@ -115,6 +115,10 @@ can defend with evidence, and I want the verdict never to hide a warning.
 - R2.19 WHEN the verdict is not `alive`, THE diagnosis SHALL say what it rests on in
   `basis`: `hard` when a hard signal decides it, `heuristic` when staleness decides it.
   `zombie` and `ghost` are `hard`. **[PBT]**
+- R2.20 THE advisory ids of a diagnosis SHALL name distinct vulnerabilities: OSV records that name each
+  other or share an alias (GHSA, PYSEC, CVE) are merged, withdrawn records are dropped, and the other names
+  are kept in `advisoryAliases`. The advisory evidence line and the zombie rule use the merged list.
+  See `.kiro/specs/engine-r4/` Q1. **[PBT]**
 
 ## R3. Sources and degradation
 

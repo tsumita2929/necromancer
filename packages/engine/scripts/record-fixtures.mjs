@@ -91,8 +91,42 @@ function trim(url, body) {
 const osvPath = join(recorded, 'osv.json');
 const osvStore = existsSync(osvPath) && !refresh ? JSON.parse(readFileSync(osvPath, 'utf8')) : {};
 
+// Full OSV records, trimmed to what alias merging reads: id, aliases, withdrawn.
+const osvRecordsPath = join(recorded, 'osv-records.json');
+const osvRecords =
+  existsSync(osvRecordsPath) && !refresh ? JSON.parse(readFileSync(osvRecordsPath, 'utf8')) : {};
+
 async function recordingFetch(url, init = {}) {
   const method = init.method ?? 'GET';
+  if (method === 'POST' && url === 'https://api.osv.dev/v1/query') {
+    const q = JSON.parse(init.body);
+    const key = `${q.package.ecosystem === 'PyPI' ? 'pypi' : 'npm'}:${q.package.name}@${q.version}`;
+    if (!(key in osvRecords) || q.page_token) {
+      const vulns = [];
+      let token;
+      for (let page = 0; page < 5; page++) {
+        const res = await fetch(url, {
+          method,
+          headers: init.headers,
+          body: JSON.stringify({ ...q, ...(token ? { page_token: token } : {}) }),
+        });
+        const data = await res.json();
+        for (const v of data.vulns ?? []) {
+          vulns.push({
+            id: v.id,
+            ...(v.aliases?.length ? { aliases: v.aliases } : {}),
+            ...(v.withdrawn ? { withdrawn: v.withdrawn } : {}),
+          });
+        }
+        token = data.next_page_token;
+        if (!token) break;
+      }
+      osvRecords[key] = vulns;
+      writeFileSync(osvRecordsPath, JSON.stringify(osvRecords, null, 1));
+      console.log(`recorded OSV records ${key}: ${vulns.length}`);
+    }
+    return reply(200, { vulns: osvRecords[key] });
+  }
   if (method === 'POST' && url === 'https://api.osv.dev/v1/querybatch') {
     const queries = JSON.parse(init.body).queries;
     const missing = queries.filter(

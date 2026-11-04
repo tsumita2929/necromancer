@@ -19,7 +19,15 @@ export interface FakeNpm {
     /** Status of the commits call, when it is not 200. */
     commitStatus?: number;
   };
+  /** Version to the OSV ids the batch endpoint lists. */
   advisories?: Record<string, string[]>;
+  /**
+   * Version to the full records the `/v1/query` endpoint returns. Default: one record per id in
+   * `advisories`, with no aliases.
+   */
+  advisoryRecords?: Record<string, Array<{ id: string; aliases?: string[]; withdrawn?: string }>>;
+  /** Make `/v1/query` answer with this status instead of the records. */
+  osvQueryStatus?: number;
 }
 
 function reply(status: number, body: unknown) {
@@ -38,6 +46,8 @@ export interface FakeWorld {
   github: string[];
   /** Commit calls (`repos/owner/name/commits`). */
   commits: string[];
+  /** Bodies of the `/v1/query` calls (full OSV records). */
+  osvQueries: string[];
 }
 
 export function fakeWorld(
@@ -53,6 +63,7 @@ export function fakeWorld(
   const calls: string[] = [];
   const github: string[] = [];
   const commits: string[] = [];
+  const osvQueries: string[] = [];
   const fetchImpl: FetchLike = async (url, init) => {
     calls.push(`${init?.method ?? 'GET'} ${url}`);
     const overridden = extra?.override?.(url, init);
@@ -146,6 +157,15 @@ export function fakeWorld(
         pushed_at: g.pushedAt ?? '2020-01-01T00:00:00Z',
       });
     }
+    if (url === 'https://api.osv.dev/v1/query') {
+      osvQueries.push(init?.body ?? '');
+      const q = JSON.parse(init?.body ?? '{}') as { package: { name: string }; version: string };
+      const p = byName.get(q.package.name);
+      if (p?.osvQueryStatus) return reply(p.osvQueryStatus, {});
+      const records =
+        p?.advisoryRecords?.[q.version] ?? (p?.advisories?.[q.version] ?? []).map((id) => ({ id }));
+      return reply(200, { vulns: records });
+    }
     if (url === 'https://api.osv.dev/v1/querybatch') {
       const queries = (
         JSON.parse(init?.body ?? '{}') as {
@@ -154,7 +174,11 @@ export function fakeWorld(
       ).queries;
       return reply(200, {
         results: queries.map((q) => {
-          const ids = byName.get(q.package.name)?.advisories?.[q.version] ?? [];
+          const fake = byName.get(q.package.name);
+          const ids =
+            fake?.advisories?.[q.version] ??
+            fake?.advisoryRecords?.[q.version]?.map((r) => r.id) ??
+            [];
           return ids.length ? { vulns: ids.map((id) => ({ id })) } : {};
         }),
       });
@@ -164,7 +188,7 @@ export function fakeWorld(
     }
     return reply(404, {});
   };
-  return { fetch: fetchImpl, calls, github, commits };
+  return { fetch: fetchImpl, calls, github, commits, osvQueries };
 }
 
 export const DAY = 86_400_000;

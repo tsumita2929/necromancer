@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/django/django"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "django/django",
+  "html_url": "https://github.com/django/django",
+  "archived": false,
+  "disabled": false,
+  "pushed_at": "2026-11-03T21:03:16Z",
+  "stargazers_count": 91497,
+  "default_branch": "main"
+ }
+}

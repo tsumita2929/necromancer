@@ -1,0 +1,110 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fjpadilla%2Fpyjwt"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/jpadilla/pyjwt"
+  },
+  "openIssuesCount": 65,
+  "starsCount": 5721,
+  "forksCount": 826,
+  "license": "MIT",
+  "description": "JSON Web Token implementation in Python",
+  "homepage": "https://pyjwt.readthedocs.io",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/jpadilla/pyjwt",
+    "commit": "7144e4534c34810f4525dc4578a32addd8212cff"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Code-Review",
+     "score": 3,
+     "reason": "Found 7/22 approved changesets -- score normalized to 3"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": 10,
+     "reason": "no dangerous workflow patterns detected"
+    },
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "Maintained",
+     "score": 1,
+     "reason": "0 commit(s) and 2 issue activity found in the last 90 days -- score normalized to 1"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 10,
+     "reason": "security policy file detected"
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": 0,
+     "reason": "dependency not pinned by hash detected -- score normalized to 0"
+    },
+    {
+     "name": "Token-Permissions",
+     "score": 10,
+     "reason": "GitHub workflow tokens follow principle of least privilege"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 10,
+     "reason": "project is fuzzed"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": -1,
+     "reason": "no releases found"
+    },
+    {
+     "name": "Branch-Protection",
+     "score": -1,
+     "reason": "internal error: error during branchesHandler.setup: internal error: some github tokens can't read classic branch protection rules: https://github.com/ossf/scorecard-action/blob/main/docs/authentication/fine-grained-auth-token.md"
+    },
+    {
+     "name": "SAST",
+     "score": 5,
+     "reason": "SAST tool is not run on all commits -- score normalized to 5"
+    },
+    {
+     "name": "Packaging",
+     "score": 10,
+     "reason": "packaging workflow detected"
+    }
+   ],
+   "overallScore": 6.9,
+   "metadata": []
+  },
+  "ossFuzz": {
+   "lineCount": 1430,
+   "lineCoverCount": 612,
+   "date": "2026-11-03T00:00:00Z",
+   "configUrl": "https://github.com/google/oss-fuzz/tree/master/projects/pyjwt"
+  }
+ }
+}

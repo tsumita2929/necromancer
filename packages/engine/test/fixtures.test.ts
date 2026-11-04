@@ -1,7 +1,17 @@
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { createEngine } from '../src/index.js';
 import type { AutopsyReport, Diagnosis } from '../src/index.js';
 import { fixtureFetch, loadProject, recordedAt } from './helpers/fixture-fetch.js';
+
+const osvRecordsFile = join(
+  dirname(fileURLToPath(import.meta.url)),
+  'fixtures',
+  'recorded',
+  'osv-records.json',
+);
 
 async function scan(project: string) {
   const fetch = fixtureFetch();
@@ -143,5 +153,32 @@ describe('Poetry and mixed fixtures', () => {
     expect(alias.verdict).toBe('dead');
     expect(find(report, '@babel/core').verdict).toBe('alive');
     expect(report.problems.map((p) => p.message).join('\n')).toMatch(/internal[\s\S]*shared/);
+  });
+});
+
+describe('QA-01 duplicate OSV records, recorded from the real source', () => {
+  it('pyjwt 2.8.0 (28 records), flask 1.0 (4) and django 1.4 (93) count distinct vulnerabilities', async () => {
+    const { report, fetch } = await scan('qa-aliases');
+    expect(fetch.missing).toEqual([]);
+    const recorded = (key: string): number =>
+      (JSON.parse(readFileSync(osvRecordsFile, 'utf8')) as Record<string, unknown[]>)[key]
+        ?.length ?? 0;
+    expect([
+      recorded('pypi:pyjwt@2.8.0'),
+      recorded('pypi:flask@1.0'),
+      recorded('pypi:django@1.4'),
+    ]).toEqual([28, 4, 93]);
+    expect(find(report, 'pyjwt').advisories).toHaveLength(15);
+    expect(find(report, 'flask').advisories).toHaveLength(2);
+    expect(find(report, 'django').advisories).toHaveLength(55);
+    expect(find(report, 'pyjwt').evidence.find((e) => e.code === 'osv-advisory')?.message).toMatch(
+      /^15 known advisories affect version 2\.8\.0/,
+    );
+    // One id per vulnerability: no id shown is also an alias of another shown id.
+    const pyjwt = find(report, 'pyjwt');
+    const aliases = new Set(Object.values(pyjwt.advisoryAliases ?? {}).flat());
+    expect(pyjwt.advisories.some((id) => aliases.has(id))).toBe(false);
+    expect(pyjwt.advisories.some((id) => id.startsWith('GHSA-'))).toBe(true);
+    expect([...aliases].some((a) => a.startsWith('PYSEC-'))).toBe(true);
   });
 });

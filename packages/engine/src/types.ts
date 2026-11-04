@@ -98,8 +98,14 @@ export interface Diagnosis {
   verdict: Verdict;
   /** Most important first. Never empty unless the verdict is "alive". */
   evidence: Evidence[];
-  /** OSV ids affecting the version in use. */
+  /**
+   * OSV ids affecting the version in use, one per distinct vulnerability: records that name each other
+   * (a GHSA, a PYSEC and a CVE record of one flaw) are merged. The id shown for a vulnerability is its
+   * GHSA id, else its CVE id, else the first of the others; the list is sorted.
+   */
   advisories: string[];
+  /** For each id in `advisories` that has other names: the other ids of the same vulnerability. */
+  advisoryAliases?: Record<string, string[]>;
   /** Best first. Empty when none is known. */
   successors: Successor[];
   latest?: { version: string; date?: string };

@@ -9,7 +9,8 @@ Source: `docs/verification/qa-round3.md` (QA-01, 07, 08, 16), `docs/research/suc
   other (or share a third id) in `id` or `aliases` into one vulnerability. GHSA, PYSEC, CVE and other ids
   all count. **[PBT]**
 - Q1.2 THE advisory count, the evidence line and the zombie rule SHALL use distinct vulnerabilities.
-- Q1.3 `Diagnosis.advisories` SHALL list one id per vulnerability (GHSA first, then CVE, then the rest);
+- Q1.3 `Diagnosis.advisories` SHALL list one id per vulnerability (the GHSA id, else the CVE id, else the
+  first of the others; the list is sorted);
   `Diagnosis.advisoryAliases` SHALL map that id to the other ids of the same vulnerability.
 - Q1.4 A withdrawn record SHALL NOT count.
 - Q1.5 WHEN the alias data cannot be read, THE engine SHALL count the ids it has and say in `unavailable`
