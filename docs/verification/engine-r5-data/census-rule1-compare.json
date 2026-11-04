@@ -1,0 +1,1288 @@
+{
+ "beforeDir": "scratch/census/results-r5-before",
+ "afterDir": "scratch/census/results-r5-after",
+ "projects": 100,
+ "dependencies": 3201,
+ "transitions": {
+  "alive -> alive": 2808,
+  "dead -> dead": 175,
+  "dying -> dying": 207,
+  "dying -> dead": 5,
+  "ghost -> ghost": 1,
+  "zombie -> zombie": 4,
+  "alive -> dead": 1
+ },
+ "verdictChanged": 6,
+ "withVersionNotice": 41,
+ "distinctPackagesWithNotice": 15,
+ "noticesByVersion": {
+  "npm:eslint@9.39.5": 4,
+  "npm:eslint@8.57.1": 3,
+  "npm:eslint@^9.39.1": 2,
+  "npm:rimraf@3.0.2": 2,
+  "npm:@testing-library/jest-dom@^6.4.8": 1,
+  "npm:eslint@8.57.0": 1,
+  "npm:next@14.2.4": 1,
+  "npm:eslint@9.39.4": 1,
+  "npm:eslint@8.55.0": 1,
+  "npm:eslint@^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0": 1,
+  "npm:eslint@9.31.0": 1,
+  "npm:eslint@8.7.0": 1,
+  "npm:glob@7.1.5": 1,
+  "npm:rimraf@2.7.1": 1,
+  "npm:ua-parser-js@0.7.24": 1,
+  "npm:uuid@8.3.2": 1,
+  "npm:eslint@^8.41.0": 1,
+  "npm:puppeteer@^23.6.0": 1,
+  "npm:prettier-standard@9.1.1": 1,
+  "npm:glob@11.0.3": 1,
+  "npm:eslint@8.21.0": 1,
+  "npm:eslint@^9.32.0": 1,
+  "npm:rimraf@^3.0.2": 1,
+  "npm:glob@^7.1.4": 1,
+  "npm:jquery@3.4.1": 1,
+  "npm:eslint@8.50.0": 1,
+  "npm:vue-i18n@10.0.8": 1,
+  "npm:eslint@9.39.2": 1,
+  "npm:glob@8.1.0": 1,
+  "npm:eslint@^9.37.0": 1,
+  "npm:@xmldom/xmldom@0.8.6": 1,
+  "npm:miniflare@2.11.0": 1,
+  "npm:wrangler@2.4.3": 1,
+  "npm:codemirror@^6.0.2": 1
+ },
+ "changed": [
+  {
+   "project": "Data-Centric-AI-Community/fg-data-profiling",
+   "ecosystem": "pypi",
+   "name": "mkdocs-material-extensions",
+   "spec": ">=1.1.1,<2.0.0",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "1.3.1"
+  },
+  {
+   "project": "MAX-API-Next/Academic-Agents-Studio",
+   "ecosystem": "pypi",
+   "name": "dotenv",
+   "spec": "",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "0.9.9"
+  },
+  {
+   "project": "josdejong/mathjs",
+   "ecosystem": "npm",
+   "name": "karma",
+   "spec": "6.4.4",
+   "resolved": "6.4.4",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "6.4.4"
+  },
+  {
+   "project": "josdejong/mathjs",
+   "ecosystem": "npm",
+   "name": "karma-firefox-launcher",
+   "spec": "2.1.3",
+   "resolved": "2.1.3",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "2.1.3"
+  },
+  {
+   "project": "joshfrench/react-mobiledoc-editor",
+   "ecosystem": "npm",
+   "name": "karma",
+   "spec": "^6.4.0",
+   "resolved": "6.4.0",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "6.4.4"
+  },
+  {
+   "project": "lodash/lodash",
+   "ecosystem": "npm",
+   "name": "coveralls",
+   "spec": "^2.11.15",
+   "resolved": "2.13.3",
+   "before": "alive",
+   "after": "dead",
+   "basisBefore": null,
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "3.1.1"
+  }
+ ],
+ "notices": [
+  {
+   "project": "Brendonovich/MacroGraph",
+   "ecosystem": "npm",
+   "name": "@testing-library/jest-dom",
+   "spec": "^6.4.8",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "7.0.1",
+    "sameMajor": false
+   },
+   "latest": "7.0.1"
+  },
+  {
+   "project": "Davronov-Alimardon/canva-clone",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^8",
+   "resolved": "8.57.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "Davronov-Alimardon/canva-clone",
+   "ecosystem": "npm",
+   "name": "next",
+   "spec": "14.2.4",
+   "resolved": "14.2.4",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 37,
+   "upgradeTo": {
+    "version": "14.2.35",
+    "sameMajor": true
+   },
+   "latest": "16.4.4"
+  },
+  {
+   "project": "NapNeko/NapCatQQ",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.39.1",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "PokemonWorkshop/PokemonStudio",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.39.4",
+   "resolved": "9.39.4",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "Quramy/eslint-plugin-tutorial",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "8.55.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "Quramy/eslint-plugin-tutorial",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "QwenLM/Qwen-Live-Harness",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.24.0",
+   "resolved": "9.39.5",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "TrigenSoftware/masonry-grid",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "9.31.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "apache/pouchdb",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "8.7.0",
+   "resolved": "8.7.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "apache/pouchdb",
+   "ecosystem": "npm",
+   "name": "glob",
+   "spec": "7.1.5",
+   "resolved": "7.1.5",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "14.0.3",
+    "sameMajor": false
+   },
+   "latest": "14.0.3"
+  },
+  {
+   "project": "apache/pouchdb",
+   "ecosystem": "npm",
+   "name": "rimraf",
+   "spec": "2.7.1",
+   "resolved": "2.7.1",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "6.1.3",
+    "sameMajor": false
+   },
+   "latest": "6.1.3"
+  },
+  {
+   "project": "apache/pouchdb",
+   "ecosystem": "npm",
+   "name": "ua-parser-js",
+   "spec": "0.7.24",
+   "resolved": "0.7.24",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "0.7.41",
+    "sameMajor": true
+   },
+   "latest": "2.0.10"
+  },
+  {
+   "project": "apache/pouchdb",
+   "ecosystem": "npm",
+   "name": "uuid",
+   "spec": "8.3.2",
+   "resolved": "8.3.2",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 1,
+   "upgradeTo": {
+    "version": "14.0.3",
+    "sameMajor": false
+   },
+   "latest": "14.0.3"
+  },
+  {
+   "project": "creativetimofficial/ui",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^8.41.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "creativetimofficial/ui",
+   "ecosystem": "npm",
+   "name": "puppeteer",
+   "spec": "^23.6.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "25.16.0",
+    "sameMajor": false
+   },
+   "latest": "25.16.0"
+  },
+  {
+   "project": "feathersjs/feathers",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^8.57.0",
+   "resolved": "8.57.1",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "graphile/crystal",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.39.1",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "hallettj/git-format-staged",
+   "ecosystem": "npm",
+   "name": "prettier-standard",
+   "spec": "^9.1.1",
+   "resolved": "9.1.1",
+   "before": "dead",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "heuristic",
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "16.4.1",
+    "sameMajor": false
+   },
+   "latest": "16.4.1"
+  },
+  {
+   "project": "josdejong/mathjs",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "8.57.1",
+   "resolved": "8.57.1",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "josdejong/mathjs",
+   "ecosystem": "npm",
+   "name": "glob",
+   "spec": "11.0.3",
+   "resolved": "11.0.3",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 2,
+   "upgradeTo": {
+    "version": "14.0.3",
+    "sameMajor": false
+   },
+   "latest": "14.0.3"
+  },
+  {
+   "project": "joshfrench/react-mobiledoc-editor",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^8.21.0",
+   "resolved": "8.21.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "joshfrench/react-mobiledoc-editor",
+   "ecosystem": "npm",
+   "name": "rimraf",
+   "spec": "^3.0.2",
+   "resolved": "3.0.2",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "6.1.3",
+    "sameMajor": false
+   },
+   "latest": "6.1.3"
+  },
+  {
+   "project": "langfuse/langfuse-js",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.32.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "lio-mengxiang/mx-design-cli",
+   "ecosystem": "npm",
+   "name": "rimraf",
+   "spec": "^3.0.2",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "6.1.3",
+    "sameMajor": false
+   },
+   "latest": "6.1.3"
+  },
+  {
+   "project": "lodash/lodash",
+   "ecosystem": "npm",
+   "name": "glob",
+   "spec": "^7.1.4",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "14.0.3",
+    "sameMajor": false
+   },
+   "latest": "14.0.3"
+  },
+  {
+   "project": "lodash/lodash",
+   "ecosystem": "npm",
+   "name": "jquery",
+   "spec": "^3.4.1",
+   "resolved": "3.4.1",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 2,
+   "upgradeTo": {
+    "version": "3.7.1",
+    "sameMajor": true
+   },
+   "latest": "4.0.0"
+  },
+  {
+   "project": "louislam/dockge",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "~8.50.0",
+   "resolved": "8.50.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "louislam/dockge",
+   "ecosystem": "npm",
+   "name": "vue-i18n",
+   "spec": "~10.0.6",
+   "resolved": "10.0.8",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 2,
+   "upgradeTo": {
+    "version": "11.4.18",
+    "sameMajor": false
+   },
+   "latest": "11.4.18"
+  },
+  {
+   "project": "pixijs/pixijs",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.39.2",
+   "resolved": "9.39.2",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "pixijs/pixijs",
+   "ecosystem": "npm",
+   "name": "glob",
+   "spec": "^8.1.0",
+   "resolved": "8.1.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "14.0.3",
+    "sameMajor": false
+   },
+   "latest": "14.0.3"
+  },
+  {
+   "project": "postcss/postcss-mixins",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.37.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "royxue/obsidian-things3-sync",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.0.0",
+   "resolved": "9.39.5",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "sdkasper/lean-obsidian-terminal",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.39.5",
+   "resolved": "9.39.5",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "strapi/strapi",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "8.57.1",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  },
+  {
+   "project": "triggerdotdev/jsonhero-web",
+   "ecosystem": "npm",
+   "name": "@xmldom/xmldom",
+   "spec": "^0.8.2",
+   "resolved": "0.8.6",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 15,
+   "upgradeTo": {
+    "version": "0.9.12",
+    "sameMajor": true
+   },
+   "latest": "0.9.12"
+  },
+  {
+   "project": "triggerdotdev/jsonhero-web",
+   "ecosystem": "npm",
+   "name": "miniflare",
+   "spec": "^2.11.0",
+   "resolved": "2.11.0",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "4.20260730.0",
+    "sameMajor": false
+   },
+   "latest": "4.20260730.0"
+  },
+  {
+   "project": "triggerdotdev/jsonhero-web",
+   "ecosystem": "npm",
+   "name": "rimraf",
+   "spec": "^3.0.2",
+   "resolved": "3.0.2",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "6.1.3",
+    "sameMajor": false
+   },
+   "latest": "6.1.3"
+  },
+  {
+   "project": "triggerdotdev/jsonhero-web",
+   "ecosystem": "npm",
+   "name": "wrangler",
+   "spec": "^2.4.3",
+   "resolved": "2.4.3",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 3,
+   "upgradeTo": {
+    "version": "4.157.0",
+    "sameMajor": false
+   },
+   "latest": "4.157.0"
+  },
+  {
+   "project": "vercel/chatbot",
+   "ecosystem": "npm",
+   "name": "codemirror",
+   "spec": "^6.0.2",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "6.0.2",
+    "sameMajor": true,
+    "older": true
+   },
+   "latest": "6.0.2"
+  },
+  {
+   "project": "yuanbw2025/storyforge",
+   "ecosystem": "npm",
+   "name": "eslint",
+   "spec": "^9.39.4",
+   "resolved": "9.39.5",
+   "before": "alive",
+   "after": "alive",
+   "basisBefore": null,
+   "basisAfter": null,
+   "noticeCodes": [
+    "version-deprecated"
+   ],
+   "advisories": 0,
+   "upgradeTo": {
+    "version": "10.14.0",
+    "sameMajor": false
+   },
+   "latest": "10.14.0"
+  }
+ ],
+ "otherDiffs": 13,
+ "otherDiffList": [
+  {
+   "project": "Data-Centric-AI-Community/fg-data-profiling",
+   "ecosystem": "pypi",
+   "name": "codecov",
+   "spec": "",
+   "before": "dead",
+   "after": "dead",
+   "basisBefore": "hard",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "2.1.13",
+   "evidenceBefore": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "repo-archived",
+    "readme-unmaintained",
+    "no-release",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "Data-Centric-AI-Community/fg-data-profiling",
+   "ecosystem": "pypi",
+   "name": "mkdocs-material-extensions",
+   "spec": ">=1.1.1,<2.0.0",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "1.3.1",
+   "evidenceBefore": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "readme-unmaintained",
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "MAX-API-Next/Academic-Agents-Studio",
+   "ecosystem": "pypi",
+   "name": "dotenv",
+   "spec": "",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "0.9.9",
+   "evidenceBefore": [
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "readme-unmaintained",
+    "repo-inactive",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "NeuroTechX/EEG-ExPy",
+   "ecosystem": "pypi",
+   "name": "recommonmark",
+   "spec": "",
+   "before": "dead",
+   "after": "dead",
+   "basisBefore": "hard",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "0.7.1",
+   "evidenceBefore": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "evidenceAfter": [
+    "repo-archived",
+    "readme-unmaintained",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-moved"
+   ]
+  },
+  {
+   "project": "PokemonWorkshop/PokemonStudio",
+   "ecosystem": "npm",
+   "name": "node-loader",
+   "spec": "^2.1.0",
+   "resolved": "2.1.0",
+   "before": "dead",
+   "after": "dead",
+   "basisBefore": "hard",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "2.1.0",
+   "evidenceBefore": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "repo-archived",
+    "readme-unmaintained",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "josdejong/mathjs",
+   "ecosystem": "npm",
+   "name": "karma",
+   "spec": "6.4.4",
+   "resolved": "6.4.4",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "6.4.4",
+   "evidenceBefore": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "readme-unmaintained",
+    "no-release",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "josdejong/mathjs",
+   "ecosystem": "npm",
+   "name": "karma-firefox-launcher",
+   "spec": "2.1.3",
+   "resolved": "2.1.3",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "2.1.3",
+   "evidenceBefore": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "readme-unmaintained",
+    "no-release",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "joshfrench/react-mobiledoc-editor",
+   "ecosystem": "npm",
+   "name": "karma",
+   "spec": "^6.4.0",
+   "resolved": "6.4.0",
+   "before": "dying",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "6.4.4",
+   "evidenceBefore": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "readme-unmaintained",
+    "no-release",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "lio-mengxiang/mx-design-cli",
+   "ecosystem": "npm",
+   "name": "style-loader",
+   "spec": "3.3.1",
+   "before": "dead",
+   "after": "dead",
+   "basisBefore": "hard",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "4.0.0",
+   "evidenceBefore": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "evidenceAfter": [
+    "repo-archived",
+    "readme-unmaintained",
+    "no-release",
+    "low-maintenance",
+    "repo-moved"
+   ]
+  },
+  {
+   "project": "lodash/lodash",
+   "ecosystem": "npm",
+   "name": "coveralls",
+   "spec": "^2.11.15",
+   "resolved": "2.13.3",
+   "before": "alive",
+   "after": "dead",
+   "basisBefore": null,
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "3.1.1",
+   "evidenceBefore": [
+    "recent-activity",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "readme-unmaintained",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "onyx-dot-app/onyx",
+   "ecosystem": "pypi",
+   "name": "pytest-dotenv",
+   "spec": "==0.5.2",
+   "before": "dead",
+   "after": "dead",
+   "basisBefore": "hard",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "0.5.2",
+   "evidenceBefore": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "repo-archived",
+    "readme-unmaintained",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ]
+  },
+  {
+   "project": "peers/peerjs",
+   "ecosystem": "npm",
+   "name": "wdio-geckodriver-service",
+   "spec": "^5.0.1",
+   "resolved": "5.0.2",
+   "before": "dead",
+   "after": "dead",
+   "basisBefore": "hard",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "5.0.2",
+   "evidenceBefore": [
+    "repo-archived",
+    "no-release"
+   ],
+   "evidenceAfter": [
+    "repo-archived",
+    "readme-unmaintained",
+    "no-release"
+   ]
+  },
+  {
+   "project": "strapi/strapi",
+   "ecosystem": "npm",
+   "name": "eslint-plugin-node",
+   "spec": "^11.1.0",
+   "before": "dead",
+   "after": "dead",
+   "basisBefore": "heuristic",
+   "basisAfter": "hard",
+   "noticeCodes": [],
+   "advisories": 0,
+   "upgradeTo": null,
+   "latest": "11.1.0",
+   "evidenceBefore": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "evidenceAfter": [
+    "readme-unmaintained",
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ]
+  }
+ ]
+}

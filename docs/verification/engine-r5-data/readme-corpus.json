@@ -1,0 +1,257 @@
+{
+ "readmes": 358,
+ "flagged": [
+  {
+   "slug": "codecov/codecov-python",
+   "package": "codecov",
+   "kind": "subject",
+   "sentence": "This uploader is being deprecated by the Codecov team."
+  },
+  {
+   "slug": "facelessuser/mkdocs-material-extensions",
+   "package": "mkdocs-material-extensions",
+   "kind": "subject",
+   "sentence": "NOTE: This project is now deprecated as MkDocs for Material now implements this logic directly."
+  },
+  {
+   "slug": "pedroburon/dotenv",
+   "package": "dotenv",
+   "kind": "subject",
+   "sentence": "THIS LIBRARY IS NO LONGER SUPPORTED, USE theskumer/python-dotenv INSTEAD."
+  },
+  {
+   "slug": "rtfd/recommonmark",
+   "package": "recommonmark",
+   "kind": "name",
+   "sentence": "Warning: recommonmark is now deprecated."
+  },
+  {
+   "slug": "webpack-contrib/node-loader",
+   "package": "node-loader",
+   "kind": "banner",
+   "sentence": "DEPRECATED in favor of https://github.com/webpack/webpack/tree/main/examples/nodejs-addons"
+  },
+  {
+   "slug": "rollup/rollup-plugin-node-resolve",
+   "package": "rollup-plugin-node-resolve",
+   "kind": "subject",
+   "sentence": "This repository is no longer maintained."
+  },
+  {
+   "slug": "rollup/rollup-plugin-replace",
+   "package": "rollup-plugin-replace",
+   "kind": "subject",
+   "sentence": "This repository is no longer maintained."
+  },
+  {
+   "slug": "codecov/codecov-node",
+   "package": "codecov",
+   "kind": "subject",
+   "sentence": "This uploader is being deprecated by the Codecov team."
+  },
+  {
+   "slug": "karma-runner/karma",
+   "package": "karma",
+   "kind": "name",
+   "sentence": "Karma is deprecated and is not accepting new features or general bug fixes."
+  },
+  {
+   "slug": "karma-runner/karma-firefox-launcher",
+   "package": "karma-firefox-launcher",
+   "kind": "name",
+   "sentence": "karma-firefox-launcher is deprecated and is not accepting new features or general bug fixes."
+  },
+  {
+   "slug": "webpack-contrib/style-loader",
+   "package": "style-loader",
+   "kind": "name",
+   "sentence": "style-loader is deprecated — webpack injects CSS into the DOM itself and no longer needs it."
+  },
+  {
+   "slug": "nickmerwin/node-coveralls",
+   "package": "coveralls",
+   "kind": "subject",
+   "sentence": "This repo is no longer maintained."
+  },
+  {
+   "slug": "quiqua/pytest-dotenv",
+   "package": "pytest-dotenv",
+   "kind": "subject",
+   "sentence": "This project is not maintained any longer - sorry for any inconvenience this might cause."
+  },
+  {
+   "slug": "webdriverio-community/wdio-geckodriver-service",
+   "package": "wdio-geckodriver-service",
+   "kind": "subject",
+   "sentence": "DEPRECATION WARNING: This service got deprecated and is no longer maintained."
+  },
+  {
+   "slug": "mysticatea/eslint-plugin-node",
+   "package": "eslint-plugin-node",
+   "kind": "subject",
+   "sentence": "This project has been no longer maintained."
+  }
+ ],
+ "near": [
+  {
+   "slug": "codecov/codecov-python",
+   "package": "codecov",
+   "sentence": "On February 1, 2022 this uploader will be completely deprecated and will no longer be able to upload coverage to Codecov."
+  },
+  {
+   "slug": "DefinitelyTyped/DefinitelyTyped",
+   "package": "@types/d3-hierarchy",
+   "sentence": "- Typings (use preferred alternatives, typings is deprecated)"
+  },
+  {
+   "slug": "kazhala/InquirerPy",
+   "package": "inquirerpy",
+   "sentence": "to an unmaintained state with various issues left behind and no intention to implement more feature requests."
+  },
+  {
+   "slug": "rtfd/recommonmark",
+   "package": "recommonmark",
+   "sentence": "Deprecated"
+  },
+  {
+   "slug": "jsx-eslint/eslint-plugin-jsx-a11y",
+   "package": "eslint-plugin-jsx-a11y",
+   "sentence": "Deprecated."
+  },
+  {
+   "slug": "scroll-into-view/scroll-into-view-if-needed",
+   "package": "scroll-into-view-if-needed",
+   "sentence": "Thus this library got rewritten to implement that spec instead of the soon to be deprecated one."
+  },
+  {
+   "slug": "gotwarlost/istanbul",
+   "package": "istanbul",
+   "sentence": "Archive notice: This repo has been inactive for 7 years and is now archived."
+  },
+  {
+   "slug": "gotwarlost/istanbul",
+   "package": "istanbul",
+   "sentence": "Deprecation Notice: this version of istanbul is deprecated, we will not be"
+  },
+  {
+   "slug": "gotwarlost/istanbul",
+   "package": "istanbul",
+   "sentence": "This command is deprecated since the latest versions of npm do not seem to"
+  },
+  {
+   "slug": "satazor/js-spark-md5",
+   "package": "spark-md5",
+   "sentence": "Appends a binary string (e.g.: string returned from the deprecated readAsBinaryString)."
+  },
+  {
+   "slug": "satazor/js-spark-md5",
+   "package": "spark-md5",
+   "sentence": "Hashes a binary string directly (e.g.: string returned from the deprecated readAsBinaryString), returning the hex result."
+  },
+  {
+   "slug": "bendrucker/stream-to-promise",
+   "package": "stream-to-promise",
+   "sentence": "Deprecated."
+  },
+  {
+   "slug": "SethMMorton/natsort",
+   "package": "natsort",
+   "sentence": "- Dropped Deprecated APIs"
+  },
+  {
+   "slug": "SethMMorton/natsort",
+   "package": "natsort",
+   "sentence": "NOTE: Please see the Dropped Deprecated APIs section for changes."
+  },
+  {
+   "slug": "lxml/lxml-stubs",
+   "package": "lxml-stubs",
+   "sentence": "NOTE: This package is not maintained."
+  },
+  {
+   "slug": "pytest-dev/pytest-subtests",
+   "package": "pytest-subtests",
+   "sentence": "This plugin has been integrated directly into pytest 9.0, so the plugin itself will no longer be maintained and the repository will be archived."
+  },
+  {
+   "slug": "codecov/codecov-node",
+   "package": "codecov",
+   "sentence": "On February 1, 2022 this uploader will be completely deprecated and will no longer be able to upload coverage to Codecov."
+  },
+  {
+   "slug": "babel/eslint-plugin-babel",
+   "package": "eslint-plugin-babel",
+   "sentence": "Deprecated"
+  },
+  {
+   "slug": "Maronato/vue-toastification",
+   "package": "vue-toastification",
+   "sentence": "- Deprecated options"
+  },
+  {
+   "slug": "sudiptosarkar/node-rate-limiter",
+   "package": "limiter-es6-compat",
+   "sentence": "This repository is a fork, and the fork was needed because the original author seems to have abandoned the original project."
+  },
+  {
+   "slug": "SAML-Toolkits/python3-saml",
+   "package": "python3-saml",
+   "sentence": "Python 2 support was deprecated on Jan 1st, 2020: python-saml"
+  },
+  {
+   "slug": "SAML-Toolkits/python3-saml",
+   "package": "python3-saml",
+   "sentence": "Version 1.16.X is the latest version supporting Python2, consider its use deprecated."
+  },
+  {
+   "slug": "dahlia/libsass-python",
+   "package": "libsass",
+   "sentence": "LibSass has reached its end of life."
+  },
+  {
+   "slug": "iamturns/eslint-config-airbnb-typescript",
+   "package": "eslint-config-airbnb-typescript",
+   "sentence": "This repo has been archived"
+  },
+  {
+   "slug": "mysticatea/eslint-plugin-node",
+   "package": "eslint-plugin-node",
+   "sentence": "| node/no-deprecated-api ⭐ |"
+  },
+  {
+   "slug": "mysticatea/eslint-plugin-node",
+   "package": "eslint-plugin-node",
+   "sentence": "Deprecated rules"
+  },
+  {
+   "slug": "mysticatea/eslint-plugin-node",
+   "package": "eslint-plugin-node",
+   "sentence": "These rules have been deprecated in accordance with the deprecation policy, and replaced by newer rules:"
+  },
+  {
+   "slug": "ajv-validator/ajv-formats",
+   "package": "ajv-formats",
+   "sentence": "- url (deprecated): URL record."
+  },
+  {
+   "slug": "airbnb/javascript",
+   "package": "eslint-config-airbnb-base",
+   "sentence": "- ES5 (Deprecated)"
+  },
+  {
+   "slug": "robotools/defcon",
+   "package": "defcon",
+   "sentence": "ufo2-deprecated"
+  },
+  {
+   "slug": "derrickreimer/fathom-client",
+   "package": "fathom-client",
+   "sentence": "This is now deprecated, see trackEvent instead."
+  },
+  {
+   "slug": "derrickreimer/fathom-client",
+   "package": "fathom-client",
+   "sentence": "The includedDomains and excludedDomains options, while deprecated, are still supported to ensure backward compatibility."
+  }
+ ]
+}

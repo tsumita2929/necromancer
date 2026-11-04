@@ -1,0 +1,969 @@
+[
+ {
+  "project": "Brendonovich/MacroGraph",
+  "ecosystem": "npm",
+  "name": "@testing-library/jest-dom",
+  "version": "^6.4.8",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "7.0.1",
+  "upgradeAfter": "7.0.1"
+ },
+ {
+  "project": "Data-Centric-AI-Community/fg-data-profiling",
+  "ecosystem": "pypi",
+  "name": "codecov",
+  "version": "",
+  "before": "dead/hard",
+  "after": "dead/hard",
+  "changed": [
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "Data-Centric-AI-Community/fg-data-profiling",
+  "ecosystem": "pypi",
+  "name": "mkdocs-material-extensions",
+  "version": ">=1.1.1,<2.0.0",
+  "before": "dying/heuristic",
+  "after": "dead/hard",
+  "changed": [
+   "verdict",
+   "basis",
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "Davronov-Alimardon/canva-clone",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "8.57.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "Davronov-Alimardon/canva-clone",
+  "ecosystem": "npm",
+  "name": "next",
+  "version": "14.2.4",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "14.2.35",
+  "upgradeAfter": "14.2.35"
+ },
+ {
+  "project": "MAX-API-Next/Academic-Agents-Studio",
+  "ecosystem": "pypi",
+  "name": "dotenv",
+  "version": "",
+  "before": "dying/heuristic",
+  "after": "dead/hard",
+  "changed": [
+   "verdict",
+   "basis",
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "MAX-API-Next/Academic-Agents-Studio",
+  "ecosystem": "pypi",
+  "name": "pypdf2",
+  "version": "==2.12.1",
+  "before": "dying/heuristic",
+  "after": "dying/heuristic",
+  "changed": [
+   "evidence text",
+   "successors"
+  ],
+  "rules": [
+   "3"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "NapNeko/NapCatQQ",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "^9.39.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "NeuroTechX/EEG-ExPy",
+  "ecosystem": "pypi",
+  "name": "recommonmark",
+  "version": "",
+  "before": "dead/hard",
+  "after": "dead/hard",
+  "changed": [
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "PokemonWorkshop/PokemonStudio",
+  "ecosystem": "npm",
+  "name": "extract-zip",
+  "version": "2.0.1",
+  "before": "zombie/hard",
+  "after": "zombie/heuristic",
+  "changed": [
+   "basis"
+  ],
+  "rules": [
+   "2"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "PokemonWorkshop/PokemonStudio",
+  "ecosystem": "npm",
+  "name": "node-loader",
+  "version": "2.1.0",
+  "before": "dead/hard",
+  "after": "dead/hard",
+  "changed": [
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "PokemonWorkshop/PokemonStudio",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "9.39.4",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "Quramy/eslint-plugin-tutorial",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "8.55.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "Quramy/eslint-plugin-tutorial",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "QwenLM/Qwen-Live-Harness",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "9.39.5",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "TrigenSoftware/masonry-grid",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "9.31.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "apache/pouchdb",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "8.7.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "apache/pouchdb",
+  "ecosystem": "npm",
+  "name": "glob",
+  "version": "7.1.5",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "14.0.3",
+  "upgradeAfter": "12.0.0"
+ },
+ {
+  "project": "apache/pouchdb",
+  "ecosystem": "npm",
+  "name": "rimraf",
+  "version": "2.7.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "6.1.3",
+  "upgradeAfter": "4.4.1"
+ },
+ {
+  "project": "apache/pouchdb",
+  "ecosystem": "npm",
+  "name": "ua-parser-js",
+  "version": "0.7.24",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "0.7.41",
+  "upgradeAfter": "0.7.41"
+ },
+ {
+  "project": "apache/pouchdb",
+  "ecosystem": "npm",
+  "name": "uuid",
+  "version": "8.3.2",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "14.0.3",
+  "upgradeAfter": "11.1.1"
+ },
+ {
+  "project": "binary-husky/gpt_academic",
+  "ecosystem": "pypi",
+  "name": "pypdf2",
+  "version": "==2.12.1",
+  "before": "dying/heuristic",
+  "after": "dying/heuristic",
+  "changed": [
+   "evidence text",
+   "successors"
+  ],
+  "rules": [
+   "3"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "creativetimofficial/ui",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "^8.41.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "creativetimofficial/ui",
+  "ecosystem": "npm",
+  "name": "puppeteer",
+  "version": "^23.6.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "25.16.0",
+  "upgradeAfter": "24.43.1"
+ },
+ {
+  "project": "feathersjs/feathers",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "8.57.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "graphile/crystal",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "^9.39.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "hallettj/git-format-staged",
+  "ecosystem": "npm",
+  "name": "prettier-standard",
+  "version": "9.1.1",
+  "before": "dead/heuristic",
+  "after": "dead/heuristic",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "16.4.1",
+  "upgradeAfter": "15.0.1"
+ },
+ {
+  "project": "josdejong/mathjs",
+  "ecosystem": "npm",
+  "name": "expr-eval",
+  "version": "2.0.2",
+  "before": "zombie/hard",
+  "after": "zombie/heuristic",
+  "changed": [
+   "basis"
+  ],
+  "rules": [
+   "2"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "josdejong/mathjs",
+  "ecosystem": "npm",
+  "name": "karma",
+  "version": "6.4.4",
+  "before": "dying/heuristic",
+  "after": "dead/hard",
+  "changed": [
+   "verdict",
+   "basis",
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "josdejong/mathjs",
+  "ecosystem": "npm",
+  "name": "karma-firefox-launcher",
+  "version": "2.1.3",
+  "before": "dying/heuristic",
+  "after": "dead/hard",
+  "changed": [
+   "verdict",
+   "basis",
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "josdejong/mathjs",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "8.57.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "josdejong/mathjs",
+  "ecosystem": "npm",
+  "name": "glob",
+  "version": "11.0.3",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "14.0.3",
+  "upgradeAfter": "12.0.0"
+ },
+ {
+  "project": "joshfrench/react-mobiledoc-editor",
+  "ecosystem": "npm",
+  "name": "karma",
+  "version": "6.4.0",
+  "before": "dying/heuristic",
+  "after": "dead/hard",
+  "changed": [
+   "verdict",
+   "basis",
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "joshfrench/react-mobiledoc-editor",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "8.21.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "joshfrench/react-mobiledoc-editor",
+  "ecosystem": "npm",
+  "name": "rimraf",
+  "version": "3.0.2",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "6.1.3",
+  "upgradeAfter": "4.4.1"
+ },
+ {
+  "project": "js-cookie/js-cookie",
+  "ecosystem": "npm",
+  "name": "eslint-plugin-markdown",
+  "version": "5.1.0",
+  "before": "dead/hard",
+  "after": "dead/hard",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "3"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "langfuse/langfuse-js",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "^9.32.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "lio-mengxiang/mx-design-cli",
+  "ecosystem": "npm",
+  "name": "style-loader",
+  "version": "3.3.1",
+  "before": "dead/hard",
+  "after": "dead/hard",
+  "changed": [
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "lio-mengxiang/mx-design-cli",
+  "ecosystem": "npm",
+  "name": "rimraf",
+  "version": "^3.0.2",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "6.1.3",
+  "upgradeAfter": "4.4.1"
+ },
+ {
+  "project": "lodash/lodash",
+  "ecosystem": "npm",
+  "name": "coveralls",
+  "version": "2.13.3",
+  "before": "alive/-",
+  "after": "dead/hard",
+  "changed": [
+   "verdict",
+   "basis",
+   "evidence codes",
+   "successors"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "lodash/lodash",
+  "ecosystem": "npm",
+  "name": "glob",
+  "version": "^7.1.4",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "14.0.3",
+  "upgradeAfter": "12.0.0"
+ },
+ {
+  "project": "lodash/lodash",
+  "ecosystem": "npm",
+  "name": "jquery",
+  "version": "3.4.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "3.7.1",
+  "upgradeAfter": "3.7.1"
+ },
+ {
+  "project": "louislam/dockge",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "8.50.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "louislam/dockge",
+  "ecosystem": "npm",
+  "name": "vue-i18n",
+  "version": "10.0.8",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "11.4.18",
+  "upgradeAfter": "11.4.18"
+ },
+ {
+  "project": "onyx-dot-app/onyx",
+  "ecosystem": "pypi",
+  "name": "pytest-dotenv",
+  "version": "==0.5.2",
+  "before": "dead/hard",
+  "after": "dead/hard",
+  "changed": [
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "peers/peerjs",
+  "ecosystem": "npm",
+  "name": "wdio-geckodriver-service",
+  "version": "5.0.2",
+  "before": "dead/hard",
+  "after": "dead/hard",
+  "changed": [
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "pixijs/pixijs",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "9.39.2",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "pixijs/pixijs",
+  "ecosystem": "npm",
+  "name": "glob",
+  "version": "8.1.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "14.0.3",
+  "upgradeAfter": "12.0.0"
+ },
+ {
+  "project": "postcss/postcss-mixins",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "^9.37.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "royxue/obsidian-things3-sync",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "9.39.5",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "sdkasper/lean-obsidian-terminal",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "9.39.5",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "strapi/strapi",
+  "ecosystem": "npm",
+  "name": "eslint-plugin-node",
+  "version": "^11.1.0",
+  "before": "dead/heuristic",
+  "after": "dead/hard",
+  "changed": [
+   "basis",
+   "evidence codes"
+  ],
+  "rules": [
+   "1"
+  ],
+  "upgradeBefore": null,
+  "upgradeAfter": null
+ },
+ {
+  "project": "strapi/strapi",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "8.57.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ },
+ {
+  "project": "triggerdotdev/jsonhero-web",
+  "ecosystem": "npm",
+  "name": "@xmldom/xmldom",
+  "version": "0.8.6",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "0.9.12",
+  "upgradeAfter": "0.8.15"
+ },
+ {
+  "project": "triggerdotdev/jsonhero-web",
+  "ecosystem": "npm",
+  "name": "miniflare",
+  "version": "2.11.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "4.20260730.0",
+  "upgradeAfter": "3.20250718.3"
+ },
+ {
+  "project": "triggerdotdev/jsonhero-web",
+  "ecosystem": "npm",
+  "name": "rimraf",
+  "version": "3.0.2",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "4",
+   "5"
+  ],
+  "upgradeBefore": "6.1.3",
+  "upgradeAfter": "4.4.1"
+ },
+ {
+  "project": "triggerdotdev/jsonhero-web",
+  "ecosystem": "npm",
+  "name": "wrangler",
+  "version": "2.4.3",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text",
+   "upgradeTo"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "4.157.0",
+  "upgradeAfter": "3.114.17"
+ },
+ {
+  "project": "yuanbw2025/storyforge",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "version": "9.39.5",
+  "before": "alive/-",
+  "after": "alive/-",
+  "changed": [
+   "evidence text"
+  ],
+  "rules": [
+   "5"
+  ],
+  "upgradeBefore": "10.14.0",
+  "upgradeAfter": "10.14.0"
+ }
+]

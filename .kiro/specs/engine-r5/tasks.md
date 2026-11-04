@@ -9,4 +9,4 @@ Tick each box when the task is done and its tests pass. Resume at the first unch
 - [x] 5. E4 built-in alternatives: `src/native-alternatives.ts`, `test/native-alternatives.test.ts`, Node docs, census
 - [x] 6. E5 range-aware target: `src/versions/upgrade.ts`, `getNpmEngines`, tests, census
 - [x] 7. Web `verify:samples` replay (`scripts/tuning-eval/sample-diff.mjs`); web and Crew unit tests
-- [ ] 8. `docs/verification/engine-r5.md`; commit; report done
+- [x] 8. `docs/verification/engine-r5.md`; commit; report done
