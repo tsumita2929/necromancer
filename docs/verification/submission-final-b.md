@@ -130,7 +130,7 @@ dvna's `express-fileupload` drawer changed order (QA-35), so I checked every sho
 | --- | --- | --- |
 | 1 | 35 of 100, CI 26.4% to 44.7% | unchanged (`Q01`) |
 | 2 | mathjs `mkdirp` dying on a heuristic, `fs.mkdir` first; eslint and glob alive with upgrade notices (the glob notice names `engines.node` and `fs.glob`) | checked by `check-drafts.mjs`. Living packages still lead with the notice (`web-qa4b.md` section 2), so the shot is right; their Ways out now also lists the upgrade, which the voice-over does not contradict |
-| 3, 4 | The mkdirp séance on mkdirp 3.0.1 | unchanged: the recorded sample and the recipe did not change (`git diff e2c9942 HEAD -- apps/web/src/data/recorded packages/engine/src/seance/recipes` is empty; `git diff --stat` printed nothing) |
+| 3, 4 | The mkdirp séance on mkdirp 3.0.1 | unchanged: the recorded sample and the mkdirp recipe did not change (`git diff --stat e2c9942 HEAD -- apps/web/src/data/recorded packages/engine/src/seance/recipes` prints nothing). Only `seance/generic.ts` changed since (the count paragraph prints once, QA-37a); the curated mkdirp séance does not use it |
 | 5 | dvna `csurf`: dead, hard signal, no successor, **no upgrade notice**; Raise | checked by `check-drafts.mjs`. The changed drawer order concerns `express-fileupload` (Dying, with a notice), which no shot opens; `csurf` has no notice, so its drawer is as before |
 | 6 | The Crew tools, `seance` preview, `seance_write` refused on `main` | final export: 11 tools; the commands are those of the previous record and of `crew-final.md` section 4 (`VERIFY OK`, 33 PASS); the shot is unchanged |
 | 7 | Fifteen specs, eleven hooks, three steering files; 36 of 40 | `check-drafts.mjs`; `Q15` |
