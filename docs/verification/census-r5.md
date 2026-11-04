@@ -93,6 +93,7 @@ Scratch folders as in `docs/verification/census-r4d.md`; the engine was built fr
 | `node docs/research/recompute.mjs` | exit 0; `Q figures changed: 11; new Q lines: 0; unchanged: 10` |
 | `node docs/research/scripts/r4b-numcheck.mjs` | `numbers in section 9: 176; not found in the recompute output: 0`; `Q ids named in section 9: 21; without a recompute line: 0` |
 | `grep -rn "/home/" docs/research .kiro/specs/graveyard-census` | no hits |
+| fresh clone of `05f27c0` at `/tmp/necro-fresh-r5b/necromancer`: `recompute.mjs`, `r4b-numcheck.mjs`, `r4d-recall.mjs` (no options), `grep /home/` | exit 0 and the output equals the original checkout's; `numbers in section 9: 176; not found ... : 0`; the clone stays clean (`git status` empty); no host path |
 
 ### The six verdict changes
 
