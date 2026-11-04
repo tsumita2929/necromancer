@@ -3,10 +3,10 @@
 
 usage: python3 .github/scripts/run-job.py <clone> <workflow.yml> <job> [--node-bin DIR] [--env K=V ...]
 Set CI_LOG_DIR to keep one log file per step.
-Only deviation: `--with-deps` is dropped from `playwright install` (no sudo here).
+Step env is applied (${{ runner.temp }} becomes a new temporary folder; RUNNER_TEMP is set). Deviation: `--with-deps` is dropped from `playwright install` (no sudo here).
 Stops at the first failing step, like Actions. Prints one result line per step.
 """
-import os, subprocess, sys, time, yaml
+import os, subprocess, sys, tempfile, time, yaml
 
 args = sys.argv[1:]
 clone, wf, job = args[:3]
@@ -28,7 +28,8 @@ env = dict(os.environ)
 env['CI'] = 'true'
 env.update({k: str(v) for k, v in (doc.get('env') or {}).items() if '${{' not in str(v)})
 env.update({k: str(v) for k, v in (j.get('env') or {}).items() if '${{' not in str(v)})
-env.update(extra)
+# The runner's temporary folder: a new one for every run unless RUNNER_TEMP is already set.
+env.setdefault('RUNNER_TEMP', tempfile.mkdtemp(prefix='runner-temp.'))
 if node_bin:
     env['PATH'] = node_bin + os.pathsep + env['PATH']
 wd = ((j.get('defaults') or {}).get('run') or {}).get('working-directory', '.')
@@ -41,13 +42,21 @@ for n, step in enumerate(j['steps'], 1):
     if 'playwright install' in cmd:
         cmd = cmd.replace(' --with-deps', '')
     cwd = os.path.join(clone, step.get('working-directory', wd))
+    # Step-level env: ${{ runner.temp }} is the only expression handled; other expressions are skipped.
+    step_env = dict(env)
+    for k, v in (step.get('env') or {}).items():
+        v = str(v).replace('${{ runner.temp }}', env['RUNNER_TEMP'])
+        if '${{' not in v:
+            step_env[k] = v
+    step_env.update(extra)  # --env wins over the workflow, as a deliberate break for a test
     t = time.time()
-    p = subprocess.run(['bash', '-eo', 'pipefail', '-c', cmd], cwd=cwd, env=env,
+    p = subprocess.run(['bash', '-eo', 'pipefail', '-c', cmd], cwd=cwd, env=step_env,
                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     out = p.stdout.strip().splitlines()
     open(os.path.join(os.environ.get('CI_LOG_DIR', '/tmp'), f'{job}-{n}.log'), 'w').write(p.stdout)
     tail = ' | '.join(l.strip() for l in out[-3:])[:260]
-    print(f"[{n}] exit={p.returncode} {time.time()-t:5.1f}s  $ {cmd}  ::  {tail}")
+    shown = cmd.splitlines()[0] + (' ...' if len(cmd.splitlines()) > 1 else '')
+    print(f"[{n}] exit={p.returncode} {time.time()-t:5.1f}s  $ {shown}  ::  {tail}")
     if p.returncode:
         status = p.returncode
         break

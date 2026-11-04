@@ -68,6 +68,36 @@ jobs:
       - run: npm run verify:browser
       # Live autopsy against a stubbed internet. No real service is called.
       - run: npm run verify:live
+      # The séance the page offers is run for real: unpacked, installed and run with the old package and
+      # the replacement, and each deliberately wrong replacement must fail. The script builds its own
+      # scratch (npm packages, and a Python virtual environment) from the public registries.
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Run the web séance check (a skipped language fails the job)
+        shell: bash
+        timeout-minutes: 15
+        env:
+          NECRO_SCRATCH: ${{ runner.temp }}/necromancer-seance
+          NECRO_PYTHON: python3
+        run: |
+          log="$RUNNER_TEMP/verify-seance.log"
+          status=0
+          npm run verify:seance 2>&1 | tee "$log" || status=$?
+          # A language that could not be set up prints a line that starts with SKIP, and the script still
+          # passes. A silent skip would make this check worthless, so it fails here.
+          if grep -E '^SKIP ' "$log"; then
+            echo "::error::verify:seance skipped a language (the SKIP line is above)."
+            status=1
+          fi
+          # Both languages must really have run: one PASS line from a JavaScript recipe and one from Python.
+          for recipe in left-pad toml; do
+            if ! grep -Eq "^PASS +.*${recipe}" "$log"; then
+              echo "::error::verify:seance printed no PASS line for ${recipe}."
+              status=1
+            fi
+          done
+          exit "$status"
 
   crew:
     name: crew app (typecheck, test, build, smoke)
