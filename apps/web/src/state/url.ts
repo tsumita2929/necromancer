@@ -1,11 +1,11 @@
-import type { ManifestFile, Verdict } from '@contract';
+import type { ManifestFile } from '@contract';
 import { detectManifestKind, isSampleId, parseRepoInput, type AutopsyInput } from '../data/autopsy';
-import { BASES, GROUP_ORDER, SORT_KEYS, type Basis, type SortKey } from './model';
+import { BASES, GROUP_KEYS, SORT_KEYS, type Basis, type GroupKey, type SortKey } from './model';
 
 /** The whole shareable state of the graveyard view lives in the URL fragment. */
 export interface ViewState {
   source: AutopsyInput;
-  verdicts: Verdict[];
+  verdicts: GroupKey[];
   q: string;
   sort: SortKey;
   /** Only verdicts of this basis. */
@@ -109,7 +109,7 @@ export function formatHash(route: Route): string {
   const { view } = route;
   const params = new URLSearchParams();
   params.set('src', formatSource(view.source));
-  if (view.verdicts.length > 0) params.set('v', GROUP_ORDER.filter((v) => view.verdicts.includes(v)).join(','));
+  if (view.verdicts.length > 0) params.set('v', GROUP_KEYS.filter((v) => view.verdicts.includes(v)).join(','));
   if (view.q.trim() !== '') params.set('q', view.q);
   if (view.sort !== 'urgency') params.set('sort', view.sort);
   if (view.basis) params.set('b', view.basis);
@@ -130,7 +130,7 @@ export function parseHash(hash: string): Route {
     if (!source) return { name: 'landing', notice: 'invalid-link' };
     const verdicts = (params.get('v') ?? '')
       .split(',')
-      .filter((v): v is Verdict => (GROUP_ORDER as readonly string[]).includes(v));
+      .filter((v): v is GroupKey => (GROUP_KEYS as readonly string[]).includes(v));
     const sortParam = params.get('sort');
     const sort = SORT_KEYS.find((key) => key === sortParam) ?? 'urgency';
     const view: ViewState = { source, verdicts: [...new Set(verdicts)], q: (params.get('q') ?? '').slice(0, 200), sort };

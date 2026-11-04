@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { AutopsyReport, Verdict } from '@contract';
+import type { AutopsyReport } from '@contract';
 import { Button, Callout, plural, useAnnounce, formatDate } from '../design/controls';
 import { LinkIcon, SearchIcon } from '../design/icons';
-import { VERDICT_META } from '../design/Verdict';
-import { VerdictIcon } from '../design/icons';
+import { groupMeta } from '../design/Verdict';
+import { UncheckedIcon, VerdictIcon } from '../design/icons';
 import {
   AutopsyError,
   SAMPLES,
@@ -16,14 +16,16 @@ import {
 } from '../data/autopsy';
 import { emptyProgress } from '../data/net';
 import {
-  GROUP_ORDER,
+  GROUP_KEYS,
   SORT_KEYS,
   SORT_LABELS,
   buildGroups,
   findByKey,
   isFiltering,
+  isUnchecked,
   totalOf,
   type Controls,
+  type GroupKey,
   type SortKey,
   type Basis,
   basisOf,
@@ -237,13 +239,19 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
   const filtering = isFiltering(controls);
   // Under each count: how many rest on a heuristic (not alive), or carry advisories (alive).
   const extras = useMemo(() => {
-    const out: Record<Verdict, number> = { alive: 0, dying: 0, dead: 0, ghost: 0, zombie: 0 };
+    const out: Record<GroupKey, number> = { alive: 0, dying: 0, dead: 0, ghost: 0, zombie: 0, unchecked: 0 };
     for (const d of report.diagnoses) {
-      if (d.verdict === 'alive') out.alive += d.advisories.length > 0 ? 1 : 0;
+      if (isUnchecked(d)) out.unchecked += 1;
+      else if (d.verdict === 'alive') out.alive += d.advisories.length > 0 ? 1 : 0;
       else if (basisOf(d) === 'heuristic') out[d.verdict] += 1;
     }
     return out;
   }, [report.diagnoses]);
+  // The engine counts a package it could not examine as alive. The page does not: it has its own count.
+  const counts = useMemo<Record<GroupKey, number>>(
+    () => ({ ...report.summary, alive: Math.max(0, report.summary.alive - extras.unchecked), unchecked: extras.unchecked }),
+    [report.summary, extras.unchecked],
+  );
   const urgent = report.summary.zombie + report.summary.ghost + report.summary.dead;
   const opened = findByKey(report.diagnoses, view.open);
   const sourceContext = useMemo(
@@ -267,7 +275,7 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
     announce(filtering ? `Showing ${shown} of ${total} dependencies.` : `Showing all ${total} dependencies.`);
   }, [shown, total, filtering, announce]);
 
-  const toggleVerdict = (verdict: Verdict) => {
+  const toggleVerdict = (verdict: GroupKey) => {
     const next = view.verdicts.includes(verdict)
       ? view.verdicts.filter((v) => v !== verdict)
       : [...view.verdicts, verdict];
@@ -300,6 +308,12 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
             This is the engine's report for <span className="mono">{sample.repository}</span>, saved on that day.
             Today's answer may differ.
           </p>
+          {sample.onlyFiles ? (
+            <p>
+              It was read from <span className="mono">{sample.onlyFiles.join(', ')}</span> only, so it lists the direct
+              dependencies. A live run also reads the lockfile and finds many more.
+            </p>
+          ) : null}
           <p className="callout__action">
             <Button
               onClick={() => {
@@ -329,8 +343,8 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
       ) : null}
 
       <section aria-label="Summary by verdict" className="summary">
-        <ul className="summary__list">
-          {GROUP_ORDER.map((verdict) => {
+        <ul className={`summary__list${counts.unchecked > 0 || view.verdicts.includes('unchecked') ? ' summary__list--six' : ''}`}>
+          {GROUP_KEYS.filter((key) => key !== 'unchecked' || counts.unchecked > 0 || view.verdicts.includes(key)).map((verdict) => {
             const pressed = view.verdicts.includes(verdict);
             return (
               <li key={verdict}>
@@ -341,14 +355,19 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
                   onClick={() => toggleVerdict(verdict)}
                   data-testid={`summary-${verdict}`}
                 >
-                  <VerdictIcon verdict={verdict} className="summary__icon" />
+                  {verdict === 'unchecked' ? <UncheckedIcon className="summary__icon" /> : <VerdictIcon verdict={verdict} className="summary__icon" />}
                   <span className="summary__count" data-testid={`count-${verdict}`}>
-                    {report.summary[verdict]}
+                    {counts[verdict]}
                   </span>
-                  <span className="summary__label">{VERDICT_META[verdict].plural}</span>
-                  {extras[verdict] > 0 ? (
+                  <span className="summary__label">{groupMeta(verdict).plural}</span>
+                  {verdict !== 'unchecked' && extras[verdict] > 0 ? (
                     <span className="summary__sub" data-testid={`sub-${verdict}`}>
                       {extras[verdict]} {verdict === 'alive' ? 'with advisories' : 'heuristic'}
+                    </span>
+                  ) : null}
+                  {verdict === 'unchecked' ? (
+                    <span className="summary__sub" data-testid="sub-unchecked">
+                      not counted as alive
                     </span>
                   ) : null}
                   <span className="sr-only">{pressed ? ', filter on' : ', filter off'}</span>
@@ -393,21 +412,21 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
           {groups.map((group) => (
             <section
               key={group.verdict}
-              className={`group group--${group.verdict} verdict--${group.verdict}`}
+              className={`group group--${group.verdict === 'unchecked' ? 'alive' : group.verdict} verdict--${group.verdict}`}
               aria-labelledby={`group-${group.verdict}`}
               data-testid={`group-${group.verdict}`}
             >
               <header className="group__head">
                 <h2 id={`group-${group.verdict}`}>
-                  <VerdictIcon verdict={group.verdict} className="group__icon" />
-                  {VERDICT_META[group.verdict].plural}
+                  {group.verdict === 'unchecked' ? <UncheckedIcon className="group__icon" /> : <VerdictIcon verdict={group.verdict} className="group__icon" />}
+                  {groupMeta(group.verdict).plural}
                   <span className="group__count" data-testid={`group-count-${group.verdict}`}>
                     {group.items.length}
                   </span>
                 </h2>
-                <p className="group__tagline">{VERDICT_META[group.verdict].tagline}</p>
+                <p className="group__tagline">{groupMeta(group.verdict).tagline}</p>
               </header>
-              <ul className={`tomb-grid tomb-grid--${group.verdict}`}>
+              <ul className={`tomb-grid tomb-grid--${group.verdict === 'unchecked' ? 'alive' : group.verdict}`}>
                 {group.items.map((diagnosis, index) => (
                   <Tombstone key={`${diagnosis.dependency.ecosystem}:${diagnosis.dependency.name}:${index}`} diagnosis={diagnosis} onOpen={open} />
                 ))}

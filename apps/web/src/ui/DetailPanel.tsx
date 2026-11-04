@@ -4,7 +4,7 @@ import { Button, ExtLink, formatDate } from '../design/controls';
 import { CloseIcon } from '../design/icons';
 import { meaningOf, VerdictBadge } from '../design/Verdict';
 import { canResurrect as canResurrectDiagnosis, waysOut } from '../data/kit';
-import { basisOf, displayVersion } from '../state/model';
+import { basisOf, displayVersion, isUnchecked } from '../state/model';
 import type { SourceContext } from '../data/autopsy';
 import { SpecViewer, kindLabel } from './SpecViewer';
 
@@ -65,6 +65,9 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
   const titleId = useId();
   const { dependency, verdict, evidence, advisories, latest } = diagnosis;
   const alive = verdict === 'alive';
+  const unchecked = isUnchecked(diagnosis);
+  const tone = unchecked ? 'unchecked' : verdict;
+  const aliases = diagnosis.advisoryAliases ?? {};
   const canResurrect = canResurrectDiagnosis(diagnosis);
   const { successors, synthetic } = canResurrect ? waysOut(diagnosis) : { successors: diagnosis.successors, synthetic: false };
   const version = displayVersion(dependency);
@@ -83,7 +86,7 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
   return (
     <dialog
       ref={dialog}
-      className={`panel verdict--${verdict}`}
+      className={`panel verdict--${tone}`}
       aria-labelledby={titleId}
       onClose={onClose}
       onKeyDown={(event) => {
@@ -95,9 +98,9 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
       }}
     >
       <div className="panel__scroll">
-        <header className={`panel__head verdict--${verdict}`}>
+        <header className={`panel__head verdict--${tone}`}>
           <div className="panel__headrow">
-            <VerdictBadge verdict={verdict} large basis={basisOf(diagnosis)} />
+            <VerdictBadge verdict={verdict} large basis={basisOf(diagnosis)} unchecked={unchecked} />
             <button type="button" className="panel__close" onClick={() => dialog.current?.close()}>
               <CloseIcon className="panel__closeicon" />
               <span className="sr-only">Close details</span>
@@ -130,6 +133,8 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                 <Button variant="primary" size="large" onClick={() => onSpec(0)}>
                   Resurrect
                 </Button>
+              ) : unchecked ? (
+                <p className="panel__nothing">Nothing to resurrect. It was not examined, so there is nothing to move off.</p>
               ) : alive ? (
                 <p className="panel__nothing">Nothing to resurrect. This one is alive.</p>
               ) : (
@@ -154,6 +159,8 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                     <li key={`${item.code}-${index}`}>
                       <p className="evidence__msg">{item.message}</p>
                       <p className="evidence__meta">
+                        {item.code === 'repo-moved' ? <span className="evidence__tag">Moved, not dead</span> : null}
+                        {item.code === 'unchecked' || item.code === 'registry-not-found' ? <span className="evidence__tag">No claim made</span> : null}
                         <span>{SOURCE_NAMES[item.source] ?? item.source}</span>
                         {item.date ? <span>{formatDate(item.date)}</span> : null}
                         {item.url ? <ExtLink href={item.url}>Source</ExtLink> : null}
@@ -167,12 +174,29 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
             {advisories.length > 0 ? (
               <section aria-labelledby={`${titleId}-adv`}>
                 <h3 id={`${titleId}-adv`}>Advisories</h3>
+                {Object.keys(aliases).length > 0 ? (
+                  <p className="quiet advisories__note">One line per vulnerability. The other ids of the same flaw are listed beside it.</p>
+                ) : null}
                 <ul className="advisories">
                   {advisories.map((id) => (
                     <li key={id}>
                       <ExtLink href={`https://osv.dev/vulnerability/${encodeURIComponent(id)}`} className="mono">
                         {id}
                       </ExtLink>
+                      {(aliases[id] ?? []).length > 0 ? (
+                        <span className="advisories__aliases" data-testid="advisory-aliases">
+                          {' '}
+                          also known as{' '}
+                          {(aliases[id] ?? []).map((other, position) => (
+                            <span key={other}>
+                              {position > 0 ? ', ' : ''}
+                              <ExtLink href={`https://osv.dev/vulnerability/${encodeURIComponent(other)}`} className="mono">
+                                {other}
+                              </ExtLink>
+                            </span>
+                          ))}
+                        </span>
+                      ) : null}
                     </li>
                   ))}
                 </ul>
@@ -193,12 +217,18 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                 ) : null}
                 <ul className="ways">
                   {successors.map((successor, index) => (
-                    <li key={`${successor.name}-${index}`}>
-                      <p className="ways__kind">{kindLabel(successor.kind)}</p>
+                    <li key={`${successor.name}-${index}`} className={successor.confidence === 'low' ? 'ways__suggestion' : undefined}>
+                      <p className="ways__kind">
+                        {successor.confidence === 'low' ? 'Suggestion · ' : ''}
+                        {kindLabel(successor.kind)}
+                      </p>
                       <p className="ways__name">
                         {successor.kind === 'raise' ? `Raise ${dependency.name}` : successor.name}
                       </p>
                       <p className="ways__reason">{successor.reason}</p>
+                      {successor.confidence === 'low' ? (
+                        <p className="ways__caution">A suggestion, not a sure fit. It may differ in API or scope. Check it before you move.</p>
+                      ) : null}
                       <p className="evidence__meta">
                         <span>{SOURCE_NAMES[successor.source] ?? successor.source}</span>
                         {successor.url ? <ExtLink href={successor.url}>Learn more</ExtLink> : null}

@@ -308,7 +308,11 @@ export function SpecViewer({ diagnosis, successorIndex, onChooseSuccessor, onBac
               />
               <span>
                 <strong>{successor.kind === 'raise' ? `Raise ${diagnosis.dependency.name}` : successor.name}</strong>
-                <span className="radio__kind"> · {kindLabel(successor.kind)}</span>
+                <span className="radio__kind">
+                  {' '}
+                  · {successor.confidence === 'low' ? 'Suggestion · ' : ''}
+                  {kindLabel(successor.kind)}
+                </span>
               </span>
             </label>
           ))}

@@ -156,6 +156,7 @@
 .verdict--dead { --v: var(--dead); --v-wash: var(--dead-wash); }
 .verdict--ghost { --v: var(--ghost); --v-wash: var(--ghost-wash); }
 .verdict--zombie { --v: var(--zombie); --v-wash: var(--zombie-wash); }
+.verdict--unchecked { --v: var(--fog-400); --v-wash: rgb(147 163 185 / 0.1); }
 
 /* ---------- Toggle chip (filters) ---------- */
 .chip {

@@ -251,7 +251,7 @@ for (const vp of VIEWPORTS) {
 // --- round 4: basis, raise way out, advisories, damaged links, focus, targets, partial cards
 console.log('\n== round 4 ==');
 const HARD_CODES = new Set(['repo-gone', 'npm-deprecated', 'repo-archived', 'pypi-inactive', 'pypi-yanked', 'registry-not-found', 'version-deprecated', 'version-yanked']);
-const isHeuristic = (d) => ['dead', 'zombie', 'dying', 'ghost'].includes(d.verdict) && !d.evidence.some((e) => HARD_CODES.has(e.code));
+const isHeuristic = (d) => ['dead', 'zombie', 'dying', 'ghost'].includes(d.verdict) && (d.basis ? d.basis === 'heuristic' : !d.evidence.some((e) => HARD_CODES.has(e.code)));
 for (const vp of VIEWPORTS) {
   const { context, page, foreign, failed } = await newPage(vp);
   const tag = vp.tag.split(' ')[0];
@@ -328,8 +328,10 @@ for (const vp of VIEWPORTS) {
   check(`${tag} damaged link: a clean landing page shows no notice`, (await page.getByText(/That link could not be read/).count()) === 0);
 
   // partial sample cards and footer targets
-  const partial = await page.locator('.sample', { hasText: 'appsecco/dvna' }).textContent();
-  check(`${tag} partial: the dvna card says its report is partial; GitHub is named`, /Partial report: GitHub was not fully checked/.test(partial ?? ''));
+  for (const report of [DVNA, MICROBLOG]) {
+    const card = (await page.locator('.sample', { hasText: report.subject.replace('github:', '') }).textContent()) ?? '';
+    check(`${tag} partial: the ${report.subject.replace('github:', '')} card says its report is partial exactly when it is`, /Partial report: GitHub was not fully checked/.test(card) === report.unavailable.some((u) => u.source === 'github'), `${report.unavailable.length} unavailable`);
+  }
   const footerBoxes = await page.locator('.site-footer a').evaluateAll((els) => els.map((el) => { const r = el.getBoundingClientRect(); return [Math.round(r.width), Math.round(r.height)]; }));
   check(`${tag} footer: every link is at least 44x44`, footerBoxes.length > 0 && footerBoxes.every(([w, h]) => w >= 44 && h >= 44), JSON.stringify(footerBoxes));
   check(`${tag} round 4: no page error, no failed request, nothing left the origin`, failed.length === 0 && foreign.length === 0, [...failed, ...foreign].join('; '));

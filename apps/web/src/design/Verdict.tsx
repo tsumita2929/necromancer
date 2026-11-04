@@ -1,5 +1,5 @@
 import type { Diagnosis, Verdict } from '@contract';
-import { VerdictIcon } from './icons';
+import { UncheckedIcon, VerdictIcon } from './icons';
 
 export interface VerdictMeta {
   /** Singular word, shown next to the icon. */
@@ -46,9 +46,25 @@ export const VERDICT_META: Record<Verdict, VerdictMeta> = {
   },
 };
 
+/** The group of dependencies the engine could not examine. Not a verdict: the page never counts them as alive. */
+export const UNCHECKED_META: VerdictMeta = {
+  label: 'Not checked',
+  plural: 'Not checked',
+  meaning: 'Necromancer could not examine this package, so it makes no claim. Treat it as unknown, not as healthy.',
+  tagline: 'Not examined: no claim made',
+};
+
+export function groupMeta(key: Verdict | 'unchecked'): VerdictMeta {
+  return key === 'unchecked' ? UNCHECKED_META : VERDICT_META[key];
+}
+
 /** One sentence for one diagnosis: the verdict's meaning, said honestly about its basis and its advisories (QA-02, QA-05). */
-export function meaningOf(diagnosis: Pick<Diagnosis, 'verdict' | 'advisories'>, basis: 'hard' | 'heuristic' | undefined): string {
+export function meaningOf(
+  diagnosis: Pick<Diagnosis, 'verdict' | 'advisories'> & Partial<Pick<Diagnosis, 'evidence'>>,
+  basis: 'hard' | 'heuristic' | undefined,
+): string {
   const { verdict, advisories } = diagnosis;
+  if (verdict === 'alive' && diagnosis.evidence?.some((e) => e.code === 'unchecked')) return UNCHECKED_META.meaning;
   const n = advisories.length;
   switch (verdict) {
     case 'alive':
@@ -76,11 +92,22 @@ export function VerdictBadge({
   verdict,
   large = false,
   basis,
+  unchecked = false,
 }: {
   verdict: Verdict;
   large?: boolean;
   basis?: 'hard' | 'heuristic' | undefined;
+  /** The engine could not examine it: show "Not checked", never "Alive". */
+  unchecked?: boolean;
 }) {
+  if (unchecked) {
+    return (
+      <span className={`verdict verdict--unchecked${large ? ' verdict--lg' : ''}`}>
+        <UncheckedIcon className="verdict__icon" />
+        <span>{UNCHECKED_META.label}</span>
+      </span>
+    );
+  }
   return (
     <span className={`verdict verdict--${verdict}${large ? ' verdict--lg' : ''}`}>
       <VerdictIcon verdict={verdict} className="verdict__icon" />

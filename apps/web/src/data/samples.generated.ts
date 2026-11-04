@@ -12,6 +12,8 @@ export interface RecordedSample {
   summary: Record<Verdict, number>;
   /** Sources that could not be used for this report; empty when it is complete. */
   unavailable: SourceId[];
+  /** Set when the engine was handed only these root files (a repository whose lockfile would be too large for a sample). */
+  onlyFiles?: string[];
 }
 
 export const RECORDED_SAMPLES: readonly RecordedSample[] = [
@@ -19,28 +21,26 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "appsecco-dvna",
     "repository": "appsecco/dvna",
     "ecosystem": "npm",
-    "recordedAt": "2026-11-04T00:06:14.482Z",
+    "recordedAt": "2026-11-04T11:23:39.608Z",
     "total": 19,
     "summary": {
-      "alive": 6,
-      "dying": 7,
+      "alive": 8,
+      "dying": 5,
       "dead": 5,
       "ghost": 0,
       "zombie": 1
     },
-    "unavailable": [
-      "github"
-    ]
+    "unavailable": []
   },
   {
     "id": "miguelgrinberg-microblog",
     "repository": "miguelgrinberg/microblog",
     "ecosystem": "pypi",
-    "recordedAt": "2026-11-04T00:06:16.945Z",
+    "recordedAt": "2026-11-04T11:25:05.292Z",
     "total": 54,
     "summary": {
-      "alive": 36,
-      "dying": 15,
+      "alive": 43,
+      "dying": 8,
       "dead": 3,
       "ghost": 0,
       "zombie": 0

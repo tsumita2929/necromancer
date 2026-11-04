@@ -3,6 +3,21 @@ import type { DependencyRef, Diagnosis, Verdict } from '@contract';
 /** Display order of the groups: most urgent first. */
 export const GROUP_ORDER: readonly Verdict[] = ['zombie', 'ghost', 'dead', 'dying', 'alive'];
 
+/**
+ * A dependency the engine could not examine (the registry does not know it, or no source answered) is
+ * "alive" in the contract with an "unchecked" line. The page never counts it as alive: it gets its own group.
+ */
+export type GroupKey = Verdict | 'unchecked';
+export const GROUP_KEYS: readonly GroupKey[] = [...GROUP_ORDER, 'unchecked'];
+
+export function isUnchecked(diagnosis: Pick<Diagnosis, 'verdict' | 'evidence'>): boolean {
+  return diagnosis.verdict === 'alive' && diagnosis.evidence.some((e) => e.code === 'unchecked');
+}
+
+export function groupOf(diagnosis: Pick<Diagnosis, 'verdict' | 'evidence'>): GroupKey {
+  return isUnchecked(diagnosis) ? 'unchecked' : diagnosis.verdict;
+}
+
 export type SortKey = 'urgency' | 'name' | 'release';
 export const SORT_KEYS: readonly SortKey[] = ['urgency', 'name', 'release'];
 
@@ -39,7 +54,7 @@ export function basisOf(diagnosis: Diagnosis): Basis | undefined {
 }
 
 export interface Controls {
-  verdicts: readonly Verdict[];
+  verdicts: readonly GroupKey[];
   q: string;
   sort: SortKey;
   /** Show only verdicts of this basis. */
@@ -91,29 +106,30 @@ const COMPARERS: Record<SortKey, (a: Diagnosis, b: Diagnosis) => number> = {
 };
 
 export function matches(diagnosis: Diagnosis, controls: Controls): boolean {
-  if (controls.verdicts.length > 0 && !controls.verdicts.includes(diagnosis.verdict)) return false;
+  if (controls.verdicts.length > 0 && !controls.verdicts.includes(groupOf(diagnosis))) return false;
   if (controls.basis !== undefined && basisOf(diagnosis) !== controls.basis) return false;
   const q = controls.q.trim().toLowerCase();
   return q === '' || diagnosis.dependency.name.toLowerCase().includes(q);
 }
 
 export interface Group {
-  verdict: Verdict;
+  verdict: GroupKey;
   items: Diagnosis[];
 }
 
 /** Filters, sorts within each verdict, and returns the non-empty groups in display order. */
 export function buildGroups(diagnoses: readonly Diagnosis[], controls: Controls): Group[] {
   const compare = COMPARERS[controls.sort];
-  const buckets = new Map<Verdict, Diagnosis[]>();
+  const buckets = new Map<GroupKey, Diagnosis[]>();
   for (const diagnosis of diagnoses) {
     if (!matches(diagnosis, controls)) continue;
-    const bucket = buckets.get(diagnosis.verdict);
+    const key = groupOf(diagnosis);
+    const bucket = buckets.get(key);
     if (bucket) bucket.push(diagnosis);
-    else buckets.set(diagnosis.verdict, [diagnosis]);
+    else buckets.set(key, [diagnosis]);
   }
   const groups: Group[] = [];
-  for (const verdict of GROUP_ORDER) {
+  for (const verdict of GROUP_KEYS) {
     const items = buckets.get(verdict);
     if (items && items.length > 0) groups.push({ verdict, items: [...items].sort(compare) });
   }

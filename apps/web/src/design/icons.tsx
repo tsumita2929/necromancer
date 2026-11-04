@@ -17,6 +17,17 @@ function base(props: IconProps): IconProps {
   };
 }
 
+/** Not checked: a dashed circle with a question mark. Nothing was examined, so nothing is claimed. */
+export function UncheckedIcon(props: IconProps) {
+  return (
+    <svg {...base(props)}>
+      <circle cx="12" cy="12" r="9" strokeDasharray="3 3" />
+      <path d="M9.6 9.4a2.5 2.5 0 1 1 3.6 2.2c-.8.5-1.2 1-1.2 1.9" />
+      <path d="M12 16.6v.1" />
+    </svg>
+  );
+}
+
 /** One silhouette per verdict, so shape alone also tells them apart. */
 export function VerdictIcon({ verdict, ...props }: IconProps & { verdict: Verdict }) {
   switch (verdict) {

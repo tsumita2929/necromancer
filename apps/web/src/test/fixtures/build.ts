@@ -88,9 +88,10 @@ export function successor(
   kind: Successor['kind'],
   reason: string,
   source: SourceId,
-  extra: { ecosystem?: Ecosystem; url?: string } = {},
+  extra: { ecosystem?: Ecosystem; url?: string; confidence?: Successor['confidence'] } = {},
 ): Successor {
   const out: Successor = { name, ecosystem: extra.ecosystem ?? 'npm', kind, reason, source };
+  if (extra.confidence !== undefined) out.confidence = extra.confidence;
   if (extra.url !== undefined) out.url = extra.url;
   return out;
 }

@@ -331,6 +331,23 @@ const upload = (page, files) => page.locator('input[aria-label="Manifest and sou
   await context.close();
 }
 
+{
+  // R4b: a package the registry does not know, in an uploaded manifest, is "Not checked" and never counted as alive.
+  const { context, page, errors } = await newPage(DESKTOP, { raw: {} });
+  await upload(page, { name: 'package.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ dependencies: { 'zzz-no-such-pkg-qa-91827': '^1.0.0' } })) });
+  await graveyard(page);
+  const tomb = page.locator('[data-dep-key="npm:zzz-no-such-pkg-qa-91827"]');
+  check('R4b notFound: the unknown package shows "Not checked", not "Alive"', /Not checked/.test((await tomb.textContent()) ?? '') && !/Alive/.test((await tomb.textContent()) ?? ''), ((await tomb.textContent()) ?? '').slice(0, 90));
+  check('R4b notFound: the summary counts 0 alive and 1 not checked', (await page.getByTestId('count-alive').textContent()) === '0' && (await page.getByTestId('count-unchecked').textContent()) === '1');
+  check('R4b notFound: it sits in the "Not checked" group, not the alive one', (await page.getByTestId('group-unchecked').count()) === 1 && (await page.getByTestId('group-alive').count()) === 0);
+  await tomb.click();
+  await page.waitForSelector('dialog[open]');
+  const text = (await page.locator('dialog[open]').textContent()) ?? '';
+  check('R4b notFound: the drawer says no claim is made and offers no Resurrect', /Treat it as unknown, not as healthy/.test(text) && /No claim made/.test(text) && (await page.locator('dialog[open]').getByRole('button', { name: 'Resurrect' }).count()) === 0);
+  check('R4b notFound: no page error', errors.length === 0, errors.join('; '));
+  await context.close();
+}
+
 if (LIVE) {
   console.log('\n== real internet ==');
   const hosts = new Map();

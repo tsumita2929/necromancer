@@ -54,6 +54,33 @@ for (const size of SIZES) {
     await context.close();
   }
 
+  // --- the fourth sample, josdejong/mathjs: its dev dependency mkdirp has a curated séance
+  {
+    const context = await browser.newContext(options);
+    const page = await context.newPage();
+    await page.goto(server.url);
+    await page.waitForSelector('h1');
+    await page.addStyleTag({ content: STILL });
+    await page.locator('.sample', { hasText: 'josdejong/mathjs' }).click();
+    await page.waitForSelector('[data-testid^="group-"]');
+    await page.addStyleTag({ content: STILL });
+    await page.screenshot({ path: `${out}mathjs-graveyard-${size.tag}.png` });
+    await page.locator('[data-dep-key="npm:mkdirp"]').click();
+    await page.waitForSelector('dialog[open]');
+    await page.waitForTimeout(100);
+    await page.screenshot({ path: `${out}mathjs-mkdirp-detail-${size.tag}.png` });
+    await page.getByRole('button', { name: 'Resurrect' }).click();
+    await page.waitForSelector('[data-testid="usage-note"]', { timeout: 60000 });
+    await page.waitForTimeout(200);
+    await page.screenshot({ path: `${out}mathjs-mkdirp-resurrect-${size.tag}.png` });
+    await page.locator('.spec__filesheading').scrollIntoViewIfNeeded();
+    await page.getByRole('tab', { name: 'seance.test.mjs' }).click();
+    await page.locator('.spec__filesheading').evaluate((el) => el.scrollIntoView({ block: 'start' }));
+    await page.waitForTimeout(150);
+    await page.screenshot({ path: `${out}mathjs-mkdirp-seance-${size.tag}.png` });
+    await context.close();
+  }
+
   // --- the séance for left-pad: the engine's acceptance project, uploaded; the source folder as well
   {
     const context = await browser.newContext(options);
