@@ -522,6 +522,9 @@ function buildSpec(
     advisories: Array.isArray(diagnosis?.advisories) ? diagnosis.advisories : [],
     successors: [],
     ...(diagnosis?.latest ? { latest: diagnosis.latest } : {}),
+    ...(diagnosis?.basis === 'hard' || diagnosis?.basis === 'heuristic'
+      ? { basis: diagnosis.basis }
+      : {}),
   };
   const bundle = generateSeance(safeDiagnosis, chosen, usage);
   const ecosystem = safeDiagnosis.dependency.ecosystem === 'pypi' ? 'pypi' : 'npm';
