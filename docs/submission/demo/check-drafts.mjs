@@ -5,7 +5,7 @@
 //   node docs/submission/demo/check-drafts.mjs --run-tests     # also runs the three unit-test suites (needs npm ci in each part)
 //
 // It prints one line per check (ok / FAIL) and exits 1 when anything fails. It is the "numbers pass" of
-// docs/verification/submission-final.md section 8: after the engine and the census change, run it, fix what it
+// docs/verification/submission-final-b.md section 8: after the engine and the census change, run it, fix what it
 // names, run it again.
 import { execFileSync } from 'node:child_process';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -14,7 +14,7 @@ import { join } from 'node:path';
 const root = process.cwd();
 const read = (p) => readFileSync(join(root, p), 'utf8');
 const DRAFTS = ['README.md', 'docs/submission/devpost.md', 'docs/submission/blog-post.md', 'docs/submission/social-post.md'];
-const RECORD = 'docs/verification/submission-final.md';
+const RECORD = 'docs/verification/submission-final-b.md';
 let failures = 0;
 const ok = (msg) => console.log(`ok    ${msg}`);
 const fail = (msg) => {
@@ -167,6 +167,7 @@ check(/^3\./.test(mk?.dependency.resolved ?? mk?.dependency.spec ?? ''), 'shot 4
 const up = ['eslint', 'glob'].map((n) => dep(mathjs, n)).filter((d) => d?.verdict === 'alive' && d.upgradeTo);
 check(up.length > 0, 'shot 2: mathjs holds an alive package with an upgrade notice (eslint or glob)', up.map((d) => d.dependency.name).join(', '));
 const cs = dep(dvna, 'csurf');
+check(cs && !cs.upgradeTo, 'shot 5: dvna csurf carries no upgrade notice, so the order change of QA-35 does not touch its drawer');
 check(cs && cs.verdict === 'dead' && cs.basis === 'hard' && cs.successors.length === 0, 'shot 5: dvna holds csurf as dead, hard signal, no successor', cs ? `${cs.verdict}/${cs.basis}/${cs.successors.length}` : 'csurf missing');
 const globNote = dep(mathjs, 'glob')?.evidence.find((e) => e.code === 'version-deprecated')?.message ?? '';
 check(/engines\.node/.test(globNote) && /fs\.glob/.test(globNote), 'shot 2: the glob notice in mathjs names the Node it needs (engines.node) and fs.glob', globNote.slice(-120));

@@ -111,27 +111,33 @@ guard: no network, no process, no write outside a temporary directory.
 
 ## What the last round added
 
-Independent testers ran the product twice and found what the builders missed. These came out of that and out of the census:
+Independent testers ran the product three times and found what the builders missed. These came out of that and out of the census:
 
 - **README maintainer statements.** When a package's own README says it is deprecated or no longer
-  maintained, the verdict is `dead` on a hard signal, and the evidence quotes the sentence. On the
-  census this changed 6 verdicts (for example `coveralls` and `karma`); all 6 were checked against
-  the READMEs and are right, and no living package was flagged.
+  maintained, the verdict is `dead` on a hard signal, and the evidence quotes the sentence. The
+  statement must be about the project itself: it does not count when it is about a flag, a platform
+  or a version, when it is a quotation, when it is taken back in the next sentence, when the package
+  moved to a new name, or when the README asks for new maintainers. On the census this changed 6
+  verdicts (for example `coveralls` and `karma`); all 6 were checked against the READMEs and are
+  right, and no living package was flagged.
   <!-- claim:R51 -->
 - **Upgrade notices say more.** For a living package whose version in use is deprecated, the notice
   names the release to move to, says whether it is inside your declared range, and gives the Node
   version it needs. Where Node has a built-in, it says so (`fs.glob`, `fs.rm`, `crypto.randomUUID()`).
-  <!-- claim:R52 -->
+  On a card that is dying or dead, the deciding line comes first and the upgrade is listed under
+  Ways out as "Stay, and upgrade", so the notice never reads as the cause.
+  <!-- claim:R52 --><!-- claim:R58 -->
 - **A zombie's basis is the basis of its death.** Two of the four census zombies rest on the
   abandoned heuristic for the "dead" half, and now say so. A repository renamed to a different
   package gives that package as the way out (`PyPDF2` to `pypdf`).
   <!-- claim:R55 -->
 - **No all-clear for a project that was mostly not read.** A monorepo root whose dependencies are
   `workspace:` links or `catalog:` entries shows "Most of this project was not read", never "no
-  dead dependency". Catalog versions are read from `pnpm-workspace.yaml` for a GitHub repository.
+  dead dependency". Catalog versions are read from `pnpm-workspace.yaml` for a GitHub repository,
+  and when that file cannot be used (YAML anchors, malformed, too big) the page says why.
   <!-- claim:R53 --><!-- claim:R57 -->
 - **A package the registry does not know is "not found", never alive.** The Crew tools and the
-  Graveyard page say so.
+  Graveyard page say so, and every graveyard row carries a `notFound` flag.
   <!-- claim:R54 -->
 - **The generic séance README adds up.** It says how many calls it replays, leaves out and cannot
   replay, and the three counts sum to the calls found.
@@ -255,7 +261,7 @@ npm run build
 node scripts/smoke-node.mjs
 ```
 
-Engine: 632 tests, including property tests with fast-check. They never touch the network.
+Engine: 687 tests, including property tests with fast-check. They never touch the network.
 <!-- claim:T01 -->
 
 ```sh
@@ -266,7 +272,7 @@ npm test
 npm run build
 ```
 
-Web: 376 unit tests.
+Web: 394 unit tests.
 <!-- claim:T02 -->
 The browser checks need Chromium (`npx playwright install --with-deps chromium` on Linux,
 `npx playwright install chromium` elsewhere). They run the built app in a real browser. The last
@@ -283,8 +289,8 @@ npm run verify:samples
 npm run verify:seance
 ```
 
-`verify:browser` is 129 checks on the recorded samples: axe accessibility scans, keyboard use,
-reduced motion and a sub-path build. `verify:live` is 80 checks of the live autopsy against a
+`verify:browser` is 135 checks on the recorded samples: axe accessibility scans, keyboard use,
+reduced motion and a sub-path build. `verify:live` is 90 checks of the live autopsy against a
 stubbed internet, so it calls no real service. `verify:samples` replays the recordings of the four
 samples through the engine and compares every field (29 checks). `verify:seance` is 63 checks.
 <!-- claim:T03 -->
@@ -299,7 +305,7 @@ npm run build
 npm run smoke
 ```
 
-Crew app: 219 tests.
+Crew app: 227 tests.
 <!-- claim:T04 -->
 
 ## How Kiro was used
@@ -317,12 +323,12 @@ ended with a verification record that lists the commands, their result lines and
 | MCP | The Crew app is an MCP server with eleven tools. The agent asks it for every verdict and never guesses one. | [`apps/crew/src/server.ts`](apps/crew/src/server.ts), [`apps/crew/src/tools.ts`](apps/crew/src/tools.ts) |
 | Custom agent and skill | The Necromancer agent and the `resurrection` skill: scan, branch, preview and write the séance, run it, prove it can fail, replace the dependency, never push. Fresh subagents followed them on a demo app and listed what the skill got wrong; those problems were fixed in the skill. | [`apps/crew/agents/necromancer.json`](apps/crew/agents/necromancer.json), [`apps/crew/skills/resurrection/SKILL.md`](apps/crew/skills/resurrection/SKILL.md), [`docs/verification/crew-live.md`](docs/verification/crew-live.md) |
 | Property-based tests | Every requirement that states a rule over many inputs has a property test whose name cites its id. Properties found a real bug in the generator's output (an invalid Python template; a docstring breakout) that example tests missed. | [`packages/engine/test/properties/`](packages/engine/test/properties/), [`docs/verification/seance.md`](docs/verification/seance.md) section 5 |
-| Kiro Crew workers | A lead and workers, one verified record per item. A reviewer subagent that saw only the source, not the design or tests, attacked the parsers and found 11 issues, among them a 34-second hang. A tester who had built none of the code ran the product and wrote 21 findings; 20 are fixed. A second tester ran the final product and wrote 10 (QA-22 to QA-31); 9 are fixed and one, about the author identity of a single commit, is open. | [`docs/verification/engine.md`](docs/verification/engine.md) section 2.4, [`docs/verification/qa-round3.md`](docs/verification/qa-round3.md), [`docs/verification/qa-round4.md`](docs/verification/qa-round4.md) |
+| Kiro Crew workers | A lead and workers, one verified record per item. A reviewer subagent that saw only the source, not the design or tests, attacked the parsers and found 11 issues, among them a 34-second hang. A tester who had built none of the code ran the product and wrote 21 findings; 20 are fixed. A second tester ran the final product and wrote 10 (QA-22 to QA-31); 9 are fixed and one, about the author identity of a single commit, is open. A third re-test wrote 6 (QA-32 to QA-37); 5 are fixed and one, about the reach of the README rule, was left as it is on purpose. | [`docs/verification/engine.md`](docs/verification/engine.md) section 2.4, [`docs/verification/qa-round3.md`](docs/verification/qa-round3.md), [`docs/verification/qa-round4.md`](docs/verification/qa-round4.md), [`docs/verification/qa-round4b.md`](docs/verification/qa-round4b.md) |
 
 Kiro IDE, CLI and Web were not used for this build, and Kiro powers were not used. The hooks are
 written and parse as JSON, but a hook fires in the Kiro IDE, which we did not run; they have not
 been fired.
-<!-- claim:K01 --><!-- claim:K04 --><!-- claim:A01 --><!-- claim:A02 -->
+<!-- claim:K01 --><!-- claim:K04 --><!-- claim:A01 --><!-- claim:A02 --><!-- claim:A03 -->
 
 ## Known limits
 

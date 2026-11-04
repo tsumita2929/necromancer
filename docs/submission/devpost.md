@@ -108,8 +108,9 @@ often changes behavior. We wanted a tool that tells you how.
    <!-- claim:Q10 -->
    The notice names the release to move to, says whether it is inside your declared range, and gives
    the Node version it needs; where Node has a built-in (`fs.glob`, `fs.rm`, `crypto.randomUUID()`)
-   it says so.
-   <!-- claim:R52 -->
+   it says so. On a dying or dead card the deciding line comes first and the upgrade is listed under
+   Ways out as "Stay, and upgrade".
+   <!-- claim:R52 --><!-- claim:R58 -->
 4. **Resurrection.** For a dead dependency, Necromancer finds a way out: a living successor, a
    built-in (`left-pad` to `String.prototype.padStart`), or, when there is none, a small
    dependency-free module the project owns ("raise"). It writes a Kiro spec (requirements, design,
@@ -172,12 +173,14 @@ worker session took each one. See the next section for how each Kiro feature was
   activity. We also checked 48 units the engine called alive: none was really dead or dying
   (95% interval 0.0% to 7.4%). That check is not independent, because the one miss it found
   (`coveralls`) led us to add a rule: when a package's own README says it is deprecated or no longer
-  maintained, the verdict is `dead` on a hard signal. The rule changed 6 census verdicts, all checked
-  right, and flagged no living package.
+  maintained, the verdict is `dead` on a hard signal, provided the statement is about the project itself
+  (not a flag, a platform, a quotation, a move to a new name, or a call for maintainers). The rule
+  changed 6 census verdicts, all checked right, and flagged no living package.
   <!-- claim:Q15 --><!-- claim:Q20 --><!-- claim:Q21 --><!-- claim:R51 -->
 - **Never an all-clear for a project we did not read.** A monorepo root made of `workspace:` links
   and `catalog:` entries used to read as "no dead dependency". Now the page says "Most of this
-  project was not read", and reads pnpm catalogs from `pnpm-workspace.yaml`. In the Crew tools a
+  project was not read", and reads pnpm catalogs from `pnpm-workspace.yaml` (saying why when the file
+  cannot be used). In the Crew tools a
   package the registry does not know is `not-found`, never alive.
   <!-- claim:R53 --><!-- claim:R57 --><!-- claim:R54 -->
 - **A browser has no server to hide behind.** GitHub allows 60 unauthenticated calls an hour per IP.
@@ -194,8 +197,8 @@ worker session took each one. See the next section for how each Kiro feature was
 - A census of 100 real projects, with a hand-checked precision figure and its limits stated.
 - Six séances run against real packages, each with deliberately wrong replacements that fail.
 - Four real GitHub repositories recorded as samples, replayed through the engine field by field in a check.
-- 632 engine tests, 376 web tests (129, 80, 29 and 63 checks in a real browser and against the real
-  packages) and 219 Crew app tests. Every package is type-checked, and CI runs them all, including the
+- 687 engine tests, 394 web tests (135, 90, 29 and 63 checks in a real browser and against the real
+  packages) and 227 Crew app tests. Every package is type-checked, and CI runs them all, including the
   séance check.
   <!-- claim:T01 --><!-- claim:T02 --><!-- claim:T03 --><!-- claim:T04 -->
 
@@ -204,9 +207,9 @@ worker session took each one. See the next section for how each Kiro feature was
 Properties find what their generators can reach. A reviewer subagent that had not seen our design
 reached other places: it found 11 issues in the parsers and rules, including a 34-second hang on a
 long run of spaces. A tester who had built none of the code ran the finished product and wrote 21
-findings; 20 are fixed. A second tester ran the final product and wrote 10 more; 9 are fixed. We
+findings; 20 are fixed. A second tester ran the final product and wrote 10 more, 9 fixed; a re-test wrote 6 more, 5 fixed. We
 needed all of it.
-<!-- claim:K03 --><!-- claim:A01 --><!-- claim:A02 -->
+<!-- claim:K03 --><!-- claim:A01 --><!-- claim:A02 --><!-- claim:A03 -->
 
 ### What's next
 
