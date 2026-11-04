@@ -289,6 +289,24 @@ export function repoMoved(repoUrl: string, to: string, how: 'renamed' | 'readme'
   });
 }
 
+/**
+ * The repository was renamed to another package's name. GitHub forwards the old address, so the lookup
+ * followed it, but what happens there is that package's life, not this one's.
+ */
+export function repoHoldsOtherPackage(
+  oldUrl: string,
+  newSlug: string,
+  otherPackage: string,
+  thisPackage: string,
+): Evidence {
+  return line({
+    code: 'repo-moved',
+    message: `The repository was renamed to ${clip(newSlug, 120)}, which now holds a different package, ${clip(otherPackage, 80)}. Its commits, archive state and Scorecard are ${clip(otherPackage, 80)}'s, not ${clip(thisPackage, 80)}'s, so they are not counted for it; ${clip(otherPackage, 80)} is its way out.`,
+    source: 'github',
+    url: oldUrl,
+  });
+}
+
 /** Where the repository link came from, when that is not the usual place or the record names two repositories. */
 export function repoLinkNote(message: string, repo: RepoRef): Evidence {
   return line({

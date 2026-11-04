@@ -8,6 +8,7 @@ import { type ResolvedTuning } from './options.js';
 import * as signals from './signals.js';
 import { getNpmPackage, getProject, getVersionRepo, type ProjectInfo } from './sources/depsdev.js';
 import { getGithubRepo, getLatestCommit, type GithubRepo } from './sources/github.js';
+import { getHeldPackage } from './sources/repo-package.js';
 import { findMovedNotice } from './sources/moved.js';
 import { findMaintainerStatement, getReadme, type MaintainerStatement } from './sources/readme.js';
 import { getNpmLatest } from './sources/npm.js';
@@ -68,6 +69,8 @@ interface PackageFacts {
   github?: GithubRepo;
   /** An archived repository whose README says the project moved: where to (QA: moved repositories). */
   movedTo?: string;
+  /** The repository was renamed to a name that is another package: its activity is not this package's (round 5). */
+  otherPackage?: { name: string; repo: string };
   /** The README says the project itself is deprecated or no longer maintained (round 5). */
   readmeStatement?: MaintainerStatement;
   /** The default branch's newest commit; null when the repository has none. */
@@ -109,6 +112,13 @@ async function guard<T>(task: () => Promise<Fetched<T>>): Promise<Fetched<T>> {
 }
 
 const GITHUB_POOL = 3;
+
+/** Names compared by their letters and digits only: `PyPDF2` is `pypdf2`, `@scope/foo-bar` is `foobar`. */
+const sameName = (a: string, b: string): boolean => {
+  const strict = (n: string): string =>
+    (n.split('/').pop() ?? n).toLowerCase().replace(/[^a-z0-9]/g, '');
+  return strict(a) === strict(b);
+};
 
 const pkgKey = (d: Pick<DependencyRef, 'ecosystem' | 'name'>): string => `${d.ecosystem}:${d.name}`;
 
@@ -230,6 +240,23 @@ export class Core {
                   ? { deprecation: f.readmeStatement.window, deprecationSource: 'readme' as const }
                   : {}),
               replacements: index && dep.ecosystem === 'npm' ? index.lookup(dep.name) : [],
+              ...(f.otherPackage
+                ? {
+                    known: [
+                      {
+                        name: f.otherPackage.name,
+                        ecosystem: dep.ecosystem,
+                        kind: 'package' as const,
+                        reason: `The repository of ${dep.name} was renamed to ${f.otherPackage.repo} and now holds ${f.otherPackage.name}.`,
+                        source: 'github' as const,
+                        url:
+                          dep.ecosystem === 'npm'
+                            ? `https://www.npmjs.com/package/${f.otherPackage.name}`
+                            : `https://pypi.org/project/${f.otherPackage.name}/`,
+                      },
+                    ],
+                  }
+                : {}),
               ...(this.tuning.verifySuccessors
                 ? { verifyPackage: (n: string) => this.packageIsAlive(n) }
                 : {}),
@@ -593,6 +620,36 @@ export class Core {
       delete f.scorecard;
     }
 
+    // A repository that was renamed to another package's name (py-pdf/PyPDF2 became py-pdf/pypdf) no longer
+    // speaks for this package. The manifest at its head names the package it holds now; when that is a
+    // different package that exists on the registry and is alive, the repository's activity, archive state and
+    // Scorecard are that package's, not this one's.
+    const renamed = wanted
+      .map(({ f }) => f)
+      .filter(
+        (f) =>
+          f.repo?.host === 'github.com' &&
+          f.github?.state === 'ok' &&
+          f.github.renamedTo !== undefined &&
+          !sameName(f.github.renamedTo.split('/')[1] ?? '', f.repo.name) &&
+          !sameName(f.github.renamedTo.split('/')[1] ?? '', f.name),
+      );
+    await pool(renamed, async (f) => {
+      const slug = (f.github?.state === 'ok' ? f.github.renamedTo : undefined) as string;
+      const held = await guard(() => getHeldPackage(this.http, f.ecosystem, slug));
+      if (!held.ok) {
+        note(run, 'github', `manifest of ${slug}: ${held.reason}`);
+        return;
+      }
+      const other = held.value?.name;
+      if (!other || sameName(other, f.name)) return;
+      const exists =
+        f.ecosystem === 'npm'
+          ? await this.packageIsAlive(other)
+          : await this.pypiProjectIsAlive(other);
+      if (exists) f.otherPackage = { name: other, repo: slug };
+    });
+
     // The README, from raw.githubusercontent.com (not the GitHub REST API: no GitHub budget), for the
     // packages that look unhealthy enough to be read at all. It is read for two things:
     //  - an archived repository may be archived because the project moved, which its README says at the top;
@@ -605,6 +662,7 @@ export class Core {
         (f) =>
           f.repo?.host === 'github.com' &&
           f.github?.state !== 'gone' &&
+          !f.otherPackage &&
           !f.deprecatedLatest &&
           !f.inactive &&
           !f.latestYanked,
@@ -632,7 +690,13 @@ export class Core {
     // commit date only makes the evidence exact, so those use what budget is left.
     const jobs = wanted
       .map(({ f }) => f)
-      .filter((f) => f.github?.state === 'ok' && !f.github.archived && !withAdvisory.has(pkgKey(f)))
+      .filter(
+        (f) =>
+          f.github?.state === 'ok' &&
+          !f.github.archived &&
+          !f.otherPackage &&
+          !withAdvisory.has(pkgKey(f)),
+      )
       .map((f) => {
         const decision = this.verdictFor(f, versionByPackage.get(pkgKey(f)), []);
         // A Scorecard score alone leaves a package alive, but a repository whose default branch has
@@ -706,9 +770,22 @@ export class Core {
 
   private verdictFor(f: PackageFacts, version: string | undefined, advisories: string[]) {
     const now = this.now();
-    const evidence = [...this.registryEvidence(f, version), ...this.scorecardEvidence(f)];
+    const evidence = [
+      ...this.registryEvidence(f, version),
+      ...(f.otherPackage ? [] : this.scorecardEvidence(f)),
+    ];
     let pushedAt: string | undefined;
-    if (f.github?.state === 'ok') {
+    if (f.otherPackage && f.repo) {
+      // The repository holds another package now: say so, and read nothing else from it.
+      evidence.push(
+        signals.repoHoldsOtherPackage(
+          repoUrl(f.repo),
+          f.otherPackage.repo,
+          f.otherPackage.name,
+          f.name,
+        ),
+      );
+    } else if (f.github?.state === 'ok') {
       const url = f.repo ? repoUrl(f.repo) : '';
       pushedAt = f.github.pushedAt;
       if (f.github.renamedTo) {
@@ -791,6 +868,11 @@ export class Core {
         note(run, 'module-replacements', `${f.manifest}: ${f.reason}`);
       return index;
     });
+  }
+
+  private async pypiProjectIsAlive(name: string): Promise<boolean> {
+    const r = await guard(() => getPypiProject(this.http, name));
+    return r.ok && !r.value.inactive && !r.value.latestYanked;
   }
 
   private async packageIsAlive(name: string): Promise<boolean> {

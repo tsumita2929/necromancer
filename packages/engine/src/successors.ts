@@ -107,13 +107,18 @@ export interface SuccessorInputs {
   deprecation?: string;
   deprecationSource?: SourceId;
   replacements: Successor[];
+  /** Successors found elsewhere in the engine (the package a renamed repository holds now), first in line. */
+  known?: Successor[];
   /** Returns true when the package exists and is not deprecated. */
   verifyPackage?: (name: string) => Promise<boolean>;
 }
 
 /** Best first, unique by name, never the dependency itself. */
 export async function findSuccessors(input: SuccessorInputs): Promise<Successor[]> {
-  const list: Successor[] = [...curatedSuccessors(input.ecosystem, input.name)];
+  const list: Successor[] = [
+    ...(input.known ?? []),
+    ...curatedSuccessors(input.ecosystem, input.name),
+  ];
   if (input.ecosystem === 'npm') list.push(...input.replacements);
   if (input.ecosystem === 'npm' && input.deprecation) {
     const source = input.deprecationSource ?? 'npm';
