@@ -36,7 +36,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "josdejong-mathjs",
     "repository": "josdejong/mathjs",
     "ecosystem": "npm",
-    "recordedAt": "2026-11-04T12:26:00.272Z",
+    "recordedAt": "2026-11-04T15:08:28.790Z",
     "total": 67,
     "summary": {
       "alive": 43,
@@ -45,9 +45,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
       "ghost": 0,
       "zombie": 1
     },
-    "unavailable": [
-      "github"
-    ],
+    "unavailable": [],
     "onlyFiles": [
       "package.json"
     ]

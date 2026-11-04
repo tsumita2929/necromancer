@@ -76,6 +76,64 @@ function makeResponse(status, contentLength, text) {
   };
 }
 
+/**
+ * A fetch for a recording run that resumes from an earlier cassette. Every request is answered from the cassette when it
+ * holds an answer (so the inputs and the earlier answers do not change from one hour to the next); only a request it does
+ * not hold goes to the network, and its answer is added. An answer that is not a real answer is never kept: a refusal for
+ * the hourly limit (403, 429), a server error or a network failure would make the next run reuse a failure.
+ * `maxApiCalls` caps the real calls to api.github.com in this run; past it the request is refused locally with a 403
+ * (the engine then stops asking, as it does at the real limit) and nothing is kept.
+ */
+export function resumingFetch(realFetch, earlier, { maxApiCalls = Infinity } = {}) {
+  const queues = new Map();
+  for (const entry of earlier) {
+    const key = keyOf(entry.method, entry.url, entry.body);
+    if (!queues.has(key)) queues.set(key, []);
+    queues.get(key).push(entry);
+  }
+  const added = [];
+  const stats = { cached: 0, network: 0, apiCalls: 0, refusedLocally: 0, notKept: 0 };
+  const fetchLike = async (url, init) => {
+    const method = init?.method ?? 'GET';
+    const body = init?.body;
+    const key = keyOf(method, url, body);
+    const queue = queues.get(key);
+    if (queue && queue.length > 0) {
+      const entry = queue.length > 1 ? queue.shift() : queue[0];
+      if (!entry.error) {
+        stats.cached += 1;
+        return makeResponse(entry.status, entry.contentLength, entry.text);
+      }
+    }
+    const isApi = new URL(url).hostname === 'api.github.com';
+    if (isApi && stats.apiCalls >= maxApiCalls) {
+      stats.refusedLocally += 1;
+      const text = JSON.stringify({ message: 'API rate limit exceeded (local cap of this run)' });
+      return makeResponse(403, null, text);
+    }
+    if (isApi) stats.apiCalls += 1;
+    stats.network += 1;
+    let response;
+    try {
+      response = await realFetch(url, init);
+    } catch (error) {
+      stats.notKept += 1;
+      throw error;
+    }
+    const text = await response.text();
+    const contentLength = response.headers?.get?.('content-length') ?? null;
+    if (response.status === 403 || response.status === 429 || response.status >= 500) stats.notKept += 1;
+    else {
+      const entry = { method, url, body, status: response.status, contentLength, text: trimAnswer(url, text) };
+      added.push(entry);
+      if (!queues.has(key)) queues.set(key, []);
+      queues.get(key).push(entry);
+    }
+    return makeResponse(response.status, contentLength, text);
+  };
+  return { fetch: fetchLike, added, stats };
+}
+
 /** A fetch that answers from the entries, in the order they were recorded for each request. An unknown request is an error. */
 export function replayingFetch(entries) {
   const queues = new Map();

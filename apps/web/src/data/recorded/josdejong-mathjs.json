@@ -1,6 +1,6 @@
 {
   "subject": "github:josdejong/mathjs",
-  "scannedAt": "2026-11-04T12:26:00.272Z",
+  "scannedAt": "2026-11-04T15:08:28.790Z",
   "manifests": [
     {
       "kind": "package.json",
@@ -680,10 +680,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.5 years (last push 2024-04-25); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 7.1 years (last commit 2019-09-17).",
           "source": "github",
           "url": "https://github.com/davidbau/seedrandom",
-          "date": "2024-04-25"
+          "date": "2019-09-17"
         },
         {
           "code": "low-maintenance",
@@ -775,10 +775,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 5.2 years (last push 2021-08-11); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 7.3 years (last commit 2019-07-01).",
           "source": "github",
           "url": "https://github.com/scottcorgan/tiny-emitter",
-          "date": "2021-08-11"
+          "date": "2019-07-01"
         },
         {
           "code": "low-maintenance",
@@ -832,10 +832,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 11 years (last push 2015-05-07); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 11 years (last commit 2015-04-30).",
           "source": "github",
           "url": "https://github.com/mikolalysenko/zeros",
-          "date": "2015-05-07"
+          "date": "2015-04-30"
         },
         {
           "code": "low-maintenance",
@@ -879,10 +879,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 1.9 years (last push 2024-12-21); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 3.2 years (last commit 2023-09-07).",
           "source": "github",
           "url": "https://github.com/browserify/commonjs-assert",
-          "date": "2024-12-21"
+          "date": "2023-09-07"
         },
         {
           "code": "low-maintenance",
@@ -920,10 +920,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 3.0 years (last push 2023-10-27); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 3.3 years (last commit 2023-07-17).",
           "source": "github",
           "url": "https://github.com/BertrandBev/eigen-js",
-          "date": "2023-10-27"
+          "date": "2023-07-17"
         },
         {
           "code": "low-maintenance",
@@ -1043,10 +1043,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.2 years (last push 2024-08-31); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 2.4 years (last commit 2024-05-24).",
           "source": "github",
           "url": "https://github.com/webpack-contrib/karma-webpack",
-          "date": "2024-08-31"
+          "date": "2024-05-24"
         },
         {
           "code": "low-maintenance",
@@ -1090,7 +1090,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 3.1 years (last push 2023-09-15); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 3.1 years (last commit 2023-09-15).",
           "source": "github",
           "url": "https://github.com/isaacs/node-mkdirp",
           "date": "2023-09-15"
@@ -1147,10 +1147,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.5 years (last push 2024-05-22); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 3.3 years (last commit 2023-07-12).",
           "source": "github",
           "url": "https://github.com/michaelleeallen/mocha-junit-reporter",
-          "date": "2024-05-22"
+          "date": "2023-07-12"
         },
         {
           "code": "low-maintenance",
@@ -1188,10 +1188,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.3 years (last push 2024-07-18); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 2.9 years (last commit 2023-12-12).",
           "source": "github",
           "url": "https://github.com/TypeStrong/ts-node",
-          "date": "2024-07-18"
+          "date": "2023-12-12"
         },
         {
           "code": "low-maintenance",
@@ -2185,12 +2185,7 @@
     }
   ],
   "problems": [],
-  "unavailable": [
-    {
-      "source": "github",
-      "reason": "GitHub budget reached (48 calls per scan, limit is 60 per hour): 9 commit dates were not read"
-    }
-  ],
+  "unavailable": [],
   "summary": {
     "alive": 43,
     "dying": 8,

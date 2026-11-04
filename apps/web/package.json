@@ -14,7 +14,8 @@
     "verify:browser": "node scripts/verify-browser.mjs",
     "verify:live": "node scripts/verify-live.mjs",
     "verify:seance": "node scripts/verify-seance.mjs",
-    "verify:samples": "node scripts/verify-samples.mjs"
+    "verify:samples": "node scripts/verify-samples.mjs",
+    "verify:resume": "node scripts/verify-resume.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
