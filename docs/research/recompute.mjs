@@ -117,7 +117,7 @@ const sc = JSON.parse(readFileSync(join(here, '..', 'verification', 'engine-r4-d
 const engines = [
   ['pinned (bfd86f1, the census run)', agg.all],
   ['tuned (engine tuning item)', tuned.all],
-  ['final (HEAD 368e98c)', fin.all],
+  ['4a (HEAD 368e98c)', fin.all],
 ];
 const basisOf = (a, k) => (a.verdictBasis ? (a.verdictBasis[k] ?? 0) : null);
 const f = fin.all;
@@ -135,10 +135,10 @@ for (const [name, a] of engines.slice(1)) {
 }
 const hardDead = basisOf(f, 'dead/hard') + basisOf(f, 'ghost/hard') + basisOf(f, 'zombie/hard');
 const heurDead = basisOf(f, 'dead/heuristic');
-console.log(share('final: dead-or-worse that rest on a hard signal (basis hard)', hardDead, f.deadDeps));
-console.log(share('final: dead-or-worse that rest on the abandoned heuristic', heurDead, f.deadDeps));
-console.log(share('final: dying that rests on a hard fact (deprecated version in use)', basisOf(f, 'dying/hard'), f.verdicts.dying));
-console.log(`final: hard + heuristic = ${hardDead + heurDead} (dead-or-worse ${f.deadDeps}); strongDeadDeps by decisive evidence code = ${f.strongDeadDeps}; zombies whose death rests on the abandoned rule = ${hardDead - f.strongDeadDeps}`);
+console.log(share('4a: dead-or-worse that rest on a hard signal (basis hard)', hardDead, f.deadDeps));
+console.log(share('4a: dead-or-worse that rest on the abandoned heuristic', heurDead, f.deadDeps));
+console.log(share('4a: dying that rests on a hard fact (deprecated version in use)', basisOf(f, 'dying/hard'), f.verdicts.dying));
+console.log(`4a: hard + heuristic = ${hardDead + heurDead} (dead-or-worse ${f.deadDeps}); strongDeadDeps by decisive evidence code = ${f.strongDeadDeps}; zombies whose death rests on the abandoned rule = ${hardDead - f.strongDeadDeps}`);
 
 console.log('\n## Table 10. Claims side by side');
 const claimRows = [
@@ -153,31 +153,31 @@ const claimRows = [
 for (const [label, fn] of claimRows) console.log(`${label.padEnd(76)} ${engines.map(([n, a]) => `${n.split(' ')[0]}: ${fn(a)}`).join('  |  ')}`);
 for (const eco of ['npm', 'pypi']) {
   const a = fin.ecosystems[eco];
-  console.log(share(`final, ${eco}: C1 projects`, a.subjectsWithStrongDead, a.subjects), '|', share(`final, ${eco}: projects with a dead-or-worse dependency`, a.subjectsWithDeadOrWorse, a.subjects));
+  console.log(share(`4a, ${eco}: C1 projects`, a.subjectsWithStrongDead, a.subjects), '|', share(`4a, ${eco}: projects with a dead-or-worse dependency`, a.subjectsWithDeadOrWorse, a.subjects));
 }
 
 console.log('\n## Table 11. The 14 packages the successor research flagged as maybe not dead (distinct verdicts over their instances)');
-for (const r of cmp.maybeNotDead) console.log(`${r.name.padEnd(28)} instances ${r.instances}  pinned ${r.pinned.join(' / ')}  tuned ${r.tuned.join(' / ')}  final ${r.final.join(' / ')}`);
+for (const r of cmp.maybeNotDead) console.log(`${r.name.padEnd(28)} instances ${r.instances}  pinned ${r.pinned.join(' / ')}  tuned ${r.tuned.join(' / ')}  4a ${r.final.join(' / ')}`);
 const stillFinal = cmp.maybeNotDead.reduce((n, r) => n + r.stillDeadOrWorse.final, 0);
 const stillPinned = cmp.maybeNotDead.reduce((n, r) => n + r.stillDeadOrWorse.pinned, 0);
 const stillTuned = cmp.maybeNotDead.reduce((n, r) => n + r.stillDeadOrWorse.tuned, 0);
-console.log(`dead-or-worse instances of these 14 packages: pinned ${stillPinned}, tuned ${stillTuned}, final ${stillFinal}`);
+console.log(`dead-or-worse instances of these 14 packages: pinned ${stillPinned}, tuned ${stillTuned}, 4a ${stillFinal}`);
 const mv = cmp.repoMovedInFinalRun;
-console.log(`final run, evidence repo-moved: README notice ${mv.readmeNotice.instances} instances in ${mv.readmeNotice.packages} packages (final verdicts ${JSON.stringify(mv.readmeNotice.byFinalVerdict)}, all dead in the pinned run); renamed or transferred ${mv.renamed.instances} instances in ${mv.renamed.packages} packages (final ${JSON.stringify(mv.renamed.byFinalVerdict)})`);
-console.log(`final run: packages the registry does not know ${cmp.notFoundInFinalRun.packages} (${cmp.notFoundInFinalRun.instances} instances, read as alive and not checked); instances with merged advisory aliases ${cmp.advisoryAliasesInFinalRun.instances} (by verdict ${JSON.stringify(cmp.advisoryAliasesInFinalRun.byVerdict)}); dying because the version in use is deprecated: ${cmp.versionDeprecatedDyingInFinalRun.instances} instances in ${cmp.versionDeprecatedDyingInFinalRun.packages} packages, top ${cmp.versionDeprecatedDyingInFinalRun.top.map((t) => t.name + ' (' + t.instances + ')').join(', ')}`);
+console.log(`4a run, evidence repo-moved: README notice ${mv.readmeNotice.instances} instances in ${mv.readmeNotice.packages} packages (final verdicts ${JSON.stringify(mv.readmeNotice.byFinalVerdict)}, all dead in the pinned run); renamed or transferred ${mv.renamed.instances} instances in ${mv.renamed.packages} packages (final ${JSON.stringify(mv.renamed.byFinalVerdict)})`);
+console.log(`4a run: packages the registry does not know ${cmp.notFoundInFinalRun.packages} (${cmp.notFoundInFinalRun.instances} instances, read as alive and not checked); instances with merged advisory aliases ${cmp.advisoryAliasesInFinalRun.instances} (by verdict ${JSON.stringify(cmp.advisoryAliasesInFinalRun.byVerdict)}); dying because the version in use is deprecated: ${cmp.versionDeprecatedDyingInFinalRun.instances} instances in ${cmp.versionDeprecatedDyingInFinalRun.packages} packages, top ${cmp.versionDeprecatedDyingInFinalRun.top.map((t) => t.name + ' (' + t.instances + ')').join(', ')}`);
 console.log(`C1 tuned to final: projects lost ${cmp.c1ChangeTunedToFinal.projectsLost}, gained ${cmp.c1ChangeTunedToFinal.projectsGained}; packages of the lost project(s): ${cmp.c1ChangeTunedToFinal.packagesOfTheLostProjects.join(', ')}`);
 console.log('verdict transitions of the 198 dead-or-worse dependencies of the pinned run:', JSON.stringify(cmp.transitionsFromPinnedDeadOrWorse));
 
 console.log('\n## Table 12. Successor coverage');
 console.log(`pinned run: ${sc.before.withWayOut} of ${sc.censusDeadOrWorseDependencies} dead-or-worse dependencies (${sc.before.distinctPackagesWithWayOut} of ${sc.distinctPackages} packages)`);
-console.log(share('final engine, of the 198 first flagged: with a way out', sc.after.withWayOut, sc.censusDeadOrWorseDependencies));
-console.log(share('final engine, of the 179 flagged now: with a way out', f.deadDepsWithSuccessor, f.deadDeps));
-console.log(`final, by kind of the first way out (179 flagged): ${JSON.stringify(f.deadDepsBestSuccessorKind)}; npm ${fin.ecosystems.npm.deadDepsWithSuccessor} of ${fin.ecosystems.npm.deadDeps}, pypi ${fin.ecosystems.pypi.deadDepsWithSuccessor} of ${fin.ecosystems.pypi.deadDeps}`);
+console.log(share('4a engine, of the 198 first flagged: with a way out', sc.after.withWayOut, sc.censusDeadOrWorseDependencies));
+console.log(share('4a engine, of the 179 flagged now: with a way out', f.deadDepsWithSuccessor, f.deadDeps));
+console.log(`4a, by kind of the first way out (179 flagged): ${JSON.stringify(f.deadDepsBestSuccessorKind)}; npm ${fin.ecosystems.npm.deadDepsWithSuccessor} of ${fin.ecosystems.npm.deadDeps}, pypi ${fin.ecosystems.pypi.deadDepsWithSuccessor} of ${fin.ecosystems.pypi.deadDeps}`);
 console.log(`of the 198: lifted to alive ${sc.after.liftedOrDownTo.alive}, down to dying ${sc.after.liftedOrDownTo.dying}, still flagged ${sc.after.stillDeadOrWorse} (${sc.after.stillDeadOrWorseWithWayOut} with a way out); zombies with a way out ${sc.zombies.withWayOut} of ${sc.zombies.total}; sources ${JSON.stringify(sc.after.bySource)}`);
 
-console.log('\n## Table 13. Out-of-sample precision of the final engine (40 units the tuning never saw)');
+console.log('\n## Table 13. Out-of-sample precision of the round-4a engine (40 units the tuning never saw)');
 console.log('seed text:', p2.seedText, '| check date:', p2.checkDate, '| engine:', p2.engine);
-console.log('flagged units of the final engine by stratum:', JSON.stringify(p2.population.flaggedUnits), '| eligible after excluding the 56:', JSON.stringify(p2.population.eligibleAfterExcludingThe56));
+console.log('flagged units of the 4a engine by stratum:', JSON.stringify(p2.population.flaggedUnits), '| eligible after excluding the 56:', JSON.stringify(p2.population.eligibleAfterExcludingThe56));
 for (const [k, s] of Object.entries(p2.strata)) {
   const c = wilson(s.correct, s.checked);
   const d = wilson(s.defensible, s.checked);
@@ -210,13 +210,13 @@ console.log('beside the 56-unit result of the pinned engine:');
 console.log(share('  56 units, pinned engine: correct', P.correct, P.checked));
 console.log(share('  56 units, pinned engine: defensible', P.defensible, P.checked));
 console.log('  56 units, tuned engine (fitted on them): 46 of 46 defensible units kept, 10 of 10 others lifted (docs/verification/engine-tuning.md)');
-console.log(`  40 units, final engine (not seen by the tuning): correct ${p2.pooled.correct} of ${p2.pooled.checked}, defensible ${p2.pooled.defensible} of ${p2.pooled.checked}`);
+console.log(`  40 units, 4a engine (not seen by the tuning): correct ${p2.pooled.correct} of ${p2.pooled.checked}, defensible ${p2.pooled.defensible} of ${p2.pooled.checked}`);
 const verdictRule = p2.correctButNotDefensible.filter((j) => j.reason === 'version-deprecated-package-alive').length;
 console.log(`  of the ${p2.correctButNotDefensible.length} not defensible, ${verdictRule} come from one rule (a deprecated version in use gives dying); counting those as defensible by spec R2.11: ${p2.pooled.defensible + verdictRule} of ${p2.pooled.checked}`);
 console.log('\n## Table 14. Nearby units (checked, not counted in the precision numbers)');
 for (const n of p2.nearby) console.log(`${n.ecosystem}:${n.package}  engine ${n.engine}  evidence ${n.evidenceCodes.join(',')}  registry ${n.registryStatus}${n.readmeMovedNotice ? '  README: ' + n.readmeMovedNotice.slice(0, 80) : ''}${n.osvRecords ? '  OSV records ' + n.osvRecords.length + ' / engine advisories ' + n.engineAdvisories.length : ''}`);
 
-console.log('\n## Candidate claims for the final engine (each line is computed above)');
+console.log('\n## Candidate claims for the round-4a engine (superseded by Part 3) (each line is computed above)');
 const wc1 = wilson(f.subjectsWithStrongDead, f.subjects);
 console.log(`C1  ${f.subjectsWithStrongDead} of ${f.subjects} active open-source projects, npm and Python, popular and long tail, depend directly on a package that is deprecated, archived, inactive or gone (95% CI ${pct(wc1.lo)} to ${pct(wc1.hi)}). Fields: census-aggregate-final.json all.subjectsWithStrongDead / all.subjects.`);
 const wd = wilson(p2.pooled.defensible, p2.pooled.checked);
@@ -224,3 +224,96 @@ const wcor = wilson(p2.pooled.correct, p2.pooled.checked);
 console.log(`C2  On 40 flagged packages the tuning had never seen, drawn at random, ${p2.pooled.correct} of ${p2.pooled.checked} flags were right against registry, repository and advisory records (CI ${pct(wcor.lo)} to ${pct(wcor.hi)}), and ${p2.pooled.defensible} of ${p2.pooled.checked} (${pct(wd.p)}, CI ${pct(wd.lo)} to ${pct(wd.hi)}) also showed no sign of life in the last 12 months. Fields: census-precision-r4b.json pooled. Recall is not measured.`);
 console.log(`C3  Across ${f.directDependencies} direct dependencies of ${f.subjects} projects, ${f.deadDeps} (${pct(f.deadDeps / f.directDependencies)}, about 1 in ${(f.directDependencies / f.deadDeps).toFixed(0)}) are dead or worse; ${hardDead} of them (${pct(hardDead / f.deadDeps)}) rest on a hard signal and ${heurDead} on the abandoned heuristic. ${f.verdicts.zombie} are zombies, dead with a known advisory against the version in use, in ${f.subjectsWithZombie} projects. Fields: all.deadDeps, all.directDependencies, all.verdictBasis, all.verdicts.zombie, all.subjectsWithZombie.`);
 console.log(`C4  The engine now names a way out for ${f.deadDepsWithSuccessor} of ${f.deadDeps} flagged dependencies (${pct(f.deadDepsWithSuccessor / f.deadDeps)}), up from ${tuned.all.deadDepsWithSuccessor} of ${tuned.all.deadDeps}; all ${sc.zombies.total} zombies have one. Fields: all.deadDepsWithSuccessor, all.deadDeps.`);
+
+// ======================================================================================================
+// Part 3 (item R4c): the upgrade-notice engine (HEAD 52c808c) is the final engine. Lines that start with Q and
+// two digits are the numbers the README and the Devpost draft may quote (docs/research/census.md section 9.8).
+// Reads: census-aggregate-upgrade.json, census-r4c-headrun.json, census-r4c-compare.json, census-r4c-moved.json,
+// census-r4c-rescore.json, successors.json.
+// ======================================================================================================
+const up = JSON.parse(readFileSync(join(here, 'census-aggregate-upgrade.json'), 'utf8')).all;
+const upEco = JSON.parse(readFileSync(join(here, 'census-aggregate-upgrade.json'), 'utf8')).ecosystems;
+const head3 = JSON.parse(readFileSync(join(here, 'census-r4c-headrun.json'), 'utf8'));
+const c4c = JSON.parse(readFileSync(join(here, 'census-r4c-compare.json'), 'utf8'));
+const mv3 = JSON.parse(readFileSync(join(here, 'census-r4c-moved.json'), 'utf8'));
+const rs = JSON.parse(readFileSync(join(here, 'census-r4c-rescore.json'), 'utf8'));
+const sxAll = JSON.parse(readFileSync(join(here, 'successors.json'), 'utf8'));
+const sx = sxAll.summary;
+
+console.log(`\n\n## Table 15. The upgrade-notice engine (${head3.engine.slice(0, 7)}) run over ${head3.run.subjects} projects: ${head3.run.networkRequests} network requests, ${head3.run.githubRestRequests} GitHub REST requests, ${head3.run.cacheHits} cached answers, ${head3.run.commitLookups} commit lookups; fields that differ from ${head3.comparedWith}: ${head3.differingFields}`);
+
+console.log('\n## Table 16. Verdicts, four engines');
+const four = [['pinned (bfd86f1)', agg.all], ['tuned', tuned.all], ['4a (368e98c)', fin.all], ['final (upgrade notice)', up]];
+for (const [name, a] of four) {
+  const v = a.verdicts;
+  console.log(`${name.padEnd(26)} alive ${v.alive}  dying ${v.dying}  dead ${v.dead}  ghost ${v.ghost}  zombie ${v.zombie}  total ${a.directDependencies}`);
+}
+const bUp = (k) => up.verdictBasis[k] ?? 0;
+console.log(`final, basis: dying hard ${bUp('dying/hard')}  dying heuristic ${bUp('dying/heuristic')}  dead hard ${bUp('dead/hard')}  dead heuristic ${bUp('dead/heuristic')}  ghost hard ${bUp('ghost/hard')}  zombie hard ${bUp('zombie/hard')}`);
+const upHard = bUp('dead/hard') + bUp('ghost/hard') + bUp('zombie/hard');
+const upHeur = bUp('dead/heuristic');
+
+console.log('\n## Table 17. Claims side by side, 4a against final');
+const cmpRows = [
+  ['Projects with a dead-or-worse direct dependency', (a) => `${a.subjectsWithDeadOrWorse} of ${a.subjects}`],
+  ['C1 projects with a deprecated, archived, inactive or gone direct dependency', (a) => `${a.subjectsWithStrongDead} of ${a.subjects}`],
+  ['Projects with a dying-or-worse direct dependency', (a) => `${a.subjectsWithNonAlive} of ${a.subjects}`],
+  ['Dead-or-worse direct dependencies', (a) => `${a.deadDeps} of ${a.directDependencies}`],
+  ['Dying direct dependencies', (a) => `${a.verdicts.dying}`],
+  ['Zombies / projects with a zombie', (a) => `${a.verdicts.zombie} / ${a.subjectsWithZombie}`],
+  ['Flagged with a way out', (a) => `${a.deadDepsWithSuccessor} of ${a.deadDeps}`],
+  ['Complete / partial / failed projects', (a) => `${a.statusCounts.complete} / ${a.statusCounts.partial} / ${a.statusCounts.failed}`],
+];
+for (const [label, fn] of cmpRows) console.log(`${label.padEnd(76)} 4a: ${fn(fin.all)}  |  final: ${fn(up)}`);
+console.log('transitions from 4a to final, by dependency:', JSON.stringify(c4c.transitions));
+console.log('packages whose verdict changed (dependencies):', JSON.stringify(c4c.changedPackages));
+
+console.log('\n## Table 18. Upgrade notices in the final run');
+const nt = c4c.notice;
+console.log(`dependencies that carry a notice ${nt.dependencies} in ${nt.projects} projects and ${nt.packages} packages; still flagged ${nt.stillFlagged}; with an advisory ${nt.withAdvisory}; target in the same major ${nt.sameMajor}, in another major ${nt.anotherMajor}, older than the version in use ${nt.older}, no target ${nt.noTarget}`);
+for (const r of nt.byPackage) console.log(`${r.ecosystem}:${r.name.padEnd(28)} dependencies ${String(r.dependencies).padStart(2)}  projects ${String(r.projects).padStart(2)}  advisory ${r.withAdvisory}  same major ${r.sameMajor}  another major ${r.anotherMajor}  older ${r.older}  verdicts ${JSON.stringify(r.verdicts)}`);
+const changedTotal = Object.values(c4c.changedPackages).reduce((a, b) => a + b, 0);
+console.log(`dependencies whose verdict changed because of the rule: ${changedTotal} (the notice carriers that were dying, plus 2 PyPI dependencies whose range had picked a yanked release and now carry no notice)`);
+
+console.log('\n## Table 19. Moved repositories and the 14 maybe-not-dead packages, final engine');
+for (const r of mv3.maybeNotDead) console.log(`${r.name.padEnd(28)} instances ${r.instances}  final ${r.final.join(' / ')}`);
+console.log(`dead-or-worse instances of these 14 packages: pinned ${mv3.maybeNotDead.reduce((n, r) => n + r.stillDeadOrWorse.pinned, 0)}, tuned ${mv3.maybeNotDead.reduce((n, r) => n + r.stillDeadOrWorse.tuned, 0)}, final ${mv3.maybeNotDead.reduce((n, r) => n + r.stillDeadOrWorse.final, 0)}`);
+console.log(`README move notice: ${mv3.repoMovedInFinalRun.readmeNotice.instances} dependencies in ${mv3.repoMovedInFinalRun.readmeNotice.packages} packages, final verdicts ${JSON.stringify(mv3.repoMovedInFinalRun.readmeNotice.byFinalVerdict)}; renamed or transferred ${mv3.repoMovedInFinalRun.renamed.instances} in ${mv3.repoMovedInFinalRun.renamed.packages}, final ${JSON.stringify(mv3.repoMovedInFinalRun.renamed.byFinalVerdict)}`);
+console.log(`registry does not know: ${mv3.notFoundInFinalRun.packages} packages; dependencies with advisory aliases ${mv3.advisoryAliasesInFinalRun.instances} (${JSON.stringify(mv3.advisoryAliasesInFinalRun.byVerdict)}); dying because of a deprecated version in use: ${mv3.versionDeprecatedDyingInFinalRun.instances}`);
+console.log('transitions of the 198 dead-or-worse dependencies of the pinned run to the final engine:', JSON.stringify(mv3.transitionsFromPinnedDeadOrWorse));
+
+console.log('\n## Table 20. Re-scored units under the final engine (no unit judged again by the script)');
+for (const [name, s] of [['first 56 (judged on the pinned engine)', rs.first56], ['second 40 (judged on the 4a engine)', rs.second40]]) {
+  console.log(`${name}: no longer flagged ${s.noLongerFlagged} of ${s.units} (by the upgrade rule ${s.noLongerFlaggedByTheUpgradeRule}, by earlier changes ${s.noLongerFlaggedEarlier}; of them defensible when judged ${s.noLongerFlaggedDefensible}); still flagged ${s.stillFlagged}: right ${s.stillFlaggedCorrect} (CI ${pct(s.correctCI.lo)} to ${pct(s.correctCI.hi)}), defensible ${s.stillFlaggedDefensible} (${pct(s.defensibleCI.p)}, CI ${pct(s.defensibleCI.lo)} to ${pct(s.defensibleCI.hi)}); evidence changed for ${s.evidenceChanged.length}: ${s.evidenceChanged.map((e) => `${e.package} (${e.whenJudged} -> ${e.now})`).join('; ') || 'none'}; not defensible and still flagged: ${s.notDefensibleStillFlagged.join(', ') || 'none'}`);
+}
+console.log('evidence changed, rechecked against the first dossiers:', rs.first56.recheckedAgainstFirstDossiers.map((x) => `${x.package}: engine says last commit ${x.engineDate}, first dossier ${x.dossierDate}, ${x.same ? 'same day, judgment kept' : 'differs'}`).join('; '));
+console.log('left the flagged set, first 56:', rs.first56.leftUnits.map((u) => `${u.package} (${u.leftBy}${u.wasDefensible ? ', was defensible' : ''})`).join(', '));
+console.log('left the flagged set, second 40:', rs.second40.leftUnits.map((u) => `${u.package} (${u.leftBy})`).join(', '));
+console.log(`second 40, population now (without the 56 packages): ${JSON.stringify(rs.second40.populationNow)}`);
+for (const [k, s] of Object.entries(rs.second40.strataNow)) console.log(`  ${k.padEnd(16)} population ${String(s.population).padStart(3)}  checked ${String(s.checked).padStart(2)}  right ${s.correct}  defensible ${s.defensible}`);
+console.log(`second 40, weighted by population: right ${pct(rs.second40.weighted.correct.p)} (CI ${pct(rs.second40.weighted.correct.lo)} to ${pct(rs.second40.weighted.correct.hi)}), defensible ${pct(rs.second40.weighted.defensible.p)} (CI ${pct(rs.second40.weighted.defensible.lo)} to ${pct(rs.second40.weighted.defensible.hi)})`);
+console.log(`both samples, still flagged ${rs.both.stillFlagged} of ${rs.both.units} units: right ${rs.both.stillFlaggedCorrect} (CI ${pct(rs.both.correctCI.lo)} to ${pct(rs.both.correctCI.hi)}), defensible ${rs.both.stillFlaggedDefensible} (${pct(rs.both.defensibleCI.p)}, CI ${pct(rs.both.defensibleCI.lo)} to ${pct(rs.both.defensibleCI.hi)})`);
+
+console.log('\n## Quote-ready numbers (Q lines)');
+const q1 = wilson(up.subjectsWithStrongDead, up.subjects);
+const s40 = rs.second40;
+console.log(`Q01 ${up.subjectsWithStrongDead} of ${up.subjects} projects depend directly on a package that is deprecated, archived, inactive or gone (95% CI ${pct(q1.lo)} to ${pct(q1.hi)})`);
+console.log(`Q02 npm: ${upEco.npm.subjectsWithStrongDead} of ${upEco.npm.subjects} projects (${pct(upEco.npm.subjectsWithStrongDead / upEco.npm.subjects)})`);
+console.log(`Q03 Python: ${upEco.pypi.subjectsWithStrongDead} of ${upEco.pypi.subjects} projects (${pct(upEco.pypi.subjectsWithStrongDead / upEco.pypi.subjects)})`);
+console.log(`Q04 ${up.deadDeps} of ${up.directDependencies} direct dependencies are dead or worse (${pct(up.deadDeps / up.directDependencies)}, about 1 in ${(up.directDependencies / up.deadDeps).toFixed(0)})`);
+console.log(`Q05 of those ${upHard} (${pct(upHard / up.deadDeps)}) rest on a hard signal and ${upHeur} (${pct(upHeur / up.deadDeps)}) on the abandoned heuristic`);
+console.log(`Q06 ${up.verdicts.zombie} zombies (dead, with a known advisory against the version in use), in ${up.subjectsWithZombie} projects`);
+console.log(`Q07 ${up.subjectsWithDeadOrWorse} of ${up.subjects} projects have a dead-or-worse direct dependency of any basis`);
+console.log(`Q08 the engine names a way out for ${up.deadDepsWithSuccessor} of ${up.deadDeps} flagged dependencies (${pct(up.deadDepsWithSuccessor / up.deadDeps)}); ${sx.zombies.withWayOut.dependencies} of ${sx.zombies.all.dependencies} zombies`);
+console.log(`Q09 researched ways out: ${sx.after.packages} of ${sxAll.census.distinctPackages} dead packages (${sx.after.dependencies} of ${sxAll.census.dependencies} dependencies); Python ${sx.python.after.packages} of ${sx.python.all.packages} packages (the engine named none before)`);
+console.log(`Q10 ${nt.dependencies} dependencies in ${nt.projects} projects (${nt.packages} packages) carry an upgrade notice: a deprecated version of a package that is alive; ${nt.anotherMajor} point to another major version, ${nt.withAdvisory} also have an advisory`);
+const eslintRow = nt.byPackage.find((r) => r.name === 'eslint');
+console.log(`Q11 ${eslintRow.name}: ${eslintRow.dependencies} dependencies in ${eslintRow.projects} projects carry the notice (alive, upgrade to a newer major)`);
+console.log(`Q12 moved repositories: ${mv3.repoMovedInFinalRun.readmeNotice.instances} dependencies in ${mv3.repoMovedInFinalRun.readmeNotice.packages} packages were dead in the first run; now ${mv3.repoMovedInFinalRun.readmeNotice.byFinalVerdict.alive} alive and ${mv3.repoMovedInFinalRun.readmeNotice.byFinalVerdict['dying (heuristic)']} dying`);
+console.log(`Q13 verdicts of ${up.directDependencies} direct dependencies: alive ${up.verdicts.alive}, dying ${up.verdicts.dying}, dead ${up.verdicts.dead}, ghost ${up.verdicts.ghost}, zombie ${up.verdicts.zombie}`);
+console.log(`Q14 sample: ${up.subjects} projects (25 each of npm popular, npm tail, Python popular, Python tail), ${up.directDependencies} direct dependencies, median ${up.directPerSubjectMedian} per project`);
+console.log(`Q15 precision on units the tuning never saw, final engine: ${s40.stillFlagged} still flagged of ${s40.units}; ${s40.stillFlaggedCorrect} right (CI ${pct(s40.correctCI.lo)} to ${pct(s40.correctCI.hi)}); ${s40.stillFlaggedDefensible} defensible (${pct(s40.defensibleCI.p)}, CI ${pct(s40.defensibleCI.lo)} to ${pct(s40.defensibleCI.hi)}); weighted by population ${pct(s40.weighted.defensible.p)} (CI ${pct(s40.weighted.defensible.lo)} to ${pct(s40.weighted.defensible.hi)})`);
+console.log(`Q16 the same 40 units under the round-4a engine: ${p2.pooled.correct} of ${p2.pooled.checked} right, ${p2.pooled.defensible} of ${p2.pooled.checked} defensible (${pct(p2.pooled.defensible / p2.pooled.checked)}); ${s40.noLongerFlaggedByTheUpgradeRule} units are no longer flagged because of the upgrade rule`);
+console.log(`Q17 ${rs.first56.stillFlagged} of the first 56 units are still flagged, all ${rs.first56.stillFlaggedDefensible} right and defensible (the tuning was fitted on these: do not quote as out-of-sample)`);
+console.log(`Q18 coverage: ${up.statusCounts.complete} projects complete, ${up.statusCounts.partial} partial, ${up.statusCounts.failed} failed`);
+console.log(`Q19 hard-signal flags: ${p2.strata['dead|hard'].correct} of ${p2.strata['dead|hard'].checked} right and defensible among dead-on-a-hard-signal units the tuning never saw (CI ${pct(wilson(p2.strata['dead|hard'].correct, p2.strata['dead|hard'].checked).lo)} to 100.0%)`);

@@ -1,0 +1,268 @@
+{
+ "description": "Round-4a engine (368e98c) against the upgrade-notice engine on the 100 census subjects. Package names and counts only.",
+ "transitions": {
+  "alive -> alive": 2768,
+  "dying (heuristic) -> dying (heuristic)": 212,
+  "dead (heuristic) -> dead (heuristic)": 105,
+  "dead (hard) -> dead (hard)": 69,
+  "dying (hard) -> alive": 42,
+  "zombie (hard) -> zombie (hard)": 4,
+  "ghost (hard) -> ghost (hard)": 1
+ },
+ "changedPackages": {
+  "npm|eslint": 21,
+  "npm|glob": 4,
+  "npm|rimraf": 4,
+  "npm|@testing-library/jest-dom": 1,
+  "npm|@xmldom/xmldom": 1,
+  "npm|codemirror": 1,
+  "npm|jquery": 1,
+  "npm|miniflare": 1,
+  "npm|next": 1,
+  "npm|puppeteer": 1,
+  "npm|ua-parser-js": 1,
+  "npm|uuid": 1,
+  "npm|vue-i18n": 1,
+  "npm|wrangler": 1,
+  "pypi|clvm": 1,
+  "pypi|pytest-timeout": 1
+ },
+ "notice": {
+  "dependencies": 41,
+  "projects": 26,
+  "packages": 15,
+  "withAdvisory": 7,
+  "sameMajor": 4,
+  "anotherMajor": 36,
+  "older": 1,
+  "noTarget": 0,
+  "stillFlagged": 1,
+  "byPackage": [
+   {
+    "ecosystem": "npm",
+    "name": "eslint",
+    "dependencies": 21,
+    "projects": 20,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 21,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 21
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "glob",
+    "dependencies": 4,
+    "projects": 4,
+    "withAdvisory": 1,
+    "sameMajor": 0,
+    "anotherMajor": 4,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 4
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "rimraf",
+    "dependencies": 4,
+    "projects": 4,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 4,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 4
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "@testing-library/jest-dom",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "@xmldom/xmldom",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 1,
+    "anotherMajor": 0,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "codemirror",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 0,
+    "older": 1,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "jquery",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 1,
+    "anotherMajor": 0,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "miniflare",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "next",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 1,
+    "anotherMajor": 0,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "prettier-standard",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "dead (heuristic)": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "puppeteer",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "ua-parser-js",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 1,
+    "anotherMajor": 0,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "uuid",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "vue-i18n",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "wrangler",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   }
+  ]
+ }
+}
