@@ -1,0 +1,565 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/systems/npm/packages/cross-env"
+ },
+ "status": 200,
+ "body": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "cross-env"
+  },
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.0"
+    },
+    "publishedAt": "2015-10-01T23:19:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.1"
+    },
+    "publishedAt": "2015-10-01T23:21:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.2"
+    },
+    "publishedAt": "2015-11-11T17:59:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.3"
+    },
+    "publishedAt": "2015-11-11T18:06:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.4"
+    },
+    "publishedAt": "2015-11-12T04:43:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.5"
+    },
+    "publishedAt": "2015-11-28T00:08:43Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.6"
+    },
+    "publishedAt": "2015-12-25T14:24:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.7"
+    },
+    "publishedAt": "2016-01-03T15:08:15Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "1.0.8"
+    },
+    "publishedAt": "2016-05-24T04:03:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "10.0.0"
+    },
+    "publishedAt": "2025-07-25T21:55:41Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "10.1.0"
+    },
+    "publishedAt": "2025-09-29T17:34:12Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "2.0.0"
+    },
+    "publishedAt": "2016-07-13T13:13:29Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "2.0.1"
+    },
+    "publishedAt": "2016-08-29T15:53:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.0.0"
+    },
+    "publishedAt": "2016-09-24T15:57:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.1.0"
+    },
+    "publishedAt": "2016-10-04T17:12:38Z",
+    "isDefault": false,
+    "isDeprecated": true,
+    "deprecatedReason": "bad build, please use >= 3.1.1"
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.1.1"
+    },
+    "publishedAt": "2016-10-04T18:01:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.1.2"
+    },
+    "publishedAt": "2016-10-08T14:19:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.1.3"
+    },
+    "publishedAt": "2016-10-15T07:29:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.1.4"
+    },
+    "publishedAt": "2017-01-03T04:15:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.2.0"
+    },
+    "publishedAt": "2017-03-04T15:24:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.2.1"
+    },
+    "publishedAt": "2017-03-04T15:59:00Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.2.2"
+    },
+    "publishedAt": "2017-03-04T16:13:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.2.3"
+    },
+    "publishedAt": "2017-03-04T16:44:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "3.2.4"
+    },
+    "publishedAt": "2017-03-14T16:24:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "4.0.0"
+    },
+    "publishedAt": "2017-03-31T02:07:49Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "4.0.0-beta.0"
+    },
+    "publishedAt": "2017-03-27T01:51:04Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.0.0"
+    },
+    "publishedAt": "2017-05-11T17:11:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.0.0-beta.0"
+    },
+    "publishedAt": "2017-04-18T22:23:44Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.0.1"
+    },
+    "publishedAt": "2017-06-08T02:25:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.0.2"
+    },
+    "publishedAt": "2017-08-01T15:55:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.0.3"
+    },
+    "publishedAt": "2017-08-03T14:03:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.0.4"
+    },
+    "publishedAt": "2017-08-06T09:53:45Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.0.5"
+    },
+    "publishedAt": "2017-08-08T19:46:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.1.0"
+    },
+    "publishedAt": "2017-10-16T16:53:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.1.1"
+    },
+    "publishedAt": "2017-10-27T15:41:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.1.2"
+    },
+    "publishedAt": "2017-12-21T18:39:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.1.3"
+    },
+    "publishedAt": "2017-12-21T23:01:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.1.4"
+    },
+    "publishedAt": "2018-03-09T17:38:27Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.1.5"
+    },
+    "publishedAt": "2018-05-09T17:58:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.1.6"
+    },
+    "publishedAt": "2018-05-22T21:58:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.2.0"
+    },
+    "publishedAt": "2018-06-13T13:38:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "5.2.1"
+    },
+    "publishedAt": "2019-08-31T18:29:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "6.0.0"
+    },
+    "publishedAt": "2019-09-17T17:18:53Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "6.0.1"
+    },
+    "publishedAt": "2019-10-01T16:53:38Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "6.0.2"
+    },
+    "publishedAt": "2019-10-01T16:56:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "6.0.3"
+    },
+    "publishedAt": "2019-10-02T16:19:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "7.0.0"
+    },
+    "publishedAt": "2020-01-25T18:40:06Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "7.0.1"
+    },
+    "publishedAt": "2020-03-03T18:38:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "7.0.2"
+    },
+    "publishedAt": "2020-03-05T20:32:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "cross-env",
+     "version": "7.0.3"
+    },
+    "publishedAt": "2020-12-01T20:25:26Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ }
+}

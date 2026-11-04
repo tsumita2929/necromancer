@@ -62,6 +62,7 @@ export const EVIDENCE_CLASS: Readonly<Record<string, EvidenceClass>> = {
   'osv-advisory': 'advisory',
   'recent-activity': 'life',
   'activity-unchecked': 'info',
+  'repo-moved': 'info',
   unchecked: 'info',
 };
 

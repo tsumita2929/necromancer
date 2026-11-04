@@ -254,6 +254,25 @@ export function versionYanked(name: string, version: string, reason?: string): E
   });
 }
 
+/**
+ * The repository is not where the package metadata says. `renamed`: GitHub forwards the old address and
+ * the lookup followed it. `readme`: the archived copy's README says the project moved, so "archived" is
+ * not an end of life. Never a sign of death. `to` comes from a README or from GitHub: it is clipped and
+ * only shown as text.
+ */
+export function repoMoved(repoUrl: string, to: string, how: 'renamed' | 'readme'): Evidence {
+  const where = clip(to, 120);
+  return line({
+    code: 'repo-moved',
+    message:
+      how === 'renamed'
+        ? `The repository was renamed or moved to ${where}; GitHub forwards the old address, so the lookup followed it.`
+        : `The GitHub copy is archived because the project moved to ${where} (its README says so). That is not an end of life; activity at the new address is not read.`,
+    source: 'github',
+    url: repoUrl,
+  });
+}
+
 export function registryNotFound(source: SourceId, name: string): Evidence {
   return line({
     code: 'registry-not-found',

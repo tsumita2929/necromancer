@@ -8,6 +8,7 @@ import { type ResolvedTuning } from './options.js';
 import * as signals from './signals.js';
 import { getNpmPackage, getProject, getVersionRepo, type ProjectInfo } from './sources/depsdev.js';
 import { getGithubRepo, getLatestCommit, type GithubRepo } from './sources/github.js';
+import { getMovedNotice } from './sources/moved.js';
 import { getNpmLatest } from './sources/npm.js';
 import { osvKey, queryOsv, type OsvQuery } from './sources/osv.js';
 import { getPypiProject } from './sources/pypi.js';
@@ -56,6 +57,8 @@ interface PackageFacts {
   repoLookedUp: boolean;
   scorecard?: ProjectInfo | null;
   github?: GithubRepo;
+  /** An archived repository whose README says the project moved: where to (QA: moved repositories). */
+  movedTo?: string;
   /** The default branch's newest commit; null when the repository has none. */
   commit?: { date: string } | null;
   /** Why the commit date was not read, when it was wanted. */
@@ -499,6 +502,29 @@ export class Core {
       else refused(g);
     });
 
+    // An archived repository may be archived because the project moved. Its README says so at the
+    // top; read it (raw.githubusercontent.com, not the REST API: no GitHub budget) before "archived"
+    // is taken as an end of life.
+    // Not needed when the registry already ends the package's life (deprecated, inactive, yanked).
+    const archived = wanted
+      .map(({ f }) => f)
+      .filter(
+        (f) =>
+          f.github?.state === 'ok' &&
+          f.github.archived &&
+          !f.deprecatedLatest &&
+          !f.inactive &&
+          !f.latestYanked,
+      );
+    await pool(archived, async (f) => {
+      const m = await guard(() => getMovedNotice(this.http, f.repo as RepoRef));
+      if (m.ok) {
+        if (m.value) f.movedTo = m.value;
+      } else {
+        note(run, 'github', `README of ${repoKey(f.repo as RepoRef)}: ${m.reason}`);
+      }
+    });
+
     // The default branch's latest commit. Where the repository was pushed to within the year, the
     // commit date decides whether the package is alive, so those come first; where it was not, the
     // commit date only makes the evidence exact, so those use what budget is left.
@@ -583,8 +609,16 @@ export class Core {
     if (f.github?.state === 'ok') {
       const url = f.repo ? repoUrl(f.repo) : '';
       pushedAt = f.github.pushedAt;
+      if (f.github.renamedTo) {
+        evidence.push(signals.repoMoved(url, f.github.renamedTo, 'renamed'));
+      }
       if (f.github.archived) {
-        evidence.push(signals.repoArchived(url, f.github.pushedAt));
+        // Archived because the project moved elsewhere is not an end of life: say where it went.
+        evidence.push(
+          f.movedTo
+            ? signals.repoMoved(url, f.movedTo, 'readme')
+            : signals.repoArchived(url, f.github.pushedAt),
+        );
       } else if (f.commit) {
         // The default branch's own commits decide; a push to another branch or tag does not.
         const alive = signals.recentActivity(url, f.commit.date, now);

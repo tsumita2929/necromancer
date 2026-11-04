@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/prosemirror/prosemirror-state"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "ProseMirror/prosemirror-state",
+  "html_url": "https://github.com/ProseMirror/prosemirror-state",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2026-04-01T16:51:59Z",
+  "stargazers_count": 231,
+  "default_branch": "master"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/codemirror/lang-python"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "codemirror/lang-python",
+  "html_url": "https://github.com/codemirror/lang-python",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2026-04-15T10:20:49Z",
+  "stargazers_count": 42,
+  "default_branch": "main"
+ }
+}

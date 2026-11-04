@@ -1,0 +1,86 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/prosemirror-example-setup/latest"
+ },
+ "status": 200,
+ "body": {
+  "bugs": {
+   "url": "https://github.com/prosemirror/prosemirror-example-setup/issues"
+  },
+  "dist": {
+   "shasum": "314e6b34ea278828e28f06a7268552c225044e88",
+   "tarball": "https://registry.npmjs.org/prosemirror-example-setup/-/prosemirror-example-setup-1.2.3.tgz",
+   "fileCount": 17,
+   "integrity": "sha512-+hXZi8+xbFvYM465zZH3rdZ9w7EguVKmUYwYLZjIJIjPK+I0nPTwn8j0ByW2avchVczRwZmOJGNvehblyIerSQ==",
+   "signatures": [
+    {
+     "sig": "MEYCIQDHQGsghhidK6iFqCwnuq7q16NnlZuNkZlkZWcoeDD1bwIhAI6XDLpYRfZqSjAmNkg4jC5qagFacfH+k+lGgXTW+DiE",
+     "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+    }
+   ],
+   "unpackedSize": 92256
+  },
+  "main": "dist/index.cjs",
+  "name": "prosemirror-example-setup",
+  "type": "module",
+  "style": "style/style.css",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "exports": {
+   ".": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+   },
+   "./style/style.css": "./style/style.css"
+  },
+  "gitHead": "8c11be6850604081dceda8f36e08d2426875e19a",
+  "license": "MIT",
+  "scripts": {
+   "prepare": "pm-buildhelper src/index.ts"
+  },
+  "_npmUser": {
+   "name": "marijn",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "homepage": "https://github.com/prosemirror/prosemirror-example-setup#readme",
+  "repository": {
+   "url": "git://github.com/prosemirror/prosemirror-example-setup.git",
+   "type": "git"
+  },
+  "_npmVersion": "10.8.0",
+  "description": "An example for how to set up a ProseMirror editor",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "marijn",
+    "email": "marijn@haverbeke.berlin"
+   }
+  ],
+  "sideEffects": [
+   "./style/style.css"
+  ],
+  "_nodeVersion": "20.13.1",
+  "dependencies": {
+   "prosemirror-menu": "^1.0.0",
+   "prosemirror-state": "^1.0.0",
+   "prosemirror-keymap": "^1.0.0",
+   "prosemirror-history": "^1.0.0",
+   "prosemirror-commands": "^1.0.0",
+   "prosemirror-gapcursor": "^1.0.0",
+   "prosemirror-dropcursor": "^1.0.0",
+   "prosemirror-inputrules": "^1.0.0",
+   "prosemirror-schema-list": "^1.0.0"
+  },
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "@prosemirror/buildhelper": "^0.1.5"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/prosemirror-example-setup_1.2.3_1723791697510_0.922337034487235",
+   "host": "s3://npm-registry-packages"
+  },
+  "_id": "prosemirror-example-setup@1.2.3",
+  "version": "1.2.3"
+ }
+}

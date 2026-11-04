@@ -1,0 +1,104 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/projects/github.com%2Fprosemirror%2Fprosemirror-example-setup"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "Scorecard checks reduced to name, score and reason",
+  "projectKey": {
+   "id": "github.com/prosemirror/prosemirror-example-setup"
+  },
+  "openIssuesCount": 1,
+  "starsCount": 169,
+  "forksCount": 119,
+  "license": "MIT",
+  "description": "An example of how to set up a ProseMirror editor",
+  "homepage": "https://prosemirror.net",
+  "scorecard": {
+   "date": "2026-08-24T00:00:00Z",
+   "repository": {
+    "name": "github.com/prosemirror/prosemirror-example-setup",
+    "commit": "b6fcf7aed86a682bdcf91df7a85a770ab8ae7179"
+   },
+   "scorecard": {
+    "version": "v5.5.1-0.20260815060127-d1fab88f5463",
+    "commit": "d1fab88f54636ff366076edfc5c239f97b3c8e66"
+   },
+   "checks": [
+    {
+     "name": "Token-Permissions",
+     "score": -1,
+     "reason": "No tokens found"
+    },
+    {
+     "name": "Dangerous-Workflow",
+     "score": -1,
+     "reason": "no workflows found"
+    },
+    {
+     "name": "Pinned-Dependencies",
+     "score": -1,
+     "reason": "no dependencies found"
+    },
+    {
+     "name": "Packaging",
+     "score": -1,
+     "reason": "packaging workflow not detected"
+    },
+    {
+     "name": "Binary-Artifacts",
+     "score": 10,
+     "reason": "no binaries found in the repo"
+    },
+    {
+     "name": "Code-Review",
+     "score": 0,
+     "reason": "Found 2/30 approved changesets -- score normalized to 0"
+    },
+    {
+     "name": "Maintained",
+     "score": 0,
+     "reason": "project is archived"
+    },
+    {
+     "name": "CII-Best-Practices",
+     "score": 0,
+     "reason": "no effort to earn an OpenSSF best practices badge detected"
+    },
+    {
+     "name": "Fuzzing",
+     "score": 0,
+     "reason": "project is not fuzzed"
+    },
+    {
+     "name": "Security-Policy",
+     "score": 0,
+     "reason": "security policy file not detected"
+    },
+    {
+     "name": "Signed-Releases",
+     "score": -1,
+     "reason": "no releases found"
+    },
+    {
+     "name": "License",
+     "score": 10,
+     "reason": "license file detected"
+    },
+    {
+     "name": "Branch-Protection",
+     "score": 0,
+     "reason": "branch protection not enabled on development/release branches"
+    },
+    {
+     "name": "SAST",
+     "score": 0,
+     "reason": "SAST tool is not run on all commits -- score normalized to 0"
+    }
+   ],
+   "overallScore": 2,
+   "metadata": []
+  }
+ }
+}

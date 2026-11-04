@@ -1,0 +1,93 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/codemirror/latest"
+ },
+ "status": 200,
+ "body": {
+  "bugs": {
+   "url": "https://github.com/codemirror/basic-setup/issues"
+  },
+  "dist": {
+   "shasum": "4d3fea1ad60b6753f97ca835f2f48c6936a8946e",
+   "tarball": "https://registry.npmjs.org/codemirror/-/codemirror-6.0.2.tgz",
+   "fileCount": 9,
+   "integrity": "sha512-VhydHotNW5w1UGK0Qj96BwSk/Zqbp9WbnyK2W/eVMv4QyF41INRGpjUhFJY7/uDNuudSc33a/PKr4iDqRduvHw==",
+   "signatures": [
+    {
+     "sig": "MEQCIAzTxhEAGuLpE7Zw9CXxTCES6GfYP1akF70JbLdhpgDMAiBo/EjBxKtRxnbqZlBsSlk8NW44C41AAlv5ukaR/PfjLQ==",
+     "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+   ],
+   "unpackedSize": 21258
+  },
+  "main": "dist/index.cjs",
+  "name": "codemirror",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "author": {
+   "url": "http://marijnhaverbeke.nl",
+   "name": "Marijn Haverbeke",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "module": "dist/index.js",
+  "exports": {
+   "import": "./dist/index.js",
+   "require": "./dist/index.cjs"
+  },
+  "gitHead": "76462c05acb10fe77e0f04edd7fcddfeb9987abd",
+  "license": "MIT",
+  "scripts": {
+   "test": "cm-runtests",
+   "prepare": "cm-buildhelper src/codemirror.ts"
+  },
+  "_npmUser": {
+   "name": "marijn",
+   "actor": {
+    "name": "marijn",
+    "type": "user",
+    "email": "marijn@haverbeke.berlin"
+   },
+   "email": "marijn@haverbeke.berlin"
+  },
+  "homepage": "https://github.com/codemirror/basic-setup#readme",
+  "keywords": [
+   "editor",
+   "code"
+  ],
+  "repository": {
+   "url": "git+https://github.com/codemirror/basic-setup.git",
+   "type": "git"
+  },
+  "_npmVersion": "11.3.0",
+  "description": "Basic configuration for the CodeMirror code editor",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "marijn",
+    "email": "marijn@haverbeke.berlin"
+   }
+  ],
+  "sideEffects": false,
+  "_nodeVersion": "22.14.0",
+  "dependencies": {
+   "@codemirror/lint": "^6.0.0",
+   "@codemirror/view": "^6.0.0",
+   "@codemirror/state": "^6.0.0",
+   "@codemirror/search": "^6.0.0",
+   "@codemirror/commands": "^6.0.0",
+   "@codemirror/language": "^6.0.0",
+   "@codemirror/autocomplete": "^6.0.0"
+  },
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "@codemirror/buildhelper": "^1.0.0"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/codemirror_6.0.2_1750333728336_0.42357435514278596",
+   "host": "s3://npm-registry-packages-npm-production"
+  },
+  "_id": "codemirror@6.0.2",
+  "version": "6.0.2"
+ }
+}

@@ -12,7 +12,17 @@ export type FailureKind = 'not-found' | 'rate-limited' | 'gone' | 'unavailable';
 
 export type HttpResult =
   | { ok: true; status: number; data: unknown }
-  | { ok: false; status: number; kind: FailureKind; reason: string };
+  | {
+      ok: false;
+      status: number;
+      kind: FailureKind;
+      reason: string;
+      /** The JSON body of a redirect answer (301, 302, 307, 308), when a fetch does not follow it. */
+      data?: unknown;
+    };
+
+/** How an answer is read: GitHub and the registries answer JSON; a README is text. */
+export type ReadAs = 'json' | 'text';
 
 export interface RequestInit {
   method?: string;
@@ -32,11 +42,11 @@ export class Http {
     private readonly tuning: ResolvedTuning,
   ) {}
 
-  request(url: string, init?: RequestInit): Promise<HttpResult> {
-    const key = `${init?.method ?? 'GET'} ${url} ${init?.body ?? ''}`;
+  request(url: string, init?: RequestInit, as: ReadAs = 'json'): Promise<HttpResult> {
+    const key = `${init?.method ?? 'GET'} ${url} ${init?.body ?? ''}${as === 'text' ? ' (text)' : ''}`;
     const cached = this.cache.get(key);
     if (cached) return cached;
-    const pending = this.schedule(() => this.attempt(url, init, key));
+    const pending = this.schedule(() => this.attempt(url, init, key, as));
     this.cache.set(key, pending);
     // Successes and "not found" are shared for the life of the instance. Failures that
     // may pass (network, timeout, 5xx, rate limit) are forgotten, so a long-lived engine
@@ -69,12 +79,13 @@ export class Http {
     url: string,
     init: RequestInit | undefined,
     key: string,
+    as: ReadAs,
   ): Promise<HttpResult> {
     this.sent.push(key.trim());
-    let result = await this.once(url, init);
+    let result = await this.once(url, init, as);
     if (!result.ok && this.isTransient(result)) {
       await this.tuning.sleep(this.tuning.retryDelayMs);
-      result = await this.once(url, init);
+      result = await this.once(url, init, as);
     }
     return result;
   }
@@ -86,7 +97,7 @@ export class Http {
     );
   }
 
-  private async once(url: string, init: RequestInit | undefined): Promise<HttpResult> {
+  private async once(url: string, init: RequestInit | undefined, as: ReadAs): Promise<HttpResult> {
     let timer: unknown;
     try {
       const timeout = new Promise<never>((_, reject) => {
@@ -97,9 +108,24 @@ export class Http {
       const run = (async (): Promise<HttpResult> => {
         const response = await this.fetchImpl(url, init);
         const status = typeof response.status === 'number' ? response.status : 0;
-        if (!response.ok) return failure(status, `HTTP ${status}`);
+        if (!response.ok) {
+          const failed = failure(status, `HTTP ${status}`);
+          if ([301, 302, 307, 308].includes(status)) {
+            // A fetch that does not follow redirects: GitHub's body says where the repository went.
+            try {
+              return { ...failed, data: await response.json() };
+            } catch {
+              return failed;
+            }
+          }
+          return failed;
+        }
         try {
-          return { ok: true, status, data: await response.json() };
+          return {
+            ok: true,
+            status,
+            data: as === 'text' ? await response.text() : await response.json(),
+          };
         } catch {
           return {
             ok: false,
@@ -119,7 +145,7 @@ export class Http {
   }
 }
 
-function failure(status: number, reason: string): HttpResult {
+function failure(status: number, reason: string): Extract<HttpResult, { ok: false }> {
   if (status === 404 || status === 410) return { ok: false, status, kind: 'not-found', reason };
   if (status === 451) return { ok: false, status, kind: 'gone', reason };
   if (status === 429)

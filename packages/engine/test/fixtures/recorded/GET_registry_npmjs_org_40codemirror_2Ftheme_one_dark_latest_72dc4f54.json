@@ -1,0 +1,94 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/%40codemirror%2Ftheme-one-dark/latest"
+ },
+ "status": 200,
+ "body": {
+  "bugs": {
+   "url": "https://github.com/codemirror/theme-one-dark/issues"
+  },
+  "dist": {
+   "shasum": "1dbb73f6e73c53c12ad2aed9f48c263c4e63ea37",
+   "tarball": "https://registry.npmjs.org/@codemirror/theme-one-dark/-/theme-one-dark-6.1.3.tgz",
+   "fileCount": 9,
+   "integrity": "sha512-NzBdIvEJmx6fjeremiGp3t/okrLPYT0d9orIc7AFun8oZcRk58aejkqhv6spnz4MLAevrKNPMQYXEWMg4s+sKA==",
+   "signatures": [
+    {
+     "sig": "MEQCIDuxHoqwI7yTTS4gusDdD6NQv8MU8DGUfSLzRUeK8qtNAiAiHi5YGAEzxnxfShaIlzDRvyrBw9kktPMz5Uyp2WjXGA==",
+     "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+   ],
+   "unpackedSize": 20037
+  },
+  "main": "dist/index.cjs",
+  "name": "@codemirror/theme-one-dark",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "author": {
+   "url": "http://marijnhaverbeke.nl",
+   "name": "Marijn Haverbeke",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "module": "dist/index.js",
+  "exports": {
+   "import": "./dist/index.js",
+   "require": "./dist/index.cjs"
+  },
+  "gitHead": "5c4c69e48964fab6b3fbb2b60501533ff69d5238",
+  "license": "MIT",
+  "scripts": {
+   "test": "cm-runtests",
+   "prepare": "cm-buildhelper src/one-dark.ts"
+  },
+  "_npmUser": {
+   "name": "marijn",
+   "actor": {
+    "name": "marijn",
+    "type": "user",
+    "email": "marijn@haverbeke.berlin"
+   },
+   "email": "marijn@haverbeke.berlin"
+  },
+  "homepage": "https://github.com/codemirror/theme-one-dark#readme",
+  "keywords": [
+   "editor",
+   "code"
+  ],
+  "repository": {
+   "url": "git+https://github.com/codemirror/theme-one-dark.git",
+   "type": "git"
+  },
+  "_npmVersion": "11.3.0",
+  "description": "One Dark theme for the CodeMirror code editor",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "adrianheine",
+    "email": "mail@adrianheine.de"
+   },
+   {
+    "name": "marijn",
+    "email": "marijn@haverbeke.berlin"
+   }
+  ],
+  "sideEffects": false,
+  "_nodeVersion": "22.14.0",
+  "dependencies": {
+   "@codemirror/view": "^6.0.0",
+   "@lezer/highlight": "^1.0.0",
+   "@codemirror/state": "^6.0.0",
+   "@codemirror/language": "^6.0.0"
+  },
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "@codemirror/buildhelper": "^1.0.0"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/theme-one-dark_6.1.3_1750334387899_0.50720102099723",
+   "host": "s3://npm-registry-packages-npm-production"
+  },
+  "_id": "@codemirror/theme-one-dark@6.1.3",
+  "version": "6.1.3"
+ }
+}

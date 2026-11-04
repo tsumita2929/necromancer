@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/prosemirror/prosemirror-inputrules"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "ProseMirror/prosemirror-inputrules",
+  "html_url": "https://github.com/ProseMirror/prosemirror-inputrules",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2026-04-01T18:54:29Z",
+  "stargazers_count": 46,
+  "default_branch": "master"
+ }
+}

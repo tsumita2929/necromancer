@@ -1,0 +1,90 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/%40codemirror%2Flang-python/latest"
+ },
+ "status": 200,
+ "body": {
+  "bugs": {
+   "url": "https://github.com/codemirror/lang-python/issues"
+  },
+  "dist": {
+   "shasum": "37c9930716110156865a95c548aa0eef5552863a",
+   "tarball": "https://registry.npmjs.org/@codemirror/lang-python/-/lang-python-6.2.1.tgz",
+   "fileCount": 9,
+   "integrity": "sha512-IRjC8RUBhn9mGR9ywecNhB51yePWCGgvHfY1lWN/Mrp3cKuHr0isDKia+9HnvhiWNnMpbGhWrkhuWOc09exRyw==",
+   "signatures": [
+    {
+     "sig": "MEQCIGcE3VwUTcYao2x7cgX5gMAPPxayp4PqDcIHHp2+Ez9AAiAo19ectP0qcp+ScIxHmCBnUgCHmvD64UUFbpKr0mawuA==",
+     "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+   ],
+   "unpackedSize": 36987
+  },
+  "main": "dist/index.cjs",
+  "name": "@codemirror/lang-python",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "author": {
+   "url": "http://marijnhaverbeke.nl",
+   "name": "Marijn Haverbeke",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "module": "dist/index.js",
+  "exports": {
+   "import": "./dist/index.js",
+   "require": "./dist/index.cjs"
+  },
+  "gitHead": "b29a2dd8f52bd1f3194d9a0d1d65631cda1c3c47",
+  "license": "MIT",
+  "scripts": {
+   "test": "cm-runtests",
+   "prepare": "cm-buildhelper src/python.ts"
+  },
+  "_npmUser": {
+   "name": "marijn",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "homepage": "https://github.com/codemirror/lang-python#readme",
+  "keywords": [
+   "editor",
+   "code"
+  ],
+  "repository": {
+   "url": "git+https://github.com/codemirror/lang-python.git",
+   "type": "git"
+  },
+  "_npmVersion": "11.3.0",
+  "description": "Python language support for the CodeMirror code editor",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "adrianheine",
+    "email": "mail@adrianheine.de"
+   },
+   {
+    "name": "marijn",
+    "email": "marijn@haverbeke.berlin"
+   }
+  ],
+  "sideEffects": false,
+  "_nodeVersion": "22.14.0",
+  "dependencies": {
+   "@lezer/common": "^1.2.1",
+   "@lezer/python": "^1.1.4",
+   "@codemirror/state": "^6.0.0",
+   "@codemirror/language": "^6.8.0",
+   "@codemirror/autocomplete": "^6.3.2"
+  },
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "@codemirror/buildhelper": "^1.0.0"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/lang-python_6.2.1_1747212833104_0.14755926706439282",
+   "host": "s3://npm-registry-packages-npm-production"
+  },
+  "_id": "@codemirror/lang-python@6.2.1",
+  "version": "6.2.1"
+ }
+}

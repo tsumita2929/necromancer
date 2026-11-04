@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/kentcdodds/cross-env"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "kentcdodds/cross-env",
+  "html_url": "https://github.com/kentcdodds/cross-env",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2025-11-16T14:11:37Z",
+  "stargazers_count": 6519,
+  "default_branch": "main"
+ }
+}

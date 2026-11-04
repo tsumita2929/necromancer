@@ -1,0 +1,38 @@
+{
+ "censusDeadOrWorseDependencies": 198,
+ "distinctPackages": 175,
+ "before": {
+  "withWayOut": 22,
+  "distinctPackagesWithWayOut": 19
+ },
+ "after": {
+  "withWayOut": 96,
+  "distinctPackagesWithWayOut": 88,
+  "stillDeadOrWorse": 179,
+  "stillDeadOrWorseWithWayOut": 95,
+  "liftedOrDownTo": {
+   "alive": 15,
+   "dying": 4
+  },
+  "ecosystems": {
+   "npm": {
+    "withWayOut": 77,
+    "of": 160
+   },
+   "pypi": {
+    "withWayOut": 19,
+    "of": 38
+   }
+  },
+  "bySource": {
+   "readme": 19,
+   "curated": 53,
+   "npm": 29,
+   "module-replacements": 3
+  }
+ },
+ "zombies": {
+  "total": 4,
+  "withWayOut": 4
+ }
+}

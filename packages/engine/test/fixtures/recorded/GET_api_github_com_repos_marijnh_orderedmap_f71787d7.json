@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/marijnh/orderedmap"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "marijnh/orderedmap",
+  "html_url": "https://github.com/marijnh/orderedmap",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2026-03-18T10:02:25Z",
+  "stargazers_count": 45,
+  "default_branch": "master"
+ }
+}

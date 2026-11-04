@@ -182,3 +182,51 @@ describe('QA-01 duplicate OSV records, recorded from the real source', () => {
     expect([...aliases].some((a) => a.startsWith('PYSEC-'))).toBe(true);
   });
 });
+
+describe('Q7 moved repositories, recorded from the real sources', () => {
+  const MOVED_ALIVE = [
+    '@codemirror/lang-json',
+    '@codemirror/lang-python',
+    '@codemirror/theme-one-dark',
+    'prosemirror-inputrules',
+    'prosemirror-state',
+  ];
+
+  it('an archived copy whose README says the project moved is never read as archived', async () => {
+    const { report, fetch } = await scan('moved');
+    expect(fetch.missing).toEqual([]);
+    for (const name of ['codemirror', 'orderedmap', 'prosemirror-example-setup', ...MOVED_ALIVE]) {
+      const d = find(report, name);
+      expect(codes(d), name).not.toContain('repo-archived');
+      expect(codes(d), name).not.toContain('repo-gone');
+      const moved = d.evidence.find((e) => e.code === 'repo-moved');
+      expect(moved?.message, name).toMatch(
+        /archived because the project moved to https:\/\/code\.haverbeke\.berlin\//,
+      );
+      // The address is clean: no Markdown left on it.
+      expect(moved?.message, name).not.toMatch(/\*\*/);
+    }
+  });
+
+  it('what the engine says for each, and why', async () => {
+    const { report } = await scan('moved');
+    for (const name of MOVED_ALIVE) expect(find(report, name).verdict, name).toBe('alive');
+    // A very old release is still a staleness guess, labelled as one.
+    expect(find(report, 'orderedmap')).toMatchObject({ verdict: 'dying', basis: 'heuristic' });
+    expect(find(report, 'prosemirror-example-setup')).toMatchObject({
+      verdict: 'dying',
+      basis: 'heuristic',
+    });
+    // npm itself marks this version deprecated: a hard fact, unrelated to the move.
+    expect(find(report, 'codemirror')).toMatchObject({ verdict: 'dying', basis: 'hard' });
+    expect(codes(find(report, 'codemirror'))).toContain('version-deprecated');
+  });
+
+  it('cross-env is archived by its maintainer and not moved: still dead, on a hard signal', async () => {
+    const { report } = await scan('moved');
+    const d = find(report, 'cross-env');
+    expect(d).toMatchObject({ verdict: 'dead', basis: 'hard' });
+    expect(codes(d)).toContain('repo-archived');
+    expect(codes(d)).not.toContain('repo-moved');
+  });
+});

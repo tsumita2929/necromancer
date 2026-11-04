@@ -1,0 +1,76 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/prosemirror-state/latest"
+ },
+ "status": 200,
+ "body": {
+  "bugs": {
+   "url": "https://github.com/prosemirror/prosemirror-state/issues"
+  },
+  "dist": {
+   "shasum": "72b5e926f9e92dcee12b62a05fcc8a2de3bf5b39",
+   "tarball": "https://registry.npmjs.org/prosemirror-state/-/prosemirror-state-1.4.4.tgz",
+   "fileCount": 16,
+   "integrity": "sha512-6jiYHH2CIGbCfnxdHbXZ12gySFY/fz/ulZE333G6bPqIZ4F+TXo9ifiR86nAHpWnfoNjOb3o5ESi7J8Uz1jXHw==",
+   "signatures": [
+    {
+     "sig": "MEYCIQDXht8EVkFNQMgNaJ3Vh7yqniK0an6JH9dtuY7PN5bx9gIhAP6GV0ecXD2jFaXAWf7GCstsl6MrjupkM1Gqd6z76flY",
+     "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+   ],
+   "unpackedSize": 184018
+  },
+  "main": "dist/index.cjs",
+  "name": "prosemirror-state",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "exports": {
+   "import": "./dist/index.js",
+   "require": "./dist/index.cjs"
+  },
+  "gitHead": "d6fdcd19c4f7f68206b0a8d49649860365672585",
+  "license": "MIT",
+  "scripts": {
+   "test": "pm-runtests",
+   "prepare": "pm-buildhelper src/index.ts"
+  },
+  "_npmUser": {
+   "name": "marijn",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "homepage": "https://github.com/prosemirror/prosemirror-state#readme",
+  "repository": {
+   "url": "git://github.com/prosemirror/prosemirror-state.git",
+   "type": "git"
+  },
+  "_npmVersion": "10.9.3",
+  "description": "ProseMirror editor state",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "marijn",
+    "email": "marijn@haverbeke.berlin"
+   }
+  ],
+  "sideEffects": false,
+  "_nodeVersion": "22.20.0",
+  "dependencies": {
+   "prosemirror-view": "^1.27.0",
+   "prosemirror-model": "^1.0.0",
+   "prosemirror-transform": "^1.0.0"
+  },
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "@prosemirror/buildhelper": "^0.1.5",
+   "prosemirror-test-builder": "^1.0.0"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/prosemirror-state_1.4.4_1761220666360_0.503736088241217",
+   "host": "s3://npm-registry-packages-npm-production"
+  },
+  "_id": "prosemirror-state@1.4.4",
+  "version": "1.4.4"
+ }
+}

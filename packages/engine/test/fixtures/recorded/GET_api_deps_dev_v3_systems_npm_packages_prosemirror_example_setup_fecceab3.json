@@ -1,0 +1,301 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/systems/npm/packages/prosemirror-example-setup"
+ },
+ "status": 200,
+ "body": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "prosemirror-example-setup"
+  },
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.11.0"
+    },
+    "publishedAt": "2016-09-21T13:54:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.11.1"
+    },
+    "publishedAt": "2016-09-21T14:10:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.12.0"
+    },
+    "publishedAt": "2016-10-21T12:21:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.13.0"
+    },
+    "publishedAt": "2016-11-11T22:17:47Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.14.0"
+    },
+    "publishedAt": "2016-11-28T12:29:36Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.15.0"
+    },
+    "publishedAt": "2016-12-09T23:29:35Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.16.0"
+    },
+    "publishedAt": "2016-12-23T13:33:22Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.17.0"
+    },
+    "publishedAt": "2017-01-05T09:31:33Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.18.0"
+    },
+    "publishedAt": "2017-02-24T16:18:37Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.19.0"
+    },
+    "publishedAt": "2017-03-16T15:43:10Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.20.0"
+    },
+    "publishedAt": "2017-04-03T14:43:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.21.0"
+    },
+    "publishedAt": "2017-05-03T13:56:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.22.0"
+    },
+    "publishedAt": "2017-06-29T09:32:13Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.23.0"
+    },
+    "publishedAt": "2017-09-13T15:10:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.23.1"
+    },
+    "publishedAt": "2017-09-14T14:16:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "0.24.0"
+    },
+    "publishedAt": "2017-09-25T08:30:02Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.0.0"
+    },
+    "publishedAt": "2017-10-13T12:40:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.0.1"
+    },
+    "publishedAt": "2017-11-24T08:33:08Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.1.0"
+    },
+    "publishedAt": "2019-11-08T21:19:56Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.1.1"
+    },
+    "publishedAt": "2019-11-19T10:07:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.1.2"
+    },
+    "publishedAt": "2019-11-20T07:48:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.2.0"
+    },
+    "publishedAt": "2022-05-30T12:47:59Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.2.0-beta.1"
+    },
+    "publishedAt": "2022-05-20T13:14:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.2.1"
+    },
+    "publishedAt": "2022-06-22T09:59:40Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.2.2"
+    },
+    "publishedAt": "2023-05-17T13:40:57Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-example-setup",
+     "version": "1.2.3"
+    },
+    "publishedAt": "2024-08-16T07:01:37Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ }
+}

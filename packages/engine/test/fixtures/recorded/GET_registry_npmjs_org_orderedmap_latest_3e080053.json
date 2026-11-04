@@ -1,0 +1,79 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/orderedmap/latest"
+ },
+ "status": 200,
+ "body": {
+  "bugs": {
+   "url": "https://github.com/marijnh/orderedmap/issues"
+  },
+  "dist": {
+   "shasum": "61481269c44031c449915497bf5a4ad273c512d2",
+   "tarball": "https://registry.npmjs.org/orderedmap/-/orderedmap-2.1.1.tgz",
+   "fileCount": 7,
+   "integrity": "sha512-TvAWxi0nDe1j/rtMcWcIj94+Ffe6n7zhow33h40SKxmsmozs6dz/e+EajymfoFcHd7sxNn8yHM8839uixMOV6g==",
+   "signatures": [
+    {
+     "sig": "MEYCIQDjV7EeocNDZfYesAfsJsPemTQZPflsfnyRIDe7lPjmOwIhAOhyRo+VYW2GA3ticQ6YrCZ3A69KGuKEmovFBrdyMa8d",
+     "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA"
+    }
+   ],
+   "unpackedSize": 14835
+  },
+  "main": "dist/index.cjs",
+  "name": "orderedmap",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "author": {
+   "name": "Marijn Haverbeke",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "module": "dist/index.js",
+  "exports": {
+   "import": "./dist/index.js",
+   "require": "./dist/index.cjs"
+  },
+  "gitHead": "6a30ebbbecd30fed8bda884c7acf4ca9c6a02405",
+  "license": "MIT",
+  "scripts": {
+   "build": "rollup -c",
+   "watch": "rollup -c -w",
+   "prepare": "npm run build"
+  },
+  "_npmUser": {
+   "name": "marijn",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "homepage": "https://github.com/marijnh/orderedmap#readme",
+  "keywords": [
+   "persistent",
+   "map"
+  ],
+  "repository": {
+   "url": "git+https://github.com/marijnh/orderedmap.git",
+   "type": "git"
+  },
+  "_npmVersion": "9.6.5",
+  "description": "Persistent ordered mapping from strings",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "marijn",
+    "email": "marijn@haverbeke.berlin"
+   }
+  ],
+  "sideEffects": false,
+  "_nodeVersion": "19.7.0",
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "rollup": "^1.26.3"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/orderedmap_2.1.1_1684311028002_0.32944582694382607",
+   "host": "s3://npm-registry-packages"
+  },
+  "_id": "orderedmap@2.1.1",
+  "version": "2.1.1"
+ }
+}

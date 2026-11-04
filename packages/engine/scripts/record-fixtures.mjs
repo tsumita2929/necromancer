@@ -173,7 +173,8 @@ async function recordingFetch(url, init = {}) {
   try {
     body = trim(url, JSON.parse(text));
   } catch {
-    body = text;
+    // A README is text; the engine reads only its first 2,000 characters.
+    body = url.endsWith('/README.md') ? text.slice(0, 2000) : text;
   }
   writeFileSync(
     file,

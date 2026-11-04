@@ -1,0 +1,356 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.deps.dev/v3/systems/npm/packages/prosemirror-inputrules"
+ },
+ "status": 200,
+ "body": {
+  "packageKey": {
+   "system": "NPM",
+   "name": "prosemirror-inputrules"
+  },
+  "versions": [
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.11.1"
+    },
+    "publishedAt": "2016-09-21T14:10:05Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.12.0"
+    },
+    "publishedAt": "2016-10-21T11:24:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.13.0"
+    },
+    "publishedAt": "2016-11-11T22:17:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.14.0"
+    },
+    "publishedAt": "2016-11-28T12:28:54Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.15.0"
+    },
+    "publishedAt": "2016-12-09T23:28:52Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.16.0"
+    },
+    "publishedAt": "2016-12-23T13:32:01Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.17.0"
+    },
+    "publishedAt": "2017-01-05T09:30:48Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.17.1"
+    },
+    "publishedAt": "2017-02-21T10:28:39Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.18.0"
+    },
+    "publishedAt": "2017-02-24T16:17:55Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.19.0"
+    },
+    "publishedAt": "2017-03-16T15:42:28Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.20.0"
+    },
+    "publishedAt": "2017-04-03T14:42:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.21.0"
+    },
+    "publishedAt": "2017-05-03T13:55:58Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.22.0"
+    },
+    "publishedAt": "2017-06-29T09:31:34Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.23.0"
+    },
+    "publishedAt": "2017-09-13T15:08:03Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "0.24.0"
+    },
+    "publishedAt": "2017-09-25T08:29:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.0.0"
+    },
+    "publishedAt": "2017-10-13T12:39:30Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.0.1"
+    },
+    "publishedAt": "2017-11-10T10:14:21Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.0.2"
+    },
+    "publishedAt": "2019-05-08T09:41:46Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.0.3"
+    },
+    "publishedAt": "2019-05-17T08:39:50Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.0.4"
+    },
+    "publishedAt": "2019-05-17T09:51:23Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.1.0"
+    },
+    "publishedAt": "2019-11-08T21:18:20Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.1.1"
+    },
+    "publishedAt": "2019-11-19T10:05:32Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.1.2"
+    },
+    "publishedAt": "2019-11-20T07:46:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.1.3"
+    },
+    "publishedAt": "2020-09-16T11:04:12Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.2.0"
+    },
+    "publishedAt": "2022-05-30T12:47:25Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.2.0-beta.1"
+    },
+    "publishedAt": "2022-05-20T13:13:17Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.2.1"
+    },
+    "publishedAt": "2023-05-17T13:39:31Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.3.0"
+    },
+    "publishedAt": "2023-11-16T06:44:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.4.0"
+    },
+    "publishedAt": "2024-01-30T09:16:51Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.5.0"
+    },
+    "publishedAt": "2025-03-18T08:16:09Z",
+    "isDefault": false,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   },
+   {
+    "versionKey": {
+     "system": "NPM",
+     "name": "prosemirror-inputrules",
+     "version": "1.5.1"
+    },
+    "publishedAt": "2025-10-15T09:18:46Z",
+    "isDefault": true,
+    "isDeprecated": false,
+    "deprecatedReason": ""
+   }
+  ]
+ }
+}

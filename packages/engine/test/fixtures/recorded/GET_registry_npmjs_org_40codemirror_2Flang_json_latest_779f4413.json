@@ -1,0 +1,92 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/%40codemirror%2Flang-json/latest"
+ },
+ "status": 200,
+ "body": {
+  "bugs": {
+   "url": "https://github.com/codemirror/lang-json/issues"
+  },
+  "dist": {
+   "shasum": "054b160671306667e25d80385286049841836179",
+   "tarball": "https://registry.npmjs.org/@codemirror/lang-json/-/lang-json-6.0.2.tgz",
+   "fileCount": 9,
+   "integrity": "sha512-x2OtO+AvwEHrEwR0FyyPtfDUiloG3rnVTSZV1W8UteaLL8/MajQd8DpvUb2YVzC+/T18aSDv0H9mu+xw0EStoQ==",
+   "signatures": [
+    {
+     "sig": "MEUCIQCwv6sWnoqLxDgPuZCXbiaY6HI5aVdnEaWqgK98zqFdSAIgNAzejWDYdGfBSzhpUtbEIFgwlO5QjeomnS0nFuIPM7o=",
+     "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+   ],
+   "unpackedSize": 10751
+  },
+  "main": "dist/index.cjs",
+  "name": "@codemirror/lang-json",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "author": {
+   "url": "http://marijnhaverbeke.nl",
+   "name": "Marijn Haverbeke",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "module": "dist/index.js",
+  "exports": {
+   "import": "./dist/index.js",
+   "require": "./dist/index.cjs"
+  },
+  "gitHead": "ef0c630e5f3735f3c8c1c3d39ea10cde0046cc85",
+  "license": "MIT",
+  "scripts": {
+   "test": "cm-runtests",
+   "prepare": "cm-buildhelper src/json.ts"
+  },
+  "_npmUser": {
+   "name": "marijn",
+   "actor": {
+    "name": "marijn",
+    "type": "user",
+    "email": "marijn@haverbeke.berlin"
+   },
+   "email": "marijn@haverbeke.berlin"
+  },
+  "homepage": "https://github.com/codemirror/lang-json#readme",
+  "keywords": [
+   "editor",
+   "code"
+  ],
+  "repository": {
+   "url": "git+https://github.com/codemirror/lang-json.git",
+   "type": "git"
+  },
+  "_npmVersion": "11.3.0",
+  "description": "JSON language support for the CodeMirror code editor",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "adrianheine",
+    "email": "mail@adrianheine.de"
+   },
+   {
+    "name": "marijn",
+    "email": "marijn@haverbeke.berlin"
+   }
+  ],
+  "sideEffects": false,
+  "_nodeVersion": "22.14.0",
+  "dependencies": {
+   "@lezer/json": "^1.0.0",
+   "@codemirror/language": "^6.0.0"
+  },
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "@codemirror/buildhelper": "^1.0.0"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/lang-json_6.0.2_1750334106482_0.30725592714663175",
+   "host": "s3://npm-registry-packages-npm-production"
+  },
+  "_id": "@codemirror/lang-json@6.0.2",
+  "version": "6.0.2"
+ }
+}

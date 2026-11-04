@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/codemirror/basic-setup"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "codemirror/basic-setup",
+  "html_url": "https://github.com/codemirror/basic-setup",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2026-04-15T10:21:18Z",
+  "stargazers_count": 113,
+  "default_branch": "main"
+ }
+}

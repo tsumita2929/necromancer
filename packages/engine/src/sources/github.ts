@@ -28,31 +28,64 @@ export async function getLatestCommit(
 }
 
 export type GithubRepo =
-  { state: 'ok'; archived: boolean; pushedAt?: string } | { state: 'gone'; reason: string };
+  | {
+      state: 'ok';
+      archived: boolean;
+      pushedAt?: string;
+      /** Set when the repository answers under another name ("owner/name"): it was renamed or transferred. */
+      renamedTo?: string;
+    }
+  | { state: 'gone'; reason: string };
 
-/** `GET api.github.com/repos/{owner}/{repo}`. 404 and 451 mean the repository is gone. */
+const MAX_HOPS = 3;
+const REDIRECTS = new Set([301, 302, 307, 308]);
+
+/**
+ * `GET api.github.com/repos/{owner}/{repo}`. 404 and 451 mean the repository is gone. A repository that
+ * was renamed or moved answers 301 with the address of its new place. A browser or Node `fetch` follows
+ * that without being asked; a fetch that does not is followed here, up to three hops (a repository renamed
+ * more than once can leave a chain). The current name is reported in `renamedTo`; the old address is never
+ * read as gone.
+ */
 export async function getGithubRepo(http: Http, repo: RepoRef): Promise<Fetched<GithubRepo>> {
-  const r = await http.request(
-    `https://api.github.com/repos/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.name)}`,
-    { headers: { accept: 'application/vnd.github+json' } },
-  );
-  if (!r.ok) {
-    if (r.kind === 'not-found') {
-      return { ok: true, value: { state: 'gone', reason: 'GitHub answers 404 (not found)' } };
+  let url = `https://api.github.com/repos/${encodeURIComponent(repo.owner)}/${encodeURIComponent(repo.name)}`;
+  for (let hop = 0; hop <= MAX_HOPS; hop++) {
+    const r = await http.request(url, { headers: { accept: 'application/vnd.github+json' } });
+    if (!r.ok) {
+      if (REDIRECTS.has(r.status)) {
+        const next = isRecord(r.data) ? asString(r.data['url']) : undefined;
+        if (
+          next &&
+          next !== url &&
+          /^https:\/\/api\.github\.com\/(?:repos|repositories)\//.test(next)
+        ) {
+          url = next;
+          continue;
+        }
+        return fail(r);
+      }
+      if (r.kind === 'not-found') {
+        return { ok: true, value: { state: 'gone', reason: 'GitHub answers 404 (not found)' } };
+      }
+      if (r.kind === 'gone') {
+        return {
+          ok: true,
+          value: { state: 'gone', reason: 'GitHub answers 451 (unavailable for legal reasons)' },
+        };
+      }
+      return fail(r);
     }
-    if (r.kind === 'gone') {
-      return {
-        ok: true,
-        value: { state: 'gone', reason: 'GitHub answers 451 (unavailable for legal reasons)' },
-      };
+    if (!isRecord(r.data) || typeof r.data['archived'] !== 'boolean') {
+      return badShape('GitHub repository');
     }
-    return fail(r);
+    const out: GithubRepo = { state: 'ok', archived: asBoolean(r.data['archived']) === true };
+    const pushed = asString(r.data['pushed_at']);
+    if (pushed) out.pushedAt = pushed;
+    const current = asString(r.data['full_name']);
+    if (current && current.toLowerCase() !== `${repo.owner}/${repo.name}`.toLowerCase()) {
+      out.renamedTo = current;
+    }
+    return { ok: true, value: out };
   }
-  if (!isRecord(r.data) || typeof r.data['archived'] !== 'boolean') {
-    return badShape('GitHub repository');
-  }
-  const out: GithubRepo = { state: 'ok', archived: asBoolean(r.data['archived']) === true };
-  const pushed = asString(r.data['pushed_at']);
-  if (pushed) out.pushedAt = pushed;
-  return { ok: true, value: out };
+  return fail({ ok: false, status: 0, kind: 'unavailable', reason: 'too many redirects' });
 }

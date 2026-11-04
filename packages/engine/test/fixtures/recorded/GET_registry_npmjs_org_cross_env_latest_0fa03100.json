@@ -1,0 +1,130 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/cross-env/latest"
+ },
+ "status": 200,
+ "body": {
+  "bin": {
+   "cross-env": "dist/bin/cross-env.js",
+   "cross-env-shell": "dist/bin/cross-env-shell.js"
+  },
+  "bugs": {
+   "url": "https://github.com/kentcdodds/cross-env/issues"
+  },
+  "dist": {
+   "shasum": "cfd2a6200df9ed75bfb9cb3d7ce609c13ea21783",
+   "tarball": "https://registry.npmjs.org/cross-env/-/cross-env-10.1.0.tgz",
+   "fileCount": 15,
+   "integrity": "sha512-GsYosgnACZTADcmEyJctkJIoqAhHjttw7RsFrVoJNXbsWWqaq6Ym+7kZjq6mS45O0jij6vtiReppKQEtqWy6Dw==",
+   "signatures": [
+    {
+     "sig": "MEYCIQD1dZbcEf9T0VDrKIkznn7Z7zdoaas/vN9emy94YNaUgwIhAPFYTV54IKMoC8OrRuIUB2D3JCd0fLNm5R3nypJPQNYA",
+     "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+   ],
+   "unpackedSize": 20233
+  },
+  "main": "./dist/index.js",
+  "name": "cross-env",
+  "type": "module",
+  "zshy": {
+   "cjs": false,
+   "exports": {
+    ".": "./src/index.ts",
+    "./bin/cross-env": "./src/bin/cross-env.ts",
+    "./bin/cross-env-shell": "./src/bin/cross-env-shell.ts"
+   }
+  },
+  "types": "./dist/index.d.ts",
+  "author": {
+   "url": "https://kentcdodds.com",
+   "name": "Kent C. Dodds",
+   "email": "me@kentcdodds.com"
+  },
+  "module": "./dist/index.js",
+  "engines": {
+   "node": ">=20"
+  },
+  "exports": {
+   ".": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js"
+   },
+   "./bin/cross-env": {
+    "types": "./dist/bin/cross-env.d.ts",
+    "import": "./dist/bin/cross-env.js"
+   },
+   "./bin/cross-env-shell": {
+    "types": "./dist/bin/cross-env-shell.d.ts",
+    "import": "./dist/bin/cross-env-shell.js"
+   }
+  },
+  "gitHead": "152ae6a85b5725ac3c725a8a3e471aee79acc712",
+  "license": "MIT",
+  "scripts": {
+   "dev": "zshy --watch",
+   "lint": "eslint .",
+   "test": "vitest",
+   "build": "zshy",
+   "format": "prettier --write .",
+   "test:ui": "vitest --ui",
+   "lint:fix": "eslint . --fix",
+   "test:e2e": "node e2e/test-cross-env.js && node e2e/test-cross-env-shell.js && node e2e/test-default-values.js",
+   "test:run": "vitest run",
+   "validate": "npm run build && npm run typecheck && npm run lint && npm run format:check && npm run test:run",
+   "typecheck": "tsc --noEmit",
+   "format:check": "prettier --check .",
+   "test:coverage": "vitest run --coverage"
+  },
+  "_npmUser": {
+   "name": "kentcdodds",
+   "email": "me@kentcdodds.com"
+  },
+  "homepage": "https://github.com/kentcdodds/cross-env#readme",
+  "keywords": [
+   "cross-environment",
+   "environment variable",
+   "windows",
+   "cross-platform"
+  ],
+  "prettier": "@epic-web/config/prettier",
+  "repository": {
+   "url": "git+https://github.com/kentcdodds/cross-env.git",
+   "type": "git"
+  },
+  "_npmVersion": "10.8.2",
+  "description": "Run scripts that set and use environment variables across platforms",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "kentcdodds",
+    "email": "me@kentcdodds.com"
+   }
+  ],
+  "_nodeVersion": "20.19.5",
+  "dependencies": {
+   "cross-spawn": "^7.0.6",
+   "@epic-web/invariant": "^1.0.0"
+  },
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "zshy": "^0.3.0",
+   "eslint": "^9.32.0",
+   "vitest": "^3.2.4",
+   "prettier": "^3.6.2",
+   "@vitest/ui": "^3.2.4",
+   "typescript": "^5.8.3",
+   "@types/node": "^24.1.0",
+   "@epic-web/config": "^1.21.1",
+   "@types/cross-spawn": "^6.0.6",
+   "@vitest/coverage-v8": "^3.2.4"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/cross-env_10.1.0_1759167252045_0.2567224977735212",
+   "host": "s3://npm-registry-packages-npm-production"
+  },
+  "_id": "cross-env@10.1.0",
+  "version": "10.1.0"
+ }
+}

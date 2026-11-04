@@ -1,0 +1,17 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/codemirror/theme-one-dark"
+ },
+ "status": 200,
+ "body": {
+  "_trimmed": "GitHub payload reduced",
+  "full_name": "codemirror/theme-one-dark",
+  "html_url": "https://github.com/codemirror/theme-one-dark",
+  "archived": true,
+  "disabled": false,
+  "pushed_at": "2026-04-15T10:19:32Z",
+  "stargazers_count": 82,
+  "default_branch": "main"
+ }
+}

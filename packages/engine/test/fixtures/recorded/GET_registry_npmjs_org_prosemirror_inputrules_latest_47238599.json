@@ -1,0 +1,73 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://registry.npmjs.org/prosemirror-inputrules/latest"
+ },
+ "status": 200,
+ "body": {
+  "bugs": {
+   "url": "https://github.com/prosemirror/prosemirror-inputrules/issues"
+  },
+  "dist": {
+   "shasum": "d2e935f6086e3801486b09222638f61dae89a570",
+   "tarball": "https://registry.npmjs.org/prosemirror-inputrules/-/prosemirror-inputrules-1.5.1.tgz",
+   "fileCount": 15,
+   "integrity": "sha512-7wj4uMjKaXWAQ1CDgxNzNtR9AlsuwzHfdFH1ygEHA2KHF2DOEaXl1CJfNPAKCg9qNEh4rum975QLaCiQPyY6Fw==",
+   "signatures": [
+    {
+     "sig": "MEUCIQD5KYSGW3mwfAS0LxTj8LISTnUwTMTynGRk9O2LyijnowIgSmTmr98U7DtiXkctOj9rvrmh+7DYCS1cTsCfLDZL7Wc=",
+     "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+    }
+   ],
+   "unpackedSize": 49173
+  },
+  "main": "dist/index.cjs",
+  "name": "prosemirror-inputrules",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "exports": {
+   "import": "./dist/index.js",
+   "require": "./dist/index.cjs"
+  },
+  "gitHead": "089aa3852a55d551211af90aae2560c554ccf476",
+  "license": "MIT",
+  "scripts": {
+   "prepare": "pm-buildhelper src/index.ts"
+  },
+  "_npmUser": {
+   "name": "marijn",
+   "email": "marijn@haverbeke.berlin"
+  },
+  "homepage": "https://github.com/prosemirror/prosemirror-inputrules#readme",
+  "repository": {
+   "url": "git://github.com/prosemirror/prosemirror-inputrules.git",
+   "type": "git"
+  },
+  "_npmVersion": "11.3.0",
+  "description": "Automatic transforms on text input for ProseMirror",
+  "directories": {},
+  "maintainers": [
+   {
+    "name": "marijn",
+    "email": "marijn@haverbeke.berlin"
+   }
+  ],
+  "sideEffects": false,
+  "_nodeVersion": "22.14.0",
+  "dependencies": {
+   "prosemirror-state": "^1.0.0",
+   "prosemirror-transform": "^1.0.0"
+  },
+  "_hasShrinkwrap": false,
+  "devDependencies": {
+   "@prosemirror/buildhelper": "^0.1.5"
+  },
+  "_npmOperationalInternal": {
+   "tmp": "tmp/prosemirror-inputrules_1.5.1_1760519925948_0.17757879275914212",
+   "host": "s3://npm-registry-packages-npm-production"
+  },
+  "_id": "prosemirror-inputrules@1.5.1",
+  "version": "1.5.1"
+ }
+}

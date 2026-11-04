@@ -18,7 +18,13 @@ export interface FakeNpm {
     commitAt?: string;
     /** Status of the commits call, when it is not 200. */
     commitStatus?: number;
+    /** The repository's current name ("owner/name") when it differs from the one in the package. */
+    fullName?: string;
+    /** Answer the old address with this many 301 hops (GitHub's own body) before the 200. */
+    redirectHops?: number;
   };
+  /** The repository README served by raw.githubusercontent.com. Default: 404. */
+  readme?: string;
   /** Version to the OSV ids the batch endpoint lists. */
   advisories?: Record<string, string[]>;
   /**
@@ -35,7 +41,7 @@ function reply(status: number, body: unknown) {
     ok: status >= 200 && status < 300,
     status,
     json: async () => body,
-    text: async () => JSON.stringify(body),
+    text: async () => (typeof body === 'string' ? body : JSON.stringify(body)),
   };
 }
 
@@ -137,6 +143,34 @@ export function fakeWorld(
       const date = g.commitAt ?? g.pushedAt ?? '2020-01-01T00:00:00Z';
       return reply(200, [{ commit: { committer: { date }, author: { date } } }]);
     }
+    m = /^https:\/\/api\.github\.com\/repositories\/(\d+)$/.exec(url);
+    if (m) {
+      const hop = Number(m[1]);
+      const owner = pkgs.find((x) => (x.github?.redirectHops ?? 0) > 0);
+      const hops = owner?.github?.redirectHops ?? 0;
+      github.push(`repositories/${hop}`);
+      if (hop < hops) return reply(301, { url: `https://api.github.com/repositories/${hop + 1}` });
+      const g = owner?.github ?? {};
+      return reply(200, {
+        archived: g.archived ?? false,
+        pushed_at: g.pushedAt ?? '2020-01-01T00:00:00Z',
+        full_name: g.fullName,
+      });
+    }
+    m = /^https:\/\/raw\.githubusercontent\.com\/(.+)\/HEAD\/README\.md$/.exec(url);
+    if (m) {
+      const slug = decodeURIComponent(m[1] ?? '').toLowerCase();
+      const p = pkgs.find(
+        (x) =>
+          x.repo &&
+          slug ===
+            x.repo
+              .replace(/^.*github\.com[/:]/, '')
+              .replace(/\.git$/, '')
+              .toLowerCase(),
+      );
+      return p?.readme === undefined ? reply(404, 'Not Found') : reply(200, p.readme);
+    }
     m = /^https:\/\/api\.github\.com\/repos\/(.+)$/.exec(url);
     if (m) {
       github.push(m[1] ?? '');
@@ -152,9 +186,13 @@ export function fakeWorld(
       );
       const g = p?.github ?? { status: 404 };
       if (g.status && g.status !== 200) return reply(g.status, {});
+      if ((g.redirectHops ?? 0) > 0) {
+        return reply(301, { url: 'https://api.github.com/repositories/1' });
+      }
       return reply(200, {
         archived: g.archived ?? false,
         pushed_at: g.pushedAt ?? '2020-01-01T00:00:00Z',
+        ...(g.fullName ? { full_name: g.fullName } : {}),
       });
     }
     if (url === 'https://api.osv.dev/v1/query') {
