@@ -5,13 +5,14 @@ a login, so its exact field names could not be read. The fields below follow wha
 rules and the contest page ask for, plus the usual Devpost project fields. Paste each block into
 the field with the matching heading.
 
-Three links do not exist yet. Each appears as one marker, `[[PLACEHOLDER: NAME]]`:
+Four links do not exist yet. Each appears as one marker, `[[PLACEHOLDER: NAME]]`:
 
 | Marker | Fill in when |
 |---|---|
 | `[[PLACEHOLDER: REPO_URL]]` | the public GitHub repository exists |
 | `[[PLACEHOLDER: PAGES_URL]]` | Settings, Pages shows the site address (`https://OWNER.github.io/REPOSITORY/`) |
 | `[[PLACEHOLDER: YOUTUBE_URL]]` | the demo video is public on YouTube |
+| `[[PLACEHOLDER: CREW_REPO_URL]]` | the separate Kiro Crew app repository exists (only if you go for the Best Kiro Crew App prize; see the next section) |
 
 Before submitting, search this file for `PLACEHOLDER`. No result means it is done.
 
@@ -38,7 +39,7 @@ Resurrection
 
 | Prize | Select? | What the form needs |
 |---|---|---|
-| Best Kiro Crew App | Yes | The repository URL (`apps/crew` holds the app) and the description in the section "Kiro Crew app" below. The app was newly created in the submission period. |
+| Best Kiro Crew App | Yes, if the separate repository is made | Section 8 of the Official Rules lists this prize for submissions "that include a separate repo submission to a Kiro Crew app (GitHub account must match overall submission)". Section 4 asks for a public GitHub URL of the app's repository and a description of its features. `apps/crew` in the main repository holds the app, so a second public repository under the same GitHub account is needed. Open question, see `docs/verification/submission-drafts.md`. Use the description in the section "Kiro Crew app" below. The app was newly created in the submission period. |
 | Best Demo | Yes | Nothing; every eligible submission is considered. |
 | Bonus Blog Prize | Owner's choice | A public blog post about Kiro and this build, published between 2026-10-30 and 2026-12-04 Pacific Time, that says it was written for the Kiroween 2026 hackathon. Its URL goes in the form. |
 | Social Blitz Prize | Owner's choice | A public post that starts with `#KiroweenHackathon26`, in your own words: your favorite thing about Kiro and how it changed the way you build. Its URL goes in the form. |
@@ -52,7 +53,7 @@ Resurrection
 | Public GitHub repository | [[PLACEHOLDER: REPO_URL]] |
 | Working app (try it out) | [[PLACEHOLDER: PAGES_URL]] |
 | Demo video (YouTube, public) | [[PLACEHOLDER: YOUTUBE_URL]] |
-| Kiro Crew app repository (bonus) | the same repository; the app is in the `apps/crew` folder |
+| Kiro Crew app repository (bonus) | [[PLACEHOLDER: CREW_REPO_URL]] (the app is also in the main repository, in `apps/crew`) |
 
 ## Built with
 
@@ -219,8 +220,7 @@ over third-party packages, and they found the differences listed above.
 
 ## Kiro Crew app (for the Best Kiro Crew App prize)
 
-Necromancer is also a Kiro Crew app: `apps/crew` in the repository. It was created in the submission
-period.
+Necromancer is also a Kiro Crew app: `apps/crew` in the main repository, and [[PLACEHOLDER: CREW_REPO_URL]] as its own repository for this prize. It was created in the submission period.
 
 - **Graveyard page** in the dashboard sidebar: every watched project, its dead dependencies worst
   first, each with a symbol and a word (not color alone), an epitaph and its way out, and a button
