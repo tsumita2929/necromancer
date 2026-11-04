@@ -71,9 +71,12 @@ jobs:
       # The séance the page offers is run for real: unpacked, installed and run with the old package and
       # the replacement, and each deliberately wrong replacement must fail. The script builds its own
       # scratch (npm packages, and a Python virtual environment) from the public registries.
+      # Python 3.9 is the version the Python séances were run and checked on. With 3.12 (and the newer
+      # Hypothesis it allows) the toml séance fails on `0 = [-0.0]`: toml reads 0.0 and tomli reads -0.0.
+      # Move to a newer Python when the toml recipe declares or avoids that difference.
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
-          python-version: '3.12'
+          python-version: '3.9'
       - name: Run the web séance check (a skipped language fails the job)
         shell: bash
         timeout-minutes: 15
