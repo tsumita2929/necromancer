@@ -10,4 +10,4 @@ Tick each box when the task is done and its tests pass. Resume at the first unch
 - [x] 6. Tests: `test/seance-versions.test.ts` (parsing, coverage rules, mkdirp flavours, all bundles, data matches records)
 - [x] 7. Latest release of old package and of successors; `run-seances.mjs` all OK
 - [x] 8. Web and Crew typecheck and tests against the engine (edit nothing there)
-- [ ] 9. `docs/verification/engine-seance-versions.md`; commit; report done
+- [x] 9. `docs/verification/engine-seance-versions.md`; commit; report done
