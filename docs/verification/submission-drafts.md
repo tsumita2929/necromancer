@@ -116,13 +116,13 @@ section 3), not by a new click-through here.
 
 ## 7. Links and timings
 
-`check-links.py` (scratch folder) read `README.md`, `docs/submission/devpost.md` and `docs/submission/video-script.md` in the clone:
-120 references (markdown links plus backticked paths).
+`check-links.py` (scratch folder) read `README.md`, `devpost.md`, `video-script.md`, `blog-post.md` and `social-post.md` in a fresh clone
+(HEAD `af5be3f`): 128 references (markdown links plus backticked paths).
 
 | Kind | Result |
 | --- | --- |
-| Markdown links `[text](path)` | 0 broken. |
-| Backticked paths | 30 did not exist as written. 1 is this file, written after the check (it exists now). The other 29 are not repository paths from the root: file names inside a user's project (`package.json`, `requirements.txt`, `seance/left-pad/replacement.mjs`), a path relative to `apps/crew` (`scripts/mcp-call.mjs`), a build output (`apps/crew/dist/server.mjs`), a repository name (`appsecco/dvna`), a file in the demo app (`src/receipt.js`) and the Devpost spec file names named as names. |
+| Markdown links `[text](path)` | 0 broken in the five drafts. (In this record the checker flags the literal example `[text](path)` in section 9's text; that is not a link.) |
+| Backticked paths | 28 did not exist as written. 1 is `docs/verification/crew-repo.md`, which the Crew worker writes later (the lead's ruling names it); recheck when it exists. The other 27 are not paths from the repository root: file names inside a user's project (`package.json`, `requirements.txt`, `seance/left-pad/replacement.mjs`), a path relative to `apps/crew` (`scripts/mcp-call.mjs`), a build output (`apps/crew/dist/server.mjs`), repository names (`appsecco/dvna`), a file in the demo app (`src/receipt.js`), the names of spec and steering files, and the address typed into the app. |
 | External URLs | not fetched. The Devpost and AWS addresses were read for the rules in section 3. |
 
 Video timings (parsed from the table in `video-script.md`): 14 + 18 + 23 + 25 + 32 + 35 + 18 = **165 s = 2:45**, under 180 s by 15 s. Each
