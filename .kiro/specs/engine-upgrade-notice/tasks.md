@@ -8,5 +8,5 @@ Tick each box when the task is done and its tests pass. Resume at the first unch
 - [x] 4. PEP 592 in the PyPI range resolution (N3)
 - [x] 5. Generated spec text (N4)
 - [x] 6. Tests: `test/upgrade.test.ts`; update the tests that pinned `dying` for a deprecated version
-- [ ] 7. Census before and after (`scripts/tuning-eval/upgrade-compare.mjs`); `run-seances.mjs`; web and Crew suites with no edit there
-- [ ] 8. `docs/verification/engine-upgrade.md`; commit; report done
+- [x] 7. Census before and after (`scripts/tuning-eval/upgrade-compare.mjs`); `run-seances.mjs`; web and Crew suites with no edit there
+- [x] 8. `docs/verification/engine-upgrade.md`; commit; report done
