@@ -17,6 +17,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: { alias: { '@contract': contract } },
   build: { target: 'es2022', sourcemap: false },
+  // The engine lives next to the app (file: dependency), and tests read its recorded answers.
+  server: { fs: { allow: [fileURLToPath(new URL('../..', import.meta.url))] } },
   test: {
     environment: 'jsdom',
     globals: true,

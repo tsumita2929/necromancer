@@ -9,6 +9,7 @@
 import { createServer } from 'vite';
 import { mkdir, readdir, rm, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
+import { indexEntry, writeIndex } from './lib/sample-index.mjs';
 
 const args = process.argv.slice(2);
 const preview = args.includes('--preview');
@@ -58,33 +59,9 @@ if (!preview && recorded.length > 0) {
   for (const { repo, report } of recorded) {
     const id = `${repo.owner}-${repo.name}`.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     await writeFile(`${outDir}${id}.json`, `${JSON.stringify(report, null, 2)}\n`);
-    const ecosystems = new Set(report.diagnoses.map((d) => d.dependency.ecosystem));
-    index.push({
-      id,
-      repository: `${repo.owner}/${repo.name}`,
-      ecosystem: ecosystems.size > 1 ? 'both' : ecosystems.has('pypi') ? 'pypi' : 'npm',
-      recordedAt: report.scannedAt,
-      total: report.diagnoses.length,
-      summary: report.summary,
-    });
+    index.push(indexEntry(id, `${repo.owner}/${repo.name}`, report));
   }
-  const source = `// Written by scripts/record-samples.mjs. Do not edit by hand.
-import type { Verdict } from '@contract';
-
-export interface RecordedSample {
-  id: string;
-  /** owner/name on GitHub. */
-  repository: string;
-  ecosystem: 'npm' | 'pypi' | 'both';
-  /** ISO date of the engine run. */
-  recordedAt: string;
-  total: number;
-  summary: Record<Verdict, number>;
-}
-
-export const RECORDED_SAMPLES: readonly RecordedSample[] = ${JSON.stringify(index, null, 2)};
-`;
-  await writeFile(fileURLToPath(new URL('../src/data/samples.generated.ts', import.meta.url)), source);
+  await writeIndex(index);
   console.log(`wrote ${index.length} recorded reports and the index`);
 }
 await vite.close();

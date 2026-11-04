@@ -1,4 +1,4 @@
-import type { Verdict } from '@contract';
+import type { Diagnosis, Verdict } from '@contract';
 import { VerdictIcon } from './icons';
 
 export interface VerdictMeta {
@@ -16,7 +16,7 @@ export const VERDICT_META: Record<Verdict, VerdictMeta> = {
   zombie: {
     label: 'Zombie',
     plural: 'Zombies',
-    meaning: 'Dead, and a known advisory affects the version you run. Nobody will patch it.',
+    meaning: 'Dead (by a hard signal, or by a heuristic that is marked as such), and a known advisory affects the version you run.',
     tagline: 'Dead, still walking, and dangerous',
   },
   ghost: {
@@ -28,8 +28,9 @@ export const VERDICT_META: Record<Verdict, VerdictMeta> = {
   dead: {
     label: 'Dead',
     plural: 'Dead',
-    meaning: 'A definitive end-of-life signal: deprecated, archived, yanked or abandoned.',
-    tagline: 'Deprecated, archived or abandoned',
+    meaning:
+      'A hard end-of-life signal (deprecated, archived, yanked or gone), or, when marked "heuristic", a guess from age and silence: it looks abandoned.',
+    tagline: 'Ended, or looks abandoned',
   },
   dying: {
     label: 'Dying',
@@ -40,16 +41,51 @@ export const VERDICT_META: Record<Verdict, VerdictMeta> = {
   alive: {
     label: 'Alive',
     plural: 'Alive',
-    meaning: 'Maintained, with no blocking signal.',
+    meaning: 'Maintained: no end-of-life signal. It can still carry known advisories, which its tombstone shows.',
     tagline: 'Maintained and quiet',
   },
 };
 
-export function VerdictBadge({ verdict, large = false }: { verdict: Verdict; large?: boolean }) {
+/** One sentence for one diagnosis: the verdict's meaning, said honestly about its basis and its advisories (QA-02, QA-05). */
+export function meaningOf(diagnosis: Pick<Diagnosis, 'verdict' | 'advisories'>, basis: 'hard' | 'heuristic' | undefined): string {
+  const { verdict, advisories } = diagnosis;
+  const n = advisories.length;
+  switch (verdict) {
+    case 'alive':
+      return n > 0
+        ? `Still maintained, but ${n} known ${n === 1 ? 'advisory affects' : 'advisories affect'} the version in use. Check the advisories below.`
+        : 'Maintained: no end-of-life signal.';
+    case 'dying':
+      return basis === 'hard'
+        ? 'A warning from the registry or the maintainer: the version in use or the package is flagged.'
+        : 'Only stale signals so far: no release for a long time, or little sign of work. A heuristic, not a hard signal.';
+    case 'dead':
+      return basis === 'heuristic'
+        ? 'Looks abandoned: no release for years and no sign of work. A heuristic, not a hard end-of-life signal. Check before you act.'
+        : 'A hard end-of-life signal: deprecated, archived, yanked or gone.';
+    case 'ghost':
+      return 'Dead, and its source repository is gone. You cannot read, fork or fix it.';
+    case 'zombie':
+      return basis === 'heuristic'
+        ? 'Looks abandoned (a heuristic, not a hard signal), and a known advisory affects the version you run.'
+        : 'Dead by a hard signal, and a known advisory affects the version you run. Nobody will patch it.';
+  }
+}
+
+export function VerdictBadge({
+  verdict,
+  large = false,
+  basis,
+}: {
+  verdict: Verdict;
+  large?: boolean;
+  basis?: 'hard' | 'heuristic' | undefined;
+}) {
   return (
     <span className={`verdict verdict--${verdict}${large ? ' verdict--lg' : ''}`}>
       <VerdictIcon verdict={verdict} className="verdict__icon" />
       <span>{VERDICT_META[verdict].label}</span>
+      {basis === 'heuristic' ? <span className="verdict__basis">heuristic</span> : null}
     </span>
   );
 }

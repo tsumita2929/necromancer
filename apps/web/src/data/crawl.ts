@@ -1,6 +1,7 @@
 import type { SourceFile } from '@contract';
 import { rawUrl, type RawFetch, type RepoRef } from './github';
 import { SOURCE_LIMITS, emptySkipped, isSourcePath, type ProjectSources } from './sources';
+import { detectTestRunner } from './usage';
 
 /** Limits on reading a repository's source from raw.githubusercontent.com (R5.2, R5.3). */
 export const CRAWL_LIMITS = { maxFiles: 60, maxRequests: 150, concurrency: 6 } as const;
@@ -188,9 +189,11 @@ export async function readRepositorySources(repo: RepoRef, fetchRaw: RawFetch, o
 
   // Entry groups: package.json hints first, then the usual names.
   const entryGroups: string[][] = [];
+  let testRunner: string | undefined;
   if (options.languages.js) {
     const pkg = await get('package.json');
     if (pkg.text !== null) {
+      testRunner = detectTestRunner(pkg.text);
       try {
         const json = JSON.parse(pkg.text) as Record<string, unknown>;
         const hinted: string[] = [];
@@ -244,5 +247,5 @@ export async function readRepositorySources(repo: RepoRef, fetchRaw: RawFetch, o
   if (hitFileLimit) notes.push(`Stopped after ${files.length} source files (the limit is ${maxFiles}); some files were not read.`);
   if (hitRequestLimit) notes.push(`Stopped after ${requests} requests to raw.githubusercontent.com (the limit is ${maxRequests}).`);
   if (skipped.tooLarge > 0) notes.push(`${skipped.tooLarge} file${skipped.tooLarge === 1 ? '' : 's'} over ${SOURCE_LIMITS.maxFileBytes / 1024} KiB ${skipped.tooLarge === 1 ? 'was' : 'were'} skipped.`);
-  return { files, origin: 'github', skipped, totalBytes, notes };
+  return { files, origin: 'github', skipped, totalBytes, ...(testRunner ? { testRunner } : {}), notes };
 }

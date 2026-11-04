@@ -1,5 +1,5 @@
-// Written by scripts/record-samples.mjs. Do not edit by hand.
-import type { Verdict } from '@contract';
+// Written by scripts/record-samples.mjs and scripts/reindex-samples.mjs. Do not edit by hand.
+import type { SourceId, Verdict } from '@contract';
 
 export interface RecordedSample {
   id: string;
@@ -10,6 +10,8 @@ export interface RecordedSample {
   recordedAt: string;
   total: number;
   summary: Record<Verdict, number>;
+  /** Sources that could not be used for this report; empty when it is complete. */
+  unavailable: SourceId[];
 }
 
 export const RECORDED_SAMPLES: readonly RecordedSample[] = [
@@ -25,7 +27,10 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
       "dead": 5,
       "ghost": 0,
       "zombie": 1
-    }
+    },
+    "unavailable": [
+      "github"
+    ]
   },
   {
     "id": "miguelgrinberg-microblog",
@@ -39,7 +44,10 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
       "dead": 3,
       "ghost": 0,
       "zombie": 0
-    }
+    },
+    "unavailable": [
+      "github"
+    ]
   },
   {
     "id": "sickchill-sickchill",
@@ -53,6 +61,9 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
       "dead": 13,
       "ghost": 0,
       "zombie": 0
-    }
+    },
+    "unavailable": [
+      "github"
+    ]
   }
 ];

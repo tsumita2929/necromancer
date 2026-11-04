@@ -2,8 +2,9 @@ import { useEffect, useId, useRef } from 'react';
 import type { Diagnosis, SourceId } from '@contract';
 import { Button, ExtLink, formatDate } from '../design/controls';
 import { CloseIcon } from '../design/icons';
-import { VERDICT_META, VerdictBadge } from '../design/Verdict';
-import { displayVersion } from '../state/model';
+import { meaningOf, VerdictBadge } from '../design/Verdict';
+import { canResurrect as canResurrectDiagnosis, waysOut } from '../data/kit';
+import { basisOf, displayVersion } from '../state/model';
 import type { SourceContext } from '../data/autopsy';
 import { SpecViewer, kindLabel } from './SpecViewer';
 
@@ -28,13 +29,43 @@ interface DetailPanelProps {
   onSpec: (index: number | undefined) => void;
 }
 
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
+
+/**
+ * The browser's modal dialog lets Tab leave through the page behind it (one stop on the body, invisible)
+ * before it comes back (QA-18). Wrap Tab and Shift+Tab inside the panel instead.
+ */
+function keepFocusInside(event: React.KeyboardEvent, root: HTMLElement | null): void {
+  if (!root) return;
+  // Where there is no layout engine (a test), only the content of closed <details> counts as hidden.
+  const hasLayout = root.getClientRects().length > 0;
+  const visible = (el: HTMLElement): boolean => {
+    if (hasLayout) return el.getClientRects().length > 0;
+    const details = el.closest('details');
+    return !details || details.open || (el.tagName === 'SUMMARY' && el.parentElement === details);
+  };
+  const items = Array.from(root.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(visible);
+  const first = items[0];
+  const last = items[items.length - 1];
+  if (!first || !last) return;
+  const active = document.activeElement;
+  if (event.shiftKey && (active === first || active === root || !items.includes(active as HTMLElement))) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && (active === last || active === root)) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
 export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: DetailPanelProps) {
   const dialog = useRef<HTMLDialogElement>(null);
   const title = useRef<HTMLHeadingElement>(null);
   const titleId = useId();
-  const { dependency, verdict, evidence, advisories, successors, latest } = diagnosis;
+  const { dependency, verdict, evidence, advisories, latest } = diagnosis;
   const alive = verdict === 'alive';
-  const canResurrect = !alive && successors.length > 0;
+  const canResurrect = canResurrectDiagnosis(diagnosis);
+  const { successors, synthetic } = canResurrect ? waysOut(diagnosis) : { successors: diagnosis.successors, synthetic: false };
   const version = displayVersion(dependency);
 
   useEffect(() => {
@@ -54,6 +85,9 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
       className={`panel verdict--${verdict}`}
       aria-labelledby={titleId}
       onClose={onClose}
+      onKeyDown={(event) => {
+        if (event.key === 'Tab') keepFocusInside(event, dialog.current);
+      }}
       onClick={(event) => {
         // A click on the backdrop lands on the dialog element itself.
         if (event.target === dialog.current) dialog.current?.close();
@@ -62,7 +96,7 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
       <div className="panel__scroll">
         <header className={`panel__head verdict--${verdict}`}>
           <div className="panel__headrow">
-            <VerdictBadge verdict={verdict} large />
+            <VerdictBadge verdict={verdict} large basis={basisOf(diagnosis)} />
             <button type="button" className="panel__close" onClick={() => dialog.current?.close()}>
               <CloseIcon className="panel__closeicon" />
               <span className="sr-only">Close details</span>
@@ -77,7 +111,7 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
             <span className="tag">{dependency.direct ? 'direct' : 'transitive'}</span>
             <span className="tag">{dependency.scope}</span>
           </p>
-          <p className="panel__meaning">{VERDICT_META[verdict].meaning}</p>
+          <p className="panel__meaning">{meaningOf(diagnosis, basisOf(diagnosis))}</p>
         </header>
 
         {inSpec ? (
@@ -101,7 +135,11 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                 <p className="panel__nothing">No successor is known yet, so there is nothing to resurrect onto.</p>
               )}
               {canResurrect ? (
-                <p className="panel__actionnote">Shows a Kiro spec for the move, ready to download.</p>
+                <p className="panel__actionnote">
+                  {synthetic
+                    ? 'No successor is listed, so this offers the way out Necromancer builds: rebuild it as code you own, with a Kiro spec and a test.'
+                    : 'Shows a Kiro spec and a test for the move, ready to download.'}
+                </p>
               ) : null}
             </div>
 
@@ -145,6 +183,13 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
               {successors.length === 0 ? (
                 <p className="quiet">{alive ? 'None needed.' : 'No successor is known.'}</p>
               ) : (
+                <>
+                {synthetic ? (
+                  <p className="quiet ways__note">
+                    No successor is listed for this package. The way out below is one Necromancer builds: rebuild it as code
+                    you own (a raise).
+                  </p>
+                ) : null}
                 <ul className="ways">
                   {successors.map((successor, index) => (
                     <li key={`${successor.name}-${index}`}>
@@ -160,6 +205,7 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                     </li>
                   ))}
                 </ul>
+                </>
               )}
             </section>
 

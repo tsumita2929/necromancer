@@ -26,6 +26,8 @@ export function parseRepoInput(raw: string): RepoRef | null {
   if (/^github\.com\//i.test(text)) text = text.slice('github.com/'.length);
   else if (/^[^/\s]+\.[a-z]{2,}\//i.test(text)) return null; // some other host
   const parts = (text.split(/[?#]/)[0] ?? '').split('/').filter((part) => part.length > 0);
+  // A '.' or '..' segment anywhere is not a repository address (QA-10).
+  if (parts.some((part) => part === '.' || part === '..')) return null;
   const owner = parts[0];
   let name = parts[1];
   if (!owner || !name) return null;

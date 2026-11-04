@@ -61,20 +61,32 @@ describe('R9 URL state', () => {
     expect(back).toMatchObject({ name: 'graveyard', view: { source: { kind: 'files', files } } });
   });
 
+  it.each(['', '#', '#/nowhere', '#/about/extra'])('R9.5 an unknown address %j opens the landing page without a complaint', (hash) => {
+    expect(parseHash(hash)).toEqual({ name: 'landing' });
+  });
+
   it.each([
-    '',
-    '#',
-    '#/nowhere',
     '#/graveyard',
     '#/graveyard?src=',
     '#/graveyard?src=sample:nope',
+    '#/graveyard?src=repo:',
     '#/graveyard?src=repo:not a repo',
+    '#/graveyard?src=repo:a/b/../c',
+    '#/graveyard?src=repo:a/b/c',
     '#/graveyard?src=files:%%%',
     '#/graveyard?src=files:AAAA',
     '#/graveyard?src=bogus',
     '#/graveyard?%E0%A4%A',
-  ])('R9.5 falls back to the landing page for %j', (hash) => {
-    expect(parseHash(hash)).toEqual({ name: 'landing' });
+  ])('QA-10 a damaged result link %j opens the landing page and says the link is invalid', (hash) => {
+    expect(parseHash(hash)).toEqual({ name: 'landing', notice: 'invalid-link' });
+  });
+
+  it('the basis filter survives the link, and an unknown basis is dropped', () => {
+    const view = { ...defaultView({ kind: 'sample' as const, id: SAMPLE }), basis: 'heuristic' as const };
+    expect(formatHash({ name: 'graveyard', view })).toBe(`#/graveyard?src=sample:${SAMPLE}&b=heuristic`);
+    expect(parseHash(`#/graveyard?src=sample:${SAMPLE}&b=heuristic`)).toEqual({ name: 'graveyard', view });
+    expect(parseHash(`#/graveyard?src=sample:${SAMPLE}&b=whatever`)).toMatchObject({ name: 'graveyard', view: { sort: 'urgency' } });
+    expect((parseHash(`#/graveyard?src=sample:${SAMPLE}&b=whatever`) as { view: { basis?: string } }).view.basis).toBeUndefined();
   });
 
   it('ignores unknown verdicts, sorts and bad spec indexes', () => {

@@ -1377,3 +1377,60 @@
 .spec > h3 {
   margin-top: var(--space-2);
 }
+
+/* ---------- Round 4: basis, advisories on the living, partial cards, notices ---------- */
+.verdict__basis {
+  margin-left: 0.4em;
+  padding: 0.15em 0.55em;
+  border: 1px dashed currentColor;
+  border-radius: 999px;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
+  color: var(--text);
+}
+.tomb__top .verdict {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.summary__sub {
+  font-size: var(--text-xs);
+  color: var(--text-quiet);
+}
+.tomb__advisory--alive {
+  margin-left: auto;
+}
+.sample__partial {
+  padding: var(--space-2) var(--space-3);
+  border: 1px dashed var(--dying);
+  border-radius: 8px;
+  color: var(--dying);
+  font-size: var(--text-xs);
+}
+.hero__notice {
+  max-width: 44rem;
+  margin-bottom: var(--space-4);
+}
+.toolbar__basis {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.chip--small {
+  min-height: var(--tap);
+  padding: 0 var(--space-3);
+  font-size: var(--text-sm);
+}
+.ways__note {
+  margin-bottom: var(--space-3);
+}
+/* Footer links are touch targets too (QA-11). */
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 0 var(--space-2);
+}

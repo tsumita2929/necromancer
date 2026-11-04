@@ -1,6 +1,6 @@
 import type { ManifestFile, Verdict } from '@contract';
 import { detectManifestKind, isSampleId, parseRepoInput, type AutopsyInput } from '../data/autopsy';
-import { GROUP_ORDER, SORT_KEYS, type SortKey } from './model';
+import { BASES, GROUP_ORDER, SORT_KEYS, type Basis, type SortKey } from './model';
 
 /** The whole shareable state of the graveyard view lives in the URL fragment. */
 export interface ViewState {
@@ -8,6 +8,8 @@ export interface ViewState {
   verdicts: Verdict[];
   q: string;
   sort: SortKey;
+  /** Only verdicts of this basis. */
+  basis?: Basis;
   /** Dependency key, "<ecosystem>:<name>". */
   open?: string;
   /** Index of the successor whose spec is on screen. */
@@ -15,7 +17,7 @@ export interface ViewState {
 }
 
 export type Route =
-  | { name: 'landing' }
+  | { name: 'landing'; notice?: 'invalid-link' }
   | { name: 'about' }
   | { name: 'graveyard'; view: ViewState };
 
@@ -83,7 +85,8 @@ export function parseSource(text: string | null): AutopsyInput | null {
     const at = rest.indexOf('@');
     const base = at < 0 ? rest : rest.slice(0, at);
     const ref = at < 0 ? '' : rest.slice(at + 1);
-    const repo = parseRepoInput(ref === '' ? base : `${base}/tree/${ref}`);
+    // A link names a repository exactly: owner/name, nothing more (QA-10).
+    const repo = /^[^/]+\/[^/]+$/.test(base) ? parseRepoInput(ref === '' ? base : `${base}/tree/${ref}`) : null;
     return repo ? { kind: 'repo', ...repo } : null;
   }
   if (kind === 'files') {
@@ -109,6 +112,7 @@ export function formatHash(route: Route): string {
   if (view.verdicts.length > 0) params.set('v', GROUP_ORDER.filter((v) => view.verdicts.includes(v)).join(','));
   if (view.q.trim() !== '') params.set('q', view.q);
   if (view.sort !== 'urgency') params.set('sort', view.sort);
+  if (view.basis) params.set('b', view.basis);
   if (view.open) params.set('open', view.open);
   if (view.open && view.spec !== undefined) params.set('spec', String(view.spec));
   return `#/graveyard?${tidy(params.toString())}`;
@@ -123,13 +127,15 @@ export function parseHash(hash: string): Route {
     if (path !== '/graveyard') return { name: 'landing' };
     const params = new URLSearchParams(query);
     const source = parseSource(params.get('src'));
-    if (!source) return { name: 'landing' };
+    if (!source) return { name: 'landing', notice: 'invalid-link' };
     const verdicts = (params.get('v') ?? '')
       .split(',')
       .filter((v): v is Verdict => (GROUP_ORDER as readonly string[]).includes(v));
     const sortParam = params.get('sort');
     const sort = SORT_KEYS.find((key) => key === sortParam) ?? 'urgency';
     const view: ViewState = { source, verdicts: [...new Set(verdicts)], q: (params.get('q') ?? '').slice(0, 200), sort };
+    const basis = BASES.find((b) => b === params.get('b'));
+    if (basis) view.basis = basis;
     const open = params.get('open');
     if (open && /^(npm|pypi):.+/.test(open)) {
       view.open = open;
@@ -138,7 +144,7 @@ export function parseHash(hash: string): Route {
     }
     return { name: 'graveyard', view };
   } catch {
-    return { name: 'landing' };
+    return { name: 'landing', notice: 'invalid-link' };
   }
 }
 

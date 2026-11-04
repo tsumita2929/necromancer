@@ -25,6 +25,8 @@ import {
   totalOf,
   type Controls,
   type SortKey,
+  type Basis,
+  basisOf,
 } from '../state/model';
 import { MAX_SHARE_PAYLOAD, defaultView, formatSource, type Route, type ViewState } from '../state/url';
 import { DetailPanel, SOURCE_NAMES } from './DetailPanel';
@@ -116,6 +118,7 @@ export function Graveyard({ view, navigate }: GraveyardProps) {
       <Loading
         label={sourceLabel(source)}
         live={source.kind !== 'sample'}
+        fromGitHub={source.kind === 'repo'}
         progress={progress}
         onCancel={() => {
           cancel.current?.abort();
@@ -155,11 +158,13 @@ const STAGE_LABELS: Record<(typeof STAGES)[number], { title: string; detail: str
 function Loading({
   label,
   live,
+  fromGitHub,
   progress,
   onCancel,
 }: {
   label: string;
   live: boolean;
+  fromGitHub: boolean;
   progress: Progress;
   onCancel: () => void;
 }) {
@@ -169,7 +174,7 @@ function Loading({
       <p className="eyebrow">Autopsy in progress</p>
       <h1 className="loading__title">Digging up {label}…</h1>
       <p className="sr-only" role="status" aria-live="polite">
-        {current ? `${STAGE_LABELS[current].title}: ${STAGE_LABELS[current].detail}.` : 'Starting.'}
+        {current ? `${STAGE_LABELS[current].title}: ${current === 'manifests' && !fromGitHub ? 'Reading your files in this browser' : STAGE_LABELS[current].detail}.` : 'Starting.'}
       </p>
       {live ? (
         <>
@@ -181,7 +186,9 @@ function Loading({
               return (
                 <li key={stage} className={`stage${count.active > 0 ? ' stage--active' : ''}${started && count.active === 0 ? ' stage--done' : ''}`} data-stage={stage}>
                   <span className="stage__title">{STAGE_LABELS[stage].title}</span>
-                  <span className="stage__detail">{STAGE_LABELS[stage].detail}</span>
+                  <span className="stage__detail">
+                    {stage === 'manifests' && !fromGitHub ? 'Reading your files in this browser' : STAGE_LABELS[stage].detail}
+                  </span>
                   <span className="stage__count">
                     {started ? (
                       <>
@@ -222,12 +229,21 @@ export interface ReadyProps {
 
 export function ReportView({ report, view, update, navigate, notes = [] }: ReadyProps) {
   const announce = useAnnounce();
-  const controls: Controls = { verdicts: view.verdicts, q: view.q, sort: view.sort };
-  const groups = useMemo(() => buildGroups(report.diagnoses, controls), [report.diagnoses, view.verdicts, view.q, view.sort]); // eslint-disable-line react-hooks/exhaustive-deps
+  const controls: Controls = { verdicts: view.verdicts, q: view.q, sort: view.sort, basis: view.basis };
+  const groups = useMemo(() => buildGroups(report.diagnoses, controls), [report.diagnoses, view.verdicts, view.q, view.sort, view.basis]); // eslint-disable-line react-hooks/exhaustive-deps
   const shown = groups.reduce((sum, group) => sum + group.items.length, 0);
   const total = report.diagnoses.length;
   const summaryTotal = totalOf(report.summary);
   const filtering = isFiltering(controls);
+  // Under each count: how many rest on a heuristic (not alive), or carry advisories (alive).
+  const extras = useMemo(() => {
+    const out: Record<Verdict, number> = { alive: 0, dying: 0, dead: 0, ghost: 0, zombie: 0 };
+    for (const d of report.diagnoses) {
+      if (d.verdict === 'alive') out.alive += d.advisories.length > 0 ? 1 : 0;
+      else if (basisOf(d) === 'heuristic') out[d.verdict] += 1;
+    }
+    return out;
+  }, [report.diagnoses]);
   const urgent = report.summary.zombie + report.summary.ghost + report.summary.dead;
   const opened = findByKey(report.diagnoses, view.open);
   const sourceContext = useMemo(
@@ -330,6 +346,11 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
                     {report.summary[verdict]}
                   </span>
                   <span className="summary__label">{VERDICT_META[verdict].plural}</span>
+                  {extras[verdict] > 0 ? (
+                    <span className="summary__sub" data-testid={`sub-${verdict}`}>
+                      {extras[verdict]} {verdict === 'alive' ? 'with advisories' : 'heuristic'}
+                    </span>
+                  ) : null}
                   <span className="sr-only">{pressed ? ', filter on' : ', filter off'}</span>
                 </button>
               </li>
@@ -345,7 +366,8 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
         filtering={filtering}
         onQuery={(q) => update({ q })}
         onSort={(sort) => update({ sort })}
-        onClear={() => update({ q: '', verdicts: [] })}
+        onBasis={(basis) => update({ basis })}
+        onClear={() => update({ q: '', verdicts: [], basis: undefined })}
       />
 
       {summaryTotal > 0 && urgent === 0 ? (
@@ -446,6 +468,18 @@ function ReportHeader({ report, canShare }: { report: AutopsyReport; canShare: b
   );
 }
 
+/**
+ * The engine words an unchecked remainder as "transitive". It cannot know that: it checks direct
+ * dependencies first, so when every checked dependency is direct the rest may be direct too (QA-14).
+ */
+export function problemText(message: string, report: Pick<AutopsyReport, 'diagnoses'>): string {
+  if (report.diagnoses.some((d) => !d.dependency.direct)) return message;
+  return message.replace(
+    /\b(\d[\d,]*) transitive (dependency was|dependencies were) not checked/,
+    (_all, n: string, verb: string) => `${n} more ${verb} not checked`,
+  );
+}
+
 function PartialNotice({ report }: { report: AutopsyReport }) {
   if (report.unavailable.length === 0 && report.problems.length === 0) return null;
   return (
@@ -474,7 +508,7 @@ function PartialNotice({ report }: { report: AutopsyReport }) {
             <ul>
               {report.problems.map((problem, index) => (
                 <li key={`${problem.path}-${index}`}>
-                  <span className="mono">{problem.path}</span>: {problem.message}
+                  <span className="mono">{problem.path}</span>: {problemText(problem.message, report)}
                 </li>
               ))}
             </ul>
@@ -492,10 +526,11 @@ interface ToolbarProps {
   filtering: boolean;
   onQuery: (q: string) => void;
   onSort: (sort: SortKey) => void;
+  onBasis: (basis: Basis | undefined) => void;
   onClear: () => void;
 }
 
-function Toolbar({ controls, shown, total, filtering, onQuery, onSort, onClear }: ToolbarProps) {
+function Toolbar({ controls, shown, total, filtering, onQuery, onSort, onBasis, onClear }: ToolbarProps) {
   return (
     <div className="toolbar" role="search">
       <div className="toolbar__search">
@@ -525,6 +560,21 @@ function Toolbar({ controls, shown, total, filtering, onQuery, onSort, onClear }
           ))}
         </select>
       </label>
+      <div className="toolbar__basis" role="group" aria-label="Basis of the verdict">
+        <span className="toolbar__sortlabel">Basis</span>
+        {([undefined, 'hard', 'heuristic'] as const).map((basis) => (
+          <button
+            key={basis ?? 'all'}
+            type="button"
+            className="chip chip--small"
+            aria-pressed={controls.basis === basis}
+            data-testid={`basis-${basis ?? 'all'}`}
+            onClick={() => onBasis(basis)}
+          >
+            {basis === undefined ? 'All' : basis === 'hard' ? 'Hard signal' : 'Heuristic'}
+          </button>
+        ))}
+      </div>
       <p className="toolbar__count" data-testid="shown-count">
         {filtering ? `Showing ${shown} of ${total}` : `${plural(total, 'dependency', 'dependencies')}`}
       </p>

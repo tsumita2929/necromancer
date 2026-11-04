@@ -44,3 +44,30 @@ export function zipName(diagnosis: Diagnosis, successor: Successor, what: 'kit' 
   const slug = specSlug(diagnosis, successor);
   return what === 'kit' ? `${slug}.zip` : `${slug}-seance.zip`;
 }
+
+/**
+ * The way out the engine builds for a dependency that lists no successor: rebuild it as code the
+ * project owns. Same shape as the engine's own (see `chooseSuccessor` in the engine's spec.ts), so the
+ * spec and the séance written for it match what the Crew app writes for the same package (QA-06).
+ */
+export function raiseWayOut(diagnosis: Diagnosis): Successor {
+  return {
+    name: diagnosis.dependency.name,
+    ecosystem: diagnosis.dependency.ecosystem,
+    kind: 'raise',
+    reason: 'No successor is known. Rebuild the small utility as code the project owns.',
+    source: 'curated',
+  };
+}
+
+/** Every dead, ghost or zombie dependency can be resurrected; a dying one only when a successor is listed. */
+export function canResurrect(diagnosis: Diagnosis): boolean {
+  if (diagnosis.verdict === 'dead' || diagnosis.verdict === 'ghost' || diagnosis.verdict === 'zombie') return true;
+  return diagnosis.verdict === 'dying' && diagnosis.successors.length > 0;
+}
+
+/** The ways out to offer: the listed successors, or the raise when none is listed. */
+export function waysOut(diagnosis: Diagnosis): { successors: Successor[]; synthetic: boolean } {
+  if (diagnosis.successors.length > 0) return { successors: diagnosis.successors, synthetic: false };
+  return { successors: [raiseWayOut(diagnosis)], synthetic: true };
+}

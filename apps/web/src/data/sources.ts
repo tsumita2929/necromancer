@@ -86,6 +86,8 @@ export interface ProjectSources {
     unreadable: number;
   };
   totalBytes: number;
+  /** The runner named in the project's package.json `scripts.test`, when the page read it. */
+  testRunner?: string;
   /** Plain-English sentences for the visitor. */
   notes: string[];
 }

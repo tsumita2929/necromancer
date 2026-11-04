@@ -76,3 +76,39 @@ export function describeUsage(
     calls,
   };
 }
+
+// --- the project's own test runner, named in the spec (project.testRunner) --------------------------
+
+const RUNNER_WORDS = ['vitest', 'jest', 'mocha', 'ava', 'tap', 'jasmine', 'karma', 'playwright', 'cypress', 'uvu', 'tape'];
+const WRAPPERS = new Set(['npx', 'npm', 'run', 'yarn', 'pnpm', 'bun', 'cross-env', 'env', 'dotenv', 'nyc', 'c8', 'exec', 'node_modules/.bin/']);
+
+/** The runner named by a package.json `scripts.test` line, or undefined (including npm's "no test specified" stub). */
+export function detectTestRunner(packageJsonText: string): string | undefined {
+  let line: unknown;
+  try {
+    const json = JSON.parse(packageJsonText) as { scripts?: Record<string, unknown> };
+    line = json?.scripts?.['test'];
+  } catch {
+    return undefined;
+  }
+  if (typeof line !== 'string') return undefined;
+  const text = line.trim();
+  if (text === '' || /no test specified/i.test(text)) return undefined;
+  if (/\bnode\s+(?:[^&|;]*\s)?--test\b/.test(text)) return 'node --test';
+  const known = RUNNER_WORDS.find((word) => new RegExp(`(?:^|[\\s/&|;])${word}(?=$|[\\s&|;])`).test(text));
+  if (known) return known;
+  const first = text
+    .split(/[\s&|;]+/)
+    .find((token) => token !== '' && !WRAPPERS.has(token) && !/^[A-Za-z_][A-Za-z0-9_]*=/.test(token));
+  return first ? first.slice(0, 40) : undefined;
+}
+
+/** The runner named by the shallowest package.json among uploaded manifests. */
+export function testRunnerFromManifests(files: ReadonlyArray<{ kind: string; path: string; content: string }> | undefined): string | undefined {
+  const manifests = (files ?? []).filter((f) => f.kind === 'package.json').sort((a, b) => a.path.split('/').length - b.path.split('/').length);
+  for (const manifest of manifests) {
+    const runner = detectTestRunner(manifest.content);
+    if (runner) return runner;
+  }
+  return undefined;
+}

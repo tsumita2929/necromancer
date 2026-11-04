@@ -40,7 +40,7 @@ export function App() {
       </a>
       <SiteHeader route={route} navigate={navigate} />
       <main id="main" ref={main} tabIndex={-1} className="main">
-        {route.name === 'landing' ? <Landing go={navigate} /> : null}
+        {route.name === 'landing' ? <Landing go={navigate} notice={route.notice} /> : null}
         {route.name === 'graveyard' ? <Graveyard key={route.name} view={route.view} navigate={navigate} /> : null}
         {route.name === 'about' ? <About /> : null}
       </main>

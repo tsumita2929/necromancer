@@ -106,6 +106,8 @@ describe('R2 repository input', () => {
     '/b',
     '-bad/name',
     'a/..',
+    'a/b/../c',
+    'a/./b',
     'a b/c',
     'https://github.com/o/r/tree/../../etc',
     'https://github.com/o/r/tree/a b',

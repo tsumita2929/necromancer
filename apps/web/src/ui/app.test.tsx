@@ -29,6 +29,7 @@ vi.mock('../data/autopsy', async (importOriginal) => {
       recordedAt: report.scannedAt,
       total: report.diagnoses.length,
       summary: report.summary,
+      unavailable: report.unavailable.map((u) => u.source),
     };
   });
   return {
@@ -369,11 +370,11 @@ describe('R7 detail panel and resurrection with the real engine', () => {
     expect(within(dialog).getByText(/nothing to resurrect/i)).toBeInTheDocument();
   });
 
-  it('a dead dependency with no successor says so and offers no Resurrect', async () => {
+  it('QA-06 a dead dependency with no successor is offered the raise way out', async () => {
     renderAt('#/graveyard?src=sample:revenant-api&open=npm:bower');
     const dialog = await screen.findByRole('dialog', { name: 'bower' });
-    expect(within(dialog).queryByRole('button', { name: 'Resurrect' })).not.toBeInTheDocument();
-    expect(within(dialog).getAllByText(/no successor is known/i).length).toBeGreaterThan(0);
+    expect(within(dialog).getByRole('button', { name: 'Resurrect' })).toBeInTheDocument();
+    expect(within(dialog).getByText(/No successor is listed for this package/)).toBeInTheDocument();
   });
 
   it('the keyboard path reaches Resurrect with one Tab from the dialog title', async () => {

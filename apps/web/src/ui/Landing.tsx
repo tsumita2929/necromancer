@@ -1,9 +1,10 @@
 import { useId, useRef, useState, type DragEvent, type FormEvent } from 'react';
 import type { ManifestFile } from '@contract';
-import { Button } from '../design/controls';
+import { Button, Callout } from '../design/controls';
 import { Candle, GraveyardScene } from '../design/Atmosphere';
 import { UploadIcon } from '../design/icons';
 import { VERDICT_META, VerdictBadge } from '../design/Verdict';
+import { SOURCE_NAMES } from './DetailPanel';
 import { SAMPLES, parseRepoInput, type SampleId } from '../data/autopsy';
 import { dropEntries, fileEntries, readProject } from '../data/folder';
 import { rememberSources, type ProjectSources } from '../data/sources';
@@ -13,6 +14,8 @@ import { GROUP_ORDER } from '../state/model';
 
 interface LandingProps {
   go: (route: Route) => void;
+  /** Set when the visitor arrived through a link that could not be read (QA-10). */
+  notice?: 'invalid-link' | undefined;
 }
 
 interface Refusal {
@@ -20,7 +23,7 @@ interface Refusal {
   reason: string;
 }
 
-export function Landing({ go }: LandingProps) {
+export function Landing({ go, notice }: LandingProps) {
   const repoId = useId();
   const errorId = `${repoId}-error`;
   const [repo, setRepo] = useState('');
@@ -105,6 +108,16 @@ export function Landing({ go }: LandingProps) {
       <section className="hero" aria-labelledby="hero-title">
         <GraveyardScene />
         <div className="hero__inner">
+          {notice === 'invalid-link' ? (
+            <div className="hero__notice">
+              <Callout kind="error" title="That link could not be read" role="alert">
+                <p>
+                  The address names a result that Necromancer cannot rebuild: a sample that does not exist, a repository that is
+                  not written as owner/name, or a damaged file list. Start from a repository, a manifest or a sample below.
+                </p>
+              </Callout>
+            </div>
+          ) : null}
           <p className="eyebrow">Kiroween 2026 · Resurrection</p>
           <h1 id="hero-title">
             Find the dead in
@@ -268,6 +281,12 @@ export function Landing({ go }: LandingProps) {
                         ? `${sample.summary.zombie > 0 ? `${plural(sample.summary.zombie, 'zombie')}, ` : ''}${sample.summary.ghost > 0 ? `${plural(sample.summary.ghost, 'ghost')}, ` : ''}${sample.summary.dead} dead, ${sample.summary.dying} dying.`
                         : `${sample.summary.dying} dying, ${sample.summary.alive} alive.`}
                     </span>
+                    {sample.unavailable.length > 0 ? (
+                      <span className="sample__partial">
+                        Partial report: {sample.unavailable.map((id) => SOURCE_NAMES[id] ?? id).join(' and ')} was not fully checked, so
+                        some verdicts may be milder than the truth.
+                      </span>
+                    ) : null}
                     <span className="sample__go" aria-hidden="true">
                       Open the graveyard →
                     </span>
@@ -291,6 +310,12 @@ export function Landing({ go }: LandingProps) {
           <p className="band__note">
             Every verdict carries its evidence. Colour is never the only signal: each verdict also has its own
             icon and its own word.
+          </p>
+          <p className="band__note">
+            <strong>Hard signal or heuristic.</strong> A hard signal is stated by the registry or the maintainer:
+            deprecated, archived, yanked, gone. A heuristic is Necromancer's own reading of age and silence. It is
+            marked <span className="verdict__basis">heuristic</span> on the tombstone, in the drawer and in the filter.
+            An alive dependency can still carry known advisories; its tombstone shows them.
           </p>
         </section>
 

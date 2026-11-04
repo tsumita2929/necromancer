@@ -3,7 +3,7 @@ import type { Diagnosis } from '@contract';
 import { Button, Callout, plural, useAnnounce } from '../design/controls';
 import { DownloadIcon } from '../design/icons';
 import { getProjectSources, resurrectionKit, type ResurrectionKit, type SourceContext } from '../data/autopsy';
-import { SPEC_FILES, kitZipEntries, zipName } from '../data/kit';
+import { SPEC_FILES, kitZipEntries, waysOut, zipName } from '../data/kit';
 import { specSlug } from '../data/spec';
 import { makeZip } from '../data/zip';
 
@@ -189,7 +189,9 @@ function SeanceSummary({ kit, idBase }: { kit: ResurrectionKit; idBase: string }
 export function SpecViewer({ diagnosis, successorIndex, onChooseSuccessor, onBack, context }: SpecViewerProps) {
   const announce = useAnnounce();
   const groupId = useId();
-  const chosen = diagnosis.successors[successorIndex] ?? diagnosis.successors[0];
+  // Memoised: the raise way out is built here, and a new object every render would restart the effect below.
+  const ways = useMemo(() => waysOut(diagnosis).successors, [diagnosis]);
+  const chosen = ways[successorIndex] ?? ways[0];
   const [state, setState] = useState<KitState>({ status: 'loading', message: 'Loading the engine that writes the spec…' });
   const [selected, setSelected] = useState<string>('spec:requirements.md');
   const sourceKey = context.source.kind === 'files' ? 'files' : JSON.stringify(context.source);
@@ -216,7 +218,7 @@ export function SpecViewer({ diagnosis, successorIndex, onChooseSuccessor, onBac
       }
       if (controller.signal.aborted) return;
       const hint = context.source.kind === 'files' ? 'upload' : 'github';
-      const kit = await resurrectionKit(diagnosis, chosen, sources, hint);
+      const kit = await resurrectionKit(diagnosis, chosen, sources, hint, context.source.kind === 'files' ? context.source.files : undefined);
       if (!controller.signal.aborted) setState({ status: 'ready', kit });
     })().catch(() => {
       if (!controller.signal.aborted) setState({ status: 'error' });
@@ -293,10 +295,10 @@ export function SpecViewer({ diagnosis, successorIndex, onChooseSuccessor, onBac
         your repository, open it in Kiro, and run the tasks.
       </p>
 
-      {diagnosis.successors.length > 1 ? (
+      {ways.length > 1 ? (
         <fieldset className="spec__choose">
           <legend>Way out</legend>
-          {diagnosis.successors.map((successor, index) => (
+          {ways.map((successor, index) => (
             <label key={`${successor.name}-${index}`} className="radio">
               <input
                 type="radio"

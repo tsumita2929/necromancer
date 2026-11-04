@@ -12,10 +12,38 @@ export const SORT_LABELS: Record<SortKey, string> = {
   release: 'Stalest release first',
 };
 
+/** What a non-alive verdict rests on (QA-05). */
+export type Basis = 'hard' | 'heuristic';
+export const BASES: readonly Basis[] = ['hard', 'heuristic'];
+
+/** Evidence the registry or the maintainer states outright. Anything else is Necromancer's own reading. */
+const HARD_CODES: ReadonlySet<string> = new Set([
+  'repo-gone',
+  'npm-deprecated',
+  'repo-archived',
+  'pypi-inactive',
+  'pypi-yanked',
+  'registry-not-found',
+  'version-deprecated',
+  'version-yanked',
+]);
+
+/**
+ * Whether a verdict rests on a hard signal or on a heuristic. The engine says so in `basis`; for a
+ * report recorded before it did, the answer is read from the evidence. Alive has no basis.
+ */
+export function basisOf(diagnosis: Diagnosis): Basis | undefined {
+  if (diagnosis.verdict === 'alive') return undefined;
+  if (diagnosis.basis === 'hard' || diagnosis.basis === 'heuristic') return diagnosis.basis;
+  return diagnosis.evidence.some((e) => HARD_CODES.has(e.code)) ? 'hard' : 'heuristic';
+}
+
 export interface Controls {
   verdicts: readonly Verdict[];
   q: string;
   sort: SortKey;
+  /** Show only verdicts of this basis. */
+  basis?: Basis | undefined;
 }
 
 export const DEFAULT_CONTROLS: Controls = { verdicts: [], q: '', sort: 'urgency' };
@@ -31,7 +59,7 @@ export function displayVersion(dep: DependencyRef): string {
 }
 
 export function isFiltering(controls: Controls): boolean {
-  return controls.verdicts.length > 0 || controls.q.trim().length > 0;
+  return controls.verdicts.length > 0 || controls.q.trim().length > 0 || controls.basis !== undefined;
 }
 
 function compareName(a: Diagnosis, b: Diagnosis): number {
@@ -64,6 +92,7 @@ const COMPARERS: Record<SortKey, (a: Diagnosis, b: Diagnosis) => number> = {
 
 export function matches(diagnosis: Diagnosis, controls: Controls): boolean {
   if (controls.verdicts.length > 0 && !controls.verdicts.includes(diagnosis.verdict)) return false;
+  if (controls.basis !== undefined && basisOf(diagnosis) !== controls.basis) return false;
   const q = controls.q.trim().toLowerCase();
   return q === '' || diagnosis.dependency.name.toLowerCase().includes(q);
 }

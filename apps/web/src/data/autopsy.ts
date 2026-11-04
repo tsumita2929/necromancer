@@ -21,7 +21,7 @@ import { createRun, emptyProgress, type Progress } from './net';
 import { RECORDED_SAMPLES, type RecordedSample } from './samples.generated';
 import { readRepositorySources } from './crawl';
 import { recallSources, type ProjectSources } from './sources';
-import { candidateFiles, describeNoSources, describeUsage, type UsageNote } from './usage';
+import { candidateFiles, describeNoSources, describeUsage, testRunnerFromManifests, type UsageNote } from './usage';
 
 export { AutopsyError, isAbort, parseRepoInput, MAX_FILE_BYTES, MAX_FILE_LABEL };
 export type { Note, Progress };
@@ -173,10 +173,16 @@ export async function runAutopsy(input: AutopsyInput, options: AutopsyOptions = 
 export async function resurrectionSpec(
   diagnosis: Diagnosis,
   chosen: Successor,
-  options: { usage?: DependencyUsage } = {},
+  options: { usage?: DependencyUsage; testRunner?: string } = {},
 ): Promise<KiroSpec> {
   const engine = await loadEngine();
-  return engine.resurrectionSpec(diagnosis, chosen, options.usage ? { usage: options.usage } : undefined);
+  return engine.resurrectionSpec(diagnosis, chosen, specOptions(options.usage, options.testRunner));
+}
+
+/** The engine's spec options: the usage, and the project's own test runner when the page knows it. */
+function specOptions(usage: DependencyUsage | undefined, testRunner: string | undefined) {
+  if (!usage && !testRunner) return undefined;
+  return { ...(usage ? { usage } : {}), ...(testRunner ? { project: { testRunner } } : {}) };
 }
 
 // --- the séance: project sources, usage, spec and test together ---------------------------------
@@ -256,6 +262,7 @@ export async function resurrectionKit(
   chosen: Successor,
   sources: ProjectSources | null,
   hint: 'upload' | 'github' | 'none' = 'none',
+  manifests?: readonly ManifestFile[],
 ): Promise<ResurrectionKit> {
   const engine = await loadEngine();
   const origin = sources ? sources.origin : hint;
@@ -272,7 +279,8 @@ export async function resurrectionKit(
     usageNote = describeUsage(scanned, diagnosis.dependency.name, sources.files.length, sources.notes);
     if (usageNote.state === 'used') usage = scanned;
   }
-  const spec = engine.resurrectionSpec(diagnosis, chosen, usage ? { usage } : undefined);
+  const testRunner = sources?.testRunner ?? testRunnerFromManifests(manifests);
+  const spec = engine.resurrectionSpec(diagnosis, chosen, specOptions(usage, testRunner));
   if (!engine.seance) throw new AutopsyError('unreachable', 'This version of the engine cannot write a séance.');
   const seance = engine.seance(diagnosis, chosen, usage);
   return { spec, seance, ...(usage ? { usage } : {}), usageNote };
