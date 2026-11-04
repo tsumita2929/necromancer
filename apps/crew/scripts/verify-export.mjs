@@ -58,11 +58,17 @@ console.log(`Fresh clone: ${V}  (HEAD ${git(V, ['rev-parse', '--short', 'HEAD'])
   report(hostHits.length === 0 ? 'PASS' : 'FAIL', 'no /home/ec2-user in any commit', hostHits.length ? hostHits.slice(0, 5).join(', ') : `${commits.length} commits searched`);
 
   const SECRET = 'AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|xox[baprs]-[A-Za-z0-9-]{10,}|sk-[A-Za-z0-9]{32,}|(api[_-]?key|secret|token|passwd|password)[\'"]?\\s*[:=]\\s*[\'"][A-Za-z0-9+/_-]{12,}[\'"]';
-  const secretHits = commits.flatMap((c) => {
+  // A made-up HMAC key in an early version of the backend test (replaced later by 'fixture-hmac-key-0001'): not a secret.
+  const KNOWN_FIXTURES = ['s3cret-for-test'];
+  const allHits = commits.flatMap((c) => {
     const r = sh('git', ['-C', V, 'grep', '-I', '-n', '-i', '-E', SECRET, c], V);
-    return r.status === 0 ? r.out.trim().split('\n').slice(0, 3) : [];
+    return r.status === 0 ? r.out.trim().split('\n') : [];
   });
-  report(secretHits.length === 0 ? 'PASS' : 'FAIL', 'no secret patterns in any commit', secretHits.length ? secretHits[0].slice(0, 160) : `${commits.length} commits searched`);
+  const secretHits = allHits.filter((l) => !KNOWN_FIXTURES.some((f) => l.includes(f)));
+  const allowed = allHits.length - secretHits.length;
+  report(secretHits.length === 0 ? 'PASS' : 'FAIL', 'no secret patterns in any commit', secretHits.length ? secretHits[0].slice(0, 160) : `${commits.length} commits searched${allowed ? `; ${allowed} line(s) match a known made-up test key in history only` : ''}`);
+  const headHits = sh('git', ['-C', V, 'grep', '-I', '-n', '-i', '-E', SECRET, 'HEAD'], V);
+  report(headHits.status !== 0 ? 'PASS' : 'FAIL', 'no secret patterns in the current tree', headHits.status !== 0 ? 'none' : headHits.out.slice(0, 160));
 
   const envFiles = tracked.filter((f) => /(^|\/)\.env($|\.)/.test(f) && !f.endsWith('.example'));
   report(envFiles.length === 0 ? 'PASS' : 'FAIL', 'no .env files tracked', envFiles.join(', '));
