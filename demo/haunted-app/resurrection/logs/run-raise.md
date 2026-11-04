@@ -1,6 +1,8 @@
 # Run log: raise is-odd in nearby-raise
 
-Copy: `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/nearby-raise`. Branch: `resurrect/is-odd`. Base: `main`. Nothing pushed, no remote, no git config change (commits used `git -c user.name='Necromancer (agent)' -c user.email='necromancer@agent.invalid'`).
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
+
+Copy: `<scratch>/nearby-raise`. Branch: `resurrect/is-odd`. Base: `main`. Nothing pushed, no remote, no git config change (commits used `git -c user.name='Necromancer (agent)' -c user.email='necromancer@agent.invalid'`).
 
 ## Step 1. Check the tree
 ```

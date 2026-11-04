@@ -1,6 +1,8 @@
 # Necromancer run: array-flatten in nearby-nosucc
 
-Copy: `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/nearby-nosucc` (base `main`, branch `resurrect/array-flatten`).
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
+
+Copy: `<scratch>/nearby-nosucc` (base `main`, branch `resurrect/array-flatten`).
 Tools were called through `scripts/mcp-call.mjs`; every answer carried `"engine": "engine"`.
 Nothing was pushed, no remote exists, git configuration was not changed (commits used `git -c user.name='Necromancer (agent)' -c user.email='necromancer@agent.invalid'`; the repository has no identity).
 

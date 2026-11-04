@@ -1,6 +1,8 @@
 # Run 3b: left-pad (s3-leftpad2)
 
-Repo: `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/s3-leftpad2`, base `main` (18c8d62), branch `resurrect/left-pad`. Nothing pushed; no remote.
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
+
+Repo: `<scratch>/s3-leftpad2`, base `main` (18c8d62), branch `resurrect/left-pad`. Nothing pushed; no remote.
 
 ## Steps
 1. Tree check: `git rev-parse --is-inside-work-tree` -> true; `git status --porcelain` -> empty; branch `main`. (`resurrection/` dir with older logs/patches is committed in the repo; left alone.)

@@ -1,8 +1,10 @@
 # Run 3: raise `request` in s3-request (Necromancer, generic template)
 
-Task: "Raise the dead: request in /home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/s3-request. Use the resurrection skill to write the Kiro spec and the differential test, migrate on a local branch, and do not push."
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
 
-Copy: `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/s3-request`. Branch: `resurrect/request`, base `main` (`bc54251`). Nothing was pushed, no remote exists, git config untouched, commits use `git -c user.name='Necromancer (agent)' -c user.email=necromancer@agent.invalid`.
+Task: "Raise the dead: request in <scratch>/s3-request. Use the resurrection skill to write the Kiro spec and the differential test, migrate on a local branch, and do not push."
+
+Copy: `<scratch>/s3-request`. Branch: `resurrect/request`, base `main` (`bc54251`). Nothing was pushed, no remote exists, git config untouched, commits use `git -c user.name='Necromancer (agent)' -c user.email=necromancer@agent.invalid`.
 
 Environment for every tool call: `export NECROMANCER_BLOCK_HOSTS=api.github.com`, then `node .../apps/crew/scripts/mcp-call.mjs <tool> '<json>'`. All answers carried `"engine": "engine"`.
 

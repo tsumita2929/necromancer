@@ -163,3 +163,9 @@ dependency on a local branch, so that I review a diff instead of doing the work.
 - R10.1 WHEN the engine gives an alive verdict with the evidence `version-deprecated` or `version-yanked`, THE tools, the Graveyard page and Night Watch SHALL show "Upgrade to <version>" (with "another major version" when `sameMajor` is false, and the engine's sentence when `older` is true), SHALL NOT show it as dying, and SHALL NOT offer to migrate it. THE migration tools SHALL refuse it and say to upgrade.
 - R10.2 WHEN a version becomes deprecated or yanked, Night Watch SHALL send one `upgrade` notification, and none for a notice that was already known, for a baseline run, or after a partial scan.
 - R10.3 THE `seance` and `seance_write` answers SHALL carry the bundle's `oldVersions` as `versions`, and `versionNotTested` SHALL be true unless the version in use is covered. THE agent SHALL tell the person when it is true.
+
+## Round 5 amendments (QA round 4)
+
+- R11.1 WHEN the engine reports `notFound`, EVERY tool answer SHALL give the verdict `"not-found"` (never `"alive"`), SHALL keep the engine's value under `engineVerdict`, and SHALL NOT count the package as alive in a summary; so a client that reads only `verdict` is never told such a package is alive.
+- R11.2 THE `resurrection_spec` description SHALL say that it returns the text and writes no file, and `mcp-call.mjs --list` SHALL print the argument shape of every tool.
+- R11.3 THE resurrection skill SHALL tell the agent how to write the spec files, how to adapt a CommonJS or ES-module replacement import, how to record a golden file without editing the séance's comparisons, and how to record a departure from the generated spec.

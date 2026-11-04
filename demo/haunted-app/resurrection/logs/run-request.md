@@ -1,6 +1,8 @@
 # Necromancer run: request -> fetch
 
-Copy: `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/haunted-app-request` (base branch `main`, branch `resurrect/request`).
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
+
+Copy: `<scratch>/haunted-app-request` (base branch `main`, branch `resurrect/request`).
 Tool engine for every answer below: `"engine": "engine"` (not the stub). Node v22.12.0, npm 10.9.0.
 Nothing was pushed, no remote was added, no git configuration was changed (commits used `git -c user.name=Necromancer -c user.email=necromancer@example.invalid`).
 
@@ -83,7 +85,7 @@ TAP version 13
 not ok 1 - séance: request vs fetch
   ---
   duration_ms: 13111.661575
-  location: '/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/haunted-app-request/test/seance.request.test.js:393:1'
+  location: '<scratch>/haunted-app-request/test/seance.request.test.js:393:1'
   failureType: 'testCodeFailure'
   error: |-
     failed after 2 generated cases (seed -416434250), shrunk 10 times
@@ -574,7 +576,7 @@ TAP version 13
 not ok 1 - séance: recorded request answers vs fetch
   ---
   duration_ms: 148.650924
-  location: '/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/haunted-app-request/test/seance.request.test.js:503:1'
+  location: '<scratch>/haunted-app-request/test/seance.request.test.js:503:1'
   failureType: 'testCodeFailure'
   error: |-
     request (recorded) and fetch differ

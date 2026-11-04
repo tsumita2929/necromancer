@@ -55,7 +55,7 @@ redirects, query encoding) and `is-odd`. See the verification records in the mai
 
 ## Install (for a judge)
 
-You need a running Kiro Crew gateway, **Node.js 20.11 or newer** (checked on 20.20 and 22.12), and Python 3. Git is needed for the
+You need a running Kiro Crew gateway, **Node.js 22.12 or newer** (the test run uses 22.12), and Python 3. Git is needed for the
 resurrection itself.
 
 ```bash
@@ -100,7 +100,7 @@ offline stub engine with fixtures (used by the tests; every answer says `engine:
 ```bash
 npm ci && npm --prefix ui ci
 npm run typecheck       # tsc --noEmit
-npm test                # Vitest, 90+ tests incl. fast-check properties; offline (recorded responses)
+npm test                # Vitest unit and fast-check property tests; offline (recorded responses)
 npm run smoke           # starts the MCP server over stdio and calls it
 npm run bundle          # rebuilds dist/server.mjs and ui/dist/index.mjs
 ```

@@ -44,6 +44,17 @@ console.log(`Fresh clone: ${V}  (HEAD ${git(V, ['rev-parse', '--short', 'HEAD'])
   const rootApp = tracked.includes('app.json');
   report(rootApp ? 'PASS' : 'FAIL', 'app.json at the repository root');
 
+  // The README must agree with package.json on Node and must not quote a test count (it goes stale).
+  {
+    const pkg = JSON.parse(readFileSync(path.join(V, 'package.json'), 'utf8'));
+    const need = String(pkg.engines?.node ?? '').replace(/^[^0-9]*/, '');
+    const readme = readFileSync(path.join(V, 'README.md'), 'utf8');
+    const nodes = [...readme.matchAll(/Node(?:\.js)?\s+(\d+(?:\.\d+)?)/g)].map((m) => m[1]);
+    const stale = nodes.filter((n) => !need.startsWith(n));
+    const counts = [...readme.matchAll(/\b(\d+)\+?\s+tests\b/g)].map((m) => m[0]);
+    report(need && nodes.length > 0 && stale.length === 0 && counts.length === 0 ? 'PASS' : 'FAIL', 'README agrees with package.json on Node, quotes no test count', `engines ${pkg.engines?.node}; README Node: ${nodes.join(', ') || 'none'}; counts: ${counts.join(', ') || 'none'}`);
+  }
+
   const dates = git(V, ['log', '--format=%aI %cI']).split('\n').flatMap((l) => l.split(' '));
   const min = dates.map((d) => new Date(d).getTime()).reduce((a, b) => Math.min(a, b), Infinity);
   const count = git(V, ['rev-list', '--count', 'HEAD']);
@@ -163,6 +174,8 @@ const manifest = JSON.parse(readFileSync(path.join(V, 'app.json'), 'utf8'));
   const call = (tool, argsObj) => sh(process.execPath, [path.join(V, 'scripts/mcp-call.mjs'), tool, JSON.stringify(argsObj)], V, env);
   const listed = sh(process.execPath, [path.join(V, 'scripts/mcp-call.mjs'), '--list'], V, env);
   const names = listed.out.split('\n').map((l) => l.split(':')[0]).filter((n) => /^[a-z_]+$/.test(n));
+  const shapes = listed.out.split('\n').filter((l) => /^  arguments: /.test(l)).length;
+  report(shapes === names.length ? 'PASS' : 'FAIL', 'mcp-call --list prints the argument shape of every tool', `${shapes} of ${names.length}`);
   report(names.length === 11 ? 'PASS' : 'FAIL', 'MCP server lists its tools', `${names.length}: ${names.join(', ')}`);
   const dep = { ecosystem: 'npm', name: 'left-pad' };
   const steps = [

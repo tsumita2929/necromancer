@@ -1,6 +1,8 @@
 # Necromancer run: left-pad in haunted-app
 
-Copy: `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/haunted-app` (base branch `main`, new branch `resurrect/left-pad`).
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
+
+Copy: `<scratch>/haunted-app` (base branch `main`, new branch `resurrect/left-pad`).
 Tools were called through `scripts/mcp-call.mjs`; every answer carried `"engine": "engine"` (not the stub).
 Nothing was pushed, no remote exists in the copy, git configuration was not changed (commits used `git -c user.name=Necromancer -c user.email=necromancer@example.invalid`, because the repository has no identity configured).
 

@@ -1,6 +1,8 @@
 # Run 3: is-odd (Necromancer, BRIEF2)
 
-Copy: `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/s3-isodd`. Base: `main` (9dfd52a). Branch: `resurrect/is-odd`. Nothing pushed, no remote, no git config change.
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
+
+Copy: `<scratch>/s3-isodd`. Base: `main` (9dfd52a). Branch: `resurrect/is-odd`. Nothing pushed, no remote, no git config change.
 
 ## Step 1. Check the tree
 - `git rev-parse --is-inside-work-tree` -> `true`

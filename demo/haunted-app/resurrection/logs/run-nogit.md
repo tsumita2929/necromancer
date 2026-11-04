@@ -1,8 +1,10 @@
 # Run log: nearby-nogit (left-pad)
 
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
+
 ## Step 1: Check the tree
 
-Command: `git rev-parse --is-inside-work-tree` in `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/nearby-nogit`
+Command: `git rev-parse --is-inside-work-tree` in `<scratch>/nearby-nogit`
 
 ```
 fatal: not a git repository (or any of the parent directories): .git

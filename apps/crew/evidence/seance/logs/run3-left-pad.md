@@ -1,6 +1,8 @@
 # Run 3: left-pad in s3-leftpad
 
-Repo: `/home/ec2-user/.kiro/crew/kiroween2026/scratch/crew/s3-leftpad`. Base `main` (3bf7f9f). Branch `resurrect/left-pad`. Nothing pushed, no remote touched, no git config changed (commits used `git -c user.name="Necromancer (agent)" -c user.email=necromancer@agent.invalid`).
+> Paths: `<scratch>/` stands for the scratch folder of the machine where this run was made. The host path was replaced; nothing else in this log was changed.
+
+Repo: `<scratch>/s3-leftpad`. Base `main` (3bf7f9f). Branch `resurrect/left-pad`. Nothing pushed, no remote touched, no git config changed (commits used `git -c user.name="Necromancer (agent)" -c user.email=necromancer@agent.invalid`).
 Engine: all tool answers said `"engine": "engine"` (GitHub blocked via NECROMANCER_BLOCK_HOSTS).
 
 ## 1. Check the tree
