@@ -23,15 +23,13 @@ import { pythonImportNames } from '../usage/scan-py.js';
 
 const MAX_MEMBERS = 8;
 
-/** The README's Safety section for a generic séance: which project calls run, and where (QA-08). */
-function safetyLines(
-  usage: DependencyUsage | undefined,
-  pick: (member: string) => boolean,
-  language: 'javascript' | 'python',
-): string[] {
+/**
+ * The README's Safety section for a generic séance: what the guard does (QA-08). The count of the project's calls is
+ * under "What it compares", once (QA-37a).
+ */
+function safetyLines(language: 'javascript' | 'python'): string[] {
   const guard = language === 'python' ? PY_GUARD_FILE : JS_GUARD_FILE;
   return [
-    callsNote(usage, pick, true),
     `\`${guard}\` is imported first by the test file. It switches on only while a call into the old package or the replacement runs.`,
     language === 'python'
       ? 'A blocked call raises `SeanceBlocked`; the test compares it like any other exception class.'
@@ -208,7 +206,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     ...(skipped.length > 0
       ? [`Not covered: ${skipped.map((s) => comment(s, 30)).join(', ')}.`]
       : []),
-    callsNote(ctx.usage, (x) => members.some((m) => m.member === x), true),
+    callsNote(ctx.usage, (x) => members.some((m) => m.member === x), true, false),
     `Safety: ${GUARD_SENTENCE}`,
   ];
   compares.push(`Versions: ${oldVersions.note}`);
@@ -237,7 +235,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
       install,
       run,
       compares,
-      safety: safetyLines(ctx.usage, (x) => members.some((m) => m.member === x), 'javascript'),
+      safety: safetyLines('javascript'),
       known: [],
       versions: oldVersions.note,
       notes: [
@@ -383,7 +381,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     ...(skipped.length > 0
       ? [`Not covered: ${skipped.map((s) => comment(s, 30)).join(', ')}.`]
       : []),
-    callsNote(ctx.usage, (x) => members.some((m) => m.member === x), true),
+    callsNote(ctx.usage, (x) => members.some((m) => m.member === x), true, false),
     `Safety: ${GUARD_SENTENCE.replace('SEANCE_BLOCKED', 'SeanceBlocked')}`,
   ];
   compares.push(`Versions: ${oldVersions.note}`);
@@ -412,7 +410,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
       install,
       run,
       compares,
-      safety: safetyLines(ctx.usage, (x) => members.some((m) => m.member === x), 'python'),
+      safety: safetyLines('python'),
       known: [],
       versions: oldVersions.note,
       notes: [

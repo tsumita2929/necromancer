@@ -74,6 +74,100 @@ const SEEKING_AFTER = /\b(?:maintainers?|owners?)\b[^.]{0,30}\b(?:wanted|needed|
 const WAY_OUT =
   /^(?:please\s+)?(?:use|see|migrate|switch|consider|try|move|go\s+to|head\s+(?:over\s+)?to|refer|check)\b/i;
 
+// --- What stops a dead word from being a statement about the project itself (round 5, QA-32) ---
+
+const DEAD_RE = new RegExp(DEAD_WORD, 'i');
+
+/** What follows the first dead word or phrase of `text` (empty when there is none). */
+function afterDeadWord(text: string, from = 0): string {
+  const m = DEAD_RE.exec(text.slice(from));
+  return m ? text.slice(from + m.index + m[0].length) : '';
+}
+
+/**
+ * A narrowing qualifier right after the dead word: "deprecated for use with Webpack 4", "no longer supported on
+ * macOS 10.12", "deprecated on Windows 7", "deprecated in v3". The statement then holds for a platform, a tool or
+ * a version, not for the project. "deprecated in favor of ...", "deprecated for security reasons" and "deprecated as
+ * foo does it now" are not narrowing.
+ */
+const NARROW_START =
+  /^[\s,]*(?:for\s+use\s+(?:with|in|on|under)|for|with|on|under|in|when\s+(?:used|using|running|run)|if\s+you\s+(?:use|are\s+using|run)|before|prior\s+to|until)\s+(.{0,60})/i;
+const NARROW_SCOPE =
+  /(\d|\b(?:windows|macos|mac\s?os|os\s?x|linux|ubuntu|debian|android|ios|ie|internet\s+explorer|edge|chrome|firefox|safari|webpack|rollup|vite|babel|browserify|gulp|grunt|node(?:\.js)?|python|ruby|java|php|react|vue|angular|typescript|esm|commonjs|cjs|browsers?|mobile|ssr|production|development|legacy|older)\b)/i;
+/** The statement is about where the project lives: "no longer maintained here". */
+const LOCATION =
+  /^[\s,]*(?:here\b|in\s+this\s+(?:repo(?:sitory)?|location|place)\b|at\s+this\s+(?:address|location|url|repo(?:sitory)?)\b|under\s+this\s+(?:name|org(?:ani[sz]ation)?|account)\b)/i;
+const EXCEPTION = /\b(?:except|unless|apart\s+from|aside\s+from|besides|other\s+than)\b/i;
+
+function narrowed(rest: string): boolean {
+  if (LOCATION.test(rest) || EXCEPTION.test(rest)) return true;
+  const m = NARROW_START.exec(rest);
+  if (!m?.[1]) return false;
+  if (/^(?:favou?r|lieu)\b/i.test(m[1])) return false;
+  return NARROW_SCOPE.test(m[1]);
+}
+
+/** A banner that is about a flag, an option, a function ...: "DEPRECATED: the --old flag. Use --new." */
+const NOT_THE_PROJECT =
+  /--[a-z]|\b(?:flags?|options?|parameters?|arguments?|params?|methods?|functions?|apis?|features?|config(?:uration)?|settings?|propert(?:y|ies)|props?|class(?:es)?|commands?|syntax|fields?|attributes?|rules?|modes?|behaviou?rs?)\b/i;
+
+/** Words before the statement that report what someone else says ("Some people say ...", "a myth"). */
+const REPORTED =
+  /\b(?:say|says|said|saying|claim|claims|claimed|think|thinks|thought|heard|rumou?rs?|myth|believe|believes|wrongly|mistakenly|falsely|incorrectly|assume|assumed|jokes?|jokingly|imagine|pretend)\b/i;
+const QUOTE_MARKS = /["\u201c\u201d\u00ab\u00bb]/g;
+
+/** The statement is taken back: cues that cannot be about anything else, so they count in the next sentence too. */
+const RETRACTED_STRONG = new RegExp(
+  [
+    String.raw`\bjust\s+kidding\b`,
+    String.raw`\bkidding\b`,
+    String.raw`\bjk\b`,
+    String.raw`\bapril\s+fools?\b`,
+    String.raw`\bfalse\s+alarm\b`,
+    String.raw`\bjust\s+a\s+(?:joke|rumou?r|myth)\b`,
+    String.raw`\bnot\s+(?:really|true|the\s+case|actually)\b`,
+    String.raw`\b(?:it|this|that)\s+(?:is|was)\s+not\s*(?:[.;,!)]|$)`,
+  ].join('|'),
+  'i',
+);
+/**
+ * Cues that take the statement back only inside the same sentence ("deprecated, but it is still maintained"). In the next
+ * sentence they could be about another package ("Use bar. It is actively maintained."), so they do not count there.
+ */
+const RETRACTED_SAME_SENTENCE = new RegExp(
+  [
+    String.raw`\b(?:it|this|the\s+project)\s+(?:is|are)\s+(?:not\s+(?:deprecated|dead|abandoned|unmaintained)|(?:still|very\s+much)\s+(?:alive|maintained|active|supported)|actively\s+maintained)`,
+    String.raw`\b(?:but|however)\b[^.]{0,40}\b(?:still|actively)\s+(?:maintained|supported|developed|alive)\b`,
+  ].join('|'),
+  'i',
+);
+
+/**
+ * The same package goes on elsewhere: a move, not a death. Only a place ("continues in the foo-next repository", "moved
+ * to github.com/acme/foo"), the words "the same package" or a new name count. "Its work continues in other-plugin, which
+ * covers more" names another package: the plugin is deprecated, and that stays a statement.
+ */
+const CONTINUES = new RegExp(
+  [
+    String.raw`\b(?:development|maintenance|work|activity)\s+(?:has\s+|have\s+)?(?:continues?|continued|moved|moves)\s+(?:to|in|at|on)\s+[^.]{0,60}?\b(?:repo(?:sitory)?|github\.com|gitlab\.com|bitbucket|branch|organi[sz]ation)\b`,
+    String.raw`\bsame\s+(?:package|project|library)\b`,
+    String.raw`\bcontinues\s+under\s+(?:a\s+)?new\s+name\b`,
+  ].join('|'),
+  'i',
+);
+
+/** An explicit request for maintainers anywhere in the head: the project is asking for help, not ending. */
+const SEEKING_STRICT = new RegExp(
+  [
+    String.raw`\b(?:(?:looking|searching)\s+for|seeking|in\s+need\s+of)\s+(?:(?:a|some|more|new|co-?)\s*)*(?:maintainers?|owners?|contributors?\s+to\s+(?:take\s+over|maintain)|someone\s+to\s+(?:maintain|take\s+over))\b`,
+    String.raw`\b(?:maintainers?|owners?)\s+(?:wanted|needed|sought)\b`,
+    String.raw`\bup\s+for\s+adoption\b`,
+    String.raw`\b(?:needs?|wants?)\s+(?:a\s+)?(?:new\s+|co-?)?maintainers?\b`,
+    String.raw`\b(?:take|taking)\s+over\s+(?:the\s+)?(?:maintenance|project|package|repo)`,
+  ].join('|'),
+  'i',
+);
+
 /** Markdown and reStructuredText noise removed; one line per paragraph line; the head only. */
 export function cleanReadme(text: string): string {
   let t = text.slice(0, HEAD_CHARS * 2);
@@ -152,6 +246,8 @@ export function findMaintainerStatement(
   const cleaned = cleanReadme(readme);
   const wanted = new Set(names.map(strict).filter((n) => n.length >= 2));
   const list = sentencesOf(cleaned);
+  // A request for maintainers anywhere in the head: the project is asking for help, not ending (QA-32).
+  if (SEEKING_STRICT.test(cleaned)) return undefined;
   for (let i = 0; i < list.length; i++) {
     const s = list[i];
     if (!s) continue;
@@ -164,24 +260,51 @@ export function findMaintainerStatement(
     );
     if (around.some((n) => n && (SEEKING.test(n.text) || SEEKING_AFTER.test(n.text)))) continue;
     let kind: MaintainerStatement['kind'] | undefined;
+    // Where the statement sits in the sentence, and what follows its dead word.
+    let before = '';
+    let rest = '';
     const subject = SUBJECT.exec(text);
     if (subject) {
-      if (subject.index <= 40 && !LEADING_CONNECTOR.test(text.slice(0, subject.index)))
+      if (subject.index <= 40 && !LEADING_CONNECTOR.test(text.slice(0, subject.index))) {
         kind = 'subject';
+        before = text.slice(0, subject.index);
+        rest = text.slice(subject.index + subject[0].length);
+      }
     } else {
       const m = new RegExp(
         `^${LEAD}([A-Za-z0-9@][\\w.@/-]{0,60})\\s+${BE}\\s+${ADV}${DEAD_WORD}\\b`,
         'i',
       ).exec(text);
-      if (m?.[1] && wanted.has(strict(m[1]))) kind = 'name';
-      else if (
+      if (m?.[1] && wanted.has(strict(m[1]))) {
+        kind = 'name';
+        rest = text.slice(m[0].length);
+      } else if (
         s.offset <= BANNER_CHARS &&
         text.length <= 200 &&
         (BANNER_LOUD.test(text) || BANNER_PHRASE.test(text) || BANNER_WITH_WAY_OUT.test(text))
-      )
+      ) {
         kind = 'banner';
+        rest = afterDeadWord(text);
+        // A banner about a flag, an option or a function is not about the project.
+        if (NOT_THE_PROJECT.test(rest.slice(0, 120))) continue;
+      }
     }
     if (!kind) continue;
+    // Said by someone else, or inside a quotation: not the project's own word.
+    if (before !== '') {
+      if ((before.match(QUOTE_MARKS)?.length ?? 0) % 2 === 1 || REPORTED.test(before)) continue;
+    }
+    // Narrowed to a platform, a tool, a version, a place, or with an exception: not the whole project.
+    if (narrowed(rest)) continue;
+    // Taken back, or the same package going on elsewhere, in this sentence or the next.
+    const following = list[i + 1];
+    const next2 = following && following.offset - s.offset < 400 ? following.text : '';
+    if (
+      RETRACTED_STRONG.test(`${rest} ${next2}`) ||
+      RETRACTED_SAME_SENTENCE.test(rest) ||
+      CONTINUES.test(`${rest} ${next2}`)
+    )
+      continue;
     // Everything but the statement itself must not make it a statement about something else: "Karma is
     // deprecated" is checked as written; "v1 of this package is deprecated" never matches SUBJECT.
     const next = list[i + 1];

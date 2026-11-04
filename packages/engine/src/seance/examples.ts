@@ -286,6 +286,8 @@ export function callsNote(
   usage: DependencyUsage | undefined,
   pick: (member: string) => boolean,
   screen = false,
+  /** Close with the guard sentence. A caller that prints its own "Safety:" line next to it passes false (QA-37a). */
+  withGuard = true,
 ): string {
   if (!usage) return 'No usage scan was given, so no calls from the project are replayed.';
   const s = callSummary(usage, pick, screen);
@@ -305,7 +307,7 @@ export function callsNote(
   if (left) parts.push(left);
   // When nothing is replayed and nothing was left out, the sentence above already says why (QA-30 keeps it short).
   parts.push(...restSentences(s, s.replayable === 0 && s.count.leftOutTotal === 0));
-  if (screen && s.replayable > 0) parts.push(GUARD_SENTENCE);
+  if (screen && withGuard && s.replayable > 0) parts.push(GUARD_SENTENCE);
   return parts.join(' ');
 }
 

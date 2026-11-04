@@ -285,3 +285,62 @@ describe('C3 the invariant, for any mix of calls', () => {
     );
   });
 });
+
+describe('C4 the count paragraph is printed once (QA-37a)', () => {
+  const occurrences = (text: string, needle: string): number => text.split(needle).length - 1;
+  const lines = [
+    "request('http://127.0.0.1:4555/danger/delete-all');",
+    "request({ url: 'http://127.0.0.1:4555/danger/two', method: 'POST' });",
+    "request('/etc/passwd');",
+    "request('plain-literal');",
+  ];
+
+  it('C4.1 JavaScript: one count paragraph, one guard sentence, in the README', () => {
+    const text = readme(generateSeance(diagnosis('request'), successor('fetch'), scan(lines)));
+    expect(occurrences(text, "Replays 1 distinct call from the project's 4 calls")).toBe(1);
+    expect(occurrences(text, 'Count: 1 replayed + 2 left out')).toBe(1);
+    expect(occurrences(text, 'Left out 2 calls')).toBe(1);
+    expect(occurrences(text, 'a blocked call throws SEANCE_BLOCKED')).toBe(1);
+    // The Safety section is still there, with what the guard is and does.
+    expect(text).toMatch(/## Safety\n\n- `seance-guard\.mjs` is imported first/);
+  });
+
+  it('C4.2 Python: the same', () => {
+    const u = scanUsage(
+      [
+        {
+          path: 'app/b.py',
+          content: [
+            'import requests',
+            "requests.get('http://127.0.0.1:4555/x')",
+            "requests.get('ok')",
+            '',
+          ].join('\n'),
+        },
+      ],
+      { ecosystem: 'pypi', name: 'requests' },
+    );
+    const b = generateSeance(
+      {
+        ...diagnosis('requests'),
+        dependency: { ...diagnosis('requests').dependency, ecosystem: 'pypi' },
+      },
+      { ...successor('httpx'), ecosystem: 'pypi' },
+      u,
+    );
+    const text = readme(b);
+    expect(occurrences(text, "Replays 1 distinct call from the project's 2 calls")).toBe(1);
+    expect(occurrences(text, 'Count: 1 replayed + 1 left out')).toBe(1);
+    expect(
+      occurrences(text, 'a blocked call throws SEANCE_BLOCKED') +
+        occurrences(text, 'a blocked call throws SeanceBlocked'),
+    ).toBe(1);
+  });
+
+  it('C4.3 the test file still carries the paragraph and the guard sentence for the person who reads it there', () => {
+    const b = generateSeance(diagnosis('request'), successor('fetch'), scan(lines));
+    const test = b.files.find((f) => f.role === 'test')?.content ?? '';
+    expect(test).toContain('Count: 1 replayed + 2 left out');
+    expect(test).toContain('SEANCE_BLOCKED');
+  });
+});
