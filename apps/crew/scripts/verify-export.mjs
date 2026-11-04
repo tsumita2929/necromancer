@@ -49,13 +49,16 @@ console.log(`Fresh clone: ${V}  (HEAD ${git(V, ['rev-parse', '--short', 'HEAD'])
   const count = git(V, ['rev-list', '--count', 'HEAD']);
   report(min >= Date.parse('2026-10-30T00:00:00Z') ? 'PASS' : 'FAIL', 'git log has no date before 2026-10-30', `${count} commits, earliest ${new Date(min).toISOString()}`);
 
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const hostPathPattern = `${escapeRe(os.homedir())}/|/home/[A-Za-z0-9._-]+/|/Users/[A-Za-z0-9._-]+/`;
   const pathMatches = (treeish) => {
-    const r = sh('git', ['-C', V, 'grep', '-I', '-l', '-F', '/home/ec2-user', treeish], V);
+    // The home directory of whoever runs the check, and any /home/<user>/ or /Users/<user>/ path (no host path is hard-coded here).
+    const r = sh('git', ['-C', V, 'grep', '-I', '-l', '-E', '-e', hostPathPattern, treeish], V);
     return r.status === 0 ? r.out.trim().split('\n') : [];
   };
   const commits = git(V, ['rev-list', 'HEAD']).split('\n');
   const hostHits = commits.flatMap((c) => pathMatches(c).map((m) => m.replace(/^[0-9a-f]{40}:/, `${c.slice(0, 8)}:`)));
-  report(hostHits.length === 0 ? 'PASS' : 'FAIL', 'no /home/ec2-user in any commit', hostHits.length ? hostHits.slice(0, 5).join(', ') : `${commits.length} commits searched`);
+  report(hostHits.length === 0 ? 'PASS' : 'FAIL', 'no host home path (/home/<user>/, /Users/<user>/, or this machine\'s home) in any commit', hostHits.length ? hostHits.slice(0, 5).join(', ') : `${commits.length} commits searched`);
 
   const SECRET = 'AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|xox[baprs]-[A-Za-z0-9-]{10,}|sk-[A-Za-z0-9]{32,}|(api[_-]?key|secret|token|passwd|password)[\'"]?\\s*[:=]\\s*[\'"][A-Za-z0-9+/_-]{12,}[\'"]';
   // A made-up HMAC key in an early version of the backend test (replaced later by 'fixture-hmac-key-0001'): not a secret.
