@@ -157,3 +157,9 @@ dependency on a local branch, so that I review a diff instead of doing the work.
 - R9.3 THE tools and the page SHALL show one id per vulnerability with its other ids (`advisoryAliases`).
 - R9.4 WHEN the engine finds the evidence `repo-moved`, THE tools and the page SHALL show it as a note, not as an end of life.
 - R9.5 THE `seance` tool SHALL be a read-only preview that never writes and is auto-approved. THE `seance_write` tool SHALL write only on a `resurrect/<dependency>` branch, SHALL NOT be auto-approved, and SHALL keep every write guard.
+
+## Round 4c amendments (upgrade notice, séance versions)
+
+- R10.1 WHEN the engine gives an alive verdict with the evidence `version-deprecated` or `version-yanked`, THE tools, the Graveyard page and Night Watch SHALL show "Upgrade to <version>" (with "another major version" when `sameMajor` is false, and the engine's sentence when `older` is true), SHALL NOT show it as dying, and SHALL NOT offer to migrate it. THE migration tools SHALL refuse it and say to upgrade.
+- R10.2 WHEN a version becomes deprecated or yanked, Night Watch SHALL send one `upgrade` notification, and none for a notice that was already known, for a baseline run, or after a partial scan.
+- R10.3 THE `seance` and `seance_write` answers SHALL carry the bundle's `oldVersions` as `versions`, and `versionNotTested` SHALL be true unless the version in use is covered. THE agent SHALL tell the person when it is true.
