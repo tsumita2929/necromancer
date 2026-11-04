@@ -1,28 +1,57 @@
 // Runs every curated séance for real, then runs each mutant (a deliberately wrong replacement)
-// and records what happened.
+// and says what happened. Exit 0 when, for every recipe, the real replacement passes and every mutant fails.
 //
-//   npm run build && node scripts/run-seances.mjs [recipe-id ...] [--scratch DIR]
+//   npm run build && node scripts/run-seances.mjs [recipe-id ...] [--scratch DIR] [--record] [--keep]
 //
-// The scratch directory (--scratch DIR or the environment variable NECROMANCER_SEANCE_SCRATCH) holds
-//   js/   a Node project with vitest, fast-check and the old and new packages installed
-//   .venv a Python virtual environment with pytest, hypothesis and the old and new packages
-// The generated files are written there, the test runner is started, and the result is saved in
-// test/fixtures/seance-runs/<recipe>.json and .log. Needs no network once the scratch directory
-// is set up. Tests in the engine never run this.
+// It sets up its own scratch folder (see scripts/lib/seance-scratch.mjs): --scratch DIR, else the environment
+// variable NECROMANCER_SEANCE_SCRATCH, else a new temporary folder that is removed at the end (--keep keeps
+// it). A folder that has what is needed is reused; otherwise npm and pip install the pinned packages there
+// (needs the network and Python 3, NECROMANCER_PYTHON names it).
+//
+// By default it writes nothing in the repository: the per-recipe records and logs go to <scratch>/records/.
+// With --record it writes test/fixtures/seance-runs/<recipe>.json and .log, which are committed. Tests in the
+// engine never run this.
 import { spawnSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { RECIPES } from '../dist/seance/recipes/index.js';
-import { seanceScratch } from './lib/paths.mjs';
+import { fail } from './lib/paths.mjs';
+import { ensureJs, ensurePython, openScratch } from './lib/seance-scratch.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
+if (!existsSync(join(here, '..', 'dist', 'seance', 'recipes', 'index.js')))
+  fail('the engine is not built. Run "npm run build" in packages/engine first.');
+const { RECIPES } = await import('../dist/seance/recipes/index.js');
+
 const args = process.argv.slice(2);
 const scratchFlag = args.indexOf('--scratch');
-const scratch = seanceScratch(scratchFlag >= 0 ? args[scratchFlag + 1] : undefined);
+const record = args.includes('--record');
+const keep = args.includes('--keep');
 const wanted = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--scratch');
-const out = join(here, '..', 'test', 'fixtures', 'seance-runs');
+for (const id of wanted)
+  if (!RECIPES.some((r) => r.id === id))
+    fail(`no recipe "${id}". Recipes: ${RECIPES.map((r) => r.id).join(', ')}.`);
+const chosen = RECIPES.filter((r) => wanted.length === 0 || wanted.includes(r.id));
+
+const opened = openScratch(scratchFlag >= 0 ? args[scratchFlag + 1] : undefined, { keep });
+const scratch = opened.dir;
+process.on('exit', () => opened.cleanup());
+console.log(
+  `scratch: ${opened.temporary ? (keep ? `${scratch} (temporary, kept)` : 'a temporary folder (removed at the end)') : scratch}`,
+);
+if (chosen.some((r) => r.language === 'javascript')) {
+  const js = ensureJs(scratch);
+  if (js.error) fail(js.error);
+}
+if (chosen.some((r) => r.language === 'python')) {
+  const py = ensurePython(scratch);
+  if (py.error) fail(py.error);
+}
+const out = record ? join(here, '..', 'test', 'fixtures', 'seance-runs') : join(scratch, 'records');
 mkdirSync(out, { recursive: true });
+console.log(
+  record ? `recording to ${out}` : `writing nothing in the repository (records: <scratch>/records)`,
+);
 
 /** Packages whose installed versions go into the record. */
 const PACKAGES = {
@@ -125,8 +154,7 @@ function counterexample(text) {
 }
 
 const results = [];
-for (const recipe of RECIPES) {
-  if (wanted.length > 0 && !wanted.includes(recipe.id)) continue;
+for (const recipe of chosen) {
   const ctx = {
     diagnosis: {
       dependency: {
