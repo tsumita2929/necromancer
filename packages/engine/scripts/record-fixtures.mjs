@@ -40,6 +40,8 @@ function trim(url, body) {
         'home_page',
         'download_url',
         'project_url',
+        'bugtrack_url',
+        'docs_url',
         'summary',
         'yanked',
         'yanked_reason',
@@ -72,6 +74,7 @@ function trim(url, body) {
         'pushed_at',
         'stargazers_count',
         'default_branch',
+        'fork',
       ]),
     };
   }

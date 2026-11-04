@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.deps.dev/v3/projects/github.com%2Fcburroughs%2Fpep8.py"
+  },
+  "status": 200,
+  "body": {
+    "projectKey": {
+      "id": "github.com/cburroughs/pep8.py"
+    },
+    "openIssuesCount": 5,
+    "starsCount": 65,
+    "forksCount": 8,
+    "license": "",
+    "description": "Look here: http://github.com/jcrocholl/pep8",
+    "homepage": "http://github.com/jcrocholl/pep8"
+  }
+}

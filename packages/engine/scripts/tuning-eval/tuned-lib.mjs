@@ -98,6 +98,8 @@ export function makeTunedFetch({ repoStandIn = false } = {}) {
       }
       if (!hit) {
         counts.repoMiss++;
+        if (process.env.NECRO_MISS_LOG)
+          (await import('node:fs')).appendFileSync(process.env.NECRO_MISS_LOG, `${url}\n`);
         throw new Error(
           'census cache has no answer for this repository (the GitHub API is not called)',
         );

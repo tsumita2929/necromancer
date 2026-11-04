@@ -69,6 +69,7 @@ export const EVIDENCE_CLASS: Readonly<Record<string, EvidenceClass>> = {
   'recent-activity': 'life',
   'activity-unchecked': 'info',
   'repo-moved': 'info',
+  'repo-link': 'info',
   unchecked: 'info',
 };
 

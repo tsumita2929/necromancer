@@ -3,6 +3,7 @@
  */
 
 import type { Evidence, SourceId, UpgradeTarget } from './types.js';
+import { repoUrl, type RepoRef } from './sources/repo.js';
 import { clip } from './util/guards.js';
 
 export const DAY_MS = 86_400_000;
@@ -285,6 +286,16 @@ export function repoMoved(repoUrl: string, to: string, how: 'renamed' | 'readme'
         : `The GitHub copy is archived because the project moved to ${where} (its README says so). That is not an end of life; activity at the new address is not read.`,
     source: 'github',
     url: repoUrl,
+  });
+}
+
+/** Where the repository link came from, when that is not the usual place or the record names two repositories. */
+export function repoLinkNote(message: string, repo: RepoRef): Evidence {
+  return line({
+    code: 'repo-link',
+    message: clip(message, 400),
+    source: 'pypi',
+    url: repoUrl(repo),
   });
 }
 

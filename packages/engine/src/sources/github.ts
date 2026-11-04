@@ -34,6 +34,8 @@ export type GithubRepo =
       pushedAt?: string;
       /** Set when the repository answers under another name ("owner/name"): it was renamed or transferred. */
       renamedTo?: string;
+      /** True when the repository is a fork of another. */
+      fork?: boolean;
     }
   | { state: 'gone'; reason: string };
 
@@ -81,6 +83,7 @@ export async function getGithubRepo(http: Http, repo: RepoRef): Promise<Fetched<
     const out: GithubRepo = { state: 'ok', archived: asBoolean(r.data['archived']) === true };
     const pushed = asString(r.data['pushed_at']);
     if (pushed) out.pushedAt = pushed;
+    if (asBoolean(r.data['fork']) === true) out.fork = true;
     const current = asString(r.data['full_name']);
     if (current && current.toLowerCase() !== `${repo.owner}/${repo.name}`.toLowerCase()) {
       out.renamedTo = current;

@@ -1,0 +1,116 @@
+[
+ {
+  "project": "onyx-dot-app/onyx",
+  "name": "discord-py",
+  "ecosystem": "pypi",
+  "spec": "==2.7.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "repo": "https://github.com/Rapptz/discord.py",
+  "evidenceBefore": [],
+  "evidenceAfter": [
+   "repo-link"
+  ]
+ },
+ {
+  "project": "onyx-dot-app/onyx",
+  "name": "supervisor",
+  "ecosystem": "pypi",
+  "spec": "==4.3.0",
+  "before": "alive/-",
+  "after": "alive/-",
+  "repo": "https://github.com/Supervisor/supervisor",
+  "evidenceBefore": [
+   "recent-activity",
+   "low-maintenance"
+  ],
+  "evidenceAfter": [
+   "recent-activity",
+   "low-maintenance",
+   "repo-link"
+  ]
+ },
+ {
+  "project": "reflex-dev/reflex",
+  "name": "darglint",
+  "ecosystem": "pypi",
+  "spec": "",
+  "before": "dead/heuristic",
+  "after": "dead/hard",
+  "repo": "https://github.com/terrencepreilly/darglint",
+  "evidenceBefore": [
+   "abandoned",
+   "no-release-long",
+   "no-repository"
+  ],
+  "evidenceAfter": [
+   "repo-archived",
+   "abandoned",
+   "no-release-long",
+   "low-maintenance",
+   "repo-link"
+  ]
+ },
+ {
+  "project": "reflex-dev/reflex",
+  "name": "libsass",
+  "ecosystem": "pypi",
+  "spec": "",
+  "before": "dying/heuristic",
+  "after": "dead/hard",
+  "repo": "https://github.com/dahlia/libsass-python",
+  "evidenceBefore": [
+   "no-release",
+   "no-repository"
+  ],
+  "evidenceAfter": [
+   "repo-archived",
+   "no-release",
+   "repo-link",
+   "repo-moved"
+  ]
+ },
+ {
+  "project": "subframe7536/maple-font",
+  "name": "fontfeatures",
+  "ecosystem": "pypi",
+  "spec": "==1.9.0",
+  "before": "alive/-",
+  "after": "dying/heuristic",
+  "repo": "https://github.com/simoncozens/fontFeatures",
+  "evidenceBefore": [
+   "no-repository"
+  ],
+  "evidenceAfter": [
+   "repo-inactive",
+   "low-maintenance",
+   "repo-link"
+  ]
+ },
+ {
+  "project": "tinygrad/tinygrad",
+  "name": "mako",
+  "ecosystem": "pypi",
+  "spec": "",
+  "before": "alive/-",
+  "after": "alive/-",
+  "repo": "https://github.com/sqlalchemy/mako",
+  "evidenceBefore": [],
+  "evidenceAfter": [
+   "repo-link"
+  ]
+ },
+ {
+  "project": "tinygrad/tinygrad",
+  "name": "onnxruntime",
+  "ecosystem": "pypi",
+  "spec": "==1.24.1",
+  "before": "alive/-",
+  "after": "alive/-",
+  "repo": "https://github.com/microsoft/onnxruntime",
+  "evidenceBefore": [],
+  "evidenceAfter": [
+   "repo-link"
+  ]
+ }
+]

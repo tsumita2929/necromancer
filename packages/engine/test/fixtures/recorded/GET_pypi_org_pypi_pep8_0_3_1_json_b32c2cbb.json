@@ -1,0 +1,28 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://pypi.org/pypi/pep8/0.3.1/json"
+  },
+  "status": 200,
+  "body": {
+    "_trimmed": "PyPI payload reduced to the fields the engine reads",
+    "info": {
+      "name": "pep8",
+      "version": "0.3.1",
+      "classifiers": [],
+      "project_urls": {
+        "Download": "UNKNOWN",
+        "Homepage": "http://github.com/cburroughs/pep8.py/tree/master"
+      },
+      "home_page": "http://github.com/cburroughs/pep8.py/tree/master",
+      "download_url": "UNKNOWN",
+      "project_url": "https://pypi.org/project/pep8/",
+      "bugtrack_url": null,
+      "docs_url": null,
+      "summary": "Python style guide checker",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    "releases": {}
+  }
+}

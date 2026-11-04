@@ -1,0 +1,1320 @@
+{
+ "schema": 1,
+ "generatedBy": "scratch/census/aggregate-tuned.mjs (copied to docs/research/scripts/); engine: tuned, see docs/verification/engine-tuning.md",
+ "title": "Necromancer graveyard census, aggregate counts",
+ "engine": {
+  "commit": "bfd86f123979079931c42ac6ffa4b3bcead17bd7",
+  "engineTreeHash": "eb847e9d50141b5347c0a6c7bb1aa55873fe03ae",
+  "lastEngineChange": "5b142d0"
+ },
+ "drawDate": "2026-11-03",
+ "pushedSince": "2025-11-03",
+ "seedText": "necromancer-census-2026-11",
+ "engineClock": "2026-11-03T14:12:57.765Z",
+ "scope": "first 25 subjects of each cell in draw order (nested random half); second halves not run",
+ "githubPerHourCap": 55,
+ "sample": {
+  "npm-popular": {
+   "ecosystem": "npm",
+   "stratum": "popular",
+   "languages": [
+    "JavaScript",
+    "TypeScript"
+   ],
+   "stars": ">=10000",
+   "candidateSet": 1224,
+   "windows": 2,
+   "drawnForFullCell": 52,
+   "skipsForFullCell": {
+    "no-root-manifest": 1,
+    "zero-direct-dependencies": 1,
+    "not-in-page": 0
+   },
+   "subjectsDrawnInCell": 50,
+   "subjectsInScope": 25,
+   "drawnThroughScope": 27,
+   "skippedInScope": 2
+  },
+  "npm-tail": {
+   "ecosystem": "npm",
+   "stratum": "tail",
+   "languages": [
+    "JavaScript",
+    "TypeScript"
+   ],
+   "stars": "100..1000",
+   "candidateSet": 31305,
+   "windows": 46,
+   "drawnForFullCell": 69,
+   "skipsForFullCell": {
+    "no-root-manifest": 14,
+    "zero-direct-dependencies": 5,
+    "not-in-page": 0
+   },
+   "subjectsDrawnInCell": 50,
+   "subjectsInScope": 25,
+   "drawnThroughScope": 34,
+   "skippedInScope": 9
+  },
+  "pypi-popular": {
+   "ecosystem": "pypi",
+   "stratum": "popular",
+   "languages": [
+    "Python"
+   ],
+   "stars": ">=10000",
+   "candidateSet": 849,
+   "windows": 1,
+   "drawnForFullCell": 74,
+   "skipsForFullCell": {
+    "no-root-manifest": 22,
+    "zero-direct-dependencies": 2,
+    "not-in-page": 0
+   },
+   "subjectsDrawnInCell": 50,
+   "subjectsInScope": 25,
+   "drawnThroughScope": 37,
+   "skippedInScope": 12
+  },
+  "pypi-tail": {
+   "ecosystem": "pypi",
+   "stratum": "tail",
+   "languages": [
+    "Python"
+   ],
+   "stars": "100..1000",
+   "candidateSet": 32660,
+   "windows": 48,
+   "drawnForFullCell": 89,
+   "skipsForFullCell": {
+    "no-root-manifest": 35,
+    "zero-direct-dependencies": 4,
+    "not-in-page": 0
+   },
+   "subjectsDrawnInCell": 50,
+   "subjectsInScope": 25,
+   "drawnThroughScope": 40,
+   "skippedInScope": 15
+  }
+ },
+ "cells": {
+  "pypi-tail": {
+   "subjects": 25,
+   "directDependencies": 436,
+   "verdicts": {
+    "alive": 405,
+    "dying": 23,
+    "dead": 8,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "verdictBasis": {
+    "alive/none": 405,
+    "dying/heuristic": 23,
+    "dead/heuristic": 5,
+    "dead/hard": 3
+   },
+   "verdictsRuntime": {
+    "alive": 301,
+    "dying": 21,
+    "dead": 7,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "subjectsWithDeadOrWorse": 5,
+   "subjectsWithNonAlive": 10,
+   "subjectsWithDying": 9,
+   "subjectsWithZombie": 0,
+   "subjectsWithStrongDead": 1,
+   "subjectsWithStrongDeadRuntime": 1,
+   "strongDeadDeps": 3,
+   "subjectsWithDeadOrWorseRuntime": 4,
+   "subjectsWithNonAliveRuntime": 8,
+   "subjectsWithZombieRuntime": 0,
+   "subjectsWithAdvisoryAny": 8,
+   "deadDeps": 8,
+   "deadDepsWithSuccessor": 5,
+   "deadDepsBestSuccessorKind": {
+    "none": 3,
+    "package": 5
+   },
+   "deadDepsDecisiveEvidence": {
+    "abandoned": 5,
+    "pypi-inactive": 1,
+    "repo-archived": 2
+   },
+   "statusCounts": {
+    "complete": 23,
+    "partial": 2,
+    "failed": 0
+   },
+   "partialReasons": {
+    "direct-dependency-not-checkable": 2
+   },
+   "workspacesRepos": 0,
+   "withLockfile": 0,
+   "ghLookupsDone": 0,
+   "heuristicDeadDeps": 5,
+   "directPerSubjectMedian": 11,
+   "directPerSubjectMax": 55,
+   "topDeadPackages": [
+    {
+     "name": "attrdict",
+     "subjects": 1
+    },
+    {
+     "name": "attrdict3",
+     "subjects": 1
+    },
+    {
+     "name": "ntplib",
+     "subjects": 1
+    },
+    {
+     "name": "pydub",
+     "subjects": 1
+    },
+    {
+     "name": "pysocks",
+     "subjects": 1
+    },
+    {
+     "name": "python-terraform",
+     "subjects": 1
+    },
+    {
+     "name": "recommonmark",
+     "subjects": 1
+    },
+    {
+     "name": "testing-postgresql",
+     "subjects": 1
+    }
+   ],
+   "topZombiePackages": [],
+   "topDyingPackages": [
+    {
+     "name": "aiopath",
+     "subjects": 1
+    },
+    {
+     "name": "docx2pdf",
+     "subjects": 1
+    },
+    {
+     "name": "dotenv",
+     "subjects": 1
+    },
+    {
+     "name": "easydict",
+     "subjects": 1
+    },
+    {
+     "name": "feetech-servo-sdk",
+     "subjects": 1
+    },
+    {
+     "name": "ftfy",
+     "subjects": 1
+    },
+    {
+     "name": "itsdangerous",
+     "subjects": 1
+    },
+    {
+     "name": "javatools",
+     "subjects": 1
+    },
+    {
+     "name": "jupyter",
+     "subjects": 1
+    },
+    {
+     "name": "ldapdomaindump",
+     "subjects": 1
+    }
+   ],
+   "distinctDeadPackages": 8
+  },
+  "npm-tail": {
+   "subjects": 25,
+   "directDependencies": 593,
+   "verdicts": {
+    "alive": 522,
+    "dying": 35,
+    "dead": 34,
+    "ghost": 1,
+    "zombie": 1
+   },
+   "verdictBasis": {
+    "dead/hard": 20,
+    "alive/none": 522,
+    "ghost/hard": 1,
+    "dead/heuristic": 14,
+    "dying/heuristic": 35,
+    "zombie/hard": 1
+   },
+   "verdictsRuntime": {
+    "alive": 190,
+    "dying": 20,
+    "dead": 12,
+    "ghost": 1,
+    "zombie": 1
+   },
+   "subjectsWithDeadOrWorse": 12,
+   "subjectsWithNonAlive": 15,
+   "subjectsWithDying": 12,
+   "subjectsWithZombie": 1,
+   "subjectsWithStrongDead": 10,
+   "subjectsWithStrongDeadRuntime": 4,
+   "strongDeadDeps": 21,
+   "subjectsWithDeadOrWorseRuntime": 6,
+   "subjectsWithNonAliveRuntime": 9,
+   "subjectsWithZombieRuntime": 1,
+   "subjectsWithAdvisoryAny": 15,
+   "deadDeps": 36,
+   "deadDepsWithSuccessor": 23,
+   "deadDepsBestSuccessorKind": {
+    "package": 22,
+    "native": 1,
+    "none": 13
+   },
+   "deadDepsDecisiveEvidence": {
+    "repo-archived": 11,
+    "repo-gone": 1,
+    "npm-deprecated": 9,
+    "abandoned": 15
+   },
+   "statusCounts": {
+    "complete": 23,
+    "partial": 2,
+    "failed": 0
+   },
+   "partialReasons": {
+    "direct-dependency-not-checkable": 2
+   },
+   "workspacesRepos": 3,
+   "withLockfile": 15,
+   "ghLookupsDone": 0,
+   "heuristicDeadDeps": 14,
+   "directPerSubjectMedian": 14,
+   "directPerSubjectMax": 64,
+   "topDeadPackages": [
+    {
+     "name": "@babel/plugin-proposal-class-properties",
+     "subjects": 2
+    },
+    {
+     "name": "@babel/plugin-proposal-object-rest-spread",
+     "subjects": 1
+    },
+    {
+     "name": "@babel/plugin-proposal-optional-chaining",
+     "subjects": 1
+    },
+    {
+     "name": "@mdi/light-js",
+     "subjects": 1
+    },
+    {
+     "name": "@opentelemetry/sdk-trace-base",
+     "subjects": 1
+    },
+    {
+     "name": "@opentelemetry/sdk-trace-node",
+     "subjects": 1
+    },
+    {
+     "name": "@types/bcryptjs",
+     "subjects": 1
+    },
+    {
+     "name": "@types/commander",
+     "subjects": 1
+    },
+    {
+     "name": "@types/inquirer",
+     "subjects": 1
+    },
+    {
+     "name": "@wojtekmaj/enzyme-adapter-react-17",
+     "subjects": 1
+    },
+    {
+     "name": "chai-enzyme",
+     "subjects": 1
+    },
+    {
+     "name": "cz-conventional-changelog",
+     "subjects": 1
+    },
+    {
+     "name": "enzyme",
+     "subjects": 1
+    },
+    {
+     "name": "eslint-plugin-babel",
+     "subjects": 1
+    },
+    {
+     "name": "extract-zip",
+     "subjects": 1
+    }
+   ],
+   "topZombiePackages": [
+    {
+     "name": "extract-zip",
+     "subjects": 1
+    }
+   ],
+   "topDyingPackages": [
+    {
+     "name": "ts-node",
+     "subjects": 4
+    },
+    {
+     "name": "clsx",
+     "subjects": 3
+    },
+    {
+     "name": "@cfaester/enzyme-adapter-react-18",
+     "subjects": 1
+    },
+    {
+     "name": "@mdi/js",
+     "subjects": 1
+    },
+    {
+     "name": "@mx-design/node-utils",
+     "subjects": 1
+    },
+    {
+     "name": "@mx-design/release",
+     "subjects": 1
+    },
+    {
+     "name": "@mx-design/web-utils",
+     "subjects": 1
+    },
+    {
+     "name": "@svgr/webpack",
+     "subjects": 1
+    },
+    {
+     "name": "bcryptjs",
+     "subjects": 1
+    },
+    {
+     "name": "fork-ts-checker-webpack-plugin",
+     "subjects": 1
+    }
+   ],
+   "distinctDeadPackages": 35
+  },
+  "pypi-popular": {
+   "subjects": 25,
+   "directDependencies": 1063,
+   "verdicts": {
+    "alive": 963,
+    "dying": 74,
+    "dead": 26,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "verdictBasis": {
+    "dying/heuristic": 74,
+    "alive/none": 963,
+    "dead/hard": 10,
+    "dead/heuristic": 16
+   },
+   "verdictsRuntime": {
+    "alive": 501,
+    "dying": 39,
+    "dead": 13,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "subjectsWithDeadOrWorse": 14,
+   "subjectsWithNonAlive": 19,
+   "subjectsWithDying": 18,
+   "subjectsWithZombie": 0,
+   "subjectsWithStrongDead": 7,
+   "subjectsWithStrongDeadRuntime": 0,
+   "strongDeadDeps": 10,
+   "subjectsWithDeadOrWorseRuntime": 8,
+   "subjectsWithNonAliveRuntime": 15,
+   "subjectsWithZombieRuntime": 0,
+   "subjectsWithAdvisoryAny": 13,
+   "deadDeps": 26,
+   "deadDepsWithSuccessor": 13,
+   "deadDepsBestSuccessorKind": {
+    "package": 11,
+    "native": 2,
+    "none": 13
+   },
+   "deadDepsDecisiveEvidence": {
+    "repo-archived": 8,
+    "pypi-inactive": 2,
+    "abandoned": 16
+   },
+   "statusCounts": {
+    "complete": 24,
+    "partial": 1,
+    "failed": 0
+   },
+   "partialReasons": {
+    "direct-dependency-not-checkable": 1
+   },
+   "workspacesRepos": 0,
+   "withLockfile": 0,
+   "ghLookupsDone": 0,
+   "heuristicDeadDeps": 16,
+   "directPerSubjectMedian": 33,
+   "directPerSubjectMax": 152,
+   "topDeadPackages": [
+    {
+     "name": "pydub",
+     "subjects": 3
+    },
+    {
+     "name": "defusedxml",
+     "subjects": 2
+    },
+    {
+     "name": "mkdocs-material",
+     "subjects": 2
+    },
+    {
+     "name": "asynctest",
+     "subjects": 1
+    },
+    {
+     "name": "codecov",
+     "subjects": 1
+    },
+    {
+     "name": "darglint",
+     "subjects": 1
+    },
+    {
+     "name": "g2p-en",
+     "subjects": 1
+    },
+    {
+     "name": "gntp",
+     "subjects": 1
+    },
+    {
+     "name": "jieba",
+     "subjects": 1
+    },
+    {
+     "name": "libsass",
+     "subjects": 1
+    },
+    {
+     "name": "lxml-stubs",
+     "subjects": 1
+    },
+    {
+     "name": "mutatormath",
+     "subjects": 1
+    },
+    {
+     "name": "nest-asyncio",
+     "subjects": 1
+    },
+    {
+     "name": "pydotplus",
+     "subjects": 1
+    },
+    {
+     "name": "pysocks",
+     "subjects": 1
+    }
+   ],
+   "topZombiePackages": [],
+   "topDyingPackages": [
+    {
+     "name": "openpyxl",
+     "subjects": 3
+    },
+    {
+     "name": "python-docx",
+     "subjects": 3
+    },
+    {
+     "name": "requests-oauthlib",
+     "subjects": 3
+    },
+    {
+     "name": "dacite",
+     "subjects": 2
+    },
+    {
+     "name": "inquirerpy",
+     "subjects": 2
+    },
+    {
+     "name": "jupyter",
+     "subjects": 2
+    },
+    {
+     "name": "mkdocs",
+     "subjects": 2
+    },
+    {
+     "name": "autodoc-pydantic",
+     "subjects": 1
+    },
+    {
+     "name": "conformer",
+     "subjects": 1
+    },
+    {
+     "name": "dehinter",
+     "subjects": 1
+    }
+   ],
+   "distinctDeadPackages": 22
+  },
+  "npm-popular": {
+   "subjects": 25,
+   "directDependencies": 1109,
+   "verdicts": {
+    "alive": 919,
+    "dying": 80,
+    "dead": 107,
+    "ghost": 0,
+    "zombie": 3
+   },
+   "verdictBasis": {
+    "alive/none": 919,
+    "dead/heuristic": 69,
+    "dead/hard": 38,
+    "dying/heuristic": 80,
+    "zombie/hard": 3
+   },
+   "verdictsRuntime": {
+    "alive": 241,
+    "dying": 27,
+    "dead": 23,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "subjectsWithDeadOrWorse": 19,
+   "subjectsWithNonAlive": 21,
+   "subjectsWithDying": 17,
+   "subjectsWithZombie": 2,
+   "subjectsWithStrongDead": 16,
+   "subjectsWithStrongDeadRuntime": 6,
+   "strongDeadDeps": 40,
+   "subjectsWithDeadOrWorseRuntime": 8,
+   "subjectsWithNonAliveRuntime": 10,
+   "subjectsWithZombieRuntime": 0,
+   "subjectsWithAdvisoryAny": 13,
+   "deadDeps": 110,
+   "deadDepsWithSuccessor": 54,
+   "deadDepsBestSuccessorKind": {
+    "native": 13,
+    "none": 56,
+    "package": 39,
+    "raise": 2
+   },
+   "deadDepsDecisiveEvidence": {
+    "abandoned": 70,
+    "repo-archived": 14,
+    "npm-deprecated": 26
+   },
+   "statusCounts": {
+    "complete": 20,
+    "partial": 5,
+    "failed": 0
+   },
+   "partialReasons": {
+    "direct-dependency-not-checkable": 5
+   },
+   "workspacesRepos": 6,
+   "withLockfile": 10,
+   "ghLookupsDone": 0,
+   "heuristicDeadDeps": 69,
+   "directPerSubjectMedian": 32,
+   "directPerSubjectMax": 217,
+   "topDeadPackages": [
+    {
+     "name": "cross-env",
+     "subjects": 6
+    },
+    {
+     "name": "istanbul",
+     "subjects": 2
+    },
+    {
+     "name": "seedrandom",
+     "subjects": 2
+    },
+    {
+     "name": "@babel/plugin-proposal-class-properties",
+     "subjects": 1
+    },
+    {
+     "name": "@codemirror/rangeset",
+     "subjects": 1
+    },
+    {
+     "name": "@louislam/sqlite3",
+     "subjects": 1
+    },
+    {
+     "name": "@swan-io/boxed",
+     "subjects": 1
+    },
+    {
+     "name": "@types/adm-zip",
+     "subjects": 1
+    },
+    {
+     "name": "@types/bcryptjs",
+     "subjects": 1
+    },
+    {
+     "name": "@types/earcut",
+     "subjects": 1
+    },
+    {
+     "name": "@types/glob",
+     "subjects": 1
+    },
+    {
+     "name": "@types/pixelmatch",
+     "subjects": 1
+    },
+    {
+     "name": "@types/rimraf",
+     "subjects": 1
+    },
+    {
+     "name": "add-cors-to-couchdb",
+     "subjects": 1
+    },
+    {
+     "name": "benchmark",
+     "subjects": 1
+    }
+   ],
+   "topZombiePackages": [
+    {
+     "name": "ecstatic",
+     "subjects": 1
+    },
+    {
+     "name": "expr-eval",
+     "subjects": 1
+    },
+    {
+     "name": "request",
+     "subjects": 1
+    }
+   ],
+   "topDyingPackages": [
+    {
+     "name": "clsx",
+     "subjects": 3
+    },
+    {
+     "name": "ts-node",
+     "subjects": 3
+    },
+    {
+     "name": "node-fetch",
+     "subjects": 2
+    },
+    {
+     "name": "pngjs",
+     "subjects": 2
+    },
+    {
+     "name": "replace",
+     "subjects": 2
+    },
+    {
+     "name": "tailwindcss-animate",
+     "subjects": 2
+    },
+    {
+     "name": "@11ty/eleventy-plugin-syntaxhighlight",
+     "subjects": 1
+    },
+    {
+     "name": "@apihero/fetch",
+     "subjects": 1
+    },
+    {
+     "name": "@codesandbox/sandpack-react",
+     "subjects": 1
+    },
+    {
+     "name": "@inventage/envsubst",
+     "subjects": 1
+    }
+   ],
+   "distinctDeadPackages": 103
+  }
+ },
+ "ecosystems": {
+  "npm": {
+   "subjects": 50,
+   "directDependencies": 1702,
+   "verdicts": {
+    "alive": 1441,
+    "dying": 115,
+    "dead": 141,
+    "ghost": 1,
+    "zombie": 4
+   },
+   "verdictBasis": {
+    "dead/hard": 58,
+    "alive/none": 1441,
+    "ghost/hard": 1,
+    "dead/heuristic": 83,
+    "dying/heuristic": 115,
+    "zombie/hard": 4
+   },
+   "verdictsRuntime": {
+    "alive": 431,
+    "dying": 47,
+    "dead": 35,
+    "ghost": 1,
+    "zombie": 1
+   },
+   "subjectsWithDeadOrWorse": 31,
+   "subjectsWithNonAlive": 36,
+   "subjectsWithDying": 29,
+   "subjectsWithZombie": 3,
+   "subjectsWithStrongDead": 26,
+   "subjectsWithStrongDeadRuntime": 10,
+   "strongDeadDeps": 61,
+   "subjectsWithDeadOrWorseRuntime": 14,
+   "subjectsWithNonAliveRuntime": 19,
+   "subjectsWithZombieRuntime": 1,
+   "subjectsWithAdvisoryAny": 28,
+   "deadDeps": 146,
+   "deadDepsWithSuccessor": 77,
+   "deadDepsBestSuccessorKind": {
+    "package": 61,
+    "native": 14,
+    "none": 69,
+    "raise": 2
+   },
+   "deadDepsDecisiveEvidence": {
+    "repo-archived": 25,
+    "repo-gone": 1,
+    "npm-deprecated": 35,
+    "abandoned": 85
+   },
+   "statusCounts": {
+    "complete": 43,
+    "partial": 7,
+    "failed": 0
+   },
+   "partialReasons": {
+    "direct-dependency-not-checkable": 7
+   },
+   "workspacesRepos": 9,
+   "withLockfile": 25,
+   "ghLookupsDone": 0,
+   "heuristicDeadDeps": 83,
+   "directPerSubjectMedian": 24,
+   "directPerSubjectMax": 217,
+   "topDeadPackages": [
+    {
+     "name": "cross-env",
+     "subjects": 6
+    },
+    {
+     "name": "@babel/plugin-proposal-class-properties",
+     "subjects": 3
+    },
+    {
+     "name": "@types/bcryptjs",
+     "subjects": 2
+    },
+    {
+     "name": "istanbul",
+     "subjects": 2
+    },
+    {
+     "name": "karma-mocha",
+     "subjects": 2
+    },
+    {
+     "name": "karma-mocha-reporter",
+     "subjects": 2
+    },
+    {
+     "name": "process",
+     "subjects": 2
+    },
+    {
+     "name": "seedrandom",
+     "subjects": 2
+    },
+    {
+     "name": "@babel/plugin-proposal-object-rest-spread",
+     "subjects": 1
+    },
+    {
+     "name": "@babel/plugin-proposal-optional-chaining",
+     "subjects": 1
+    },
+    {
+     "name": "@codemirror/rangeset",
+     "subjects": 1
+    },
+    {
+     "name": "@louislam/sqlite3",
+     "subjects": 1
+    },
+    {
+     "name": "@mdi/light-js",
+     "subjects": 1
+    },
+    {
+     "name": "@opentelemetry/sdk-trace-base",
+     "subjects": 1
+    },
+    {
+     "name": "@opentelemetry/sdk-trace-node",
+     "subjects": 1
+    }
+   ],
+   "topZombiePackages": [
+    {
+     "name": "ecstatic",
+     "subjects": 1
+    },
+    {
+     "name": "expr-eval",
+     "subjects": 1
+    },
+    {
+     "name": "extract-zip",
+     "subjects": 1
+    },
+    {
+     "name": "request",
+     "subjects": 1
+    }
+   ],
+   "topDyingPackages": [
+    {
+     "name": "ts-node",
+     "subjects": 7
+    },
+    {
+     "name": "clsx",
+     "subjects": 6
+    },
+    {
+     "name": "tailwindcss-animate",
+     "subjects": 3
+    },
+    {
+     "name": "bcryptjs",
+     "subjects": 2
+    },
+    {
+     "name": "karma",
+     "subjects": 2
+    },
+    {
+     "name": "karma-webpack",
+     "subjects": 2
+    },
+    {
+     "name": "mkdirp",
+     "subjects": 2
+    },
+    {
+     "name": "next-themes",
+     "subjects": 2
+    },
+    {
+     "name": "node-fetch",
+     "subjects": 2
+    },
+    {
+     "name": "pngjs",
+     "subjects": 2
+    }
+   ],
+   "distinctDeadPackages": 133
+  },
+  "pypi": {
+   "subjects": 50,
+   "directDependencies": 1499,
+   "verdicts": {
+    "alive": 1368,
+    "dying": 97,
+    "dead": 34,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "verdictBasis": {
+    "alive/none": 1368,
+    "dying/heuristic": 97,
+    "dead/hard": 13,
+    "dead/heuristic": 21
+   },
+   "verdictsRuntime": {
+    "alive": 802,
+    "dying": 60,
+    "dead": 20,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "subjectsWithDeadOrWorse": 19,
+   "subjectsWithNonAlive": 29,
+   "subjectsWithDying": 27,
+   "subjectsWithZombie": 0,
+   "subjectsWithStrongDead": 8,
+   "subjectsWithStrongDeadRuntime": 1,
+   "strongDeadDeps": 13,
+   "subjectsWithDeadOrWorseRuntime": 12,
+   "subjectsWithNonAliveRuntime": 23,
+   "subjectsWithZombieRuntime": 0,
+   "subjectsWithAdvisoryAny": 21,
+   "deadDeps": 34,
+   "deadDepsWithSuccessor": 18,
+   "deadDepsBestSuccessorKind": {
+    "package": 16,
+    "native": 2,
+    "none": 16
+   },
+   "deadDepsDecisiveEvidence": {
+    "repo-archived": 10,
+    "pypi-inactive": 3,
+    "abandoned": 21
+   },
+   "statusCounts": {
+    "complete": 47,
+    "partial": 3,
+    "failed": 0
+   },
+   "partialReasons": {
+    "direct-dependency-not-checkable": 3
+   },
+   "workspacesRepos": 0,
+   "withLockfile": 0,
+   "ghLookupsDone": 0,
+   "heuristicDeadDeps": 21,
+   "directPerSubjectMedian": 27.5,
+   "directPerSubjectMax": 152,
+   "topDeadPackages": [
+    {
+     "name": "pydub",
+     "subjects": 4
+    },
+    {
+     "name": "defusedxml",
+     "subjects": 2
+    },
+    {
+     "name": "mkdocs-material",
+     "subjects": 2
+    },
+    {
+     "name": "pysocks",
+     "subjects": 2
+    },
+    {
+     "name": "asynctest",
+     "subjects": 1
+    },
+    {
+     "name": "attrdict",
+     "subjects": 1
+    },
+    {
+     "name": "attrdict3",
+     "subjects": 1
+    },
+    {
+     "name": "codecov",
+     "subjects": 1
+    },
+    {
+     "name": "darglint",
+     "subjects": 1
+    },
+    {
+     "name": "g2p-en",
+     "subjects": 1
+    },
+    {
+     "name": "gntp",
+     "subjects": 1
+    },
+    {
+     "name": "jieba",
+     "subjects": 1
+    },
+    {
+     "name": "libsass",
+     "subjects": 1
+    },
+    {
+     "name": "lxml-stubs",
+     "subjects": 1
+    },
+    {
+     "name": "mutatormath",
+     "subjects": 1
+    }
+   ],
+   "topZombiePackages": [],
+   "topDyingPackages": [
+    {
+     "name": "python-docx",
+     "subjects": 4
+    },
+    {
+     "name": "jupyter",
+     "subjects": 3
+    },
+    {
+     "name": "openpyxl",
+     "subjects": 3
+    },
+    {
+     "name": "requests-oauthlib",
+     "subjects": 3
+    },
+    {
+     "name": "dacite",
+     "subjects": 2
+    },
+    {
+     "name": "docx2pdf",
+     "subjects": 2
+    },
+    {
+     "name": "inquirerpy",
+     "subjects": 2
+    },
+    {
+     "name": "mkdocs",
+     "subjects": 2
+    },
+    {
+     "name": "nbval",
+     "subjects": 2
+    },
+    {
+     "name": "pypdf2",
+     "subjects": 2
+    }
+   ],
+   "distinctDeadPackages": 28
+  }
+ },
+ "all": {
+  "subjects": 100,
+  "directDependencies": 3201,
+  "verdicts": {
+   "alive": 2809,
+   "dying": 212,
+   "dead": 175,
+   "ghost": 1,
+   "zombie": 4
+  },
+  "verdictBasis": {
+   "alive/none": 2809,
+   "dead/hard": 71,
+   "dying/heuristic": 212,
+   "dead/heuristic": 104,
+   "ghost/hard": 1,
+   "zombie/hard": 4
+  },
+  "verdictsRuntime": {
+   "alive": 1233,
+   "dying": 107,
+   "dead": 55,
+   "ghost": 1,
+   "zombie": 1
+  },
+  "subjectsWithDeadOrWorse": 50,
+  "subjectsWithNonAlive": 65,
+  "subjectsWithDying": 56,
+  "subjectsWithZombie": 3,
+  "subjectsWithStrongDead": 34,
+  "subjectsWithStrongDeadRuntime": 11,
+  "strongDeadDeps": 74,
+  "subjectsWithDeadOrWorseRuntime": 26,
+  "subjectsWithNonAliveRuntime": 42,
+  "subjectsWithZombieRuntime": 1,
+  "subjectsWithAdvisoryAny": 49,
+  "deadDeps": 180,
+  "deadDepsWithSuccessor": 95,
+  "deadDepsBestSuccessorKind": {
+   "package": 77,
+   "native": 16,
+   "none": 85,
+   "raise": 2
+  },
+  "deadDepsDecisiveEvidence": {
+   "repo-archived": 35,
+   "pypi-inactive": 3,
+   "abandoned": 106,
+   "repo-gone": 1,
+   "npm-deprecated": 35
+  },
+  "statusCounts": {
+   "complete": 90,
+   "partial": 10,
+   "failed": 0
+  },
+  "partialReasons": {
+   "direct-dependency-not-checkable": 10
+  },
+  "workspacesRepos": 9,
+  "withLockfile": 25,
+  "ghLookupsDone": 0,
+  "heuristicDeadDeps": 104,
+  "directPerSubjectMedian": 25,
+  "directPerSubjectMax": 217,
+  "topDeadPackages": [
+   {
+    "name": "cross-env",
+    "subjects": 6
+   },
+   {
+    "name": "pydub",
+    "subjects": 4
+   },
+   {
+    "name": "@babel/plugin-proposal-class-properties",
+    "subjects": 3
+   },
+   {
+    "name": "@types/bcryptjs",
+    "subjects": 2
+   },
+   {
+    "name": "codecov",
+    "subjects": 2
+   },
+   {
+    "name": "defusedxml",
+    "subjects": 2
+   },
+   {
+    "name": "istanbul",
+    "subjects": 2
+   },
+   {
+    "name": "karma-mocha",
+    "subjects": 2
+   },
+   {
+    "name": "karma-mocha-reporter",
+    "subjects": 2
+   },
+   {
+    "name": "mkdocs-material",
+    "subjects": 2
+   },
+   {
+    "name": "process",
+    "subjects": 2
+   },
+   {
+    "name": "pysocks",
+    "subjects": 2
+   },
+   {
+    "name": "seedrandom",
+    "subjects": 2
+   },
+   {
+    "name": "@babel/plugin-proposal-object-rest-spread",
+    "subjects": 1
+   },
+   {
+    "name": "@babel/plugin-proposal-optional-chaining",
+    "subjects": 1
+   }
+  ],
+  "topZombiePackages": [
+   {
+    "name": "ecstatic",
+    "subjects": 1
+   },
+   {
+    "name": "expr-eval",
+    "subjects": 1
+   },
+   {
+    "name": "extract-zip",
+    "subjects": 1
+   },
+   {
+    "name": "request",
+    "subjects": 1
+   }
+  ],
+  "topDyingPackages": [
+   {
+    "name": "ts-node",
+    "subjects": 7
+   },
+   {
+    "name": "clsx",
+    "subjects": 6
+   },
+   {
+    "name": "python-docx",
+    "subjects": 4
+   },
+   {
+    "name": "jupyter",
+    "subjects": 3
+   },
+   {
+    "name": "openpyxl",
+    "subjects": 3
+   },
+   {
+    "name": "requests-oauthlib",
+    "subjects": 3
+   },
+   {
+    "name": "tailwindcss-animate",
+    "subjects": 3
+   },
+   {
+    "name": "bcryptjs",
+    "subjects": 2
+   },
+   {
+    "name": "dacite",
+    "subjects": 2
+   },
+   {
+    "name": "docx2pdf",
+    "subjects": 2
+   }
+  ],
+  "distinctDeadPackages": 160
+ },
+ "distinctDeadOrWorse": {
+  "npm": {
+   "packages": 133,
+   "withSuccessor": 71
+  },
+  "pypi": {
+   "packages": 28,
+   "withSuccessor": 16
+  }
+ }
+}

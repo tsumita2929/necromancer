@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.github.com/repos/cburroughs/pep8.py"
+  },
+  "status": 200,
+  "body": {
+    "_trimmed": "GitHub payload reduced",
+    "full_name": "cburroughs/pep8.py",
+    "html_url": "https://github.com/cburroughs/pep8.py",
+    "archived": true,
+    "disabled": false,
+    "pushed_at": "2009-11-15T23:12:15Z",
+    "stargazers_count": 65,
+    "default_branch": "master",
+    "fork": false
+  }
+}

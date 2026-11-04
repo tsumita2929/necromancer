@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://pypi.org/pypi/pycrypto/2.3/json"
+  },
+  "status": 200,
+  "body": {
+    "_trimmed": "PyPI payload reduced to the fields the engine reads",
+    "info": {
+      "name": "pycrypto",
+      "version": "2.3",
+      "classifiers": [
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "License :: Public Domain",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: Microsoft :: Windows",
+        "Operating System :: Unix",
+        "Topic :: Security :: Cryptography"
+      ],
+      "project_urls": {
+        "Homepage": "http://www.pycrypto.org/"
+      },
+      "home_page": "http://www.pycrypto.org/",
+      "download_url": "",
+      "project_url": "https://pypi.org/project/pycrypto/",
+      "bugtrack_url": null,
+      "docs_url": "https://pythonhosted.org/pycrypto/",
+      "summary": "Cryptographic modules for Python.",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    "releases": {}
+  }
+}

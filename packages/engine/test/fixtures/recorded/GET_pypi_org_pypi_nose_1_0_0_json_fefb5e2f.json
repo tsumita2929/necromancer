@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://pypi.org/pypi/nose/1.0.0/json"
+  },
+  "status": 200,
+  "body": {
+    "_trimmed": "PyPI payload reduced to the fields the engine reads",
+    "info": {
+      "name": "nose",
+      "version": "1.0.0",
+      "classifiers": [
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
+        "Natural Language :: English",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Topic :: Software Development :: Testing"
+      ],
+      "project_urls": {
+        "Download": "http://somethingaboutorange.com/mrl/projects/nose/nose-1.0.0.tar.gz",
+        "Homepage": "http://somethingaboutorange.com/mrl/projects/nose/"
+      },
+      "home_page": "http://somethingaboutorange.com/mrl/projects/nose/",
+      "download_url": "http://somethingaboutorange.com/mrl/projects/nose/nose-1.0.0.tar.gz",
+      "project_url": "https://pypi.org/project/nose/",
+      "bugtrack_url": null,
+      "docs_url": "https://pythonhosted.org/nose/",
+      "summary": "nose extends unittest to make testing easier",
+      "yanked": false,
+      "yanked_reason": null
+    },
+    "releases": {}
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://raw.githubusercontent.com/cburroughs/pep8.py/HEAD/README.md"
+  },
+  "status": 404,
+  "body": "404: Not Found"
+}

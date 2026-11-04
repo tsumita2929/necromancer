@@ -1,6 +1,7 @@
 import type { Http } from '../net/http.js';
-import { asArray, asBoolean, asString, isRecord, type UnknownRecord } from '../util/guards.js';
-import { parseRepoUrl, type RepoRef } from './repo.js';
+import { asArray, asBoolean, asString, isRecord } from '../util/guards.js';
+import { pickPypiRepo, sourceElsewhere, type RepoLink } from './pypi-repo.js';
+import type { RepoRef } from './repo.js';
 import { badShape, fail, type Fetched } from './result.js';
 
 export interface PypiRelease {
@@ -22,33 +23,13 @@ export interface PypiProject {
   yankedReason?: string;
   releases: PypiRelease[];
   repo?: RepoRef;
+  /** Where in the metadata the repository was found, and what else the record names. */
+  repoLink?: RepoLink;
+  /** A source link to a host the engine does not read: the older-release fallback must not override it. */
+  sourceElsewhere?: { field: string; url: string };
 }
 
 const INACTIVE = 'Development Status :: 7 - Inactive';
-const PREFERRED_KEYS = /source|repo|code|github|gitlab|git\b|bitbucket/i;
-
-function pickRepo(info: UnknownRecord): RepoRef | undefined {
-  const candidates: Array<{ key: string; url: string }> = [];
-  const urls = info['project_urls'];
-  if (isRecord(urls)) {
-    for (const [key, value] of Object.entries(urls)) {
-      if (typeof value === 'string') candidates.push({ key, url: value });
-    }
-  }
-  for (const field of ['home_page', 'download_url', 'project_url']) {
-    const value = asString(info[field]);
-    if (value) candidates.push({ key: field, url: value });
-  }
-  candidates.sort(
-    (a, b) => Number(PREFERRED_KEYS.test(b.key)) - Number(PREFERRED_KEYS.test(a.key)),
-  );
-  for (const { url } of candidates) {
-    const repo = parseRepoUrl(url);
-    if (repo) return repo;
-  }
-  return undefined;
-}
-
 /** `GET pypi.org/pypi/{name}/json`, reduced to the fields the engine reads. */
 export async function getPypiProject(http: Http, name: string): Promise<Fetched<PypiProject>> {
   const r = await http.request(`https://pypi.org/pypi/${encodeURIComponent(name)}/json`);
@@ -92,7 +73,29 @@ export async function getPypiProject(http: Http, name: string): Promise<Fetched<
   };
   const reason = asString(info['yanked_reason']);
   if (project.latestYanked && reason) project.yankedReason = reason;
-  const repo = pickRepo(info);
-  if (repo) project.repo = repo;
+  const elsewhere = sourceElsewhere(info);
+  if (elsewhere) project.sourceElsewhere = elsewhere;
+  const link = pickPypiRepo(info);
+  if (link) {
+    project.repo = link.repo;
+    project.repoLink = link;
+  }
   return { ok: true, value: project };
+}
+
+/**
+ * The repository named by the metadata of one release (`GET pypi.org/pypi/{name}/{version}/json`). Used when the
+ * latest release names none: a project may have dropped the link when it changed its build tool (darglint).
+ */
+export async function getPypiReleaseRepo(
+  http: Http,
+  name: string,
+  version: string,
+): Promise<Fetched<RepoLink | null>> {
+  const r = await http.request(
+    `https://pypi.org/pypi/${encodeURIComponent(name)}/${encodeURIComponent(version)}/json`,
+  );
+  if (!r.ok) return fail(r);
+  if (!isRecord(r.data) || !isRecord(r.data['info'])) return badShape('PyPI release');
+  return { ok: true, value: pickPypiRepo(r.data['info']) ?? null };
 }

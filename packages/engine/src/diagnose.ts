@@ -11,7 +11,8 @@ import { getGithubRepo, getLatestCommit, type GithubRepo } from './sources/githu
 import { getMovedNotice } from './sources/moved.js';
 import { getNpmLatest } from './sources/npm.js';
 import { osvKey, queryOsv, type OsvQuery } from './sources/osv.js';
-import { getPypiProject } from './sources/pypi.js';
+import { getPypiProject, getPypiReleaseRepo } from './sources/pypi.js';
+import { describeLink, nameMatchesRepo, type RepoLink } from './sources/pypi-repo.js';
 import { repoKey, repoUrl, type RepoRef } from './sources/repo.js';
 import { loadReplacements, type ReplacementIndex } from './sources/replacements.js';
 import type { Fetched } from './sources/result.js';
@@ -51,6 +52,12 @@ interface PackageFacts {
   inactive: boolean;
   latestYanked?: { reason?: string };
   repo?: RepoRef;
+  /** PyPI: where in the metadata the repository was found, and what else the record names. */
+  repoLink?: RepoLink;
+  /** PyPI: the metadata names its source at a host the engine does not read. */
+  sourceElsewhere?: boolean;
+  /** PyPI: the repository came from the metadata of this older release, because the latest names none. */
+  repoFromRelease?: string;
   registrySource: SourceId;
   /** Evidence from registry data alone. */
   base: Evidence[];
@@ -297,6 +304,8 @@ export class Core {
       facts.inactive = p.inactive;
       if (p.latestYanked) facts.latestYanked = p.yankedReason ? { reason: p.yankedReason } : {};
       if (p.repo) facts.repo = p.repo;
+      if (p.repoLink) facts.repoLink = p.repoLink;
+      if (p.sourceElsewhere) facts.sourceElsewhere = true;
       return facts;
     }
 
@@ -361,6 +370,18 @@ export class Core {
 
   // --- Phase C ------------------------------------------------------------------------------
 
+  /** The repository's last push is more than 30 days older than the latest release. */
+  private predatesLatest(f: PackageFacts): boolean {
+    if (f.github?.state !== 'ok' || !f.github.pushedAt) return false;
+    const pushed = Date.parse(f.github.pushedAt);
+    const released = Date.parse(f.latest?.date ?? '');
+    return (
+      Number.isFinite(pushed) &&
+      Number.isFinite(released) &&
+      pushed < released - 30 * signals.DAY_MS
+    );
+  }
+
   private isFresh(f: PackageFacts, withAdvisory: ReadonlySet<string>): boolean {
     if (withAdvisory.has(pkgKey(f))) return false;
     if (f.deprecatedLatest || f.inactive || f.latestYanked || f.notFound) return false;
@@ -401,6 +422,13 @@ export class Core {
         if (yanked) out.push(signals.versionYanked(f.name, inUse, used.yankedReason, upgradeTo));
       }
     }
+    if (f.repoLink && f.repo) {
+      const how = describeLink(
+        f.repoLink,
+        f.repoFromRelease ? { kind: 'oldest-release', version: f.repoFromRelease } : undefined,
+      );
+      if (how) out.push(signals.repoLinkNote(how, f.repo));
+    }
     if (f.inactive) out.push(signals.pypiInactive(f.name));
     if (f.latestYanked && f.latest)
       out.push(signals.pypiYanked(f.name, f.latest.version, f.latestYanked.reason));
@@ -440,6 +468,24 @@ export class Core {
     // Repository link and Scorecard (deps.dev has no hard limit; GitHub does).
     await Promise.all(
       candidates.map(async (f) => {
+        // PyPI: the latest release names no repository. An older release's metadata may (darglint dropped the
+        // link when it changed its build tool). Only the oldest release is read, and only a repository whose
+        // name matches the package is taken, so a name that changed hands is not followed.
+        if (!f.repo && !f.sourceElsewhere && f.ecosystem === 'pypi' && f.versions.length > 0) {
+          const oldest = [...f.versions].sort((a, b) =>
+            (a.date ?? '~').localeCompare(b.date ?? '~'),
+          )[0];
+          if (oldest && oldest.version !== f.latest?.version) {
+            const r = await guard(() => getPypiReleaseRepo(this.http, f.name, oldest.version));
+            if (r.ok && r.value && nameMatchesRepo(f.name, r.value.repo.name)) {
+              f.repo = r.value.repo;
+              f.repoLink = r.value;
+              f.repoFromRelease = oldest.version;
+            } else if (!r.ok && r.kind !== 'not-found') {
+              note(run, 'pypi', `release ${oldest.version}: ${r.reason}`);
+            }
+          }
+        }
         if (!f.repo && f.ecosystem === 'npm' && f.latest) {
           const r = await guard(() => getVersionRepo(this.http, f.name, f.latest?.version ?? ''));
           if (r.ok) {
@@ -523,6 +569,24 @@ export class Core {
       if (g.ok) f.github = g.value;
       else refused(g);
     });
+
+    // A repository taken from an older release's metadata is a weaker claim than one in the latest
+    // release, so it is kept only when GitHub confirmed it: it answered (the package looked unhealthy
+    // enough to be read, and the budget allowed it), it is not a fork, and it was not last pushed to more
+    // than 30 days before the latest release (the release cannot have been built from it: pep8's first home,
+    // idle since 2009). Gone, a fork, too old, a host the engine does not read, or never read: drop it, and
+    // the package is back where it was before (no repository link), never a ghost.
+    for (const f of all) {
+      if (f.repoFromRelease === undefined) continue;
+      const confirmed =
+        f.github?.state === 'ok' && f.github.fork !== true && !this.predatesLatest(f);
+      if (confirmed) continue;
+      delete f.github;
+      delete f.repo;
+      delete f.repoLink;
+      delete f.repoFromRelease;
+      delete f.scorecard;
+    }
 
     // An archived repository may be archived because the project moved. Its README says so at the
     // top; read it (raw.githubusercontent.com, not the REST API: no GitHub budget) before "archived"
