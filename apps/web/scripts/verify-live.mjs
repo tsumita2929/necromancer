@@ -52,7 +52,7 @@ const errorText = async (page) => {
   await page.waitForSelector('[data-testid="autopsy-error"]', { timeout: 30000 });
   return (await page.locator('[data-testid="autopsy-error"]').innerText()).replace(/\s+/g, ' ');
 };
-const verdictOf = async (page, key) => ((await page.locator(`[data-dep-key="${key}"] .verdict span`).textContent()) ?? '').trim();
+const verdictOf = async (page, key) => ((await page.locator(`[data-dep-key="${key}"] .verdict span:first-of-type`).textContent()) ?? '').trim();
 const tombCount = (page) => page.locator('li.tomb:not(.tomb--skeleton)').count();
 
 console.log('== stubbed internet ==');
@@ -277,6 +277,57 @@ let notFoundText = '';
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   check('very large lockfile: 320 packages become 320 tombstones through the real engine', n === 320, `${n} tombstones in ${ms} ms (stubbed network answers at once)`);
   check('very large lockfile: no sideways scroll', overflow <= 0);
+  await context.close();
+}
+
+// --- round 4: the independent QA's own steps (docs/verification/qa-round3.md), re-run as written
+console.log('\n== QA re-runs (stubbed internet) ==');
+const upload = (page, files) => page.locator('input[aria-label="Manifest and source files"]').setInputFiles(files);
+{
+  // QA-02: upload requirements.txt with django==1.4, open the card.
+  const { context, page, errors } = await newPage(DESKTOP, { raw: {} });
+  await upload(page, { name: 'requirements.txt', mimeType: 'text/plain', buffer: Buffer.from('django==1.4\n') });
+  await graveyard(page);
+  const tomb = page.locator('[data-dep-key="pypi:django"]');
+  const badge = ((await tomb.locator('.tomb__advisory--alive').textContent()) ?? '').match(/^(\d+) advisor/);
+  check('QA-02: django==1.4 is Alive and its tombstone carries an advisory badge with the count', (await verdictOf(page, 'pypi:django')) === 'Alive' && !!badge && Number(badge[1]) > 1, `badge: ${badge?.[0]}`);
+  await tomb.click();
+  await page.waitForSelector('dialog[open]');
+  const text = (await page.locator('dialog[open]').textContent()) ?? '';
+  check('QA-02: the drawer never says "no blocking signal" and names the advisories instead', !/no blocking signal/i.test(text) && /Still maintained, but \d+ known advisories/.test(text), text.match(/Still maintained[^.]*\./)?.[0]);
+  check('QA-02: no page error', errors.length === 0, errors.join('; '));
+  await context.close();
+}
+{
+  // QA-14: upload package.json with 450 direct dependencies.
+  const dependencies = Object.fromEntries(Array.from({ length: 450 }, (_, i) => [`qa-dep-${String(i).padStart(3, '0')}`, '^1.0.0']));
+  const { context, page } = await newPage(DESKTOP, { raw: {} });
+  await upload(page, { name: 'package.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ name: 'big', dependencies })) });
+  await graveyard(page, 120000);
+  const body = ((await page.locator('main').textContent()) ?? '').replace(/\s+/g, ' ');
+  check('QA-14: 450 direct dependencies say "50 more dependencies were not checked", never "transitive"', /50 more dependencies were not checked/.test(body) && !/transitive/.test(body), body.match(/Checked the first[^.]*\./)?.[0]);
+  await context.close();
+}
+{
+  // QA-15: upload a local file and look at the progress panel while the registries answer slowly.
+  const { context, page } = await newPage(DESKTOP, { raw: {}, delay: { 'registry.npmjs.org': 2500, 'api.deps.dev': 2500 } });
+  await upload(page, [projectFile('acceptance', 'package.json'), projectFile('acceptance', 'package-lock.json')]);
+  await page.waitForSelector('[data-testid="loading"]');
+  const panel = (await page.locator('[data-testid="loading"]').textContent()) ?? '';
+  check('QA-15: the progress panel of an upload does not mention GitHub', /Reading your files in this browser/.test(panel) && !/GitHub/.test(panel), panel.replace(/\s+/g, ' ').slice(0, 120));
+  await context.close();
+}
+{
+  // QA-06: the zombie of the headline sample has a way out, and the raise spec is the engine's.
+  const { context, page } = await newPage(DESKTOP, { raw: {} });
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna&open=npm:node-serialize`);
+  await page.reload();
+  await page.waitForSelector('dialog[open]');
+  const dialog = page.locator('dialog[open]');
+  check('QA-06: node-serialize (the zombie) offers Resurrect with a raise way out', (await dialog.getByRole('button', { name: 'Resurrect' }).count()) === 1 && (await dialog.getByText('Raise node-serialize').count()) === 1);
+  await dialog.getByRole('button', { name: 'Resurrect' }).click();
+  const requirements = await dialog.getByLabel('Contents of requirements.md').textContent({ timeout: 30000 });
+  check('QA-06: the spec shown is the engine\'s raise spec for node-serialize', /node-serialize/.test(requirements ?? '') && /own/.test(requirements ?? ''), (requirements ?? '').split('\n')[0]);
   await context.close();
 }
 

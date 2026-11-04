@@ -99,7 +99,7 @@ for (const vp of VIEWPORTS) {
   const verdictAudit = await page.evaluate(() => {
     const bad = [];
     for (const btn of document.querySelectorAll('.tomb__btn')) {
-      const word = btn.querySelector('.verdict span')?.textContent ?? '';
+      const word = btn.querySelector('.verdict span:first-of-type')?.textContent ?? '';
       const icon = btn.querySelector('.verdict svg');
       if (!/^(Zombie|Ghost|Dead|Dying|Alive)$/.test(word) || !icon) bad.push(btn.dataset.depKey);
     }
@@ -245,6 +245,94 @@ for (const vp of VIEWPORTS) {
     check(`${report.subject}: the partial notice is shown exactly when the report has unavailable sources`, ((await page.getByText('This report is partial').count()) === 1) === expectPartial, `${report.unavailable.length} unavailable`);
     check(`${report.subject}: says when it was recorded and offers to run it live`, (await page.getByText(/Recorded on \d/).count()) === 1 && (await page.getByRole('button', { name: 'Run it live now' }).count()) === 1);
   }
+  await context.close();
+}
+
+// --- round 4: basis, raise way out, advisories, damaged links, focus, targets, partial cards
+console.log('\n== round 4 ==');
+const HARD_CODES = new Set(['repo-gone', 'npm-deprecated', 'repo-archived', 'pypi-inactive', 'pypi-yanked', 'registry-not-found', 'version-deprecated', 'version-yanked']);
+const isHeuristic = (d) => ['dead', 'zombie', 'dying', 'ghost'].includes(d.verdict) && !d.evidence.some((e) => HARD_CODES.has(e.code));
+for (const vp of VIEWPORTS) {
+  const { context, page, foreign, failed } = await newPage(vp);
+  const tag = vp.tag.split(' ')[0];
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna`);
+  await page.reload();
+  await page.waitForSelector('[data-testid="group-zombie"]');
+  const accName = async (key) => page.locator(`[data-dep-key="${key}"]`).evaluate((el) => el.textContent ?? '');
+  check(`${tag} basis: a heuristic Dead is labelled on its tombstone and a hard one is not`, /heuristic/.test(await accName('npm:md5')) && !/heuristic/.test(await accName('npm:csurf')));
+  const heuristicCount = DVNA.diagnoses.filter(isHeuristic).length;
+  await page.getByTestId('basis-heuristic').click();
+  check(`${tag} basis: the Heuristic filter keeps only heuristic verdicts`, (await page.locator('li.tomb').count()) === heuristicCount && page.url().includes('b=heuristic'), `${heuristicCount} expected`);
+  await page.reload();
+  await page.waitForSelector('[data-testid^="group-"]');
+  check(`${tag} basis: the filter survives a reload`, (await page.locator('li.tomb').count()) === heuristicCount);
+  await page.getByTestId('basis-all').click();
+  check(`${tag} basis: the legend does not call every Dead definitive`, !/definitive/i.test(await page.evaluate(() => document.body.textContent ?? '')));
+  check(`${tag} basis: axe finds no violation with the basis control`, (await axeRun(page)).length === 0);
+
+  // alive with advisories: badge, and no "no blocking signal" next to it
+  const mathjs = page.locator('[data-dep-key="npm:mathjs"]');
+  check(`${tag} advisories: an alive dependency with advisories carries a badge with the count`, /3 advisories/.test((await mathjs.textContent()) ?? ''));
+  await mathjs.click();
+  await page.waitForSelector('dialog[open]');
+  const aliveText = (await page.locator('dialog[open]').textContent()) ?? '';
+  check(`${tag} advisories: the drawer says "Still maintained, but 3 known advisories" and never "no blocking signal"`, /Still maintained, but 3 known advisories/.test(aliveText) && !/no blocking signal/i.test(aliveText));
+  check(`${tag} advisories: an alive dependency has no Resurrect button`, (await page.locator('dialog[open]').getByRole('button', { name: 'Resurrect' }).count()) === 0);
+  await page.keyboard.press('Escape');
+
+  // raise way out: a dead package with no successor, npm and Python
+  for (const [sample, key, label] of [['appsecco-dvna', 'npm:csurf', 'npm'], ['miguelgrinberg-microblog', 'pypi:defusedxml', 'Python']]) {
+    await page.goto(`${server.url}#/graveyard?src=sample:${sample}&open=${key}`);
+    await page.reload();
+    await page.waitForSelector('dialog[open]');
+    const dialog = page.locator('dialog[open]');
+    const hasButton = (await dialog.getByRole('button', { name: 'Resurrect' }).count()) === 1;
+    check(`${tag} raise (${label}): ${key} has no successor and still offers Resurrect`, hasButton && (await dialog.getByText(/No successor is listed for this package/).count()) === 1);
+    if (vp.tag.startsWith('desktop')) {
+      await dialog.getByRole('button', { name: 'Resurrect' }).click();
+      await dialog.getByTestId('usage-note').waitFor({ timeout: 20000 });
+      const requirements = (await dialog.getByLabel('Contents of requirements.md').textContent()) ?? '';
+      check(`${tag} raise (${label}): the spec and the séance are written for the raise`, requirements.includes(key.split(':')[1]) && (await dialog.getByRole('button', { name: /Download spec and séance/ }).count()) === 1);
+    }
+  }
+
+  // focus never leaves the drawer
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna&open=npm:csurf`);
+  await page.reload();
+  await page.waitForSelector('dialog[open]');
+  const seen = new Set();
+  for (let i = 0; i < 14; i += 1) {
+    await page.keyboard.press('Tab');
+    seen.add(await page.evaluate(() => (document.activeElement === document.body ? 'BODY' : document.activeElement?.closest('dialog') ? 'dialog' : 'outside')));
+  }
+  check(`${tag} focus: 14 Tab presses in the drawer never reach BODY or the page behind`, [...seen].join() === 'dialog', [...seen].join());
+  const seenBack = new Set();
+  for (let i = 0; i < 14; i += 1) {
+    await page.keyboard.press('Shift+Tab');
+    seenBack.add(await page.evaluate(() => (document.activeElement === document.body ? 'BODY' : document.activeElement?.closest('dialog') ? 'dialog' : 'outside')));
+  }
+  check(`${tag} focus: 14 Shift+Tab presses stay inside as well`, [...seenBack].join() === 'dialog', [...seenBack].join());
+  await page.keyboard.press('Escape');
+  await page.locator('dialog[open]').waitFor({ state: 'detached' });
+
+  // damaged links say so
+  for (const hash of ['#/graveyard?src=sample:nope', '#/graveyard?src=files:AAAA', '#/graveyard?src=repo:', '#/graveyard?src=repo:a/b/../c', '#/graveyard?src=repo:a/./b']) {
+    await page.goto(`${server.url}${hash}`);
+    await page.reload();
+    await page.locator('[role="alert"], li.tomb').first().waitFor();
+    const alert = await page.getByRole('alert').filter({ hasText: /That link could not be read/ }).count();
+    check(`${tag} damaged link ${hash.replace('#/graveyard?src=', '')}: the landing page says the link could not be read`, alert === 1 && (await page.locator('li.tomb').count()) === 0);
+  }
+  await page.goto(server.url);
+  await page.waitForSelector('h1');
+  check(`${tag} damaged link: a clean landing page shows no notice`, (await page.getByText(/That link could not be read/).count()) === 0);
+
+  // partial sample cards and footer targets
+  const partial = await page.locator('.sample', { hasText: 'appsecco/dvna' }).textContent();
+  check(`${tag} partial: the dvna card says its report is partial; GitHub is named`, /Partial report: GitHub was not fully checked/.test(partial ?? ''));
+  const footerBoxes = await page.locator('.site-footer a').evaluateAll((els) => els.map((el) => { const r = el.getBoundingClientRect(); return [Math.round(r.width), Math.round(r.height)]; }));
+  check(`${tag} footer: every link is at least 44x44`, footerBoxes.length > 0 && footerBoxes.every(([w, h]) => w >= 44 && h >= 44), JSON.stringify(footerBoxes));
+  check(`${tag} round 4: no page error, no failed request, nothing left the origin`, failed.length === 0 && foreign.length === 0, [...failed, ...foreign].join('; '));
   await context.close();
 }
 

@@ -10,22 +10,22 @@
 //    a dependency without a curated recipe (the dvna sample, source read from raw.githubusercontent.com),
 //    a Python dependency (toml, from the engine's poetry fixture).
 //
-// It needs the scratch directory the engine's harness uses (old and new packages installed):
-//   /home/ec2-user/.kiro/crew/kiroween2026/scratch/seance
-// and makes its own folder next to it. It never calls api.github.com.
+// It sets up its own scratch directory (scripts/lib/scratch.mjs): npm installs vitest, fast-check, left-pad and
+// is-odd; Python builds a virtual environment with pytest, hypothesis, toml, tomli, pep8 and pycodestyle. Set
+// NECRO_SCRATCH to choose where, NECRO_PYTHON to choose the Python. With no Python or no network the Python
+// séances are skipped with a SKIP line. It never calls api.github.com.
 import { chromium } from 'playwright';
 import { createServer } from 'vite';
 import { spawnSync } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, symlinkSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { serveDist } from './serve.mjs';
 import { installWorld, projectFile, replayFetch } from './lib/world.mjs';
+import { ensureJavaScript, ensurePython } from './lib/scratch.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const ENGINE_SCRATCH = '/home/ec2-user/.kiro/crew/kiroween2026/scratch/seance';
-const SCRATCH = '/home/ec2-user/.kiro/crew/kiroween2026/scratch/web-seance';
 
 let failures = 0;
 function check(name, ok, detail = '') {
@@ -75,18 +75,18 @@ function run(cmd, args, cwd) {
 }
 const lastLines = (text, re) => text.split('\n').filter((l) => re.test(l)).slice(-3).map((l) => l.trim()).join(' | ');
 
+/** The folder to unpack a séance into, or null when this language cannot run here (a clear line is printed once). */
+const environments = {};
 function prepareScratch(language) {
-  mkdirSync(SCRATCH, { recursive: true });
-  const dir = join(SCRATCH, language === 'javascript' ? 'js' : 'py');
-  rmSync(join(dir, 'seance'), { recursive: true, force: true });
-  mkdirSync(dir, { recursive: true });
-  if (language === 'javascript') {
-    if (!existsSync(join(dir, 'node_modules'))) symlinkSync(join(ENGINE_SCRATCH, 'js', 'node_modules'), join(dir, 'node_modules'));
-    writeFileSync(join(dir, 'package.json'), readFileSync(join(ENGINE_SCRATCH, 'js', 'package.json')));
-  } else if (!existsSync(join(SCRATCH, '.venv'))) {
-    symlinkSync(join(ENGINE_SCRATCH, '.venv'), join(SCRATCH, '.venv'));
+  if (!(language in environments)) {
+    const made = language === 'javascript' ? ensureJavaScript() : ensurePython();
+    environments[language] = made;
+    if (made.error) console.log(`SKIP  ${language} séances: ${made.error}`);
   }
-  return dir;
+  const made = environments[language];
+  if (made.error) return null;
+  rmSync(join(made.dir, 'seance'), { recursive: true, force: true });
+  return made.dir;
 }
 function write(dir, files) {
   for (const f of files) {
@@ -98,12 +98,13 @@ function write(dir, files) {
 function runSeance(language, dir, id) {
   return language === 'javascript'
     ? run(join(dir, 'node_modules', '.bin', 'vitest'), ['run', `seance/${id}`, '--reporter=default'], dir)
-    : run(join(SCRATCH, '.venv', 'bin', 'python'), ['-m', 'pytest', '-q', '-p', 'no:cacheprovider', `seance/${id}`], dir);
+    : run(environments.python.python, ['-m', 'pytest', '-q', '-p', 'no:cacheprovider', `seance/${id}`], dir);
 }
 
 /** Runs a downloaded séance for real: it must pass; every mutant must fail; the real file must pass again. */
 function exercise(label, zipEntries, bundle, recipe, ctx) {
   const dir = prepareScratch(bundle.language);
+  if (dir === null) return; // skipped, and said so
   const seanceFiles = zipEntries.filter((e) => !e.path.startsWith('.kiro/'));
   write(dir, seanceFiles);
   const id = bundle.recipe ?? seanceFiles[0].path.split('/')[1];

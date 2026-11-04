@@ -387,6 +387,7 @@
   gap: 0;
   width: 100%;
   min-height: 5.5rem;
+  height: 100%;
   padding: var(--space-3) var(--space-2);
   border-radius: var(--radius-panel);
   background: linear-gradient(180deg, var(--v-wash), transparent 80%), var(--surface-panel);
@@ -1420,6 +1421,7 @@
 }
 .chip--small {
   min-height: var(--tap);
+  min-width: var(--tap);
   padding: 0 var(--space-3);
   font-size: var(--text-sm);
 }
