@@ -1,0 +1,55 @@
+{
+  "recipe": "toml",
+  "language": "python",
+  "command": "pytest seance/toml",
+  "ranAt": "2026-11-04T00:09:07.681Z",
+  "versions": {},
+  "real": {
+    "exit": 0,
+    "seconds": 7.873,
+    "summary": ["64 passed, 1 skipped in 7.65s"]
+  },
+  "mutants": [
+    {
+      "id": "naive-tomli",
+      "description": "tomli.loads and tomli.load used directly (the obvious migration)",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "E           AssertionError: assert ('error', 'AttributeError') == ('ok', ('table', []))",
+        "E           Falsifying example: test_load_from_a_path_a_text_file_and_a_binary_file(",
+        "E           AssertionError: assert ('error', 'AttributeError') == ('error', 'TypeError')",
+        "FAILED seance/toml/test_seance_toml.py::test_load_from_a_path_a_text_file_and_a_binary_file - AssertionError: assert ('error', 'AttributeError') == ('ok', ('table', []))",
+        "Falsifying example: test_load_from_a_path_a_text_file_and_a_binary_file(",
+        "FAILED seance/toml/test_seance_toml.py::test_load_with_bad_arguments_fails_alike - AssertionError: assert ('error', 'AttributeError') == ('error', 'TypeError')"
+      ],
+      "summary": [
+        "-     'TypeError',",
+        "+     'AttributeError',",
+        "FAILED seance/toml/test_seance_toml.py::test_the_dict_argument_builds_the_requested_tables - TypeError: loads() got an unexpected keyword argument '_dict'",
+        "3 failed, 61 passed, 1 skipped in 13.11s"
+      ]
+    },
+    {
+      "id": "swallows-errors",
+      "description": "returns an empty table when the document is invalid",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "E           AssertionError: different values: ']0 = \"\"'",
+        "E           assert (('ok', ('table', [])) == ('ok', ('tabl...'str', ''))]))",
+        "E           Falsifying example: test_damaged_documents_agree_wherever_both_parsers_accept(",
+        "E       AssertionError: assert ('ok', ('table', [])) == ('error', 'DecodeError')",
+        "E       Falsifying example: test_the_replacement_is_transparent_for_any_text(",
+        "E           AssertionError: different values: 'a=1 b=2'"
+      ],
+      "summary": [
+        "At index 0 diff: 'ok' != 'error'",
+        "-     'error',",
+        "-     'DecodeError',",
+        "7 failed, 57 passed, 1 skipped in 23.40s"
+      ]
+    }
+  ],
+  "restoredExit": 0
+}

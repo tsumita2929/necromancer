@@ -1,0 +1,55 @@
+{
+  "recipe": "pep8",
+  "language": "python",
+  "command": "pytest seance/pep8",
+  "ranAt": "2026-11-04T00:13:36.135Z",
+  "versions": {},
+  "real": {
+    "exit": 0,
+    "seconds": 2.432,
+    "summary": ["13 passed in 2.21s"]
+  },
+  "mutants": [
+    {
+      "id": "naive-rename",
+      "description": "pycodestyle used directly (change the import and nothing else)",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "E       AssertionError: assert [] == [(2, 11, 'W503')]",
+        "E       Falsifying example: test_the_replacement_reports_what_pep8_reports(",
+        "E           AssertionError: assert (0, {'directo...al lines': 2}) == (1, {'W503': ...nes': 1, ...})",
+        "E           Falsifying example: test_check_files_gives_the_same_counters(",
+        "E       AssertionError: assert ('E121', 'E12..., 'E704', ...) == ('E121', 'E12...'E24', 'E704')",
+        "E       AssertionError: assert 'E252' not in {'E252'}"
+      ],
+      "summary": [
+        "FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[E741-l = 1\\n] - AssertionError: assert 'E741' not in {'E741'}",
+        "FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[W605-a = \"\\\\d\"\\n] - AssertionError: assert 'W605' not in {'W605'}",
+        "FAILED seance/pep8/test_seance_pep8.py::test_the_naive_import_is_not_the_same_linter - AssertionError: assert [(1, 1, 'E741...4, 1, 'E722')] == []",
+        "10 failed, 3 passed in 1.92s"
+      ]
+    },
+    {
+      "id": "ignores-too-much",
+      "description": "also ignores every E2 whitespace check",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "E       AssertionError: assert [] == [(1, 8, 'E203')]",
+        "E       Falsifying example: test_the_replacement_reports_what_pep8_reports(",
+        "E           AssertionError: assert (0, {'directo...al lines': 1}) == (1, {'E225': ...nes': 1, ...})",
+        "E           Falsifying example: test_check_files_gives_the_same_counters(",
+        "E       AssertionError: assert ('E121', 'E12..., 'E704', ...) == ('E121', 'E12...'E24', 'E704')",
+        "FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_reports_what_pep8_reports - AssertionError: assert [] == [(1, 8, 'E203')]"
+      ],
+      "summary": [
+        "FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_reports_what_pep8_reports - AssertionError: assert [] == [(1, 8, 'E203')]",
+        "FAILED seance/pep8/test_seance_pep8.py::test_check_files_gives_the_same_counters - AssertionError: assert (0, {'directo...al lines': 1}) == (1, {'E225': ...nes': 1, ...})",
+        "FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_keeps_the_pep8_default_ignore_list - AssertionError: assert ('E121', 'E12..., 'E704', ...) == ('E121', 'E12...'E24', 'E704')",
+        "3 failed, 10 passed in 1.00s"
+      ]
+    }
+  ],
+  "restoredExit": 0
+}

@@ -6,7 +6,8 @@
  * cite a requirement that exists.
  */
 
-import type { Diagnosis, KiroSpec, Successor } from './types.js';
+import { generateSeance } from './seance/index.js';
+import type { DependencyUsage, Diagnosis, KiroSpec, SeanceBundle, Successor } from './types.js';
 
 interface Criterion {
   id: string;
@@ -302,17 +303,65 @@ function renderTasks(old: string, next: Successor, reqs: Requirement[]): string 
   ].join('\n');
 }
 
-/** A Kiro spec for moving the project off `diagnosis.dependency` onto `successor`. */
-export function resurrectionSpec(diagnosis: Diagnosis, successor: Successor): KiroSpec {
+/**
+ * A Kiro spec for moving the project off `diagnosis.dependency` onto `successor`. With a usage
+ * scan it also describes the séance written for this project (files, command, what it compares).
+ */
+export function resurrectionSpec(
+  diagnosis: Diagnosis,
+  successor: Successor,
+  options?: { usage?: DependencyUsage },
+): KiroSpec {
   try {
-    return buildSpec(diagnosis, successor);
+    return buildSpec(diagnosis, successor, options?.usage);
   } catch {
     // Malformed input (for example an object whose properties throw): spec the bare names.
-    return buildSpec(undefined as never, undefined as never);
+    return buildSpec(undefined as never, undefined as never, undefined);
   }
 }
 
-function buildSpec(diagnosis: Diagnosis, successor: Successor): KiroSpec {
+function seanceSection(bundle: SeanceBundle): string {
+  const out: string[] = ['', '## The séance', ''];
+  out.push(
+    bundle.recipe
+      ? `A curated recipe (\`${safe(bundle.recipe, 'recipe', 40)}\`) wrote it; it was run against the real packages before it was shipped.`
+      : 'No curated recipe exists for this pair, so the generic template wrote it. Every `TODO(necromancer)` marker is a decision it could not make; the comparisons stay skipped until the replacement is written.',
+    '',
+    'Files to add to the project:',
+    '',
+    ...bundle.files.map((f) => `- \`${safe(f.path, 'file', 100)}\` (${safe(f.role, 'file', 20)})`),
+    '',
+    'Install and run:',
+    '',
+    '```sh',
+    ...bundle.install.map((c) => safe(c, '', 160)),
+    safe(bundle.run, '', 160),
+    '```',
+    '',
+    'What it compares and ignores:',
+    '',
+    ...bundle.compares.map((c) => `- ${safe(c, '', 300)}`),
+  );
+  if (bundle.knownDifferences.length > 0) {
+    out.push('', 'Known differences, found by running the séance against the real packages:', '');
+    out.push(
+      '| Input | Old package | Naive replacement | In the generated replacement |',
+      '| --- | --- | --- | --- |',
+    );
+    for (const k of bundle.knownDifferences) {
+      const cell = (t: string) => safe(t, '-', 110).replace(/\|/g, '/');
+      out.push(`| ${cell(k.input)} | ${cell(k.old)} | ${cell(k.naive)} | ${cell(k.handled)} |`);
+    }
+  }
+  out.push('');
+  return out.join('\n');
+}
+
+function buildSpec(
+  diagnosis: Diagnosis,
+  successor: Successor,
+  usage: DependencyUsage | undefined,
+): KiroSpec {
   const old = safe(diagnosis?.dependency?.name, 'the dependency', 80);
   const next: Successor = {
     ...successor,
@@ -337,9 +386,28 @@ function buildSpec(diagnosis: Diagnosis, successor: Successor): KiroSpec {
     ...(diagnosis?.latest ? { latest: diagnosis.latest } : {}),
   };
   const reqs = buildRequirements(old, next, safeDiagnosis);
+  const bundle = generateSeance(safeDiagnosis, successor ?? next, usage);
+  const r2 = reqs.find((r) => r.id === 'R2');
+  if (r2) {
+    const paths = bundle.files.map((f) => `\`${safe(f.path, 'file', 100)}\``).join(', ');
+    r2.criteria.push({
+      id: 'R2.5',
+      text: `THE séance SHALL be added to the project as ${paths || 'the generated files'} and run with \`${safe(bundle.run, 'the test runner', 100)}\`.`,
+    });
+    if (bundle.knownDifferences.length > 0) {
+      r2.criteria.push({
+        id: 'R2.6',
+        text: 'THE migration SHALL handle, or record as accepted, every known difference listed in the design.',
+      });
+    }
+  }
+  const tasks = renderTasks(old, next, reqs).replace(
+    /(  - \[ \] 2\.4 [^\n]*\n)/,
+    `$1  - [ ] 2.5 Add the generated séance files and run \`${safe(bundle.run, 'the test runner', 100).replace(/\$/g, '$$$$')}\`; read every TODO(necromancer) marker ${r2 ? '_Requirements: R2.5' + (bundle.knownDifferences.length > 0 ? ', R2.6' : '') + '_' : ''}\n`,
+  );
   return {
     'requirements.md': renderRequirements(old, next, safeDiagnosis, reqs),
-    'design.md': renderDesign(old, next, safeDiagnosis),
-    'tasks.md': renderTasks(old, next, reqs),
+    'design.md': renderDesign(old, next, safeDiagnosis) + seanceSection(bundle),
+    'tasks.md': tasks,
   };
 }

@@ -1,0 +1,64 @@
+{
+  "recipe": "mkdirp",
+  "language": "javascript",
+  "command": "npx vitest run seance/mkdirp",
+  "ranAt": "2026-11-03T14:23:34.770Z",
+  "versions": {
+    "mkdirp": "1.0.4",
+    "vitest": "5.1.0",
+    "fast-check": "4.10.2"
+  },
+  "real": {
+    "exit": 0,
+    "seconds": 0.87,
+    "summary": [
+      "✓ seance/mkdirp/seance.test.mjs (6 tests) 388ms",
+      "Test Files  1 passed (1)",
+      "Tests  6 passed (6)",
+      "Duration  567ms (tests 85%, import 7%, transform 7%, worker 1%)"
+    ]
+  },
+  "mutants": [
+    {
+      "id": "naive-mkdir-recursive",
+      "description": "calls fs.mkdirSync(dir, { recursive: true }) and ignores the mode",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "Counterexample: [[],[\"a\",\"\"],\"\",448]",
+        "Shrunk 5 time(s)",
+        "Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }",
+        "Counterexample: [[],[\"a\"],493]",
+        "Shrunk 2 time(s)",
+        "Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+      ],
+      "summary": [
+        "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8",
+        "Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }",
+        "Error: ENOENT: no such file or directory, mkdir ''",
+        "AssertionError: expected 509 to be 448 // Object.is equality"
+      ]
+    },
+    {
+      "id": "returns-last-directory",
+      "description": "returns the last directory instead of the first one created",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "Counterexample: [[],[\"a\",\"a\"],\"\",undefined]",
+        "Shrunk 5 time(s)",
+        "Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }",
+        "Counterexample: [[],[\"a\",\"a\",\"\"],undefined]",
+        "Shrunk 3 time(s)",
+        "Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+      ],
+      "summary": [
+        "Error: Property failed after 4 tests",
+        "❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16",
+        "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8",
+        "Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+      ]
+    }
+  ],
+  "restoredExit": 0
+}

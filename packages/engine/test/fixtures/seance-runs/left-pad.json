@@ -1,0 +1,64 @@
+{
+  "recipe": "left-pad",
+  "language": "javascript",
+  "command": "npx vitest run seance/left-pad",
+  "ranAt": "2026-11-03T14:21:20.113Z",
+  "versions": {
+    "left-pad": "1.3.0",
+    "vitest": "5.1.0",
+    "fast-check": "4.10.2"
+  },
+  "real": {
+    "exit": 0,
+    "seconds": 0.788,
+    "summary": [
+      "✓ seance/left-pad/seance.test.mjs (6 tests) 97ms",
+      "Test Files  1 passed (1)",
+      "Tests  6 passed (6)",
+      "Duration  363ms (tests 46%, transform 33%, import 19%, worker 2%)"
+    ]
+  },
+  "mutants": [
+    {
+      "id": "naive-padStart",
+      "description": "calls String.prototype.padStart directly (the obvious migration)",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "Counterexample: [null,5,\"\"]",
+        "Shrunk 4 time(s)",
+        "Caused by: AssertionError: expected { ok: true, value: 'null' } to deeply equal { ok: true, value: ' null' }",
+        "Counterexample: [null,Number.POSITIVE_INFINITY]",
+        "Shrunk 1 time(s)",
+        "Caused by: AssertionError: expected { ok: false, error: 'RangeError' } to deeply equal { ok: true, value: 'null' }"
+      ],
+      "summary": [
+        "❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8",
+        "Caused by: AssertionError: expected { ok: false, error: 'RangeError' } to deeply equal { ok: true, value: 'null' }",
+        "+   \"error\": \"RangeError\",",
+        "AssertionError: [\"abc\",6,\"\"]: expected { ok: true, value: 'abc' } to deeply equal { ok: true, value: '   abc' }"
+      ]
+    },
+    {
+      "id": "off-by-one",
+      "description": "pads one character too few",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "Counterexample: [0,\"7\",\"\"]",
+        "Shrunk 2 time(s)",
+        "Caused by: AssertionError: expected { ok: true, value: '     0' } to deeply equal { ok: true, value: '      0' }",
+        "Counterexample: [\"\",true]",
+        "Shrunk 0 time(s)",
+        "Caused by: AssertionError: expected { ok: true, value: '' } to deeply equal { ok: true, value: ' ' }"
+      ],
+      "summary": [
+        "❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8",
+        "Caused by: AssertionError: expected { ok: true, value: '' } to deeply equal { ok: true, value: ' ' }",
+        "AssertionError: [\"abc\",6,\"\"]: expected { ok: true, value: '  abc' } to deeply equal { ok: true, value: '   abc' }",
+        "AssertionError: expected ' abc' to be '  abc' // Object.is equality"
+      ]
+    }
+  ],
+  "restoredExit": 0
+}

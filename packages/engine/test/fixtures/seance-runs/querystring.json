@@ -1,0 +1,64 @@
+{
+  "recipe": "querystring",
+  "language": "javascript",
+  "command": "npx vitest run seance/querystring",
+  "ranAt": "2026-11-03T14:22:37.423Z",
+  "versions": {
+    "querystring": "0.2.1",
+    "vitest": "5.1.0",
+    "fast-check": "4.10.2"
+  },
+  "real": {
+    "exit": 0,
+    "seconds": 1.696,
+    "summary": [
+      "✓ seance/querystring/seance.test.mjs (8 tests) 309ms",
+      "Test Files  1 passed (1)",
+      "Tests  8 passed (8)",
+      "Duration  1.29s (import 68%, tests 27%, transform 4%)"
+    ]
+  },
+  "mutants": [
+    {
+      "id": "naive-URLSearchParams",
+      "description": "uses URLSearchParams for both directions (the obvious migration)",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "Counterexample: [\"?\"]",
+        "Shrunk 1 time(s)",
+        "Caused by: AssertionError: expected { ok: true, value: [] } to deeply equal { Object (ok, value) }",
+        "Counterexample: [\"?\"]",
+        "Shrunk 2 time(s)",
+        "Caused by: AssertionError: expected { ok: true, value: [] } to deeply equal { Object (ok, value) }"
+      ],
+      "summary": [
+        "❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16",
+        "❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8",
+        "Caused by: AssertionError: expected [ [ '', [ ',' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]",
+        "AssertionError: {\"a\":\"x y\"}: expected { ok: true, value: 'a=x+y' } to deeply equal { ok: true, value: 'a=x%20y' }"
+      ]
+    },
+    {
+      "id": "drops-repeated-keys",
+      "description": "keeps only the last value of a repeated key",
+      "exit": 1,
+      "failed": true,
+      "counterexample": [
+        "Counterexample: [\"=&=\"]",
+        "Shrunk 6 time(s)",
+        "Caused by: AssertionError: expected { ok: true, value: [ [ '', [ '' ] ] ] } to deeply equal { ok: true, …(1) }",
+        "Counterexample: [{\"\":[\"\",\"\"]}]",
+        "Shrunk 4 time(s)",
+        "Caused by: AssertionError: expected [ [ '', [ '' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]"
+      ],
+      "summary": [
+        "Error: Property failed after 1 tests",
+        "❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16",
+        "❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8",
+        "Caused by: AssertionError: expected [ [ '', [ '' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]"
+      ]
+    }
+  ],
+  "restoredExit": 0
+}

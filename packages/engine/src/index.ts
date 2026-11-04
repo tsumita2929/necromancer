@@ -2,7 +2,9 @@ import { runAutopsy } from './autopsy.js';
 import { Core, newRun } from './diagnose.js';
 import { parseManifest } from './manifest/index.js';
 import { type EngineTuning, resolveTuning } from './options.js';
+import { generateSeance } from './seance/index.js';
 import { resurrectionSpec } from './spec.js';
+import { scanUsage } from './usage/index.js';
 import type { DependencyRef, Diagnosis, Engine, EngineOptions } from './types.js';
 import { errorMessage } from './util/guards.js';
 import * as signals from './signals.js';
@@ -14,6 +16,8 @@ export { THRESHOLDS } from './signals.js';
 export { mergeDependencies } from './autopsy.js';
 export { parseManifest } from './manifest/index.js';
 export { resurrectionSpec } from './spec.js';
+export { scanUsage } from './usage/index.js';
+export { generateSeance, pickRecipe, RECIPES } from './seance/index.js';
 export { normalizePypiName, isValidNpmName } from './util/names.js';
 
 /**
@@ -47,5 +51,7 @@ export function createEngine(options: EngineOptions, tuning?: EngineTuning): Eng
       return runAutopsy(core, now, resolved.maxDependencies, input);
     },
     resurrectionSpec,
+    scanUsage,
+    seance: generateSeance,
   };
 }
