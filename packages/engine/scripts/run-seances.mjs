@@ -46,6 +46,7 @@ function run(cmd, cmdArgs, cwd) {
   });
   return {
     status: r.status,
+    stdout: r.stdout ?? '',
     text: `${r.stdout ?? ''}${r.stderr ?? ''}`,
     seconds: (Date.now() - started) / 1000,
   };
@@ -65,7 +66,7 @@ function versions(recipe) {
       scratch,
     );
     try {
-      const list = JSON.parse(r.text.slice(r.text.indexOf('[')));
+      const list = JSON.parse(r.stdout);
       for (const name of spec.py)
         found[name] = list.find((p) => p.name.toLowerCase() === name)?.version;
     } catch {

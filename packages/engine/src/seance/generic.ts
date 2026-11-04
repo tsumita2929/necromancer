@@ -13,7 +13,7 @@ import type {
   SeanceBundle,
   SeanceFile,
 } from '../types.js';
-import { comment, docText, jsIdent, jsStr, pyIdent, pyStr, slug } from './emit.js';
+import { comment, docText, jsStr, pyIdent, pyStr, slug } from './emit.js';
 import { jsExamples, pyExamples } from './examples.js';
 import { renderReadme } from './readme.js';
 import { makeBundle, type RecipeContext } from './recipe.js';

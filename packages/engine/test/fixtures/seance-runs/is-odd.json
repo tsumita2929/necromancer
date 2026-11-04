@@ -2,7 +2,7 @@
   "recipe": "is-odd",
   "language": "javascript",
   "command": "npx vitest run seance/is-odd",
-  "ranAt": "2026-11-03T14:41:25.312Z",
+  "ranAt": "2026-11-04T00:21:25.144Z",
   "versions": {
     "is-odd": "3.0.1",
     "vitest": "5.1.0",
@@ -10,12 +10,12 @@
   },
   "real": {
     "exit": 0,
-    "seconds": 0.546,
+    "seconds": 0.512,
     "summary": [
-      "✓ seance/is-odd/seance.test.mjs (4 tests) 102ms",
+      "✓ seance/is-odd/seance.test.mjs (4 tests) 99ms",
       "Test Files  1 passed (1)",
       "Tests  4 passed (4)",
-      "Duration  263ms (tests 64%, import 18%, transform 16%, worker 2%)"
+      "Duration  240ms (tests 71%, import 19%, transform 6%, worker 3%)"
     ]
   },
   "mutants": [
@@ -26,7 +26,7 @@
       "failed": true,
       "counterexample": [
         "Counterexample: [-5e-324]",
-        "Shrunk 58 time(s)",
+        "Shrunk 61 time(s)",
         "Caused by: AssertionError: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }",
         "AssertionError: 9007199254740992: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }",
         "AssertionError: 3.5: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }"
@@ -45,7 +45,7 @@
       "failed": true,
       "counterexample": [
         "Counterexample: [9007199254740992]",
-        "Shrunk 34 time(s)",
+        "Shrunk 31 time(s)",
         "Caused by: AssertionError: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }",
         "AssertionError: 9007199254740992: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }",
         "AssertionError: 9007199254740992: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }"

@@ -2,12 +2,19 @@
   "recipe": "pep8",
   "language": "python",
   "command": "pytest seance/pep8",
-  "ranAt": "2026-11-04T00:13:36.135Z",
-  "versions": {},
+  "ranAt": "2026-11-04T00:22:22.186Z",
+  "versions": {
+    "pep8": "1.7.1",
+    "pycodestyle": "2.14.0",
+    "pytest": "8.4.2",
+    "hypothesis": "6.141.1"
+  },
   "real": {
     "exit": 0,
-    "seconds": 2.432,
-    "summary": ["13 passed in 2.21s"]
+    "seconds": 2.434,
+    "summary": [
+      "13 passed in 2.22s"
+    ]
   },
   "mutants": [
     {
@@ -27,7 +34,7 @@
         "FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[E741-l = 1\\n] - AssertionError: assert 'E741' not in {'E741'}",
         "FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[W605-a = \"\\\\d\"\\n] - AssertionError: assert 'W605' not in {'W605'}",
         "FAILED seance/pep8/test_seance_pep8.py::test_the_naive_import_is_not_the_same_linter - AssertionError: assert [(1, 1, 'E741...4, 1, 'E722')] == []",
-        "10 failed, 3 passed in 1.92s"
+        "10 failed, 3 passed in 1.97s"
       ]
     },
     {

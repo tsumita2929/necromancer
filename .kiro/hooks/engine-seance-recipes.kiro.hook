@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Engine: re-run the séances when a recipe changes",
+  "description": "Every curated séance must pass against the real packages and every mutant must fail. The unit tests only check the generated text, so a recipe change needs the real run.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["packages/engine/src/seance/recipes/*.ts", "packages/engine/src/seance/generic.ts"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A séance recipe changed. In packages/engine run `npm run build`, then `node scripts/run-seances.mjs <recipe-id>` (the scratch directory with the old and new packages is /home/ec2-user/.kiro/crew/kiroween2026/scratch/seance). Report the OK/PROBLEM line. OK means the séance passes against the real packages and each mutant fails. If a séance fails, the counterexample in test/fixtures/seance-runs/<recipe>.log is either a real difference (record it as a known difference and handle it in the replacement) or a mistake in the recipe; decide which before editing. Then run `npm test`."
+  }
+}
