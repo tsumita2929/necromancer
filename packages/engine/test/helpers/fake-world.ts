@@ -10,7 +10,15 @@ export interface FakeNpm {
   latestDeprecated?: string;
   scorecardMaintained?: number;
   /** GitHub answer: a status other than 200, or archived/pushed_at. */
-  github?: { status?: number; archived?: boolean; pushedAt?: string };
+  github?: {
+    status?: number;
+    archived?: boolean;
+    pushedAt?: string;
+    /** Date of the newest commit on the default branch. Defaults to pushedAt. */
+    commitAt?: string;
+    /** Status of the commits call, when it is not 200. */
+    commitStatus?: number;
+  };
   advisories?: Record<string, string[]>;
 }
 
@@ -26,7 +34,10 @@ function reply(status: number, body: unknown) {
 export interface FakeWorld {
   fetch: FetchLike;
   calls: string[];
+  /** Repository calls (`repos/owner/name`). */
   github: string[];
+  /** Commit calls (`repos/owner/name/commits`). */
+  commits: string[];
 }
 
 export function fakeWorld(
@@ -41,6 +52,7 @@ export function fakeWorld(
   const byName = new Map(pkgs.map((p) => [p.name, p]));
   const calls: string[] = [];
   const github: string[] = [];
+  const commits: string[] = [];
   const fetchImpl: FetchLike = async (url, init) => {
     calls.push(`${init?.method ?? 'GET'} ${url}`);
     const overridden = extra?.override?.(url, init);
@@ -96,6 +108,24 @@ export function fakeWorld(
         },
       });
     }
+    m = /^https:\/\/api\.github\.com\/repos\/(.+)\/commits\?per_page=1$/.exec(url);
+    if (m) {
+      commits.push(m[1] ?? '');
+      const slug = decodeURIComponent(m[1] ?? '').toLowerCase();
+      const p = pkgs.find(
+        (x) =>
+          x.repo &&
+          slug ===
+            x.repo
+              .replace(/^.*github\.com[/:]/, '')
+              .replace(/\.git$/, '')
+              .toLowerCase(),
+      );
+      const g = p?.github ?? { status: 404 };
+      if (g.commitStatus && g.commitStatus !== 200) return reply(g.commitStatus, {});
+      const date = g.commitAt ?? g.pushedAt ?? '2020-01-01T00:00:00Z';
+      return reply(200, [{ commit: { committer: { date }, author: { date } } }]);
+    }
     m = /^https:\/\/api\.github\.com\/repos\/(.+)$/.exec(url);
     if (m) {
       github.push(m[1] ?? '');
@@ -134,7 +164,7 @@ export function fakeWorld(
     }
     return reply(404, {});
   };
-  return { fetch: fetchImpl, calls, github };
+  return { fetch: fetchImpl, calls, github, commits };
 }
 
 export const DAY = 86_400_000;

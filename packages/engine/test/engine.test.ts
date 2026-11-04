@@ -61,7 +61,7 @@ describe('R2.6, R2.9 and R2.11 rules through the engine', () => {
     expect(d?.verdict).toBe('dead');
     expect(d?.evidence.map((e) => e.code)).toContain('repo-archived');
   });
-  it('a 3-year-old release with an active repository and good scorecard is only dying', async () => {
+  it('a 3-year-old release with a commit this month is alive, and says why', async () => {
     const world = fakeWorld([
       {
         name: 'quiet',
@@ -72,21 +72,46 @@ describe('R2.6, R2.9 and R2.11 rules through the engine', () => {
       },
     ]);
     const [d] = await engineFor(world.fetch).diagnose([dep('quiet')]);
-    expect(d?.verdict).toBe('dying');
-    expect(d?.evidence.map((e) => e.code)).toEqual(['no-release']);
+    expect(d?.verdict).toBe('alive');
+    expect(d?.basis).toBeUndefined();
+    expect(d?.evidence.map((e) => e.code)).toEqual(['recent-activity', 'no-release']);
   });
-  it('a 6-year-old release with an active repository stays dying (no supporting signal)', async () => {
+  it('a 3-year-old release whose repository was pushed to but whose default branch is quiet is dying', async () => {
+    // Another branch or a tag moved pushed_at; the default branch's last commit is 3 years old.
+    const world = fakeWorld([
+      {
+        name: 'branchy',
+        versions: [{ version: '1.0.0', date: daysAgo(1100) }],
+        repo: 'https://github.com/org/branchy',
+        scorecardMaintained: 8,
+        github: { pushedAt: daysAgo(10), commitAt: daysAgo(1100) },
+      },
+    ]);
+    const [d] = await engineFor(world.fetch).diagnose([dep('branchy')]);
+    expect(d?.verdict).toBe('dying');
+    expect(d?.basis).toBe('heuristic');
+    expect(d?.evidence.map((e) => e.code)).toEqual(['no-release', 'repo-inactive']);
+    expect(d?.evidence.find((e) => e.code === 'repo-inactive')?.message).toMatch(
+      /No commit to the default branch for 3\.0 years/,
+    );
+  });
+  it('a 6-year-old release with a commit this month is alive', async () => {
     const world = fakeWorld([
       {
         name: 'stable',
         versions: [{ version: '1.0.0', date: daysAgo(2300) }],
         repo: 'https://github.com/org/stable',
-        scorecardMaintained: 9,
+        scorecardMaintained: 0,
         github: { pushedAt: daysAgo(30) },
       },
     ]);
     const [d] = await engineFor(world.fetch).diagnose([dep('stable')]);
-    expect(d?.verdict).toBe('dying');
+    expect(d?.verdict).toBe('alive');
+    expect(d?.evidence.map((e) => e.code)).toEqual([
+      'recent-activity',
+      'no-release-long',
+      'low-maintenance',
+    ]);
   });
   it('a package with no linked repository and a 6-year-old release is dead', async () => {
     const world = fakeWorld([

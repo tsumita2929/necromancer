@@ -5,8 +5,10 @@ import { badShape, fail, type Fetched } from './result.js';
 
 export interface PypiRelease {
   version: string;
-  /** Earliest upload time of the release's files. */
+  /** Upload time of the release's newest file: late wheels count as part of the release. */
   date?: string;
+  /** Upload time of its first file. */
+  firstDate?: string;
   /** True when it has files and all of them are yanked. */
   yanked: boolean;
   yankedReason?: string;
@@ -62,16 +64,19 @@ export async function getPypiProject(http: Http, name: string): Promise<Fetched<
       const list = asArray(files).filter(isRecord);
       if (list.length === 0) continue;
       let date: string | undefined;
+      let firstDate: string | undefined;
       let allYanked = true;
       let reason: string | undefined;
       for (const file of list) {
         const when = asString(file['upload_time_iso_8601']) ?? asString(file['upload_time']);
-        if (when && (!date || when < date)) date = when;
+        if (when && (!date || when > date)) date = when;
+        if (when && (!firstDate || when < firstDate)) firstDate = when;
         if (asBoolean(file['yanked']) !== true) allYanked = false;
         else reason = reason ?? asString(file['yanked_reason']);
       }
       const release: PypiRelease = { version, yanked: allYanked };
       if (date) release.date = date;
+      if (firstDate) release.firstDate = firstDate;
       if (allYanked && reason) release.yankedReason = reason;
       releases.push(release);
     }

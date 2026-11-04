@@ -65,7 +65,8 @@ can defend with evidence, and I want the verdict never to hide a warning.
 - R2.1 THE engine SHALL assign one verdict from `VERDICTS`:
   `alive`, `dying`, `dead`, `ghost`, `zombie`, in that order of severity.
 - R2.2 WHEN evidence of death is added to a dependency, THE verdict SHALL NOT move to
-  an earlier entry of `VERDICTS`. **[PBT]**
+  an earlier entry of `VERDICTS`. Evidence of life (R2.17) is the one named exception: it
+  never moves a verdict to a later entry. **[PBT]**
 - R2.3 WHEN the verdict is not `alive`, THE diagnosis SHALL contain at least one
   evidence line, ordered most important first. **[PBT]**
 - R2.4 THE verdict SHALL be `zombie` if and only if the dependency is dead or ghost
@@ -78,15 +79,19 @@ can defend with evidence, and I want the verdict never to hide a warning.
 - R2.8 WHEN the latest PyPI release is yanked, THE verdict SHALL be at least `dead`.
 - R2.9 WHEN the latest release is 2 years old or older, THE verdict SHALL be at
   least `dying`. WHEN it is 5 years old or older and another weak signal supports it
-  (low Scorecard Maintained score, repository inactive for 2 years, or no source
-  repository), THE verdict SHALL be at least `dead`.
+  (low Scorecard Maintained score, repository inactive for 1 year, or no source
+  repository), THE verdict SHALL be at least `dead`. A low Scorecard score alone SHALL
+  NOT make a package `dying`. The repository counts as inactive when the default branch
+  has had no commit for 1 year (the date is read from the commits, else from the last
+  push, and the evidence says which).
 - R2.10 WHEN the source repository returns "not found" or "unavailable for legal
   reasons", THE verdict SHALL be at least `ghost`.
 - R2.11 WHEN only the version in use is deprecated or yanked and the latest release
   is healthy, THE verdict SHALL be at least `dying`, with the upgrade as the way out.
 - R2.12 WHEN an advisory affects the version in use of an otherwise healthy
   dependency, THE verdict SHALL stay `alive`, the advisory ids SHALL be listed in
-  `advisories`, and an evidence line SHALL record it.
+  `advisories`, and an evidence line SHALL record it. An advisory SHALL never be
+  hidden by evidence of life.
 - R2.13 THE engine SHALL pick the version in use as: lockfile version, else the
   highest stable version that satisfies the declared range. WHEN the spec is not a range
   (a dist-tag such as `next`), THE version in use SHALL be the latest. WHEN the spec is a
@@ -99,6 +104,16 @@ can defend with evidence, and I want the verdict never to hide a warning.
   SHALL NOT lower the verdict by it alone; it only supports R2.9.
 - R2.16 WHEN an advisory affects the version in use, THE engine SHALL check the
   repository even if the latest release is under a year old.
+- R2.17 WHEN the default branch has a commit less than a year old and no advisory affects
+  the version in use, THE evidence `recent-activity` SHALL be added and the verdict
+  SHALL be `alive` unless a hard signal (deprecated, archived, inactive, yanked, gone, a
+  deprecated or yanked version in use, an unknown package) is present. **[PBT]**
+- R2.18 WHEN the only signal is a low Scorecard Maintained score (with or without a
+  missing repository link), THE verdict SHALL be `alive` and the evidence SHALL be shown.
+  **[PBT]**
+- R2.19 WHEN the verdict is not `alive`, THE diagnosis SHALL say what it rests on in
+  `basis`: `hard` when a hard signal decides it, `heuristic` when staleness decides it.
+  `zombie` and `ghost` are `hard`. **[PBT]**
 
 ## R3. Sources and degradation
 
@@ -111,8 +126,11 @@ sources, stay inside their limits, and tell me what it could not check.
   (PyPI), deps.dev project data including OpenSSF Scorecard, OSV.dev batch query
   (advisories), GitHub repository metadata, and the e18e module-replacements data.
 - R3.3 THE engine SHALL call GitHub only for dependencies that already look
-  unhealthy (or have an advisory), at most once per repository, and at most `githubBudget` (default 20)
-  calls per engine instance per hour, so one scan stays far below 60 calls per hour.
+  unhealthy (or have an advisory), at most once per repository for the repository call and once for the commit call,
+  and at most `githubBudget` (default 20) calls per engine instance per hour (each distinct
+  request counts once), so one scan stays far below 60 calls per hour. WHEN the budget is
+  used up before a commit date was read, the diagnosis SHALL say so (`activity-unchecked`).
+  See `.kiro/specs/engine-tuning/` T1.
 - R3.4 WHEN GitHub answers 403 or 429, THE engine SHALL stop calling GitHub for
   the rest of that run and list `github` in `unavailable`.
 - R3.5 WHEN a source fails (network error, timeout, 5xx, rate limit, invalid JSON,

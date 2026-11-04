@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/isaacs/node-mkdirp/commits?per_page=1"
+ },
+ "status": 200,
+ "body": [
+  {
+   "commit": {
+    "committer": {
+     "date": "2023-09-15T19:59:23Z"
+    },
+    "author": {
+     "date": "2023-09-15T19:59:23Z"
+    }
+   }
+  }
+ ]
+}

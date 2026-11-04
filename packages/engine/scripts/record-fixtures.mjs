@@ -52,6 +52,12 @@ function trim(url, body) {
       ),
     };
   }
+  if (url.startsWith('https://api.github.com/repos/') && url.includes('/commits?')) {
+    // The commits answer is a list; keep the dates of the newest commit, which is what the engine reads.
+    return (Array.isArray(body) ? body : []).slice(0, 1).map((c) => ({
+      commit: { committer: pick(c.commit?.committer, ['date']), author: pick(c.commit?.author, ['date']) },
+    }));
+  }
   if (url.startsWith('https://api.github.com/repos/')) {
     return {
       _trimmed: 'GitHub payload reduced',

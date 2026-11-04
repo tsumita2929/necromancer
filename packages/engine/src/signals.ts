@@ -14,8 +14,13 @@ export const THRESHOLDS = {
   longDays: 1826,
   /** A release newer than this skips the repository lookups: it cannot be dying. */
   freshDays: 365,
-  /** Last push this old or older: weak signal. */
-  repoInactiveDays: 730,
+  /**
+   * No commit to the default branch for this long (or, when commits were not read, no push at all
+   * for this long, which implies it): weak signal. The census hand check used the same year.
+   */
+  repoInactiveDays: 365,
+  /** A commit to the default branch newer than this is a sign of life. */
+  activeDays: 365,
   /** Scorecard Maintained at or below this is low. */
   scorecardLow: 2,
 } as const;
@@ -86,13 +91,16 @@ export function releaseAge(
   now: Date,
   source: SourceId,
   url: string,
+  /** How the date was chosen, when that is not obvious (PyPI: the newest file counts). */
+  dating?: string,
 ): Evidence | undefined {
   const days = ageInDays(date, now);
   if (days === undefined) return undefined;
+  const rule = dating ? ` ${dating}` : '';
   if (days >= THRESHOLDS.longDays) {
     return line({
       code: 'no-release-long',
-      message: `The latest release (${latestVersion}) is ${years(days)} old.`,
+      message: `The latest release (${latestVersion}) is ${years(days)} old.${rule}`,
       source,
       url,
       date,
@@ -101,7 +109,7 @@ export function releaseAge(
   if (days >= THRESHOLDS.staleDays) {
     return line({
       code: 'no-release',
-      message: `The latest release (${latestVersion}) is ${years(days)} old.`,
+      message: `The latest release (${latestVersion}) is ${years(days)} old.${rule}`,
       source,
       url,
       date,
@@ -117,7 +125,7 @@ export function lowMaintenance(
   if (score > THRESHOLDS.scorecardLow) return undefined;
   return line({
     code: 'low-maintenance',
-    message: `OpenSSF Scorecard rates maintenance ${score} out of 10.`,
+    message: `OpenSSF Scorecard rates maintenance ${score} out of 10 (shown, not decisive: the score lags).`,
     source: 'scorecard',
     url: 'https://securityscorecards.dev/',
     date: scorecardDate,
@@ -134,12 +142,68 @@ export function repoArchived(repoUrl: string, pushedAt: string | undefined): Evi
   });
 }
 
-export function repoInactive(repoUrl: string, pushedAt: string, now: Date): Evidence | undefined {
-  const days = ageInDays(pushedAt, now);
+/**
+ * Which date an activity claim rests on. A commit date is the default branch's latest commit. A
+ * push date is when anything (any branch or tag) was last pushed, so the default branch's last
+ * commit is at least that old: it proves a quiet repository, never an active one.
+ */
+export type ActivityDate = { kind: 'commit' | 'push'; date: string };
+
+export function repoInactive(
+  repoUrl: string,
+  activity: ActivityDate,
+  now: Date,
+): Evidence | undefined {
+  const days = ageInDays(activity.date, now);
   if (days === undefined || days < THRESHOLDS.repoInactiveDays) return undefined;
+  const message =
+    activity.kind === 'commit'
+      ? `No commit to the default branch for ${years(days)} (last commit ${isoDay(activity.date)}).`
+      : `No push to the repository for ${years(days)} (last push ${isoDay(activity.date)}); the default branch's last commit is at least that old. Commit dates were not read.`;
   return line({
     code: 'repo-inactive',
-    message: `No commit to the source repository for ${years(days)}.`,
+    message,
+    source: 'github',
+    url: repoUrl,
+    date: activity.date,
+  });
+}
+
+/** A commit to the default branch in the last year: a sign of life. */
+export function recentActivity(
+  repoUrl: string,
+  commitDate: string,
+  now: Date,
+): Evidence | undefined {
+  const days = ageInDays(commitDate, now);
+  if (days === undefined || days >= THRESHOLDS.activeDays) return undefined;
+  const when =
+    days < 60 ? `${Math.max(days, 0)} days ago` : `${Math.round(days / 30.4)} months ago`;
+  return line({
+    code: 'recent-activity',
+    message: `The default branch had a commit ${when} (${isoDay(commitDate)}), so stale signals alone do not make this dying.`,
+    source: 'github',
+    url: repoUrl,
+    date: commitDate,
+  });
+}
+
+/**
+ * The verdict rests on staleness and the repository was pushed to within the year, but the
+ * default branch's last commit could not be read. The verdict is the one without commit data.
+ */
+export function activityUnchecked(
+  repoUrl: string,
+  pushedAt: string,
+  now: Date,
+  why: string,
+): Evidence {
+  const days = ageInDays(pushedAt, now) ?? 0;
+  const when =
+    days < 60 ? `${Math.max(days, 0)} days ago` : `${Math.round(days / 30.4)} months ago`;
+  return line({
+    code: 'activity-unchecked',
+    message: `The repository was pushed to ${when} (${isoDay(pushedAt)}), but the last commit on the default branch was not read (${clip(why, 100)}); it may be active, in which case this verdict overstates.`,
     source: 'github',
     url: repoUrl,
     date: pushedAt,

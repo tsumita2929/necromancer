@@ -100,6 +100,15 @@ export interface Diagnosis {
   /** Best first. Empty when none is known. */
   successors: Successor[];
   latest?: { version: string; date?: string };
+  /**
+   * What a verdict other than "alive" rests on.
+   * - "hard": a fact from a source: deprecated, archived, inactive, yanked, gone, an advisory, a
+   *   deprecated or yanked version in use, a package the registry does not know.
+   * - "heuristic": a guess from staleness: an old release, a quiet repository, and the "abandoned"
+   *   rule that joins them. Show it as such.
+   * Absent for "alive".
+   */
+  basis?: 'hard' | 'heuristic';
 }
 
 /** A whole scan. */

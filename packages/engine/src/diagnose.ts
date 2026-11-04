@@ -7,7 +7,7 @@ import { Http } from './net/http.js';
 import { type ResolvedTuning } from './options.js';
 import * as signals from './signals.js';
 import { getNpmPackage, getProject, getVersionRepo, type ProjectInfo } from './sources/depsdev.js';
-import { getGithubRepo, type GithubRepo } from './sources/github.js';
+import { getGithubRepo, getLatestCommit, type GithubRepo } from './sources/github.js';
 import { getNpmLatest } from './sources/npm.js';
 import { osvKey, queryOsv, type OsvQuery } from './sources/osv.js';
 import { getPypiProject } from './sources/pypi.js';
@@ -56,6 +56,12 @@ interface PackageFacts {
   repoLookedUp: boolean;
   scorecard?: ProjectInfo | null;
   github?: GithubRepo;
+  /** The default branch's newest commit; null when the repository has none. */
+  commit?: { date: string } | null;
+  /** Why the commit date was not read, when it was wanted. */
+  commitWhy?: string;
+  /** How the latest release was dated, when the registry gives several dates (PyPI). */
+  latestDating?: string;
   failures: string[];
 }
 
@@ -215,6 +221,7 @@ export class Core {
           advisories,
           successors,
         };
+        if (decision.basis) out.basis = decision.basis;
         if (f.latest) out.latest = f.latest;
         return out;
       }),
@@ -260,6 +267,15 @@ export class Core {
         version: p.latest,
         ...(latestRelease?.date ? { date: latestRelease.date } : {}),
       };
+      if (latestRelease?.date && latestRelease.firstDate) {
+        const spread = signals.ageInDays(
+          latestRelease.firstDate,
+          new Date(Date.parse(latestRelease.date)),
+        );
+        if (spread !== undefined && spread > 30) {
+          facts.latestDating = `Dated by its newest file, uploaded ${signals.isoDay(latestRelease.date)}; its first file was uploaded ${signals.isoDay(latestRelease.firstDate)}.`;
+        }
+      }
       facts.inactive = p.inactive;
       if (p.latestYanked) facts.latestYanked = p.yankedReason ? { reason: p.yankedReason } : {};
       if (p.repo) facts.repo = p.repo;
@@ -364,7 +380,14 @@ export class Core {
         f.ecosystem === 'npm'
           ? `https://www.npmjs.com/package/${f.name}`
           : `https://pypi.org/project/${f.name}/`;
-      const age = signals.releaseAge(f.latest.version, f.latest.date, now, f.registrySource, url);
+      const age = signals.releaseAge(
+        f.latest.version,
+        f.latest.date,
+        now,
+        f.registrySource,
+        url,
+        f.latestDating,
+      );
       if (age) out.push(age);
     }
     return out;
@@ -409,6 +432,7 @@ export class Core {
     );
 
     // GitHub, only for packages that already look unhealthy, worst first, within the budget.
+    // A Scorecard score alone does not decide a verdict, but it is still a reason to look.
     const rank = (f: PackageFacts): number => {
       const evidence = [
         ...this.registryEvidence(f, versionByPackage.get(pkgKey(f))),
@@ -419,43 +443,106 @@ export class Core {
     const wanted = candidates
       .filter((f) => f.repo?.host === 'github.com')
       .map((f) => ({ f, rank: rank(f) }))
-      .filter((x) => x.rank > 0 || withAdvisory.has(pkgKey(x.f)))
+      .filter(
+        (x) =>
+          x.rank > 0 ||
+          withAdvisory.has(pkgKey(x.f)) ||
+          (x.f.scorecard?.maintained !== undefined &&
+            x.f.scorecard.maintained <= signals.THRESHOLDS.scorecardLow),
+      )
       .sort((a, b) => b.rank - a.rank);
-    // GitHub counts calls per hour, so the budget is per hour too.
+    // GitHub counts calls per hour, so the budget is per hour too. Every distinct request counts.
     if (this.now().getTime() - this.githubWindowStart >= 3_600_000) {
       this.githubRequested = new Set<string>();
       this.githubWindowStart = this.now().getTime();
     }
-    let skipped = 0;
-    const queue = [...wanted];
-    // A small pool, so a refusal from GitHub stops the calls that have not started yet.
-    const worker = async (): Promise<void> => {
-      for (let next = queue.shift(); next; next = queue.shift()) {
-        const f = next.f;
-        const repo = f.repo as RepoRef;
-        const key = repoKey(repo);
-        if (this.now().getTime() < this.githubBlockedUntil) continue; // already reported
-        if (!this.githubRequested.has(key)) {
-          if (this.githubRequested.size >= this.tuning.githubBudget) {
-            skipped++;
-            continue;
-          }
-          this.githubRequested.add(key);
-        }
-        const g = await guard(() => getGithubRepo(this.http, repo));
-        if (g.ok) f.github = g.value;
-        else {
-          if (g.kind === 'rate-limited') this.githubBlockedUntil = this.now().getTime() + 3_600_000;
-          note(run, 'github', g.reason);
-        }
-      }
+    let skippedRepos = 0;
+    let skippedCommits = 0;
+    const take = (key: string): 'ok' | 'blocked' | 'budget' => {
+      if (this.now().getTime() < this.githubBlockedUntil) return 'blocked'; // already reported
+      if (this.githubRequested.has(key)) return 'ok';
+      if (this.githubRequested.size >= this.tuning.githubBudget) return 'budget';
+      this.githubRequested.add(key);
+      return 'ok';
     };
-    await Promise.all(Array.from({ length: Math.min(GITHUB_POOL, queue.length) }, worker));
-    if (skipped > 0) {
+    // A small pool, so a refusal from GitHub stops the calls that have not started yet.
+    const pool = async <T>(items: T[], work: (item: T) => Promise<void>): Promise<void> => {
+      const queue = [...items];
+      const worker = async (): Promise<void> => {
+        for (let next = queue.shift(); next !== undefined; next = queue.shift()) await work(next);
+      };
+      await Promise.all(Array.from({ length: Math.min(GITHUB_POOL, queue.length) }, worker));
+    };
+    const refused = (g: { kind: string; reason: string }): void => {
+      if (g.kind === 'rate-limited') this.githubBlockedUntil = this.now().getTime() + 3_600_000;
+      note(run, 'github', g.reason);
+    };
+
+    await pool(wanted, async ({ f }) => {
+      const repo = f.repo as RepoRef;
+      const gate = take(`repo:${repoKey(repo)}`);
+      if (gate === 'blocked') return;
+      if (gate === 'budget') {
+        skippedRepos++;
+        return;
+      }
+      const g = await guard(() => getGithubRepo(this.http, repo));
+      if (g.ok) f.github = g.value;
+      else refused(g);
+    });
+
+    // The default branch's latest commit. Where the repository was pushed to within the year, the
+    // commit date decides whether the package is alive, so those come first; where it was not, the
+    // commit date only makes the evidence exact, so those use what budget is left.
+    const jobs = wanted
+      .map(({ f }) => f)
+      .filter((f) => f.github?.state === 'ok' && !f.github.archived && !withAdvisory.has(pkgKey(f)))
+      .map((f) => {
+        const decision = this.verdictFor(f, versionByPackage.get(pkgKey(f)), []);
+        return { f, soft: decision.verdict !== 'alive' && decision.basis === 'heuristic' };
+      })
+      .filter((x) => x.soft)
+      .map((x) => {
+        const pushed = x.f.github?.state === 'ok' ? x.f.github.pushedAt : undefined;
+        const days = signals.ageInDays(pushed, this.now());
+        return { f: x.f, decisive: days === undefined || days < signals.THRESHOLDS.activeDays };
+      })
+      .sort((a, b) => Number(b.decisive) - Number(a.decisive));
+    await pool(jobs, async ({ f }) => {
+      const repo = f.repo as RepoRef;
+      const gate = take(`commits:${repoKey(repo)}`);
+      if (gate === 'blocked') {
+        f.commitWhy = 'GitHub refused further calls';
+        return;
+      }
+      if (gate === 'budget') {
+        skippedCommits++;
+        f.commitWhy = 'the GitHub budget for this scan was used up';
+        return;
+      }
+      const c = await guard(() => getLatestCommit(this.http, repo));
+      if (c.ok) f.commit = c.value;
+      else {
+        f.commitWhy = c.reason;
+        refused(c);
+      }
+    });
+    if (skippedRepos > 0 || skippedCommits > 0) {
+      const parts: string[] = [];
+      if (skippedRepos > 0) {
+        parts.push(
+          `${skippedRepos} ${skippedRepos === 1 ? 'repository was' : 'repositories were'} not checked`,
+        );
+      }
+      if (skippedCommits > 0) {
+        parts.push(
+          `${skippedCommits} commit ${skippedCommits === 1 ? 'date was' : 'dates were'} not read`,
+        );
+      }
       note(
         run,
         'github',
-        `GitHub budget reached (${this.tuning.githubBudget} calls per scan, limit is 60 per hour): ${skipped} ${skipped === 1 ? 'repository was' : 'repositories were'} not checked`,
+        `GitHub budget reached (${this.tuning.githubBudget} calls per scan, limit is 60 per hour): ${parts.join(', ')}`,
       );
     }
   }
@@ -473,13 +560,25 @@ export class Core {
   // --- Phase D ------------------------------------------------------------------------------
 
   private verdictFor(f: PackageFacts, version: string | undefined, advisories: string[]) {
+    const now = this.now();
     const evidence = [...this.registryEvidence(f, version), ...this.scorecardEvidence(f)];
+    let pushedAt: string | undefined;
     if (f.github?.state === 'ok') {
       const url = f.repo ? repoUrl(f.repo) : '';
-      if (f.github.archived) evidence.push(signals.repoArchived(url, f.github.pushedAt));
-      else if (f.github.pushedAt) {
-        const inactive = signals.repoInactive(url, f.github.pushedAt, this.now());
-        if (inactive) evidence.push(inactive);
+      pushedAt = f.github.pushedAt;
+      if (f.github.archived) {
+        evidence.push(signals.repoArchived(url, f.github.pushedAt));
+      } else if (f.commit) {
+        // The default branch's own commits decide; a push to another branch or tag does not.
+        const alive = signals.recentActivity(url, f.commit.date, now);
+        if (alive) evidence.push(alive);
+        else {
+          const quiet = signals.repoInactive(url, { kind: 'commit', date: f.commit.date }, now);
+          if (quiet) evidence.push(quiet);
+        }
+      } else if (f.github.pushedAt) {
+        const quiet = signals.repoInactive(url, { kind: 'push', date: f.github.pushedAt }, now);
+        if (quiet) evidence.push(quiet);
       }
     } else if (f.github?.state === 'gone' && f.repo) {
       evidence.push(signals.repoGone(repoUrl(f.repo), f.github.reason));
@@ -496,7 +595,27 @@ export class Core {
         ),
       );
     }
-    return decide(evidence, advisories);
+    const decision = decide(evidence, advisories);
+    // A staleness verdict, a repository pushed to within the year, and no commit date: say so. The
+    // verdict is the one without commit data; it was not moved by the missing data.
+    if (
+      decision.verdict !== 'alive' &&
+      decision.basis === 'heuristic' &&
+      advisories.length === 0 &&
+      f.github?.state === 'ok' &&
+      !f.github.archived &&
+      f.commit === undefined &&
+      f.commitWhy !== undefined &&
+      pushedAt !== undefined &&
+      (signals.ageInDays(pushedAt, now) ?? Infinity) < signals.THRESHOLDS.activeDays
+    ) {
+      const url = f.repo ? repoUrl(f.repo) : '';
+      return decide(
+        [...evidence, signals.activityUnchecked(url, pushedAt, now, f.commitWhy)],
+        advisories,
+      );
+    }
+    return decision;
   }
 
   // --- helpers ------------------------------------------------------------------------------
