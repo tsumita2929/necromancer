@@ -1,0 +1,253 @@
+=== mkdirp: real run (exit 0) ===
+
+ RUN  v5.1.0 <scratch>/js
+
+ ✓ seance/mkdirp/seance.test.mjs (7 tests) 414ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  16:24:53
+   Duration  564ms (tests 90%, import 7%, transform 2%, worker 1%)
+
+
+
+=== mkdirp: mutant naive-mkdir-recursive (exit 1) ===
+
+ RUN  v5.1.0 <scratch>/js
+
+ ❯ seance/mkdirp/seance.test.mjs (7 tests | 4 failed) 47ms
+   ❯ seance: mkdirp -> fs.mkdir recursive (7)
+     ✓ the installed mkdirp is of the family this séance was written for 2ms
+     × mkdirp.sync and mkdirpSync leave the same tree and return the same path 23ms
+     × mkdirp (promise) and the async replacement leave the same tree and return the same path 6ms
+     ✓ wrong argument types fail with the same error class 8ms
+     × the empty path means the current directory, as in mkdirp 1ms
+     × a mode given as a number is applied; the naive call ignores it 2ms
+     ✓ the replacement answers like mkdirp on the paths this project uses 0ms
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 3 passed (7)
+   Start at  16:24:53
+   Duration  222ms (tests 51%, import 34%, transform 11%, worker 4%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  seance/mkdirp/seance.test.mjs > seance: mkdirp -> fs.mkdir recursive > mkdirp.sync and mkdirpSync leave the same tree and return the same path
+Error: Property failed after 1 tests
+{ seed: -2068778256, path: "0:0:1:1:1", endOnFailure: true }
+Counterexample: [[],["a",""],"",493]
+Shrunk 4 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/mkdirp/seance.test.mjs:103:8
+    101|
+    102|   it('mkdirp.sync and mkdirpSync leave the same tree and return the sa…
+    103|     fc.assert(
+       |        ^
+    104|       fc.property(tree, targetSegs, trailing, mode, (entries, t, slash…
+    105|         const target = t.join('/') + slash;
+
+Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }
+
+- Expected
++ Received
+
+@@ -3,9 +3,9 @@
+    "ok": true,
+    "tree": [
+      [
+        "a",
+        "dir",
+-       493,
++       509,
+      ],
+    ],
+  }
+
+ ❯ seance/mkdirp/seance.test.mjs:107:19
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/mkdirp/seance.test.mjs:103:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  seance/mkdirp/seance.test.mjs > seance: mkdirp -> fs.mkdir recursive > mkdirp (promise) and the async replacement leave the same tree and return the same path
+Error: Property failed after 1 tests
+{ seed: -559526409, path: "0:0", endOnFailure: true }
+Counterexample: [[],["a",""],448]
+Shrunk 1 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8
+
+Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }
+
+- Expected
++ Received
+
+@@ -3,9 +3,9 @@
+    "ok": true,
+    "tree": [
+      [
+        "a",
+        "dir",
+-       448,
++       509,
+      ],
+    ],
+  }
+
+ ❯ seance/mkdirp/seance.test.mjs:123:45
+ ❯ AsyncProperty.run node_modules/fast-check/lib/fast-check.js:1217:19
+ ❯ asyncPropertyExecution node_modules/fast-check/lib/fast-check.js:2564:14
+ ❯ asyncRunIt node_modules/fast-check/lib/fast-check.js:2557:15
+ ❯ seance/mkdirp/seance.test.mjs:114:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  seance/mkdirp/seance.test.mjs > seance: mkdirp -> fs.mkdir recursive > the empty path means the current directory, as in mkdirp
+Error: ENOENT: no such file or directory, mkdir ''
+ ❯ mkdirpSync seance/mkdirp/replacement.mjs:2:45
+      1| import fs from 'node:fs';
+      2| export function mkdirpSync(dir) { return fs.mkdirSync(dir, { recursive…
+       |                                             ^
+      3| export async function mkdirp(dir) { return fs.promises.mkdir(dir, { re…
+      4|
+ ❯ seance/mkdirp/seance.test.mjs:140:12
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  seance/mkdirp/seance.test.mjs > seance: mkdirp -> fs.mkdir recursive > a mode given as a number is applied; the naive call ignores it
+AssertionError: expected 509 to be 448 // Object.is equality
+
+- Expected
++ Received
+
+- 448
++ 509
+
+ ❯ seance/mkdirp/seance.test.mjs:147:41
+    145|     const a = path.join(root, 'mode-old/x/y'); const b = path.join(roo…
+    146|     mkdirpOldSync(a, 0o700); mkdirpSync(b, 0o700); fs.mkdirSync(c, { r…
+    147|     expect(fs.statSync(b).mode & 0o777).toBe(fs.statSync(a).mode & 0o7…
+       |                                         ^
+    148|     expect(fs.statSync(a).mode & 0o777).toBe(0o700 & ~process.umask());
+    149|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+
+
+=== mkdirp: mutant returns-last-directory (exit 1) ===
+
+ RUN  v5.1.0 <scratch>/js
+
+ ❯ seance/mkdirp/seance.test.mjs (7 tests | 2 failed) 66ms
+   ❯ seance: mkdirp -> fs.mkdir recursive (7)
+     ✓ the installed mkdirp is of the family this séance was written for 2ms
+     × mkdirp.sync and mkdirpSync leave the same tree and return the same path 36ms
+     × mkdirp (promise) and the async replacement leave the same tree and return the same path 10ms
+     ✓ wrong argument types fail with the same error class 6ms
+     ✓ the empty path means the current directory, as in mkdirp 1ms
+     ✓ a mode given as a number is applied; the naive call ignores it 1ms
+     ✓ the replacement answers like mkdirp on the paths this project uses 0ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 5 passed (7)
+   Start at  16:24:54
+   Duration  238ms (tests 59%, import 29%, transform 9%, worker 4%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  seance/mkdirp/seance.test.mjs > seance: mkdirp -> fs.mkdir recursive > mkdirp.sync and mkdirpSync leave the same tree and return the same path
+Error: Property failed after 8 tests
+{ seed: 1443329929, path: "7:0:3:3:3:3:2", endOnFailure: true }
+Counterexample: [[],["a","a",""],"",undefined]
+Shrunk 6 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/mkdirp/seance.test.mjs:103:8
+    101|
+    102|   it('mkdirp.sync and mkdirpSync leave the same tree and return the sa…
+    103|     fc.assert(
+       |        ^
+    104|       fc.property(tree, targetSegs, trailing, mode, (entries, t, slash…
+    105|         const target = t.join('/') + slash;
+
+Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }
+
+- Expected
++ Received
+
+@@ -1,7 +1,7 @@
+  {
+-   "made": "a",
++   "made": "a/a",
+    "ok": true,
+    "tree": [
+      [
+        "a",
+        "dir",
+
+ ❯ seance/mkdirp/seance.test.mjs:107:19
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/mkdirp/seance.test.mjs:103:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  seance/mkdirp/seance.test.mjs > seance: mkdirp -> fs.mkdir recursive > mkdirp (promise) and the async replacement leave the same tree and return the same path
+Error: Property failed after 2 tests
+{ seed: -730210619, path: "1:0:1:1", endOnFailure: true }
+Counterexample: [[],["a","a"],undefined]
+Shrunk 3 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8
+
+Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }
+
+- Expected
++ Received
+
+@@ -1,7 +1,7 @@
+  {
+-   "made": "a",
++   "made": "a/a",
+    "ok": true,
+    "tree": [
+      [
+        "a",
+        "dir",
+
+ ❯ seance/mkdirp/seance.test.mjs:123:45
+ ❯ AsyncProperty.run node_modules/fast-check/lib/fast-check.js:1217:19
+ ❯ asyncPropertyExecution node_modules/fast-check/lib/fast-check.js:2564:14
+ ❯ asyncRunIt node_modules/fast-check/lib/fast-check.js:2557:15
+ ❯ seance/mkdirp/seance.test.mjs:114:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+

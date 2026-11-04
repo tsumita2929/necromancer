@@ -49,12 +49,15 @@ export interface ParseResult {
  *
  * - alive:  no blocking signal found. A package the registry does not know, or that could not be
  *           checked, is also "alive" and carries an "unchecked" evidence line.
- * - dying:  stale signals (no release for a long time, a quiet repository), or a deprecated or
- *           yanked version in use. `basis` says which.
- * - dead:   a hard end-of-life signal (deprecated, archived, yanked, inactive) or, with `basis`
- *           "heuristic", the abandoned guess: a very old release and nothing that shows care.
+ * - dying:  stale signals (no release for a long time, a quiet repository). Always `basis`
+ *           "heuristic". A deprecated or yanked version in use does not make a package dying: it is an
+ *           upgrade notice on the verdict the package itself earns (see `Diagnosis.upgradeTo`).
+ * - dead:   a hard end-of-life signal (deprecated, archived, yanked, inactive, or a README that says
+ *           the project is no longer maintained) or, with `basis` "heuristic", the abandoned guess:
+ *           a very old release and nothing that shows care.
  * - ghost:  dead, and its source repository is gone or unreachable.
- * - zombie: dead or ghost, and a known advisory affects the version in use.
+ * - zombie: dead or ghost, and a known advisory affects the version in use. Its `basis` is the basis
+ *           of the death, not of the advisory.
  */
 export const VERDICTS = ['alive', 'dying', 'dead', 'ghost', 'zombie'] as const;
 export type Verdict = (typeof VERDICTS)[number];
@@ -127,11 +130,14 @@ export interface Diagnosis {
   latest?: { version: string; date?: string };
   /**
    * What a verdict other than "alive" rests on.
-   * - "hard": a fact from a source: deprecated, archived, inactive, yanked, gone, an advisory, a
-   *   deprecated or yanked version in use, a package the registry does not know.
+   * - "hard": a fact from a source that ends the package's life: deprecated, archived, inactive,
+   *   yanked (the latest release), gone, or the maintainers' own README statement that the project
+   *   is no longer maintained. For a zombie it is "hard" only when such a fact is among the evidence
+   *   of the death; the advisory, which makes it a zombie, is a hard fact but does not set the basis.
    * - "heuristic": a guess from staleness: an old release, a quiet repository, and the "abandoned"
    *   rule that joins them. Show it as such.
-   * Absent for "alive".
+   * Absent for "alive". A package the registry does not know, an advisory on the version in use and
+   * a deprecated or yanked version in use are all "alive" (the last with an upgrade notice).
    */
   basis?: 'hard' | 'heuristic';
   /**

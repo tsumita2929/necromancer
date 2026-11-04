@@ -2,7 +2,7 @@
   "recipe": "mkdirp",
   "language": "javascript",
   "command": "npx vitest run seance/mkdirp",
-  "ranAt": "2026-11-04T12:06:01.081Z",
+  "ranAt": "2026-11-04T16:24:53.640Z",
   "versions": {
     "mkdirp": "1.0.4",
     "vitest": "5.1.0",
@@ -10,12 +10,12 @@
   },
   "real": {
     "exit": 0,
-    "seconds": 0.791,
+    "seconds": 0.847,
     "summary": [
-      "✓ seance/mkdirp/seance.test.mjs (7 tests) 364ms",
+      "✓ seance/mkdirp/seance.test.mjs (7 tests) 414ms",
       "Test Files  1 passed (1)",
       "Tests  7 passed (7)",
-      "Duration  510ms (tests 89%, import 8%, transform 2%, worker 1%)"
+      "Duration  564ms (tests 90%, import 7%, transform 2%, worker 1%)"
     ]
   },
   "mutants": [
@@ -25,11 +25,11 @@
       "exit": 1,
       "failed": true,
       "counterexample": [
-        "Counterexample: [[],[\"a\",\"\"],\"\",448]",
-        "Shrunk 3 time(s)",
+        "Counterexample: [[],[\"a\",\"\"],\"\",493]",
+        "Shrunk 4 time(s)",
         "Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }",
-        "Counterexample: [[],[\"a\"],{\"mode\":448}]",
-        "Shrunk 2 time(s)",
+        "Counterexample: [[],[\"a\",\"\"],448]",
+        "Shrunk 1 time(s)",
         "Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
       ],
       "summary": [
@@ -53,7 +53,7 @@
         "Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
       ],
       "summary": [
-        "Error: Property failed after 1 tests",
+        "Error: Property failed after 2 tests",
         "❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16",
         "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8",
         "Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"

@@ -14,6 +14,7 @@ test-results/
 .env.*
 !.env.example
 *.log
+!packages/engine/test/fixtures/seance-runs/*.log
 .DS_Store
 
 # Note: /.kiro (specs, hooks, steering) is part of the submission. Never ignore it.

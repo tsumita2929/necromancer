@@ -1,0 +1,232 @@
+=== is-odd: real run (exit 0) ===
+
+ RUN  v5.1.0 <scratch>/js
+
+ ✓ seance/is-odd/seance.test.mjs (4 tests) 101ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  16:24:55
+   Duration  249ms (tests 69%, import 20%, transform 8%, worker 3%)
+
+
+
+=== is-odd: mutant no-conversion (exit 1) ===
+
+ RUN  v5.1.0 <scratch>/js
+
+ ❯ seance/is-odd/seance.test.mjs (4 tests | 3 failed) 42ms
+   ❯ seance: is-odd -> owned function (4)
+     × the owned function answers like is-odd for any value 19ms
+     × it answers like is-odd for every integer in a window around zero and around the safe limit 20ms
+     ✓ it answers like is-odd on the calls this project makes 1ms
+     × the naive rewrite n % 2 === 1 is not the same function 1ms
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 1 passed (4)
+   Start at  16:24:56
+   Duration  214ms (tests 50%, import 33%, transform 11%, worker 5%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  seance/is-odd/seance.test.mjs > seance: is-odd -> owned function > the owned function answers like is-odd for any value
+Error: Property failed after 1 tests
+{ seed: -695634186, path: "0:1:0:0:2:2:2:1:1", endOnFailure: true }
+Counterexample: [":"]
+Shrunk 8 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/is-odd/seance.test.mjs:31:8
+     29| describe('seance: is-odd -> owned function', () => {
+     30|   it('the owned function answers like is-odd for any value', () => {
+     31|     fc.assert(
+       |        ^
+     32|       fc.property(value, (v) => {
+     33|         expect(outcome(isOdd, [v])).toEqual(outcome(isOddOld, [v]));
+
+Caused by: AssertionError: expected { ok: true, value: false } to deeply equal { ok: false, error: 'TypeError' }
+
+- Expected
++ Received
+
+  {
+-   "error": "TypeError",
+-   "ok": false,
++   "ok": true,
++   "value": false,
+  }
+
+ ❯ seance/is-odd/seance.test.mjs:33:37
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/is-odd/seance.test.mjs:31:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  seance/is-odd/seance.test.mjs > seance: is-odd -> owned function > it answers like is-odd for every integer in a window around zero and around the safe limit
+AssertionError: 9007199254740992: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }
+
+- Expected
++ Received
+
+  {
+-   "error": "Error",
+-   "ok": false,
++   "ok": true,
++   "value": false,
+  }
+
+ ❯ seance/is-odd/seance.test.mjs:44:46
+     42|     for (let k = -300; k <= 300; k++) {
+     43|       const n = Number.MAX_SAFE_INTEGER + k;
+     44|       expect(outcome(isOdd, [n]), String(n)).toEqual(outcome(isOddOld,…
+       |                                              ^
+     45|       expect(outcome(isOdd, [-n]), String(-n)).toEqual(outcome(isOddOl…
+     46|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  seance/is-odd/seance.test.mjs > seance: is-odd -> owned function > the naive rewrite n % 2 === 1 is not the same function
+AssertionError: 3.5: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }
+
+- Expected
++ Received
+
+  {
+-   "error": "Error",
+-   "ok": false,
++   "ok": true,
++   "value": false,
+  }
+
+ ❯ seance/is-odd/seance.test.mjs:58:46
+     56|     for (const v of differing) {
+     57|       expect(outcome(naive, [v]), String(v)).not.toEqual(outcome(isOdd…
+     58|       expect(outcome(isOdd, [v]), String(v)).toEqual(outcome(isOddOld,…
+       |                                              ^
+     59|     }
+     60|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+
+=== is-odd: mutant missing-safe-integer-check (exit 1) ===
+
+ RUN  v5.1.0 <scratch>/js
+
+ ❯ seance/is-odd/seance.test.mjs (4 tests | 3 failed) 47ms
+   ❯ seance: is-odd -> owned function (4)
+     × the owned function answers like is-odd for any value 24ms
+     × it answers like is-odd for every integer in a window around zero and around the safe limit 19ms
+     ✓ it answers like is-odd on the calls this project makes 1ms
+     × the naive rewrite n % 2 === 1 is not the same function 2ms
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 1 passed (4)
+   Start at  16:24:56
+   Duration  218ms (tests 52%, import 32%, transform 11%, worker 5%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  seance/is-odd/seance.test.mjs > seance: is-odd -> owned function > the owned function answers like is-odd for any value
+Error: Property failed after 33 tests
+{ seed: -175002107, path: "32:2:1:2:1:0:1:0:0:0:0:1:0:0:0:2:0:4:1:1:2:0:2:3:2:1:10:0", endOnFailure: true }
+Counterexample: [-9007199254740992]
+Shrunk 27 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/is-odd/seance.test.mjs:31:8
+     29| describe('seance: is-odd -> owned function', () => {
+     30|   it('the owned function answers like is-odd for any value', () => {
+     31|     fc.assert(
+       |        ^
+     32|       fc.property(value, (v) => {
+     33|         expect(outcome(isOdd, [v])).toEqual(outcome(isOddOld, [v]));
+
+Caused by: AssertionError: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }
+
+- Expected
++ Received
+
+  {
+-   "error": "Error",
+-   "ok": false,
++   "ok": true,
++   "value": false,
+  }
+
+ ❯ seance/is-odd/seance.test.mjs:33:37
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/is-odd/seance.test.mjs:31:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  seance/is-odd/seance.test.mjs > seance: is-odd -> owned function > it answers like is-odd for every integer in a window around zero and around the safe limit
+AssertionError: 9007199254740992: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }
+
+- Expected
++ Received
+
+  {
+-   "error": "Error",
+-   "ok": false,
++   "ok": true,
++   "value": false,
+  }
+
+ ❯ seance/is-odd/seance.test.mjs:44:46
+     42|     for (let k = -300; k <= 300; k++) {
+     43|       const n = Number.MAX_SAFE_INTEGER + k;
+     44|       expect(outcome(isOdd, [n]), String(n)).toEqual(outcome(isOddOld,…
+       |                                              ^
+     45|       expect(outcome(isOdd, [-n]), String(-n)).toEqual(outcome(isOddOl…
+     46|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  seance/is-odd/seance.test.mjs > seance: is-odd -> owned function > the naive rewrite n % 2 === 1 is not the same function
+AssertionError: 9007199254740992: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' }
+
+- Expected
++ Received
+
+  {
+-   "error": "Error",
+-   "ok": false,
++   "ok": true,
++   "value": false,
+  }
+
+ ❯ seance/is-odd/seance.test.mjs:58:46
+     56|     for (const v of differing) {
+     57|       expect(outcome(naive, [v]), String(v)).not.toEqual(outcome(isOdd…
+     58|       expect(outcome(isOdd, [v]), String(v)).toEqual(outcome(isOddOld,…
+       |                                              ^
+     59|     }
+     60|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+

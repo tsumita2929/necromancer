@@ -115,6 +115,86 @@ export interface CallSummary {
   replayable: number;
   /** Distinct all-literal calls left out because they name a host, a path or a command. */
   leftOut: Array<{ file: string; reach: Reach }>;
+  /** Every call the scan counted, put in exactly one class: the classes add up to `calls`. */
+  count: CallCount;
+}
+
+/**
+ * Every call of the picked members in exactly one class, so that
+ * `replayed + leftOutTotal + notLiteral + overLimit + unexamined === total` (QA-30). A repeat of a call
+ * with the same literals is counted with the class of the first (replayed, or left out for the same reason).
+ */
+export interface CallCount {
+  total: number;
+  /** Calls the test replays, repeats included. */
+  replayed: number;
+  /** Distinct sets of arguments among them. */
+  replayedDistinct: number;
+  /** Calls left out because an argument names a host, a path or a command, by what it names. */
+  leftOut: Record<Reach, number>;
+  leftOutTotal: number;
+  /** Calls with an argument that is not a plain literal (a variable, an object, an expression, a spread), or none, or too many. */
+  notLiteral: number;
+  /** All-literal calls beyond the distinct ones the test holds. */
+  overLimit: number;
+  /** Calls the scan counted but kept no site for (it keeps a limited number per member). */
+  unexamined: number;
+}
+
+function countCalls(
+  usage: DependencyUsage | undefined,
+  pick: (member: string) => boolean,
+  screen: boolean,
+  total: number,
+): CallCount {
+  const count: CallCount = {
+    total,
+    replayed: 0,
+    replayedDistinct: 0,
+    leftOut: { network: 0, path: 0, command: 0 },
+    leftOutTotal: 0,
+    notLiteral: 0,
+    overLimit: 0,
+    unexamined: 0,
+  };
+  const seen = new Set<string>();
+  let sites = 0;
+  for (const m of usage?.members ?? []) {
+    if (!pick(m.member)) continue;
+    for (const site of m.sites as UsageSite[]) {
+      if (site.kind !== 'call') continue;
+      sites++;
+      const lits = site.literals;
+      if (
+        !lits ||
+        site.spread ||
+        lits.length === 0 ||
+        lits.length > MAX_ARGS ||
+        !lits.every((l) => l.kind !== 'other')
+      ) {
+        count.notLiteral++;
+        continue;
+      }
+      const reach = screen ? callReach(lits) : undefined;
+      if (reach) {
+        count.leftOut[reach]++;
+        count.leftOutTotal++;
+        continue;
+      }
+      const key = JSON.stringify(lits);
+      if (seen.has(key)) {
+        count.replayed++;
+      } else if (count.replayedDistinct >= MAX_EXAMPLES) {
+        count.overLimit++;
+      } else {
+        seen.add(key);
+        count.replayedDistinct++;
+        count.replayed++;
+      }
+    }
+  }
+  count.unexamined = Math.max(0, total - sites);
+  return count;
 }
 
 export function callSummary(
@@ -135,12 +215,14 @@ export function callSummary(
     }
   }
   const collected = collectSites(usage, pick, screen);
+  const total = Math.max(calls, kept);
   return {
-    calls: Math.max(calls, kept),
+    calls: total,
     files: files.slice(0, 5),
     moreFiles: files.length > 5 || calls > kept,
     replayable: collected.replay.length,
     leftOut: collected.leftOut,
+    count: countCalls(usage, pick, screen, total),
   };
 }
 
@@ -157,10 +239,43 @@ export const GUARD_SENTENCE =
   'Replayed calls run with the network blocked (loopback too), no process started, and file changes confined to a temporary directory; a blocked call throws SEANCE_BLOCKED.';
 
 function leftOutSentence(s: CallSummary): string {
-  if (s.leftOut.length === 0) return '';
-  const reaches = [...new Set(s.leftOut.map((l) => REACH_WORDS[l.reach]))].join(', ');
+  const c = s.count;
+  if (c.leftOutTotal === 0) return '';
+  const reasons = (Object.keys(REACH_WORDS) as Reach[])
+    .filter((r) => c.leftOut[r] > 0)
+    .map((r) => `${c.leftOut[r]} because an argument names ${REACH_WORDS[r]}`)
+    .join(', ');
   const files = [...new Set(s.leftOut.map((l) => l.file))].slice(0, 5).join(', ');
-  return `Left out ${plural(s.leftOut.length, 'call', 'calls')} in ${files}: an argument names ${reaches}, and replaying it could reach the network, a file outside the test or a process.`;
+  return `Left out ${plural(c.leftOutTotal, 'call', 'calls')} in ${files}: ${reasons}. Replaying them could reach the network, a file outside the test or a process.`;
+}
+
+/** The calls that are neither replayed nor left out for what they name, and the line that adds the classes up. */
+function restSentences(s: CallSummary, shortBranch: boolean): string[] {
+  const c = s.count;
+  const out: string[] = [];
+  if (c.notLiteral > 0 && !shortBranch)
+    out.push(
+      `${plural(c.notLiteral, 'call has', 'calls have')} an argument that is not a plain literal (a variable, an object or an expression), so ${c.notLiteral === 1 ? 'it is' : 'they are'} not replayed.`,
+    );
+  if (c.overLimit > 0)
+    out.push(
+      `${plural(c.overLimit, 'more distinct call', 'more distinct calls')} would go over the ${MAX_EXAMPLES} the test holds and ${c.overLimit === 1 ? 'is' : 'are'} not replayed.`,
+    );
+  if (c.unexamined > 0)
+    out.push(
+      `${plural(c.unexamined, 'call', 'calls')} counted by the scan ${c.unexamined === 1 ? 'is' : 'are'} not listed, because the scan keeps a limited number of call sites, so ${c.unexamined === 1 ? 'it is' : 'they are'} not replayed.`,
+    );
+  if (c.total > 0 && !shortBranch) {
+    const terms = [
+      `${c.replayed} replayed${c.replayed > c.replayedDistinct ? ` (${c.replayedDistinct} distinct)` : ''}`,
+      `${c.leftOutTotal} left out`,
+      `${c.notLiteral} with an argument that is not a plain literal`,
+    ];
+    if (c.overLimit > 0) terms.push(`${c.overLimit} over the limit`);
+    if (c.unexamined > 0) terms.push(`${c.unexamined} not listed`);
+    out.push(`Count: ${terms.join(' + ')} = ${plural(c.total, 'call', 'calls')}.`);
+  }
+  return out;
 }
 
 /**
@@ -188,6 +303,8 @@ export function callsNote(
   }
   const left = leftOutSentence(s);
   if (left) parts.push(left);
+  // When nothing is replayed and nothing was left out, the sentence above already says why (QA-30 keeps it short).
+  parts.push(...restSentences(s, s.replayable === 0 && s.count.leftOutTotal === 0));
   if (screen && s.replayable > 0) parts.push(GUARD_SENTENCE);
   return parts.join(' ');
 }

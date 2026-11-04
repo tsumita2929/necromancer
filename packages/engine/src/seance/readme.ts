@@ -41,7 +41,8 @@ export function renderReadme(r: ReadmeInput): string {
     '',
     '## What it compares',
     '',
-    ...r.compares.map((c) => `- ${comment(c, 240)}`),
+    // The call count (QA-30) is long and must not be cut: its last words are the total.
+    ...r.compares.map((c) => `- ${comment(c, 700)}`),
     '',
   ];
   if (r.versions) out.push('## Versions', '', comment(r.versions, 900), '');

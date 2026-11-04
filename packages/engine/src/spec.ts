@@ -487,7 +487,7 @@ function seanceSection(bundle: SeanceBundle): string {
     '',
     'What it compares and ignores:',
     '',
-    ...bundle.compares.map((c) => `- ${safe(c, '', 300)}`),
+    ...bundle.compares.map((c) => `- ${safe(c, '', 700)}`),
   );
   if (bundle.knownDifferences.length > 0) {
     out.push('', 'Known differences, found by running the séance against the real packages:', '');

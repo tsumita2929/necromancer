@@ -1,0 +1,287 @@
+=== querystring: real run (exit 0) ===
+
+ RUN  v5.1.0 <scratch>/js
+
+ ✓ seance/querystring/seance.test.mjs (8 tests) 246ms
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  16:24:47
+   Duration  967ms (import 70%, tests 29%, transform 1%)
+
+
+
+=== querystring: mutant naive-URLSearchParams (exit 1) ===
+ers like querystring.stringify
+Error: Property failed after 1 tests
+{ seed: -11243548, path: "0:1:1", endOnFailure: true }
+Counterexample: [{"":{}}]
+Shrunk 2 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/querystring/seance.test.mjs:82:8
+     80|
+     81|   it('stringify: the replacement answers like querystring.stringify', …
+     82|     fc.assert(
+       |        ^
+     83|       fc.property(object, (o) => {
+     84|         expect(outcome(replacement.stringify, [o])).toEqual(outcome(ol…
+
+Caused by: AssertionError: expected { ok: true, …(1) } to deeply equal { ok: true, value: '=' }
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+-   "value": "=",
++   "value": "=%5Bobject+Object%5D",
+  }
+
+ ❯ seance/querystring/seance.test.mjs:84:53
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/querystring/seance.test.mjs:82:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  seance/querystring/seance.test.mjs > seance: querystring -> URLSearchParams > stringify: non-objects and custom separators answer alike
+Error: Property failed after 3 tests
+{ seed: 2027847865, path: "2:0:0:0", endOnFailure: true }
+Counterexample: [0,"&","="]
+Shrunk 3 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/querystring/seance.test.mjs:91:8
+     89|
+     90|   it('stringify: non-objects and custom separators answer alike', () =…
+     91|     fc.assert(
+       |        ^
+     92|       fc.property(fc.oneof(fc.string(), fc.integer(), fc.constantFrom(…
+     93|         expect(outcome(replacement.stringify, [x, sep, eq])).toEqual(o…
+
+Caused by: AssertionError: expected { ok: true, value: '0=' } to deeply equal { ok: true, value: '' }
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+-   "value": "",
++   "value": "0=",
+  }
+
+ ❯ seance/querystring/seance.test.mjs:93:62
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/querystring/seance.test.mjs:91:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  seance/querystring/seance.test.mjs > seance: querystring -> URLSearchParams > stringify then parse gives the same object with both implementations
+Error: Property failed after 2 tests
+{ seed: -1925864097, path: "1:1:1:2:2", endOnFailure: true }
+Counterexample: [{"":["",""]}]
+Shrunk 4 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/querystring/seance.test.mjs:104:8
+    102|
+    103|   it('stringify then parse gives the same object with both implementat…
+    104|     fc.assert(
+       |        ^
+    105|       fc.property(fc.dictionary(text, fc.oneof(text, fc.array(text, { …
+    106|         fc.pre(!Object.keys(o).concat(Object.values(o).flat()).some(ha…
+
+Caused by: AssertionError: expected [ [ '', [ ',' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]
+
+- Expected
++ Received
+
+  [
+    [
+      "",
+      [
+-       "",
+-       "",
++       ",",
+      ],
+    ],
+  ]
+
+ ❯ seance/querystring/seance.test.mjs:109:28
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/querystring/seance.test.mjs:104:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  seance/querystring/seance.test.mjs > seance: querystring -> URLSearchParams > the naive URLSearchParams differs from querystring on the known inputs
+AssertionError: {"a":"x y"}: expected { ok: true, value: 'a=x+y' } to deeply equal { ok: true, value: 'a=x%20y' }
+
+- Expected
++ Received
+
+  {
+    "ok": true,
+-   "value": "a=x%20y",
++   "value": "a=x+y",
+  }
+
+ ❯ seance/querystring/seance.test.mjs:124:70
+    122|     for (const o of [{ a: "x y" }, { a: null }, { a: "!'()*~" }, { a: …
+    123|       expect(outcome(naiveStringify, [o]), JSON.stringify(o)).not.toEq…
+    124|       expect(outcome(replacement.stringify, [o]), JSON.stringify(o)).t…
+       |                                                                      ^
+    125|     }
+    126|     expect(parseOutcome(replacement.parse, ["?a=1"])).toEqual(parseOut…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+
+
+=== querystring: mutant drops-repeated-keys (exit 1) ===
+
+ RUN  v5.1.0 <scratch>/js
+
+ ❯ seance/querystring/seance.test.mjs (8 tests | 2 failed) 176ms
+   ❯ seance: querystring -> URLSearchParams (8)
+     × parse: the replacement answers like querystring.parse for well-formed queries 30ms
+     ✓ parse: the replacement never throws on any text, including what makes querystring throw 77ms
+     ✓ stringify: the replacement answers like querystring.stringify 52ms
+     ✓ stringify: non-objects and custom separators answer alike 4ms
+     × stringify then parse gives the same object with both implementations 5ms
+     ✓ the replacement answers like querystring on the calls this project makes 0ms
+     ✓ the naive URLSearchParams differs from querystring on the known inputs 1ms
+     ✓ accepted differences, pinned on both sides: if either side changes, review the migration 3ms
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 6 passed (8)
+   Start at  16:24:50
+   Duration  948ms (import 77%, tests 21%, transform 1%)
+
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  seance/querystring/seance.test.mjs > seance: querystring -> URLSearchParams > parse: the replacement answers like querystring.parse for well-formed queries
+Error: Property failed after 40 tests
+{ seed: -1803058426, path: "39:1:2:2", endOnFailure: true }
+Counterexample: ["%25&%25"]
+Shrunk 3 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/querystring/seance.test.mjs:56:8
+     54| describe('seance: querystring -> URLSearchParams', () => {
+     55|   it('parse: the replacement answers like querystring.parse for well-f…
+     56|     fc.assert(
+       |        ^
+     57|       fc.property(fc.oneof(wellFormed, raw), (q) => {
+     58|         fc.pre(!hasLoneSurrogate(q));
+
+Caused by: AssertionError: expected { Object (ok, value) } to deeply equal { ok: true, …(1) }
+
+- Expected
++ Received
+
+@@ -3,10 +3,9 @@
+    "value": [
+      [
+        "%",
+        [
+          "",
+-         "",
+        ],
+      ],
+    ],
+  }
+
+ ❯ seance/querystring/seance.test.mjs:59:54
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/querystring/seance.test.mjs:56:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  seance/querystring/seance.test.mjs > seance: querystring -> URLSearchParams > stringify then parse gives the same object with both implementations
+Error: Property failed after 1 tests
+{ seed: 230355444, path: "0:2:2:2:2:2:2", endOnFailure: true }
+Counterexample: [{"":["",""]}]
+Shrunk 6 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run
+ ❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16
+ ❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8
+ ❯ reportRunDetails node_modules/fast-check/lib/fast-check.js:2492:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2662:7
+ ❯ seance/querystring/seance.test.mjs:104:8
+    102|
+    103|   it('stringify then parse gives the same object with both implementat…
+    104|     fc.assert(
+       |        ^
+    105|       fc.property(fc.dictionary(text, fc.oneof(text, fc.array(text, { …
+    106|         fc.pre(!Object.keys(o).concat(Object.values(o).flat()).some(ha…
+
+Caused by: AssertionError: expected [ [ '', [ '' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]
+
+- Expected
++ Received
+
+  [
+    [
+      "",
+      [
+        "",
+-       "",
+      ],
+    ],
+  ]
+
+ ❯ seance/querystring/seance.test.mjs:109:28
+ ❯ Property.predicate node_modules/fast-check/lib/fast-check.js:1355:99
+ ❯ Property.run node_modules/fast-check/lib/fast-check.js:1324:24
+ ❯ propertyExecution node_modules/fast-check/lib/fast-check.js:2549:23
+ ❯ run node_modules/fast-check/lib/fast-check.js:2639:91
+ ❯ runIt node_modules/fast-check/lib/fast-check.js:2542:15
+ ❯ check node_modules/fast-check/lib/fast-check.js:2655:14
+ ❯ Module.assert node_modules/fast-check/lib/fast-check.js:2660:14
+ ❯ seance/querystring/seance.test.mjs:104:8
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+

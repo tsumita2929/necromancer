@@ -1,0 +1,332 @@
+=== pep8: real run (exit 0) ===
+.............                                                            [100%]
+13 passed in 2.26s
+
+
+=== pep8: mutant naive-rename (exit 1) ===
+= 'try:\n    pass\nexcept:\n    pass\n'
+
+    @pytest.mark.parametrize("code,source", sorted(NEW_CODE_EXAMPLES.items()))
+    def test_pycodestyle_reports_codes_that_pep8_never_had(code, source):
+        lines = source.splitlines(True)
+        assert code in {c for _, _, c in naive_report(lines)}
+        assert code not in {c for _, _, c in old_report(lines)}
+>       assert code not in {c for _, _, c in new_report(lines)}
+E       AssertionError: assert 'E722' not in {'E722'}
+
+seance/pep8/test_seance_pep8.py:138: AssertionError
+_______ test_pycodestyle_reports_codes_that_pep8_never_had[E741-l = 1\n] _______
+
+code = 'E741', source = 'l = 1\n'
+
+    @pytest.mark.parametrize("code,source", sorted(NEW_CODE_EXAMPLES.items()))
+    def test_pycodestyle_reports_codes_that_pep8_never_had(code, source):
+        lines = source.splitlines(True)
+        assert code in {c for _, _, c in naive_report(lines)}
+        assert code not in {c for _, _, c in old_report(lines)}
+>       assert code not in {c for _, _, c in new_report(lines)}
+E       AssertionError: assert 'E741' not in {'E741'}
+
+seance/pep8/test_seance_pep8.py:138: AssertionError
+_____ test_pycodestyle_reports_codes_that_pep8_never_had[W605-a = "\\d"\n] _____
+
+code = 'W605', source = 'a = "\\d"\n'
+
+    @pytest.mark.parametrize("code,source", sorted(NEW_CODE_EXAMPLES.items()))
+    def test_pycodestyle_reports_codes_that_pep8_never_had(code, source):
+        lines = source.splitlines(True)
+        assert code in {c for _, _, c in naive_report(lines)}
+        assert code not in {c for _, _, c in old_report(lines)}
+>       assert code not in {c for _, _, c in new_report(lines)}
+E       AssertionError: assert 'W605' not in {'W605'}
+
+seance/pep8/test_seance_pep8.py:138: AssertionError
+_________________ test_the_naive_import_is_not_the_same_linter _________________
+
+    def test_the_naive_import_is_not_the_same_linter():
+        lines = "l = 1\ntry:\n    pass\nexcept:\n    pass\n".splitlines(True)
+        assert naive_report(lines) != old_report(lines)
+>       assert new_report(lines) == old_report(lines)
+E       AssertionError: assert [(1, 1, 'E741...4, 1, 'E722')] == []
+E         
+E         Left contains 2 more items, first extra item: (1, 1, 'E741')
+E         
+E         Full diff:
+E         - []
+E         + [
+E         +     (
+E         +         1,
+E         +         1,
+E         +         'E741',
+E         +     ),
+E         +     (
+E         +         4,
+E         +         1,
+E         +         'E722',
+E         +     ),
+E         + ]
+
+seance/pep8/test_seance_pep8.py:176: AssertionError
+=========================== short test summary info ============================
+FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_reports_what_pep8_reports - AssertionError: assert [] == [(2, 11, 'W503')]
+  
+  Right contains one more item: (2, 11, 'W503')
+  
+  Full diff:
+  + []
+  - [
+  -     (
+  -         2,
+  -         11,
+  -         'W503',
+  -     ),
+  - ]
+Falsifying example: test_the_replacement_reports_what_pep8_reports(
+    source='result = (a\n          and b)\n',
+    options={},
+)
+Explanation:
+    These lines were always and only run by failing examples:
+        /usr/lib64/python3.9/_collections_abc.py:773
+
+You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AAFBIwBBAEEA') as a decorator on your test case
+FAILED seance/pep8/test_seance_pep8.py::test_check_files_gives_the_same_counters - AssertionError: assert (0, {'directo...al lines': 2}) == (1, {'W503': ...nes': 1, ...})
+  
+  At index 0 diff: 0 != 1
+  
+  Full diff:
+    (
+  -     1,
+  ?     ^
+  +     0,
+  ?     ^
+        {
+  -         'W503': 1,
+            'directories': 0,
+            'files': 1,
+            'logical lines': 1,
+            'physical lines': 2,
+        },
+    )
+Falsifying example: test_check_files_gives_the_same_counters(
+    source='result = (a\n          and b)\n',
+)
+Explanation:
+    These lines were always and only run by failing examples:
+        /usr/lib64/python3.9/_collections_abc.py:773
+
+You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AAFBIwBBAA==') as a decorator on your test case
+FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_keeps_the_pep8_default_ignore_list - AssertionError: assert ('E121', 'E12..., 'E704', ...) == ('E121', 'E12...'E24', 'E704')
+  
+  Left contains 2 more items, first extra item: 'W503'
+  
+  Full diff:
+    (
+        'E121',
+        'E123',
+        'E126',
+        'E226',
+        'E24',
+        'E704',
+  +     'W503',
+  +     'W504',
+    )
+FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[E252-def m(a: int=1):\n    pass\n] - AssertionError: assert 'E252' not in {'E252'}
+FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[E305-def f():\n    pass\nx = 1\n] - AssertionError: assert 'E305' not in {'E305'}
+FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[E306-def f():\n    x = 1\n    def g():\n        pass\n] - AssertionError: assert 'E306' not in {'E306'}
+FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[E722-try:\n    pass\nexcept:\n    pass\n] - AssertionError: assert 'E722' not in {'E722'}
+FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[E741-l = 1\n] - AssertionError: assert 'E741' not in {'E741'}
+FAILED seance/pep8/test_seance_pep8.py::test_pycodestyle_reports_codes_that_pep8_never_had[W605-a = "\\d"\n] - AssertionError: assert 'W605' not in {'W605'}
+FAILED seance/pep8/test_seance_pep8.py::test_the_naive_import_is_not_the_same_linter - AssertionError: assert [(1, 1, 'E741...4, 1, 'E722')] == []
+  
+  Left contains 2 more items, first extra item: (1, 1, 'E741')
+  
+  Full diff:
+  - []
+  + [
+  +     (
+  +         1,
+  +         1,
+  +         'E741',
+  +     ),
+  +     (
+  +         4,
+  +         1,
+  +         'E722',
+  +     ),
+  + ]
+10 failed, 3 passed in 1.97s
+
+
+=== pep8: mutant ignores-too-much (exit 1) ===
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = 'print(a , b)\n', options = {}
+
+    @settings(max_examples=500, **SLOW)
+    @given(sources, option_sets)
+    def test_the_replacement_reports_what_pep8_reports(source, options):
+        lines = source.splitlines(True)
+>       assert new_report(lines, **options) == old_report(lines, **options)
+E       AssertionError: assert [] == [(1, 8, 'E203')]
+E         
+E         Right contains one more item: (1, 8, 'E203')
+E         
+E         Full diff:
+E         + []
+E         - [
+E         -     (
+E         -         1,
+E         -         8,
+E         -         'E203',
+E         -     ),
+E         - ]
+E       Falsifying example: test_the_replacement_reports_what_pep8_reports(
+E           source='print(a , b)\n',
+E           options={},
+E       )
+E       Explanation:
+E           These lines were always and only run by failing examples:
+E               /usr/lib64/python3.9/_collections_abc.py:773
+E       
+E       You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AAFBDgBBAEEA') as a decorator on your test case
+
+seance/pep8/test_seance_pep8.py:96: AssertionError
+___________________ test_check_files_gives_the_same_counters ___________________
+
+    @settings(max_examples=40, **SLOW)
+>   @given(sources)
+
+seance/pep8/test_seance_pep8.py:100: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = 'x=1\n'
+
+    @settings(max_examples=40, **SLOW)
+    @given(sources)
+    def test_check_files_gives_the_same_counters(source):
+        with tempfile.TemporaryDirectory() as folder:
+            path = os.path.join(folder, "x.py")
+            with open(path, "w", encoding="utf-8") as handle:
+                handle.write(source)
+            a = pep8.StyleGuide(quiet=True, config_file=False).check_files([path])
+            b = pep8_replacement.StyleGuide(quiet=True, config_file=False).check_files([path])
+            def summary(r):
+                counters = {k: v for k, v in r.counters.items() if k not in CHANGED}
+                return (r.total_errors - sum(v for k, v in r.counters.items() if k in CHANGED), counters)
+    
+>           assert summary(b) == summary(a)
+E           AssertionError: assert (0, {'directo...al lines': 1}) == (1, {'E225': ...nes': 1, ...})
+E             
+E             At index 0 diff: 0 != 1
+E             
+E             Full diff:
+E               (
+E             -     1,
+E             ?     ^
+E             +     0,
+E             ?     ^
+E                   {
+E             -         'E225': 1,
+E                       'directories': 0,
+E                       'files': 1,
+E                       'logical lines': 1,
+E                       'physical lines': 1,
+E                   },
+E               )
+E           Falsifying example: test_check_files_gives_the_same_counters(
+E               source='x=1\n',
+E           )
+E           Explanation:
+E               These lines were always and only run by failing examples:
+E                   /usr/lib64/python3.9/_collections_abc.py:773
+E           
+E           You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AAFBAgBBAA==') as a decorator on your test case
+
+seance/pep8/test_seance_pep8.py:112: AssertionError
+___________ test_the_replacement_keeps_the_pep8_default_ignore_list ____________
+
+    def test_the_replacement_keeps_the_pep8_default_ignore_list():
+        assert tuple(pep8.StyleGuide(config_file=False).options.ignore) == pep8_replacement.PEP8_DEFAULT_IGNORE
+>       assert tuple(pep8_replacement.StyleGuide(config_file=False).options.ignore) == pep8_replacement.PEP8_DEFAULT_IGNORE
+E       AssertionError: assert ('E121', 'E12..., 'E704', ...) == ('E121', 'E12...'E24', 'E704')
+E         
+E         Left contains one more item: 'E2'
+E         
+E         Full diff:
+E           (
+E               'E121',
+E               'E123',
+E               'E126',
+E               'E226',
+E               'E24',
+E               'E704',
+E         +     'E2',
+E           )
+
+seance/pep8/test_seance_pep8.py:117: AssertionError
+=========================== short test summary info ============================
+FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_reports_what_pep8_reports - AssertionError: assert [] == [(1, 8, 'E203')]
+  
+  Right contains one more item: (1, 8, 'E203')
+  
+  Full diff:
+  + []
+  - [
+  -     (
+  -         1,
+  -         8,
+  -         'E203',
+  -     ),
+  - ]
+Falsifying example: test_the_replacement_reports_what_pep8_reports(
+    source='print(a , b)\n',
+    options={},
+)
+Explanation:
+    These lines were always and only run by failing examples:
+        /usr/lib64/python3.9/_collections_abc.py:773
+
+You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AAFBDgBBAEEA') as a decorator on your test case
+FAILED seance/pep8/test_seance_pep8.py::test_check_files_gives_the_same_counters - AssertionError: assert (0, {'directo...al lines': 1}) == (1, {'E225': ...nes': 1, ...})
+  
+  At index 0 diff: 0 != 1
+  
+  Full diff:
+    (
+  -     1,
+  ?     ^
+  +     0,
+  ?     ^
+        {
+  -         'E225': 1,
+            'directories': 0,
+            'files': 1,
+            'logical lines': 1,
+            'physical lines': 1,
+        },
+    )
+Falsifying example: test_check_files_gives_the_same_counters(
+    source='x=1\n',
+)
+Explanation:
+    These lines were always and only run by failing examples:
+        /usr/lib64/python3.9/_collections_abc.py:773
+
+You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AAFBAgBBAA==') as a decorator on your test case
+FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_keeps_the_pep8_default_ignore_list - AssertionError: assert ('E121', 'E12..., 'E704', ...) == ('E121', 'E12...'E24', 'E704')
+  
+  Left contains one more item: 'E2'
+  
+  Full diff:
+    (
+        'E121',
+        'E123',
+        'E126',
+        'E226',
+        'E24',
+        'E704',
+  +     'E2',
+    )
+3 failed, 10 passed in 1.01s
+

@@ -1,0 +1,295 @@
+=== toml: real run (exit 0) ===
+................................................................s        [100%]
+64 passed, 1 skipped in 8.09s
+
+
+=== toml: mutant naive-tomli (exit 1) ===
+.........................................................FF.F...s        [100%]
+=================================== FAILURES ===================================
+_____________ test_load_from_a_path_a_text_file_and_a_binary_file ______________
+
+    @settings(max_examples=60, **SLOW)
+>   @given(documents)
+
+seance/toml/test_seance_toml.py:322: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+doc = ''
+
+    @settings(max_examples=60, **SLOW)
+    @given(documents)
+    def test_load_from_a_path_a_text_file_and_a_binary_file(doc):
+        with tempfile.TemporaryDirectory() as folder:
+            path = os.path.join(folder, "x.toml")
+            with open(path, "w", encoding="utf-8", newline="") as handle:
+                handle.write(doc)
+>           assert outcome(load, path) == outcome(old.load, path)
+E           AssertionError: assert ('error', 'AttributeError') == ('ok', ('table', []))
+E             
+E             At index 0 diff: 'error' != 'ok'
+E             
+E             Full diff:
+E               (
+E             -     'ok',
+E             ?       ^
+E             +     'error',
+E             ?      +++ ^
+E             +     'AttributeError',
+E             -     (
+E             -         'table',
+E             -         [],
+E             -     ),
+E               )
+E           Falsifying example: test_load_from_a_path_a_text_file_and_a_binary_file(
+E               doc='',  # or any other generated value
+E           )
+E           
+E           You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AEEAAA==') as a decorator on your test case
+
+seance/toml/test_seance_toml.py:328: AssertionError
+___________________ test_load_with_bad_arguments_fails_alike ___________________
+
+    def test_load_with_bad_arguments_fails_alike():
+        for bad in [None, 1, 2.5]:
+>           assert outcome(load, bad) == outcome(old.load, bad) == ("error", "TypeError")
+E           AssertionError: assert ('error', 'AttributeError') == ('error', 'TypeError')
+E             
+E             At index 1 diff: 'AttributeError' != 'TypeError'
+E             
+E             Full diff:
+E               (
+E                   'error',
+E             -     'TypeError',
+E             +     'AttributeError',
+E               )
+
+seance/toml/test_seance_toml.py:338: AssertionError
+______________ test_the_dict_argument_builds_the_requested_tables ______________
+
+    def test_the_dict_argument_builds_the_requested_tables():
+        import collections
+        doc = "a = 1\n[b]\nc = 2\n[[d]]\ne = 3"
+>       new = loads(doc, _dict=collections.OrderedDict)
+E       TypeError: loads() got an unexpected keyword argument '_dict'
+
+seance/toml/test_seance_toml.py:350: TypeError
+=========================== short test summary info ============================
+FAILED seance/toml/test_seance_toml.py::test_load_from_a_path_a_text_file_and_a_binary_file - AssertionError: assert ('error', 'AttributeError') == ('ok', ('table', []))
+  
+  At index 0 diff: 'error' != 'ok'
+  
+  Full diff:
+    (
+  -     'ok',
+  ?       ^
+  +     'error',
+  ?      +++ ^
+  +     'AttributeError',
+  -     (
+  -         'table',
+  -         [],
+  -     ),
+    )
+Falsifying example: test_load_from_a_path_a_text_file_and_a_binary_file(
+    doc='',  # or any other generated value
+)
+
+You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AEEAAA==') as a decorator on your test case
+FAILED seance/toml/test_seance_toml.py::test_load_with_bad_arguments_fails_alike - AssertionError: assert ('error', 'AttributeError') == ('error', 'TypeError')
+  
+  At index 1 diff: 'AttributeError' != 'TypeError'
+  
+  Full diff:
+    (
+        'error',
+  -     'TypeError',
+  +     'AttributeError',
+    )
+FAILED seance/toml/test_seance_toml.py::test_the_dict_argument_builds_the_requested_tables - TypeError: loads() got an unexpected keyword argument '_dict'
+3 failed, 61 passed, 1 skipped in 13.95s
+
+
+=== toml: mutant swallows-errors (exit 1) ===
+______________
+
+    def test_the_old_exception_name_still_catches_errors():
+        with pytest.raises(TomlDecodeError):
+>           loads("a = ")
+E           Failed: DID NOT RAISE <class 'tomli._parser.TOMLDecodeError'>
+
+seance/toml/test_seance_toml.py:316: Failed
+_______________________ test_toml_bugs_that_tomli_fixes ________________________
+
+    def test_toml_bugs_that_tomli_fixes():
+        # toml keeps the backslash of an escape inside a quoted key
+        assert old.loads('"\\u0041" = 1') == {"\\u0041": 1}
+        assert loads('"\\u0041" = 1') == {"A": 1}
+        # toml drops the fraction of a time
+        assert old.loads("a = 07:32:00.5")["a"] == datetime.time(7, 32)
+        assert loads("a = 07:32:00.5")["a"] == datetime.time(7, 32, 0, 500000)
+        # toml accepts two assignments on one line, and control characters in comments and strings
+        assert old.loads("a=1 b=2") == {"a=1 b": 2}
+>       assert outcome(loads, "a=1 b=2") == ("error", "DecodeError")
+E       AssertionError: assert ('ok', ('table', [])) == ('error', 'DecodeError')
+E         
+E         At index 0 diff: 'ok' != 'error'
+E         
+E         Full diff:
+E           (
+E         -     'error',
+E         ?      --- ^
+E         +     'ok',
+E         ?       ^
+E         -     'DecodeError',
+E         +     (
+E         +         'table',
+E         +         [],
+E         +     ),
+E           )
+
+seance/toml/test_seance_toml.py:379: AssertionError
+=========================== short test summary info ============================
+FAILED seance/toml/test_seance_toml.py::test_damaged_documents_agree_wherever_both_parsers_accept - AssertionError: different values: ']0 = ""'
+assert (('ok', ('table', [])) == ('ok', ('tabl...'str', ''))]))
+  
+  At index 1 diff: ('table', []) != ('table', [(']0', ('str', ''))])
+  
+  Full diff:
+    (
+        'ok',
+        (
+            'table',
+  -         [
+  -             (
+  -                 ']0',
+  -                 (
+  -                     'str',
+  -                     '',
+  -                 ),
+  -             ),
+  -         ],
+  +         [],
+  ?         +
+        ),
+    ) or False)
+ +  where False = toml_is_wrong(']0 = ""')
+Falsifying example: test_damaged_documents_agree_wherever_both_parsers_accept(
+    doc=']0 = ""',
+)
+Explanation:
+    These lines were always and only run by failing examples:
+        <scratch>/py/seance/toml/test_seance_toml.py:250
+
+You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AEEAAQFBAIEwAEEAgABBAUEAQQFBAw==') as a decorator on your test case
+FAILED seance/toml/test_seance_toml.py::test_the_replacement_is_transparent_for_any_text - AssertionError: assert ('ok', ('table', [])) == ('error', 'DecodeError')
+  
+  At index 0 diff: 'ok' != 'error'
+  
+  Full diff:
+    (
+  -     'error',
+  ?      --- ^
+  +     'ok',
+  ?       ^
+  -     'DecodeError',
+  +     (
+  +         'table',
+  +         [],
+  +     ),
+    )
+Falsifying example: test_the_replacement_is_transparent_for_any_text(
+    doc=' = ""',
+)
+Explanation:
+    These lines were always and only run by failing examples:
+        <scratch>/py/seance/toml/test_seance_toml.py:187
+        <scratch>/py/seance/toml/test_seance_toml.py:188
+        <scratch>/py/seance/toml/test_seance_toml.py:189
+        <scratch>/py/seance/toml/test_seance_toml.py:193
+        <scratch>/py/seance/toml/test_seance_toml.py:194
+        (and 2 more with settings.verbosity >= verbose)
+
+You can reproduce this example by temporarily adding @reproduce_failure('6.141.1', b'AEEBQQABAUEAgTAAQQCAAEEBQQBBAEEA') as a decorator on your test case
+FAILED seance/toml/test_seance_toml.py::test_edge_documents[a=1 b=2] - AssertionError: different values: 'a=1 b=2'
+assert (('ok', ('table', [])) == ('ok', ('tabl...('int', 2))]))
+  
+  At index 1 diff: ('table', []) != ('table', [('a=1 b', ('int', 2))])
+  
+  Full diff:
+    (
+        'ok',
+        (
+            'table',
+  -         [
+  -             (
+  -                 'a=1 b',
+  -                 (
+  -                     'int',
+  -                     2,
+  -                 ),
+  -             ),
+  -         ],
+  +         [],
+  ?         +
+        ),
+    ) or False)
+ +  where False = toml_is_wrong('a=1 b=2')
+FAILED seance/toml/test_seance_toml.py::test_edge_documents[a = 1 # \x00] - AssertionError: different values: 'a = 1 # \x00'
+assert (('ok', ('table', [])) == ('ok', ('tabl...('int', 1))]))
+  
+  At index 1 diff: ('table', []) != ('table', [('a', ('int', 1))])
+  
+  Full diff:
+    (
+        'ok',
+        (
+            'table',
+  -         [
+  -             (
+  -                 'a',
+  -                 (
+  -                     'int',
+  -                     1,
+  -                 ),
+  -             ),
+  -         ],
+  +         [],
+  ?         +
+        ),
+    ) or False)
+ +  where False = toml_is_wrong('a = 1 # \x00')
+FAILED seance/toml/test_seance_toml.py::test_errors_are_the_same_kind_when_both_refuse - AssertionError: assert ('ok', ('table', [])) == ('error', 'DecodeError')
+  
+  At index 0 diff: 'ok' != 'error'
+  
+  Full diff:
+    (
+  -     'error',
+  ?      --- ^
+  +     'ok',
+  ?       ^
+  -     'DecodeError',
+  +     (
+  +         'table',
+  +         [],
+  +     ),
+    )
+FAILED seance/toml/test_seance_toml.py::test_the_old_exception_name_still_catches_errors - Failed: DID NOT RAISE <class 'tomli._parser.TOMLDecodeError'>
+FAILED seance/toml/test_seance_toml.py::test_toml_bugs_that_tomli_fixes - AssertionError: assert ('ok', ('table', [])) == ('error', 'DecodeError')
+  
+  At index 0 diff: 'ok' != 'error'
+  
+  Full diff:
+    (
+  -     'error',
+  ?      --- ^
+  +     'ok',
+  ?       ^
+  -     'DecodeError',
+  +     (
+  +         'table',
+  +         [],
+  +     ),
+    )
+7 failed, 57 passed, 1 skipped in 8.92s
+

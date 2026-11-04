@@ -114,7 +114,9 @@ describe('Q3.2 the generic bundle leaves such calls out and says so', () => {
     expect(test).toContain('const projectCalls = [["ok-value"]];');
     expect(test).not.toContain('127.0.0.1');
     expect(test).not.toContain('/etc/passwd');
-    expect(test).toMatch(/Left out 2 calls in src\/b\.js: an argument names a host, a file path/);
+    expect(test).toMatch(
+      /Left out 2 calls in src\/b\.js: 1 because an argument names a host, 1 because an argument names a file path/,
+    );
   });
   it('the guard is the first import and every call goes through it', () => {
     const test = file(bundle, 'test');
@@ -187,7 +189,9 @@ describe('nearby input: a séance for a package that starts processes', () => {
     expect(test).not.toContain('rm -rf');
     expect(test).not.toContain('curl');
     expect(test).not.toContain('git push');
-    expect(test).toMatch(/Left out \d calls? in scripts\/build\.js: an argument names a/);
+    expect(test).toMatch(
+      /Left out \d calls? in scripts\/build\.js: \d because an argument names a/,
+    );
     expect(test).toContain("import * as guard from './seance-guard.mjs';");
     expect(b.compares.join('\n')).toMatch(/Safety: .*no process started/);
   });
