@@ -499,7 +499,16 @@ export class Core {
       .filter((f) => f.github?.state === 'ok' && !f.github.archived && !withAdvisory.has(pkgKey(f)))
       .map((f) => {
         const decision = this.verdictFor(f, versionByPackage.get(pkgKey(f)), []);
-        return { f, soft: decision.verdict !== 'alive' && decision.basis === 'heuristic' };
+        // A Scorecard score alone leaves a package alive, but a repository whose default branch has
+        // been quiet for a year is a stronger sign than the score: its commit date can settle it.
+        const scoreOnly =
+          decision.verdict === 'alive' &&
+          f.scorecard?.maintained !== undefined &&
+          f.scorecard.maintained <= signals.THRESHOLDS.scorecardLow;
+        return {
+          f,
+          soft: scoreOnly || (decision.verdict !== 'alive' && decision.basis === 'heuristic'),
+        };
       })
       .filter((x) => x.soft)
       .map((x) => {

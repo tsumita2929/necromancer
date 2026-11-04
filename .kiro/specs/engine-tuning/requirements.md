@@ -17,8 +17,8 @@ on the default branch.
 **User story.** As a developer, I do not want a package that is being worked on called dying because
 its last release is old, and I want the quiet period counted from real commits.
 
-- T1.1 WHEN a GitHub repository is not archived and the verdict of its package rests only on
-  staleness, THE engine SHALL read the newest commit of the default branch (`GET
+- T1.1 WHEN a GitHub repository is not archived, no advisory affects the package, and the verdict of
+  the package rests only on staleness or only on a low Scorecard score, THE engine SHALL read the newest commit of the default branch (`GET
   /repos/{owner}/{repo}/commits?per_page=1`).
 - T1.2 WHEN that commit is less than a year old, THE engine SHALL add the evidence `recent-activity`
   with the date, and the verdict SHALL follow R2.17.

@@ -1,0 +1,19 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://api.github.com/repos/benjaminp/six/commits?per_page=1"
+ },
+ "status": 200,
+ "body": [
+  {
+   "commit": {
+    "committer": {
+     "date": "2026-02-23T02:19:43Z"
+    },
+    "author": {
+     "date": "2026-02-23T02:19:43Z"
+    }
+   }
+  }
+ ]
+}

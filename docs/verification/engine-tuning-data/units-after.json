@@ -1,0 +1,1260 @@
+{
+ "units": 56,
+ "defensible": {
+  "n": 46,
+  "stillFlagged": 46
+ },
+ "other": {
+  "n": 10,
+  "liftedToAlive": 10,
+  "labelledHeuristic": 0,
+  "stillHardOrUnlabelled": []
+ },
+ "missing": [],
+ "rows": [
+  {
+   "ecosystem": "pypi",
+   "package": "pytest-flakefinder",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "no-release",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "The latest release (1.1.0) is 4.0 years old."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "prism-react-renderer",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "low-maintenance"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "No commit to the default branch for 1.8 years (last commit 2025-01-02)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "freezegun",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "low-maintenance"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "No commit to the default branch for 1.2 years (last commit 2025-08-19)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "zxcvbn",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "low-maintenance"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "No commit to the default branch for 1.1 years (last commit 2025-10-06)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "semantic-version",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "no-release",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "The latest release (2.10.0) is 4.4 years old."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@mdi/js",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "no-release",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "The latest release (7.4.47) is 2.9 years old."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "screeninfo",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "no-release",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "The latest release (0.8.1) is 4.2 years old."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "mock-fs",
+   "stratum": "dying",
+   "defensible": false,
+   "reason": "recent-commit",
+   "before": {
+    "verdict": "dying",
+    "decisive": "low-maintenance"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "low-maintenance"
+    ],
+    "line": "The default branch had a commit 10 months ago (2026-01-11), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "colorama",
+   "stratum": "dying",
+   "defensible": false,
+   "reason": "recent-commit",
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "no-release",
+     "low-maintenance"
+    ],
+    "line": "The default branch had a commit 6 months ago (2026-05-13), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@jsonhero/json-infer-types",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "no-release",
+     "repo-inactive"
+    ],
+    "line": "The latest release (1.2.11) is 4.1 years old."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "fast-dataindex",
+   "stratum": "dying",
+   "defensible": false,
+   "reason": "recent-commit",
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": []
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@mx-design/web-utils",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "no-release",
+     "no-repository"
+    ],
+    "line": "The latest release (0.1.8) is 2.9 years old."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "server-only",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "no-release",
+     "no-repository"
+    ],
+    "line": "The latest release (0.0.1) is 4.2 years old."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "decimal.js",
+   "stratum": "dying",
+   "defensible": false,
+   "reason": "recent-commit",
+   "before": {
+    "verdict": "dying",
+    "decisive": "low-maintenance"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "low-maintenance"
+    ],
+    "line": "The default branch had a commit 2 months ago (2026-08-30), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "paddlefsl",
+   "stratum": "dying",
+   "defensible": false,
+   "reason": "recent-commit",
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "no-release",
+     "low-maintenance"
+    ],
+    "line": "The default branch had a commit 7 months ago (2026-04-18), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "leveldown",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "npm-deprecated"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "npm-deprecated",
+     "repo-archived",
+     "no-release",
+     "low-maintenance"
+    ],
+    "line": "Deprecated on npm: \"Superseded by classic-level (https://github.com/Level/community#faq)\""
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/pixelmatch",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "npm-deprecated"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "npm-deprecated",
+     "no-repository"
+    ],
+    "line": "Deprecated on npm: \"This is a stub types definition. pixelmatch provides its own type definitions, so you do not need this installed.\""
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pytest-dotenv",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "abandoned",
+     "no-release-long",
+     "low-maintenance"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@codemirror/rangeset",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "npm-deprecated"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "npm-deprecated",
+     "repo-archived",
+     "no-release",
+     "low-maintenance"
+    ],
+    "line": "Deprecated on npm: \"As of 0.20.0, this package has been merged into @codemirror/state\""
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "postcss-flexbugs-fixes",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "abandoned",
+     "no-release-long",
+     "low-maintenance"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/bcryptjs",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "npm-deprecated"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "npm-deprecated",
+     "no-repository"
+    ],
+    "line": "Deprecated on npm: \"This is a stub types definition. bcryptjs provides its own type definitions, so you do not need this installed.\""
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "jscs",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "npm-deprecated"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "npm-deprecated",
+     "repo-archived",
+     "abandoned",
+     "no-release-long",
+     "low-maintenance"
+    ],
+    "line": "Deprecated on npm: \"JSCS has merged with ESLint! See - https://medium.com/@markelog/jscs-end-of-the-line-bc9bf0b3fdb2\""
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "benchmark",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "abandoned",
+     "no-release-long",
+     "low-maintenance"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "gntp",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "abandoned",
+     "no-release-long",
+     "low-maintenance"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@wojtekmaj/enzyme-adapter-react-17",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "no-release",
+     "low-maintenance"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "should",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "abandoned",
+     "no-release-long",
+     "low-maintenance"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "lxml-stubs",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "no-release"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "vitest-github-actions-reporter",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "no-release"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@codemirror/lang-python",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "low-maintenance"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "mocha-lcov-reporter",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (1.3.0) is 9.7 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "coveralls",
+   "stratum": "dead-abandoned",
+   "defensible": false,
+   "reason": "recent-commit",
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "no-release-long",
+     "low-maintenance"
+    ],
+    "line": "The default branch had a commit 10 months ago (2026-01-05), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "pluralize",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (8.0.0) is 7.4 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "zeros",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (1.0.0) is 11 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "npm-run-all",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (4.1.5) is 7.9 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "copyfiles",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (2.4.1) is 5.9 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "vuvuzela",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (1.0.3) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "markdown-doctest",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (1.1.0) is 6.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "run-script-os",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (1.1.6) is 5.6 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "rollup-plugin-string",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (3.0.0) is 7.7 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "soynlp",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (0.0.493) is 7.2 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "ldap3",
+   "stratum": "dead-abandoned",
+   "defensible": false,
+   "reason": "recent-commit",
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "no-release-long",
+     "low-maintenance"
+    ],
+    "line": "The default branch had a commit 7 months ago (2026-04-18), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "karma-mocha-reporter",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (2.2.5) is 9.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pysocks",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (1.7.1) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "request",
+   "stratum": "zombie",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "zombie",
+    "decisive": "npm-deprecated"
+   },
+   "after": {
+    "verdict": "zombie",
+    "basis": "hard",
+    "evidence": [
+     "npm-deprecated",
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance",
+     "osv-advisory"
+    ],
+    "line": "Deprecated on npm: \"request has been deprecated, see https://github.com/request/request/issues/3142\""
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "extract-zip",
+   "stratum": "zombie",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "zombie",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "zombie",
+    "basis": "hard",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance",
+     "osv-advisory"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.1) is 6.4 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "ecstatic",
+   "stratum": "zombie",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "zombie",
+    "decisive": "npm-deprecated"
+   },
+   "after": {
+    "verdict": "zombie",
+    "basis": "hard",
+    "evidence": [
+     "npm-deprecated",
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance",
+     "osv-advisory"
+    ],
+    "line": "Deprecated on npm: \"This package is unmaintained and deprecated. See the GH Issue 259.\""
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "expr-eval",
+   "stratum": "zombie",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "zombie",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "zombie",
+    "basis": "hard",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance",
+     "osv-advisory"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.2) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "uuidv4",
+   "stratum": "ghost",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "ghost",
+    "decisive": "repo-gone"
+   },
+   "after": {
+    "verdict": "ghost",
+    "basis": "hard",
+    "evidence": [
+     "repo-gone",
+     "npm-deprecated",
+     "no-release"
+    ],
+    "line": "The source repository is gone: GitHub answers 404 (not found)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/assert",
+   "stratum": "dying",
+   "defensible": false,
+   "reason": "age-only-healthy-host-repo",
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "no-release"
+    ],
+    "line": "The default branch had a commit 0 days ago (2026-11-02), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "sphinx-copybutton",
+   "stratum": "dying",
+   "defensible": false,
+   "reason": "recent-commit",
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "no-release",
+     "low-maintenance"
+    ],
+    "line": "The default branch had a commit 5 months ago (2026-06-03), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "tiny-emitter",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (2.1.0) is 7.7 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "prop-types",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "no-release",
+     "low-maintenance"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "gzip-js",
+   "stratum": "dead-abandoned",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "abandoned"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "heuristic",
+    "evidence": [
+     "abandoned",
+     "no-release-long",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "Abandoned (a heuristic, not a hard signal): the latest release (0.3.2) is 13 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "cli-progress",
+   "stratum": "dying",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dying",
+    "decisive": "no-release"
+   },
+   "after": {
+    "verdict": "dying",
+    "basis": "heuristic",
+    "evidence": [
+     "no-release",
+     "repo-inactive",
+     "low-maintenance"
+    ],
+    "line": "The latest release (3.12.0) is 3.7 years old."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "shelljs",
+   "stratum": "dying",
+   "defensible": false,
+   "reason": "stale-scorecard",
+   "before": {
+    "verdict": "dying",
+    "decisive": "low-maintenance"
+   },
+   "after": {
+    "verdict": "alive",
+    "basis": null,
+    "evidence": [
+     "recent-activity",
+     "low-maintenance"
+    ],
+    "line": "The default branch had a commit 8 days ago (2026-10-25), so stale signals alone do not make this dying."
+   },
+   "ok": true
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@louislam/sqlite3",
+   "stratum": "dead-strong",
+   "defensible": true,
+   "reason": null,
+   "before": {
+    "verdict": "dead",
+    "decisive": "repo-archived"
+   },
+   "after": {
+    "verdict": "dead",
+    "basis": "hard",
+    "evidence": [
+     "repo-archived",
+     "no-release"
+    ],
+    "line": "The source repository is archived: read-only, no more fixes."
+   },
+   "ok": true
+  }
+ ]
+}

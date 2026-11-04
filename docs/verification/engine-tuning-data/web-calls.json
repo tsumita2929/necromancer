@@ -1,0 +1,249 @@
+[
+ {
+  "sample": "appsecco/dvna",
+  "manifests": [
+   "package.json"
+  ],
+  "before20": {
+   "githubCalls": 15,
+   "repositoryCalls": 15,
+   "commitCalls": 0,
+   "summary": {
+    "alive": 6,
+    "dying": 7,
+    "dead": 5,
+    "ghost": 0,
+    "zombie": 1
+   },
+   "basis": {
+    "hard": 0,
+    "heuristic": 0
+   },
+   "dependencies": 19,
+   "githubNote": null,
+   "repoAnsweredByFeedStandIn": 14
+  },
+  "before1000": {
+   "githubCalls": 15,
+   "repositoryCalls": 15,
+   "commitCalls": 0,
+   "summary": {
+    "alive": 6,
+    "dying": 7,
+    "dead": 5,
+    "ghost": 0,
+    "zombie": 1
+   },
+   "basis": {
+    "hard": 0,
+    "heuristic": 0
+   },
+   "dependencies": 19,
+   "githubNote": null,
+   "repoAnsweredByFeedStandIn": 14
+  },
+  "after20": {
+   "githubCalls": 20,
+   "repositoryCalls": 15,
+   "commitCalls": 5,
+   "summary": {
+    "alive": 8,
+    "dying": 5,
+    "dead": 5,
+    "ghost": 0,
+    "zombie": 1
+   },
+   "basis": {
+    "hard": 5,
+    "heuristic": 6
+   },
+   "dependencies": 19,
+   "githubNote": null,
+   "repoAnsweredByFeedStandIn": 14
+  },
+  "after1000": {
+   "githubCalls": 20,
+   "repositoryCalls": 15,
+   "commitCalls": 5,
+   "summary": {
+    "alive": 8,
+    "dying": 5,
+    "dead": 5,
+    "ghost": 0,
+    "zombie": 1
+   },
+   "basis": {
+    "hard": 5,
+    "heuristic": 6
+   },
+   "dependencies": 19,
+   "githubNote": null,
+   "repoAnsweredByFeedStandIn": 14
+  }
+ },
+ {
+  "sample": "miguelgrinberg/microblog",
+  "manifests": [
+   "requirements.txt"
+  ],
+  "before20": {
+   "githubCalls": 20,
+   "repositoryCalls": 20,
+   "commitCalls": 0,
+   "summary": {
+    "alive": 36,
+    "dying": 15,
+    "dead": 3,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "basis": {
+    "hard": 0,
+    "heuristic": 0
+   },
+   "dependencies": 54,
+   "githubNote": "GitHub budget reached (20 calls per scan, limit is 60 per hour): 11 repositories were not checked",
+   "repoAnsweredByFeedStandIn": 14
+  },
+  "before1000": {
+   "githubCalls": 31,
+   "repositoryCalls": 31,
+   "commitCalls": 0,
+   "summary": {
+    "alive": 36,
+    "dying": 15,
+    "dead": 3,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "basis": {
+    "hard": 0,
+    "heuristic": 0
+   },
+   "dependencies": 54,
+   "githubNote": null,
+   "repoAnsweredByFeedStandIn": 22
+  },
+  "after20": {
+   "githubCalls": 20,
+   "repositoryCalls": 20,
+   "commitCalls": 0,
+   "summary": {
+    "alive": 41,
+    "dying": 10,
+    "dead": 3,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "basis": {
+    "hard": 0,
+    "heuristic": 13
+   },
+   "dependencies": 54,
+   "githubNote": "GitHub budget reached (20 calls per scan, limit is 60 per hour): 11 repositories were not checked, 13 commit dates were not read",
+   "repoAnsweredByFeedStandIn": 15
+  },
+  "after1000": {
+   "githubCalls": 45,
+   "repositoryCalls": 31,
+   "commitCalls": 14,
+   "summary": {
+    "alive": 43,
+    "dying": 8,
+    "dead": 3,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "basis": {
+    "hard": 0,
+    "heuristic": 11
+   },
+   "dependencies": 54,
+   "githubNote": null,
+   "repoAnsweredByFeedStandIn": 22
+  }
+ },
+ {
+  "sample": "SickChill/sickchill",
+  "manifests": [
+   "package.json",
+   "pyproject.toml"
+  ],
+  "before20": {
+   "githubCalls": 20,
+   "repositoryCalls": 20,
+   "commitCalls": 0,
+   "summary": {
+    "alive": 64,
+    "dying": 28,
+    "dead": 13,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "basis": {
+    "hard": 0,
+    "heuristic": 0
+   },
+   "dependencies": 105,
+   "githubNote": "GitHub budget reached (20 calls per scan, limit is 60 per hour): 19 repositories were not checked",
+   "repoAnsweredByFeedStandIn": 18
+  },
+  "before1000": {
+   "githubCalls": 36,
+   "repositoryCalls": 36,
+   "commitCalls": 0,
+   "summary": {
+    "alive": 64,
+    "dying": 27,
+    "dead": 14,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "basis": {
+    "hard": 0,
+    "heuristic": 0
+   },
+   "dependencies": 105,
+   "githubNote": null,
+   "repoAnsweredByFeedStandIn": 30
+  },
+  "after20": {
+   "githubCalls": 20,
+   "repositoryCalls": 20,
+   "commitCalls": 0,
+   "summary": {
+    "alive": 68,
+    "dying": 24,
+    "dead": 13,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "basis": {
+    "hard": 2,
+    "heuristic": 35
+   },
+   "dependencies": 105,
+   "githubNote": "GitHub budget reached (20 calls per scan, limit is 60 per hour): 19 repositories were not checked, 19 commit dates were not read",
+   "repoAnsweredByFeedStandIn": 18
+  },
+  "after1000": {
+   "githubCalls": 69,
+   "repositoryCalls": 36,
+   "commitCalls": 33,
+   "summary": {
+    "alive": 77,
+    "dying": 15,
+    "dead": 13,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "basis": {
+    "hard": 2,
+    "heuristic": 26
+   },
+   "dependencies": 105,
+   "githubNote": null,
+   "repoAnsweredByFeedStandIn": 30
+  }
+ }
+]

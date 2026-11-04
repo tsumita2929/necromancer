@@ -16,6 +16,6 @@ Tick each box when the task is done and its tests pass.
 - [x] 11. Séance text (T5): call summary, known-difference whitespace, install line without the dead package
   - [x] 11.1 Truth test: JavaScript recipes' known differences match the real old package
 - [x] 12. `scripts/run-seances.mjs` green, every mutant fails
-- [ ] 13. Evaluation: 56 units before/after; 100 subjects C1, C3 and verdict counts; web-sample GitHub calls (T6)
-- [ ] 14. Web and crew typecheck and tests against the changed engine
-- [ ] 15. `docs/verification/engine-tuning.md`; commit
+- [x] 13. Evaluation: 56 units before/after; 100 subjects C1, C3 and verdict counts; web-sample GitHub calls (T6)
+- [x] 14. Web and crew typecheck and tests against the changed engine
+- [x] 15. `docs/verification/engine-tuning.md`; commit

@@ -2,7 +2,7 @@
   "recipe": "toml",
   "language": "python",
   "command": "pytest seance/toml",
-  "ranAt": "2026-11-04T05:24:28.089Z",
+  "ranAt": "2026-11-04T06:08:55.979Z",
   "versions": {
     "toml": "0.10.2",
     "tomli": "2.5.0",
@@ -11,9 +11,9 @@
   },
   "real": {
     "exit": 0,
-    "seconds": 8.018,
+    "seconds": 7.932,
     "summary": [
-      "64 passed, 1 skipped in 7.78s"
+      "64 passed, 1 skipped in 7.71s"
     ]
   },
   "mutants": [
@@ -54,7 +54,7 @@
         "At index 0 diff: 'ok' != 'error'",
         "-     'error',",
         "-     'DecodeError',",
-        "7 failed, 57 passed, 1 skipped in 23.46s"
+        "7 failed, 57 passed, 1 skipped in 23.27s"
       ]
     }
   ],

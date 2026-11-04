@@ -59,7 +59,10 @@ verdict is what it would have been without commit data, plus the info line `acti
 in `unavailable`.
 
 Scorecard-only packages (`low-maintenance` with nothing else) still get the repository call (a reason to
-look); they are alive unless the repository is quiet.
+look). They are alive unless the default branch has been quiet for a year. A push within the year does not
+prove life (a bot branch moves `pushed_at`; `zxcvbn` has a push last month and a default-branch commit 393
+days old), so these packages also get the commit call, which settles it. A push a year old or older already
+shows a quiet branch and costs no commit call.
 
 ## PyPI dating
 

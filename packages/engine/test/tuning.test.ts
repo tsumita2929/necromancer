@@ -200,20 +200,51 @@ describe('T1.6 missing commit data is never silent', () => {
 });
 
 describe('nearby inputs', () => {
-  it('a Scorecard-only signal on a release a year old is alive and costs one repository call', async () => {
+  it('a Scorecard-only signal on a release a year old is alive; one repository call and one commit call say whether the branch is quiet', async () => {
     const fresh: FakeNpm = {
       name: 'lagging',
       versions: [{ version: '2.0.0', date: daysAgo(400) }],
       repo: 'https://github.com/org/lagging',
       scorecardMaintained: 1,
-      github: { pushedAt: daysAgo(5) },
+      github: { pushedAt: daysAgo(5), commitAt: daysAgo(5) },
     };
     const world = fakeWorld([fresh]);
     const [d] = await engineFor(world.fetch).diagnose([dep('lagging')]);
     expect(d?.verdict).toBe('alive');
-    expect(d?.evidence.map((e) => e.code)).toEqual(['low-maintenance']);
+    expect(d?.evidence.map((e) => e.code)).toEqual(['recent-activity', 'low-maintenance']);
     expect(world.github).toHaveLength(1);
-    expect(world.commits).toEqual([]);
+    expect(world.commits).toHaveLength(1);
+  });
+
+  it('zxcvbn-like: Scorecard 0, pushed to last month (a bot branch), default branch quiet for 393 days: still flagged', async () => {
+    const world = fakeWorld([
+      {
+        name: 'zx',
+        versions: [{ version: '1.0.0', date: daysAgo(400) }],
+        repo: 'https://github.com/org/zx',
+        scorecardMaintained: 0,
+        github: { pushedAt: daysAgo(30), commitAt: daysAgo(393) },
+      },
+    ]);
+    const [d] = await engineFor(world.fetch).diagnose([dep('zx')]);
+    expect(d?.verdict).toBe('dying');
+    expect(d?.basis).toBe('heuristic');
+    expect(d?.evidence.map((e) => e.code)).toContain('repo-inactive');
+  });
+
+  it('Scorecard-only with the commit date unreadable stays alive and says so', async () => {
+    const world = fakeWorld([
+      {
+        name: 'zy',
+        versions: [{ version: '1.0.0', date: daysAgo(400) }],
+        repo: 'https://github.com/org/zy',
+        scorecardMaintained: 0,
+        github: { pushedAt: daysAgo(30), commitStatus: 500 },
+      },
+    ]);
+    const [d] = await engineFor(world.fetch).diagnose([dep('zy')]);
+    expect(d?.verdict).toBe('alive');
+    expect(d?.evidence.map((e) => e.code)).toEqual(['low-maintenance']);
   });
 
   it('shelljs-like: an old release, Scorecard 1, a commit last week is alive and says why', async () => {
