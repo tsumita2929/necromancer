@@ -149,3 +149,11 @@ dependency on a local branch, so that I review a diff instead of doing the work.
    injected `fetch`.
 2. THE app SHALL contain no secret, and SHALL NOT write any credential.
 3. THE only side effects of Night Watch SHALL be the snapshot file and notifications.
+
+## Round 4b amendments (final engine)
+
+- R9.1 WHEN the engine reports `notFound`, THE tools, the Graveyard page and Night Watch SHALL say "not found on the registry (removed, private or misspelled)", SHALL NOT count the package as alive, and the migration tools SHALL refuse it and tell the agent to tell the person.
+- R9.2 WHEN a way out has `confidence: low`, THE tools and the page SHALL show it as a suggestion, and `seance_write` SHALL refuse it unless `acceptLowConfidence` is true. The agent SHALL ask the person first.
+- R9.3 THE tools and the page SHALL show one id per vulnerability with its other ids (`advisoryAliases`).
+- R9.4 WHEN the engine finds the evidence `repo-moved`, THE tools and the page SHALL show it as a note, not as an end of life.
+- R9.5 THE `seance` tool SHALL be a read-only preview that never writes and is auto-approved. THE `seance_write` tool SHALL write only on a `resurrect/<dependency>` branch, SHALL NOT be auto-approved, and SHALL keep every write guard.

@@ -3,7 +3,7 @@
 ## Flow
 
 ```
-agent ── seance {path, name, write:true} ─▶ MCP server
+agent ── seance_write {path, name} ─▶ MCP server
                                               │ diagnose ─▶ chooseSuccessor
                                               │ readSourceFiles(path)   (no symlinks, skip list, size cap)
                                               │ engine.scanUsage(files, target)

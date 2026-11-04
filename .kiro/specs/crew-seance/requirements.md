@@ -58,7 +58,7 @@ first and write comparisons by hand only where one is missing.
 
 ## R4. Agent and skill
 
-1. THE skill SHALL tell the agent to call `seance` with `write: true` on the resurrection branch, run the
+1. THE skill SHALL tell the agent to call `seance_write` on the resurrection branch, run the
    `install` and `run` commands from the answer, and treat the generated séance as the first comparison.
 2. THE skill SHALL tell the agent to write comparisons by hand only (a) where the bundle says a comparison is
    skipped (generic template, `TODO(necromancer)` markers) or (b) for project calls the bundle does not
