@@ -1,0 +1,1136 @@
+{
+ "checkedAt": "2026-11-04",
+ "windowDays": 365,
+ "packages": {
+  "npm|@babel/eslint-plugin": {
+   "registryStatus": 200,
+   "latest": "8.1.0",
+   "releaseDate": "2026-11-02",
+   "releaseAgeDays": 1,
+   "repo": "babel/babel",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@babel/plugin-transform-class-properties": {
+   "registryStatus": 200,
+   "latest": "8.0.1",
+   "releaseDate": "2026-06-17",
+   "releaseAgeDays": 139,
+   "repo": "babel/babel",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@babel/plugin-transform-object-rest-spread": {
+   "registryStatus": 200,
+   "latest": "8.0.1",
+   "releaseDate": "2026-06-17",
+   "releaseAgeDays": 139,
+   "repo": "babel/babel",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@babel/plugin-transform-optional-chaining": {
+   "registryStatus": 200,
+   "latest": "8.0.5",
+   "releaseDate": "2026-09-10",
+   "releaseAgeDays": 54,
+   "repo": "babel/babel",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@bloodyowl/boxed": {
+   "registryStatus": 200,
+   "latest": "3.4.0",
+   "releaseDate": "2026-04-23",
+   "releaseAgeDays": 194,
+   "repo": "bloodyowl/boxed",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-08-17",
+   "lastCommitAgeDays": 78,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@codemirror/state": {
+   "registryStatus": 200,
+   "latest": "6.7.6",
+   "releaseDate": "2026-09-22",
+   "releaseAgeDays": 42,
+   "repo": null,
+   "note": "no repository linked; alive on release date only",
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@eslint/markdown": {
+   "registryStatus": 200,
+   "latest": "8.0.3",
+   "releaseDate": "2026-07-01",
+   "releaseAgeDays": 125,
+   "repo": "eslint/markdown",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-30",
+   "lastCommitAgeDays": 4,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@opentelemetry/sdk-trace": {
+   "registryStatus": 200,
+   "latest": "3.0.0",
+   "releaseDate": "2026-10-20",
+   "releaseAgeDays": 14,
+   "repo": "open-telemetry/opentelemetry-js",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@rollup/plugin-node-resolve": {
+   "registryStatus": 200,
+   "latest": "16.0.3",
+   "releaseDate": "2025-10-13",
+   "releaseAgeDays": 387,
+   "repo": "rollup/plugins",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-21",
+   "lastCommitAgeDays": 13,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@rollup/plugin-replace": {
+   "registryStatus": 200,
+   "latest": "6.0.3",
+   "releaseDate": "2025-10-29",
+   "releaseAgeDays": 370,
+   "repo": "rollup/plugins",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-21",
+   "lastCommitAgeDays": 13,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@stylistic/eslint-plugin": {
+   "registryStatus": 200,
+   "latest": "5.10.0",
+   "releaseDate": "2026-03-06",
+   "releaseAgeDays": 243,
+   "repo": "eslint-stylistic/eslint-stylistic",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-28",
+   "lastCommitAgeDays": 7,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@testing-library/react": {
+   "registryStatus": 200,
+   "latest": "16.3.3",
+   "releaseDate": "2026-08-27",
+   "releaseAgeDays": 68,
+   "repo": "testing-library/react-testing-library",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-08-27",
+   "lastCommitAgeDays": 68,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@web/test-runner": {
+   "registryStatus": 200,
+   "latest": "1.0.0",
+   "releaseDate": "2026-07-07",
+   "releaseAgeDays": 119,
+   "repo": "modernweb-dev/web",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-28",
+   "lastCommitAgeDays": 6,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|@xterm/addon-web-links": {
+   "registryStatus": 200,
+   "latest": "0.12.0",
+   "releaseDate": "2025-12-22",
+   "releaseAgeDays": 316,
+   "repo": "xtermjs/xterm.js",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-29",
+   "lastCommitAgeDays": 5,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|abstract-level": {
+   "registryStatus": 200,
+   "latest": "3.1.1",
+   "releaseDate": "2025-09-29",
+   "releaseAgeDays": 400,
+   "repo": "Level/abstract-level",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-01-02",
+   "lastCommitAgeDays": 305,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|adm-zip": {
+   "registryStatus": 200,
+   "latest": "0.6.1",
+   "releaseDate": "2026-09-11",
+   "releaseAgeDays": 53,
+   "repo": "cthackers/adm-zip",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-13",
+   "lastCommitAgeDays": 21,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|bcryptjs": {
+   "registryStatus": 200,
+   "latest": "3.0.3",
+   "releaseDate": "2025-11-02",
+   "releaseAgeDays": 366,
+   "repo": "dcodeIO/bcrypt.js",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2025-11-02",
+   "lastCommitAgeDays": 366,
+   "alive": false,
+   "reasons": [
+    "no commit for 366 days"
+   ]
+  },
+  "npm|better-sqlite3": {
+   "registryStatus": 200,
+   "latest": "13.0.3",
+   "releaseDate": "2026-08-05",
+   "releaseAgeDays": 91,
+   "repo": "WiseLibs/better-sqlite3",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-08-10",
+   "lastCommitAgeDays": 86,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|bowser": {
+   "registryStatus": 200,
+   "latest": "2.15.0",
+   "releaseDate": "2026-10-26",
+   "releaseAgeDays": 8,
+   "repo": "bowser-js/bowser",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-27",
+   "lastCommitAgeDays": 7,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|browser-level": {
+   "registryStatus": 200,
+   "latest": "3.0.0",
+   "releaseDate": "2025-04-20",
+   "releaseAgeDays": 562,
+   "repo": "Level/browser-level",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-05-02",
+   "lastCommitAgeDays": 185,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|c8": {
+   "registryStatus": 200,
+   "latest": "12.0.0",
+   "releaseDate": "2026-07-14",
+   "releaseAgeDays": 112,
+   "repo": "bcoe/c8",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-07-14",
+   "lastCommitAgeDays": 112,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|chai": {
+   "registryStatus": 200,
+   "latest": "6.3.0",
+   "releaseDate": "2026-09-30",
+   "releaseAgeDays": 34,
+   "repo": "chaijs/chai",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|classic-level": {
+   "registryStatus": 200,
+   "latest": "3.0.0",
+   "releaseDate": "2025-04-20",
+   "releaseAgeDays": 562,
+   "repo": "Level/classic-level",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-02-01",
+   "lastCommitAgeDays": 276,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|commander": {
+   "registryStatus": 200,
+   "latest": "15.0.0",
+   "releaseDate": "2026-05-29",
+   "releaseAgeDays": 158,
+   "repo": "tj/commander.js",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-05-29",
+   "lastCommitAgeDays": 158,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|concurrently": {
+   "registryStatus": 200,
+   "latest": "10.0.6",
+   "releaseDate": "2026-10-08",
+   "releaseAgeDays": 26,
+   "repo": "open-cli-tools/concurrently",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-25",
+   "lastCommitAgeDays": 9,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|coveralls-next": {
+   "registryStatus": 200,
+   "latest": "6.0.2",
+   "releaseDate": "2026-06-16",
+   "releaseAgeDays": 140,
+   "repo": "jtwebman/coveralls-next",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-06-16",
+   "lastCommitAgeDays": 140,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|cpy-cli": {
+   "registryStatus": 200,
+   "latest": "7.0.0",
+   "releaseDate": "2026-02-05",
+   "releaseAgeDays": 271,
+   "repo": "sindresorhus/cpy-cli",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-09-18",
+   "lastCommitAgeDays": 46,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|detect-port": {
+   "registryStatus": 200,
+   "latest": "2.1.0",
+   "releaseDate": "2024-12-10",
+   "releaseAgeDays": 694,
+   "repo": "node-modules/detect-port",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2025-11-15",
+   "lastCommitAgeDays": 353,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|diff-match-patch-es": {
+   "registryStatus": 200,
+   "latest": "2.0.1",
+   "releaseDate": "2026-08-10",
+   "releaseAgeDays": 86,
+   "repo": "antfu/diff-match-patch-es",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-08-10",
+   "lastCommitAgeDays": 86,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|earcut": {
+   "registryStatus": 200,
+   "latest": "3.2.4",
+   "releaseDate": "2026-09-28",
+   "releaseAgeDays": 36,
+   "repo": "mapbox/earcut",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-22",
+   "lastCommitAgeDays": 12,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|eslint": {
+   "registryStatus": 200,
+   "latest": "10.14.0",
+   "releaseDate": "2026-10-30",
+   "releaseAgeDays": 4,
+   "repo": "eslint/eslint",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-02",
+   "lastCommitAgeDays": 1,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|eslint-config-airbnb-extended": {
+   "registryStatus": 200,
+   "latest": "3.3.0",
+   "releaseDate": "2026-10-02",
+   "releaseAgeDays": 32,
+   "repo": "eslint-config/airbnb-extended",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-03",
+   "lastCommitAgeDays": 31,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|eslint-plugin-n": {
+   "registryStatus": 200,
+   "latest": "18.5.0",
+   "releaseDate": "2026-10-18",
+   "releaseAgeDays": 16,
+   "repo": "eslint-community/eslint-plugin-n",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-30",
+   "lastCommitAgeDays": 4,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|expr-eval-fork": {
+   "registryStatus": 200,
+   "latest": "3.0.3",
+   "releaseDate": "2026-02-02",
+   "releaseAgeDays": 274,
+   "repo": "jorenbroekema/expr-eval",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-02-02",
+   "lastCommitAgeDays": 274,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|glob": {
+   "registryStatus": 200,
+   "latest": "14.0.3",
+   "releaseDate": "2026-10-28",
+   "releaseAgeDays": 7,
+   "repo": "isaacs/node-glob",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-28",
+   "lastCommitAgeDays": 6,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|inquirer": {
+   "registryStatus": 200,
+   "latest": "14.2.5",
+   "releaseDate": "2026-10-27",
+   "releaseAgeDays": 8,
+   "repo": "SBoudrias/Inquirer.js",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|ky": {
+   "registryStatus": 200,
+   "latest": "2.2.0",
+   "releaseDate": "2026-10-09",
+   "releaseAgeDays": 25,
+   "repo": "sindresorhus/ky",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-09",
+   "lastCommitAgeDays": 25,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|level-transcoder": {
+   "registryStatus": 200,
+   "latest": "1.0.1",
+   "releaseDate": "2021-11-26",
+   "releaseAgeDays": 1803,
+   "repo": "Level/transcoder",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-02-11",
+   "lastCommitAgeDays": 265,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|memory-level": {
+   "registryStatus": 200,
+   "latest": "3.1.0",
+   "releaseDate": "2025-04-20",
+   "releaseAgeDays": 562,
+   "repo": "Level/memory-level",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-05-02",
+   "lastCommitAgeDays": 185,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|npm-run-all2": {
+   "registryStatus": 200,
+   "latest": "9.0.4",
+   "releaseDate": "2026-10-21",
+   "releaseAgeDays": 13,
+   "repo": "bcomnes/npm-run-all2",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-02",
+   "lastCommitAgeDays": 1,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|nyc": {
+   "registryStatus": 200,
+   "latest": "18.0.0",
+   "releaseDate": "2026-02-22",
+   "releaseAgeDays": 254,
+   "repo": "istanbuljs/nyc",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-05-17",
+   "lastCommitAgeDays": 170,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|ofetch": {
+   "registryStatus": 200,
+   "latest": "1.5.1",
+   "releaseDate": "2025-11-01",
+   "releaseAgeDays": 367,
+   "repo": "unjs/ofetch",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-07-08",
+   "lastCommitAgeDays": 118,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|p-limit": {
+   "registryStatus": 200,
+   "latest": "7.3.3",
+   "releaseDate": "2026-09-18",
+   "releaseAgeDays": 46,
+   "repo": "sindresorhus/p-limit",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-09-18",
+   "lastCommitAgeDays": 46,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|pixelmatch": {
+   "registryStatus": 200,
+   "latest": "8.0.0",
+   "releaseDate": "2026-10-06",
+   "releaseAgeDays": 28,
+   "repo": "mapbox/pixelmatch",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-06",
+   "lastCommitAgeDays": 28,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|pure-rand": {
+   "registryStatus": 200,
+   "latest": "8.4.2",
+   "releaseDate": "2026-07-10",
+   "releaseAgeDays": 116,
+   "repo": "dubzzz/pure-rand",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-07-10",
+   "lastCommitAgeDays": 116,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|qunit": {
+   "registryStatus": 200,
+   "latest": "3.0.0",
+   "releaseDate": "2026-09-27",
+   "releaseAgeDays": 37,
+   "repo": "qunitjs/qunit",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-09-29",
+   "lastCommitAgeDays": 35,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|react-colorful": {
+   "registryStatus": 200,
+   "latest": "5.8.1",
+   "releaseDate": "2026-09-01",
+   "releaseAgeDays": 63,
+   "repo": "omgovich/react-colorful",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-09-01",
+   "lastCommitAgeDays": 63,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|rimraf": {
+   "registryStatus": 200,
+   "latest": "6.1.4",
+   "releaseDate": "2026-11-03",
+   "releaseAgeDays": 0,
+   "repo": "isaacs/rimraf",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|rollup-plugin-sourcemaps2": {
+   "registryStatus": 200,
+   "latest": "0.5.10",
+   "releaseDate": "2026-10-19",
+   "releaseAgeDays": 15,
+   "repo": "2wce/rollup-plugin-sourcemaps2",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-02",
+   "lastCommitAgeDays": 1,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|serve-static": {
+   "registryStatus": 200,
+   "latest": "2.2.1",
+   "releaseDate": "2025-12-15",
+   "releaseAgeDays": 323,
+   "repo": "expressjs/serve-static",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-27",
+   "lastCommitAgeDays": 7,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|tinybench": {
+   "registryStatus": 200,
+   "latest": "6.2.3",
+   "releaseDate": "2026-11-01",
+   "releaseAgeDays": 2,
+   "repo": null,
+   "note": "no repository linked; alive on release date only",
+   "alive": true,
+   "reasons": []
+  },
+  "npm|undici": {
+   "registryStatus": 200,
+   "latest": "8.12.3",
+   "releaseDate": "2026-10-19",
+   "releaseAgeDays": 15,
+   "repo": "nodejs/undici",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|unzipper": {
+   "registryStatus": 200,
+   "latest": "0.12.5",
+   "releaseDate": "2026-06-21",
+   "releaseAgeDays": 135,
+   "repo": "ZJONSSON/node-unzipper",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-07-05",
+   "lastCommitAgeDays": 121,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|uuid": {
+   "registryStatus": 200,
+   "latest": "14.0.3",
+   "releaseDate": "2026-10-10",
+   "releaseAgeDays": 25,
+   "repo": "uuidjs/uuid",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-01",
+   "lastCommitAgeDays": 2,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|vitest": {
+   "registryStatus": 200,
+   "latest": "5.1.0",
+   "releaseDate": "2026-11-02",
+   "releaseAgeDays": 1,
+   "repo": "vitest-dev/vitest",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|webdriverio": {
+   "registryStatus": 200,
+   "latest": "10.1.0",
+   "releaseDate": "2026-10-18",
+   "releaseAgeDays": 16,
+   "repo": "webdriverio/webdriverio",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|webpack": {
+   "registryStatus": 200,
+   "latest": "5.112.2",
+   "releaseDate": "2026-10-23",
+   "releaseAgeDays": 11,
+   "repo": "webpack/webpack",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|which": {
+   "registryStatus": 200,
+   "latest": "7.0.0",
+   "releaseDate": "2026-05-08",
+   "releaseAgeDays": 179,
+   "repo": "npm/node-which",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-06-18",
+   "lastCommitAgeDays": 138,
+   "alive": true,
+   "reasons": []
+  },
+  "npm|wireit": {
+   "registryStatus": 200,
+   "latest": "0.15.0",
+   "releaseDate": "2026-10-24",
+   "releaseAgeDays": 11,
+   "repo": "google/wireit",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-24",
+   "lastCommitAgeDays": 11,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|codecov-cli": {
+   "registryStatus": 200,
+   "latest": "11.3.2",
+   "releaseDate": "2026-10-28",
+   "releaseAgeDays": 6,
+   "repo": "codecov/codecov-cli",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-28",
+   "lastCommitAgeDays": 6,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|myst-parser": {
+   "registryStatus": 200,
+   "latest": "5.1.0",
+   "releaseDate": "2026-05-13",
+   "releaseAgeDays": 174,
+   "repo": "executablebooks/MyST-Parser",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-07-27",
+   "lastCommitAgeDays": 99,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|nest-asyncio2": {
+   "registryStatus": 200,
+   "latest": "1.7.4",
+   "releaseDate": "2026-10-07",
+   "releaseAgeDays": 27,
+   "repo": "Chaoses-Ib/nest-asyncio2",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-07",
+   "lastCommitAgeDays": 27,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|pydoclint": {
+   "registryStatus": 200,
+   "latest": "0.12.0",
+   "releaseDate": "2026-10-28",
+   "releaseAgeDays": 6,
+   "repo": "jsh9/pydoclint",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-28",
+   "lastCommitAgeDays": 6,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|pydot": {
+   "registryStatus": 200,
+   "latest": "4.0.1",
+   "releaseDate": "2025-06-17",
+   "releaseAgeDays": 504,
+   "repo": "pydot/pydot",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-02",
+   "lastCommitAgeDays": 1,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|pytest": {
+   "registryStatus": 200,
+   "latest": "9.2.0",
+   "releaseDate": "2026-10-27",
+   "releaseAgeDays": 7,
+   "repo": "pytest-dev/pytest",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-02",
+   "lastCommitAgeDays": 1,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|pytest-env": {
+   "registryStatus": 200,
+   "latest": "1.8.5",
+   "releaseDate": "2026-11-04",
+   "releaseAgeDays": 0,
+   "repo": "pytest-dev/pytest-env",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-04",
+   "lastCommitAgeDays": 0,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|pytest-postgresql": {
+   "registryStatus": 200,
+   "latest": "9.1.1",
+   "releaseDate": "2026-10-04",
+   "releaseAgeDays": 30,
+   "repo": "dbfixtures/pytest-postgresql",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-11-03",
+   "lastCommitAgeDays": 1,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|python-box": {
+   "registryStatus": 200,
+   "latest": "7.4.1",
+   "releaseDate": "2026-02-21",
+   "releaseAgeDays": 255,
+   "repo": "cdgriffith/Box",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-02-21",
+   "lastCommitAgeDays": 255,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|python-socks": {
+   "registryStatus": 200,
+   "latest": "3.2.1",
+   "releaseDate": "2026-10-31",
+   "releaseAgeDays": 3,
+   "repo": "romis2012/python-socks",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-31",
+   "lastCommitAgeDays": 3,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|sphinx-polyversion": {
+   "registryStatus": 200,
+   "latest": "3.0.0",
+   "releaseDate": "2026-07-29",
+   "releaseAgeDays": 97,
+   "repo": "real-yfprojects/sphinx-polyversion",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-26",
+   "lastCommitAgeDays": 8,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|types-lxml": {
+   "registryStatus": 200,
+   "latest": "2026.2.16",
+   "releaseDate": "2026-02-17",
+   "releaseAgeDays": 260,
+   "repo": "abelcheung/types-lxml",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-09-25",
+   "lastCommitAgeDays": 39,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|ua-parser": {
+   "registryStatus": 200,
+   "latest": "1.0.2",
+   "releaseDate": "2026-04-05",
+   "releaseAgeDays": 212,
+   "repo": "ua-parser/uap-python",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-09-28",
+   "lastCommitAgeDays": 36,
+   "alive": true,
+   "reasons": []
+  },
+  "pypi|zensical": {
+   "registryStatus": 200,
+   "latest": "0.0.74",
+   "releaseDate": "2026-10-30",
+   "releaseAgeDays": 4,
+   "repo": "zensical/zensical",
+   "repoArchived": false,
+   "archivedOn": null,
+   "lastCommit": "2026-10-30",
+   "lastCommitAgeDays": 4,
+   "alive": true,
+   "reasons": []
+  }
+ },
+ "urls": {
+  "https://developer.mozilla.org/docs/Web/API/CompressionStream": {
+   "status": 200
+  },
+  "https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID": {
+   "status": 200
+  },
+  "https://developer.mozilla.org/docs/Web/API/EventTarget": {
+   "status": 200
+  },
+  "https://developer.mozilla.org/docs/Web/API/Fetch_API": {
+   "status": 200
+  },
+  "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Classes/Public_class_fields": {
+   "status": 200
+  },
+  "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator": {
+   "status": 200
+  },
+  "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/all": {
+   "status": 200
+  },
+  "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining": {
+   "status": 200
+  },
+  "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Spread_syntax": {
+   "status": 200
+  },
+  "https://docs.codecov.com/docs/deprecated-uploader-migration-guide#python-uploader": {
+   "status": 200
+  },
+  "https://docs.pytest.org/en/stable/changelog.html": {
+   "status": 200
+  },
+  "https://docs.python.org/3/library/types.html#types.SimpleNamespace": {
+   "status": 200
+  },
+  "https://docs.python.org/3/library/unicodedata.html": {
+   "status": 200
+  },
+  "https://docs.python.org/3/library/unittest.html#unittest.IsolatedAsyncioTestCase": {
+   "status": 200
+  },
+  "https://docs.python.org/3/library/unittest.html#unittest.TestCase.subTest": {
+   "status": 200
+  },
+  "https://eslint.style/rules/no-mixed-operators": {
+   "status": 200
+  },
+  "https://expressjs.com/en/resources/middleware/serve-static.html": {
+   "status": 200
+  },
+  "https://github.com/Level/community#faq": {
+   "status": 200
+  },
+  "https://github.com/abelcheung/types-lxml": {
+   "status": 200
+  },
+  "https://github.com/antfu/diff-match-patch-es#migration": {
+   "status": 200
+  },
+  "https://github.com/babel/babel/tree/main/eslint/babel-eslint-plugin": {
+   "status": 200
+  },
+  "https://github.com/bcoe/c8": {
+   "status": 200
+  },
+  "https://github.com/eslint-community/eslint-plugin-n": {
+   "status": 200
+  },
+  "https://github.com/executablebooks/MyST-Parser": {
+   "status": 200
+  },
+  "https://github.com/google/wireit": {
+   "status": 200
+  },
+  "https://github.com/iamturns/eslint-config-airbnb-typescript#-alternatives": {
+   "status": 200
+  },
+  "https://github.com/jtwebman/coveralls-next": {
+   "status": 200
+  },
+  "https://github.com/karma-runner/karma#karma-is-deprecated-and-is-no-longer-maintained-or-accepting-new-features": {
+   "status": 200
+  },
+  "https://github.com/keyz/identity-obj-proxy/blob/master/src/index.js": {
+   "status": 200
+  },
+  "https://github.com/nodejs/undici": {
+   "status": 200
+  },
+  "https://github.com/sindresorhus/ky": {
+   "status": 200
+  },
+  "https://github.com/unjs/ofetch": {
+   "status": 200
+  },
+  "https://github.com/webpack/webpack/tree/main/examples/nodejs-addons": {
+   "status": 200
+  },
+  "https://nodejs.org/api/esm.html": {
+   "status": 200
+  },
+  "https://nodejs.org/api/fs.html#fspromisescpsrc-dest-options": {
+   "status": 200
+  },
+  "https://nodejs.org/api/fs.html#fspromisesreadfilepath-options": {
+   "status": 200
+  },
+  "https://nodejs.org/api/sqlite.html": {
+   "status": 200
+  },
+  "https://nodejs.org/api/stream.html#streams-promises-api": {
+   "status": 200
+  },
+  "https://nodejs.org/api/test.html#class-mocktimers": {
+   "status": 200
+  },
+  "https://nodejs.org/api/timers.html#timerspromisessettimeoutdelay-value-options": {
+   "status": 200
+  },
+  "https://nodejs.org/api/util.html#utilisdeepstrictequalval1-val2": {
+   "status": 200
+  },
+  "https://nodejs.org/api/util.html#utilpromisifyoriginal": {
+   "status": 200
+  },
+  "https://nodejs.org/api/zlib.html#zlibgzipsyncbuffer-options": {
+   "status": 200
+  },
+  "https://pypi.org/project/nest-asyncio2/": {
+   "status": 200
+  },
+  "https://pypi.org/project/pydoclint/": {
+   "status": 200
+  },
+  "https://pypi.org/project/pydot/": {
+   "status": 200
+  },
+  "https://pypi.org/project/pytest-env/": {
+   "status": 200
+  },
+  "https://pypi.org/project/pytest-postgresql/": {
+   "status": 200
+  },
+  "https://pypi.org/project/python-box/": {
+   "status": 200
+  },
+  "https://pypi.org/project/python-socks/": {
+   "status": 200
+  },
+  "https://pypi.org/project/sphinx-polyversion/": {
+   "status": 200
+  },
+  "https://pypi.org/project/ua-parser/": {
+   "status": 200
+  },
+  "https://testing-library.com/docs/react-testing-library/intro/": {
+   "status": 200
+  },
+  "https://vitest.dev/": {
+   "status": 200
+  },
+  "https://vitest.dev/api/vi.html#vi-setsystemtime": {
+   "status": 200
+  },
+  "https://vitest.dev/guide/reporters.html": {
+   "status": 200
+  },
+  "https://webdriver.io/blog/2023/07/31/driver-management": {
+   "status": 200
+  },
+  "https://webpack.js.org/guides/asset-modules/": {
+   "status": 200
+  },
+  "https://webpack.js.org/guides/native-css/": {
+   "status": 200
+  },
+  "https://www.chaijs.com/guide/styles/#should": {
+   "status": 200
+  },
+  "https://zensical.org/docs/compatibility/mkdocs/migration/": {
+   "status": 200
+  }
+ }
+}

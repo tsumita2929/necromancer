@@ -1,0 +1,6005 @@
+{
+ "schema": 1,
+ "checkDate": "2026-11-04",
+ "engineCommit": "b7e33341dd34362119f49a31c3361888d63b6bff",
+ "census": {
+  "engineCommit": "bfd86f123979079931c42ac6ffa4b3bcead17bd7",
+  "distinctPackages": 175,
+  "dependencies": 198
+ },
+ "summary": {
+  "before": {
+   "packages": 19,
+   "dependencies": 22,
+   "note": "successors the engine named in the census run"
+  },
+  "afterMine": {
+   "packages": 91,
+   "dependencies": 99,
+   "note": "entries of this file with at least one successor"
+  },
+  "after": {
+   "packages": 91,
+   "dependencies": 99,
+   "note": "engine successors or this file"
+  },
+  "byOutcome": {
+   "successor": {
+    "packages": 72,
+    "dependencies": 80
+   },
+   "native": {
+    "packages": 17,
+    "dependencies": 17
+   },
+   "raise": {
+    "packages": 2,
+    "dependencies": 2
+   },
+   "none": {
+    "packages": 84,
+    "dependencies": 99
+   }
+  },
+  "python": {
+   "before": {
+    "packages": 0,
+    "dependencies": 0
+   },
+   "after": {
+    "packages": 17,
+    "dependencies": 19
+   },
+   "all": {
+    "packages": 30,
+    "dependencies": 38
+   }
+  },
+  "npm": {
+   "before": {
+    "packages": 19,
+    "dependencies": 22
+   },
+   "after": {
+    "packages": 74,
+    "dependencies": 80
+   },
+   "all": {
+    "packages": 145,
+    "dependencies": 160
+   }
+  },
+  "zombies": {
+   "all": {
+    "packages": 4,
+    "dependencies": 4
+   },
+   "withWayOut": {
+    "packages": 4,
+    "dependencies": 4
+   }
+  },
+  "multiProject": {
+   "all": {
+    "packages": 15,
+    "dependencies": 38
+   },
+   "withWayOut": {
+    "packages": 7,
+    "dependencies": 15
+   }
+  },
+  "notDeadAfterAll": {
+   "packages": 14,
+   "dependencies": 24
+  },
+  "finishedRisk": {
+   "packages": 20,
+   "dependencies": 29
+  },
+  "successorsProposed": 110,
+  "packageSuccessorsChecked": 73,
+  "packageSuccessorsAlive": 72
+ },
+ "aliveExceptions": [
+  {
+   "for": "npm|@types/bcryptjs",
+   "successor": "bcryptjs",
+   "reasons": [
+    "no commit for 366 days"
+   ]
+  }
+ ],
+ "entries": [
+  {
+   "ecosystem": "pypi",
+   "name": "pydub",
+   "census": {
+    "verdict": "dead",
+    "subjects": 4,
+    "instances": 4,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No deprecation notice, no successor named by the project and no API-compatible maintained fork found on PyPI. Last release 2021-03; it still wraps ffmpeg.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "defusedxml",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main",
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No replacement exists: it is the standard hardening layer for the stdlib XML parsers, and its own docs say the stdlib is not safe for untrusted XML. Last release 0.7.1 (2021), last commit 2023-10. Likely finished, not dead.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "ldap3",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 3,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named. Release 2.9.1 is from 2021-07.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "The repository had a commit on 2026-04-18, within 12 months of the check (commit feed)."
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "mkdocs-material",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "pypi-inactive",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "zensical",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Built by the team behind Material for MkDocs. It can read your existing mkdocs.yml; the `classic` theme variant keeps the Material look. Plugins need a compatibility check, so the move is a configuration change plus a plugin review, not a code change.",
+     "source": "curated",
+     "url": "https://zensical.org/docs/compatibility/mkdocs/migration/"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high",
+    "note": "The README announces end of life on 2027-05-05 and names Zensical as the maintained successor."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "zensical",
+     "kind": "package",
+     "alive": true,
+     "latest": "0.0.74",
+     "releaseDate": "2026-10-30",
+     "repoArchived": false,
+     "lastCommit": "2026-10-30",
+     "reasons": []
+    }
+   ],
+   "notDeadAfterAll": "Still shipping: release 9.8.0 on 2026-10-24 and a commit 4 days before the check. The PyPI \"Inactive\" classifier is true in the sense that end of life is announced (2027-05-05), not that it is abandoned today."
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pysocks",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "python-socks",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Maintained SOCKS4/SOCKS5 and HTTP proxy client with sync, asyncio, trio and anyio APIs. The API differs: you build a Proxy from a URL and call connect() instead of using socks.socksocket.",
+     "source": "curated",
+     "url": "https://pypi.org/project/python-socks/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "python-socks",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.2.1",
+     "releaseDate": "2026-10-31",
+     "repoArchived": false,
+     "lastCommit": "2026-10-31",
+     "reasons": []
+    }
+   ],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "cross-env",
+   "census": {
+    "verdict": "dead",
+    "subjects": 6,
+    "instances": 6,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev",
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor is needed yet: the README says cross-env is \"done\" (feature complete). The repository was archived on 2025-11-19 after release 10.1.0 (2025-09-29).",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README notice: \"cross-env is done as in it does what it does and there is no need for new features\" (links issue 257).",
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@babel/plugin-proposal-class-properties",
+   "census": {
+    "verdict": "dead",
+    "subjects": 3,
+    "instances": 3,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev",
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@babel/plugin-transform-class-properties",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The proposal reached the ECMAScript standard, so Babel renamed the plugin. Replace the plugin name in the Babel config; options (`loose`) are unchanged.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@babel/plugin-proposal-class-properties"
+    },
+    {
+     "name": "class fields",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Class fields are part of ES2022, so when every target environment supports them the plugin can be removed and the syntax left as it is.",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Classes/Public_class_fields"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:@babel/plugin-transform-class-properties"
+   ],
+   "checks": [
+    {
+     "name": "@babel/plugin-transform-class-properties",
+     "kind": "package",
+     "alive": true,
+     "latest": "8.0.1",
+     "releaseDate": "2026-06-17",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    },
+    {
+     "name": "class fields",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/lang-python",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev",
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The GitHub repository was archived because the project moved to another Git host; the package continues.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README: \"This repository has moved to code.haverbeke.berlin/codemirror/lang-python\". The new host shows commits on 2026-04-15 (page checked)."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/bcryptjs",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "bcryptjs",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "bcryptjs ships its own type definitions. Delete the @types stub from devDependencies; imports stay the same and the types now come from bcryptjs itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@types/bcryptjs"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "The @types stub is deprecated on npm because bcryptjs ships its own types."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "bcryptjs",
+     "kind": "package",
+     "alive": false,
+     "latest": "3.0.3",
+     "releaseDate": "2025-11-02",
+     "repoArchived": false,
+     "lastCommit": "2025-11-02",
+     "reasons": [
+      "no commit for 366 days"
+     ]
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "codemirror",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev",
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The GitHub repository was archived because the project moved to another Git host; the package continues.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README: \"This repository has moved to code.haverbeke.berlin/codemirror/basic-setup\"."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "istanbul",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "c8",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Uses V8 native coverage instead of source instrumentation, so no instrument step. CLI wraps your command: `c8 node test.js` instead of `istanbul cover`. Reports are the same Istanbul formats.",
+     "source": "curated",
+     "url": "https://github.com/bcoe/c8"
+    },
+    {
+     "name": "nyc",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The deprecation message names nyc. It is the command-line client of the maintained Istanbul libraries, with instrumentation like the old tool; `nyc <cmd>` replaces `istanbul cover <cmd>`.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/istanbul"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:c8",
+    "package:nyc"
+   ],
+   "checks": [
+    {
+     "name": "c8",
+     "kind": "package",
+     "alive": true,
+     "latest": "12.0.0",
+     "releaseDate": "2026-07-14",
+     "repoArchived": false,
+     "lastCommit": "2026-07-14",
+     "reasons": []
+    },
+    {
+     "name": "nyc",
+     "kind": "package",
+     "alive": true,
+     "latest": "18.0.0",
+     "releaseDate": "2026-02-22",
+     "repoArchived": false,
+     "lastCommit": "2026-05-17",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "karma-mocha",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@web/test-runner",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Karma is deprecated; its README lists Web Test Runner as a direct alternative for browser tests. Mocha tests run unchanged through the `@web/test-runner-mocha` framework; the config moves from karma.conf.js to web-test-runner.config.mjs.",
+     "source": "curated",
+     "url": "https://github.com/karma-runner/karma#karma-is-deprecated-and-is-no-longer-maintained-or-accepting-new-features"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@web/test-runner",
+     "kind": "package",
+     "alive": true,
+     "latest": "1.0.0",
+     "releaseDate": "2026-07-07",
+     "repoArchived": false,
+     "lastCommit": "2026-10-28",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "karma-mocha-reporter",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Only meaningful with Karma, which is deprecated. The way out is leaving Karma (see karma-mocha); the new runner brings its own reporters.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "process",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev",
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "A tiny browser shim of `process.nextTick` that bundlers pull in; no replacement and no deprecation. Last release 2017. Bundlers that target modern browsers can drop the shim, otherwise keep it.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "seedrandom",
+   "census": {
+    "verdict": "dead",
+    "subjects": 2,
+    "instances": 2,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev",
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "pure-rand",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Maintained seedable PRNG library (the generator behind fast-check). The API differs: you create a generator from a seed (`prand.xoroshiro128plus(seed)`) and draw numbers through distribution functions, instead of calling a seeded `Math.random`.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/pure-rand"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "pure-rand",
+     "kind": "package",
+     "alive": true,
+     "latest": "8.4.2",
+     "releaseDate": "2026-07-10",
+     "repoArchived": false,
+     "lastCommit": "2026-07-10",
+     "reasons": []
+    }
+   ],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ecstatic",
+   "census": {
+    "verdict": "zombie",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "serve-static",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Express/Connect static file middleware maintained by the Express team. Same shape: `serve-static(root, options)` returns a (req, res, next) middleware; options are renamed (`index` instead of `defaultExt`, no built-in directory listing).",
+     "source": "curated",
+     "url": "https://expressjs.com/en/resources/middleware/serve-static.html"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "sirv, a second candidate, was not offered: no commit for 426 days."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "serve-static",
+     "kind": "package",
+     "alive": true,
+     "latest": "2.2.1",
+     "releaseDate": "2025-12-15",
+     "repoArchived": false,
+     "lastCommit": "2026-10-27",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "expr-eval",
+   "census": {
+    "verdict": "zombie",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "expr-eval-fork",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Community fork of expr-eval that keeps the API (`Parser.parse(expr).evaluate(scope)`) and fixes the advisories on the original. Update the import and the version pin.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/expr-eval-fork"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "expr-eval-fork",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.0.3",
+     "releaseDate": "2026-02-02",
+     "repoArchived": false,
+     "lastCommit": "2026-02-02",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "extract-zip",
+   "census": {
+    "verdict": "zombie",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "unzipper",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Maintained unzip library with a streaming `Extract({ path })` API. The call style changes from `await extract(file, { dir })` to piping `fs.createReadStream(file).pipe(unzipper.Extract({ path }))`. Check that it rejects entries that leave the target directory, which is the fault of the open advisories on extract-zip.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/unzipper"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "unzipper",
+     "kind": "package",
+     "alive": true,
+     "latest": "0.12.5",
+     "releaseDate": "2026-06-21",
+     "repoArchived": false,
+     "lastCommit": "2026-07-05",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "request",
+   "census": {
+    "verdict": "zombie",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "fetch",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Built in to Node 18+ and every browser. Callbacks and streams become promises: `const res = await fetch(url); const data = await res.json()`. Options are renamed (`headers`, `body`, `method`).",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/API/Fetch_API"
+    },
+    {
+     "name": "undici",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The HTTP client behind Node fetch, from the Node.js project. Use `undici.request` for a lower-level, faster call with a promise API.",
+     "source": "curated",
+     "url": "https://github.com/nodejs/undici"
+    },
+    {
+     "name": "ofetch",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Fetch wrapper with automatic JSON parsing, retries and base URLs; closest to the convenience of request.",
+     "source": "curated",
+     "url": "https://github.com/unjs/ofetch"
+    },
+    {
+     "name": "ky",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Small fetch wrapper with retries, hooks and JSON helpers.",
+     "source": "curated",
+     "url": "https://github.com/sindresorhus/ky"
+    }
+   ],
+   "mapping": {
+    "source": "e18e",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "native:fetch",
+    "package:undici",
+    "package:ofetch",
+    "package:ky"
+   ],
+   "checks": [
+    {
+     "name": "fetch",
+     "kind": "native",
+     "urlStatus": 200
+    },
+    {
+     "name": "undici",
+     "kind": "package",
+     "alive": true,
+     "latest": "8.12.3",
+     "releaseDate": "2026-10-19",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    },
+    {
+     "name": "ofetch",
+     "kind": "package",
+     "alive": true,
+     "latest": "1.5.1",
+     "releaseDate": "2025-11-01",
+     "repoArchived": false,
+     "lastCommit": "2026-07-08",
+     "reasons": []
+    },
+    {
+     "name": "ky",
+     "kind": "package",
+     "alive": true,
+     "latest": "2.2.0",
+     "releaseDate": "2026-10-09",
+     "repoArchived": false,
+     "lastCommit": "2026-10-09",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "asynctest",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "unittest.IsolatedAsyncioTestCase",
+     "ecosystem": "pypi",
+     "kind": "native",
+     "reason": "The standard library has async test cases since Python 3.8: subclass IsolatedAsyncioTestCase and write `async def test_...`. No extra package; asynctest's coroutine mocks become `unittest.mock.AsyncMock`.",
+     "source": "curated",
+     "url": "https://docs.python.org/3/library/unittest.html#unittest.IsolatedAsyncioTestCase"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "unittest.IsolatedAsyncioTestCase",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "attrdict",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "pypi-inactive",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "python-box",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Dictionary with attribute access that is maintained; `Box(d)` replaces `AttrDict(d)`. Methods differ in names (`to_dict()`), and nested lists are converted too.",
+     "source": "curated",
+     "url": "https://pypi.org/project/python-box/"
+    },
+    {
+     "name": "types.SimpleNamespace",
+     "ecosystem": "pypi",
+     "kind": "native",
+     "reason": "For flat data the standard library has attribute access: `SimpleNamespace(**d)`. It is not a dict and does not nest.",
+     "source": "curated",
+     "url": "https://docs.python.org/3/library/types.html#types.SimpleNamespace"
+    }
+   ],
+   "mapping": {
+    "source": "registry-record",
+    "confidence": "medium",
+    "note": "PyPI marks it Development Status 7 Inactive. attrdict3, the usual fork, is itself archived (2026-01-14) and munch has had no commit for 1221 days, so neither is offered."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "python-box",
+     "kind": "package",
+     "alive": true,
+     "latest": "7.4.1",
+     "releaseDate": "2026-02-21",
+     "repoArchived": false,
+     "lastCommit": "2026-02-21",
+     "reasons": []
+    },
+    {
+     "name": "types.SimpleNamespace",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "attrdict3",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "python-box",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Dictionary with attribute access that is maintained; `Box(d)` replaces `AttrDict(d)`.",
+     "source": "curated",
+     "url": "https://pypi.org/project/python-box/"
+    }
+   ],
+   "mapping": {
+    "source": "registry-record",
+    "confidence": "medium",
+    "note": "Fork of attrdict; archived on GitHub 2026-01-14, last release 2022-04."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "python-box",
+     "kind": "package",
+     "alive": true,
+     "latest": "7.4.1",
+     "releaseDate": "2026-02-21",
+     "repoArchived": false,
+     "lastCommit": "2026-02-21",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "codecov",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "codecov-cli",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "The new Codecov uploader, from the Codecov team. The command changes from `codecov` to `codecovcli upload-process` (token via CODECOV_TOKEN).",
+     "source": "curated",
+     "url": "https://docs.codecov.com/docs/deprecated-uploader-migration-guide#python-uploader"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high",
+    "note": "The README deprecates this uploader and links a migration guide to the new Codecov CLI."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "codecov-cli",
+     "kind": "package",
+     "alive": true,
+     "latest": "11.3.2",
+     "releaseDate": "2026-10-28",
+     "repoArchived": false,
+     "lastCommit": "2026-10-28",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "darglint",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "pydoclint",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Python docstring linter that checks the arguments, returns, yields and raises sections against the signature, which is the job darglint did. It runs standalone or as a flake8 plugin; rule codes change from DAR to DOC.",
+     "source": "curated",
+     "url": "https://pypi.org/project/pydoclint/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "pydoclint",
+     "kind": "package",
+     "alive": true,
+     "latest": "0.12.0",
+     "releaseDate": "2026-10-28",
+     "repoArchived": false,
+     "lastCommit": "2026-10-28",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "g2p-en",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named; a drop-in is not known. Phoneme libraries exist but have different outputs and dictionaries.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "gntp",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "optional"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Growl notification client; no maintained drop-in found. The Apprise library can send Growl notifications but is a different API.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "jieba",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named by the project; maintained Chinese segmenters exist but have different APIs and outputs.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "lxml-stubs",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "types-lxml",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "The README says lxml-stubs is not maintained and was superseded by types-lxml, a more complete, externally maintained stub package. Install types-lxml and remove lxml-stubs; type checkers pick it up with no code change.",
+     "source": "curated",
+     "url": "https://github.com/abelcheung/types-lxml"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "types-lxml",
+     "kind": "package",
+     "alive": true,
+     "latest": "2026.2.16",
+     "releaseDate": "2026-02-17",
+     "repoArchived": false,
+     "lastCommit": "2026-09-25",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "mutatormath",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Font-design library; no successor named and no replacement found.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "nest-asyncio",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "nest-asyncio2",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Maintained fork with the same `nest_asyncio.apply()` call; change the import to `nest_asyncio2`.",
+     "source": "curated",
+     "url": "https://pypi.org/project/nest-asyncio2/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium",
+    "note": "The GitHub repository was archived on 2024-03-06; the original author is no longer working on it."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "nest-asyncio2",
+     "kind": "package",
+     "alive": true,
+     "latest": "1.7.4",
+     "releaseDate": "2026-10-07",
+     "repoArchived": false,
+     "lastCommit": "2026-10-07",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "ntplib",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named. The repository had a commit in 2024-04.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pydotplus",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "pydot",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "pydotplus began as a fork of pydot; pydot is maintained again and offers the same `graph_from_dot_data` and `write_png` style calls. Change the import from pydotplus to pydot.",
+     "source": "curated",
+     "url": "https://pypi.org/project/pydot/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "pydot",
+     "kind": "package",
+     "alive": true,
+     "latest": "4.0.1",
+     "releaseDate": "2025-06-17",
+     "repoArchived": false,
+     "lastCommit": "2026-11-02",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pyserial",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named. The 3.5 release is from 2020-11.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "The repository had a commit on 2026-02-27, within 12 months of the check (commit feed)."
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pytest-dotenv",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "pytest-env",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Maintained pytest plugin that sets environment variables from pytest configuration and can load them from `.env` files. The `env_files` setting keeps its name but moves into the `[tool.pytest_env]` table (see its README); `--envfile` selects a file on the command line.",
+     "source": "curated",
+     "url": "https://pypi.org/project/pytest-env/"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "pytest-env",
+     "kind": "package",
+     "alive": true,
+     "latest": "1.8.5",
+     "releaseDate": "2026-11-04",
+     "repoArchived": false,
+     "lastCommit": "2026-11-04",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pytest-subtests",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "pytest",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "pytest 9.0 and later has built-in support for subtests (\"Support for subtests has been added\" in the 9.0.0 changelog), so the plugin is not needed. Raise the pytest pin to 9 or newer and use the `subtests` fixture.",
+     "source": "curated",
+     "url": "https://docs.pytest.org/en/stable/changelog.html"
+    },
+    {
+     "name": "unittest.TestCase.subTest",
+     "ecosystem": "pypi",
+     "kind": "native",
+     "reason": "The standard library `subTest` context manager covers the same need for unittest-style classes.",
+     "source": "curated",
+     "url": "https://docs.python.org/3/library/unittest.html#unittest.TestCase.subTest"
+    }
+   ],
+   "mapping": {
+    "source": "migration-guide",
+    "confidence": "high",
+    "note": "Archived on 2025-11-11, the week pytest 9.0.0 (2025-11-05) added subtests to pytest itself."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "pytest",
+     "kind": "package",
+     "alive": true,
+     "latest": "9.2.0",
+     "releaseDate": "2026-10-27",
+     "repoArchived": false,
+     "lastCommit": "2026-11-02",
+     "reasons": []
+    },
+    {
+     "name": "unittest.TestCase.subTest",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "python-terraform",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Thin wrapper over the terraform command; no maintained fork found. Calling `subprocess.run([\"terraform\", ...])` is the plain alternative.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "recommonmark",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "myst-parser",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "The README says recommonmark is deprecated and recommends MyST. MyST-Parser reads CommonMark plus extensions for Sphinx; set `extensions = [\"myst_parser\"]` instead of the recommonmark parser and rename the config keys.",
+     "source": "curated",
+     "url": "https://github.com/executablebooks/MyST-Parser"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "myst-parser",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.1.0",
+     "releaseDate": "2026-05-13",
+     "repoArchived": false,
+     "lastCommit": "2026-07-27",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "reverse-geocoder",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Offline reverse geocoder, last release 2016; no successor named and no drop-in found.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "seqeval",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named. The repository had a commit in 2024-08, the last release is from 2020-10.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "soynlp",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Korean NLP toolkit, last release 2019; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "sphinx-multiversion",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "sphinx-polyversion",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Builds several versions of a Sphinx site and merges them into one website (its PyPI summary), the job sphinx-multiversion did. It is driven by a build script instead of a Sphinx extension, so the setup is rewritten.",
+     "source": "curated",
+     "url": "https://pypi.org/project/sphinx-polyversion/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "sphinx-polyversion",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.0.0",
+     "releaseDate": "2026-07-29",
+     "repoArchived": false,
+     "lastCommit": "2026-10-26",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "tangled-up-in-unicode",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "optional"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "unicodedata",
+     "ecosystem": "pypi",
+     "kind": "native",
+     "reason": "The package describes itself as an alternative to the standard library `unicodedata`. The stdlib covers category and name lookups for the Unicode version bundled with your Python; the package existed to offer newer Unicode data and extra fields (block, script).",
+     "source": "curated",
+     "url": "https://docs.python.org/3/library/unicodedata.html"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "unicodedata",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "testing-postgresql",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "pytest-postgresql",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "Maintained pytest plugin that starts a throwaway PostgreSQL server for tests. It exposes fixtures instead of a context manager, so tests change to take a `postgresql` fixture.",
+     "source": "curated",
+     "url": "https://pypi.org/project/pytest-postgresql/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "pytest-postgresql",
+     "kind": "package",
+     "alive": true,
+     "latest": "9.1.1",
+     "releaseDate": "2026-10-04",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "user-agents",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "ua-parser",
+     "ecosystem": "pypi",
+     "kind": "package",
+     "reason": "user-agents is a convenience layer over the ua-parser data. ua-parser is maintained and returns browser, OS and device; helpers such as `is_mobile` are not included and become a check on the device family.",
+     "source": "curated",
+     "url": "https://pypi.org/project/ua-parser/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "ua-parser",
+     "kind": "package",
+     "alive": true,
+     "latest": "1.0.2",
+     "releaseDate": "2026-04-05",
+     "repoArchived": false,
+     "lastCommit": "2026-09-28",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@babel/plugin-proposal-object-rest-spread",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@babel/plugin-transform-object-rest-spread",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The proposal is part of ES2018, so Babel renamed the plugin; change the name in the Babel config.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@babel/plugin-proposal-object-rest-spread"
+    },
+    {
+     "name": "spread syntax",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Object rest/spread is standard JavaScript; when all targets support it the plugin can go.",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Spread_syntax"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "native:spread_syntax",
+    "package:@babel/plugin-transform-object-rest-spread"
+   ],
+   "checks": [
+    {
+     "name": "@babel/plugin-transform-object-rest-spread",
+     "kind": "package",
+     "alive": true,
+     "latest": "8.0.1",
+     "releaseDate": "2026-06-17",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    },
+    {
+     "name": "spread syntax",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@babel/plugin-proposal-optional-chaining",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@babel/plugin-transform-optional-chaining",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The proposal is part of ES2020, so Babel renamed the plugin; change the name in the Babel config.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@babel/plugin-proposal-optional-chaining"
+    },
+    {
+     "name": "optional chaining",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Optional chaining (`a?.b`) is standard JavaScript; when all targets support it the plugin can go.",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/Optional_chaining"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:@babel/plugin-transform-optional-chaining"
+   ],
+   "checks": [
+    {
+     "name": "@babel/plugin-transform-optional-chaining",
+     "kind": "package",
+     "alive": true,
+     "latest": "8.0.5",
+     "releaseDate": "2026-09-10",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    },
+    {
+     "name": "optional chaining",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/lang-json",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The GitHub repository was archived because the project moved to another Git host; the package continues.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README: \"This repository has moved to code.haverbeke.berlin/codemirror/lang-json\"; release 6.0.2 on 2025-06-19."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/rangeset",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@codemirror/state",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says the package was merged into @codemirror/state as of 0.20.0. `RangeSet`, `RangeSetBuilder` and `Range` are exported from there; change the import path.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@codemirror/rangeset"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@codemirror/state",
+     "kind": "package",
+     "alive": true,
+     "latest": "6.7.6",
+     "releaseDate": "2026-09-22",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/theme-one-dark",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The GitHub repository was archived because the project moved to another Git host; the package continues.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README: \"This repository has moved to code.haverbeke.berlin/codemirror/theme-one-dark\"."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@louislam/sqlite3",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "better-sqlite3",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Maintained SQLite binding with a synchronous API (`db.prepare(sql).all()`), so callback code becomes plain calls. The upstream node-sqlite3 was not offered because its repository is archived.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/better-sqlite3"
+    },
+    {
+     "name": "node:sqlite",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Node ships a SQLite module. It is synchronous (`new DatabaseSync(path)`), so callback code becomes plain calls.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/sqlite.html"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium",
+    "note": "A fork of node-sqlite3 made for CentOS 7; the repository was archived on 2026-09-21. The upstream sqlite3 package was not offered: its repository is archived too."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "better-sqlite3",
+     "kind": "package",
+     "alive": true,
+     "latest": "13.0.3",
+     "releaseDate": "2026-08-05",
+     "repoArchived": false,
+     "lastCommit": "2026-08-10",
+     "reasons": []
+    },
+    {
+     "name": "node:sqlite",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@mdi/light-js",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Icon-path data package, last release 2018; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@opentelemetry/sdk-trace-base",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@opentelemetry/sdk-trace",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says to use @opentelemetry/sdk-trace; the base SDK moved into it. Change the import and package name.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@opentelemetry/sdk-trace-base"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:@opentelemetry/sdk-trace"
+   ],
+   "checks": [
+    {
+     "name": "@opentelemetry/sdk-trace",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.0.0",
+     "releaseDate": "2026-10-20",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@opentelemetry/sdk-trace-node",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@opentelemetry/sdk-trace",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says to use @opentelemetry/sdk-trace; the Node provider moved into it. Change the import and package name.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:@opentelemetry/sdk-trace"
+   ],
+   "checks": [
+    {
+     "name": "@opentelemetry/sdk-trace",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.0.0",
+     "releaseDate": "2026-10-20",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@swan-io/boxed",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@bloodyowl/boxed",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says the package was transferred to @bloodyowl/boxed. Same API: change the package name.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@swan-io/boxed"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@bloodyowl/boxed",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.4.0",
+     "releaseDate": "2026-04-23",
+     "repoArchived": false,
+     "lastCommit": "2026-08-17",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/adm-zip",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "adm-zip",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "adm-zip ships its own type definitions. Delete the @types stub from devDependencies; imports stay the same and the types now come from adm-zip itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@types/adm-zip"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "The @types stub is deprecated on npm because adm-zip ships its own types."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "adm-zip",
+     "kind": "package",
+     "alive": true,
+     "latest": "0.6.1",
+     "releaseDate": "2026-09-11",
+     "repoArchived": false,
+     "lastCommit": "2026-10-13",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/commander",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "commander",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "commander ships its own type definitions. Delete the @types stub from devDependencies; imports stay the same and the types now come from commander itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@types/commander"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "The @types stub is deprecated on npm because commander ships its own types."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "commander",
+     "kind": "package",
+     "alive": true,
+     "latest": "15.0.0",
+     "releaseDate": "2026-05-29",
+     "repoArchived": false,
+     "lastCommit": "2026-05-29",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/earcut",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "earcut",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "earcut ships its own type definitions. Delete the @types stub from devDependencies; imports stay the same and the types now come from earcut itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@types/earcut"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "The @types stub is deprecated on npm because earcut ships its own types."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "earcut",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.2.4",
+     "releaseDate": "2026-09-28",
+     "repoArchived": false,
+     "lastCommit": "2026-10-22",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/glob",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "glob",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "glob ships its own type definitions. Delete the @types stub from devDependencies; imports stay the same and the types now come from glob itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@types/glob"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "The @types stub is deprecated on npm because glob ships its own types."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "glob",
+     "kind": "package",
+     "alive": true,
+     "latest": "14.0.3",
+     "releaseDate": "2026-10-28",
+     "repoArchived": false,
+     "lastCommit": "2026-10-28",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/inquirer",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "inquirer",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "inquirer ships its own type definitions. Delete the @types stub from devDependencies; imports stay the same and the types now come from inquirer itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@types/inquirer"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "The @types stub is deprecated on npm because inquirer ships its own types."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "inquirer",
+     "kind": "package",
+     "alive": true,
+     "latest": "14.2.5",
+     "releaseDate": "2026-10-27",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/pixelmatch",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "pixelmatch",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "pixelmatch ships its own type definitions. Delete the @types stub from devDependencies; imports stay the same and the types now come from pixelmatch itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@types/pixelmatch"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "The @types stub is deprecated on npm because pixelmatch ships its own types."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "pixelmatch",
+     "kind": "package",
+     "alive": true,
+     "latest": "8.0.0",
+     "releaseDate": "2026-10-06",
+     "repoArchived": false,
+     "lastCommit": "2026-10-06",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/rimraf",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "rimraf",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "rimraf ships its own type definitions. Delete the @types stub from devDependencies; imports stay the same and the types now come from rimraf itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/@types/rimraf"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high",
+    "note": "The @types stub is deprecated on npm because rimraf ships its own types."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "rimraf",
+     "kind": "package",
+     "alive": true,
+     "latest": "6.1.4",
+     "releaseDate": "2026-11-03",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@wojtekmaj/enzyme-adapter-react-17",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@testing-library/react",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Enzyme adapters tie tests to a React version; React Testing Library works with the current ones and drops the adapter. Tests are rewritten around `render` and `screen` queries.",
+     "source": "curated",
+     "url": "https://testing-library.com/docs/react-testing-library/intro/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@testing-library/react",
+     "kind": "package",
+     "alive": true,
+     "latest": "16.3.3",
+     "releaseDate": "2026-08-27",
+     "repoArchived": false,
+     "lastCommit": "2026-08-27",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "add-cors-to-couchdb",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "A helper script of the PouchDB project for CouchDB CORS setup; no successor named and none found.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "benchmark",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "tinybench",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Small maintained benchmark runner with statistics. A suite is `new Bench()` plus `bench.add(name, fn)` and `await bench.run()` instead of `new Benchmark.Suite()` and events.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/tinybench"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium",
+    "note": "mitata, a second candidate, was not offered: no commit for 625 days."
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "tinybench",
+     "kind": "package",
+     "alive": true,
+     "latest": "6.2.3",
+     "releaseDate": "2026-11-01",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "browserify-incremental",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Plugin for Browserify, which is legacy; no successor named. Moving to a bundler that is incremental by default (esbuild, Vite) is a build change, not a swap.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "chai-enzyme",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Assertions for enzyme wrappers; it goes away with enzyme. With React Testing Library the DOM assertions come from @testing-library/jest-dom or chai-dom, a different style.",
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "circular-dependency-plugin",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Webpack plugin; no successor named. Standalone checkers such as madge exist but work outside the webpack build.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "codecov",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The registry message points to Codecov's uploader deprecation plan. The way out is the new Codecov uploader, a standalone CLI or the codecov GitHub Action, not an npm package. Move upload to the Action or CLI in CI.",
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "codecov.io",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Old LCOV poster for Codecov (2015). The way out is the current Codecov uploader (CLI or GitHub Action), not an npm package.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "command-exists",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "which",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Maintained by the npm team: `which.sync(cmd, { nothrow: true })` returns the path or null, where command-exists returned a boolean.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/which"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "which",
+     "kind": "package",
+     "alive": true,
+     "latest": "7.0.0",
+     "releaseDate": "2026-05-08",
+     "repoArchived": false,
+     "lastCommit": "2026-06-18",
+     "reasons": []
+    }
+   ],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "copyfiles",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "cpy-cli",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Command line copy with glob patterns and a maintained codebase: `cpy \"src/**/*.html\" dist` replaces `copyfiles -u 1 \"src/**/*.html\" dist` (folder flattening uses `--cwd`).",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/cpy-cli"
+    },
+    {
+     "name": "fs.cp",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "For copying one folder tree without globs, Node 16.7+ has `fs.cp(src, dest, { recursive: true })`.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/fs.html#fspromisescpsrc-dest-options"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "cpy-cli",
+     "kind": "package",
+     "alive": true,
+     "latest": "7.0.0",
+     "releaseDate": "2026-02-05",
+     "repoArchived": false,
+     "lastCommit": "2026-09-18",
+     "reasons": []
+    },
+    {
+     "name": "fs.cp",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "coveralls",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "coveralls-next",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The README says the project is no longer maintained and names coveralls-next as the recommended fork. Same command: `coveralls-next` reads LCOV from stdin like `coveralls`.",
+     "source": "curated",
+     "url": "https://github.com/jtwebman/coveralls-next"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "coveralls-next",
+     "kind": "package",
+     "alive": true,
+     "latest": "6.0.2",
+     "releaseDate": "2026-06-16",
+     "repoArchived": false,
+     "lastCommit": "2026-06-16",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "curl-amd",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "AMD module loader (2014). The way out is native ES modules and a bundler, a rewrite, not a swap.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "cz-conventional-changelog",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Commitizen adapter; no successor named. The repository had a commit in 2024-09.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "d3-queue",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "Promise.all",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Run tasks together with `await Promise.all(tasks.map((t) => t()))`; callbacks become promises. For a concurrency limit use `p-limit`.",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+    },
+    {
+     "name": "p-limit",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Adds a concurrency limit to promise-returning tasks: `const limit = pLimit(n)` replaces `d3.queue(n)`.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/p-limit"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "Promise.all",
+     "kind": "native",
+     "urlStatus": 200
+    },
+    {
+     "name": "p-limit",
+     "kind": "package",
+     "alive": true,
+     "latest": "7.3.3",
+     "releaseDate": "2026-09-18",
+     "repoArchived": false,
+     "lastCommit": "2026-09-18",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "dekko",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "File layout assertion helper, last release 2016; no successor found.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "denodeify",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "util.promisify",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Node turns a callback-style function into a promise function with `util.promisify(fn)`. Same idea, built in.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/util.html#utilpromisifyoriginal"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "util.promisify",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "detect-port-alt",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "detect-port",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "detect-port-alt is a fork of detect-port made for Create React App; the original is maintained. Same call `detectPort(port)` returning a promise; change the package name.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/detect-port"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "detect-port",
+     "kind": "package",
+     "alive": true,
+     "latest": "2.1.0",
+     "releaseDate": "2024-12-10",
+     "repoArchived": false,
+     "lastCommit": "2025-11-15",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "diff-match-patch",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "diff-match-patch-es",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "ESM and TypeScript rewrite of diff-match-patch whose README has a migration section from this exact npm package: the class and default export are gone, functions are camelCase (`diff(a, b)` instead of `dmp.diff_main(a, b)`) and options such as `Diff_Timeout` become an options object.",
+     "source": "curated",
+     "url": "https://github.com/antfu/diff-match-patch-es#migration"
+    }
+   ],
+   "mapping": {
+    "source": "migration-guide",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "diff-match-patch-es",
+     "kind": "package",
+     "alive": true,
+     "latest": "2.0.1",
+     "releaseDate": "2026-08-10",
+     "repoArchived": false,
+     "lastCommit": "2026-08-10",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "docdown",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "jsdoc-to-markdown, the usual replacement, failed the aliveness check (no commit for 396 days), so it is not offered. No other drop-in found.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "double-ended-queue",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "denque, the usual replacement, failed the aliveness check (repository archived, no commit for 1569 days), so it is not offered. No other drop-in found; a plain Array with push/shift is the fallback for small queues.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "enzyme",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@testing-library/react",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Tests query the rendered DOM by role and text instead of component internals (`render`, `screen.getByRole`), so enzyme's `shallow` and `mount` tests are rewritten, not renamed. It supports current React versions.",
+     "source": "curated",
+     "url": "https://testing-library.com/docs/react-testing-library/intro/"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@testing-library/react",
+     "kind": "package",
+     "alive": true,
+     "latest": "16.3.3",
+     "releaseDate": "2026-08-27",
+     "repoArchived": false,
+     "lastCommit": "2026-08-27",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-config-airbnb-typescript",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "eslint-config-airbnb-extended",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The README of the archived project lists it as the alternative (shared for discoverability, not a personal recommendation). It is a flat-config rewrite, so the ESLint config file changes shape.",
+     "source": "curated",
+     "url": "https://github.com/iamturns/eslint-config-airbnb-typescript#-alternatives"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "eslint-config-airbnb-extended",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.3.0",
+     "releaseDate": "2026-10-02",
+     "repoArchived": false,
+     "lastCommit": "2026-10-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-plugin-babel",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@babel/eslint-plugin",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The README says eslint-plugin-babel is now @babel/eslint-plugin and lives in the Babel monorepo. Rename the plugin in the ESLint config (`babel/` rules become `@babel/` rules).",
+     "source": "curated",
+     "url": "https://github.com/babel/babel/tree/main/eslint/babel-eslint-plugin"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@babel/eslint-plugin",
+     "kind": "package",
+     "alive": true,
+     "latest": "8.1.0",
+     "releaseDate": "2026-11-02",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-plugin-markdown",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@eslint/markdown",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says to use @eslint/markdown, the official ESLint plugin; it targets flat config and also lints the Markdown itself.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/eslint-plugin-markdown"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:@eslint/markdown"
+   ],
+   "checks": [
+    {
+     "name": "@eslint/markdown",
+     "kind": "package",
+     "alive": true,
+     "latest": "8.0.3",
+     "releaseDate": "2026-07-01",
+     "repoArchived": false,
+     "lastCommit": "2026-10-30",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-plugin-no-mixed-operators",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@stylistic/eslint-plugin",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Provides `@stylistic/no-mixed-operators`, the maintained home of the stylistic rule (the core rule has no autofix). Rename the rule in the ESLint config.",
+     "source": "curated",
+     "url": "https://eslint.style/rules/no-mixed-operators"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@stylistic/eslint-plugin",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.10.0",
+     "releaseDate": "2026-03-06",
+     "repoArchived": false,
+     "lastCommit": "2026-10-28",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-plugin-node",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "eslint-plugin-n",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The README says the project is no longer maintained and points to eslint-community/eslint-plugin-n, a fork that keeps the rules. Rename `node/` rules to `n/` in the ESLint config.",
+     "source": "curated",
+     "url": "https://github.com/eslint-community/eslint-plugin-n"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:eslint-plugin-n"
+   ],
+   "checks": [
+    {
+     "name": "eslint-plugin-n",
+     "kind": "package",
+     "alive": true,
+     "latest": "18.5.0",
+     "releaseDate": "2026-10-18",
+     "repoArchived": false,
+     "lastCommit": "2026-10-30",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "esm",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "ECMAScript modules in Node",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Node runs ES modules natively (`\"type\": \"module\"` or `.mjs`), and newer releases can `require()` them. Remove the `-r esm` flag and convert import specifiers to include file extensions.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/esm.html"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "ECMAScript modules in Node",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "express-pouchdb",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Part of pouchdb-server; no successor named. The repository had a commit in 2025-08, the release is from 2019.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "fast-deep-equal",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "util.isDeepStrictEqual",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "In Node, `util.isDeepStrictEqual(a, b)` does a strict deep comparison. It is not available in browsers, and it compares `NaN` and prototypes strictly, which differs from fast-deep-equal in edge cases.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/util.html#utilisdeepstrictequalval1-val2"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "util.isDeepStrictEqual",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "find-requires",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named; scanning `require()` calls is also done by bundler plugins.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "foreach-cli",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named and no drop-in found.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "grunt-compare-size",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Grunt plugin; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "grunt-contrib-watch",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Grunt plugin (last release 2018). The way out is leaving Grunt for npm scripts and a file watcher; no drop-in plugin named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "grunt-exec",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Grunt plugin; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "gulp-less",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Gulp plugin (last release 2021); no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "gzip-js",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "CompressionStream",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Browsers and Node 18+ compress with the Compression Streams API: `new CompressionStream(\"gzip\")`. It is stream based and asynchronous, where gzip-js returned arrays synchronously.",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/API/CompressionStream"
+    },
+    {
+     "name": "zlib.gzipSync",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "In Node only, `zlib.gzipSync(buffer)` keeps the synchronous call style.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/zlib.html#zlibgzipsyncbuffer-options"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "CompressionStream",
+     "kind": "native",
+     "urlStatus": 200
+    },
+    {
+     "name": "zlib.gzipSync",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "headr",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "identity-obj-proxy",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "raise",
+   "successors": [
+    {
+     "name": "identity-obj-proxy",
+     "ecosystem": "npm",
+     "kind": "raise",
+     "reason": "The package is one Proxy that returns each key as its own name, so the project can own it as a stub file mapped with Jest `moduleNameMapper` (about 10 lines): `new Proxy({}, { get: (_, key) => (key === \"__esModule\" ? false : key) })`.",
+     "source": "curated",
+     "url": "https://github.com/keyz/identity-obj-proxy/blob/master/src/index.js"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "identity-obj-proxy",
+     "kind": "raise",
+     "urlStatus": 200
+    }
+   ],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "is-git-clean",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Last release 2016; no successor named. It runs `git status --porcelain`, which a project can call directly.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ismobilejs",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "The repository had a commit 38 days before the check (commit feed) and the README documents a recent migration note; the last npm release is from 2020-04."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "isomorphic-fetch",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "fetch",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Node 18+ and all browsers have a global fetch, which is all this package polyfilled. Remove the import.",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/API/Fetch_API"
+    },
+    {
+     "name": "ofetch",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "If a convenience layer is wanted: a fetch wrapper with JSON handling and retries.",
+     "source": "curated",
+     "url": "https://github.com/unjs/ofetch"
+    }
+   ],
+   "mapping": {
+    "source": "e18e",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "native:fetch",
+    "package:ofetch",
+    "package:ky"
+   ],
+   "checks": [
+    {
+     "name": "fetch",
+     "kind": "native",
+     "urlStatus": 200
+    },
+    {
+     "name": "ofetch",
+     "kind": "package",
+     "alive": true,
+     "latest": "1.5.1",
+     "releaseDate": "2025-11-01",
+     "repoArchived": false,
+     "lastCommit": "2026-07-08",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "javascript-natural-sort",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "Intl.Collator",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Natural ordering is built in: `array.sort(new Intl.Collator(undefined, { numeric: true }).compare)` or `a.localeCompare(b, undefined, { numeric: true })`. Case and accent handling follow the locale.",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "Intl.Collator",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "js-reporters",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "QUnit includes this reporter interface natively since 2.2 (README); no separate successor is needed for QUnit users.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "jscs",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "eslint",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says JSCS merged with ESLint. Style rules become ESLint rules (and formatting rules move to a formatter such as Prettier); .jscsrc is rewritten as an ESLint config.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/jscs"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "eslint",
+     "kind": "package",
+     "alive": true,
+     "latest": "10.14.0",
+     "releaseDate": "2026-10-30",
+     "repoArchived": false,
+     "lastCommit": "2026-11-02",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "json-source-map",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "jsonml-to-react-element",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "jsonml.js",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "karma-cli",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@web/test-runner",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Karma is deprecated and its README names Web Test Runner and jasmine-browser-runner as direct alternatives, Jest and Vitest as Node-based ones. The karma command is replaced by `wtr`.",
+     "source": "curated",
+     "url": "https://github.com/karma-runner/karma#karma-is-deprecated-and-is-no-longer-maintained-or-accepting-new-features"
+    },
+    {
+     "name": "vitest",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Named in the Karma README as a Node-based alternative; with its browser mode it can run tests in a real browser.",
+     "source": "curated",
+     "url": "https://vitest.dev/"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@web/test-runner",
+     "kind": "package",
+     "alive": true,
+     "latest": "1.0.0",
+     "releaseDate": "2026-07-07",
+     "repoArchived": false,
+     "lastCommit": "2026-10-28",
+     "reasons": []
+    },
+    {
+     "name": "vitest",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.1.0",
+     "releaseDate": "2026-11-02",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "karma-webdriver-launcher",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "A Karma launcher for remote WebDriver browsers (archived 2026-04-19). Karma is deprecated; the way out is a runner with its own browser launcher (see karma-cli).",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "level-codec",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "level-transcoder",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message and README say level-codec was superseded by level-transcoder. It is the encoding layer of abstract-level; encodings are named strings (`utf8`, `json`) instead of codec objects.",
+     "source": "npm",
+     "url": "https://github.com/Level/community#faq"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:level-transcoder"
+   ],
+   "checks": [
+    {
+     "name": "level-transcoder",
+     "kind": "package",
+     "alive": true,
+     "latest": "1.0.1",
+     "releaseDate": "2021-11-26",
+     "repoArchived": false,
+     "lastCommit": "2026-02-11",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "level-write-stream",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Last release 2014; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "leveldown",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "classic-level",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says leveldown was superseded by classic-level: the same LevelDB binding as an abstract-level database. `level(location)` or `new ClassicLevel(location)` replaces `levelup(leveldown(location))`.",
+     "source": "npm",
+     "url": "https://github.com/Level/community#faq"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:classic-level"
+   ],
+   "checks": [
+    {
+     "name": "classic-level",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.0.0",
+     "releaseDate": "2025-04-20",
+     "repoArchived": false,
+     "lastCommit": "2026-02-01",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "levelup",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "abstract-level",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says levelup was superseded by abstract-level. Databases are classes with promise APIs (`await db.put(k, v)`) and their own iterators, instead of a levelup wrapper over a down-store.",
+     "source": "npm",
+     "url": "https://github.com/Level/community#faq"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:abstract-level"
+   ],
+   "checks": [
+    {
+     "name": "abstract-level",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.1.1",
+     "releaseDate": "2025-09-29",
+     "repoArchived": false,
+     "lastCommit": "2026-01-02",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "load-json-file",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "fs.readFile + JSON.parse",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Reading JSON takes one line with Node built-ins: `JSON.parse(await fs.readFile(path, \"utf8\"))`. Error messages with the file name are lost.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/fs.html#fspromisesreadfilepath-options"
+    }
+   ],
+   "mapping": {
+    "source": "e18e",
+    "confidence": "medium"
+   },
+   "engineHad": [
+    "raise:json-file"
+   ],
+   "checks": [
+    {
+     "name": "fs.readFile + JSON.parse",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ],
+   "notDeadAfterAll": "The repository had a commit 46 days before the check (commit feed); the 7.0.1 release is from 2021-09."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "localstorage-down",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "browser-level",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The abstract-level family has a browser database (IndexedDB) in place of localStorage-backed leveldown. The store changes from localStorage to IndexedDB and the API becomes the abstract-level API.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/browser-level"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "browser-level",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.0.0",
+     "releaseDate": "2025-04-20",
+     "repoArchived": false,
+     "lastCommit": "2026-05-02",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "lodash-doc-globals",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Documentation helper for Lodash, no successor needed outside Lodash docs.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ltgt",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Small range helper for the Level family; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "markdown-doctest",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "material-colors",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Colour constants; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "median",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "raise",
+   "successors": [
+    {
+     "name": "median",
+     "ecosystem": "npm",
+     "kind": "raise",
+     "reason": "Computing a median is a few lines the project can own: sort a copy of the array and take the middle value (the mean of the two middle values for an even count).",
+     "source": "curated"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "median",
+     "kind": "raise",
+     "urlStatus": "no-url"
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "memdown",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "memory-level",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says memdown was superseded by memory-level, an in-memory abstract-level database. `new MemoryLevel()` replaces `memdown()`.",
+     "source": "npm",
+     "url": "https://github.com/Level/community#faq"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:memory-level"
+   ],
+   "checks": [
+    {
+     "name": "memory-level",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.1.0",
+     "releaseDate": "2025-04-20",
+     "repoArchived": false,
+     "lastCommit": "2026-05-02",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "mocha-lcov-reporter",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "c8",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Produces LCOV from V8 coverage for any test command: `c8 --reporter=lcov mocha`. Coverage is collected by c8, not by a Mocha reporter, so the reporter option is removed.",
+     "source": "curated",
+     "url": "https://github.com/bcoe/c8"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "c8",
+     "kind": "package",
+     "alive": true,
+     "latest": "12.0.0",
+     "releaseDate": "2026-07-14",
+     "repoArchived": false,
+     "lastCommit": "2026-07-14",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "mockdate",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "node:test mock timers",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "The Node test runner can set a fake clock: `mock.timers.enable({ apis: [\"Date\"] })` and `mock.timers.setTime(ms)` replace `MockDate.set(ms)`.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/test.html#class-mocktimers"
+    },
+    {
+     "name": "vitest",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "With Vitest, `vi.useFakeTimers()` and `vi.setSystemTime(date)` replace `MockDate.set(date)`.",
+     "source": "curated",
+     "url": "https://vitest.dev/api/vi.html#vi-setsystemtime"
+    }
+   ],
+   "mapping": {
+    "source": "e18e",
+    "confidence": "medium"
+   },
+   "engineHad": [
+    "native:node:test",
+    "package:vitest",
+    "native:bun:test"
+   ],
+   "checks": [
+    {
+     "name": "node:test mock timers",
+     "kind": "native",
+     "urlStatus": 200
+    },
+    {
+     "name": "vitest",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.1.0",
+     "releaseDate": "2026-11-02",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "mustache",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No deprecation or successor; release 4.2.0 (2021-03) is the latest and the repository had its last commit in 2023-01. Likely finished.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ncp",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "fs.cp",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Node 16.7+ copies directories recursively with `fs.cp(src, dest, { recursive: true })` and a promise form `fs.promises.cp`. The callback becomes a promise; `filter` replaces ncp's filter option.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/fs.html#fspromisescpsrc-dest-options"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "fs.cp",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ndarray-determinant",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "scijs package, last release 2014; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ndarray-gemm",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "scijs package, last release 2016; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ndarray-ops",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "scijs package; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ndarray-pack",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "scijs package; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "node-loader",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "webpack",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The README says node-loader is deprecated in favour of the nodejs-addons example in webpack itself, which loads .node addons with a built-in asset rule. The loader entry in the webpack config is replaced by that rule.",
+     "source": "curated",
+     "url": "https://github.com/webpack/webpack/tree/main/examples/nodejs-addons"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "webpack",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.112.2",
+     "releaseDate": "2026-10-23",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "npm-run-all",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "npm-run-all2",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "A maintained fork with the same commands (`run-s`, `run-p`, `npm-run-all`); change the package name only.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/npm-run-all2"
+    },
+    {
+     "name": "concurrently",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Runs commands in parallel with prefixed output; `concurrently \"a\" \"b\"` replaces `run-p a b`.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/concurrently"
+    },
+    {
+     "name": "wireit",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Adds dependency graphs and caching to npm scripts; a bigger change, defined in package.json.",
+     "source": "curated",
+     "url": "https://github.com/google/wireit"
+    }
+   ],
+   "mapping": {
+    "source": "e18e",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:npm-run-all2",
+    "package:concurrently",
+    "package:wireit"
+   ],
+   "checks": [
+    {
+     "name": "npm-run-all2",
+     "kind": "package",
+     "alive": true,
+     "latest": "9.0.4",
+     "releaseDate": "2026-10-21",
+     "repoArchived": false,
+     "lastCommit": "2026-11-02",
+     "reasons": []
+    },
+    {
+     "name": "concurrently",
+     "kind": "package",
+     "alive": true,
+     "latest": "10.0.6",
+     "releaseDate": "2026-10-08",
+     "repoArchived": false,
+     "lastCommit": "2026-10-25",
+     "reasons": []
+    },
+    {
+     "name": "wireit",
+     "kind": "package",
+     "alive": true,
+     "latest": "0.15.0",
+     "releaseDate": "2026-10-24",
+     "repoArchived": false,
+     "lastCommit": "2026-10-24",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "numericjs",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Numerical library, last release 2016; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "optional-dev-dependency",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The registry says \"Package no longer supported\" (Contact Support), which usually means a security hold. No replacement named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "orderedmap",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The GitHub repository was archived because the project moved to another Git host; the package continues.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README: \"This repository has moved to code.haverbeke.berlin/marijn/orderedmap\"."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "platform",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "bowser",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Maintained user agent parser: `Bowser.parse(navigator.userAgent)` returns browser, OS and platform objects with other field names than platform.js's `platform.name`, `platform.os`.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/bowser"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "bowser",
+     "kind": "package",
+     "alive": true,
+     "latest": "2.15.0",
+     "releaseDate": "2026-10-26",
+     "repoArchived": false,
+     "lastCommit": "2026-10-27",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "pluralize",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No deprecation or successor. The repository moved to the `plurals` organisation and the last commit was in 2023-12.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "postcss-flexbugs-fixes",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Archived 2026-01-06. It patches flexbox bugs of old browsers (mainly IE 10/11); if you no longer support them, remove the plugin.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "pouchdb-express-router",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "PouchDB project package; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prettier-standard",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "progress",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The usual replacement, cli-progress, failed the aliveness check (no commit since 2023-03), so it is not offered. No other drop-in found.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prop-types",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No package replaces it. React 19 removed propTypes checks for function components (React 19 upgrade guide); the way out is static types (TypeScript) or deleting the checks. See https://react.dev/blog/2024/04/25/react-19-upgrade-guide (\"Removed: propTypes and defaultProps for functions\").",
+   "mapping": {
+    "source": "migration-guide",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-example-setup",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The GitHub repository was archived because the project moved to another Git host; the package continues.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README: \"This repository has moved to code.haverbeke.berlin/prosemirror/prosemirror-example-setup\"."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-inputrules",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The GitHub repository was archived because the project moved to another Git host; the package continues.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README: \"This repository has moved to code.haverbeke.berlin/prosemirror/prosemirror-inputrules\"; release 1.5.1 on 2025-10-15."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-state",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "The GitHub repository was archived because the project moved to another Git host; the package continues.",
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [],
+   "notDeadAfterAll": "README: \"This repository has moved to code.haverbeke.berlin/prosemirror/prosemirror-state\"; release 1.4.4 on 2025-10-23."
+  },
+  {
+   "ecosystem": "npm",
+   "name": "qunit-extras",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "qunitjs",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "qunit",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says qunitjs stopped at 2.4.1 and later versions are published as `qunit`. Change the dependency name; test code is unchanged.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/qunitjs"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "qunit",
+     "kind": "package",
+     "alive": true,
+     "latest": "3.0.0",
+     "releaseDate": "2026-09-27",
+     "repoArchived": false,
+     "lastCommit": "2026-09-29",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "raw-loader",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "webpack",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The README says to migrate to webpack 5 asset modules: a rule with `type: \"asset/source\"` returns the file content as a string, and the loader is removed.",
+     "source": "curated",
+     "url": "https://webpack.js.org/guides/asset-modules/"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "webpack",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.112.2",
+     "releaseDate": "2026-10-23",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "react-color",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "react-colorful",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Small, maintained React color picker. Components are `HexColorPicker` and friends with `color` and `onChange`; the Sketch/Chrome/Photoshop styles of react-color are not included.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/react-colorful"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "react-colorful",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.8.1",
+     "releaseDate": "2026-09-01",
+     "repoArchived": false,
+     "lastCommit": "2026-09-01",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-html",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Last release 2016; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-jscc",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-node-resolve",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@rollup/plugin-node-resolve",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message and README say the plugin moved to the @rollup/plugins repository. Change the import and package name; options are mostly the same (`mainFields`, not the old `jsnext`).",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/rollup-plugin-node-resolve"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "package:@rollup/plugin-node-resolve"
+   ],
+   "checks": [
+    {
+     "name": "@rollup/plugin-node-resolve",
+     "kind": "package",
+     "alive": true,
+     "latest": "16.0.3",
+     "releaseDate": "2025-10-13",
+     "repoArchived": false,
+     "lastCommit": "2026-10-21",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-replace",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@rollup/plugin-replace",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says the plugin moved to @rollup/plugin-replace. Change the import; `preventAssignment: true` is advised in the new plugin.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/rollup-plugin-replace"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@rollup/plugin-replace",
+     "kind": "package",
+     "alive": true,
+     "latest": "6.0.3",
+     "releaseDate": "2025-10-29",
+     "repoArchived": false,
+     "lastCommit": "2026-10-21",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-sourcemaps",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "rollup-plugin-sourcemaps2",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Maintained package published with the same description (grabs source maps from sourceMappingURLs). Change the package name in the imports and check the options.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/rollup-plugin-sourcemaps2"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "rollup-plugin-sourcemaps2",
+     "kind": "package",
+     "alive": true,
+     "latest": "0.5.10",
+     "releaseDate": "2026-10-19",
+     "repoArchived": false,
+     "lastCommit": "2026-11-02",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-string",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "run-script-os",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "sauce-tunnel",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Wrapper of an old Sauce Labs tunnel; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "should",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "chai",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Chai has a `should` interface (`chai.should()`) with a very similar chained syntax, and a maintained codebase; matchers are renamed in places.",
+     "source": "curated",
+     "url": "https://www.chaijs.com/guide/styles/#should"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "chai",
+     "kind": "package",
+     "alive": true,
+     "latest": "6.3.0",
+     "releaseDate": "2026-09-30",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "spark-md5",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Browser MD5 has no built-in (Web Crypto has no MD5). hash-wasm, the usual replacement, failed the aliveness check (no commit for 714 days), so it is not offered. If the hash is not required to be MD5, crypto.subtle.digest(\"SHA-256\") is built in.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "spinnies",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Multi-spinner CLI helper; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "stream-to-promise",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "node:stream/promises",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "The registry message and README point to node:stream/promises and node:stream/consumers (Node 16+). `await buffer(stream)` or `await text(stream)` replaces `streamToPromise(stream)`, and `await finished(stream)` replaces it for writables.",
+     "source": "npm",
+     "url": "https://nodejs.org/api/stream.html#streams-promises-api"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "node:stream/promises",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "style-loader",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "webpack",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The README says style-loader is deprecated because webpack now injects CSS itself; it links a native CSS guide and a migration guide. The loader chain changes to webpack's built-in CSS handling.",
+     "source": "curated",
+     "url": "https://webpack.js.org/guides/native-css/"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "webpack",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.112.2",
+     "releaseDate": "2026-10-23",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "sylvester",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Matrix library, last release 2012; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "throw-max-listeners-error",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "Last release 2015; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "tiny-emitter",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "EventTarget",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Node 15+ and browsers have `EventTarget` and `CustomEvent`: `target.addEventListener(name, fn)` and `target.dispatchEvent(new CustomEvent(name, { detail }))` replace `on` and `emit` (data moves to `event.detail`).",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/API/EventTarget"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "EventTarget",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "tree-kill",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named and no deprecation; the package is small and its job (kill a process tree) has no built-in. Likely finished.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  },
+  {
+   "ecosystem": "npm",
+   "name": "uuidv4",
+   "census": {
+    "verdict": "ghost",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-gone",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "crypto.randomUUID",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "A v4 UUID is built in to Node 14.17+ and every browser: `crypto.randomUUID()` replaces `uuid()`.",
+     "source": "curated",
+     "url": "https://developer.mozilla.org/docs/Web/API/Crypto/randomUUID"
+    },
+    {
+     "name": "uuid",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The `uuid` package covers every UUID version if more than v4 is needed; `v4()` replaces `uuid()`.",
+     "source": "curated",
+     "url": "https://www.npmjs.com/package/uuid"
+    }
+   ],
+   "mapping": {
+    "source": "e18e",
+    "confidence": "high"
+   },
+   "engineHad": [
+    "native:crypto.randomUUID"
+   ],
+   "checks": [
+    {
+     "name": "crypto.randomUUID",
+     "kind": "native",
+     "urlStatus": 200
+    },
+    {
+     "name": "uuid",
+     "kind": "package",
+     "alive": true,
+     "latest": "14.0.3",
+     "releaseDate": "2026-10-10",
+     "repoArchived": false,
+     "lastCommit": "2026-11-01",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "vitest-github-actions-reporter",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "vitest",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "Vitest has a built-in `github-actions` reporter (listed in its reporters guide), so the extra reporter can be removed: `reporters: [\"default\", \"github-actions\"]`.",
+     "source": "curated",
+     "url": "https://vitest.dev/guide/reporters.html"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "vitest",
+     "kind": "package",
+     "alive": true,
+     "latest": "5.1.0",
+     "releaseDate": "2026-11-02",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "vue-toastification",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named. Vue 3 users are told to take the 2.x line, which exists only as release candidates (2.0.0-rc.5, 2021-10) and a dev build (2022-01); the repository has had no commit since 2022-02.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "medium"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "vuvuzela",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "main"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named; native JSON works except for very deep nesting.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "wdio-geckodriver-service",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "repo-archived",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "webdriverio",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The README says to remove the service and its entry in the WebdriverIO config when using WebdriverIO 8.14 or newer: the runner now manages geckodriver itself. Nothing replaces it in code.",
+     "source": "curated",
+     "url": "https://webdriver.io/blog/2023/07/31/driver-management"
+    }
+   ],
+   "mapping": {
+    "source": "readme-notice",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "webdriverio",
+     "kind": "package",
+     "alive": true,
+     "latest": "10.1.0",
+     "releaseDate": "2026-10-18",
+     "repoArchived": false,
+     "lastCommit": "2026-11-03",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "xterm-addon-web-links",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "npm-deprecated",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "successor",
+   "successors": [
+    {
+     "name": "@xterm/addon-web-links",
+     "ecosystem": "npm",
+     "kind": "package",
+     "reason": "The registry message says to move to @xterm/addon-web-links (xterm.js moved to the @xterm scope together with @xterm/xterm). Change the import; the `WebLinksAddon` API is unchanged.",
+     "source": "npm",
+     "url": "https://www.npmjs.com/package/xterm-addon-web-links"
+    }
+   ],
+   "mapping": {
+    "source": "deprecation-message",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "@xterm/addon-web-links",
+     "kind": "package",
+     "alive": true,
+     "latest": "0.12.0",
+     "releaseDate": "2025-12-22",
+     "repoArchived": false,
+     "lastCommit": "2026-10-29",
+     "reasons": []
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "yalc",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "No successor named. `npm link` and workspaces cover similar needs differently.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "yoctodelay",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "native",
+   "successors": [
+    {
+     "name": "timers/promises.setTimeout",
+     "ecosystem": "npm",
+     "kind": "native",
+     "reason": "Node 15+ has a promise `setTimeout` in node:timers/promises: `await setTimeout(ms)`. In a browser, `new Promise((r) => setTimeout(r, ms))` is the same in one line.",
+     "source": "curated",
+     "url": "https://nodejs.org/api/timers.html#timerspromisessettimeoutdelay-value-options"
+    }
+   ],
+   "mapping": {
+    "source": "successor-docs",
+    "confidence": "high"
+   },
+   "engineHad": [],
+   "checks": [
+    {
+     "name": "timers/promises.setTimeout",
+     "kind": "native",
+     "urlStatus": 200
+    }
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "zeros",
+   "census": {
+    "verdict": "dead",
+    "subjects": 1,
+    "instances": 1,
+    "decisiveEvidence": "abandoned",
+    "scopes": [
+     "dev"
+    ]
+   },
+   "outcome": "none",
+   "successors": [],
+   "noneReason": "scijs package, last release 2015; no successor named.",
+   "mapping": {
+    "source": "none-found",
+    "confidence": "low"
+   },
+   "engineHad": [],
+   "checks": [],
+   "finishedRisk": true
+  }
+ ]
+}

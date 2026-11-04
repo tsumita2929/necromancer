@@ -1,0 +1,3318 @@
+{
+ "description": "Distinct dead-or-worse direct dependencies of the 100 census subjects (package names and counts only). Source: per-subject census results kept in the scratch space; counts match docs/research/census-aggregate.json (198 dependencies, 175 distinct packages).",
+ "engineCommitOfCensus": "bfd86f123979079931c42ac6ffa4b3bcead17bd7",
+ "packages": [
+  {
+   "ecosystem": "pypi",
+   "name": "pydub",
+   "verdict": "dead",
+   "subjects": 4,
+   "instances": 4,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "defusedxml",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "main",
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "ldap3",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 3,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "mkdocs-material",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "pypi-inactive",
+   "codes": [
+    "pypi-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pysocks",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "cross-env",
+   "verdict": "dead",
+   "subjects": 6,
+   "instances": 6,
+   "scopes": [
+    "dev",
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@babel/plugin-proposal-class-properties",
+   "verdict": "dead",
+   "subjects": 3,
+   "instances": 3,
+   "scopes": [
+    "dev",
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-release"
+   ],
+   "engineSuccessors": [
+    "package:@babel/plugin-transform-class-properties"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/lang-python",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev",
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/bcryptjs",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "codemirror",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev",
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "istanbul",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [
+    "package:c8",
+    "package:nyc"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "karma-mocha",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "karma-mocha-reporter",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "process",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev",
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "seedrandom",
+   "verdict": "dead",
+   "subjects": 2,
+   "instances": 2,
+   "scopes": [
+    "dev",
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ecstatic",
+   "verdict": "zombie",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive",
+    "osv-advisory"
+   ],
+   "engineSuccessors": [],
+   "advisories": [
+    "GHSA-jc84-3g44-wf2q"
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "expr-eval",
+   "verdict": "zombie",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive",
+    "osv-advisory"
+   ],
+   "engineSuccessors": [],
+   "advisories": [
+    "GHSA-8gw3-rxh4-v6jx",
+    "GHSA-jc85-fpwf-qm7x",
+    "GHSA-q9v2-7m5w-4693"
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "extract-zip",
+   "verdict": "zombie",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive",
+    "osv-advisory"
+   ],
+   "engineSuccessors": [],
+   "advisories": [
+    "GHSA-7pqw-9j4j-h8q3",
+    "GHSA-jmr9-qjv8-65gv"
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "name": "request",
+   "verdict": "zombie",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive",
+    "osv-advisory"
+   ],
+   "engineSuccessors": [
+    "native:fetch",
+    "package:undici",
+    "package:ofetch",
+    "package:ky"
+   ],
+   "advisories": [
+    "GHSA-p8p7-x288-28g6"
+   ]
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "asynctest",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "attrdict",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "pypi-inactive",
+   "codes": [
+    "pypi-inactive",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "attrdict3",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "codecov",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "darglint",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "g2p-en",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "gntp",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "optional"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "jieba",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "lxml-stubs",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "mutatormath",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "nest-asyncio",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "ntplib",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pydotplus",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pyserial",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pytest-dotenv",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pytest-subtests",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "python-terraform",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "recommonmark",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "reverse-geocoder",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "seqeval",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "soynlp",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "sphinx-multiversion",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "tangled-up-in-unicode",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "optional"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "testing-postgresql",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "user-agents",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@babel/plugin-proposal-object-rest-spread",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-release"
+   ],
+   "engineSuccessors": [
+    "native:spread_syntax",
+    "package:@babel/plugin-transform-object-rest-spread"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@babel/plugin-proposal-optional-chaining",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-release"
+   ],
+   "engineSuccessors": [
+    "package:@babel/plugin-transform-optional-chaining"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/lang-json",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/rangeset",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/theme-one-dark",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@louislam/sqlite3",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@mdi/light-js",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@opentelemetry/sdk-trace-base",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated"
+   ],
+   "engineSuccessors": [
+    "package:@opentelemetry/sdk-trace"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@opentelemetry/sdk-trace-node",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated"
+   ],
+   "engineSuccessors": [
+    "package:@opentelemetry/sdk-trace"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@swan-io/boxed",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/adm-zip",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/commander",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-release",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/earcut",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/glob",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/inquirer",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/pixelmatch",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@types/rimraf",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-release",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@wojtekmaj/enzyme-adapter-react-17",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "add-cors-to-couchdb",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "benchmark",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "browserify-incremental",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "chai-enzyme",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "circular-dependency-plugin",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "codecov",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "codecov.io",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "command-exists",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "copyfiles",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "coveralls",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "curl-amd",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "cz-conventional-changelog",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "d3-queue",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "dekko",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "denodeify",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "detect-port-alt",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "diff-match-patch",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "docdown",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "double-ended-queue",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "enzyme",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-config-airbnb-typescript",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-plugin-babel",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-plugin-markdown",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-release"
+   ],
+   "engineSuccessors": [
+    "package:@eslint/markdown"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-plugin-no-mixed-operators",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "eslint-plugin-node",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [
+    "package:eslint-plugin-n"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "esm",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "express-pouchdb",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "fast-deep-equal",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "find-requires",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "foreach-cli",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "grunt-compare-size",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "grunt-contrib-watch",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "grunt-exec",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "gulp-less",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "gzip-js",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "headr",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "identity-obj-proxy",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "is-git-clean",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ismobilejs",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "isomorphic-fetch",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [
+    "native:fetch",
+    "package:ofetch",
+    "package:ky"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "javascript-natural-sort",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "js-reporters",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "jscs",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "json-source-map",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "jsonml-to-react-element",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "jsonml.js",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "karma-cli",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "karma-webdriver-launcher",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "level-codec",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [
+    "package:level-transcoder"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "level-write-stream",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "leveldown",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [
+    "package:classic-level"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "levelup",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [
+    "package:abstract-level"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "load-json-file",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [
+    "raise:json-file"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "localstorage-down",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "lodash-doc-globals",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ltgt",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "markdown-doctest",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "material-colors",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "median",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "memdown",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [
+    "package:memory-level"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "mocha-lcov-reporter",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "mockdate",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [
+    "native:node:test",
+    "package:vitest",
+    "native:bun:test"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "mustache",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ncp",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ndarray-determinant",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ndarray-gemm",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ndarray-ops",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ndarray-pack",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "node-loader",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "npm-run-all",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [
+    "package:npm-run-all2",
+    "package:concurrently",
+    "package:wireit"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "numericjs",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "optional-dev-dependency",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "orderedmap",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "platform",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "pluralize",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "postcss-flexbugs-fixes",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "pouchdb-express-router",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prettier-standard",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "version-deprecated",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "progress",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prop-types",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-example-setup",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-inputrules",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-state",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "qunit-extras",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "qunitjs",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-release-long"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "raw-loader",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "react-color",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-html",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-jscc",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-node-resolve",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [
+    "package:@rollup/plugin-node-resolve"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-replace",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-sourcemaps",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "rollup-plugin-string",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "run-script-os",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "sauce-tunnel",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "should",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "spark-md5",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "spinnies",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "stream-to-promise",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "style-loader",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "sylvester",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "no-repository"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "throw-max-listeners-error",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "tiny-emitter",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "tree-kill",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "uuidv4",
+   "verdict": "ghost",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "repo-gone",
+   "codes": [
+    "repo-gone",
+    "npm-deprecated",
+    "no-release"
+   ],
+   "engineSuccessors": [
+    "native:crypto.randomUUID"
+   ],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "vitest-github-actions-reporter",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "vue-toastification",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "vuvuzela",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "main"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "wdio-geckodriver-service",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "repo-archived",
+   "codes": [
+    "repo-archived",
+    "no-release"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "xterm-addon-web-links",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "npm-deprecated",
+   "codes": [
+    "npm-deprecated",
+    "no-release"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "yalc",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "yoctodelay",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "name": "zeros",
+   "verdict": "dead",
+   "subjects": 1,
+   "instances": 1,
+   "scopes": [
+    "dev"
+   ],
+   "decisive": "abandoned",
+   "codes": [
+    "abandoned",
+    "no-release-long",
+    "low-maintenance",
+    "repo-inactive"
+   ],
+   "engineSuccessors": [],
+   "advisories": []
+  }
+ ]
+}
