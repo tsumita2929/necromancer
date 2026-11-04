@@ -41,7 +41,7 @@ Try it, no login: https://tsumita2929.github.io/necromancer/
 Code: https://github.com/tsumita2929/necromancer
 ```
 
-<!-- claim:Q01 --><!-- claim:S01 -->
+Facts in the long version: 33 of 100 projects (95% CI 24.6% to 42.7%) <!-- claim:Q01 -->, and the left-pad bug <!-- claim:S01 -->.
 
 ## Candidate ideas for the two sentences (from what the build showed)
 

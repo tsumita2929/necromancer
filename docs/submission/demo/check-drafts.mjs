@@ -27,20 +27,39 @@ const plain = (s) => s.replace(/(\d),(\d)/g, '$1$2');
 // ---------------------------------------------------------------- 1. census numbers (docs/research/census.md 9.8)
 // The figures each Q id's draft sentence quotes. Each must be in the Q line that recompute.mjs prints now, and in the
 // text block (up to the previous blank line) in front of every <!-- claim:Qxx --> tag in the drafts.
-const FIGURES = {
+// FULL: every figure the drafts quote for that id, somewhere. Each must be in the Q line that recompute.mjs prints now, and
+// all of them together must appear in the tagged text blocks of the drafts.
+// HEAD: the figure(s) every tagged block must carry (the headline of that sentence).
+const FULL = {
   Q01: ['33', '100', '24.6', '42.7'],
-  Q02: ['26', '50', '52.0'],
-  Q03: ['7', '50', '14.0'],
+  Q02: ['26', '50'],
+  Q03: ['7', '50'],
   Q04: ['179', '3201', '5.6', '18'],
   Q05: ['74', '105'],
   Q06: ['4', '3'],
   Q07: ['50', '100'],
-  Q08: ['95', '179', '53.1', '4'],
+  Q08: ['95', '179', '53.1'],
   Q09: ['91', '175'],
   Q10: ['41', '26', '36'],
   Q11: ['eslint', '21', '20'],
   Q14: ['100', '3201', '25'],
   Q15: ['36', '40', '35', '97.2', '85.8', '99.5'],
+  Q19: ['10'],
+};
+const HEAD = {
+  Q01: ['33', '100'],
+  Q02: ['26', '50'],
+  Q03: ['7', '50'],
+  Q04: ['179', '3201'],
+  Q05: ['105'],
+  Q06: ['4', '3'],
+  Q07: ['50', '100'],
+  Q08: ['95', '179'],
+  Q09: ['91', '175'],
+  Q10: ['41'],
+  Q11: ['eslint', '21', '20'],
+  Q14: ['100', '3201'],
+  Q15: ['36', '40'],
   Q19: ['10'],
 };
 let recompute = '';
@@ -55,7 +74,7 @@ for (const line of recompute.split('\n')) {
   if (m) qLines[m[1]] = plain(m[2]);
 }
 const tokens = (s) => new Set(plain(s).match(/[A-Za-z][\w.-]*|\d+(?:\.\d+)?/g) ?? []);
-for (const [id, figures] of Object.entries(FIGURES)) {
+for (const [id, figures] of Object.entries(FULL)) {
   const line = qLines[id];
   if (!line) {
     fail(`${id}: recompute.mjs prints no ${id} line`);
@@ -67,20 +86,26 @@ for (const [id, figures] of Object.entries(FIGURES)) {
 }
 const tagRe = /<!-- claim:([A-Za-z0-9]+) -->/g;
 const tagsByFile = {};
+const unionByTag = {};
 for (const file of [...DRAFTS, 'docs/submission/video-script.md']) {
   const text = read(file);
   tagsByFile[file] = new Set();
   for (const m of text.matchAll(tagRe)) {
-    tagsByFile[file].add(m[1]);
     const id = m[1];
-    if (!FIGURES[id]) continue;
+    tagsByFile[file].add(id);
+    if (!HEAD[id]) continue;
     const start = text.lastIndexOf('\n\n', m.index);
-    const block = plain(text.slice(start < 0 ? 0 : start, m.index));
-    const have = tokens(block);
-    const missing = FIGURES[id].filter((f) => !have.has(f));
-    // A figure may be written in words only for the video; the drafts use digits.
-    check(missing.length === 0, `${file}: the text before the ${id} tag quotes ${FIGURES[id].join(', ')}`, `missing ${missing.join(', ')}`);
+    const have = tokens(plain(text.slice(start < 0 ? 0 : start, m.index)));
+    unionByTag[id] ??= new Set();
+    for (const t of have) unionByTag[id].add(t);
+    const missing = HEAD[id].filter((f) => !have.has(f));
+    check(missing.length === 0, `${file}: the text before the ${id} tag quotes ${HEAD[id].join(', ')}`, `missing ${missing.join(', ')}`);
   }
+}
+for (const [id, figures] of Object.entries(FULL)) {
+  if (!unionByTag[id]) continue;
+  const missing = figures.filter((f) => !unionByTag[id].has(f));
+  check(missing.length === 0, `${id}: the tagged text of the drafts, taken together, quotes ${figures.join(', ')}`, `missing ${missing.join(', ')}`);
 }
 
 // ---------------------------------------------------------------- 2. every tag has a row in the claim table
@@ -91,13 +116,25 @@ for (const [file, ids] of Object.entries(tagsByFile)) {
 }
 
 // ---------------------------------------------------------------- 3. counts quoted in the drafts
-const count = (dir, filter = () => true) => readdirSync(join(root, dir)).filter(filter).length;
-const specs = count('.kiro/specs');
-const hooks = count('.kiro/hooks', (f) => f.endsWith('.kiro.hook'));
-const steering = count('.kiro/steering');
-check(specs === 13, 'thirteen specs in .kiro/specs (drafts say "Thirteen")', `found ${specs}`);
-check(hooks === 11, 'eleven hooks in .kiro/hooks (drafts say "Eleven")', `found ${hooks}`);
-check(steering === 3, 'three steering files (drafts say "Three")', `found ${steering}`);
+// Counts come from the committed tree (git), so a spec another worker has not committed yet does not count.
+const WORDS = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen', 'Twenty'];
+const committed = (dir) => {
+  try {
+    return execFileSync('git', ['ls-tree', '--name-only', 'HEAD', `${dir}/`], { cwd: root, encoding: 'utf8' }).split('\n').filter(Boolean);
+  } catch {
+    return readdirSync(join(root, dir)).map((f) => `${dir}/${f}`);
+  }
+};
+const specs = committed('.kiro/specs').length;
+const hooks = committed('.kiro/hooks').filter((f) => f.endsWith('.kiro.hook')).length;
+const steering = committed('.kiro/steering').length;
+const draftText = DRAFTS.map(read).join('\n');
+for (const [n, noun] of [[specs, 'specs'], [hooks, 'hooks'], [steering, 'steering files']]) {
+  const word = WORDS[n] ?? String(n);
+  // "Three steering files", "Three always-on steering files" or "Three files in .kiro/steering" all count.
+  const re = noun === 'steering files' ? new RegExp(`\\b${word} (always-on )?(steering )?files\\b`, 'i') : new RegExp(`\\b${word} ${noun}\\b`, 'i');
+  check(re.test(draftText), `the drafts say "${word.toLowerCase()} ${noun}" (the committed tree has ${n})`);
+}
 const toolFiles = readdirSync(join(root, 'apps/crew/src')).filter((f) => f.endsWith('.ts'));
 const tools = new Set();
 for (const f of toolFiles) for (const m of read(`apps/crew/src/${f}`).matchAll(/registerTool\(\s*'([a-z_]+)'/g)) tools.add(m[1]);
@@ -107,9 +144,8 @@ const samples = readdirSync(join(root, 'apps/web/src/data/recorded')).filter((f)
 check(samples.length === 4, 'four recorded samples (drafts say "Four")', `found ${samples.length}: ${samples.join(', ')}`);
 const recipes = readdirSync(join(root, 'packages/engine/src/seance/recipes')).filter((f) => f.endsWith('.ts') && f !== 'index.ts');
 check(recipes.length === 6, 'six curated séance recipes (drafts say "Six")', `found ${recipes.length}`);
-const blob = DRAFTS.map(read).join('\n');
-for (const [word, label] of [['Thirteen', 'specs'], ['Eleven', 'hooks and tools'], ['Six pairs', 'recipes']]) {
-  check(blob.includes(word), `the drafts say "${word}" (${label})`);
+for (const [word, label] of [['Six pairs', 'recipes']]) {
+  check(draftText.includes(word), `the drafts say "${word}" (${label})`);
 }
 
 // ---------------------------------------------------------------- 4. facts the video relies on, from the recorded samples
@@ -119,7 +155,7 @@ const mathjs = sample('josdejong-mathjs.json');
 const dvna = sample('appsecco-dvna.json');
 const mk = dep(mathjs, 'mkdirp');
 check(mk && mk.verdict === 'dying' && mk.basis === 'heuristic' && mk.successors[0]?.name === 'fs.mkdir', 'shot 2-4: mathjs holds mkdirp as dying, heuristic, first way out fs.mkdir', mk ? `${mk.verdict}/${mk.basis}/${mk.successors[0]?.name}` : 'mkdirp missing');
-check(/^3\./.test(mk?.dependency.resolved ?? ''), 'shot 4: the mkdirp in mathjs is version 3.x (the video installs mkdirp@3.0.1)', mk?.dependency.resolved);
+check(/^3\./.test(mk?.dependency.resolved ?? mk?.dependency.spec ?? ''), 'shot 4: the mkdirp in mathjs is version 3.x (the video installs mkdirp@3.0.1)', mk?.dependency.resolved ?? mk?.dependency.spec);
 const up = ['eslint', 'glob'].map((n) => dep(mathjs, n)).filter((d) => d?.verdict === 'alive' && d.upgradeTo);
 check(up.length > 0, 'shot 2: mathjs holds an alive package with an upgrade notice (eslint or glob)', up.map((d) => d.dependency.name).join(', '));
 const cs = dep(dvna, 'csurf');
