@@ -523,7 +523,7 @@ function LeftOutNotice({ coverage }: { coverage: Coverage }) {
   const lines = leftOutLines(coverage);
   const shown = coverage.entries.slice(0, 100);
   return (
-    <Callout kind="warning" title={`${coverage.notRead.toLocaleString('en')} ${coverage.notRead === 1 ? 'dependency was' : 'dependencies were'} not read`} role="status">
+    <Callout kind={coverage.notRead * 10 > coverage.read ? 'warning' : 'info'} title={`${coverage.notRead.toLocaleString('en')} ${coverage.notRead === 1 ? 'dependency was' : 'dependencies were'} not read`} role="status">
       <div data-testid="left-out">
         {lines.map((line, index) => (
           <p key={`${line.kind}-${index}`}>
