@@ -1,0 +1,1488 @@
+{
+ "schema": 1,
+ "checkDate": "2026-11-04",
+ "engine": "32cc48dc07565a78af1767e6d4c79128b8ffb038",
+ "criteria": "docs/research/census-recall-criteria.md",
+ "seedText": "necromancer-recall-r4d-2026-11",
+ "population": {
+  "aliveUnits": 2663,
+  "byCell": {
+   "A|pypi": 1138,
+   "A|npm": 1254,
+   "B|npm": 171,
+   "B|pypi": 100
+  },
+  "quota": {
+   "A|npm": 15,
+   "A|pypi": 15,
+   "B|npm": 10,
+   "B|pypi": 10
+  },
+  "seedText": "necromancer-recall-r4d-2026-11"
+ },
+ "strata": {
+  "A": {
+   "units": 30,
+   "distinctPackages": 29,
+   "byEcosystem": {
+    "npm": 15,
+    "pypi": 15
+   },
+   "notCheckable": 0,
+   "checked": 30,
+   "reallyDead": 0,
+   "reallyDying": 0,
+   "borderline": 0,
+   "misses": 0,
+   "missCI": {
+    "p": 0,
+    "lo": 0,
+    "hi": 0.113517091390478
+   },
+   "population": 2392
+  },
+  "B": {
+   "units": 20,
+   "distinctPackages": 16,
+   "byEcosystem": {
+    "npm": 10,
+    "pypi": 10
+   },
+   "notCheckable": 1,
+   "checked": 19,
+   "reallyDead": 1,
+   "reallyDying": 0,
+   "borderline": 1,
+   "misses": 1,
+   "missCI": {
+    "p": 0.05263157894736842,
+    "lo": 0.009351752490529969,
+    "hi": 0.2463921533654521
+   },
+   "population": 271
+  }
+ },
+ "total": {
+  "units": 50,
+  "checked": 49,
+  "misses": 1,
+  "missCI": {
+   "p": 0.02040816326530612,
+   "lo": 0.003611579538530696,
+   "hi": 0.10693768467754147
+  },
+  "weightedMiss": {
+   "p": 0.005356048777595509,
+   "lo": 0,
+   "hi": 0.06242007574421019
+  },
+  "aliveUnitsInPopulation": 2663
+ },
+ "sensitivity": {
+  "unitsWithRecentActivityLift": 13,
+  "ofThemReleaseOlderThan2Years": 5,
+  "aliveUnitsWithReleaseOlderThan2YearsAndActiveRepo": [
+   {
+    "package": "fathom-client",
+    "releaseAgeDays": 846,
+    "commitAgeDays": 22
+   },
+   {
+    "package": "@types/fs-extra",
+    "releaseAgeDays": 1092,
+    "commitAgeDays": 0
+   },
+   {
+    "package": "@babel/plugin-syntax-object-rest-spread",
+    "releaseAgeDays": 2486,
+    "commitAgeDays": 0
+   },
+   {
+    "package": "paddlefsl",
+    "releaseAgeDays": 1677,
+    "commitAgeDays": 200
+   }
+  ],
+  "missesIfReleaseAgeAloneCounted": 5
+ },
+ "reposWithoutReadmeMd": 12,
+ "misses": [
+  {
+   "ecosystem": "npm",
+   "package": "coveralls",
+   "subjectRef": "npm-popular#23",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "outcome": "dead",
+   "criterion": "D3",
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 1954,
+    "commitAgeDays": 302,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": "The README of the repository says \"This repo is no longer maintained\" and names a fork. The latest release is 5.3 years old; the last commit is 302 days old, which is why the engine lifted it.",
+   "engineRule": "Read the maintainer statements of the README (and the registry description), not only \"has moved to\": a notice such as \"no longer maintained\" is a hard signal (source readme, basis hard). The recent-activity lift in verdict.ts must not apply to it, because the lift is for staleness-only verdicts."
+  }
+ ],
+ "borderline": [
+  {
+   "ecosystem": "pypi",
+   "package": "pyaudio",
+   "subjectRef": "pypi-popular#8",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "no-repository"
+   ],
+   "outcome": "borderline",
+   "criterion": "Y1 not decidable",
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 713,
+    "commitAgeDays": null,
+    "commitSources": 0,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": null,
+    "movedNotice": false,
+    "repoFound": false,
+    "readmeRead": false
+   },
+   "note": "The latest release is 713 days old (17 days under two years). PyPI links no source repository, so the commit side of Y1 cannot be read.",
+   "engineRule": "signals.ts staleDays (730) would flag it 17 days later; the missing repository link is shown as `no-repository`, which never decides alone."
+  }
+ ],
+ "notCheckable": [
+  {
+   "ecosystem": "pypi",
+   "package": "ak-guardian"
+  }
+ ],
+ "units": [
+  {
+   "ecosystem": "npm",
+   "package": "@eslint/eslintrc",
+   "subjectRef": "npm-popular#7",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 64,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "unsplash-js",
+   "subjectRef": "npm-tail#22",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 81,
+    "commitAgeDays": 29,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "sinon",
+   "subjectRef": "npm-popular#11",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 106,
+    "commitAgeDays": 7,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@nx/js",
+   "subjectRef": "npm-popular#18",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 0,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "dumi",
+   "subjectRef": "npm-popular#14",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 6,
+    "commitAgeDays": 6,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "streamdown",
+   "subjectRef": "npm-popular#2",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 16,
+    "commitAgeDays": 1,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "git-pull-run",
+   "subjectRef": "npm-tail#10",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 92,
+    "commitAgeDays": 2,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "openai",
+   "subjectRef": "npm-tail#16",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 0,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@babel/preset-env",
+   "subjectRef": "npm-tail#11",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 28,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "get-port",
+   "subjectRef": "npm-popular#10",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 227,
+    "commitAgeDays": 46,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@semantic-release/git",
+   "subjectRef": "npm-popular#16",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 103,
+    "commitAgeDays": 8,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "app-builder-lib",
+   "subjectRef": "npm-tail#3",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 14,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@fortawesome/free-regular-svg-icons",
+   "subjectRef": "npm-popular#24",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 111,
+    "commitAgeDays": 111,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/prismjs",
+   "subjectRef": "npm-popular#14",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 266,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "tailwindcss",
+   "subjectRef": "npm-tail#19",
+   "cell": "A|npm",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 1,
+    "commitAgeDays": 1,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "alembic",
+   "subjectRef": "pypi-popular#0",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 13,
+    "commitAgeDays": 8,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "codespell",
+   "subjectRef": "pypi-popular#12",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 112,
+    "commitAgeDays": 1,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "foundrytools",
+   "subjectRef": "pypi-popular#4",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 15,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "python-slugify",
+   "subjectRef": "pypi-popular#21",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 28,
+    "commitAgeDays": 18,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "fastmcp",
+   "subjectRef": "pypi-popular#21",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 1,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "flake8",
+   "subjectRef": "pypi-tail#21",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 6,
+    "commitAgeDays": 6,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pygments",
+   "subjectRef": "pypi-popular#24",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [
+    "osv-advisory"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 79,
+    "commitAgeDays": 38,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "sentry-sdk",
+   "subjectRef": "pypi-popular#21",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 13,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pytest",
+   "subjectRef": "pypi-tail#17",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 7,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "mike",
+   "subjectRef": "pypi-popular#9",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 204,
+    "commitAgeDays": 21,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "ua-parser",
+   "subjectRef": "pypi-popular#17",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 212,
+    "commitAgeDays": 36,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "tiktoken",
+   "subjectRef": "pypi-popular#21",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 78,
+    "commitAgeDays": 79,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "aiohttp",
+   "subjectRef": "pypi-tail#6",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 24,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "aiohttp",
+   "subjectRef": "pypi-tail#16",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 24,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "oci",
+   "subjectRef": "pypi-popular#1",
+   "cell": "A|pypi",
+   "stratum": "A",
+   "engineEvidence": [],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 1,
+    "commitAgeDays": 1,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "eslint",
+   "subjectRef": "npm-popular#8",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "version-deprecated"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 5,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "eslint",
+   "subjectRef": "npm-tail#11",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "version-deprecated"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 5,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "fathom-client",
+   "subjectRef": "npm-popular#17",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "no-release"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 846,
+    "commitAgeDays": 22,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": "Release 2.3 years old; its own repository has a commit 22 days old. Not a miss by the written criteria.",
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/fs-extra",
+   "subjectRef": "npm-tail#5",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "no-release"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 1092,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": "Release 3.0 years old, in a monorepo with commits today. Not a miss by the written criteria.",
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "prosemirror-state",
+   "subjectRef": "npm-popular#2",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 377,
+    "commitAgeDays": 216,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": true,
+    "movedNotice": true,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": "The GitHub copy is archived and its README says the project moved; the new address shows commits on 2026-04-01 (216 days). D2 does not hold.",
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "husky",
+   "subjectRef": "npm-tail#2",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 715,
+    "commitAgeDays": 229,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "husky",
+   "subjectRef": "npm-tail#4",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 715,
+    "commitAgeDays": 229,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@babel/plugin-syntax-object-rest-spread",
+   "subjectRef": "npm-popular#7",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "no-release-long"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 2486,
+    "commitAgeDays": 0,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": "Release 6.8 years old, in a monorepo that has a commit today. Not a miss by the written criteria (the default branch is active); it would be one if the age of the package release alone counted.",
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "p-all",
+   "subjectRef": "npm-popular#14",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 412,
+    "commitAgeDays": 46,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "npm",
+   "package": "coveralls",
+   "subjectRef": "npm-popular#23",
+   "cell": "B|npm",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "outcome": "dead",
+   "criterion": "D3",
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 1954,
+    "commitAgeDays": 302,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": "The README of the repository says \"This repo is no longer maintained\" and names a fork. The latest release is 5.3 years old; the last commit is 302 days old, which is why the engine lifted it.",
+   "engineRule": "Read the maintainer statements of the README (and the registry description), not only \"has moved to\": a notice such as \"no longer maintained\" is a hard signal (source readme, basis hard). The recent-activity lift in verdict.ts must not apply to it, because the lift is for staleness-only verdicts."
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "httpx",
+   "subjectRef": "pypi-popular#1",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 697,
+    "commitAgeDays": 254,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "clvm",
+   "subjectRef": "pypi-popular#16",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 412,
+    "commitAgeDays": 15,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pyaudio",
+   "subjectRef": "pypi-popular#8",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "no-repository"
+   ],
+   "outcome": "borderline",
+   "criterion": "Y1 not decidable",
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 713,
+    "commitAgeDays": null,
+    "commitSources": 0,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": null,
+    "movedNotice": false,
+    "repoFound": false,
+    "readmeRead": false
+   },
+   "note": "The latest release is 713 days old (17 days under two years). PyPI links no source repository, so the commit side of Y1 cannot be read.",
+   "engineRule": "signals.ts staleDays (730) would flag it 17 days later; the missing repository link is shown as `no-repository`, which never decides alone."
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pyyaml",
+   "subjectRef": "pypi-tail#12",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 400,
+    "commitAgeDays": 27,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "httpx",
+   "subjectRef": "pypi-tail#15",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 697,
+    "commitAgeDays": 254,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "ak-guardian",
+   "subjectRef": "pypi-popular#17",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "registry-not-found",
+    "unchecked"
+   ],
+   "outcome": "notCheckable",
+   "criterion": "special",
+   "facts": {
+    "registryStatus": 404,
+    "releaseAgeDays": null,
+    "commitAgeDays": null,
+    "commitSources": 0,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": null,
+    "movedNotice": false,
+    "repoFound": false,
+    "readmeRead": false
+   },
+   "note": "PyPI answers 404. The engine says alive, \"not found\", \"not checked\", as designed.",
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pypinyin",
+   "subjectRef": "pypi-popular#20",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 472,
+    "commitAgeDays": 3,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "protobuf",
+   "subjectRef": "pypi-tail#22",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "no-repository",
+    "osv-advisory"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 47,
+    "commitAgeDays": null,
+    "commitSources": 0,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": null,
+    "movedNotice": false,
+    "repoFound": false,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "protobuf",
+   "subjectRef": "pypi-popular#22",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "no-repository",
+    "osv-advisory"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 47,
+    "commitAgeDays": null,
+    "commitSources": 0,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": null,
+    "movedNotice": false,
+    "repoFound": false,
+    "readmeRead": false
+   },
+   "note": null,
+   "engineRule": null
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "paddlefsl",
+   "subjectRef": "pypi-popular#6",
+   "cell": "B|pypi",
+   "stratum": "B",
+   "engineEvidence": [
+    "recent-activity",
+    "no-release",
+    "low-maintenance"
+   ],
+   "outcome": "alive",
+   "criterion": null,
+   "facts": {
+    "registryStatus": 200,
+    "releaseAgeDays": 1677,
+    "commitAgeDays": 200,
+    "commitSources": 2,
+    "deprecatedLatest": false,
+    "yankedLatest": false,
+    "inactiveClassifier": false,
+    "archived": false,
+    "movedNotice": false,
+    "repoFound": true,
+    "readmeRead": true
+   },
+   "note": "Release 4.6 years old; commit 200 days old, so neither D4 (5 years) nor Y1 (commit older than 12 months) holds.",
+   "engineRule": null
+  }
+ ]
+}

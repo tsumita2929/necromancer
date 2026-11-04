@@ -1,0 +1,61 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "unsplash-js",
+  "subjectRef": "npm-tail#22",
+  "spec": "^7.0.19",
+  "resolved": "7.0.19",
+  "scope": "main",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "8.0.1",
+   "date": "2026-08-14T16:00:55Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:20:24.094Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "8.0.1",
+  "latestDate": "2026-08-14T16:00:55.083Z",
+  "latestAgeDays": 81,
+  "latestDeprecated": null,
+  "distTags": {
+   "beta": "7.0.0-beta.2",
+   "alpha": "8.0.0-alpha.3",
+   "latest": "8.0.1"
+  },
+  "versionInUse": "7.0.19",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2023-12-14T16:12:33.562Z",
+  "repository": "git+https://github.com/unsplash/unsplash-js.git",
+  "homepage": "https://github.com/unsplash/unsplash-js#readme",
+  "description": "Official JavaScript wrapper for the Unsplash API",
+  "readmeHead": "# Unsplash\n\n[![npm](https://img.shields.io/npm/v/unsplash-js.svg?style=flat-square)](https://www.npmjs.com/package/unsplash-js)\n\nOfficial JavaScript wrapper for the [Unsplash API](https://unsplash.com/developers).\n\nKey Links:\n\n- Before using the Unsplash API, [register as a developer](https://unsplash.com/developers).\n- Before using the Unsplash API, read the [API Guidelines](https://help.unsplash.com/api-guidelines/unsplash-api-guidelines). Specifically, you _must_:\n  - [hotlink images](https://help.unsplash.com/api-guidelines/more-on-each-guideline/guideline-hotlinking-images)\n  - [attribute photographers](https://help.unsplash.com/api-guidelines/more-on-each-guideline/guideline-attribution)\n  - [trigger a download when appropriate](https://help.unsplash.com/api-guidelines/more-on-each-guideline/guideline-triggering-a-download)\n- Once you create an application and have an access key, go try the demos:\n  - [typescript](https://stackblitz.com/edit/unsplash-js-hq6lrpxm?file=src%2Fmain.tsx)\n\n## Documentation\n\n- [Installation](#installation)\n- [Usage](#usage)\n- [Replacing fetch](#replacing-fetch)\n- [Types](#types)\n- [Endpoint examples](#endpoint-examples)\n\n## Installation\n\n```bash\n$ npm i --save unsplash-js\n\n# OR\n\n$ yarn add unsplash-js\n\n# OR\n\n$ pnpm add unsplash-js\n```\n\n## Usage\n\n### Creating an instance\n\nTo create an instance, simply provide an `Object` with your `accessKey`.\n\n```ts\nimport { createApi } from \"unsplash-js\";\n\n// on your node server\nconst serverApi = createApi({\n  accessKey: \"MY_ACCESS_KEY\",\n  //...other fetch options\n});\n\n// in the browser\nconst browserApi = createApi({\n  baseUrl: \"https://mywebsite.com/unsplash-proxy\",\n  //...other fetch options\n});\n```\n\n**NOTE: If you're using `unsplash-js` in the browser, you must proxy your requests through your server by setting `baseUrl`. This is to authenticate requests with your Access Key to abide by the [API Guideline](https://help.unsplash.com/en/articles/2511245-unsplash-api-guidelines), and keeps your keys confidential. If `baseUrl` is set, `accessKey` is unnecessary and vice-versa.**\n\n### Making a request\n\n`createApi` returns an instance whose methods each accept a `params` object and standard `fetch` options.\n\nEach method is named after an HTTP verb (GET, POST, DELETE, PUT, PATCH).\n\n```ts\nconst unsplash = createApi({\n  accessKey: \"MY_ACCESS_KEY\",\n});\n\nunsplash.GET(\"/photos/{assetSlug}\", {\n  params: { path: { assetSlug: \"123\" } },\n});\n```\n\nGlobal `fetch` options can be set on the constructor; pe",
+  "versions": 60
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "unsplash/unsplash-js",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/unsplash/unsplash-js",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-06T12:48:39Z",
+  "atomLastCommitAgeDays": 29,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-10-06T08:48:39-04:00",
+  "gitLastCommitAgeDays": 29,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 7
+ }
+}

@@ -1,0 +1,74 @@
+{
+ "unit": {
+  "cell": "B|npm",
+  "stratum": "B",
+  "ecosystem": "npm",
+  "name": "prosemirror-state",
+  "subjectRef": "npm-popular#2",
+  "spec": "^1.4.4",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [
+   "low-maintenance",
+   "repo-moved"
+  ],
+  "evidence": [
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/"
+   },
+   {
+    "code": "repo-moved",
+    "message": "The GitHub copy is archived because the project moved to https://code.haverbeke.berlin/prosemirror/prosemirror-state (its README says so). That is not an end of life; activity at the new address is not read.",
+    "url": "https://github.com/prosemirror/prosemirror-state"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "1.4.4",
+   "date": "2025-10-23T11:57:46Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:23:56.682Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.4.4",
+  "latestDate": "2025-10-23T11:57:46.551Z",
+  "latestAgeDays": 377,
+  "latestDeprecated": null,
+  "distTags": {
+   "beta": "1.4.0-beta.2",
+   "latest": "1.4.4"
+  },
+  "versionInUse": "^1.4.4",
+  "versionInUseKnown": false,
+  "repository": "git://github.com/prosemirror/prosemirror-state.git",
+  "homepage": "https://github.com/prosemirror/prosemirror-state#readme",
+  "description": "ProseMirror editor state",
+  "readmeHead": "# prosemirror-state\n\n[ [**WEBSITE**](https://prosemirror.net) | [**ISSUES**](https://github.com/prosemirror/prosemirror/issues) | [**FORUM**](https://discuss.prosemirror.net) | [**CHANGELOG**](https://github.com/ProseMirror/prosemirror-state/blob/master/CHANGELOG.md) ]\n\nThis is a [core module](https://prosemirror.net/docs/ref/#state) of [ProseMirror](https://prosemirror.net).\nProseMirror is a well-behaved rich semantic content editor based on\ncontentEditable, with support for collaborative editing and custom\ndocument schemas.\n\nThis [module](https://prosemirror.net/docs/ref/#state) implements the\neditor state, which tracks the current document and selection, and\nmanaged plugins.\n\nThe [project page](https://prosemirror.net) has more information, a\nnumber of [examples](https://prosemirror.net/examples/) and the\n[documentation](https://prosemirror.net/docs/).\n\nThis code is released under an\n[MIT license](https://github.com/prosemirror/prosemirror/tree/master/LICENSE).\nThere's a [forum](http://discuss.prosemirror.net) for general\ndiscussion and support requests, and the\n[Github bug tracker](https://github.com/prosemirror/prosemirror/issues)\nis the place to report issues.\n\nWe aim to be an inclusive, welcoming community. To make that explicit,\nwe have a [code of\nconduct](http://contributor-covenant.org/version/1/1/0/) that applies\nto communication around the project.\n",
+  "versions": 38
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "prosemirror/prosemirror-state",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/prosemirror/prosemirror-state",
+  "archivedBanner": true,
+  "archivedOn": "Apr 1, 2026",
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-04-01T16:51:57Z",
+  "atomLastCommitAgeDays": 216,
+  "readmeMovedNotice": "**This repository has moved to https://code.haverbeke.berlin/prosemirror/prosemirror-state**",
+  "readmeHints": [
+   "**This repository has moved to https://code.haverbeke.berlin/prosemirror/prosemirror-state**"
+  ],
+  "gitLastCommit": "2026-04-01T18:51:57+02:00",
+  "gitLastCommitAgeDays": 216,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

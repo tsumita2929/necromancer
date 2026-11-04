@@ -1,0 +1,58 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "tiktoken",
+  "subjectRef": "pypi-popular#21",
+  "spec": "==0.13.0",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "0.14.0",
+   "date": "2026-08-17T19:49:49.514147Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:23:06.051Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "0.14.0",
+  "latestOldestFile": "2026-08-17T19:48:31.788018Z",
+  "latestNewestFile": "2026-08-17T19:49:49.514147Z",
+  "latestAgeDays": 78,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": {
+   "changelog": "https://github.com/openai/tiktoken/blob/main/CHANGELOG.md",
+   "homepage": "https://github.com/openai/tiktoken",
+   "repository": "https://github.com/openai/tiktoken"
+  },
+  "homePage": null,
+  "summary": "tiktoken is a fast BPE tokeniser for use with OpenAI's models",
+  "descriptionHead": "# ⏳ tiktoken\n\ntiktoken is a fast [BPE](https://en.wikipedia.org/wiki/Byte_pair_encoding) tokeniser for use with\nOpenAI's models.\n\n```python\nimport tiktoken\nenc = tiktoken.get_encoding(\"o200k_base\")\nassert enc.decode(enc.encode(\"hello world\")) == \"hello world\"\n\n# To get the tokeniser corresponding to a specific model in the OpenAI API:\nenc = tiktoken.encoding_for_model(\"gpt-4o\")\n```\n\nThe open source version of `tiktoken` can be installed from [PyPI](https://pypi.org/project/tiktoken):\n```\npip install tiktoken\n```\n\nThe tokeniser API is documented in `tiktoken/core.py`.\n\nExample code using `tiktoken` can be found in the\n[OpenAI Cookbook](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb).\n\n\n## Performance\n\n`tiktoken` is between 3-6x faster than a comparable open source tokeniser:\n\n![image](https://raw.githubusercontent.com/openai/tiktoken/main/perf.svg)\n\nPerformance measured on 1GB of text using the GPT-2 tokeniser, using `GPT2TokenizerFast` from\n`tokenizers==0.13.2`, `transformers==4.24.0` and `tiktoken==0.2.0`.\n\n\n## Getting help\n\nPlease post questions in the [issue tracker](https://github.com/openai/tiktoken/issues).\n\nIf you work at OpenAI, make sure to check the internal documentation or feel free to contact\n@shantanu.\n\n## What is BPE anyway?\n\nLanguage models don't see text like you and I, instead they see a sequence of numbers (known as tokens).\nByte pair encoding (BPE) is a way of converting text into tokens. It has a couple desirable\nproperties:\n1) It's reversible and lossless, so you can convert tokens back into the original text\n2) It works on arbitrary text, even text that is not in the tokeniser's training data\n3) It compresses the text: the token sequence is shorter than the bytes corresponding to the\n   original text. On average, in practice, each token corresponds to about 4 bytes.\n4) It attempts to let the model see common subwords. For instance, \"ing\" is a common subword in\n   English, so BPE encodings will often split \"encoding\" into tokens like \"encod\" and \"ing\"\n   (instead of e.g. \"enc\" and \"oding\"). Because the model will then see the \"ing\" token again and\n   again in different contexts, it helps models generalise and better understand grammar.\n\n`tiktoken` contains an educational submodule that is friendlier if you want to learn more about\nthe details of BPE, including code that helps visualise the BPE procedure:\n```python\nfrom tiktoken._educational import *\n\n# Train a BPE tokeniser on a small amount of text\nenc = train_simple_encoding()\n\n# Visualise how the GPT-4 encoder encodes text\nenc = SimpleBytePairEncoding.from_tiktoken(\"cl100k_base\")\nenc.encode(\"hello world aaaaaaaaaaaa\")\n```\n\n\n## Extending tiktoken\n\nYou may wish to extend `tiktoken` to support new encodings. There are two ways to do this.\n\n\n**Create your `Encoding` object exactly the way you want and simply pass it around.**\n\n```python\ncl100k_base = tiktoken.get_encoding(\"cl100k_base\")\n\n# In production, load the arguments",
+  "githubInDescription": "github.com/openai/openai-cookbook"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "openai/tiktoken",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/openai/tiktoken",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-08-17T05:24:44Z",
+  "atomLastCommitAgeDays": 79,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-08-16T22:24:44-07:00",
+  "gitLastCommitAgeDays": 79,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 9
+ }
+}

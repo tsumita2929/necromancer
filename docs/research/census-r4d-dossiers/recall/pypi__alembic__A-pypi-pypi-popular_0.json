@@ -1,0 +1,60 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "alembic",
+  "subjectRef": "pypi-popular#0",
+  "spec": ">=1.5.0",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "1.20.1",
+   "date": "2026-10-22T03:24:37.667799Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:21:56.460Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.20.1",
+  "latestOldestFile": "2026-10-22T03:24:35.930159Z",
+  "latestNewestFile": "2026-10-22T03:24:37.667799Z",
+  "latestAgeDays": 13,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Changelog": "https://alembic.sqlalchemy.org/en/latest/changelog.html",
+   "Documentation": "https://alembic.sqlalchemy.org/en/latest/",
+   "Homepage": "https://alembic.sqlalchemy.org",
+   "Issue Tracker": "https://github.com/sqlalchemy/alembic/issues/",
+   "Source": "https://github.com/sqlalchemy/alembic/"
+  },
+  "homePage": null,
+  "summary": "A database migration tool for SQLAlchemy.",
+  "descriptionHead": "Alembic is a database migrations tool written by the author\nof `SQLAlchemy <http://www.sqlalchemy.org>`_.  A migrations tool\noffers the following functionality:\n\n* Can emit ALTER statements to a database in order to change\n  the structure of tables and other constructs\n* Provides a system whereby \"migration scripts\" may be constructed;\n  each script indicates a particular series of steps that can \"upgrade\" a\n  target database to a new version, and optionally a series of steps that can\n  \"downgrade\" similarly, doing the same steps in reverse.\n* Allows the scripts to execute in some sequential manner.\n\nThe goals of Alembic are:\n\n* Very open ended and transparent configuration and operation.   A new\n  Alembic environment is generated from a set of templates which is selected\n  among a set of options when setup first occurs. The templates then deposit a\n  series of scripts that define fully how database connectivity is established\n  and how migration scripts are invoked; the migration scripts themselves are\n  generated from a template within that series of scripts. The scripts can\n  then be further customized to define exactly how databases will be\n  interacted with and what structure new migration files should take.\n* Full support for transactional DDL.   The default scripts ensure that all\n  migrations occur within a transaction - for those databases which support\n  this (Postgresql, Microsoft SQL Server), migrations can be tested with no\n  need to manually undo changes upon failure.\n* Minimalist script construction.  Basic operations like renaming\n  tables/columns, adding/removing columns, changing column attributes can be\n  performed through one line commands like alter_column(), rename_table(),\n  add_constraint(). There is no need to recreate full SQLAlchemy Table\n  structures for simple operations like these - the functions themselves\n  generate minimalist schema structures behind the scenes to achieve the given\n  DDL sequence.\n* \"auto generation\" of migrations. While real world migrations are far more\n  complex than what can be automatically determined, Alembic can still\n  eliminate the initial grunt work in generating new migration directives\n  from an altered schema.  The ``--autogenerate`` feature will inspect the\n  current status of a database using SQLAlchemy's schema inspection\n  capabilities, compare it to the current state of the database model as\n  specified in Python, and generate a series of \"candidate\" migrations,\n  rendering them into a new migration script as Python directives. The\n  developer then edits the new file, adding additional directives and data\n  migrations as needed, to produce a finished migration. Table and column\n  level changes can be detected, with constraints and indexes to follow as\n  well.\n* Full support for migrations generated as SQL scripts.   Those of us who\n  work in corporate environments know that direct access to DDL commands on a\n  production database is a rare privilege, and DBAs want textual SQL scr",
+  "githubInDescription": null
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "sqlalchemy/alembic",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/sqlalchemy/alembic",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-27T12:58:42Z",
+  "atomLastCommitAgeDays": 8,
+  "gitLastCommit": "2026-10-27T08:58:42-04:00",
+  "gitLastCommitAgeDays": 8,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 10
+ }
+}

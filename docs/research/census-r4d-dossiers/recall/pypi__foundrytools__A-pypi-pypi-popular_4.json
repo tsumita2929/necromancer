@@ -1,0 +1,60 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "foundrytools",
+  "subjectRef": "pypi-popular#4",
+  "spec": "==0.1.6",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "0.1.8",
+   "date": "2026-10-19T18:41:02.587813Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:22:08.661Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "0.1.8",
+  "latestOldestFile": "2026-10-19T18:41:00.982897Z",
+  "latestNewestFile": "2026-10-19T18:41:02.587813Z",
+  "latestAgeDays": 15,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Changelog": "https://github.com/ftCLI/FoundryTools/releases",
+   "Documentation": "https://foundrytools.readthedocs.io/en/latest/",
+   "Homepage": "https://github.com/ftCLI/FoundryTools",
+   "Issues": "https://github.com/ftCLI/FoundryTools/issues",
+   "Repository": "https://github.com/ftCLI/FoundryTools"
+  },
+  "homePage": null,
+  "summary": "A library for working with fonts in Python.",
+  "descriptionHead": "# FoundryTools\n\nFoundryTools is a Python library for working with font files and their data. It provides a\nhigh-level interface for inspecting, manipulating, and converting fonts, leveraging the capabilities\nof the **fontTools** library and other font-related tools, such as **AFDKO**, **cffsubr**,\n**defcon**, **dehinter**, **skia-pathops**, **ttfautohint-py**, **ufo2ft**, and **ufo-extractor**.\n\nThe library is designed to simplify font processing tasks, such as reading and writing font files,\naccessing font tables and metadata, modifying glyph data, and converting fonts between different\nformats. It offers a set of classes and utilities for working with fonts at various levels of\nabstraction, from low-level font table manipulation to high-level font inspection and conversion.\n\nFoundryTools is intended for font developers, type designers, font engineers, and anyone working\nwith font files who needs a programmatic way to interact with font data. It provides a Pythonic API\nfor common font operations and can be used in scripts, tools, and workflows that involve font\nprocessing.\n\nBelow is an overview of the key components and features of FoundryTools, while the detailed\ndocumentation can be found at the following link: https://foundrytools.readthedocs.io/en/latest/\n\n## Table of Contents\n\n- [Installation](#installation)\n  - [pip](#pip)\n  - [Editable mode](#editable-mode)\n- [Font Class: High-Level Wrapper for TTFont](#font-class-high-level-wrapper-for-ttfont)\n  - [Overview](#overview)\n  - [Features](#features)\n  - [Initialization](#initialization)\n    - [Font Initialization](#font-initialization)\n    - [Style Flags Initialization](#style-flags-initialization)\n    - [Tables Initialization](#tables-initialization)\n  - [Font Tables](#font-tables)\n    - [Font Tables Access](#font-tables-access)\n    - [Supported Tables](#supported-tables)\n  - [Style Flags](#style-flags)\n  - [Properties](#properties)\n  - [Advanced Features](#advanced-features)\n- [FontFinder Class: Font Search and Filtering](#fontfinder-class-font-search-and-filtering)\n  - [Overview](#overview-1)\n  - [Features](#features-1)\n  - [Constructor](#constructor)\n  - [Main Methods](#main-methods)\n  - [Private Methods](#private-methods)\n  - [Usage](#usage)\n    - [Basic Example](#basic-example)\n    - [Example with Recursion and Filtering](#example-with-recursion-and-filtering)\n- [The `apps` package](#the-apps-package)\n\n## Installation\n\nFoundryTools requires Python 3.11 or later.\n\n### pip\n\nFoundryTools releases are available on the Python Package Index (PyPI), so it can be installed with\n[pip](https://pip.pypa.io/):\n\n```bash\npython -m pip install foundrytools\n```\n\n### Editable mode\n\nIf you would like to contribute to the development, clone the repository from GitHub and use\n[uv](https://docs.astral.sh/uv/) to create an environment and install the package in editable mode.\n\n```bash\n# clone the repository:\ngit clone https://github.com/ftCLI/FoundryTools.git\ncd foundrytools\n\n# create the environment and ins",
+  "githubInDescription": "github.com/ftCLI/FoundryTools.git"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "ftCLI/FoundryTools",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/ftCLI/FoundryTools",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-04T09:50:55Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-04T10:50:55+01:00",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "main",
+  "scorecardStatus": 404
+ }
+}

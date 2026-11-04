@@ -1,0 +1,71 @@
+{
+ "unit": {
+  "cell": "B|npm",
+  "stratum": "B",
+  "ecosystem": "npm",
+  "name": "@babel/plugin-syntax-object-rest-spread",
+  "subjectRef": "npm-popular#7",
+  "spec": "^7.8.3",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [
+   "recent-activity",
+   "no-release-long"
+  ],
+  "evidence": [
+   {
+    "code": "recent-activity",
+    "message": "The default branch had a commit 0 days ago (2026-11-03), so stale signals alone do not make this dying.",
+    "url": "https://github.com/babel/babel"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (7.8.3) is 6.8 years old.",
+    "url": "https://www.npmjs.com/package/@babel/plugin-syntax-object-rest-spread"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "7.8.3",
+   "date": "2020-01-13T21:14:13Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:24:13.682Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "7.8.3",
+  "latestDate": "2020-01-13T21:14:13.517Z",
+  "latestAgeDays": 2486,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "7.8.3"
+  },
+  "versionInUse": "^7.8.3",
+  "versionInUseKnown": false,
+  "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-object-rest-spread",
+  "homepage": null,
+  "description": "Allow parsing of object rest/spread",
+  "readmeHead": "# @babel/plugin-syntax-object-rest-spread\n\n> Allow parsing of object rest/spread\n\nSee our website [@babel/plugin-syntax-object-rest-spread](https://babeljs.io/docs/en/next/babel-plugin-syntax-object-rest-spread.html) for more information.\n\n## Install\n\nUsing npm:\n\n```sh\nnpm install --save-dev @babel/plugin-syntax-object-rest-spread\n```\n\nor using yarn:\n\n```sh\nyarn add @babel/plugin-syntax-object-rest-spread --dev\n```\n",
+  "versions": 38
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "babel/babel",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/babel/babel",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-04T14:43:48Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-04T14:43:48Z",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 10
+ }
+}

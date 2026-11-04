@@ -1,0 +1,54 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "oci",
+  "subjectRef": "pypi-popular#1",
+  "spec": "==2.166.0",
+  "resolved": null,
+  "scope": "optional",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "2.190.0",
+   "date": "2026-11-03T06:45:43.780685Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:23:25.319Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.190.0",
+  "latestOldestFile": "2026-11-03T06:45:35.324706Z",
+  "latestNewestFile": "2026-11-03T06:45:43.780685Z",
+  "latestAgeDays": 1,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Homepage": "https://docs.oracle.com/en-us/iaas/tools/python/latest/index.html"
+  },
+  "homePage": "https://docs.oracle.com/en-us/iaas/tools/python/latest/index.html",
+  "summary": "Oracle Cloud Infrastructure Python SDK",
+  "descriptionHead": "Oracle Cloud Infrastructure Python SDK\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n=====\nAbout\n=====\n\nThis is the Python SDK for Oracle Cloud Infrastructure. Supported Python versions are mentioned `here`__.\n\n__ https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/pythonsdk.htm#pythonsdk_topic-supported_python_versions\n\n.. code-block:: pycon\n\n    >>> import oci\n    # Set up config\n    >>> config = oci.config.from_file(\n    ...     \"~/.oci/config\",\n    ...     \"DEFAULT\")\n    # Create a service client\n    >>> identity = oci.identity.IdentityClient(config)\n    # Get the current user\n    >>> user = identity.get_user(config[\"user\"]).data\n    >>> print(user)\n    {\n      \"compartment_id\": \"ocid1.tenancy.oc1...\",\n      \"description\": \"Test user\",\n      \"id\": \"ocid1.user.oc1...\",\n      \"inactive_status\": null,\n      \"lifecycle_state\": \"ACTIVE\",\n      \"name\": \"test-user@corp.com\",\n      \"time_created\": \"2016-08-30T23:46:44.680000+00:00\"\n    }\n\nThe project is open source and maintained by Oracle Corp. The home page for the project is `here`__.\n\n__ https://docs.oracle.com/en-us/iaas/tools/python/latest/index.html\n\n============\nInstallation\n============\n\nIt is highly recommended that a Python virtual environment be used when installing oci.\n\nPlease consult the `Installing packages using pip and virtualenv`__ guide from the Python Software Foundation for more information about virtual environments.\n\n__ https://packaging.python.org/guides/installing-using-pip-and-virtualenv/\n\nSee `the installation guide`__ for installation troubleshooting and alternative install methods.\n\n__ https://docs.oracle.com/en-us/iaas/tools/python/latest/installation.html\n\nOnce your virtual environment is active, oci can be installed using pip.\n\n::\n\n    pip install oci\n\n\n============\nDevelopment\n============\n\nSee the `development readme`__ for information on how to make changes, run tests and build the documentation and wheel for the Python SDK.\n\n__ https://github.com/oracle/oci-python-sdk/blob/master/README-development.rst\n\nPer-service codegen conditionals belong in\n``enabledGroups`` beside the service module POM under ``poms/<service>/``.\n\n========\nExamples\n========\n\nExamples can be found `here`__.\n\n__ https://github.com/oracle/oci-python-sdk/blob/master/examples/\n\n=============\nDocumentation\n=============\n\nFull documentation, including prerequisites and installation and configuration instructions, can be found `here`__.\n\nAPI reference can be found `here`__.\n\n__ https://docs.oracle.com/en-us/iaas/tools/python/latest/index.html\n__ https://docs.oracle.com/en-us/iaas/tools/python/latest/api/landing.html\n\nA downloadable version of the documentation is include with in the release zip, which can be found `here`__.\n\n__ https://github.com/oracle/oci-python-sdk/releases\n\n====\nHelp\n====\n\nSee the “Questions or Feedback” section `here`__.\n\n__ https://docs.oracle.com/en-us/iaas/tools/python/latest/feedback.html\n\n=======\nChanges\n=======\n\nSee `CHANGELOG`__.\n\n__ https://github.com/oracle/oci-pytho",
+  "githubInDescription": "github.com/oracle/oci-python-sdk"
+ },
+ "repoSource": "github link in the PyPI description",
+ "repoPage": {
+  "repo": "oracle/oci-python-sdk",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/oracle/oci-python-sdk",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-03T07:18:32Z",
+  "atomLastCommitAgeDays": 1,
+  "gitLastCommit": "2026-11-03T12:48:32+05:30",
+  "gitLastCommitAgeDays": 1,
+  "gitBranch": "master",
+  "scorecardStatus": 404
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "unit": {
+  "cell": "B|pypi",
+  "stratum": "B",
+  "ecosystem": "pypi",
+  "name": "paddlefsl",
+  "subjectRef": "pypi-popular#6",
+  "spec": "",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [
+   "recent-activity",
+   "no-release",
+   "low-maintenance"
+  ],
+  "evidence": [
+   {
+    "code": "recent-activity",
+    "message": "The default branch had a commit 7 months ago (2026-04-18), so stale signals alone do not make this dying.",
+    "url": "https://github.com/tata1661/FSL-Mate"
+   },
+   {
+    "code": "no-release",
+    "message": "The latest release (1.1.0) is 4.6 years old.",
+    "url": "https://pypi.org/project/paddlefsl/"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "1.1.0",
+   "date": "2022-04-02T08:00:27.366310Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:25:06.224Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.1.0",
+  "latestOldestFile": "2022-04-02T08:00:25.500580Z",
+  "latestNewestFile": "2022-04-02T08:00:27.366310Z",
+  "latestAgeDays": 1677,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": {
+   "Homepage": "https://github.com/tata1661/FSL-Mate/tree/master/PaddleFSL"
+  },
+  "homePage": "https://github.com/tata1661/FSL-Mate/tree/master/PaddleFSL",
+  "summary": "PaddleFSL is a Python library for few-shot learning",
+  "descriptionHead": "# PaddleFSL\n\nPaddleFSL is a Python library for few-shot learning (FSL) built upon PaddlePaddle 2.0.\n- Provide various \nFSL solutions which are applicable to diverse applications. \n- Contain detailed \nannotations and tutorial examples, such that users can easily develop and compare different FSL solutions. \n- Can be easily deployed on various training platforms. \n\n![](https://github.com/tata1661/FSL-Mate/blob/master/PaddleFSL/art-paddlefsl.png)\n\n## Overview\n\n- **paddlefsl**: The proposed package for FSL.\n  - **paddlefsl.backbones**: It provides representation learning models to extract sample representation, such as CNN, GNN and PLM.\n  - **paddlefsl.datasets**: It provides publicly accessible benchmark few-shot datasets of diverse application scenarios, such as Omniglot, FewRel, FewGLUE and Tox21.\n  - **paddlefsl.model_zoo**: It provides classical FSL models which particularly deal with the lack of labeled data, such as ProtoNet, MAML and PET.\n  - **paddlefsl.task_sampler**: It provides APIs to split datasets into the typical N-way K-shot tasks.\n  - **paddlefsl.utils**: It provides auxiliary APIs of PaddleFSL. \n- **examples**: It provides examples of applying PaddleFSL to diverse application scenarios, such as computer vision tasks, natural language tasks and bioinformatics tasks.\n- **raw_data**: It provides guides to download and place the raw data files.\n- **test**: It provides unit test files of functions and classes.\n\n\n## Installation\n\nTo use our package, users should first install paddlepaddle-v2.0.0 or later versions, see https://www.paddlepaddle.org.cn/install .\n\nFirst, install our required packages.\n\n```bash\n# Clone our repository.\ngit clone https://github.com/tata1661/FSL-Mate.git\n# Install requirements.\ncd FSL-Mate/PaddleFSL\npip install -r requirements.txt\n```\n\nSecond, update environment variables.\n\n```bash\n# Please edit env.sh to set the correct path of FSL-paddletoolkit directory.\n# Then do:\nsource env.sh\n# If you want to use our package frequently, you can add environment variables into .bashrc\ncat env.sh >> ~/.bashrc\nsource ~/.bashrc\n```\n\nFinally, check whether the installation is successful.\n\n```bash\n# Start a python interpreter\npython\n>>> import paddlefsl\n>>> paddlefsl.__version__\n'1.1.0'\n```\n\n\n## Contributing\n\n\nPaddleFSL is mainly contributed by W Group led by [Yaqing Wang](https://cse.hkust.edu.hk/~ywangcy/). The full list of PaddleFSL contributors is [here](../CONTRIBUTING.md).\n\n\nWe also welcome and appreciate community contribution to improve PaddleFSL, such as introducing new datasets, models and algorithms, designing new features and fixing bugs. \nThe codes can be contributed via pull requests and code review. \nPlease also feel free to open an issue for feedbacks or advices. \n\n\n\n\n",
+  "githubInDescription": "github.com/tata1661/FSL-Mate"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "tata1661/FSL-Mate",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/tata1661/FSL-Mate",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-04-18T03:48:26Z",
+  "atomLastCommitAgeDays": 200,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-04-18T11:48:26+08:00",
+  "gitLastCommitAgeDays": 200,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "unit": {
+  "cell": "B|npm",
+  "stratum": "B",
+  "ecosystem": "npm",
+  "name": "husky",
+  "subjectRef": "npm-tail#2",
+  "spec": "8.0.3",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [
+   "recent-activity",
+   "low-maintenance"
+  ],
+  "evidence": [
+   {
+    "code": "recent-activity",
+    "message": "The default branch had a commit 8 months ago (2026-03-19), so stale signals alone do not make this dying.",
+    "url": "https://github.com/typicode/husky"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "9.1.7",
+   "date": "2024-11-18T15:28:26Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:24:02.472Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "9.1.7",
+  "latestDate": "2024-11-18T15:28:26.026Z",
+  "latestAgeDays": 715,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "9.1.7"
+  },
+  "versionInUse": "8.0.3",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/typicode/husky.git",
+  "homepage": "https://github.com/typicode/husky#readme",
+  "description": "Modern native Git hooks",
+  "readmeHead": "https://typicode.github.io/husky\n",
+  "versions": 215
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "typicode/husky",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/typicode/husky",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-03-19T23:03:16Z",
+  "atomLastCommitAgeDays": 229,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-03-20T00:03:16+01:00",
+  "gitLastCommitAgeDays": 229,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

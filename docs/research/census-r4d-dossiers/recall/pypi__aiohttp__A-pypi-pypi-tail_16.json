@@ -1,0 +1,64 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "aiohttp",
+  "subjectRef": "pypi-tail#16",
+  "spec": ">=3,<4",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "3.14.5",
+   "date": "2026-10-11T01:05:12.408664Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:23:19.731Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "3.14.5",
+  "latestOldestFile": "2026-10-11T00:59:07.668168Z",
+  "latestNewestFile": "2026-10-11T01:05:12.408664Z",
+  "latestAgeDays": 24,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "CI: GitHub Actions": "https://github.com/aio-libs/aiohttp/actions?query=workflow%3ACI",
+   "Chat: Matrix": "https://matrix.to/#/#aio-libs:matrix.org",
+   "Chat: Matrix Space": "https://matrix.to/#/#aio-libs-space:matrix.org",
+   "Coverage: codecov": "https://codecov.io/github/aio-libs/aiohttp",
+   "Docs: Changelog": "https://docs.aiohttp.org/en/stable/changes.html",
+   "Docs: RTD": "https://docs.aiohttp.org",
+   "GitHub: issues": "https://github.com/aio-libs/aiohttp/issues",
+   "GitHub: repo": "https://github.com/aio-libs/aiohttp",
+   "Homepage": "https://github.com/aio-libs/aiohttp"
+  },
+  "homePage": null,
+  "summary": "Async http client/server framework (asyncio)",
+  "descriptionHead": "==================================\nAsync http client/server framework\n==================================\n\n.. image:: https://raw.githubusercontent.com/aio-libs/aiohttp/master/docs/aiohttp-plain.svg\n   :height: 64px\n   :width: 64px\n   :alt: aiohttp logo\n\n|\n\n.. image:: https://github.com/aio-libs/aiohttp/workflows/CI/badge.svg\n   :target: https://github.com/aio-libs/aiohttp/actions?query=workflow%3ACI\n   :alt: GitHub Actions status for master branch\n\n.. image:: https://codecov.io/gh/aio-libs/aiohttp/branch/master/graph/badge.svg\n   :target: https://codecov.io/gh/aio-libs/aiohttp\n   :alt: codecov.io status for master branch\n\n.. image:: https://badge.fury.io/py/aiohttp.svg\n   :target: https://pypi.org/project/aiohttp\n   :alt: Latest PyPI package version\n\n.. image:: https://img.shields.io/pypi/dm/aiohttp\n   :target: https://pypistats.org/packages/aiohttp\n   :alt: Downloads count\n\n.. image:: https://readthedocs.org/projects/aiohttp/badge/?version=latest\n   :target: https://docs.aiohttp.org/\n   :alt: Latest Read The Docs\n\n.. image:: https://img.shields.io/endpoint?url=https://codspeed.io/badge.json\n   :target: https://codspeed.io/aio-libs/aiohttp\n   :alt: Codspeed.io status for aiohttp\n\n\nKey Features\n============\n\n- Supports both client and server side of HTTP protocol.\n- Supports both client and server Web-Sockets out-of-the-box and avoids\n  Callback Hell.\n- Provides Web-server with middleware and pluggable routing.\n\n\nGetting started\n===============\n\nClient\n------\n\nTo get something from the web:\n\n.. code-block:: python\n\n  import aiohttp\n  import asyncio\n\n  async def main():\n\n      async with aiohttp.ClientSession() as session:\n          async with session.get('https://python.org') as response:\n\n              print(\"Status:\", response.status)\n              print(\"Content-type:\", response.headers['content-type'])\n\n              html = await response.text()\n              print(\"Body:\", html[:15], \"...\")\n\n  asyncio.run(main())\n\nThis prints:\n\n.. code-block::\n\n    Status: 200\n    Content-type: text/html; charset=utf-8\n    Body: <!doctype html> ...\n\nComing from `requests <https://requests.readthedocs.io/>`_ ? Read `why we need so many lines <https://aiohttp.readthedocs.io/en/latest/http_request_lifecycle.html>`_.\n\nServer\n------\n\nAn example using a simple server:\n\n.. code-block:: python\n\n    # examples/server_simple.py\n    from aiohttp import web\n\n    async def handle(request):\n        name = request.match_info.get('name', \"Anonymous\")\n        text = \"Hello, \" + name\n        return web.Response(text=text)\n\n    async def wshandle(request):\n        ws = web.WebSocketResponse()\n        await ws.prepare(request)\n\n        async for msg in ws:\n            if msg.type == web.WSMsgType.text:\n                await ws.send_str(\"Hello, {}\".format(msg.data))\n            elif msg.type == web.WSMsgType.binary:\n                await ws.send_bytes(msg.data)\n            elif msg.type == web.WSMsgType.close:\n                break\n\n        return ws\n\n\n    app = web.Application()",
+  "githubInDescription": "github.com/aio-libs/aiohttp"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "aio-libs/aiohttp",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/aio-libs/aiohttp",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-04T13:32:11Z",
+  "atomLastCommitAgeDays": 0,
+  "gitLastCommit": "2026-11-04T13:32:11Z",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 10
+ }
+}

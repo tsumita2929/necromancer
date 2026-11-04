@@ -360,6 +360,16 @@
    }
   }
  },
+ "wayOutCoverage": {
+  "firstFlagged": 198,
+  "withWayOutNow": 96,
+  "liftedToAlive": 15,
+  "downToDying": 4,
+  "stillFlagged": 179,
+  "stillFlaggedWithWayOut": 95,
+  "zombies": 4,
+  "zombiesWithWayOut": 4
+ },
  "c1ChangeTunedToFinal": {
   "projectsLost": 1,
   "projectsGained": 0,

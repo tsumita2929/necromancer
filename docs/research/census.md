@@ -4,7 +4,7 @@ Run on 2026-11-03 and 2026-11-04 (UTC) with the Necromancer engine at commit `bf
 The commands, the checks and the gaps are in `docs/verification/census.md`. The spec is `.kiro/specs/graveyard-census/`.
 Every number below is printed by `node docs/research/recompute.mjs` from `docs/research/census-aggregate.json` and `docs/research/census-precision.json`.
 
-**Sections 1 to 8 describe the census as it was run, with the pinned engine, and are unchanged.** Section 9 adds the final engine on the same 100 projects (HEAD `52c808c`, which treats a deprecated version of a living package as an upgrade notice) beside the pinned one, and a precision check on units the engine tuning never saw. **For numbers to quote now, read the table in section 9.8.** Each row names the `recompute.mjs` line that prints it.
+**Sections 1 to 8 describe the census as it was run, with the pinned engine, and are unchanged.** Section 9 adds the final engine on the same 100 projects (`32cc48d`: a deprecated version of a living package is an upgrade notice, and the repository of a PyPI project is read from every metadata field) beside the pinned one, a precision check on units the engine tuning never saw, and a recall check of 50 alive units. **For numbers to quote now, read the table in section 9.8.** Each row names the `recompute.mjs` line that prints it.
 
 ## 1. Question
 
@@ -194,61 +194,71 @@ The weighted row counts each stratum by its share of all flagged units. Because 
 - **Clustered data.** Dependencies sit inside projects; project-level shares are the ones to quote.
 - **Engine version.** All numbers are for one engine commit. The engine will change; rerun `docs/research/scripts` to refresh them.
 
-## 9. The final engine beside the pinned one (added 2026-11-04, updated for the upgrade-notice engine)
+## 9. The final engine beside the pinned one (added 2026-11-04, updated for the final engine 32cc48d)
 
-Four engines ran over the same 100 projects, with the same cache and the same fixed clock (2026-11-03 14:12 UTC). Only the engine changed.
+Five engines ran over the same 100 projects, with the same cache and the same fixed clock (2026-11-03 14:12 UTC). Only the engine changed.
 
 | Engine | Commit | What changed |
 | --- | --- | --- |
 | Pinned (sections 1 to 8) | `bfd86f1` | The engine as the census first ran it |
 | Tuned | engine tuning item | Scorecard alone no longer decides; a commit in the last year lifts a stale package; each verdict says `basis` (hard signal or heuristic); a PyPI release is dated by its newest file |
 | Round 4a | `368e98c` | Tuned, plus: a moved repository is followed and never read as archived; advisories are merged by vulnerability; a package the registry does not know is `alive` and marked not checked; researched ways out (91 packages) |
-| **Final** | `52c808c` | Round 4a, plus: a deprecated (npm) or yanked (PyPI) version of a package that is alive is an **upgrade notice** on an `alive` verdict (`Diagnosis.upgradeTo`), not `dying`; a PyPI range does not pick a yanked release (PEP 592) |
+| Upgrade | `52c808c` | Round 4a, plus: a deprecated (npm) or yanked (PyPI) version of a package that is alive is an **upgrade notice** on an `alive` verdict (`Diagnosis.upgradeTo`), not `dying` |
+| **Final** | `32cc48d` | Upgrade, plus: the repository of a PyPI project is read from every metadata field and, when the latest release names none, from the oldest release when GitHub confirms the link |
 
-The change from round 4a to final comes from a finding in the first version of this section: a deprecated version of a living package made the dependency `dying`. The engine worker fixed it; this version of the section is for the engine as it is now.
+The last change touched 7 diagnoses on the census (9.2). The earlier section 9 of this report was written for the upgrade engine; this version is for the final one, and 9.9 lists what moved in the quote table.
 
 ### 9.1 The final engine reproduces the engine worker's aggregate
 
-I built the engine from `git archive HEAD` in a scratch folder and ran it over the 100 projects through the same warm cache (0 network requests, 0 GitHub REST requests; 457 commit lookups answered from cached Atom feeds). The aggregate has no difference at any field from `docs/verification/engine-upgrade-data/census-aggregate-after.json`. The committed copy is `docs/research/census-aggregate-upgrade.json`. The same was done for round 4a (`census-aggregate-final.json`, equal to `docs/verification/engine-r4-data/census-aggregate-r4.json`). Both files carry the pinned run's `engine`, `generatedBy` and `scope` text, because the aggregate script copies it from the run's meta file; the engine of each file is the one named here and in `census-r4c-headrun.json` and `census-r4-headrun.json`.
+I built the engine from `git archive HEAD` in a scratch folder (`packages/engine` at the repository HEAD is the tree of `32cc48d`) and ran it over the 100 projects through the same warm cache (0 network requests, 0 GitHub REST requests; 458 commit lookups answered from cached Atom feeds). The aggregate has no difference at any field from `docs/verification/engine-r4c-data/census-aggregate-after.json`. The committed copy is `docs/research/census-aggregate-final.json`; the aggregates of the earlier engines are `census-aggregate-r4a.json` (round 4a) and `census-aggregate-upgrade.json` (upgrade). All carry the pinned run's `engine`, `generatedBy` and `scope` text, because the aggregate script copies it from the run's meta file; the engine of each file is named here and in the `headrun` files.
 
-### 9.2 Verdicts, four engines (3,201 direct dependencies)
+### 9.2 Verdicts, five engines (3,201 direct dependencies)
 
 | Engine | alive | dying | dead | ghost | zombie |
 | --- | --- | --- | --- | --- | --- |
 | Pinned | 2,542 | 461 | 193 | 1 | 4 |
 | Tuned | 2,754 | 258 | 184 | 1 | 4 |
 | Round 4a | 2,768 | 254 | 174 | 1 | 4 |
-| **Final** | **2,810** | **212** | 174 | 1 | 4 |
+| Upgrade | 2,810 | 212 | 174 | 1 | 4 |
+| **Final** | **2,809** | **212** | **175** | 1 | 4 |
+
+From the upgrade engine to the final one, 3,194 diagnoses are identical, and 7 differ in some field. Three of the 7 change the verdict:
+
+| Package (PyPI) | Upgrade engine | Final engine | Why |
+| --- | --- | --- | --- |
+| `darglint` | dead, heuristic | dead, **hard** | The latest release names no repository; the oldest release does, and that repository was archived by its owner on Dec 16, 2022 |
+| `libsass` | dying, heuristic | dead, **hard** | Same rule; the repository (now under another owner) is archived |
+| `fontfeatures` | alive | dying, heuristic | Same rule; the repository's newest commit is 1.4 years old |
+
+The other 4 only gain a note that the repository link came from an unusual field (`discord-py`, `supervisor`, `mako`, `onnxruntime`); their verdicts are the same.
 
 Basis of the final engine's verdicts (every non-alive diagnosis has one):
 
 | | Hard signal | Heuristic |
 | --- | --- | --- |
-| Dead, ghost or zombie (179) | 74 (41.3%): 69 dead, 1 ghost, 4 zombie | 105 (58.7%): the abandoned rule |
+| Dead, ghost or zombie (180) | 76 (42.2%): 71 dead, 1 ghost, 4 zombie | 104 (57.8%): the abandoned rule |
 | Dying (212) | 0 | 212 |
 
-In round 4a, 42 of the 254 dying dependencies rested on a hard fact (the version in use was deprecated). None does now. Two of the four zombies rest on the abandoned rule for the "dead" half and on an advisory for the other; the engine labels them hard (engine rules, below).
+**Two counts of "hard".** The engine's `basis` field says 76. The aggregate field `strongDeadDeps`, which counts dead-or-worse dependencies whose first evidence line is not the abandoned rule, says 74. They differ by the 2 zombies (`expr-eval`, `extract-zip`) whose death rests on the abandoned rule and whose "hard" comes from the advisory. The engine's record (`engine-r4c.md`, section 4) printed `strongDeadDeps` (72 before, 74 after) beside `heuristicDeadDeps` (105 before, 104 after), which is the basis count; 74 and 104 do not add up to the 180. This report uses the **basis** count (76 hard, 104 heuristic, which add up) in every table and in the quote table. C1 is a different thing, a count of projects, and keeps its own definition (9.3).
 
-### 9.3 The claims, round 4a against final
+### 9.3 The claims, upgrade engine against final
 
-| Claim | Pinned | Round 4a | Final |
+| Claim | Pinned | Upgrade (`52c808c`) | Final (`32cc48d`) |
 | --- | --- | --- | --- |
 | Projects with a dead-or-worse direct dependency | 51 of 100 | 50 of 100 | 50 of 100 |
-| **C1.** Projects with a deprecated, archived, inactive or gone direct dependency | 34 of 100 | 33 of 100 | **33 of 100** (CI 24.6% to 42.7%) |
-| Projects with a dying-or-worse direct dependency | 82 of 100 | 73 of 100 | **65 of 100** |
-| **C3.** Dead-or-worse direct dependencies | 198 of 3,201 | 179 | **179 (5.6%, 1 in 18)** |
-| Dying direct dependencies | 461 | 254 | **212** |
+| **C1.** Projects with a deprecated, archived, inactive or gone direct dependency | 34 of 100 | 33 of 100 | **34 of 100** (CI 25.5% to 43.7%) |
+| Projects with a dying-or-worse direct dependency | 82 of 100 | 65 of 100 | 65 of 100 |
+| **C3.** Dead-or-worse direct dependencies | 198 of 3,201 | 179 | **180 (5.6%, 1 in 18)** |
+| Dying direct dependencies | 461 | 212 | 212 |
 | Zombies, and projects with a zombie | 4, in 3 | 4, in 3 | 4, in 3 |
-| Flagged with a way out | 22 of 198 | 95 of 179 | **95 of 179** |
+| Flagged with a way out | 22 of 198 | 95 of 179 | 95 of 180 |
 | Complete, partial, failed projects | 90, 10, 0 | 90, 10, 0 | 90, 10, 0 |
 
-The upgrade rule changed nothing in C1, C3 or the zombies. It moved dependencies from `dying` to `alive` only: transitions from round 4a to final are 2,768 alive to alive, 212 dying to dying, 105 and 69 dead to dead (heuristic and hard), 4 zombie, 1 ghost, and **42 dying (hard) to alive**. Nothing else moved.
-
-By ecosystem, final engine: C1 holds for 26 of 50 npm projects (52.0%) and 7 of 50 Python projects (14.0%).
+C1 is back at 34 of 100: the project that gained it is the one whose `darglint` and `libsass` are now `dead` on a hard signal (archived repositories). The pinned run said 34 for a different reason (it counted moved repositories as dead); the number is the same, the content is not. By ecosystem, final engine: C1 holds for 26 of 50 npm projects (52.0%) and 8 of 50 Python projects (16.0%).
 
 ### 9.4 Upgrade notices
 
-A dependency "carries an upgrade notice" when its version in use is deprecated on npm or yanked on PyPI, and the engine gives a newer release to move to.
+A dependency "carries an upgrade notice" when its version in use is deprecated on npm or yanked on PyPI, and the engine gives a newer release to move to. The final engine changes nothing here: the numbers are those of the upgrade engine.
 
 | Count | Value |
 | --- | --- |
@@ -258,7 +268,6 @@ A dependency "carries an upgrade notice" when its version in use is deprecated o
 | Target in another major | 36 |
 | Target older than the version in use | 1 (`codemirror`) |
 | Also have a known advisory | 7 |
-| Verdict changed because of the rule | 42: the 40 notice carriers that were dying, plus 2 PyPI dependencies (`clvm`, `pytest-timeout`) whose range had picked a yanked release and now carry no notice |
 
 By package (dependencies; projects; advisory; where the target is):
 
@@ -280,11 +289,11 @@ By package (dependencies; projects; advisory; where the target is):
 | `vue-i18n` | 1 | 1 | 1 | another major |
 | `wrangler` | 1 | 1 | 1 | another major |
 
-The first version of this section said `eslint` was "in 21 of the 100 projects". That was wrong: it is 21 dependencies in 20 projects (one project declares it twice). The data files `census-precision-r4b.json` and `census-r4b-units.json` call this count `sampleSubjects`; it counts dependencies, not projects.
+`eslint` is 21 dependencies in 20 projects (one project declares it twice). The data files `census-precision-r4b.json` and `census-r4b-units.json` call a dependency count `sampleSubjects`; it counts dependencies, not projects.
 
 ### 9.5 The moved-repository effect
 
-The upgrade rule does not touch it; the table is the round-4a one on the final engine. The census's successor research flagged 14 packages as maybe not dead. Distinct verdicts per package:
+The census's successor research flagged 14 packages as maybe not dead. Distinct verdicts per package:
 
 | Package | Dependencies | Pinned | Tuned | Final |
 | --- | --- | --- | --- | --- |
@@ -305,9 +314,9 @@ The upgrade rule does not touch it; the table is the round-4a one on the final e
 
 Dead-or-worse dependencies of these 14 packages: 24 in the pinned run, 18 tuned, 8 final. The 8 left are `cross-env` (archived by its maintainer, who says it is finished) and `mkdocs-material` (marked Inactive by PyPI, end of life announced for 2027-05-05).
 
-Across the whole run, 10 dependencies in 8 packages carry the evidence "the GitHub copy is archived because the project moved" (a README notice). All 10 were `dead` in the pinned run; in the final run 8 are alive and 2 are dying (on a heuristic). A further 37 dependencies in 34 packages carry "renamed or transferred" evidence; GitHub forwards the old address and the verdict does not change because of it (final: 15 dead on the heuristic, 5 dead and 1 zombie on hard signals, 13 dying on a heuristic, 3 alive).
+Across the whole run, 10 dependencies in 8 packages carry the evidence "the GitHub copy is archived because the project moved" (a README notice). All 10 were `dead` in the pinned run; in the final run 8 are alive and 2 are dying (on a heuristic). A further 38 dependencies in 35 packages carry "renamed or transferred" evidence; GitHub forwards the old address and the verdict does not change because of it (final: 15 dead on the heuristic, 6 dead and 1 zombie on hard signals, 13 dying on a heuristic, 3 alive).
 
-Verdict transitions of the pinned run's 198 dead-or-worse dependencies to the final engine: 105 dead (heuristic), 69 dead (hard), 4 zombie (hard), 1 ghost (hard); 16 alive; 3 dying (heuristic).
+Verdict transitions of the pinned run's 198 dead-or-worse dependencies to the final engine: 104 dead (heuristic), 70 dead (hard), 4 zombie (hard), 1 ghost (hard); 16 alive; 3 dying (heuristic).
 
 ### 9.6 Ways out
 
@@ -315,15 +324,15 @@ Verdict transitions of the pinned run's 198 dead-or-worse dependencies to the fi
 | --- | --- | --- |
 | Pinned run | 198 | 22 (19 of 175 packages) |
 | Final engine, of the 198 first flagged | 198 | 96 (48.5%, CI 41.6% to 55.4%) |
-| Final engine, of the 179 flagged now | 179 | 95 (53.1%, CI 45.8% to 60.2%) |
+| Final engine, of the 180 flagged now | 180 | 95 (52.8%, CI 45.5% to 59.9%) |
 
-The research behind them (`docs/research/successors.md`) covers 91 of the 175 dead packages (99 of the 198 dependencies), 17 of 30 Python packages (the engine named none before), and all 4 zombies. By first way out among the 179: 77 package, 16 native, 2 raise, 84 none. The upgrade rule did not change these counts, because the notice carriers were `dying`, not dead. It did remove the successor suggestions from 10 dependencies that are now `alive` (an alive diagnosis carries none): the engine record lists this as a gap.
+Of the 198 first flagged, 16 are now alive and 3 dying (they need none), and 179 are still flagged, 95 of them with a way out. The 180th flagged dependency is `libsass`, which the pinned run called dying. All 4 zombies have a way out. By first way out among the 180: 77 package, 16 native, 2 raise, 85 none; npm 77 of 146, Python 18 of 34. The research behind them (`docs/research/successors.md`) covers 91 of the 175 dead packages (99 of the 198 dependencies) and 17 of 30 Python packages (the engine named none before). The upgrade rule removed the successor suggestions from 10 dependencies that are now `alive`, as an alive diagnosis carries none; the engine record lists this as a gap.
 
 ### 9.7 Precision on this engine
 
 Two hand-checked samples exist. The first (section 6) is 56 units judged on the pinned engine; the engine tuning was fitted on it. The second is 40 units drawn at random from the round-4a engine's flagged units, excluding the 56 packages (seed text `necromancer-precision-r4-2026-11`), judged on 2026-11-04 against registry records, github.com pages, two sources of commit dates (Atom feed and a git clone, which agreed within a day for 35 of 35 units) and OSV. The criteria are the ones written for the first check, unchanged: *correct* (every deciding evidence line is true on the primary source on the check date and the verdict follows from the engine's definitions) and *defensible* (correct, and no sign of life in the last 12 months, unless the repository is archived or the package is deprecated).
 
-For the final engine I did not judge anything again. A script (`scripts/r4c-rescore.mjs`) takes the committed judgments, looks up each unit's verdict on the final engine, and keeps the judgment of every unit that is still flagged with the same verdict and the same decisive evidence line. A unit that is no longer flagged leaves the count.
+For the final engine I did not judge anything again except where the evidence changed. A script (`scripts/r4c-rescore.mjs`) takes the committed judgments, looks up each unit's verdict on the final engine, and keeps the judgment of every unit that is still flagged with the same verdict and the same decisive evidence line. A unit that is no longer flagged leaves the count.
 
 | Sample | Judged on | Units | No longer flagged | Still flagged | Right (95% CI) | Defensible (95% CI) |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -331,73 +340,117 @@ For the final engine I did not judge anything again. A script (`scripts/r4c-resc
 | **Second (out of sample)** | Round 4a | 40 | 4 | 36 | **36 (90.4% to 100%)** | **35 (97.2%, 85.8% to 99.5%)** |
 | Both | | 96 | 15 | 81 | 81 (95.5% to 100%) | 80 (98.8%, 93.3% to 99.8%) |
 
-- **First sample.** The 11 that left were lifted before this change: 10 by the engine tuning (9 correct but not defensible, and `shelljs`, which was wrong) and 1 by the moved-repository fix (`@codemirror/lang-python`, judged defensible while the GitHub copy looked archived). The upgrade rule lifted none of the 56. The 45 still flagged were all right and defensible when judged.
-- **Second sample.** The 4 that left are exactly the 4 correct-but-not-defensible deprecated-version units (`eslint`, `@xmldom/xmldom`, `@testing-library/jest-dom`, `codemirror`), now `alive` with an upgrade notice. The 36 still flagged: 36 right; 35 defensible; the one that is not is `pypdf2` (its renamed repository's commits belong to the successor package `pypdf`; judged by the written criterion applied literally).
-- **Weighted by population.** The second sample's strata now hold 43 dead-on-a-hard-signal, 83 dead-on-a-heuristic and 157 dying-on-a-heuristic units (the dying-on-a-hard-fact stratum of 16 is empty): right 100% (CI 91.9% to 100%), defensible 96.0% (CI 85.8% to 100%).
-- **Evidence that changed (3 units).** For `prism-react-renderer`, `freezegun` and `zxcvbn` of the first sample the decisive evidence line changed from the Scorecard score to "no commit to the default branch for N years" (the tuning change). I checked the new line against the first check's dossiers: the engine's last-commit date is the same day as the dossier's for all three (2025-01-02, 2025-08-19, 2025-10-06). The judgments are kept. No unit of the second sample changed evidence.
-- **Why the second sample's defensible share rose** (87.5% to 97.2%). The rule now declines to flag the four units that were not defensible; it is not that anything was judged better. The claim to quote is therefore the one for the final engine on these 40, with that reason beside it. The 87.5% belongs to round 4a.
+- **First sample.** The 11 that left were lifted before the upgrade rule: 10 by the engine tuning (9 correct but not defensible, and `shelljs`, which was wrong) and 1 by the moved-repository fix (`@codemirror/lang-python`). The 45 still flagged were all right and defensible when judged.
+- **Second sample.** The 4 that left are the 4 correct-but-not-defensible deprecated-version units (`eslint`, `@xmldom/xmldom`, `@testing-library/jest-dom`, `codemirror`), now `alive` with an upgrade notice. The 36 still flagged: 36 right; 35 defensible; the one that is not is `pypdf2` (its renamed repository's commits belong to the successor package `pypdf`; judged by the written criterion applied literally).
+- **Weighted by population.** The second sample's strata now hold 45 dead-on-a-hard-signal, 82 dead-on-a-heuristic and 157 dying-on-a-heuristic units. Right 100% (CI 91.8% to 100%), defensible 96.1% (CI 85.7% to 100%).
+- **Evidence that changed (4 units).** For `prism-react-renderer`, `freezegun` and `zxcvbn` of the first sample the decisive line changed from the Scorecard score to "no commit to the default branch for N years" (the tuning change); the engine's last-commit date is the same day as the first check's dossier for all three, so the judgments are kept. For `darglint` of the second sample the decisive line changed from the abandoned rule to `repo-archived` (the final engine's repository rule). I checked the new line against the primary source: the repository page carries the archive banner of Dec 16, 2022, and the PyPI record of the oldest release names that repository. `darglint` was judged correct and defensible as an abandoned package; as an archived one it is both, so the judgment is kept. The unit moves from the dead-on-a-heuristic stratum to the dead-on-a-hard-signal stratum (11 units checked in each of the two).
+- **Why the second sample's defensible share rose** (87.5% to 97.2%). The rule now declines to flag the four units that were not defensible; it is not that anything was judged better. The claim to quote is the one for the final engine on these 40, with that reason beside it. The 87.5% belongs to round 4a.
 
-What the check cannot tell: for units that rest on staleness the engine's line (no commit for 365 days) and the criterion (no sign of life in 12 months) are almost the same line, so a staleness unit passes if the data are right. Four of the 40 units sit within 45 days of the line (`enzyme` 378 days, `mkdocs` 380, `onnx2torch` 386, `ufonormalizer` 407 at the check date). Recall is not measured.
+What the check cannot tell: for units that rest on staleness the engine's line (no commit for 365 days) and the criterion (no sign of life in 12 months) are almost the same line, so a staleness unit passes if the data are right. Four of the 40 units sit within 45 days of the line (`enzyme` 378 days, `mkdocs` 380, `onnx2torch` 386, `ufonormalizer` 407 at the check date). The recall check in 9.10 asks the opposite question.
 
 ### 9.8 Numbers to quote, with their recompute lines
 
-Every row is a line of `node docs/research/recompute.mjs` that starts with the id in the last column. Numbers come from `census-aggregate-upgrade.json` (the final engine), `census-r4c-compare.json`, `census-r4c-rescore.json` and `successors.json`.
+Every row is a line of `node docs/research/recompute.mjs` that starts with the id in the last column. Numbers come from `census-aggregate-final.json` (the final engine), `census-r4d-compare.json`, `census-r4d-moved.json`, `census-r4d-rescore.json`, `census-recall-r4d.json` and `successors.json`.
 
 | Quote | Value | Line |
 | --- | --- | --- |
-| Projects with a package that is deprecated, archived, inactive or gone | **33 of 100** (CI 24.6% to 42.7%) | `Q01` |
-| The same, npm and Python | 26 of 50 (52.0%) and 7 of 50 (14.0%) | `Q02`, `Q03` |
-| Dead-or-worse direct dependencies | **179 of 3,201** (5.6%, 1 in 18) | `Q04` |
-| Their basis | 74 (41.3%) hard signal, 105 (58.7%) abandoned heuristic | `Q05` |
+| Projects with a package that is deprecated, archived, inactive or gone | **34 of 100** (CI 25.5% to 43.7%) | `Q01` |
+| The same, npm and Python | 26 of 50 (52.0%) and 8 of 50 (16.0%) | `Q02`, `Q03` |
+| Dead-or-worse direct dependencies | **180 of 3,201** (5.6%, 1 in 18) | `Q04` |
+| Their basis | 76 (42.2%) hard signal, 104 (57.8%) abandoned heuristic | `Q05` |
 | Zombies | **4**, in 3 projects | `Q06` |
 | Projects with a dead-or-worse dependency, any basis | 50 of 100 | `Q07` |
-| Flagged dependencies with a way out | **95 of 179** (53.1%); 4 of 4 zombies | `Q08` |
+| Flagged dependencies with a way out | **95 of 180** (52.8%); 4 of 4 zombies | `Q08` |
 | Researched ways out | 91 of 175 dead packages (99 of 198 dependencies); Python 17 of 30 | `Q09` |
 | Upgrade notices | 41 dependencies in 26 projects, 15 packages; 36 point to another major; 7 also have an advisory | `Q10` |
 | The commonest notice | `eslint`: 21 dependencies in 20 projects | `Q11` |
 | Moved repositories | 10 dependencies in 8 packages were dead in the first run; now 8 alive, 2 dying | `Q12` |
-| Verdicts | alive 2,810, dying 212, dead 174, ghost 1, zombie 4 | `Q13` |
+| Verdicts | alive 2,809, dying 212, dead 175, ghost 1, zombie 4 | `Q13` |
 | The sample | 100 projects (25 each of npm popular, npm tail, Python popular, Python tail), 3,201 direct dependencies, median 25 per project | `Q14` |
-| Precision, units the tuning never saw | 36 still flagged of 40; **36 right, 35 defensible** (97.2%, CI 85.8% to 99.5%); weighted 96.0% | `Q15` |
+| Precision, units the tuning never saw | 36 still flagged of 40; **36 right, 35 defensible** (97.2%, CI 85.8% to 99.5%); weighted 96.1% | `Q15` |
 | Coverage | 90 projects complete, 10 partial, 0 failed | `Q18` |
-| Hard-signal flags | 10 of 10 right and defensible (CI 72.2% to 100%) | `Q19` |
+| Hard-signal flags | 11 of 11 right and defensible (CI 74.1% to 100%) | `Q19` |
+| **Recall of the `alive` verdict** | 49 alive units checked, **1 really dead or dying** (2.0%, CI 0.4% to 10.7%); plain alive 0 of 30 (CI up to 11.4%); weighted 0.5% | `Q20` |
+| The miss | `coveralls`: alive because of a recent commit while its README says it is no longer maintained | `Q21` |
 
 For context, not for the README: the same 40 units on round 4a were 40 of 40 right and 35 of 40 defensible (87.5%) with 4 units no longer flagged (`Q16`); 45 of the first 56 units are still flagged and all right and defensible, but the tuning was fitted on them (`Q17`).
 
-Do not quote: 51 of 100 projects or 198 of 3,201 (pinned, before the moved-repository fix and the commit rule); 34 of 100 for C1; the 98.2% and 82.1% of the first 56 units as the engine's precision; "21 of 100 projects" for `eslint`; 254 dying. Say "by the engine's rule" with the 179, because 59% of it is the abandoned heuristic. Say "no longer flagged" when you quote the 97.2%: the share is of what the final engine still flags, and the four units it stopped flagging were its weak ones.
+Do not quote: 51 of 100 projects or 198 of 3,201 (pinned); 33 of 100 or 179 of 3,201 (the upgrade engine, one step before this one); 74 as the count of dead-on-a-hard-signal (the basis count is 76); the 98.2% and 82.1% of the first 56 units as the engine's precision; "21 of 100 projects" for `eslint`; 254 dying. Say "by the engine's rule" with the 180, because 58% of it is the abandoned heuristic. Say "no longer flagged" when you quote the 97.2%: the share is of what the final engine still flags, and the four units it stopped flagging were its weak ones. Quote the recall number with its interval, never alone.
 
-### 9.9 Nearby cases
+### 9.9 What changed in the quote table since the previous version
+
+The previous table was computed on the upgrade engine (`52c808c`). Old and new are the lines of `recompute.mjs` (`QCHANGE`); 8 of the 19 earlier figures changed and 2 were added:
+
+| Q | Old | New |
+| --- | --- | --- |
+| `Q01` | 33 of 100 (CI 24.6% to 42.7%) | 34 of 100 (CI 25.5% to 43.7%) |
+| `Q03` | Python 7 of 50 (14.0%) | Python 8 of 50 (16.0%) |
+| `Q04` | 179 of 3,201 | 180 of 3,201 (same 5.6%, 1 in 18) |
+| `Q05` | 74 (41.3%) hard, 105 (58.7%) heuristic | 76 (42.2%) hard, 104 (57.8%) heuristic. The old 74 was also the basis count, which this engine moves to 76; the engine record's 72 and 74 are the other definition (9.2) |
+| `Q08` | 95 of 179 (53.1%) | 95 of 180 (52.8%) |
+| `Q13` | alive 2,810, dying 212, dead 174 | alive 2,809, dying 212, dead 175 |
+| `Q15` | weighted defensible 96.0% (CI 85.8% to 100%) | 96.1% (CI 85.7% to 100%) |
+| `Q19` | 10 of 10 (CI 72.2% to 100%) | 11 of 11 (CI 74.1% to 100%) |
+| `Q20`, `Q21` | not present | the recall check (9.10) |
+
+Unchanged: `Q02`, `Q06`, `Q07`, `Q09`, `Q10`, `Q11`, `Q12`, `Q14`, `Q16`, `Q17`, `Q18`.
+
+### 9.10 Recall check of the alive verdicts
+
+Precision asks whether what the engine flags is dead. Recall asks the reverse: of what the engine calls `alive`, how much is really dead or dying. The criteria were written and committed first (`docs/research/census-recall-criteria.md`, commit before the draw), in these terms: *really dead* if the latest release is deprecated or yanked or the PyPI project is marked Inactive (D1), the repository is archived without a move notice (D2), the maintainers say it is unmaintained or deprecated (D3), or the release is 5 years old and the default branch quiet for 12 months (D4); *really dying* if the release is 2 years old and the default branch quiet for 12 months (Y1). A deprecated version of a living package (an upgrade notice) is not a miss.
+
+Draw: 50 alive units (a direct dependency of a project), seed text `necromancer-recall-r4d-2026-11`, from the 2,663 alive units of the final engine on the census, in two strata: **plain** alive (nothing in the evidence: 2,392 units; 30 drawn, 15 npm and 15 PyPI) and **signalled** alive (a recent-activity lift, a moved repository, a notice, a shown warning: 271 units; 20 drawn, 10 and 10). Each unit has a dossier in `docs/research/census-r4d-dossiers/recall/` with the registry record, the repository page, two sources of commit dates and the README or registry text. No GitHub REST call.
+
+| Stratum | Units | Distinct packages | Not checkable | Checked | Really dead | Really dying | Borderline | Misses (95% CI) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Plain alive | 30 | 29 | 0 | 30 | 0 | 0 | 0 | **0 of 30** (0% to 11.4%) |
+| Signalled alive | 20 | 16 | 1 | 19 | 1 | 0 | 1 | 1 of 19 (5.3%, 0.9% to 24.6%) |
+| **All** | 50 | 45 | 1 | 49 | 1 | 0 | 1 | **1 of 49** (2.0%, 0.4% to 10.7%) |
+| Weighted by stratum size | | | | | | | | 0.5% (CI 0% to 6.2%) |
+
+**The miss.** `coveralls` (npm), signalled alive. Criterion D3: the README of its repository says "This repo is no longer maintained" and names a fork. The latest release is 5.3 years old; its newest commit on the default branch was 302 days old at the check, and that commit is why the engine lifted it from dead to alive. Engine rule that would catch it: the README notice reader (today only "has moved to" is read) should read maintainer statements such as "no longer maintained" as a hard signal with source `readme`, and the recent-activity lift (`verdict.ts`) must not apply to a verdict that rests on one. This unit was in the first 56 and I then judged it correct but not defensible, because of the commit; the criteria of this check include the maintainers' statement, which that earlier criterion did not. The two judgments disagree and I have not changed the earlier one.
+
+**Borderline (not counted).** `pyaudio` (PyPI): the latest release is 713 days old, 17 days under two years; PyPI links no source repository, so the commit side of Y1 cannot be read. The engine says alive and shows `no-repository`. Engine rule that would catch it: the two-year staleness line (`staleDays`) fires 17 days later.
+
+**Not checkable (not counted).** `ak-guardian` (PyPI): the registry answers 404. The engine says alive, "not found", "not checked".
+
+**Sensitivity.** 13 of the 20 signalled units are alive because of the recent-activity lift. 5 of those have a release older than two years: `fathom-client` (846 days), `@types/fs-extra` (1,092), `@babel/plugin-syntax-object-rest-spread` (2,486), `paddlefsl` (1,677) and `coveralls`. If the age of the package release alone counted, the misses would be 5 of 49, not 1: the written criteria let a busy repository (or a busy monorepo) keep a package alive, as the engine does. This is the main choice behind the recall number.
+
+**Not checked.** Risk that is not death (one maintainer, a design problem); advisories; only the head of a README or registry text (a few thousand characters) is scanned for maintainer statements, so a notice lower down is missed; 12 repositories had no `README.md` at their head, and for them only the registry text was read; packages on hosts other than github.com were not met; the version in use, apart from the notice rule.
+
+### 9.11 Nearby cases
 
 | Case | Met? | What was checked |
 | --- | --- | --- |
-| A dependency that carries an upgrade notice and an advisory | Yes, 7 | `next` (37 advisories), `@xmldom/xmldom` (15), `jquery`, `vue-i18n`, `glob` (1 of 4), `wrangler`, `uuid`. All are `alive` with the advisory ids listed and the notice shown; the advisory is never hidden by life. 3 of the 7 targets are in the same major (`next`, `@xmldom/xmldom`, `jquery`) |
-| A notice whose target is in another major | Yes, 36 | `eslint` (all 8.x and 9.x are deprecated, so the target is 10), `glob`, `rimraf`, `uuid`, `puppeteer` and others. The engine's line says "another major version"; it does not read the declared range, so for `eslint ^9.39.1` it names a version the range excludes |
-| The `codemirror` case: the target is older than the version in use | Yes, 1 | The range `^6.0.2` resolves to 6.65.7, a mis-tagged publication that is deprecated; the real latest is 6.0.2. The engine marks the target `older` and says why. It is `alive` |
-| A notice on a package that is still dead | Yes, 1 | `prettier-standard`: the abandoned heuristic decides, the notice is shown beside it |
-| A PyPI range that picked a yanked release | Yes, 2 | `clvm` and `pytest-timeout`: pip skips a yanked release for a range (PEP 592), so the earlier notice was false; both are `alive` with no notice |
-| A moved repository (README notice) | Yes | `orderedmap`: `dying` (heuristic); its README address equals the engine's and the new host's page loads. `prosemirror-state` and `@codemirror/lang-python`: `alive` |
+| A dependency that carries an upgrade notice and an advisory | Yes, 7 | `next` (37 advisories), `@xmldom/xmldom` (15), `jquery`, `vue-i18n`, `glob` (1 of 4), `wrangler`, `uuid`. All are `alive` with the advisory ids listed and the notice shown. 3 of the 7 targets are in the same major (`next`, `@xmldom/xmldom`, `jquery`) |
+| A notice whose target is in another major | Yes, 36 | `eslint` (all 8.x and 9.x are deprecated, so the target is 10), `glob`, `rimraf`, `uuid`, `puppeteer` and others. The engine does not read the declared range |
+| The `codemirror` case: the target is older than the version in use | Yes, 1 | `^6.0.2` resolves to 6.65.7, a mis-tagged publication that is deprecated; the real latest is 6.0.2. The target is marked `older`. It is `alive` |
+| A notice on a package that is still dead | Yes, 1 | `prettier-standard` |
+| A PyPI repository found in an older release | Yes, 2 | `darglint`, `libsass`: both `dead` on a hard signal now; checked on the repository page and the PyPI record |
+| A PyPI repository that changes a verdict the other way | Yes, 1 | `fontfeatures`: `alive` to `dying` (newest commit 1.4 years old) |
+| A moved repository (README notice) | Yes | `orderedmap`: `dying` (heuristic); its README address equals the engine's and the new host's page loads. `prosemirror-state` and `@codemirror/lang-python`: `alive`; in the recall draw `prosemirror-state` has a commit at the new host on 2026-04-01 |
 | A package the registry does not know | Yes | 7 PyPI packages; `reflex-bench` and `ak-guardian` answer 404 on PyPI. `alive`, "not found", "not checked" |
-| A zombie whose advisories were merged | Partly | The four zombies are npm packages; for `extract-zip` and `expr-eval`, which I checked, OSV returns one record per vulnerability, so nothing merged. The merge shows on a non-zombie: OSV lists 2 records for `PyPDF2` 2.12.1 (a GHSA and a PYSEC for one vulnerability) and the engine counts 1. 93 dependencies carry advisory aliases |
+| A zombie whose advisories were merged | Partly | The four zombies are npm packages; for `extract-zip` and `expr-eval`, which I checked, OSV returns one record per vulnerability, so nothing merged. The merge shows on a non-zombie: OSV lists 2 records for `PyPDF2` 2.12.1 and the engine counts 1. 93 dependencies carry advisory aliases |
 | A unit with a low-confidence way out | Yes | `platform` to `bowser`, `react-color` to `react-colorful`; both successors alive on the check date |
-| A unit I judge wrong | No | No wrong verdict among the 40; the one earlier wrong unit (`shelljs`, stale Scorecard score) was fixed by the tuning. The closest case is `pypdf2` (rule 5 below) |
+| A unit I judge wrong | A miss, not a wrong flag | Among the flagged units none is wrong. Among the alive units one is: `coveralls` (9.10) |
 
-### 9.10 Engine rules for the post-QA round
+### 9.12 Engine rules for the post-QA round
 
-Resolved since the first version of this section: *a deprecated version in use gave `dying`* (it is an upgrade notice now). Still open:
+Resolved since the earlier versions of this section: *a deprecated version in use gave `dying`* (an upgrade notice now) and *a PyPI package with no repository link in its latest release misses the repository's signals* (the oldest release is read). Still open:
 
-1. **`verdict.ts`, `zombie` always has basis hard.** For `expr-eval` and `extract-zip` the death itself rests on the abandoned rule; the advisory is the hard fact. The label says more than the evidence.
-2. **README deprecation notices are read only for "has moved to".** `karma` says "Karma is deprecated" in its README and is `dying` (heuristic), not dead (hard). A missed hard signal, not a wrong verdict.
-3. **A package with no repository link in its PyPI metadata misses the repository's signals.** `darglint` reads "no source repository"; the repository exists and was archived on 2022-12-16. The verdict (dead, heuristic) is right and the evidence is incomplete.
-4. **A renamed repository counts as the same project.** `pypdf2` was renamed `pypdf`, a different package; commits there are not life of the old package. The advisory kept the verdict at `dying`.
-5. **Units near the 365-day line flip with the clock** (4 of 40 within 45 days).
-6. **The upgrade target ignores the declared range and `engines`** (engine record gaps). 36 of 41 notices name another major.
-7. **A project that declares a package in two scopes counts it twice** in every dependency total, here and in the pinned census.
+1. **README maintainer statements are not read, and a recent commit lifts the verdict.** `coveralls` is `alive` while its README says "no longer maintained" (the one recall miss). `karma` says "Karma is deprecated" in its README and is `dying` (heuristic), not dead (hard). Only "has moved to" is read today.
+2. **`verdict.ts`, `zombie` always has basis hard.** For `expr-eval` and `extract-zip` the death itself rests on the abandoned rule; the advisory is the hard fact. The label says more than the evidence, and it makes the `basis` count (76) differ from the decisive-evidence count (74) (9.2).
+3. **A renamed repository counts as the same project.** `pypdf2` was renamed `pypdf`, a different package; commits there are not life of the old package.
+4. **Units near the 365-day line flip with the clock** (4 of 40 within 45 days), and a package of a busy monorepo stays alive on the repository's activity (`@babel/plugin-syntax-object-rest-spread`, 2,486 days since its release).
+5. **The upgrade target ignores the declared range and `engines`.** 36 of 41 notices name another major.
+6. **A project that declares a package in two scopes counts it twice** in every dependency total, here and in the pinned census.
+7. **The two-year staleness line** leaves a package 17 days short of it alive (`pyaudio`).
 
-### 9.11 Limits of section 9
+### 9.13 Limits of section 9
 
 - 40 units in the out-of-sample sample, one checker, criteria as before; after the upgrade rule 36 are still flagged, and the intervals are wide.
-- The tuned engine's commit dates came from the Atom feed read on 2026-11-04, a day after the fixed clock. A second source (git clone) agrees, so the effect is small.
-- The aggregates for round 4a and for the final engine are the engine worker's aggregate script run on my results; they count a package declared twice in one project as two dependencies, as the pinned census did.
-- Recall is not measured: dead packages the final engine calls `alive`, or lifts by a recent commit, are not checked. The upgrade rule adds a case: a package whose latest release is also deprecated stays `dead`; one whose newer releases are all deprecated gets no target. Neither was met on the census.
-- The out-of-sample units exclude the zombies and the ghost, which were all in the first 56. Their check is that of the first sample (all right and defensible, pinned engine) plus the nearby checks above.
+- The recall check has 49 checkable units. With none missed in 30 plain alive units the upper bound is 11.4%. The one miss gives a miss rate of 2.0%, and its interval runs up to 10.7%.
+- The tuned engine's commit dates came from the Atom feed read on 2026-11-04, a day after the fixed clock. A second source (git clone) agrees, so the effect is small. The recall check read everything on 2026-11-04, not from the cache.
+- The aggregates are the engine worker's aggregate script run on my results; they count a package declared twice in one project as two dependencies, as the pinned census did.
+- The out-of-sample units exclude the zombies and the ghost, which were all in the first 56.
 - The `eslint` target (version 10) may need a newer Node than the project runs; the engine does not read `engines`.

@@ -1,0 +1,70 @@
+{
+ "unit": {
+  "cell": "B|npm",
+  "stratum": "B",
+  "ecosystem": "npm",
+  "name": "eslint",
+  "subjectRef": "npm-popular#8",
+  "spec": "^8.57.0",
+  "resolved": "8.57.1",
+  "scope": "dev",
+  "evidenceCodes": [
+   "version-deprecated"
+  ],
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (8.57.1) is deprecated: \"This version is no longer supported. Please see https://eslint.org/version-support for other options.\" The package itself is not; this is an upgrade notice. Upgrade to 10.14.0 ",
+    "url": "https://www.npmjs.com/package/eslint/v/8.57.1"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "10.14.0",
+   "date": "2026-10-30T14:12:27Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:23:32.016Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "10.14.0",
+  "latestDate": "2026-10-30T14:12:27.179Z",
+  "latestAgeDays": 5,
+  "latestDeprecated": null,
+  "distTags": {
+   "es6jsx": "0.11.0-alpha.0",
+   "next": "10.0.0-rc.2",
+   "maintenance": "9.39.5",
+   "latest": "10.14.0"
+  },
+  "versionInUse": "8.57.1",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": "This version is no longer supported. Please see https://eslint.org/version-support for other options.",
+  "versionInUseDate": "2024-09-16T15:20:44.208Z",
+  "repository": "git+https://github.com/eslint/eslint.git",
+  "homepage": "https://eslint.org",
+  "description": "An AST-based pattern checker for JavaScript.",
+  "readmeHead": "[![npm version](https://img.shields.io/npm/v/eslint.svg)](https://www.npmjs.com/package/eslint)\n[![Downloads](https://img.shields.io/npm/dm/eslint.svg)](https://www.npmjs.com/package/eslint)\n[![Build Status](https://github.com/eslint/eslint/workflows/CI/badge.svg)](https://github.com/eslint/eslint/actions)\n<br>\n[![Open Collective Backers](https://img.shields.io/opencollective/backers/eslint)](https://opencollective.com/eslint)\n[![Open Collective Sponsors](https://img.shields.io/opencollective/sponsors/eslint)](https://opencollective.com/eslint)\n\n# ESLint\n\n[Website](https://eslint.org) |\n[Configure ESLint](https://eslint.org/docs/latest/use/configure) |\n[Rules](https://eslint.org/docs/rules/) |\n[Contribute to ESLint](https://eslint.org/docs/latest/contribute) |\n[Report Bugs](https://eslint.org/docs/latest/contribute/report-bugs) |\n[Code of Conduct](https://eslint.org/conduct) |\n[X](https://x.com/geteslint) |\n[Discord](https://eslint.org/chat) |\n[Mastodon](https://fosstodon.org/@eslint) |\n[Bluesky](https://bsky.app/profile/eslint.org)\n\nESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code. In many ways, it is similar to JSLint and JSHint with a few exceptions:\n\n- ESLint uses [Espree](https://github.com/eslint/js/tree/main/packages/espree) for JavaScript parsing.\n- ESLint uses an AST to evaluate patterns in code.\n- ESLint is completely pluggable, every single rule is a plugin and you can add more at runtime.\n\n## Table of Contents\n\n1. [Installation and Usage](#installation-and-usage)\n1. [Configuration](#configuration)\n1. [Version Support](#version-support)\n1. [Code of Conduct](#code-of-conduct)\n1. [Filing Issues](#filing-issues)\n1. [Frequently Asked Questions](#frequently-asked-questions)\n1. [Releases](#releases)\n1. [Security Policy](#security-policy)\n1. [Semantic Versioning Policy](#semantic-versioning-policy)\n1. [ESM Dependencies](#esm-dependencies)\n1. [License](#license)\n1. [Team](#team)\n1. [Sponsors](#sponsors)\n1. [Technology Sponsors](#technology-sponsors) <!-- markdownlint-disable-line MD051 -->\n\n## Installation and Usage\n\n### Prerequisites\n\nTo use ESLint, you must have [Node.js](https://nodejs.org/) (`^20.19.0`, `^22.13.0`, or `>=24`) installed and built with SSL and ICU support. (If you are using an official Node.js distribution, both SSL and ICU are always built in.)\n\nIf you use ESLint's TypeScript type definitions, TypeScript 5.3 or later is required.\n\n### npm Installation\n\nYou can install and configure ESLint",
+  "versions": 433
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "eslint/eslint",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/eslint/eslint",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-04T08:14:41Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-04T08:14:41Z",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 10
+ }
+}

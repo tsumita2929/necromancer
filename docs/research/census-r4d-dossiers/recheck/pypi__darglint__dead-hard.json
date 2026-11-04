@@ -1,0 +1,49 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "darglint",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "evidence": [],
+  "successors": [],
+  "repo": "terrencepreilly/darglint"
+ },
+ "checkedAt": "2026-11-04T15:17:59.831Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.8.1",
+  "latestOldestFile": "2021-10-18T03:40:35.034675Z",
+  "latestNewestFile": "2021-10-18T03:40:37.283691Z",
+  "latestAgeDays": 1843,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": null,
+  "homePage": ""
+ },
+ "repoPage": {
+  "repo": "terrencepreilly/darglint",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/terrencepreilly/darglint",
+  "archivedBanner": true,
+  "archivedOn": "Dec 16, 2022",
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2021-10-18T03:34:23Z",
+  "atomLastCommitAgeDays": 1843,
+  "readmeMovedNotice": null,
+  "readmeHints": [
+   "information.  Consider it in maintenance mode."
+  ],
+  "gitLastCommit": "2021-10-17T20:34:23-07:00",
+  "gitLastCommitAgeDays": 1843,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

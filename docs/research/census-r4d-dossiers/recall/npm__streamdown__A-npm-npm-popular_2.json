@@ -1,0 +1,56 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "streamdown",
+  "subjectRef": "npm-popular#2",
+  "spec": "^2.3.0",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "2.7.1",
+   "date": "2026-10-19T09:14:40Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:20:51.355Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.7.1",
+  "latestDate": "2026-10-19T09:14:40.334Z",
+  "latestAgeDays": 16,
+  "latestDeprecated": null,
+  "distTags": {
+   "canary": "2.0.0-canary.3",
+   "latest": "2.7.1"
+  },
+  "versionInUse": "^2.3.0",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/vercel/streamdown.git",
+  "homepage": "https://streamdown.ai",
+  "description": "A drop-in replacement for react-markdown, designed for AI-powered streaming.",
+  "readmeHead": "# Streamdown\n\nA drop-in replacement for react-markdown, designed for AI-powered streaming.\n\n[![npm version](https://img.shields.io/npm/v/streamdown)](https://www.npmjs.com/package/streamdown)\n\n## Overview\n\nFormatting Markdown is easy, but when you tokenize and stream it, new challenges arise. Streamdown is built specifically to handle the unique requirements of streaming Markdown content from AI models, providing seamless formatting even with incomplete or unterminated Markdown blocks.\n\nStreamdown powers the [AI Elements Message](https://ai-sdk.dev/elements/components/message) component but can be installed as a standalone package for your own streaming needs.\n\n## Features\n\n- 🚀 **Drop-in replacement** for `react-markdown`\n- 🔄 **Streaming-optimized** - Handles incomplete Markdown gracefully\n- 🎨 **Unterminated block parsing** - Build with `remend` for better streaming quality\n- 📊 **GitHub Flavored Markdown** - Tables, task lists, and strikethrough support\n- 🔢 **Math rendering** - LaTeX equations via KaTeX\n- 📈 **Mermaid diagrams** - Render Mermaid diagrams as code blocks with a button to render them\n- 🎯 **Code syntax highlighting** - Beautiful code blocks with Shiki\n- 🛡️ **Security-first** - Built with `rehype-harden` for safe rendering\n- ⚡ **Performance optimized** - Memoized rendering for efficient updates\n\n## Installation\n\n```bash\nnpm i streamdown\n```\n\nThen, update your Tailwind `globals.css` to include the following so that Tailwind can detect the utility classes used by Streamdown.\n\n```css\n@source \"../node_modules/streamdown/dist/*.js\";\n```\n\nThe path must be relative from your CSS file to the `node_modules` folder containing `streamdown`. In a standard Next.js project where `globals.css` lives in `app/`, the default path above should work.\n\nIf you install optional Streamdown plugins, add their matching `@source` lines from the relevant plugin docs (`/docs/plugins/code`, `/docs/plugins/cjk`, `/docs/plugins/math`, `/docs/plugins/mermaid`). Only include plugin `@source` entries for packages that are actually installed.\n\nExample:\n\n```css\n@source \"../node_modules/@streamdown/code/dist/*.js\";\n```\n\n\n### Monorepo setup\n\nIn a monorepo (npm workspaces, Turbo, pnpm, etc.), dependencies are typically hoisted to the root `node_modules`. You need to adjust the relative path to point there:\n\n```\nmonorepo/\n├── node_modules/streamdown/  ← hoisted here\n├── apps/\n│   └── web/\n│       └── app/\n│           └── globals.css   ← your CSS file\n```\n\n```css\n/* apps/web/app",
+  "versions": 56
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "vercel/streamdown",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/vercel/streamdown",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-03T10:39:56Z",
+  "atomLastCommitAgeDays": 1,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-03T11:39:56+01:00",
+  "gitLastCommitAgeDays": 1,
+  "gitBranch": "main",
+  "scorecardStatus": 404
+ }
+}

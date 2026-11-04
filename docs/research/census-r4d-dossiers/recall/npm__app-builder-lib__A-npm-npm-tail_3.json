@@ -1,0 +1,61 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "app-builder-lib",
+  "subjectRef": "npm-tail#3",
+  "spec": "^26.15.3",
+  "resolved": "26.15.3",
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "26.18.0",
+   "date": "2026-10-20T21:24:37Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:21:31.181Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "26.18.0",
+  "latestDate": "2026-10-20T21:24:37.290Z",
+  "latestAgeDays": 14,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "26.18.0",
+   "v26": "26.18.1",
+   "next": "27.0.0-alpha.14"
+  },
+  "versionInUse": "26.15.3",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2026-06-09T17:34:26.182Z",
+  "repository": "git+https://github.com/electron-userland/electron-builder.git",
+  "homepage": "https://github.com/electron-userland/electron-builder",
+  "description": "electron-builder lib",
+  "readmeHead": "",
+  "versions": 321
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "electron-userland/electron-builder",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/electron-userland/electron-builder",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-03T21:08:52Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-03T13:08:52-08:00",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 10
+ }
+}

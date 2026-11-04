@@ -1,0 +1,59 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "@fortawesome/free-regular-svg-icons",
+  "subjectRef": "npm-popular#24",
+  "spec": "6.4.2",
+  "resolved": "6.4.2",
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "7.3.1",
+   "date": "2026-07-15T18:11:03Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:21:37.521Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "7.3.1",
+  "latestDate": "2026-07-15T18:11:03.146Z",
+  "latestAgeDays": 111,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "7.3.1"
+  },
+  "versionInUse": "6.4.2",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2023-08-02T20:31:57.115Z",
+  "repository": "git+https://github.com/FortAwesome/Font-Awesome.git",
+  "homepage": "https://fontawesome.com",
+  "description": "The iconic font, CSS, and SVG framework",
+  "readmeHead": "# @fortawesome/free-regular-svg-icons - SVG with JavaScript version\n\n> \"I came here to chew bubblegum and install Font Awesome 7 - and I'm all out of bubblegum\"\n\n[![npm](https://img.shields.io/npm/v/@fortawesome/free-regular-svg-icons.svg?style=flat-square)](https://www.npmjs.com/package/@fortawesome/free-regular-svg-icons)\n\n## Installation\n\n```\n$ npm i --save @fortawesome/free-regular-svg-icons\n```\n\nOr\n\n```\n$ yarn add @fortawesome/free-regular-svg-icons\n```\n\n## Documentation\n\nGet started [here](https://docs.fontawesome.com/web/setup/get-started). Continue your journey [here](https://docs.fontawesome.com/web/setup/packages).\n\nOr go straight to the [API documentation](https://docs.fontawesome.com/apis/javascript/get-started).\n\n## Issues and support\n\nStart with [GitHub issues](https://github.com/FortAwesome/Font-Awesome/issues) and ping us on [Twitter](https://twitter.com/fontawesome) if you need to.\n",
+  "versions": 86
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "FortAwesome/Font-Awesome",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/FortAwesome/Font-Awesome",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "7.x",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-07-15T18:09:30Z",
+  "atomLastCommitAgeDays": 111,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-07-15T11:09:30-07:00",
+  "gitLastCommitAgeDays": 111,
+  "gitBranch": "7.x",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 0
+ }
+}

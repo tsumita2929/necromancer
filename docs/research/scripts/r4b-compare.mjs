@@ -96,6 +96,20 @@ const c1Final = c1(finalDir);
 const c1Changed = Object.keys(c1Tuned).filter((f) => (c1Tuned[f].length > 0) !== (c1Final[f].length > 0));
 const c1Change = { projectsLost: c1Changed.filter((f) => c1Tuned[f].length > 0).length, projectsGained: c1Changed.filter((f) => c1Final[f].length > 0).length, packagesOfTheLostProjects: [...new Set(c1Changed.flatMap((f) => c1Tuned[f]))].sort() };
 
+// Ways out: of the dead-or-worse dependencies of the pinned run (the 198), how many have a way out in the final run,
+// how many are still flagged, and how many of the dependencies flagged in the final run have one.
+const firstFlagged = [...pinned].filter(([, d]) => DEAD.has(d.verdict));
+const wayOut = {
+  firstFlagged: firstFlagged.length,
+  withWayOutNow: firstFlagged.filter(([k]) => (final.get(k)?.successors?.length ?? 0) > 0).length,
+  liftedToAlive: firstFlagged.filter(([k]) => final.get(k)?.verdict === 'alive').length,
+  downToDying: firstFlagged.filter(([k]) => final.get(k)?.verdict === 'dying').length,
+  stillFlagged: firstFlagged.filter(([k]) => DEAD.has(final.get(k)?.verdict)).length,
+  stillFlaggedWithWayOut: firstFlagged.filter(([k]) => DEAD.has(final.get(k)?.verdict) && (final.get(k)?.successors?.length ?? 0) > 0).length,
+  zombies: [...final].filter(([, d]) => d.verdict === 'zombie').length,
+  zombiesWithWayOut: [...final].filter(([, d]) => d.verdict === 'zombie' && d.successors.length > 0).length,
+};
+
 // Verdict transitions pinned -> final for dead-or-worse instances of the pinned run.
 const transitions = {};
 for (const [k, d] of pinned) {
@@ -104,6 +118,6 @@ for (const [k, d] of pinned) {
   const key = `${label(d)} -> ${label(f)}`;
   transitions[key] = (transitions[key] ?? 0) + 1;
 }
-const out = { description: 'Pinned (census), tuned and final engine on the 100 census subjects: the 14 maybe-not-dead packages, repo-moved instances in the final run, and verdict transitions of the pinned run\'s dead-or-worse dependencies. Package names and counts only.', maybeNotDead: rows, repoMovedInFinalRun: moved, c1ChangeTunedToFinal: c1Change, notFoundInFinalRun: { instances: nfInst, packages: nf.size, names: [...nf].sort() }, advisoryAliasesInFinalRun: aliasInst, versionDeprecatedDyingInFinalRun: versionDeprecatedDying, transitionsFromPinnedDeadOrWorse: Object.fromEntries(Object.entries(transitions).sort((a, b) => b[1] - a[1])) };
+const out = { description: 'Pinned (census), tuned and final engine on the 100 census subjects: the 14 maybe-not-dead packages, repo-moved instances in the final run, and verdict transitions of the pinned run\'s dead-or-worse dependencies. Package names and counts only.', maybeNotDead: rows, repoMovedInFinalRun: moved, wayOutCoverage: wayOut, c1ChangeTunedToFinal: c1Change, notFoundInFinalRun: { instances: nfInst, packages: nf.size, names: [...nf].sort() }, advisoryAliasesInFinalRun: aliasInst, versionDeprecatedDyingInFinalRun: versionDeprecatedDying, transitionsFromPinnedDeadOrWorse: Object.fromEntries(Object.entries(transitions).sort((a, b) => b[1] - a[1])) };
 writeFileSync(outFile, JSON.stringify(out, null, 1));
 console.log(JSON.stringify({ maybeNotDead: rows.length, moved: Object.fromEntries(Object.entries(moved).map(([k, v]) => [k, { instances: v.instances, packages: v.packages }])), transitions: Object.keys(transitions).length }));

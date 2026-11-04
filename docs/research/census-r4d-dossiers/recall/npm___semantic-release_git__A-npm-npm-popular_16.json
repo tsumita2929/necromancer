@@ -1,0 +1,61 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "@semantic-release/git",
+  "subjectRef": "npm-popular#16",
+  "spec": "^10.0.1",
+  "resolved": "10.0.1",
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "11.0.1",
+   "date": "2026-07-24T03:42:05Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:21:24.587Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "11.0.1",
+  "latestDate": "2026-07-24T03:42:05.506Z",
+  "latestAgeDays": 103,
+  "latestDeprecated": null,
+  "distTags": {
+   "next": "7.0.18",
+   "beta": "11.0.0-beta.2",
+   "latest": "11.0.1"
+  },
+  "versionInUse": "10.0.1",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2021-10-30T05:27:04.269Z",
+  "repository": "git+https://github.com/semantic-release/git.git",
+  "homepage": "https://github.com/semantic-release/git",
+  "description": "semantic-release plugin to commit release assets to the project's git repository",
+  "readmeHead": "# @semantic-release/git\n\n[**semantic-release**](https://github.com/semantic-release/semantic-release) plugin to commit release assets to the project's [git](https://git-scm.com/) repository.\n\n> [!WARNING]\n> You likely _do not_ need this plugin to accomplish your goals with semantic-release.  \n> Please consider our [recommendation against making commits during your release](https://semantic-release.gitbook.io/semantic-release/support/faq#making-commits-during-the-release-process-adds-significant-complexity) to avoid unnecessary headaches.\n\n[![Build Status](https://github.com/semantic-release/git/workflows/Test/badge.svg)](https://github.com/semantic-release/git/actions?query=workflow%3ATest+branch%3Amaster) [![npm latest version](https://img.shields.io/npm/v/@semantic-release/git/latest.svg)](https://www.npmjs.com/package/@semantic-release/git)\n[![npm next version](https://img.shields.io/npm/v/@semantic-release/git/next.svg)](https://www.npmjs.com/package/@semantic-release/git)\n[![npm beta version](https://img.shields.io/npm/v/@semantic-release/git/beta.svg)](https://www.npmjs.com/package/@semantic-release/git)\n\n| Step               | Description                                                                                                                        |\n| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |\n| `verifyConditions` | Verify the access to the remote Git repository, the commit [`message`](#message) and the [`assets`](#assets) option configuration. |\n| `prepare`          | Create a release commit, including configurable file assets.                                                                       |\n\n## Install\n\n```bash\n$ npm install @semantic-release/git -D\n```\n\n## Usage\n\nThe plugin can be configured in the [**semantic-release** configuration file](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration):\n\n```json\n{\n  \"plugins\": [\n    \"@semantic-release/commit-analyzer\",\n    \"@semantic-release/release-notes-generator\",\n    [\n      \"@semantic-release/git\",\n      {\n        \"assets\": [\"dist/**/*.{js,css}\", \"docs\", \"package.json\"],\n        \"message\": \"chore(release): ${nextRelease.version} [skip ci]\\n\\n${nextRelease.notes}\"\n      }\n    ]\n  ]\n}\n```\n\nWith this example, for each release a release commit will be pushed to the remote Git repository with:\n\n- a message formatted like `chore(r",
+  "versions": 59
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "semantic-release/git",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/semantic-release/git",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-27T02:45:31Z",
+  "atomLastCommitAgeDays": 8,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-10-27T02:45:31Z",
+  "gitLastCommitAgeDays": 8,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 10
+ }
+}

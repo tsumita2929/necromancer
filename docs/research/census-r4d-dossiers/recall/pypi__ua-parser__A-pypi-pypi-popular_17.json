@@ -1,0 +1,58 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "ua-parser",
+  "subjectRef": "pypi-popular#17",
+  "spec": "==1.0.2",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "1.0.2",
+   "date": "2026-04-05T20:14:28.229818Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:22:59.463Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.0.2",
+  "latestOldestFile": "2026-04-05T20:14:26.913080Z",
+  "latestNewestFile": "2026-04-05T20:14:28.229818Z",
+  "latestAgeDays": 212,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "documentation": "https://uap-python.readthedocs.io",
+   "issues": "https://github.com/ua-parser/uap-python/issues",
+   "repository": "https://github.com/ua-parser/uap-python"
+  },
+  "homePage": null,
+  "summary": "Python port of Browserscope's user agent parser",
+  "descriptionHead": "uap-python\n==========\n\nOfficial python implementation of the `User Agent String\nParser <https://github.com/ua-parser>`_ project.\n\nBuild Status\n------------\n\n.. image:: https://github.com/ua-parser/uap-python/actions/workflows/ci.yml/badge.svg\n   :target: https://github.com/ua-parser/uap-python/actions/workflows/ci.yml?query=branch%3Amaster\n   :alt: CI on the master branch\n\n.. image:: https://readthedocs.org/projects/uap-python/badge/?version=latest\n   :target: https://uap-python.readthedocs.io/\n   :alt: Documentation Status\n\nInstalling\n----------\n\nAdd ``ua-parser[regex]`` to your project's dependencies, or run\n\n.. code-block:: sh\n\n    $ pip install 'ua-parser[regex]'\n\nto install in the current environment.\n\nua-parser supports CPython 3.10 and newer, recent pypy (supporting\n3.10), and GraalPy 25.\n\n.. note::\n\n   The ``[regex]`` feature is *strongly* recommended, the Pure python\n   (no feature) is *significantly* slower, especially on non-cpython\n   runtimes, though it is the most memory efficient.\n\n   See `builtin resolvers`_ for more explanation of the tradeoffs\n   between the different options.\n\n.. _builtin resolvers: https://uap-python.readthedocs.io/stable/guides.html#builtin-resolvers\n\nQuick Start\n-----------\n\nRetrieve all data on a user-agent string\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n.. code-block:: python\n\n    >>> from ua_parser import parse\n    >>> ua_string = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.104 Safari/537.36'\n    >>> parse(ua_string) # doctest: +NORMALIZE_WHITESPACE, +ELLIPSIS\n    Result(user_agent=UserAgent(family='Chrome',\n                                major='41',\n                                minor='0',\n                                patch='2272',\n                                patch_minor='104'),\n           os=OS(family='Mac OS X',\n                 major='10',\n                 minor='9',\n                 patch='4',\n                 patch_minor=None),\n           device=Device(family='Mac',\n                         brand='Apple',\n                         model='Mac'),\n           string='Mozilla/5.0 (Macintosh; Intel Mac OS...\n\nAny datum not found in the user agent string is set to ``None``::\n\n    >>> parse(\"\")\n    Result(user_agent=None, os=None, device=None, string='')\n\nExtract only browser data from user-agent string\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n.. code-block:: python\n\n    >>> from ua_parser import parse_user_agent\n    >>> ua_string = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.104 Safari/537.36'\n    >>> parse_user_agent(ua_string)\n    UserAgent(family='Chrome', major='41', minor='0', patch='2272', patch_minor='104')\n\nFor specific domains, a match failure just returns ``None``::\n\n    >>> parse_user_agent(\"\")\n\nExtract OS information from user-agent string\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n.. code-block:: python\n\n    >>> from ua_parser import parse_os\n    >>> ua",
+  "githubInDescription": "github.com/ua-parser/uap-python"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "ua-parser/uap-python",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/ua-parser/uap-python",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-09-28T19:16:12Z",
+  "atomLastCommitAgeDays": 36,
+  "gitLastCommit": "2026-09-28T21:16:12+02:00",
+  "gitLastCommitAgeDays": 36,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 3
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "pygments",
+  "subjectRef": "pypi-popular#24",
+  "spec": ">=2.16.1,<2.20.0",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [
+   "osv-advisory"
+  ],
+  "evidence": [
+   {
+    "code": "osv-advisory",
+    "message": "1 known advisory affects version 2.19.2: GHSA-5239-wwwm-4pmq.",
+    "url": "https://osv.dev/vulnerability/GHSA-5239-wwwm-4pmq"
+   }
+  ],
+  "advisories": 1,
+  "latest": {
+   "version": "2.21.0",
+   "date": "2026-08-17T08:02:48.824391Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:22:34.642Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.21.0",
+  "latestOldestFile": "2026-08-17T08:02:44.912148Z",
+  "latestNewestFile": "2026-08-17T08:02:48.824391Z",
+  "latestAgeDays": 79,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 6 - Mature"
+  ],
+  "projectUrls": {
+   "Bug Tracker": "https://github.com/pygments/pygments/issues",
+   "Changelog": "https://github.com/pygments/pygments/blob/master/CHANGES",
+   "Documentation": "https://pygments.org/docs",
+   "Homepage": "https://pygments.org",
+   "Source": "https://github.com/pygments/pygments"
+  },
+  "homePage": null,
+  "summary": "Pygments is a syntax highlighting package written in Python.",
+  "descriptionHead": "Pygments\n~~~~~~~~\n\nPygments is a syntax highlighting package written in Python.\n\nIt is a generic syntax highlighter suitable for use in code hosting, forums,\nwikis or other applications that need to prettify source code.  Highlights\nare:\n\n* a wide range of over 500 languages and other text formats is supported\n* special attention is paid to details, increasing quality by a fair amount\n* support for new languages and formats are added easily\n* a number of output formats, presently HTML, LaTeX, RTF, SVG, all image\n  formats that PIL supports and ANSI sequences\n* it is usable as a command-line tool and as a library\n\nCopyright 2006-present by the Pygments team, see ``AUTHORS``.\nLicensed under the BSD, see ``LICENSE`` for details.\n",
+  "githubInDescription": null
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "pygments/pygments",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/pygments/pygments",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-09-27T07:00:22Z",
+  "atomLastCommitAgeDays": 38,
+  "gitLastCommit": "2026-09-27T09:00:22+02:00",
+  "gitLastCommitAgeDays": 38,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 3
+ }
+}

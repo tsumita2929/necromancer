@@ -1,0 +1,58 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "mike",
+  "subjectRef": "pypi-popular#9",
+  "spec": ">=2.1.1,<2.2.0",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "2.2.0",
+   "date": "2026-04-14T04:59:03.944290Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:22:53.091Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.2.0",
+  "latestOldestFile": "2026-04-14T04:59:02.602656Z",
+  "latestNewestFile": "2026-04-14T04:59:03.944290Z",
+  "latestAgeDays": 204,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Homepage": "https://github.com/jimporter/mike"
+  },
+  "homePage": "https://github.com/jimporter/mike",
+  "summary": "Manage multiple versions of your MkDocs-powered documentation",
+  "descriptionHead": "# mike\n**mike** is a Python utility that makes it easy to deploy multiple versions of\nyour [MkDocs](http://www.mkdocs.org)-powered docs to a Git branch, suitable for\nhosting on Github via `gh-pages`. To see an example of this in action, take a\nlook at the documentation for [bfg9000][bfg9000].\n\n## Why Use mike?\n\nmike is built around the idea that once you've generated your docs for a\nparticular version, you should never need to touch that version again. This\nmeans you never have to worry about breaking changes in MkDocs, since your old\ndocs (built with an old version of MkDocs) are already generated and sitting in\nyour `gh-pages` branch.\n\nWhile mike is flexible, it's optimized around putting your docs in a\n`<major>.<minor>` directory, with optional aliases (e.g. `latest` or `dev`) to\nparticularly notable versions. This makes it easy to make permalinks to whatever\nversion of the documentation you want to direct people to.\n\n## How It Works\n\nmike works by creating a new Git commit on your `gh-pages` branch every time you\ndeploy a new version of your docs using `mike deploy` (or other mike subcommands\nthat change your `gh-pages` branch). When deploying a particular version,\npreviously-deployed docs for that version are erased and overwritten, but docs\nfor other versions remain untouched.\n\n## Installation\n\nLike most Python projects, mike uses [setuptools][setuptools], so installation\nis what you might expect:\n\n```sh\npip install mike\n```\n\nOnce you've installed mike, you might also want to set up shell-completion for\nit. If you have [shtab][shtab] installed, you can do this with\n`mike generate-completion`, which will print the shell-completion code for your\nshell. For more details on how to set this up, consult shtab's\n[documentation][shtab-setup].\n\n## Usage\n\n### Before Using mike\n\nBefore using mike for the first time, you may want to use [`mike delete\n--all`](#deleting-docs) to delete any old documentation on your `gh-pages`\nbranch before building your new versioned docs. (If you prefer, you can also\nmanually move your old documentation to a subdirectory of your `gh-pages` branch\nso that it's still accessible.)\n\n### Configuration\n\nTo help integrate into the MkDocs build process, mike uses an MkDocs plugin.\nThis plugin is added by default when building your documentation with mike, but\nby adding it explicitly to your `mkdocs.yml` file, you can configure how the\nplugin works. The plugin adds a version selector to supported themes as well as\nupdating the `site_url` (if you set it) to point to the version of the docs that\nare being built:\n\n```yaml\nplugins:\n  - mike:\n      # These fields are all optional; the defaults are as below...\n      alias_type: symlink\n      redirect_template: null\n      deploy_prefix: ''\n      canonical_version: null\n      version_selector: true\n      css_dir: css\n      javascript_dir: js\n```\n\n* `alias_type`: The method to create aliases; one of:\n  * `symlink`: Create a symbolic link from the alias to the base directory of\n    the do",
+  "githubInDescription": null
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "jimporter/mike",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/jimporter/mike",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-13T23:46:29Z",
+  "atomLastCommitAgeDays": 21,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-10-13T16:46:29-07:00",
+  "gitLastCommitAgeDays": 21,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 4
+ }
+}

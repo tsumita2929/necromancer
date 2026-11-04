@@ -1,5 +1,5 @@
 // Re-scores the hand-checked units on the upgrade-notice engine (item R4c). No unit is judged again by this script.
-// Usage: node r4c-rescore.mjs <dirPinned> <dir4a> <dirUpgrade> <out.json> [firstCheckDossierDir]
+// Usage: node r4c-rescore.mjs <dirPinned> <dir4a> <dirFinal> <out.json> [firstCheckDossierDir] [recheckDossierDir]
 // Inputs: docs/research/census-precision.json (56 units, judged on the pinned engine) and
 //         docs/research/census-precision-r4b.json (40 units, judged on the round-4a engine).
 // A unit is "flagged" when at least one of its instances has a verdict other than alive. A flagged unit keeps its
@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { wilson } from './lib.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const [dirPinned, dir4a, dirUp, outFile, dossierDir] = process.argv.slice(2);
+const [dirPinned, dir4a, dirUp, outFile, dossierDir, recheckDir] = process.argv.slice(2);
 const first = JSON.parse(readFileSync(join(here, '..', 'census-precision.json'), 'utf8'));
 const second = JSON.parse(readFileSync(join(here, '..', 'census-precision-r4b.json'), 'utf8'));
 
@@ -45,6 +45,10 @@ function rescore(units, judgedOn, judgedMap, defensibleOf) {
       ecosystem: u.ecosystem,
       package: u.package,
       stratum: u.stratum,
+      stratumNow: (() => {
+        const d = flagged(up.get(key))[0];
+        return d ? `${d.verdict}|${d.basis}` : null;
+      })(),
       correct: u.correct,
       defensible: defensibleOf(u),
       flaggedNow: nowFlagged,
@@ -80,22 +84,32 @@ function rescore(units, judgedOn, judgedMap, defensibleOf) {
 
 // For a unit whose decisive evidence line changed, the new line is compared with what the first check read:
 // the date of the last commit in the engine's `repo-inactive` line against the commit date in the first dossier.
-function recheck(rows, dir, ecoOf) {
-  if (!dir) return [];
+function recheck(rows, dir) {
   return rows.filter((r) => r.evidenceChanged).map((r) => {
     const key = `${r.ecosystem}|${r.package}`;
+    const decisive = flagged(up.get(key))[0]?.evidence[0]?.code;
+    const stem = `${r.ecosystem}__${r.package.replace(/[^A-Za-z0-9_.-]/g, '_')}__`;
+    const find = (d) => (d ? readdirSync(d).find((f) => f.startsWith(stem)) : undefined);
+    if (decisive === 'repo-archived') {
+      // the new decisive line says the repository is archived: a dossier of the repository page must show the banner
+      const file = find(recheckDir);
+      const dossier = file ? JSON.parse(readFileSync(join(recheckDir, file), 'utf8')) : null;
+      const archived = dossier?.repoPage?.archivedBanner === true;
+      return { package: r.package, decisive, check: 'archived banner on the repository page', archivedOn: dossier?.repoPage?.archivedOn ?? null, same: archived, judgmentKept: archived };
+    }
     const line = flagged(up.get(key))[0]?.evidence.find((e) => e.code === 'repo-inactive');
     const engineDate = line?.message.match(/last commit (\d{4}-\d{2}-\d{2})/)?.[1] ?? null;
-    const file = readdirSync(dir).find((f) => f.startsWith(`${r.ecosystem}__${r.package.replace(/[^A-Za-z0-9_.-]/g, '_')}__`));
-    const dossier = file ? JSON.parse(readFileSync(join(dir, file), 'utf8')) : null;
+    const file = find(dossierDir);
+    const dossier = file ? JSON.parse(readFileSync(join(dossierDir, file), 'utf8')) : null;
     const dossierDate = dossier?.repoPage?.lastCommitDate?.slice(0, 10) ?? null;
-    return { package: r.package, engineDate, dossierDate, same: engineDate !== null && engineDate === dossierDate, judgmentKept: engineDate !== null && engineDate === dossierDate };
+    return { package: r.package, decisive, check: 'last commit date against the first dossier', engineDate, dossierDate, same: engineDate !== null && engineDate === dossierDate, judgmentKept: engineDate !== null && engineDate === dossierDate };
   });
 }
 
 const s56 = rescore(first.units, 'pinned engine bfd86f1', pinned, (u) => u.fair);
 const s40 = rescore(second.units, 'round-4a engine 368e98c', a4, (u) => u.defensible);
 s56.recheckedAgainstFirstDossiers = recheck(s56.rows, dossierDir);
+s40.recheckedAgainstDossiers = recheck(s40.rows, recheckDir);
 
 // Population of the second draw under the upgrade engine: flagged units by (verdict, basis), without the 56 packages.
 const excluded = new Set(first.units.map((u) => `${u.ecosystem}|${u.package}`));
@@ -113,7 +127,8 @@ for (const [k, ds] of up) {
 const strata = {};
 for (const r of s40.rows) {
   if (!r.flaggedNow) continue;
-  const s = (strata[r.stratum] ??= { population: population[r.stratum] ?? 0, checked: 0, correct: 0, defensible: 0 });
+  // post-stratified: a unit counts in the stratum it is in on the final engine
+  const s = (strata[r.stratumNow] ??= { population: population[r.stratumNow] ?? 0, checked: 0, correct: 0, defensible: 0 });
   s.checked++;
   if (r.correct) s.correct++;
   if (r.correct && r.defensible) s.defensible++;

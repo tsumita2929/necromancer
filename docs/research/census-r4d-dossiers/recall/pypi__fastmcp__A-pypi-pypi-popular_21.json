@@ -1,0 +1,56 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "fastmcp",
+  "subjectRef": "pypi-popular#21",
+  "spec": "==3.4.10",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "4.1.6",
+   "date": "2026-11-03T02:53:43.049312Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:22:21.537Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "4.1.6",
+  "latestOldestFile": "2026-11-03T02:53:39.186471Z",
+  "latestNewestFile": "2026-11-03T02:53:43.049312Z",
+  "latestAgeDays": 1,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": {
+   "Documentation": "https://gofastmcp.com",
+   "Homepage": "https://gofastmcp.com",
+   "Repository": "https://github.com/PrefectHQ/fastmcp"
+  },
+  "homePage": null,
+  "summary": "The fast, Pythonic way to build MCP servers and clients.",
+  "descriptionHead": "<div align=\"center\">\n\n<!-- omit in toc -->\n\n<picture>\n  <source width=\"550\" media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/brand/f-watercolor-waves-4-dark.png\">\n  <source width=\"550\" media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/brand/f-watercolor-waves-4.png\">\n  <img width=\"550\" alt=\"FastMCP Logo\" src=\"https://raw.githubusercontent.com/PrefectHQ/fastmcp/main/docs/assets/brand/f-watercolor-waves-2.png\">\n</picture>\n\n# FastMCP 🚀\n\n<strong>Move fast and make things.</strong>\n\n*Made with 💙 by [Prefect](https://www.prefect.io/)*\n\n[![Docs](https://img.shields.io/badge/docs-gofastmcp.com-blue)](https://gofastmcp.com)\n[![Discord](https://img.shields.io/badge/community-discord-5865F2?logo=discord&logoColor=white)](https://discord.gg/uu8dJCgttd)\n[![PyPI - Version](https://img.shields.io/pypi/v/fastmcp.svg)](https://pypi.org/project/fastmcp)\n[![TypeScript](https://img.shields.io/npm/v/%40prefecthq%2Ffastmcp-ts?label=typescript&color=3178c6)](https://github.com/PrefectHQ/fastmcp-ts)\n[![Tests](https://github.com/PrefectHQ/fastmcp/actions/workflows/run-tests.yml/badge.svg)](https://github.com/PrefectHQ/fastmcp/actions/workflows/run-tests.yml)\n[![License](https://img.shields.io/github/license/PrefectHQ/fastmcp.svg)](https://github.com/PrefectHQ/fastmcp/blob/main/LICENSE)\n\n<a href=\"https://trendshift.io/repositories/21461\" target=\"_blank\"><img src=\"https://trendshift.io/api/badge/repositories/21461\" alt=\"prefecthq%2Ffastmcp | Trendshift\" style=\"width: 250px; height: 55px;\" width=\"250\" height=\"55\"/></a>\n</div>\n\n---\n\nThe [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) connects LLMs to tools and data. FastMCP is a full MCP application framework for servers, clients, and interactive apps. A server starts with ordinary Python:\n\n```python\nfrom fastmcp import FastMCP\n\nmcp = FastMCP(\"Demo 🚀\")\n\n@mcp.tool\ndef add(a: int, b: int) -> int:\n    \"\"\"Add two numbers\"\"\"\n    return a + b\n\nif __name__ == \"__main__\":\n    mcp.run()\n```\n\n## Why FastMCP\n\nBuilding an effective MCP application is harder than it looks. FastMCP handles all of it. Declare a tool with a Python function, and the schema, validation, and documentation are generated automatically. Connect to a server with a URL, and transport negotiation, authentication, and protocol lifecycle are managed for you. You focus on your logic, and the MCP part just works: **with FastMCP, best practices are built in.**\n\n**That's why FastMCP is the standard framework for working with MCP.** FastMCP 1.0 was incorporated into the official MCP Python SDK in 2024. Today, the actively maintained standalone project is downloaded a million times a day, and some version of FastMCP powers 70% of MCP servers across all languages.\n\nFastMCP has three pillars:\n\n<table>\n<tr>\n<td align=\"center\" valign=\"top\" width=\"33%\">\n<a href=\"https://gofastmcp.com/servers/server\">\n<img src=\"https://raw.githubuse",
+  "githubInDescription": "github.com/PrefectHQ/fastmcp-ts"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "PrefectHQ/fastmcp",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/PrefectHQ/fastmcp",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-03T23:38:12Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-03T17:38:12-06:00",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "main",
+  "scorecardStatus": 404
+ }
+}

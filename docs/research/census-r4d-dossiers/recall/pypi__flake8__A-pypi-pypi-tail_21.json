@@ -1,0 +1,56 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "flake8",
+  "subjectRef": "pypi-tail#21",
+  "spec": ">=6.0.0",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "7.5.0",
+   "date": "2026-10-28T20:17:22.128885Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:22:28.388Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "7.5.0",
+  "latestOldestFile": "2026-10-28T20:17:21.061171Z",
+  "latestNewestFile": "2026-10-28T20:17:22.128885Z",
+  "latestAgeDays": 6,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Homepage": "https://github.com/pycqa/flake8"
+  },
+  "homePage": "https://github.com/pycqa/flake8",
+  "summary": "the modular source code checker: pep8 pyflakes and co",
+  "descriptionHead": ".. image:: https://github.com/PyCQA/flake8/workflows/main/badge.svg\n   :target: https://github.com/PyCQA/flake8/actions?query=workflow%3Amain\n   :alt: build status\n\n.. image:: https://results.pre-commit.ci/badge/github/PyCQA/flake8/main.svg\n   :target: https://results.pre-commit.ci/latest/github/PyCQA/flake8/main\n   :alt: pre-commit.ci status\n\n.. image:: https://img.shields.io/discord/825463413634891776.svg\n   :target: https://discord.gg/qYxpadCgkx\n   :alt: Discord\n\n========\n Flake8\n========\n\nFlake8 is a wrapper around these tools:\n\n- PyFlakes\n- pycodestyle\n- Ned Batchelder's McCabe script\n\nFlake8 runs all the tools by launching the single ``flake8`` command.\nIt displays the warnings in a per-file, merged output.\n\nIt also adds a few features:\n\n- files that contain this line are skipped::\n\n    # flake8: noqa\n\n- lines that contain a ``# noqa`` comment at the end will not issue warnings.\n- you can ignore specific errors on a line with ``# noqa: <error>``, e.g.,\n  ``# noqa: E234``. Multiple codes can be given, separated by comma. The ``noqa`` token is case insensitive, the colon before the list of codes is required otherwise the part after ``noqa`` is ignored\n- Git and Mercurial hooks\n- extendable through ``flake8.extension`` and ``flake8.formatting`` entry\n  points\n\n\nQuickstart\n==========\n\nSee our `quickstart documentation\n<https://flake8.pycqa.org/en/latest/index.html#quickstart>`_ for how to install\nand get started with Flake8.\n\n\nFrequently Asked Questions\n==========================\n\nFlake8 maintains an `FAQ <https://flake8.pycqa.org/en/latest/faq.html>`_ in its\ndocumentation.\n\n\nQuestions or Feedback\n=====================\n\nIf you have questions you'd like to ask the developers, or feedback you'd like\nto provide, feel free to use the mailing list: code-quality@python.org\n\nWe would love to hear from you. Additionally, if you have a feature you'd like\nto suggest, the mailing list would be the best place for it.\n\n\nLinks\n=====\n\n* `Flake8 Documentation <https://flake8.pycqa.org/en/latest/>`_\n\n* `GitHub Project <https://github.com/pycqa/flake8>`_\n\n* `All (Open and Closed) Issues\n  <https://github.com/pycqa/flake8/issues?q=is%3Aissue>`_\n\n* `Code-Quality Archives\n  <https://mail.python.org/mailman/listinfo/code-quality>`_\n\n* `Code of Conduct\n  <https://flake8.pycqa.org/en/latest/internal/contributing.html#code-of-conduct>`_\n\n* `Getting Started Contributing\n  <https://flake8.pycqa.org/en/latest/internal/contributing.html>`_\n\n\nMaintenance\n===========\n\nFlake8 was created by Tarek Ziadé and is currently maintained by `anthony sottile\n<https://github.com/sponsors/asottile>`_ and `Ian Cordasco\n<https://www.coglib.com/~icordasc/>`_\n",
+  "githubInDescription": "github.com/PyCQA/flake8"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "pycqa/flake8",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/pycqa/flake8",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-28T20:16:39Z",
+  "atomLastCommitAgeDays": 6,
+  "gitLastCommit": "2026-10-28T16:16:39-04:00",
+  "gitLastCommitAgeDays": 6,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2022-08-15",
+  "maintained": 10
+ }
+}

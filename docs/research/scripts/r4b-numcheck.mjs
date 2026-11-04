@@ -16,6 +16,7 @@ const cleaned = section
   .replace(/^#+ .*$/gm, ' ')
   .replace(/\bsections? \d+(\.\d+)?( to \d+(\.\d+)?)?/gi, ' ')
   .replace(/\bPEP \d+/g, ' ')
+  .replace(/(\(|\bin |\bsee )9\.\d+\b/g, ' ')
   .replace(/https?:\S+/g, ' ');
 const normalise = (t) => t.replace(/,/g, '');
 const hay = normalise(printed);

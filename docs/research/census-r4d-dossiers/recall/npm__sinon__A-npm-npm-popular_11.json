@@ -1,0 +1,59 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "sinon",
+  "subjectRef": "npm-popular#11",
+  "spec": "21.0.1",
+  "resolved": "21.0.1",
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "22.1.0",
+   "date": "2026-07-20T17:59:28Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:20:30.823Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "22.1.0",
+  "latestDate": "2026-07-20T17:59:28.504Z",
+  "latestAgeDays": 106,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "22.1.0"
+  },
+  "versionInUse": "21.0.1",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2025-12-19T14:18:41.174Z",
+  "repository": "git+https://github.com/sinonjs/sinon.git",
+  "homepage": "https://sinonjs.org/",
+  "description": "JavaScript test spies, stubs and mocks.",
+  "readmeHead": "<h1 align=center>\n    <a href=\"https://sinonjs.org\" title=\"Sinon.JS\">\n        <img alt=\"Sinon.JS\" src=\"https://sinonjs.org/assets/images/logo.png\">\n    </a>\n    <br>\n    Sinon.JS\n</h1>\n\n<p align=center>\n    Standalone and test framework agnostic JavaScript test spies, stubs and mocks (pronounced \"sigh-non\", named after <a href=\"https://en.wikipedia.org/wiki/Sinon\">Sinon, the warrior</a>).\n</p>\n\n<p align=center>\n<a href=\"https://www.npmjs.com/package/sinon\"><img src=\"https://img.shields.io/npm/v/sinon.svg?style=flat\" alt=\"npm version\"></a>\n<a href=\"https://saucelabs.com/u/sinonjs\"><img src=\"https://saucelabs.com/buildstatus/sinonjs\" alt=\"Sauce Test Status\"/></a>\n<a href=\"https://codecov.io/gh/sinonjs/sinon\"><img src=\"https://codecov.io/gh/sinonjs/sinon/branch/master/graph/badge.svg\" alt=\"Codecov status\"></a>\n<a href=\"#backers\"><img src=\"https://opencollective.com/sinon/backers/badge.svg\" alt=\"OpenCollective\"></a>\n<a href=\"#sponsors\"><img src=\"https://opencollective.com/sinon/sponsors/badge.svg\" alt=\"OpenCollective\"></a>\n<a href=\"https://www.npmjs.com/package/sinon\" target=\"_blank\"><img src=\"https://img.shields.io/npm/dm/sinon.svg\" alt=\"npm downloads per month\"></a>\n<a href=\"https://cdnjs.com/libraries/sinon.js\" target=\"_blank\"><img src=\"https://img.shields.io/cdnjs/v/sinon.js.svg\" alt=\"CDNJS version\"></a>\n<a href=\"CODE_OF_CONDUCT.md\"><img src=\"https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg\" alt=\"Contributor Covenant\" /></a>\n</p>\n\n<!-- Shows an outdated badge. Will not be fixed until https://github.com/sinonjs/fake-timers/pull/395 ships.\n<p align=center>\n<a href=\"https://app.saucelabs.com/u/sinonjs\">\n  <img src=\"https://app.saucelabs.com/browser-matrix/sinonjs.svg\" alt=\"Sauce Test Status\"/>\n</a>\n</p>\n-->\n\n## Compatibility\n\nFor details on compatibility and browser support, please see [`COMPATIBILITY.md`](COMPATIBILITY.md)\n\n## Installation\n\nvia [npm](https://github.com/npm/npm)\n\n    $ npm install sinon\n\nor via Sinon's browser builds available for download on the [homepage](https://sinonjs.org/releases/).\nThere are also [npm based CDNs](https://sinonjs.org/releases#npm-cdns) one can use.\n\n## Usage\n\nSee the [sinon project homepage](https://sinonjs.org/) for documentation on usage.\n\nIf you have questions that are not covered by the documentation, you can [check out the `sinon` tag on Stack Overflow](https://stackoverflow.com/questions/tagged/sinon).\n\n## Goals\n\n- No global pollution\n- Easy to use\n- Require minimal “integration”\n- Eas",
+  "versions": 221
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "sinonjs/sinon",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/sinonjs/sinon",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-28T14:40:07Z",
+  "atomLastCommitAgeDays": 7,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-10-28T15:40:07+01:00",
+  "gitLastCommitAgeDays": 7,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 5
+ }
+}

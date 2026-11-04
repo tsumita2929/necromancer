@@ -1,0 +1,33 @@
+{
+ "unit": {
+  "cell": "B|pypi",
+  "stratum": "B",
+  "ecosystem": "pypi",
+  "name": "ak-guardian",
+  "subjectRef": "pypi-popular#17",
+  "spec": "==3.2.0",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [
+   "registry-not-found",
+   "unchecked"
+  ],
+  "evidence": [
+   {
+    "code": "registry-not-found",
+    "message": "Not found: PyPI has no package named \"ak-guardian\". It may be removed, private or misspelled; Necromancer cannot tell which."
+   },
+   {
+    "code": "unchecked",
+    "message": "Could not be checked: the registry has no record of this package."
+   }
+  ],
+  "advisories": 0,
+  "latest": null
+ },
+ "checkedAt": "2026-11-04T15:24:57.960Z",
+ "registry": {
+  "registryStatus": 404
+ },
+ "repoPage": null
+}

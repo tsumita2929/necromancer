@@ -28,11 +28,13 @@ const a = load(dirA);
 const b = load(dirB);
 if (a.size !== b.size) throw new Error(`different number of dependencies: ${a.size} and ${b.size}`);
 
+let differentFields = 0;
 const transitions = {};
 const changedPackages = {};
 for (const [k, da] of a) {
   const db = b.get(k);
   if (!db) throw new Error(`missing in the upgrade run: ${k}`);
+  if (JSON.stringify(da) !== JSON.stringify(db)) differentFields++;
   const t = `${label(da)} -> ${label(db)}`;
   transitions[t] = (transitions[t] ?? 0) + 1;
   if (da.verdict !== db.verdict) {
@@ -69,6 +71,8 @@ for (const [k, d] of b) if (has(d)) allProjects.add(k.split('|')[0]);
 
 const out = {
   description: 'Round-4a engine (368e98c) against the upgrade-notice engine on the 100 census subjects. Package names and counts only.',
+  diagnosesTotal: a.size,
+  diagnosesDifferentInAnyField: differentFields,
   transitions: Object.fromEntries(Object.entries(transitions).sort((x, y) => y[1] - x[1])),
   changedPackages: Object.fromEntries(Object.entries(changedPackages).sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0]))),
   notice: {

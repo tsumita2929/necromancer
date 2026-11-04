@@ -1,0 +1,61 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "@babel/preset-env",
+  "subjectRef": "npm-tail#11",
+  "spec": "^7.18.10",
+  "resolved": "7.18.10",
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "8.0.7",
+   "date": "2026-10-07T09:59:22Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:21:10.783Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "8.0.7",
+  "latestDate": "2026-10-07T09:59:22.725Z",
+  "latestAgeDays": 28,
+  "latestDeprecated": null,
+  "distTags": {
+   "esm": "7.21.4-esm.4",
+   "next": "8.0.0-rc.6",
+   "latest": "8.0.7"
+  },
+  "versionInUse": "7.18.10",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2022-08-01T18:46:45.407Z",
+  "repository": "https://github.com/babel/babel.git",
+  "homepage": "https://babel.dev/docs/en/next/babel-preset-env",
+  "description": "A Babel preset for each environment.",
+  "readmeHead": "",
+  "versions": 215
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "babel/babel",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/babel/babel",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-04T14:43:48Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-04T14:43:48Z",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 10
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "dumi",
+  "subjectRef": "npm-popular#14",
+  "spec": "^2.4.55",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "2.4.55",
+   "date": "2026-10-29T14:23:05Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:20:44.239Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.4.55",
+  "latestDate": "2026-10-29T14:23:05.469Z",
+  "latestAgeDays": 6,
+  "latestDeprecated": null,
+  "distTags": {
+   "alpha": "2.2.0-alpha.2",
+   "pre": "1.1.52",
+   "latest-1": "1.1.54",
+   "test": "2.2.15-alpha.0",
+   "beta": "2.4.19-beta.0",
+   "next": "2.4.49-alpha.2",
+   "canary": "2.4.51-canary.20261019.1",
+   "latest": "2.4.55"
+  },
+  "versionInUse": "^2.4.55",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/umijs/dumi.git",
+  "homepage": "https://d.umijs.org",
+  "description": "📖 Documentation Generator of React Component",
+  "readmeHead": "# dumi\n\n[![NPM version](https://img.shields.io/npm/v/dumi)](https://npmjs.org/package/dumi) [![NPM downloads](https://img.shields.io/npm/dm/dumi)](https://npmjs.org/package/dumi) [![GitHub CI](https://github.com/umijs/dumi/workflows/CI/badge.svg)](https://github.com/umijs/dumi)\n\n<img src=\"https://gw.alipayobjects.com/zos/bmw-prod/d3e3eb39-1cd7-4aa5-827c-877deced6b7e/lalxt4g3_w256_h256.png\" width=\"120\">\n\ndumi is a static site generator for component library development.\n\n## Usage & Guide\n\nTo view more online examples and docs, please visit [dumi official site](https://d.umijs.org).\n\n## Contributing\n\nSee [CONTRIBUTING.md](CONTRIBUTING.md)\n\n<a href=\"https://openomy.app/github/umijs/dumi\" target=\"_blank\" style=\"display: block; width: 100%;\" align=\"center\">\n  <img src=\"https://www.openomy.app/svg?repo=umijs/dumi&chart=bubble&latestMonth=3\" target=\"_blank\" alt=\"Contribution Leaderboard\" style=\"display: block; width: 100%;\" />\n</a>\n\n## Badge\n\nUsing dumi? Add a README badge to show it off: [![dumi](https://img.shields.io/badge/docs%20by-dumi-blue)](https://github.com/umijs/dumi)\n\n```\n[![dumi](https://img.shields.io/badge/docs%20by-dumi-blue)](https://github.com/umijs/dumi)\n```\n\n## LICENSE\n\nMIT\n",
+  "versions": 410
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "umijs/dumi",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/umijs/dumi",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-29T14:15:39Z",
+  "atomLastCommitAgeDays": 6,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-10-29T22:15:39+08:00",
+  "gitLastCommitAgeDays": 6,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 10
+ }
+}

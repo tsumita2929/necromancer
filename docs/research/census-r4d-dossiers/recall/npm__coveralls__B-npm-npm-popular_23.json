@@ -1,0 +1,81 @@
+{
+ "unit": {
+  "cell": "B|npm",
+  "stratum": "B",
+  "ecosystem": "npm",
+  "name": "coveralls",
+  "subjectRef": "npm-popular#23",
+  "spec": "^2.11.15",
+  "resolved": "2.13.3",
+  "scope": "dev",
+  "evidenceCodes": [
+   "recent-activity",
+   "no-release-long",
+   "low-maintenance"
+  ],
+  "evidence": [
+   {
+    "code": "recent-activity",
+    "message": "The default branch had a commit 10 months ago (2026-01-05), so stale signals alone do not make this dying.",
+    "url": "https://github.com/nickmerwin/node-coveralls"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (3.1.1) is 5.3 years old.",
+    "url": "https://www.npmjs.com/package/coveralls"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "3.1.1",
+   "date": "2021-06-29T00:56:28Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:24:26.675Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "3.1.1",
+  "latestDate": "2021-06-29T00:56:28.329Z",
+  "latestAgeDays": 1954,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "3.1.1"
+  },
+  "versionInUse": "2.13.3",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2017-09-28T15:27:35.093Z",
+  "repository": "git://github.com/nickmerwin/node-coveralls.git",
+  "homepage": "https://github.com/nickmerwin/node-coveralls#readme",
+  "description": "takes json-cov output into stdin and POSTs to coveralls.io",
+  "readmeHead": "# node-coveralls\n\n[![Build Status][ci-image]][ci-url] [![Coverage Status][coveralls-image]][coveralls-url]\n\n[Coveralls.io](https://coveralls.io/) support for Node.js. Get the great coverage reporting of coveralls.io and add a cool coverage button (like the one above) to your README.\n\n## Supported CI services:\n\n* [Travis CI](https://travis-ci.org/)\n* [CodeShip](https://codeship.com/)\n* [CircleCI](https://circleci.com/)\n* [Jenkins](https://jenkins.io/)\n* [Gitlab CI](https://gitlab.com/)\n* [AppVeyor](https://www.appveyor.com/)\n* [Buildkite](https://buildkite.com/)\n* [GitHub Actions CI](https://github.com/features/actions)\n* [CodeFresh](https://codefresh.io/)\n\n## Installation:\n\nAdd the latest version of `coveralls` to your package.json:\n\n```shell\nnpm install coveralls --save-dev\n```\n\nIf you're using mocha, add `mocha-lcov-reporter` to your package.json:\n\n```shell\nnpm install mocha-lcov-reporter --save-dev\n```\n\n## Usage:\n\nThis script `bin/coveralls.js` can take standard input from any tool that emits the lcov data format (including [mocha](https://mochajs.org/)'s [LCOV reporter](https://npmjs.org/package/mocha-lcov-reporter)) and send it to coveralls.io to report your code coverage there.\n\nOnce your app is instrumented for coverage, and building, you need to pipe the lcov output to `./node_modules/coveralls/bin/coveralls.js`.\n\nThis library currently supports [Travis CI](https://travis-ci.org/) with no extra effort beyond piping the lcov output to coveralls. However, if you're using a different build system, there are a few **necessary** environment variables:\n\n- `COVERALLS_SERVICE_NAME` (the name of your build system)\n- `COVERALLS_REPO_TOKEN` (the secret repo token from coveralls.io)\n- `COVERALLS_GIT_BRANCH` (the branch name)\n\nThere are optional environment variables for other build systems as well:\n\n- `COVERALLS_FLAG_NAME` (a flag name to differentiate jobs, e.g. Unit, Functional, Integration)\n- `COVERALLS_SERVICE_NUMBER` (a number that uniquely identifies the build)\n- `COVERALLS_SERVICE_JOB_ID` (an ID that uniquely identifies the build's job)\n- `COVERALLS_SERVICE_JOB_NUMBER` (a number that uniquely identifies the build's job)\n- `COVERALLS_RUN_AT` (a date string for the time that the job ran. RFC 3339 dates work. This defaults to your build system's date/time if you don't set it)\n- `COVERALLS_PARALLEL` (set to `true` when running jobs in parallel, requires a completion webhook. More info here: <https://docs.coveralls.io/parallel-build-webhook>)\n\n### GitHub Act",
+  "versions": 71
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "nickmerwin/node-coveralls",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/nickmerwin/node-coveralls",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-01-05T23:13:06Z",
+  "atomLastCommitAgeDays": 302,
+  "readmeMovedNotice": null,
+  "readmeHints": [
+   ":no_entry_sign: This repo is no longer maintained."
+  ],
+  "gitLastCommit": "2026-01-05T15:13:06-08:00",
+  "gitLastCommitAgeDays": 302,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

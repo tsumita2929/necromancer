@@ -1,0 +1,46 @@
+{
+ "unit": {
+  "cell": "B|pypi",
+  "stratum": "B",
+  "ecosystem": "pypi",
+  "name": "pyaudio",
+  "subjectRef": "pypi-popular#8",
+  "spec": "",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [
+   "no-repository"
+  ],
+  "evidence": [
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "0.2.14",
+   "date": "2024-11-20T19:12:13.616733Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:24:45.766Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "0.2.14",
+  "latestOldestFile": "2023-11-07T07:11:33.599360Z",
+  "latestNewestFile": "2024-11-20T19:12:13.616733Z",
+  "latestAgeDays": 713,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 4 - Beta"
+  ],
+  "projectUrls": {
+   "Homepage": "https://people.csail.mit.edu/hubert/pyaudio/"
+  },
+  "homePage": "https://people.csail.mit.edu/hubert/pyaudio/",
+  "summary": "Cross-platform audio I/O with PortAudio",
+  "descriptionHead": "<img align=\"right\" width=\"200\" style=\"margin-left: 3px\" src=\"https://people.csail.mit.edu/hubert/pyaudio/images/snake-300.png\">\r\n\r\n# PyAudio\r\n\r\nPyAudio provides Python bindings for PortAudio v19, the cross-platform audio I/O library. With PyAudio, you can easily use Python to play and record audio on a variety of platforms, such as GNU/Linux, Microsoft Windows, and Apple macOS.\r\n\r\nPyAudio is distributed under the MIT License.\r\n\r\n* [Homepage](https://people.csail.mit.edu/hubert/pyaudio/)\r\n* [API Documentation](https://people.csail.mit.edu/hubert/pyaudio/docs/)\r\n* [PyPi](https://pypi.python.org/pypi/PyAudio)\r\n\r\n## Installation\r\n\r\nSee the INSTALLATION file in the source distribution for details. In summary, install PyAudio using `pip` on most platforms.\r\n\r\n### Windows\r\n\r\n```sh\r\npython -m pip install pyaudio\r\n```\r\n\r\nThis installs the precompiled PyAudio library with PortAudio v19 19.7.0 included. The library is compiled with support for Windows MME API, DirectSound, WASAPI, and WDM-KS. It does not include support for ASIO. If you require support for APIs not included, you will need to compile PortAudio and PyAudio.\r\n\r\n### macOS\r\n\r\nUse [Homebrew](https://brew.sh) to install the prerequisite [portaudio](http://portaudio.com) library, then install PyAudio using `pip`:\r\n\r\n```sh\r\nbrew install portaudio\r\npip install pyaudio\r\n```\r\n\r\n### GNU/Linux\r\n\r\nUse the package manager to install PyAudio. For example, on Debian-based systems:\r\n\r\n```sh\r\nsudo apt install python3-pyaudio\r\n```\r\n\r\nAlternatively, if the latest version of PyAudio is not available, install it using `pip`. Be sure to first install development libraries for `portaudio19` and `python3`.\r\n\r\n### Building from source\r\n\r\nSee the INSTALLATION file.\r\n\r\n## Documentation & Usage Examples\r\n\r\n* Read the [API Documentation](https://people.csail.mit.edu/hubert/pyaudio/docs/), or generate it from the source using [`sphinx`](https://www.sphinx-doc.org/).\r\n\r\n* Usage examples are in the `examples` directory of the source distribution, or see the [project homepage](https://people.csail.mit.edu/hubert/pyaudio/).\r\n\r\n## License\r\n\r\nPyAudio is distributed under the MIT License. See LICENSE.txt.\r\n",
+  "githubInDescription": null
+ },
+ "repoPage": null
+}

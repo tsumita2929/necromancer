@@ -1,0 +1,78 @@
+{
+ "unit": {
+  "cell": "B|pypi",
+  "stratum": "B",
+  "ecosystem": "pypi",
+  "name": "pyyaml",
+  "subjectRef": "pypi-tail#12",
+  "spec": "",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [
+   "recent-activity",
+   "low-maintenance"
+  ],
+  "evidence": [
+   {
+    "code": "recent-activity",
+    "message": "The default branch had a commit 26 days ago (2026-10-07), so stale signals alone do not make this dying.",
+    "url": "https://github.com/yaml/pyyaml"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "6.0.3",
+   "date": "2025-09-29T20:27:46.049234Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:24:46.281Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "6.0.3",
+  "latestOldestFile": "2025-09-25T21:31:46.040932Z",
+  "latestNewestFile": "2025-09-29T20:27:46.049234Z",
+  "latestAgeDays": 400,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Bug Tracker": "https://github.com/yaml/pyyaml/issues",
+   "CI": "https://github.com/yaml/pyyaml/actions",
+   "Documentation": "https://pyyaml.org/wiki/PyYAMLDocumentation",
+   "Download": "https://pypi.org/project/PyYAML/",
+   "Homepage": "https://pyyaml.org/",
+   "Mailing lists": "http://lists.sourceforge.net/lists/listinfo/yaml-core",
+   "Source Code": "https://github.com/yaml/pyyaml"
+  },
+  "homePage": "https://pyyaml.org/",
+  "summary": "YAML parser and emitter for Python",
+  "descriptionHead": "YAML is a data serialization format designed for human readability\nand interaction with scripting languages.  PyYAML is a YAML parser\nand emitter for Python.\n\nPyYAML features a complete YAML 1.1 parser, Unicode support, pickle\nsupport, capable extension API, and sensible error messages.  PyYAML\nsupports standard YAML tags and provides Python-specific tags that\nallow to represent an arbitrary Python object.\n\nPyYAML is applicable for a broad range of tasks from complex\nconfiguration files to object serialization and persistence.\n",
+  "githubInDescription": null
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "yaml/pyyaml",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/yaml/pyyaml",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-07T22:14:54Z",
+  "atomLastCommitAgeDays": 27,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-10-07T15:14:54-07:00",
+  "gitLastCommitAgeDays": 27,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

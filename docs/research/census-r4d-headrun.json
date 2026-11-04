@@ -1,0 +1,16 @@
+{
+ "engine": "32cc48dc07565a78af1767e6d4c79128b8ffb038",
+ "comparedWith": "docs/verification/engine-r4c-data/census-aggregate-after.json",
+ "differingFields": 0,
+ "differingPaths": [],
+ "run": {
+  "subjects": 100,
+  "networkRequests": 0,
+  "cacheHits": 6567,
+  "githubRestRequests": 0,
+  "commitLookups": 458,
+  "commitFeedsFetched": 0,
+  "commitFeedsFailed": 0,
+  "repositoryLookupsOutsideCache": 0
+ }
+}

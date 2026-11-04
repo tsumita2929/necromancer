@@ -1,0 +1,59 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "@eslint/eslintrc",
+  "subjectRef": "npm-popular#7",
+  "spec": "^3.3.1",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "3.3.7",
+   "date": "2026-09-01T13:42:47Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:20:17.987Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "3.3.7",
+  "latestDate": "2026-09-01T13:42:47.191Z",
+  "latestAgeDays": 64,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "3.3.7"
+  },
+  "versionInUse": "^3.3.1",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/eslint/eslintrc.git",
+  "homepage": "https://github.com/eslint/eslintrc#readme",
+  "description": "The legacy ESLintRC config file format for ESLint",
+  "readmeHead": "# ESLintRC Library\n\nThis repository contains the legacy ESLintRC configuration file format for ESLint. This package is not intended for use outside of the ESLint ecosystem. It is ESLint-specific and not intended for use in other programs.\n\n**Note:** This package is frozen except for critical bug fixes as ESLint moves to a new config system.\n\n## Installation\n\nYou can install the package as follows:\n\n```shell\nnpm install @eslint/eslintrc -D\n# or\nyarn add @eslint/eslintrc -D\n# or\npnpm install @eslint/eslintrc -D\n# or\nbun install @eslint/eslintrc -D\n```\n\n## Usage (ESM)\n\nThe primary class in this package is `FlatCompat`, which is a utility to translate ESLintRC-style configs into flat configs. Here's how you use it inside of your `eslint.config.js` file:\n\n```js\nimport { FlatCompat } from \"@eslint/eslintrc\";\nimport js from \"@eslint/js\";\nimport path from \"path\";\nimport { fileURLToPath } from \"url\";\n\n// mimic CommonJS variables -- not needed if using CommonJS\nconst __filename = fileURLToPath(import.meta.url);\nconst __dirname = path.dirname(__filename);\n\nconst compat = new FlatCompat({\n    baseDirectory: __dirname,                  // optional; default: process.cwd()\n    resolvePluginsRelativeTo: __dirname,       // optional\n    recommendedConfig: js.configs.recommended, // optional unless you're using \"eslint:recommended\"\n    allConfig: js.configs.all,                 // optional unless you're using \"eslint:all\"\n});\n\nexport default [\n\n    // mimic ESLintRC-style extends\n    ...compat.extends(\"standard\", \"example\", \"plugin:react/recommended\"),\n\n    // mimic environments\n    ...compat.env({\n        es2020: true,\n        node: true\n    }),\n\n    // mimic plugins\n    ...compat.plugins(\"jsx-a11y\", \"react\"),\n\n    // translate an entire config\n    ...compat.config({\n        plugins: [\"jsx-a11y\", \"react\"],\n        extends: \"standard\",\n        env: {\n            es2020: true,\n            node: true\n        },\n        rules: {\n            semi: \"error\"\n        }\n    })\n];\n```\n\n## Usage (CommonJS)\n\nUsing `FlatCompat` in CommonJS files is similar to ESM, but you'll use `require()` and `module.exports` instead of `import` and `export`. Here's how you use it inside of your `eslint.config.js` CommonJS file:\n\n```js\nconst { FlatCompat } = require(\"@eslint/eslintrc\");\nconst js = require(\"@eslint/js\");\n\nconst compat = new FlatCompat({\n    baseDirectory: __dirname,                  // optional; default: process.cwd()\n    resolvePluginsRelativeTo: __dirname,       // optional\n    recom",
+  "versions": 51
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "eslint/eslintrc",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/eslint/eslintrc",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-04T08:11:55Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [
+   "Using `FlatCompat` in CommonJS files is similar to ESM, but you'll use `require()` and `module.exports` instead of `import` and `export`. Here's how you use it inside of your `eslint.config.js` CommonJS file:"
+  ],
+  "gitLastCommit": "2026-11-04T08:11:55Z",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 10
+ }
+}

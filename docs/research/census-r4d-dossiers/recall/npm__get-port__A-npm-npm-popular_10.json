@@ -1,0 +1,57 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "get-port",
+  "subjectRef": "npm-popular#10",
+  "spec": "^7.1.0",
+  "resolved": "7.1.0",
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "7.2.0",
+   "date": "2026-03-22T05:52:49Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:21:18.175Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "7.2.0",
+  "latestDate": "2026-03-22T05:52:49.076Z",
+  "latestAgeDays": 227,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "7.2.0"
+  },
+  "versionInUse": "7.1.0",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2024-03-20T08:09:10.276Z",
+  "repository": "git+https://github.com/sindresorhus/get-port.git",
+  "homepage": "https://github.com/sindresorhus/get-port#readme",
+  "description": "Get an available port",
+  "readmeHead": "# get-port\n\n> Get an available [TCP port](https://en.wikipedia.org/wiki/Port_(computer_networking)).\n\n## Install\n\n```sh\nnpm install get-port\n```\n\n## Usage\n\n```js\nimport getPort from 'get-port';\n\nconsole.log(await getPort());\n//=> 51402\n```\n\nPass in a preferred port:\n\n```js\nimport getPort from 'get-port';\n\nconsole.log(await getPort({port: 3000}));\n// Will use 3000 if available, otherwise fall back to a random port\n```\n\nPass in an array of preferred ports:\n\n```js\nimport getPort from 'get-port';\n\nconsole.log(await getPort({port: [3000, 3001, 3002]}));\n// Will use any element in the preferred ports array if available, otherwise fall back to a random port\n```\n\nUse the `portNumbers()` helper in case you need a port in a certain range:\n\n```js\nimport getPort, {portNumbers} from 'get-port';\n\nconsole.log(await getPort({port: portNumbers(3000, 3100)}));\n// Will use any port from 3000 to 3100, otherwise fall back to a random port\n```\n\n## API\n\n### getPort(options?)\n\nReturns a `Promise` for a port number.\n\n#### options\n\nType: `object`\n\n##### port\n\nType: `number | Iterable<number>`\n\nA preferred port or an iterable of preferred ports to use.\n\n##### exclude\n\nType: `Iterable<number>`\n\nPorts that should not be returned.\n\nYou could, for example, pass it the return value of the `portNumbers()` function.\n\n##### reserve\n\nType: `boolean`\\\nDefault: `false`\n\nReserve the port so that it's locked for the lifetime of the process instead of the default 15-30 seconds.\n\nThis is useful when there is a long delay between getting the port and actually binding to it, such as in long-running test suites.\n\nReserved ports are locked globally by port number for the current process, even if you looked them up with a specific `host` or `ipv6Only` option.\n\nUse [`clearLockedPorts()`](#clearlockedports) to release reserved ports.\n\n##### host\n\nType: `string`\n\nThe host on which port resolution should be performed. Can be either an IPv4 or IPv6 address.\n\nBy default, it checks availability on all local addresses defined in [OS network interfaces](https://nodejs.org/api/os.html#os_os_networkinterfaces). If this option is set, it will only check the given host.\n\n### portNumbers(from, to)\n\nGenerate port numbers in the given range `from`...`to`.\n\nReturns an `Iterable` for port numbers in the given range.\n\n```js\nimport getPort, {portNumbers} from 'get-port';\n\nconsole.log(await getPort({port: portNumbers(3000, 3100)}));\n// Will use any port from 3000 to 3100, otherwise fall back to a random port\n```\n\n#### from",
+  "versions": 20
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "sindresorhus/get-port",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/sindresorhus/get-port",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-09-18T19:06:27Z",
+  "atomLastCommitAgeDays": 46,
+  "gitLastCommit": "2026-09-19T02:06:27+07:00",
+  "gitLastCommitAgeDays": 46,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

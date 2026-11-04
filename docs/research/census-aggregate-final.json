@@ -102,17 +102,16 @@
    "subjects": 25,
    "directDependencies": 436,
    "verdicts": {
-    "alive": 404,
-    "dying": 24,
+    "alive": 405,
+    "dying": 23,
     "dead": 8,
     "ghost": 0,
     "zombie": 0
    },
    "verdictBasis": {
-    "alive/none": 404,
+    "alive/none": 405,
     "dying/heuristic": 23,
     "dead/heuristic": 5,
-    "dying/hard": 1,
     "dead/hard": 3
    },
    "verdictsRuntime": {
@@ -241,31 +240,30 @@
    "subjects": 25,
    "directDependencies": 593,
    "verdicts": {
-    "alive": 506,
-    "dying": 51,
+    "alive": 522,
+    "dying": 35,
     "dead": 34,
     "ghost": 1,
     "zombie": 1
    },
    "verdictBasis": {
     "dead/hard": 20,
-    "dying/hard": 16,
-    "alive/none": 506,
+    "alive/none": 522,
     "ghost/hard": 1,
     "dead/heuristic": 14,
     "dying/heuristic": 35,
     "zombie/hard": 1
    },
    "verdictsRuntime": {
-    "alive": 188,
-    "dying": 22,
+    "alive": 190,
+    "dying": 20,
     "dead": 12,
     "ghost": 1,
     "zombie": 1
    },
    "subjectsWithDeadOrWorse": 12,
-   "subjectsWithNonAlive": 21,
-   "subjectsWithDying": 20,
+   "subjectsWithNonAlive": 15,
+   "subjectsWithDying": 12,
    "subjectsWithZombie": 1,
    "subjectsWithStrongDead": 10,
    "subjectsWithStrongDeadRuntime": 4,
@@ -371,20 +369,12 @@
    ],
    "topDyingPackages": [
     {
-     "name": "eslint",
-     "subjects": 11
-    },
-    {
      "name": "ts-node",
      "subjects": 4
     },
     {
      "name": "clsx",
      "subjects": 3
-    },
-    {
-     "name": "rimraf",
-     "subjects": 2
     },
     {
      "name": "@cfaester/enzyme-adapter-react-18",
@@ -409,6 +399,14 @@
     {
      "name": "@svgr/webpack",
      "subjects": 1
+    },
+    {
+     "name": "bcryptjs",
+     "subjects": 1
+    },
+    {
+     "name": "fork-ts-checker-webpack-plugin",
+     "subjects": 1
     }
    ],
    "distinctDeadPackages": 35
@@ -418,17 +416,16 @@
    "directDependencies": 1063,
    "verdicts": {
     "alive": 963,
-    "dying": 75,
-    "dead": 25,
+    "dying": 74,
+    "dead": 26,
     "ghost": 0,
     "zombie": 0
    },
    "verdictBasis": {
-    "dying/hard": 1,
     "dying/heuristic": 74,
     "alive/none": 963,
-    "dead/hard": 8,
-    "dead/heuristic": 17
+    "dead/hard": 10,
+    "dead/heuristic": 16
    },
    "verdictsRuntime": {
     "alive": 501,
@@ -439,26 +436,26 @@
    },
    "subjectsWithDeadOrWorse": 14,
    "subjectsWithNonAlive": 19,
-   "subjectsWithDying": 19,
+   "subjectsWithDying": 18,
    "subjectsWithZombie": 0,
-   "subjectsWithStrongDead": 6,
+   "subjectsWithStrongDead": 7,
    "subjectsWithStrongDeadRuntime": 0,
-   "strongDeadDeps": 8,
+   "strongDeadDeps": 10,
    "subjectsWithDeadOrWorseRuntime": 8,
    "subjectsWithNonAliveRuntime": 15,
    "subjectsWithZombieRuntime": 0,
    "subjectsWithAdvisoryAny": 13,
-   "deadDeps": 25,
+   "deadDeps": 26,
    "deadDepsWithSuccessor": 13,
    "deadDepsBestSuccessorKind": {
     "package": 11,
     "native": 2,
-    "none": 12
+    "none": 13
    },
    "deadDepsDecisiveEvidence": {
-    "repo-archived": 6,
+    "repo-archived": 8,
     "pypi-inactive": 2,
-    "abandoned": 17
+    "abandoned": 16
    },
    "statusCounts": {
     "complete": 24,
@@ -471,7 +468,7 @@
    "workspacesRepos": 0,
    "withLockfile": 0,
    "ghLookupsDone": 0,
-   "heuristicDeadDeps": 17,
+   "heuristicDeadDeps": 16,
    "directPerSubjectMedian": 33,
    "directPerSubjectMax": 152,
    "topDeadPackages": [
@@ -512,6 +509,10 @@
      "subjects": 1
     },
     {
+     "name": "libsass",
+     "subjects": 1
+    },
+    {
      "name": "lxml-stubs",
      "subjects": 1
     },
@@ -529,10 +530,6 @@
     },
     {
      "name": "pysocks",
-     "subjects": 1
-    },
-    {
-     "name": "pytest-dotenv",
      "subjects": 1
     }
    ],
@@ -571,44 +568,43 @@
      "subjects": 1
     },
     {
-     "name": "clvm",
+     "name": "conformer",
      "subjects": 1
     },
     {
-     "name": "conformer",
+     "name": "dehinter",
      "subjects": 1
     }
    ],
-   "distinctDeadPackages": 21
+   "distinctDeadPackages": 22
   },
   "npm-popular": {
    "subjects": 25,
    "directDependencies": 1109,
    "verdicts": {
-    "alive": 895,
-    "dying": 104,
+    "alive": 919,
+    "dying": 80,
     "dead": 107,
     "ghost": 0,
     "zombie": 3
    },
    "verdictBasis": {
-    "dying/hard": 24,
-    "alive/none": 895,
+    "alive/none": 919,
     "dead/heuristic": 69,
     "dead/hard": 38,
     "dying/heuristic": 80,
     "zombie/hard": 3
    },
    "verdictsRuntime": {
-    "alive": 236,
-    "dying": 32,
+    "alive": 241,
+    "dying": 27,
     "dead": 23,
     "ghost": 0,
     "zombie": 0
    },
    "subjectsWithDeadOrWorse": 19,
-   "subjectsWithNonAlive": 23,
-   "subjectsWithDying": 20,
+   "subjectsWithNonAlive": 21,
+   "subjectsWithDying": 17,
    "subjectsWithZombie": 2,
    "subjectsWithStrongDead": 16,
    "subjectsWithStrongDeadRuntime": 6,
@@ -722,14 +718,6 @@
    ],
    "topDyingPackages": [
     {
-     "name": "eslint",
-     "subjects": 9
-    },
-    {
-     "name": "glob",
-     "subjects": 4
-    },
-    {
      "name": "clsx",
      "subjects": 3
     },
@@ -750,15 +738,23 @@
      "subjects": 2
     },
     {
-     "name": "rimraf",
-     "subjects": 2
-    },
-    {
      "name": "tailwindcss-animate",
      "subjects": 2
     },
     {
      "name": "@11ty/eleventy-plugin-syntaxhighlight",
+     "subjects": 1
+    },
+    {
+     "name": "@apihero/fetch",
+     "subjects": 1
+    },
+    {
+     "name": "@codesandbox/sandpack-react",
+     "subjects": 1
+    },
+    {
+     "name": "@inventage/envsubst",
      "subjects": 1
     }
    ],
@@ -770,31 +766,30 @@
    "subjects": 50,
    "directDependencies": 1702,
    "verdicts": {
-    "alive": 1401,
-    "dying": 155,
+    "alive": 1441,
+    "dying": 115,
     "dead": 141,
     "ghost": 1,
     "zombie": 4
    },
    "verdictBasis": {
     "dead/hard": 58,
-    "dying/hard": 40,
-    "alive/none": 1401,
+    "alive/none": 1441,
     "ghost/hard": 1,
     "dead/heuristic": 83,
     "dying/heuristic": 115,
     "zombie/hard": 4
    },
    "verdictsRuntime": {
-    "alive": 424,
-    "dying": 54,
+    "alive": 431,
+    "dying": 47,
     "dead": 35,
     "ghost": 1,
     "zombie": 1
    },
    "subjectsWithDeadOrWorse": 31,
-   "subjectsWithNonAlive": 44,
-   "subjectsWithDying": 40,
+   "subjectsWithNonAlive": 36,
+   "subjectsWithDying": 29,
    "subjectsWithZombie": 3,
    "subjectsWithStrongDead": 26,
    "subjectsWithStrongDeadRuntime": 10,
@@ -913,24 +908,12 @@
    ],
    "topDyingPackages": [
     {
-     "name": "eslint",
-     "subjects": 20
-    },
-    {
      "name": "ts-node",
      "subjects": 7
     },
     {
      "name": "clsx",
      "subjects": 6
-    },
-    {
-     "name": "glob",
-     "subjects": 4
-    },
-    {
-     "name": "rimraf",
-     "subjects": 4
     },
     {
      "name": "tailwindcss-animate",
@@ -951,6 +934,18 @@
     {
      "name": "mkdirp",
      "subjects": 2
+    },
+    {
+     "name": "next-themes",
+     "subjects": 2
+    },
+    {
+     "name": "node-fetch",
+     "subjects": 2
+    },
+    {
+     "name": "pngjs",
+     "subjects": 2
     }
    ],
    "distinctDeadPackages": 133
@@ -959,18 +954,17 @@
    "subjects": 50,
    "directDependencies": 1499,
    "verdicts": {
-    "alive": 1367,
-    "dying": 99,
-    "dead": 33,
+    "alive": 1368,
+    "dying": 97,
+    "dead": 34,
     "ghost": 0,
     "zombie": 0
    },
    "verdictBasis": {
-    "alive/none": 1367,
-    "dying/hard": 2,
+    "alive/none": 1368,
     "dying/heuristic": 97,
-    "dead/hard": 11,
-    "dead/heuristic": 22
+    "dead/hard": 13,
+    "dead/heuristic": 21
    },
    "verdictsRuntime": {
     "alive": 802,
@@ -981,26 +975,26 @@
    },
    "subjectsWithDeadOrWorse": 19,
    "subjectsWithNonAlive": 29,
-   "subjectsWithDying": 28,
+   "subjectsWithDying": 27,
    "subjectsWithZombie": 0,
-   "subjectsWithStrongDead": 7,
+   "subjectsWithStrongDead": 8,
    "subjectsWithStrongDeadRuntime": 1,
-   "strongDeadDeps": 11,
+   "strongDeadDeps": 13,
    "subjectsWithDeadOrWorseRuntime": 12,
    "subjectsWithNonAliveRuntime": 23,
    "subjectsWithZombieRuntime": 0,
    "subjectsWithAdvisoryAny": 21,
-   "deadDeps": 33,
+   "deadDeps": 34,
    "deadDepsWithSuccessor": 18,
    "deadDepsBestSuccessorKind": {
     "package": 16,
     "native": 2,
-    "none": 15
+    "none": 16
    },
    "deadDepsDecisiveEvidence": {
-    "repo-archived": 8,
+    "repo-archived": 10,
     "pypi-inactive": 3,
-    "abandoned": 22
+    "abandoned": 21
    },
    "statusCounts": {
     "complete": 47,
@@ -1013,7 +1007,7 @@
    "workspacesRepos": 0,
    "withLockfile": 0,
    "ghLookupsDone": 0,
-   "heuristicDeadDeps": 22,
+   "heuristicDeadDeps": 21,
    "directPerSubjectMedian": 27.5,
    "directPerSubjectMax": 152,
    "topDeadPackages": [
@@ -1066,15 +1060,15 @@
      "subjects": 1
     },
     {
+     "name": "libsass",
+     "subjects": 1
+    },
+    {
      "name": "lxml-stubs",
      "subjects": 1
     },
     {
      "name": "mutatormath",
-     "subjects": 1
-    },
-    {
-     "name": "nest-asyncio",
      "subjects": 1
     }
    ],
@@ -1121,58 +1115,57 @@
      "subjects": 2
     }
    ],
-   "distinctDeadPackages": 27
+   "distinctDeadPackages": 28
   }
  },
  "all": {
   "subjects": 100,
   "directDependencies": 3201,
   "verdicts": {
-   "alive": 2768,
-   "dying": 254,
-   "dead": 174,
+   "alive": 2809,
+   "dying": 212,
+   "dead": 175,
    "ghost": 1,
    "zombie": 4
   },
   "verdictBasis": {
-   "alive/none": 2768,
-   "dead/hard": 69,
-   "dying/hard": 42,
+   "alive/none": 2809,
+   "dead/hard": 71,
    "dying/heuristic": 212,
-   "dead/heuristic": 105,
+   "dead/heuristic": 104,
    "ghost/hard": 1,
    "zombie/hard": 4
   },
   "verdictsRuntime": {
-   "alive": 1226,
-   "dying": 114,
+   "alive": 1233,
+   "dying": 107,
    "dead": 55,
    "ghost": 1,
    "zombie": 1
   },
   "subjectsWithDeadOrWorse": 50,
-  "subjectsWithNonAlive": 73,
-  "subjectsWithDying": 68,
+  "subjectsWithNonAlive": 65,
+  "subjectsWithDying": 56,
   "subjectsWithZombie": 3,
-  "subjectsWithStrongDead": 33,
+  "subjectsWithStrongDead": 34,
   "subjectsWithStrongDeadRuntime": 11,
-  "strongDeadDeps": 72,
+  "strongDeadDeps": 74,
   "subjectsWithDeadOrWorseRuntime": 26,
   "subjectsWithNonAliveRuntime": 42,
   "subjectsWithZombieRuntime": 1,
   "subjectsWithAdvisoryAny": 49,
-  "deadDeps": 179,
+  "deadDeps": 180,
   "deadDepsWithSuccessor": 95,
   "deadDepsBestSuccessorKind": {
    "package": 77,
    "native": 16,
-   "none": 84,
+   "none": 85,
    "raise": 2
   },
   "deadDepsDecisiveEvidence": {
-   "repo-archived": 33,
+   "repo-archived": 35,
    "pypi-inactive": 3,
-   "abandoned": 107,
+   "abandoned": 106,
    "repo-gone": 1,
    "npm-deprecated": 35
   },
@@ -1187,7 +1180,7 @@
   "workspacesRepos": 9,
   "withLockfile": 25,
   "ghLookupsDone": 0,
-  "heuristicDeadDeps": 105,
+  "heuristicDeadDeps": 104,
   "directPerSubjectMedian": 25,
   "directPerSubjectMax": 217,
   "topDeadPackages": [
@@ -1272,10 +1265,6 @@
   ],
   "topDyingPackages": [
    {
-    "name": "eslint",
-    "subjects": 20
-   },
-   {
     "name": "ts-node",
     "subjects": 7
    },
@@ -1284,15 +1273,7 @@
     "subjects": 6
    },
    {
-    "name": "glob",
-    "subjects": 4
-   },
-   {
     "name": "python-docx",
-    "subjects": 4
-   },
-   {
-    "name": "rimraf",
     "subjects": 4
    },
    {
@@ -1310,9 +1291,21 @@
    {
     "name": "tailwindcss-animate",
     "subjects": 3
+   },
+   {
+    "name": "bcryptjs",
+    "subjects": 2
+   },
+   {
+    "name": "dacite",
+    "subjects": 2
+   },
+   {
+    "name": "docx2pdf",
+    "subjects": 2
    }
   ],
-  "distinctDeadPackages": 159
+  "distinctDeadPackages": 160
  },
  "distinctDeadOrWorse": {
   "npm": {
@@ -1320,7 +1313,7 @@
    "withSuccessor": 71
   },
   "pypi": {
-   "packages": 27,
+   "packages": 28,
    "withSuccessor": 16
   }
  }

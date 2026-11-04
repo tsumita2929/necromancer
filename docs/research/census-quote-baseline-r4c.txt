@@ -1,0 +1,19 @@
+Q01 33 of 100 projects depend directly on a package that is deprecated, archived, inactive or gone (95% CI 24.6% to 42.7%)
+Q02 npm: 26 of 50 projects (52.0%)
+Q03 Python: 7 of 50 projects (14.0%)
+Q04 179 of 3201 direct dependencies are dead or worse (5.6%, about 1 in 18)
+Q05 of those 74 (41.3%) rest on a hard signal and 105 (58.7%) on the abandoned heuristic
+Q06 4 zombies (dead, with a known advisory against the version in use), in 3 projects
+Q07 50 of 100 projects have a dead-or-worse direct dependency of any basis
+Q08 the engine names a way out for 95 of 179 flagged dependencies (53.1%); 4 of 4 zombies
+Q09 researched ways out: 91 of 175 dead packages (99 of 198 dependencies); Python 17 of 30 packages (the engine named none before)
+Q10 41 dependencies in 26 projects (15 packages) carry an upgrade notice: a deprecated version of a package that is alive; 36 point to another major version, 7 also have an advisory
+Q11 eslint: 21 dependencies in 20 projects carry the notice (alive, upgrade to a newer major)
+Q12 moved repositories: 10 dependencies in 8 packages were dead in the first run; now 8 alive and 2 dying
+Q13 verdicts of 3201 direct dependencies: alive 2810, dying 212, dead 174, ghost 1, zombie 4
+Q14 sample: 100 projects (25 each of npm popular, npm tail, Python popular, Python tail), 3201 direct dependencies, median 25 per project
+Q15 precision on units the tuning never saw, final engine: 36 still flagged of 40; 36 right (CI 90.4% to 100.0%); 35 defensible (97.2%, CI 85.8% to 99.5%); weighted by population 96.0% (CI 85.8% to 100.0%)
+Q16 the same 40 units under the round-4a engine: 40 of 40 right, 35 of 40 defensible (87.5%); 4 units are no longer flagged because of the upgrade rule
+Q17 45 of the first 56 units are still flagged, all 45 right and defensible (the tuning was fitted on these: do not quote as out-of-sample)
+Q18 coverage: 90 projects complete, 10 partial, 0 failed
+Q19 hard-signal flags: 10 of 10 right and defensible among dead-on-a-hard-signal units the tuning never saw (CI 72.2% to 100.0%)

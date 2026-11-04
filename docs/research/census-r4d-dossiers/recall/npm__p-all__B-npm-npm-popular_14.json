@@ -1,0 +1,69 @@
+{
+ "unit": {
+  "cell": "B|npm",
+  "stratum": "B",
+  "ecosystem": "npm",
+  "name": "p-all",
+  "subjectRef": "npm-popular#14",
+  "spec": "^5.0.1",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [
+   "recent-activity",
+   "low-maintenance"
+  ],
+  "evidence": [
+   {
+    "code": "recent-activity",
+    "message": "The default branch had a commit 45 days ago (2026-09-18), so stale signals alone do not make this dying.",
+    "url": "https://github.com/sindresorhus/p-all"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "5.0.1",
+   "date": "2025-09-18T05:55:54Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:24:19.885Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "5.0.1",
+  "latestDate": "2025-09-18T05:55:54.822Z",
+  "latestAgeDays": 412,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "5.0.1"
+  },
+  "versionInUse": "^5.0.1",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/sindresorhus/p-all.git",
+  "homepage": "https://github.com/sindresorhus/p-all#readme",
+  "description": "Run promise-returning & async functions concurrently with optional limited concurrency",
+  "readmeHead": "# p-all\n\n> Run promise-returning & async functions concurrently with optional limited concurrency\n\nSimilar to `Promise.all()`, but accepts functions instead of promises directly so you can limit the concurrency.\n\nIf you're doing the same work in each function, use [`p-map`](https://github.com/sindresorhus/p-map) instead.\n\nSee [`p-series`](https://github.com/sindresorhus/p-series) for a serial counterpart.\n\n## Install\n\n```sh\nnpm install p-all\n```\n\n## Usage\n\n```js\nimport pAll from 'p-all';\nimport got from 'got';\n\nconst actions = [\n\t() => got('https://sindresorhus.com'),\n\t() => got('https://avajs.dev'),\n\t() => checkSomething(),\n\t() => doSomethingElse()\n];\n\nconsole.log(await pAll(actions, {concurrency: 2}));\n```\n\n## API\n\n### pAll(tasks, options?)\n\nReturns a `Promise` that is fulfilled when all promises returned from calling the functions in `tasks` are fulfilled, or rejects if any of the promises reject. The fulfilled value is an `Array` of the fulfilled values in `tasks` order.\n\n#### tasks\n\nType: `Iterable<Function>`\n\nIterable with promise-returning/async functions.\n\n#### options\n\nType: `object`\n\n##### concurrency\n\nType: `number` *(Integer)*\\\nDefault: `Infinity`\\\nMinimum: `1`\n\nNumber of concurrently pending promises.\n\n##### stopOnError\n\nType: `boolean`\\\nDefault: `true`\n\nWhen set to `false`, instead of stopping when a promise rejects, it will wait for all the promises to settle and then reject with an [`AggregateError`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AggregateError) containing all the errors from the rejected promises.\n\n##### signal\n\nType: [`AbortSignal`](https://developer.mozilla.org/docs/Web/API/AbortSignal)\n\nYou can abort the promises using [`AbortController`](https://developer.mozilla.org/docs/Web/API/AbortController).\n\n## Related\n\n- [p-map](https://github.com/sindresorhus/p-map) - Map over promises concurrently\n- [p-series](https://github.com/sindresorhus/p-series) - Run promise-returning & async functions in series\n- [p-props](https://github.com/sindresorhus/p-props) - Like `Promise.all()` but for `Map` and `Object`\n- [p-queue](https://github.com/sindresorhus/p-queue) - Promise queue with concurrency control\n- [p-limit](https://github.com/sindresorhus/p-limit) - Run multiple promise-returning & async functions with limited concurrency\n- [More…](https://github.com/sindresorhus/promise-fun)\n",
+  "versions": 7
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "sindresorhus/p-all",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/sindresorhus/p-all",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-09-18T19:12:13Z",
+  "atomLastCommitAgeDays": 46,
+  "gitLastCommit": "2026-09-19T02:12:13+07:00",
+  "gitLastCommitAgeDays": 46,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "unit": {
+  "cell": "B|pypi",
+  "stratum": "B",
+  "ecosystem": "pypi",
+  "name": "pypinyin",
+  "subjectRef": "pypi-popular#20",
+  "spec": ">=0.55,<1",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [
+   "recent-activity",
+   "low-maintenance"
+  ],
+  "evidence": [
+   {
+    "code": "recent-activity",
+    "message": "The default branch had a commit 1 days ago (2026-11-01), so stale signals alone do not make this dying.",
+    "url": "https://github.com/mozillazg/python-pinyin"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "0.55.0",
+   "date": "2025-07-20T12:01:50.657131Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:24:58.710Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "0.55.0",
+  "latestOldestFile": "2025-07-20T12:01:48.535927Z",
+  "latestNewestFile": "2025-07-20T12:01:50.657131Z",
+  "latestAgeDays": 472,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Documentation": "https://pypinyin.readthedocs.io/",
+   "Homepage": "https://github.com/mozillazg/python-pinyin",
+   "Source": "https://github.com/mozillazg/python-pinyin",
+   "Tracker": "https://github.com/mozillazg/python-pinyin/issues"
+  },
+  "homePage": "https://github.com/mozillazg/python-pinyin",
+  "summary": "汉字拼音转换模块/工具.",
+  "descriptionHead": "汉字拼音转换工具（Python 版）\n=============================\n\n|Build| |GitHubAction| |Coverage| |Pypi version| |PyPI downloads| |DOI|\n\n\n将汉字转为拼音。可以用于汉字注音、排序、检索(`Russian translation`_) 。\n\n最初版本的代码参考了 `hotoo/pinyin <https://github.com/hotoo/pinyin>`__ 的实现。\n\n* Documentation: https://pypinyin.readthedocs.io/\n* GitHub: https://github.com/mozillazg/python-pinyin\n* License: MIT license\n* PyPI: https://pypi.org/project/pypinyin\n* Python version: 2.7, pypy, pypy3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13\n\n.. contents::\n\n\n特性\n----\n\n* 根据词组智能匹配最正确的拼音。\n* 支持多音字。\n* 简单的繁体支持，注音支持，威妥玛拼音支持。\n* 支持多种不同拼音/注音风格。\n\n\n安装\n----\n\n.. code-block:: bash\n\n    pip install pypinyin\n\n\n使用示例\n--------\n\n.. code-block:: python\n\n    >>> from pypinyin import pinyin, lazy_pinyin, Style\n    >>> pinyin('中心')  # or pinyin(['中心'])，参数值为列表时表示输入的是已分词后的数据\n    [['zhōng'], ['xīn']]\n    >>> pinyin('中心', heteronym=True)  # 启用多音字模式\n    [['zhōng', 'zhòng'], ['xīn']]\n    >>> pinyin('中心', style=Style.FIRST_LETTER)  # 设置拼音风格\n    [['z'], ['x']]\n    >>> pinyin('中心', style=Style.TONE2, heteronym=True)\n    [['zho1ng', 'zho4ng'], ['xi1n']]\n    >>> pinyin('中心', style=Style.TONE3, heteronym=True)\n    [['zhong1', 'zhong4'], ['xin1']]\n    >>> pinyin('中心', style=Style.BOPOMOFO)  # 注音风格\n    [['ㄓㄨㄥ'], ['ㄒㄧㄣ']]\n    >>> lazy_pinyin('威妥玛拼音', style=Style.WADEGILES)\n    ['wei', \"t'o\", 'ma', \"p'in\", 'yin']\n    >>> lazy_pinyin('中心')  # 不考虑多音字的情况\n    ['zhong', 'xin']\n    >>> lazy_pinyin('战略', v_to_u=True)  # 不使用 v 表示 ü\n    ['zhan', 'lüe']\n    # 使用 5 标识轻声\n    >>> lazy_pinyin('衣裳', style=Style.TONE3, neutral_tone_with_five=True)\n    ['yi1', 'shang5']\n    # 变调  nǐ hǎo -> ní hǎo\n    >>> lazy_pinyin('你好', style=Style.TONE2, tone_sandhi=True)\n    ['ni2', 'ha3o']\n\n**注意事项** ：\n\n* 默认情况下拼音结果不会标明哪个韵母是轻声，轻声的韵母没有声调或数字标识（可以通过参数 ``neutral_tone_with_five=True`` 开启使用 ``5`` 标识轻声 ）。\n* 默认情况下无声调相关拼音风格下的结果会使用 ``v`` 表示 ``ü`` （可以通过参数 ``v_to_u=True`` 开启使用 ``ü`` 代替 ``v`` ）。\n* 默认情况下会原样输出没有拼音的字符（自定义处理没有拼音的字符的方法见 `文档 <https://pypinyin.readthedocs.io/zh_CN/master/usage.html#handle-no-pinyin>`__ ）。\n* ``嗯`` 的拼音并不是大部分人以为的 ``en`` 以及存在既没有声母也没有韵母的拼音，详见下方 FAQ 中的说明。\n\n命令行工具：\n\n.. code-block:: console\n\n    $ pypinyin 音乐\n    yīn yuè\n\n    $ python -m pypinyin.tools.toneconvert to-tone 'zhong4 xin1'\n    zhòng xīn\n\n\n文档\n--------\n\n详细文档请访问：https://pypinyin.readthedocs.io/。\n\n项目代码开发方面的问题可以看看 `开发文档`_ 。\n\n\nFAQ\n---------\n\n拼音有误？\n+++++++++++++++++++++++++++++\n\n可以通过下面的方法提高拼音准确性：\n\n* 可以通过自定义词组拼音库或者单字拼音库的方式修正拼音结果，\n  详见 `文档 <https://pypinyin.readthedocs.io/zh_CN/master/usage.html#custom-dict>`__ 。\n\n.. code-block:: python\n\n    >> from pypinyin import load_phrases_dict, load_single_dict\n\n    >> load_phrases_dict({'桔子': [['jú'], ['zǐ']]})  # 增加 \"桔子\" 词组\n\n    >> load_single_dict({ord('还'): 'hái,huán'})  # 调整 \"还\" 字的拼音顺序或覆盖默认拼音\n\n* 也可以使用 `pypinyin-dict <https://github.com/mozillazg/pypinyin-dict>`__ 项目提供的自定义拼音库来纠正结果。\n\n.. code-block:: python\n\n    # 使用 phrase-pinyin-data 项目中 cc_cedict.txt 文件中的拼音数据优化结果\n    >>> from pypinyin_dict.phrase_pinyin_data import cc_cedict\n    >>> cc_cedict.load()\n\n    # 使用 pin",
+  "githubInDescription": "github.com/hotoo/pinyin"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "mozillazg/python-pinyin",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/mozillazg/python-pinyin",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-01T14:51:28Z",
+  "atomLastCommitAgeDays": 3,
+  "gitLastCommit": "2026-11-01T22:51:28+08:00",
+  "gitLastCommitAgeDays": 3,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 10
+ }
+}

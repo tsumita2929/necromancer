@@ -1,0 +1,50 @@
+{
+ "unit": {
+  "cell": "B|pypi",
+  "stratum": "B",
+  "ecosystem": "pypi",
+  "name": "protobuf",
+  "subjectRef": "pypi-popular#22",
+  "spec": "==3.20",
+  "resolved": null,
+  "scope": "main",
+  "evidenceCodes": [
+   "no-repository",
+   "osv-advisory"
+  ],
+  "evidence": [
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   },
+   {
+    "code": "osv-advisory",
+    "message": "3 known advisories affect version 3.20.0: GHSA-7gcm-g887-7qv7, GHSA-8gq9-2x98-w8hf, GHSA-8qvm-5x2c-j2w7.",
+    "url": "https://osv.dev/vulnerability/GHSA-7gcm-g887-7qv7"
+   }
+  ],
+  "advisories": 3,
+  "latest": {
+   "version": "7.36.2",
+   "date": "2026-09-17T20:07:59.326111Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:25:05.703Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "7.36.2",
+  "latestOldestFile": "2026-09-17T20:07:51.542208Z",
+  "latestNewestFile": "2026-09-17T20:07:59.326111Z",
+  "latestAgeDays": 47,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": {
+   "Homepage": "https://developers.google.com/protocol-buffers/"
+  },
+  "homePage": "https://developers.google.com/protocol-buffers/",
+  "summary": null,
+  "descriptionHead": "",
+  "githubInDescription": null
+ },
+ "repoPage": null
+}

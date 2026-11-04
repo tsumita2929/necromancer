@@ -1,0 +1,55 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "codespell",
+  "subjectRef": "pypi-popular#12",
+  "spec": "",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "2.4.3",
+   "date": "2026-07-15T11:51:54.159898Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:22:02.807Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.4.3",
+  "latestOldestFile": "2026-07-15T11:51:52.925076Z",
+  "latestNewestFile": "2026-07-15T11:51:54.159898Z",
+  "latestAgeDays": 112,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": {
+   "homepage": "https://github.com/codespell-project/codespell",
+   "repository": "https://github.com/codespell-project/codespell"
+  },
+  "homePage": null,
+  "summary": "Fix common misspellings in text files",
+  "descriptionHead": "codespell\n=========\n\nFix common misspellings in text files. It's designed primarily for checking\nmisspelled words in source code (backslash escapes are skipped), but it can be used with other files as well.\nIt does not check for word membership in a complete dictionary, but instead\nlooks for a set of common misspellings. Therefore it should catch errors like\n\"adn\", but it will not catch \"adnasdfasdf\". This also means it shouldn't\ngenerate false-positives when you use a niche term it doesn't know about.\n\nUseful links\n------------\n\n* `GitHub project <https://github.com/codespell-project/codespell>`_\n\n* `Repository <https://github.com/codespell-project/codespell>`_\n\n* `Releases <https://github.com/codespell-project/codespell/releases>`_\n\nRequirements\n------------\n\nPython 3.9 or above.\n\nInstallation\n------------\n\nYou can use ``pip`` to install codespell with e.g.:\n\n.. code-block:: sh\n\n    pip install codespell\n\nUsage\n-----\n\nBelow are some simple usage examples to demonstrate how the tool works.\nFor exhaustive usage information, please check the output of ``codespell -h``.\n\nRun codespell in all files of the current directory:\n\n.. code-block:: sh\n\n    codespell\n\nRun codespell in specific files or directories (specified via their names or glob patterns):\n\n.. code-block:: sh\n\n    codespell some_file some_dir/ *.ext\n\nSome noteworthy flags:\n\n.. code-block:: sh\n\n    codespell -w, --write-changes\n\nThe ``-w`` flag will actually implement the changes recommended by codespell. Running without the ``-w`` flag is the same as doing a dry run. It is recommended to run this with the ``-i`` or ``--interactive`` flag.\n\n.. code-block:: sh\n\n    codespell -I FILE, --ignore-words=FILE\n\nThe ``-I`` flag can be used for a list of certain words to allow that are in the codespell dictionaries. The format of the file is one word per line. Invoke using: ``codespell -I path/to/file.txt`` to execute codespell referencing said list of allowed words. See `Ignoring Words`_ for more details.\n\n.. code-block:: sh\n\n    codespell -L word1,word2,word3,word4\n\nThe ``-L`` flag can be used to allow certain words that are comma-separated placed immediately after it.  See `Ignoring Words`_ for more details.\n\n.. code-block:: sh\n\n    codespell -x FILE, --exclude-file=FILE\n\nIgnore whole lines that match those in ``FILE``.  The lines in ``FILE`` should match the to-be-excluded lines exactly.\n\n.. code-block:: sh\n\n    codespell -S, --skip=\n\nComma-separated list of files to skip. It accepts globs as well.  Examples:\n\n* to skip .eps & .txt files, invoke ``codespell --skip=\"*.eps,*.txt\"``\n\n* to skip directories, invoke ``codespell --skip=\"./src/3rd-Party,./src/Test\"``\n\n\nUseful commands:\n\n.. code-block:: sh\n\n    codespell -d -q 3 --skip=\"*.po,*.ts,./src/3rdParty,./src/Test\"\n\nList all typos found except translation files and some directories.\nDisplay them without terminal colors and with a quiet level of 3.\n\n.. code-block:: sh\n\n    codespell -i 3 -w\n\nRun interactive mode level 3 and write changes to file.\n",
+  "githubInDescription": "github.com/codespell-project/codespell"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "codespell-project/codespell",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/codespell-project/codespell",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-02T19:55:45Z",
+  "atomLastCommitAgeDays": 1,
+  "gitLastCommit": "2026-11-02T20:55:45+01:00",
+  "gitLastCommitAgeDays": 1,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 10
+ }
+}

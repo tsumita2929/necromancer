@@ -1,0 +1,61 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "@nx/js",
+  "subjectRef": "npm-popular#18",
+  "spec": "20.8.4",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "24.0.3",
+   "date": "2026-10-30T20:40:47Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:20:36.769Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "24.0.4",
+  "latestDate": "2026-11-03T21:38:19.131Z",
+  "latestAgeDays": 0,
+  "latestDeprecated": null,
+  "distTags": {
+   "pull-request": "24.0.0-pr.37405.acdaf31",
+   "next": "24.0.0-rc.1",
+   "previous": "23.3.1",
+   "latest": "24.0.4",
+   "canary": "24.0.0-canary.20261103-370e8af"
+  },
+  "versionInUse": "20.8.4",
+  "versionInUseKnown": false,
+  "repository": "https://github.com/nrwl/nx.git",
+  "homepage": "https://nx.dev",
+  "description": "The JS plugin for Nx contains executors and generators that provide the best experience for developing JavaScript and TypeScript projects. ",
+  "readmeHead": "<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo-light.svg\">\n    <img alt=\"Nx Logo\" src=\"https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.svg\" width=\"140\">\n  </picture>\n</p>\n\n<div style=\"text-align: center;\">\n\n[![License](https://img.shields.io/npm/l/@nx/workspace.svg?style=flat-square)](<>)\n[![NPM Version](https://badge.fury.io/js/nx.svg)](https://www.npmjs.com/package/nx)\n[![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](<>)\n[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)\n[![Join us on the Official Nx Discord Server](https://img.shields.io/discord/1143497901675401286?label=discord)](https://go.nx.dev/community)\n[![Hours saved](https://img.shields.io/endpoint?url=https%3A%2F%2Fstaging.nx.app%2Fnx-cloud%2Fbadge%2F62d013ea0852fe0a2df74438%2Fhours-saved.json)](https://nx.dev/nx-cloud)\n\n</div>\n\n\n<hr>\n\n# Nx: Smart Monorepos · Fast Builds\n\nGet to green PRs in half the time. Nx optimizes your builds, scales your CI, and fixes failed PRs. Built for developers and AI agents.\n\nThis package is a [JavaScript/TypeScript plugin for Nx](https://nx.dev/js/overview).\n\n## Getting Started\n\n### Creating an Nx Workspace\n\n**Using `npx`**\n\n```bash\nnpx create-nx-workspace\n```\n\n**Using `npm init`**\n\n```bash\nnpm init nx-workspace\n```\n\n**Using `yarn create`**\n\n```bash\nyarn create nx-workspace\n```\n\n### Adding Nx to an Existing Repository\n\nRun:\n\n```bash\nnpx nx@latest init\n```\n\n## Documentation & Resources\n\n- [Nx.Dev: Documentation, Guides, Tutorials](https://nx.dev)\n- [Intro to Nx](https://nx.dev/getting-started/intro)\n- [Official Nx YouTube Channel](https://www.youtube.com/@NxDevtools)\n- [Blog Posts About Nx](https://nx.dev/blog)\n\n",
+  "versions": 1965
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "nrwl/nx",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/nrwl/nx",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-03T21:38:56Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-03T16:38:56-05:00",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 10
+ }
+}

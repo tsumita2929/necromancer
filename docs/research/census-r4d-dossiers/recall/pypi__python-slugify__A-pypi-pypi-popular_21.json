@@ -1,0 +1,60 @@
+{
+ "unit": {
+  "cell": "A|pypi",
+  "stratum": "A",
+  "ecosystem": "pypi",
+  "name": "python-slugify",
+  "subjectRef": "pypi-popular#21",
+  "spec": "==8.0.4",
+  "resolved": null,
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "9.1.3",
+   "date": "2026-10-07T01:06:20.101154Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:22:15.525Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "9.1.3",
+  "latestOldestFile": "2026-10-07T01:06:18.891997Z",
+  "latestNewestFile": "2026-10-07T01:06:20.101154Z",
+  "latestAgeDays": 28,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Changelog": "https://github.com/un33k/python-slugify/blob/master/CHANGELOG.md",
+   "Homepage": "https://github.com/un33k/python-slugify",
+   "Issues": "https://github.com/un33k/python-slugify/issues"
+  },
+  "homePage": null,
+  "summary": "A Python slugify application that also handles Unicode",
+  "descriptionHead": "# Python Slugify\n\nUnicode-aware slug generation for Python, with explicit transliteration choices.\n\n[![CI](https://github.com/un33k/python-slugify/actions/workflows/main.yml/badge.svg)](https://github.com/un33k/python-slugify/actions/workflows/main.yml)\n[![PyPI](https://img.shields.io/pypi/v/python-slugify.svg)](https://pypi.org/project/python-slugify/)\n[![Maintained with Dojo](https://img.shields.io/badge/maintained%20with-Dojo%20%E2%9B%A9%EF%B8%8F-1f2937)](https://heydojo.ai)\n\n## Quickstart\n\n**[9+ releases](https://github.com/un33k/python-slugify/releases) ship the modern algorithm.**\nLegacy behavior remains the default; use `algorithm='modern'` for the latest rules.\nSee the [migration guide](docs/release-9/migration.md) before changing persisted URLs or keys.\n\nInstall **python-slugify**, import **slugify**. Other similarly named distributions are not this package.\n\n```sh\npython -m pip install --upgrade python-slugify\n```\n\n```python\nfrom slugify import slugify\n\n# Use the modern algorithm for the latest rules.\nassert slugify(\"C'est déjà l'été.\", algorithm='modern') == 'c-est-deja-l-ete'\nassert slugify('影師嗎', backend='text-unidecode', algorithm='modern') == 'ying-shi-ma'\nassert slugify('影師嗎', allow_unicode=True, algorithm='modern') == '影師嗎'\n\n# Calling slugify() without algorithm uses the legacy pipeline (the old default),\n# kept unchanged for backward compatibility.\nassert slugify(\"C'est déjà l'été.\") == 'c-est-deja-l-ete'\n```\n\n```sh\nslugify \"Hello, world!\"\n# hello-world\nprintf 'Café' | python -m slugify --stdin\n# cafe\nslugify --regex-pattern '[^-a-z0-9_]+' '___This is a test___'\n# ___this-is-a-test___\n```\n\nThe examples above work with 9+ releases. Python 3.10 or newer is required.\n\n## Python support\n\n| Python | Release family |\n| --- | --- |\n| 2.7–3.5 | below 5 |\n| 3.6 | 5–6 |\n| 3.7–3.9 | 7–8 (check each release's Requires-Python) |\n| 3.10+ | 9.x |\n\nThe configured release-9 test matrix covers CPython 3.10–3.14 and PyPy 3.11.\nConfiguration is not proof of a successful run; see [local verification](docs/release-9/verification.md).\nOlder applications can stay on a pinned 8.x release rather than upgrading Python or regenerating slugs immediately.\n\n## Backends and installation\n\n| `backend` | Runtime selection | Installation |\n| --- | --- | --- |\n| `auto` (default) | Installed Unidecode first, otherwise text-unidecode | Base install includes text-unidecode |\n| `text-unidecode` | Only text-unidecode | Included in base install |\n| `unidecode` | Only Unidecode | `python -m pip install 'python-slugify[unidecode]'` |\n| `anyascii` | Only AnyASCII | `python -m pip install 'python-slugify[anyascii]'` |\n\nExplicit selection never silently falls back. A missing selected module raises `ModuleNotFoundError`.\nBackend imports are lazy; `allow_unicode=True` bypasses transliteration entirely.\n**Extras add dependencies; they do not remove text-unidecode.** The AnyASCII extra does not change the default backend.\nThere is no dependency-free installation extra in this rel",
+  "githubInDescription": "github.com/un33k/python-slugify"
+ },
+ "repoSource": "PyPI project URL",
+ "repoPage": {
+  "repo": "un33k/python-slugify",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/un33k/python-slugify",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-16T15:32:46Z",
+  "atomLastCommitAgeDays": 18,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-10-16T11:32:46-04:00",
+  "gitLastCommitAgeDays": 18,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 10
+ }
+}

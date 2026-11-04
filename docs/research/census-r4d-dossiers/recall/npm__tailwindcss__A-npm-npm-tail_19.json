@@ -1,0 +1,62 @@
+{
+ "unit": {
+  "cell": "A|npm",
+  "stratum": "A",
+  "ecosystem": "npm",
+  "name": "tailwindcss",
+  "subjectRef": "npm-tail#19",
+  "spec": "^4.2.4",
+  "resolved": "4.2.4",
+  "scope": "dev",
+  "evidenceCodes": [],
+  "evidence": [],
+  "advisories": 0,
+  "latest": {
+   "version": "4.3.4",
+   "date": "2026-11-02T21:30:42Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:21:50.476Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "4.3.4",
+  "latestDate": "2026-11-02T21:30:42.446Z",
+  "latestAgeDays": 1,
+  "latestDeprecated": null,
+  "distTags": {
+   "next": "4.0.0",
+   "v3-lts": "3.4.19",
+   "latest": "4.3.4",
+   "insiders": "0.0.0-insiders.2626ae6"
+  },
+  "versionInUse": "4.2.4",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2026-04-21T13:15:55.494Z",
+  "repository": "https://github.com/tailwindlabs/tailwindcss.git",
+  "homepage": "https://tailwindcss.com",
+  "description": "A utility-first CSS framework for rapidly building custom user interfaces.",
+  "readmeHead": "",
+  "versions": 2688
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "tailwindlabs/tailwindcss",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/tailwindlabs/tailwindcss",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-02T18:51:19Z",
+  "atomLastCommitAgeDays": 1,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-02T19:51:19+01:00",
+  "gitLastCommitAgeDays": 1,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 10
+ }
+}

@@ -1,0 +1,71 @@
+{
+ "unit": {
+  "cell": "B|npm",
+  "stratum": "B",
+  "ecosystem": "npm",
+  "name": "fathom-client",
+  "subjectRef": "npm-popular#17",
+  "spec": "^3.4.1",
+  "resolved": "3.4.1",
+  "scope": "main",
+  "evidenceCodes": [
+   "recent-activity",
+   "no-release"
+  ],
+  "evidence": [
+   {
+    "code": "recent-activity",
+    "message": "The default branch had a commit 21 days ago (2026-10-13), so stale signals alone do not make this dying.",
+    "url": "https://github.com/derrickreimer/fathom-client"
+   },
+   {
+    "code": "no-release",
+    "message": "The latest release (3.7.2) is 2.3 years old.",
+    "url": "https://www.npmjs.com/package/fathom-client"
+   }
+  ],
+  "advisories": 0,
+  "latest": {
+   "version": "3.7.2",
+   "date": "2024-07-10T15:31:47Z"
+  }
+ },
+ "checkedAt": "2026-11-04T15:23:43.553Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "3.7.2",
+  "latestDate": "2024-07-10T15:31:47.326Z",
+  "latestAgeDays": 846,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "3.7.2"
+  },
+  "versionInUse": "3.4.1",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2022-02-13T13:11:00.121Z",
+  "repository": "git+https://github.com/derrickreimer/fathom-client.git",
+  "homepage": "https://github.com/derrickreimer/fathom-client",
+  "description": "A simple wrapper around the Fathom Analytics library",
+  "readmeHead": "# Fathom Client [![CircleCI](https://circleci.com/gh/derrickreimer/fathom-client.svg?style=svg)](https://circleci.com/gh/derrickreimer/fathom-client)\n\nThis library is a JavaScript client for [Fathom Analytics](https://usefathom.com/).\n\n- **Asynchronous script loading.** We provide a `load` function that will asynchronously inject the Fathom `<script>` tag (great for single-page app environments).\n- **`import`-able tracking functions.** We provide tracking functions (`trackPageview` and `trackEvent`) that you can import and safely call anywhere (even if the Fathom script has not yet finished loading).\n\n---\n\nMaintained with ♥️ by the [SavvyCal](https://savvycal.com/?utm_source=github&utm_medium=oss&utm_campaign=fathom-client) team\n\n## Installation\n\nRun the following to install in your project:\n\n```\nnpm install fathom-client\n```\n\n## Motivation\n\nThe standard installation flow for Fathom is to drop their snippet on your page, which will automatically load the library and track a pageview. This approach works great for server-rendered sites with full page refreshes, but gets tricky when:\n\n- Routing happens on the client-side (e.g. an SPA)\n- The DOM is abstracted away (e.g. Next.js)\n\nThis library provides an interface you can use to orchestrate Fathom calls at various points in your page lifecycle:\n\n```js\nimport * as Fathom from 'fathom-client';\n\n// Upon initial page load...\nFathom.load('MY_FATHOM_ID');\n\n// In the route changed event handler...\nconst onRouteChangeComplete = () => {\n  Fathom.trackPageview();\n};\n\n// In an event handler where a goal is achieved...\nconst onSignUp = () => {\n  Fathom.trackEvent('Sign Up');\n};\n```\n\n## API Reference\n\n### `load(siteId: string, opts?: object)`\n\nInjects the Fathom script into the DOM and loads the script asynchronously.\n\n#### Arguments\n\n- `siteId` - The site ID provided in the Fathom UI.\n- `opts` - An Object of options:\n  - `auto` - When `false`, skips automatically tracking page views on script load (defaults to `true`).\n  - `honorDNT` - When `true`, honors the [DNT header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT) in the visitor's browser\n  - `canonical` - When `false`, ignores the canonical tag if present (defaults to `true`).\n  - `spa` - Accepts one of the following values: `auto`, `history`, or `hash` (see [advanced docs](https://usefathom.com/support/tracking-advanced)).\n\n#### Example\n\n```js\nimport { load } from 'fathom-client';\n\nload('MY_FATHOM_ID', {\n  // Add options here\n});\n```\n\n### `trackPage",
+  "versions": 17
+ },
+ "repoSource": "npm repository field",
+ "repoPage": {
+  "repo": "derrickreimer/fathom-client",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/derrickreimer/fathom-client",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-13T13:35:09Z",
+  "atomLastCommitAgeDays": 22,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-10-13T08:35:09-05:00",
+  "gitLastCommitAgeDays": 22,
+  "gitBranch": "main",
+  "scorecardStatus": 404
+ }
+}
