@@ -1,0 +1,73 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "remark-frontmatter",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^5.0.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (5.0.0) is 3.1 years old.",
+    "url": "https://www.npmjs.com/package/remark-frontmatter",
+    "date": "2023-09-18"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 3.1 years (last commit 2023-10-02).",
+    "url": "https://github.com/remarkjs/remark-frontmatter",
+    "date": "2023-10-02"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "5.0.0",
+   "date": "2023-09-18T11:12:38Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:27:15.582Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "5.0.0",
+  "latestDate": "2023-09-18T11:12:38.246Z",
+  "latestAgeDays": 1143,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "5.0.0"
+  },
+  "versionInUse": "^5.0.0",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/remarkjs/remark-frontmatter.git",
+  "homepage": "https://github.com/remarkjs/remark-frontmatter#readme",
+  "versions": 13
+ },
+ "repoPage": {
+  "repo": "remarkjs/remark-frontmatter",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/remarkjs/remark-frontmatter",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2023-10-02T15:30:07Z",
+  "atomLastCommitAgeDays": 1128,
+  "gitLastCommit": "2023-10-02T10:30:07-05:00",
+  "gitLastCommitAgeDays": 1128,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

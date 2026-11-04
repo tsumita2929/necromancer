@@ -1,0 +1,72 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "orderedmap",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^2.1.1",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (2.1.1) is 3.5 years old."
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags)."
+   },
+   {
+    "code": "repo-moved",
+    "message": "The GitHub copy is archived because the project moved to https://code.haverbeke.berlin/marijn/orderedmap (its README says so). That is not an end of life; activity at the new address is not read."
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.1.1",
+   "date": "2023-05-17T08:10:28Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:30:15.902Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.1.1",
+  "latestDate": "2023-05-17T08:10:28.237Z",
+  "latestAgeDays": 1267,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "2.1.1"
+  },
+  "versionInUse": "^2.1.1",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/marijnh/orderedmap.git",
+  "homepage": "https://github.com/marijnh/orderedmap#readme",
+  "versions": 13
+ },
+ "repoPage": {
+  "repo": "marijnh/orderedmap",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/marijnh/orderedmap",
+  "archivedBanner": true,
+  "archivedOn": "Mar 18, 2026",
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-03-18T10:02:16Z",
+  "atomLastCommitAgeDays": 231,
+  "readmeMovedNotice": "**This repository has moved to https://code.haverbeke.berlin/marijn/orderedmap**",
+  "readmeHints": [
+   "**This repository has moved to https://code.haverbeke.berlin/marijn/orderedmap**",
+   "Return a map with the given key removed, if it existed."
+  ],
+  "gitLastCommit": "2026-03-18T11:02:16+01:00",
+  "gitLastCommitAgeDays": 231,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

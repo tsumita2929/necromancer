@@ -1,0 +1,86 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "codecov",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/codecov/codecov-python",
+    "date": "2025-05-21"
+   },
+   {
+    "code": "no-release",
+    "message": "The latest release (2.1.13) is 3.5 years old.",
+    "url": "https://pypi.org/project/codecov/",
+    "date": "2023-04-17"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "codecov-cli",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "2.1.13",
+   "date": "2023-04-17T23:11:39.779882Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:24:26.035Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.1.13",
+  "latestOldestFile": "2023-04-17T23:11:37.344866Z",
+  "latestNewestFile": "2023-04-17T23:11:39.779882Z",
+  "latestAgeDays": 1296,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Homepage": "https://github.com/codecov/codecov-python"
+  },
+  "homePage": "https://github.com/codecov/codecov-python"
+ },
+ "repoPage": {
+  "repo": "codecov/codecov-python",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/codecov/codecov-python",
+  "archivedBanner": true,
+  "archivedOn": "May 21, 2025",
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2023-04-18T21:38:11Z",
+  "atomLastCommitAgeDays": 1295,
+  "readmeMovedNotice": null,
+  "readmeHints": [
+   "🚨🚨 Deprecation Notice 🚨🚨",
+   "This uploader is being deprecated by the Codecov team. We recommend migrating to our [new uploader](https://docs.codecov.com/docs/codecov-uploader) as soon as possible to prevent any lapses in coverage. [The new uploader is open source](htt",
+   "You can visit our [migration guide](https://docs.codecov.com/docs/deprecated-uploader-migration-guide#python-uploader) for help moving to our new uploader, and our blog post to learn more about our [deprecation plan](https://about.codecov.i",
+   "**On February 1, 2022 this uploader will be completely deprecated and will no longer be able to upload coverage to Codecov.**"
+  ],
+  "gitLastCommit": "2023-04-18T14:38:11-07:00",
+  "gitLastCommitAgeDays": 1295,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

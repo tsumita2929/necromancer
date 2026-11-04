@@ -1,0 +1,71 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "@types/commander",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "^2.12.5",
+  "resolved": "2.12.5",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"This is a stub types definition. commander provides its own type definitions, so you do not need this installed.\"",
+    "url": "https://www.npmjs.com/package/@types/commander",
+    "date": "2024-10-23"
+   },
+   {
+    "code": "no-release",
+    "message": "The latest release (2.12.5) is 2.0 years old.",
+    "url": "https://www.npmjs.com/package/@types/commander",
+    "date": "2024-10-23"
+   },
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "commander",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "2.12.5",
+   "date": "2024-10-23T01:47:15Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:24:45.081Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.12.5",
+  "latestDate": "2024-10-23T01:47:15.825Z",
+  "latestAgeDays": 742,
+  "latestDeprecated": "This is a stub types definition. commander provides its own type definitions, so you do not need this installed.",
+  "distTags": {
+   "ts2.0": "2.12.2",
+   "ts2.6": "2.12.2",
+   "ts2.7": "2.12.2",
+   "ts2.1": "2.12.2",
+   "ts2.2": "2.12.2",
+   "ts2.3": "2.12.2",
+   "ts2.4": "2.12.2",
+   "ts2.5": "2.12.2",
+   "latest": "2.12.5"
+  },
+  "versionInUse": "2.12.5",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": "This is a stub types definition. commander provides its own type definitions, so you do not need this installed.",
+  "versionInUseDate": "2024-10-23T01:47:15.825Z",
+  "repository": null,
+  "homepage": null,
+  "versions": 22
+ },
+ "repoPage": null
+}

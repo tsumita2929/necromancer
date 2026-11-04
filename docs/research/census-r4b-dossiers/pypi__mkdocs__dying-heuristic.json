@@ -1,0 +1,78 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "mkdocs",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 2,
+  "spec": ">=1.6.0,<1.7.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (1.6.1) is 2.2 years old.",
+    "url": "https://pypi.org/project/mkdocs/",
+    "date": "2024-08-30"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.0 years (last commit 2025-10-20).",
+    "url": "https://github.com/mkdocs/mkdocs",
+    "date": "2025-10-20"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.6.1",
+   "date": "2024-08-30T12:24:06.899675Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:56.159Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.6.1",
+  "latestOldestFile": "2024-08-30T12:24:05.054260Z",
+  "latestNewestFile": "2024-08-30T12:24:06.899675Z",
+  "latestAgeDays": 795,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Documentation": "https://www.mkdocs.org/",
+   "History": "https://www.mkdocs.org/about/release-notes/",
+   "Issues": "https://github.com/mkdocs/mkdocs/issues",
+   "Source": "https://github.com/mkdocs/mkdocs"
+  },
+  "homePage": null
+ },
+ "repoPage": {
+  "repo": "mkdocs/mkdocs",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/mkdocs/mkdocs",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-10-20T13:17:06Z",
+  "atomLastCommitAgeDays": 379,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2025-10-20T14:17:06+01:00",
+  "gitLastCommitAgeDays": 379,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 0
+ }
+}

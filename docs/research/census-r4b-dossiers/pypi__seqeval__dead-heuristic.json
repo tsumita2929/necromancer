@@ -1,0 +1,78 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "seqeval",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.2.2) is 6.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-10-24"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.2.2) is 6.0 years old.",
+    "url": "https://pypi.org/project/seqeval/",
+    "date": "2020-10-24"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 2.2 years (last commit 2024-08-28).",
+    "url": "https://github.com/chakki-works/seqeval",
+    "date": "2024-08-28"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.2.2",
+   "date": "2020-10-24T00:24:54.926204Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:45.268Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.2.2",
+  "latestOldestFile": "2020-10-24T00:24:54.926204Z",
+  "latestNewestFile": "2020-10-24T00:24:54.926204Z",
+  "latestAgeDays": 2202,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": {
+   "Homepage": "https://github.com/chakki-works/seqeval"
+  },
+  "homePage": "https://github.com/chakki-works/seqeval"
+ },
+ "repoPage": {
+  "repo": "chakki-works/seqeval",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/chakki-works/seqeval",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2024-08-28T11:35:48Z",
+  "atomLastCommitAgeDays": 797,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2024-08-28T20:35:48+09:00",
+  "gitLastCommitAgeDays": 797,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

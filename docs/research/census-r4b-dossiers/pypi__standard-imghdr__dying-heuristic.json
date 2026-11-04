@@ -1,0 +1,69 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "standard-imghdr",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (3.13.0) is 2.0 years old.",
+    "url": "https://pypi.org/project/standard-imghdr/",
+    "date": "2024-10-30"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.8 years (last commit 2025-01-27).",
+    "url": "https://github.com/youknowone/python-deadlib",
+    "date": "2025-01-27"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "3.13.0",
+   "date": "2024-10-30T16:01:36.412009Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:27:59.958Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "3.13.0",
+  "latestOldestFile": "2024-10-30T16:01:13.829269Z",
+  "latestNewestFile": "2024-10-30T16:01:36.412009Z",
+  "latestAgeDays": 734,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": {
+   "Homepage": "https://github.com/youknowone/python-deadlib"
+  },
+  "homePage": null
+ },
+ "repoPage": {
+  "repo": "youknowone/python-deadlib",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/youknowone/python-deadlib",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-01-27T02:17:34Z",
+  "atomLastCommitAgeDays": 646,
+  "readmeMovedNotice": null,
+  "readmeHints": [
+   "If your project depends on a module that has been removed from the standard,",
+   "This repository is intended to archive the old standard library installable via pip, with *very minimal* compatibility support.",
+   "I'm really happy that this is happening! I hope that Python development and maintenance will be less of a burden as a result of this decision. At the same time, I'd love to encourage Python developers to more actively deprecate less core-fe"
+  ],
+  "gitLastCommit": "2025-01-27T11:17:34+09:00",
+  "gitLastCommitAgeDays": 646,
+  "gitBranch": "main",
+  "scorecardStatus": 404
+ }
+}

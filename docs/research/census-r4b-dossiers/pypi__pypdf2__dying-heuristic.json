@@ -1,0 +1,84 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "pypdf2",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 2,
+  "spec": "==2.12.1",
+  "resolved": null,
+  "advisories": [
+   "GHSA-4vvm-4w3v-6mr8"
+  ],
+  "advisoryAliases": {
+   "GHSA-4vvm-4w3v-6mr8": [
+    "CVE-2023-36464",
+    "PYSEC-2026-1835",
+    "PYSEC-2026-3008"
+   ]
+  },
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (3.0.1) is 3.8 years old.",
+    "url": "https://pypi.org/project/pypdf2/",
+    "date": "2022-12-31"
+   },
+   {
+    "code": "osv-advisory",
+    "message": "1 known advisory affects version 2.12.1: GHSA-4vvm-4w3v-6mr8.",
+    "url": "https://osv.dev/vulnerability/GHSA-4vvm-4w3v-6mr8"
+   },
+   {
+    "code": "repo-moved",
+    "message": "The repository was renamed or moved to py-pdf/pypdf; GitHub forwards the old address, so the lookup followed it.",
+    "url": "https://github.com/py-pdf/PyPDF2"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "3.0.1",
+   "date": "2022-12-31T10:36:13.130768Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:27:34.519Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "3.0.1",
+  "latestOldestFile": "2022-12-31T10:36:10.327589Z",
+  "latestNewestFile": "2022-12-31T10:36:13.130768Z",
+  "latestAgeDays": 1404,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Bug Reports": "https://github.com/py-pdf/PyPDF2/issues",
+   "Changelog": "https://pypdf2.readthedocs.io/en/latest/meta/CHANGELOG.html",
+   "Documentation": "https://pypdf2.readthedocs.io/en/latest/",
+   "Source": "https://github.com/py-pdf/PyPDF2"
+  },
+  "homePage": null
+ },
+ "repoPage": {
+  "repo": "py-pdf/PyPDF2",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/py-pdf/pypdf",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-04T08:35:55Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-04T09:35:55+01:00",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 10
+ }
+}

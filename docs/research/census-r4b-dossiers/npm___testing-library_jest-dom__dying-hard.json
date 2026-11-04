@@ -1,0 +1,63 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "@testing-library/jest-dom",
+  "verdict": "dying",
+  "basis": "hard",
+  "stratum": "dying|hard",
+  "subjects": 1,
+  "spec": "^6.4.8",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (6.10.0) is deprecated: \"Incorrect minor release with breaking changes (Node >=22 and required @testing-library/dom peer). Use 6.9.1 for the 6.x line, or upgrade to…\"",
+    "url": "https://www.npmjs.com/package/@testing-library/jest-dom/v/6.10.0"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "7.0.1",
+   "date": "2026-08-09T23:44:33Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:30.945Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "7.0.1",
+  "latestDate": "2026-08-09T23:44:33.598Z",
+  "latestAgeDays": 86,
+  "latestDeprecated": null,
+  "distTags": {
+   "beta": "5.7.0-beta.1",
+   "latest": "7.0.1"
+  },
+  "versionInUse": "^6.4.8",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/testing-library/jest-dom.git",
+  "homepage": "https://github.com/testing-library/jest-dom#readme",
+  "versions": 85
+ },
+ "repoPage": {
+  "repo": "testing-library/jest-dom",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/testing-library/jest-dom",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-08-09T23:40:07Z",
+  "atomLastCommitAgeDays": 86,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-08-09T23:40:07Z",
+  "gitLastCommitAgeDays": 86,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

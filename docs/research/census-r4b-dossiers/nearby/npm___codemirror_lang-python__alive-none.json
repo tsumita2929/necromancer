@@ -1,0 +1,67 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "@codemirror/lang-python",
+  "verdict": "alive",
+  "basis": null,
+  "stratum": "alive|none",
+  "subjects": 1,
+  "spec": "^6.2.1",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags)."
+   },
+   {
+    "code": "repo-moved",
+    "message": "The GitHub copy is archived because the project moved to https://code.haverbeke.berlin/codemirror/lang-python (its README says so). That is not an end of life; activity at the new address is not read."
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "6.2.1",
+   "date": "2025-05-14T08:53:53Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:30:22.327Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "6.2.1",
+  "latestDate": "2025-05-14T08:53:53.266Z",
+  "latestAgeDays": 539,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "6.2.1"
+  },
+  "versionInUse": "^6.2.1",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/codemirror/lang-python.git",
+  "homepage": "https://github.com/codemirror/lang-python#readme",
+  "versions": 27
+ },
+ "repoPage": {
+  "repo": "codemirror/lang-python",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/codemirror/lang-python",
+  "archivedBanner": true,
+  "archivedOn": "Apr 15, 2026",
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-04-15T10:20:45Z",
+  "atomLastCommitAgeDays": 203,
+  "readmeMovedNotice": "**This repository has moved to https://code.haverbeke.berlin/codemirror/lang-python**",
+  "readmeHints": [
+   "**This repository has moved to https://code.haverbeke.berlin/codemirror/lang-python**"
+  ],
+  "gitLastCommit": "2026-04-15T12:20:45+02:00",
+  "gitLastCommitAgeDays": 203,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

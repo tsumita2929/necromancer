@@ -1,0 +1,73 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "fork-ts-checker-webpack-plugin",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^6.2.10",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.6 years (last commit 2025-04-03).",
+    "url": "https://github.com/TypeStrong/fork-ts-checker-webpack-plugin",
+    "date": "2025-04-03"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "9.1.0",
+   "date": "2025-04-03T16:20:14Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:27:28.124Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "9.1.0",
+  "latestDate": "2025-04-03T16:20:14.240Z",
+  "latestAgeDays": 579,
+  "latestDeprecated": null,
+  "distTags": {
+   "next": "1.0.0-alpha.10",
+   "beta": "5.0.0-beta.7",
+   "alpha": "7.0.0-alpha.16",
+   "release-6.5.x": "6.5.3",
+   "latest": "9.1.0"
+  },
+  "versionInUse": "^6.2.10",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/TypeStrong/fork-ts-checker-webpack-plugin.git",
+  "homepage": "https://github.com/TypeStrong/fork-ts-checker-webpack-plugin#readme",
+  "versions": 224
+ },
+ "repoPage": {
+  "repo": "TypeStrong/fork-ts-checker-webpack-plugin",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/TypeStrong/fork-ts-checker-webpack-plugin",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-04-03T16:09:00Z",
+  "atomLastCommitAgeDays": 579,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2025-04-03T18:09:00+02:00",
+  "gitLastCommitAgeDays": 579,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 0
+ }
+}

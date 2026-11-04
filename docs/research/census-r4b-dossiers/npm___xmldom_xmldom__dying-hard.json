@@ -1,0 +1,252 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "@xmldom/xmldom",
+  "verdict": "dying",
+  "basis": "hard",
+  "stratum": "dying|hard",
+  "subjects": 1,
+  "spec": "^0.8.2",
+  "resolved": "0.8.6",
+  "advisories": [
+   "GHSA-27p8-2357-5qqv",
+   "GHSA-2v35-w6hq-6mfw",
+   "GHSA-4w3w-2rp5-g8jm",
+   "GHSA-6gmq-8vp8-gcm6",
+   "GHSA-6h8r-xr42-gp59",
+   "GHSA-8344-3jmq-59r6",
+   "GHSA-93r5-fhx6-vmg9",
+   "GHSA-965w-775f-mr7g",
+   "GHSA-c7q8-3ch8-vqpv",
+   "GHSA-f6ww-3ggp-fr8h",
+   "GHSA-j759-j44w-7fr8",
+   "GHSA-w2rr-34g9-rvrj",
+   "GHSA-wh4c-j3r5-mjhp",
+   "GHSA-x4fp-j954-r2f4",
+   "GHSA-x6wf-f3px-wcqx"
+  ],
+  "advisoryAliases": {
+   "GHSA-27p8-2357-5qqv": [
+    "CVE-2026-83608"
+   ],
+   "GHSA-2v35-w6hq-6mfw": [
+    "CVE-2026-41673"
+   ],
+   "GHSA-4w3w-2rp5-g8jm": [
+    "CVE-2026-83605"
+   ],
+   "GHSA-6gmq-8vp8-gcm6": [
+    "CVE-2026-83610"
+   ],
+   "GHSA-6h8r-xr42-gp59": [
+    "CVE-2026-83611"
+   ],
+   "GHSA-8344-3jmq-59r6": [
+    "CVE-2026-83613"
+   ],
+   "GHSA-93r5-fhx6-vmg9": [
+    "CVE-2026-83614"
+   ],
+   "GHSA-965w-775f-mr7g": [
+    "CVE-2026-83615"
+   ],
+   "GHSA-c7q8-3ch8-vqpv": [
+    "CVE-2026-83616"
+   ],
+   "GHSA-f6ww-3ggp-fr8h": [
+    "CVE-2026-41674"
+   ],
+   "GHSA-j759-j44w-7fr8": [
+    "CVE-2026-41672"
+   ],
+   "GHSA-w2rr-34g9-rvrj": [
+    "CVE-2026-83607"
+   ],
+   "GHSA-wh4c-j3r5-mjhp": [
+    "CVE-2026-34601"
+   ],
+   "GHSA-x4fp-j954-r2f4": [
+    "CVE-2026-83619"
+   ],
+   "GHSA-x6wf-f3px-wcqx": [
+    "CVE-2026-41675"
+   ]
+  },
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (0.8.6) is deprecated: \"this version has critical issues, please update to the latest version\"",
+    "url": "https://www.npmjs.com/package/@xmldom/xmldom/v/0.8.6"
+   },
+   {
+    "code": "osv-advisory",
+    "message": "15 known advisories affect version 0.8.6: GHSA-27p8-2357-5qqv, GHSA-2v35-w6hq-6mfw, GHSA-4w3w-2rp5-g8jm and 12 more.",
+    "url": "https://osv.dev/vulnerability/GHSA-27p8-2357-5qqv"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "0.9.12",
+   "date": "2026-08-21T22:32:42Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:17.929Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "0.9.12",
+  "latestDate": "2026-08-21T22:32:42.389Z",
+  "latestAgeDays": 74,
+  "latestDeprecated": null,
+  "distTags": {
+   "lts": "0.8.15",
+   "latest": "0.9.12"
+  },
+  "versionInUse": "0.8.6",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": "this version has critical issues, please update to the latest version",
+  "versionInUseDate": "2022-11-05T09:57:43.248Z",
+  "repository": "git://github.com/xmldom/xmldom.git",
+  "homepage": "https://github.com/xmldom/xmldom",
+  "versions": 54
+ },
+ "repoPage": {
+  "repo": "xmldom/xmldom",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/xmldom/xmldom",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-10-11T19:11:40Z",
+  "atomLastCommitAgeDays": 23,
+  "gitLastCommit": "2026-10-11T21:11:40+02:00",
+  "gitLastCommitAgeDays": 23,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-31T20:14:55Z",
+  "maintained": 10
+ },
+ "osv": [
+  {
+   "id": "GHSA-27p8-2357-5qqv",
+   "aliases": [
+    "CVE-2026-83608"
+   ],
+   "summary": "xmldom: DocType `name` Injection Bypasses requireWellFormed",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-2v35-w6hq-6mfw",
+   "aliases": [
+    "CVE-2026-41673"
+   ],
+   "summary": "xmldom: Uncontrolled recursion in XML serialization leads to DoS",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-4w3w-2rp5-g8jm",
+   "aliases": [
+    "CVE-2026-83605"
+   ],
+   "summary": "xmldom: Attribute name injection via setAttribute() bypasses requireWellFormed",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-6gmq-8vp8-gcm6",
+   "aliases": [
+    "CVE-2026-83610"
+   ],
+   "summary": "xmldom: XML fragment injection via invalid EntityReference.nodeName during requireWellFormed seriali",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-6h8r-xr42-gp59",
+   "aliases": [
+    "CVE-2026-83611"
+   ],
+   "summary": "xmldom: Parser silently accepts a not-well-formed end tag whose name is followed by a line break and",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-8344-3jmq-59r6",
+   "aliases": [
+    "CVE-2026-83613"
+   ],
+   "summary": "xmldom: Quadratic-time attribute deduplication",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-93r5-fhx6-vmg9",
+   "aliases": [
+    "CVE-2026-83614"
+   ],
+   "summary": "xmldom: Quadratic-time parsing via the malformed-input recovery path — `parseElementStartPart` re-sc",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-965w-775f-mr7g",
+   "aliases": [
+    "CVE-2026-83615"
+   ],
+   "summary": "xmldom: Quadratic-memory consumption",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-c7q8-3ch8-vqpv",
+   "aliases": [
+    "CVE-2026-83616"
+   ],
+   "summary": "xmldom: Processing Instruction Target Injection Bypasses requireWellFormed",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-f6ww-3ggp-fr8h",
+   "aliases": [
+    "CVE-2026-41674"
+   ],
+   "summary": "xmldom has XML injection through unvalidated DocumentType serialization",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-j759-j44w-7fr8",
+   "aliases": [
+    "CVE-2026-41672"
+   ],
+   "summary": "xmldom has XML node injection through unvalidated comment serialization",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-w2rr-34g9-rvrj",
+   "aliases": [
+    "CVE-2026-83607"
+   ],
+   "summary": "xmldom: Element name injection via createElement() bypasses requireWellFormed",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-wh4c-j3r5-mjhp",
+   "aliases": [
+    "CVE-2026-34601"
+   ],
+   "summary": "xmldom: XML injection via unsafe CDATA serialization allows attacker-controlled markup insertion",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-x4fp-j954-r2f4",
+   "aliases": [
+    "CVE-2026-83619"
+   ],
+   "summary": "xmldom: End-tag Whitespace-Trim Regex ReDoS — quadratic backtracking in the 0.8.x end-tag parser",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-x6wf-f3px-wcqx",
+   "aliases": [
+    "CVE-2026-41675"
+   ],
+   "summary": "xmldom has XML node injection through unvalidated processing instruction serialization",
+   "withdrawn": null
+  }
+ ]
+}

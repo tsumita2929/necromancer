@@ -1,0 +1,94 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "attrdict",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": ">=2.0.1",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "pypi-inactive",
+    "message": "The project is marked \"Development Status :: 7 - Inactive\" on PyPI.",
+    "url": "https://pypi.org/project/attrdict/"
+   },
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/bcj/AttrDict",
+    "date": "2019-02-01"
+   },
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.1) is 7.8 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+    "date": "2019-02-01"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.0.1) is 7.8 years old.",
+    "url": "https://pypi.org/project/attrdict/",
+    "date": "2019-02-01"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "python-box",
+    "confidence": "medium"
+   },
+   {
+    "kind": "native",
+    "name": "types.SimpleNamespace",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "2.0.1",
+   "date": "2019-02-01T22:33:58.493807Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:24:59.284Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.0.1",
+  "latestOldestFile": "2019-02-01T22:33:56.508208Z",
+  "latestNewestFile": "2019-02-01T22:33:58.493807Z",
+  "latestAgeDays": 2832,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 7 - Inactive"
+  ],
+  "projectUrls": {
+   "Homepage": "https://github.com/bcj/AttrDict"
+  },
+  "homePage": "https://github.com/bcj/AttrDict"
+ },
+ "repoPage": {
+  "repo": "bcj/AttrDict",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/bcj/AttrDict",
+  "archivedBanner": true,
+  "archivedOn": "Feb 2, 2019",
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2019-02-01T22:28:16Z",
+  "atomLastCommitAgeDays": 2832,
+  "gitLastCommit": "2019-02-01T16:28:16-06:00",
+  "gitLastCommitAgeDays": 2832,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

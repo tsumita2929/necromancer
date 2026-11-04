@@ -1,0 +1,76 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "codemirror",
+  "verdict": "dying",
+  "basis": "hard",
+  "stratum": "dying|hard",
+  "subjects": 1,
+  "spec": "^6.0.2",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (6.65.7) is deprecated: \"This is an accidentally mis-tagged instance of 5.65.7\"",
+    "url": "https://www.npmjs.com/package/codemirror/v/6.65.7"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   },
+   {
+    "code": "repo-moved",
+    "message": "The GitHub copy is archived because the project moved to https://code.haverbeke.berlin/codemirror/basic-setup (its README says so). That is not an end of life; activity at the new address is not read.",
+    "url": "https://github.com/codemirror/basic-setup"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "6.0.2",
+   "date": "2025-06-19T11:48:48Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:37.869Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "6.0.2",
+  "latestDate": "2025-06-19T11:48:48.519Z",
+  "latestAgeDays": 502,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "6.0.2",
+   "version5": "5.65.21"
+  },
+  "versionInUse": "^6.0.2",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/codemirror/basic-setup.git",
+  "homepage": "https://github.com/codemirror/basic-setup#readme",
+  "versions": 155
+ },
+ "repoPage": {
+  "repo": "codemirror/basic-setup",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/codemirror/basic-setup",
+  "archivedBanner": true,
+  "archivedOn": "Apr 15, 2026",
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-04-15T10:21:14Z",
+  "atomLastCommitAgeDays": 203,
+  "readmeMovedNotice": "**This repository has moved to https://code.haverbeke.berlin/codemirror/basic-setup**",
+  "readmeHints": [
+   "**This repository has moved to https://code.haverbeke.berlin/codemirror/basic-setup**"
+  ],
+  "gitLastCommit": "2026-04-15T12:21:14+02:00",
+  "gitLastCommitAgeDays": 203,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

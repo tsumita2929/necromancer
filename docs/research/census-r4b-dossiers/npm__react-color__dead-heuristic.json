@@ -1,0 +1,89 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "react-color",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^2.19.3",
+  "resolved": "2.19.3",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.19.3) is 6.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-10-28"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.19.3) is 6.0 years old.",
+    "url": "https://www.npmjs.com/package/react-color",
+    "date": "2020-10-28"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 6.0 years (last commit 2020-11-17).",
+    "url": "https://github.com/casesandberg/react-color",
+    "date": "2020-11-17"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "react-colorful",
+    "confidence": "low"
+   }
+  ],
+  "latest": {
+   "version": "2.19.3",
+   "date": "2020-10-28T05:41:11Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:19.984Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.19.3",
+  "latestDate": "2020-10-28T05:41:11.999Z",
+  "latestAgeDays": 2198,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "2.19.3",
+   "beta": "3.0.0-beta.3"
+  },
+  "versionInUse": "2.19.3",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2020-10-28T05:41:11.999Z",
+  "repository": "git+https://github.com/casesandberg/react-color.git",
+  "homepage": "http://casesandberg.github.io/react-color/",
+  "versions": 77
+ },
+ "repoPage": {
+  "repo": "casesandberg/react-color",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/casesandberg/react-color",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2020-11-17T09:05:57Z",
+  "atomLastCommitAgeDays": 2178,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2020-11-17T14:35:57+05:30",
+  "gitLastCommitAgeDays": 2178,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

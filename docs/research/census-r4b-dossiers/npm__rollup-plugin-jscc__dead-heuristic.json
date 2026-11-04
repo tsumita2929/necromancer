@@ -1,0 +1,82 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "rollup-plugin-jscc",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^2.0.0",
+  "resolved": "2.0.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.0) is 6.2 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-08-28"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.0.0) is 6.2 years old.",
+    "url": "https://www.npmjs.com/package/rollup-plugin-jscc",
+    "date": "2020-08-28"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 6.2 years (last commit 2020-08-28).",
+    "url": "https://github.com/aMarCruz/rollup-plugin-jscc",
+    "date": "2020-08-28"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.0.0",
+   "date": "2020-08-28T10:38:18Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:11.043Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.0.0",
+  "latestDate": "2020-08-28T10:38:18.342Z",
+  "latestAgeDays": 2259,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "2.0.0"
+  },
+  "versionInUse": "2.0.0",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2020-08-28T10:38:18.342Z",
+  "repository": "git+https://github.com/aMarCruz/rollup-plugin-jscc.git",
+  "homepage": "https://github.com/aMarCruz/rollup-plugin-jscc",
+  "versions": 9
+ },
+ "repoPage": {
+  "repo": "aMarCruz/rollup-plugin-jscc",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/aMarCruz/rollup-plugin-jscc",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2020-08-28T10:35:35Z",
+  "atomLastCommitAgeDays": 2259,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2020-08-28T05:35:35-05:00",
+  "gitLastCommitAgeDays": 2259,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 0
+ }
+}

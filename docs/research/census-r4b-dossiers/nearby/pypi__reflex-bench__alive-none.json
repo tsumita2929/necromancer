@@ -1,0 +1,32 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "reflex-bench",
+  "verdict": "alive",
+  "basis": null,
+  "stratum": "alive|none",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": true,
+  "evidence": [
+   {
+    "code": "registry-not-found",
+    "message": "Not found: PyPI has no package named \"reflex-bench\". It may be removed, private or misspelled; Necromancer cannot tell which."
+   },
+   {
+    "code": "unchecked",
+    "message": "Could not be checked: the registry has no record of this package."
+   }
+  ],
+  "successors": [],
+  "latest": null
+ },
+ "checkedAt": "2026-11-04T11:30:48.693Z",
+ "registry": {
+  "registryStatus": 404
+ },
+ "repoPage": null
+}

@@ -1,0 +1,1542 @@
+{
+ "schema": 1,
+ "checkDate": "2026-11-04",
+ "seedText": "necromancer-precision-r4-2026-11",
+ "engine": "368e98cdf1b422efed536e5eb30c1f4c50f41484",
+ "unit": "distinct (ecosystem, package, verdict, basis) among direct dependencies of the 100 subjects, final engine",
+ "excludes": "every package among the 56 units of docs/research/census-precision.json",
+ "definitions": {
+  "correct": "every evidence line that decides the verdict is true on the primary source on the check date, and the verdict follows from the definitions in packages/engine/src/types.ts",
+  "defensible": "correct, and the primary source shows no sign of life in the last 12 months (no commit to the default branch, no new upload), unless the repository is archived or the package is deprecated"
+ },
+ "population": {
+  "flaggedUnits": {
+   "dying|heuristic": 168,
+   "dead|hard": 58,
+   "dead|heuristic": 97,
+   "dying|hard": 16,
+   "zombie|hard": 4,
+   "ghost|hard": 1
+  },
+  "eligibleAfterExcludingThe56": {
+   "dying|heuristic": 157,
+   "dead|hard": 43,
+   "dead|heuristic": 83,
+   "dying|hard": 16
+  },
+  "quota": {
+   "dead|hard": 10,
+   "dead|heuristic": 12,
+   "dying|heuristic": 14,
+   "dying|hard": 4
+  },
+  "excludedPackages": 56
+ },
+ "strata": {
+  "dead|hard": {
+   "population": 43,
+   "checked": 10,
+   "correct": 10,
+   "defensible": 10,
+   "correctCI": {
+    "p": 1,
+    "lo": 0.7224598312333834,
+    "hi": 1
+   },
+   "defensibleCI": {
+    "p": 1,
+    "lo": 0.7224598312333834,
+    "hi": 1
+   }
+  },
+  "dead|heuristic": {
+   "population": 83,
+   "checked": 12,
+   "correct": 12,
+   "defensible": 12,
+   "correctCI": {
+    "p": 1,
+    "lo": 0.7574992425007574,
+    "hi": 1
+   },
+   "defensibleCI": {
+    "p": 1,
+    "lo": 0.7574992425007574,
+    "hi": 1
+   }
+  },
+  "dying|hard": {
+   "population": 16,
+   "checked": 4,
+   "correct": 4,
+   "defensible": 0,
+   "correctCI": {
+    "p": 1,
+    "lo": 0.5100999795960008,
+    "hi": 1
+   },
+   "defensibleCI": {
+    "p": 0,
+    "lo": 0,
+    "hi": 0.48990002040399916
+   }
+  },
+  "dying|heuristic": {
+   "population": 157,
+   "checked": 14,
+   "correct": 14,
+   "defensible": 13,
+   "correctCI": {
+    "p": 1,
+    "lo": 0.7846829880728186,
+    "hi": 1
+   },
+   "defensibleCI": {
+    "p": 0.9285714285714286,
+    "lo": 0.6853073044604219,
+    "hi": 0.9872781138877085
+   }
+  }
+ },
+ "pooled": {
+  "checked": 40,
+  "correct": 40,
+  "defensible": 35,
+  "correctCI": {
+   "p": 1,
+   "lo": 0.9123754607496077,
+   "hi": 1
+  },
+  "defensibleCI": {
+   "p": 0.875,
+   "lo": 0.7388757932976187,
+   "hi": 0.9454058022645873
+  }
+ },
+ "weighted": {
+  "correct": {
+   "p": 1,
+   "lo": 0.9213264441424279,
+   "hi": 1,
+   "se": 0.04013956931508781
+  },
+  "defensible": {
+   "p": 0.9089823220258002,
+   "lo": 0.8105504907212937,
+   "hi": 1,
+   "se": 0.050220322094135975
+  }
+ },
+ "nearTheYearLine": [
+  {
+   "package": "enzyme",
+   "commitAgeDays": 378
+  },
+  {
+   "package": "onnx2torch",
+   "commitAgeDays": 386
+  },
+  {
+   "package": "mkdocs",
+   "commitAgeDays": 380
+  },
+  {
+   "package": "ufonormalizer",
+   "commitAgeDays": 407
+  }
+ ],
+ "commitDateAgreement": {
+  "unitsWithBoth": 35,
+  "within1Day": 35
+ },
+ "wrong": [],
+ "correctButNotDefensible": [
+  {
+   "ecosystem": "npm",
+   "package": "@xmldom/xmldom",
+   "verdict": "dying",
+   "basis": "hard",
+   "stratum": "dying|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "version-deprecated",
+   "evidenceCodes": [
+    "version-deprecated",
+    "osv-advisory"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "version-deprecated-package-alive",
+   "note": "Version 0.8.6 is deprecated (\"this version has critical issues\") and OSV lists 15 advisories for it, all true. The package had a release 74 days before the check and a commit 23 days before. Same rule as eslint; no way out is offered although the way out is to upgrade.",
+   "sources": {
+    "registryLatestDate": "2026-08-21",
+    "repoArchived": false,
+    "commitAtom": "2026-10-11",
+    "commitGit": "2026-10-11",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "eslint",
+   "verdict": "dying",
+   "basis": "hard",
+   "stratum": "dying|hard",
+   "sampleSubjects": 21,
+   "decisiveEvidence": "version-deprecated",
+   "evidenceCodes": [
+    "version-deprecated"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "version-deprecated-package-alive",
+   "note": "The version in use (8.57.0) is deprecated on npm, which is true. eslint itself had a release 4 days before the check and a commit that day. The rule that decides: verdict.ts class `notice` (version-deprecated) gives `dying`, basis hard (spec R2.11). It is in 21 of the 100 subjects.",
+   "sources": {
+    "registryLatestDate": "2026-10-30",
+    "repoArchived": false,
+    "commitAtom": "2026-11-04",
+    "commitGit": "2026-11-04",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@testing-library/jest-dom",
+   "verdict": "dying",
+   "basis": "hard",
+   "stratum": "dying|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "version-deprecated",
+   "evidenceCodes": [
+    "version-deprecated"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "version-deprecated-package-alive",
+   "note": "Version 6.10.0 is deprecated (\"Incorrect minor release with breaking changes\"), true. The package had a release 86 days before the check. Same rule.",
+   "sources": {
+    "registryLatestDate": "2026-08-09",
+    "repoArchived": false,
+    "commitAtom": "2026-08-09",
+    "commitGit": "2026-08-09",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "codemirror",
+   "verdict": "dying",
+   "basis": "hard",
+   "stratum": "dying|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "version-deprecated",
+   "evidenceCodes": [
+    "version-deprecated",
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "version-deprecated-package-alive",
+   "note": "Version 6.65.7 is a mis-tagged publication and deprecated on npm, true. The package line 6.0.x is current. The repository move notice is also true. Same rule.",
+   "sources": {
+    "registryLatestDate": "2025-06-19",
+    "repoArchived": true,
+    "commitAtom": "2026-04-15",
+    "commitGit": "2026-04-15",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pypdf2",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 2,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "osv-advisory",
+    "repo-moved"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "rename-activity-of-successor-package",
+   "note": "Release 3.0.1 is 3.8 years old and OSV lists a record for 2.12.1 (two records, one vulnerability, counted once), all true. The repository py-pdf/PyPDF2 was renamed py-pdf/pypdf and had a commit on the check day, so by the written criterion there is a sign of life. The commits belong to the successor package pypdf; the PyPDF2 package has had no release since 2022-12. A reviewer would likely accept `dying`. Recorded as not defensible because the criterion is applied literally.",
+   "sources": {
+    "registryLatestDate": "2022-12-31",
+    "repoArchived": false,
+    "commitAtom": "2026-11-04",
+    "commitGit": "2026-11-04",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  }
+ ],
+ "units": [
+  {
+   "ecosystem": "pypi",
+   "package": "codecov",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "repo-archived",
+   "evidenceCodes": [
+    "repo-archived",
+    "no-release",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "package:codecov-cli(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2023-04-17",
+    "repoArchived": true,
+    "commitAtom": "2023-04-18",
+    "commitGit": "2023-04-18",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@babel/plugin-proposal-class-properties",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 3,
+   "decisiveEvidence": "npm-deprecated",
+   "evidenceCodes": [
+    "npm-deprecated",
+    "no-release"
+   ],
+   "wayOut": [
+    "package:@babel/plugin-transform-class-properties(high)",
+    "native:class fields(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2022-06-27",
+    "repoArchived": false,
+    "commitAtom": "2026-11-03",
+    "commitGit": "2026-11-03",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "level-codec",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "npm-deprecated",
+   "evidenceCodes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "package:level-transcoder(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2021-04-09",
+    "repoArchived": true,
+    "commitAtom": "2024-12-20",
+    "commitGit": "2024-12-20",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/commander",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "npm-deprecated",
+   "evidenceCodes": [
+    "npm-deprecated",
+    "no-release",
+    "no-repository"
+   ],
+   "wayOut": [
+    "package:commander(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2024-10-23",
+    "repoArchived": null,
+    "commitAtom": null,
+    "commitGit": null,
+    "commitDatesAgree": null
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/glob",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "npm-deprecated",
+   "evidenceCodes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "wayOut": [
+    "package:glob(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2025-07-01",
+    "repoArchived": null,
+    "commitAtom": null,
+    "commitGit": null,
+    "commitDatesAgree": null
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/earcut",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "npm-deprecated",
+   "evidenceCodes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "wayOut": [
+    "package:earcut(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "Stub deprecated on npm, true; earcut itself is alive.",
+   "sources": {
+    "registryLatestDate": "2026-10-09",
+    "repoArchived": null,
+    "commitAtom": null,
+    "commitGit": null,
+    "commitDatesAgree": null
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "stream-to-promise",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "npm-deprecated",
+   "evidenceCodes": [
+    "npm-deprecated",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "native:node:stream/promises(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2020-05-25",
+    "repoArchived": true,
+    "commitAtom": "2026-06-19",
+    "commitGit": "2026-06-19",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "platform",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "repo-archived",
+   "evidenceCodes": [
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "package:bowser(low)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "Way out `bowser` has confidence low (checked alive on 2026-11-04); the archive banner is true (2024-04-11).",
+   "sources": {
+    "registryLatestDate": "2020-07-04",
+    "repoArchived": true,
+    "commitAtom": "2020-07-04",
+    "commitGit": "2020-07-04",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "attrdict",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "pypi-inactive",
+   "evidenceCodes": [
+    "pypi-inactive",
+    "repo-archived",
+    "abandoned",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "package:python-box(medium)",
+    "native:types.SimpleNamespace(medium)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2019-02-01",
+    "repoArchived": true,
+    "commitAtom": "2019-02-01",
+    "commitGit": "2019-02-01",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@types/inquirer",
+   "verdict": "dead",
+   "basis": "hard",
+   "stratum": "dead|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "npm-deprecated",
+   "evidenceCodes": [
+    "npm-deprecated",
+    "no-repository"
+   ],
+   "wayOut": [
+    "package:inquirer(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2026-10-29",
+    "repoArchived": null,
+    "commitAtom": null,
+    "commitGit": null,
+    "commitDatesAgree": null
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "ltgt",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2018-03-25",
+    "repoArchived": false,
+    "commitAtom": "2018-03-25",
+    "commitGit": "2018-03-26",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "express-pouchdb",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2019-09-25",
+    "repoArchived": false,
+    "commitAtom": "2025-08-27",
+    "commitGit": "2025-08-27",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "react-color",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "package:react-colorful(low)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "Way out `react-colorful` has confidence low (checked alive on 2026-11-04).",
+   "sources": {
+    "registryLatestDate": "2020-10-28",
+    "repoArchived": false,
+    "commitAtom": "2020-11-17",
+    "commitGit": "2020-11-17",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "denodeify",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "native:util.promisify(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2015-02-14",
+    "repoArchived": false,
+    "commitAtom": "2015-12-12",
+    "commitGit": "2015-12-12",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "enzyme",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "wayOut": [
+    "package:@testing-library/react(medium)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "Last commit 378 days before the check, 13 days past the line. The repository was renamed (airbnb/enzyme to enzymejs/enzyme), `repo-moved` is true.",
+   "sources": {
+    "registryLatestDate": "2019-12-20",
+    "repoArchived": false,
+    "commitAtom": "2025-10-22",
+    "commitGit": "2025-10-22",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "diff-match-patch",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "package:diff-match-patch-es(high)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2020-05-20",
+    "repoArchived": false,
+    "commitAtom": "2022-12-07",
+    "commitGit": "2022-12-07",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "seqeval",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2020-10-24",
+    "repoArchived": false,
+    "commitAtom": "2024-08-28",
+    "commitGit": "2024-08-28",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "jsonml-to-react-element",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2018-05-07",
+    "repoArchived": false,
+    "commitAtom": "2018-05-07",
+    "commitGit": "2018-05-07",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "darglint",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "no-repository"
+   ],
+   "wayOut": [
+    "package:pydoclint(medium)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "PyPI links no repository, so the engine says \"no source repository\". The repository exists and was archived on 2022-12-16 (last commit 2021-10-18): another missed hard signal.",
+   "sources": {
+    "registryLatestDate": "2021-10-18",
+    "repoArchived": null,
+    "commitAtom": null,
+    "commitGit": null,
+    "commitDatesAgree": null
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "codecov.io",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2015-08-15",
+    "repoArchived": false,
+    "commitAtom": "2016-02-26",
+    "commitGit": "2016-02-26",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "rollup-plugin-sourcemaps",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [
+    "package:rollup-plugin-sourcemaps2(medium)"
+   ],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2020-10-07",
+    "repoArchived": false,
+    "commitAtom": "2020-10-07",
+    "commitGit": "2020-10-07",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "rollup-plugin-jscc",
+   "verdict": "dead",
+   "basis": "heuristic",
+   "stratum": "dead|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "abandoned",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2020-08-28",
+    "repoArchived": false,
+    "commitAtom": "2020-08-28",
+    "commitGit": "2020-08-28",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@xmldom/xmldom",
+   "verdict": "dying",
+   "basis": "hard",
+   "stratum": "dying|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "version-deprecated",
+   "evidenceCodes": [
+    "version-deprecated",
+    "osv-advisory"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "version-deprecated-package-alive",
+   "note": "Version 0.8.6 is deprecated (\"this version has critical issues\") and OSV lists 15 advisories for it, all true. The package had a release 74 days before the check and a commit 23 days before. Same rule as eslint; no way out is offered although the way out is to upgrade.",
+   "sources": {
+    "registryLatestDate": "2026-08-21",
+    "repoArchived": false,
+    "commitAtom": "2026-10-11",
+    "commitGit": "2026-10-11",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "eslint",
+   "verdict": "dying",
+   "basis": "hard",
+   "stratum": "dying|hard",
+   "sampleSubjects": 21,
+   "decisiveEvidence": "version-deprecated",
+   "evidenceCodes": [
+    "version-deprecated"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "version-deprecated-package-alive",
+   "note": "The version in use (8.57.0) is deprecated on npm, which is true. eslint itself had a release 4 days before the check and a commit that day. The rule that decides: verdict.ts class `notice` (version-deprecated) gives `dying`, basis hard (spec R2.11). It is in 21 of the 100 subjects.",
+   "sources": {
+    "registryLatestDate": "2026-10-30",
+    "repoArchived": false,
+    "commitAtom": "2026-11-04",
+    "commitGit": "2026-11-04",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@testing-library/jest-dom",
+   "verdict": "dying",
+   "basis": "hard",
+   "stratum": "dying|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "version-deprecated",
+   "evidenceCodes": [
+    "version-deprecated"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "version-deprecated-package-alive",
+   "note": "Version 6.10.0 is deprecated (\"Incorrect minor release with breaking changes\"), true. The package had a release 86 days before the check. Same rule.",
+   "sources": {
+    "registryLatestDate": "2026-08-09",
+    "repoArchived": false,
+    "commitAtom": "2026-08-09",
+    "commitGit": "2026-08-09",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "codemirror",
+   "verdict": "dying",
+   "basis": "hard",
+   "stratum": "dying|hard",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "version-deprecated",
+   "evidenceCodes": [
+    "version-deprecated",
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "version-deprecated-package-alive",
+   "note": "Version 6.65.7 is a mis-tagged publication and deprecated on npm, true. The package line 6.0.x is current. The repository move notice is also true. Same rule.",
+   "sources": {
+    "registryLatestDate": "2025-06-19",
+    "repoArchived": true,
+    "commitAtom": "2026-04-15",
+    "commitGit": "2026-04-15",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "@codesandbox/sandpack-react",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "repo-inactive",
+   "evidenceCodes": [
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2025-02-14",
+    "repoArchived": false,
+    "commitAtom": "2025-02-14",
+    "commitGit": "2025-02-14",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "onnx2torch",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2024-08-07",
+    "repoArchived": false,
+    "commitAtom": "2025-10-14",
+    "commitGit": "2025-10-14",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "mkdocs",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 2,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "Last commit 380 days before the check, 15 days past the line.",
+   "sources": {
+    "registryLatestDate": "2024-08-30",
+    "repoArchived": false,
+    "commitAtom": "2025-10-20",
+    "commitGit": "2025-10-20",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "autodoc-pydantic",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2024-04-27",
+    "repoArchived": false,
+    "commitAtom": "2024-09-23",
+    "commitGit": "2024-09-23",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pytest-monitor",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 2,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2023-06-25",
+    "repoArchived": false,
+    "commitAtom": "2023-12-25",
+    "commitGit": "2023-12-25",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "remark-frontmatter",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2023-09-18",
+    "repoArchived": false,
+    "commitAtom": "2023-10-02",
+    "commitGit": "2023-10-02",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "throttle-debounce",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2024-06-24",
+    "repoArchived": false,
+    "commitAtom": "2024-06-24",
+    "commitGit": "2024-06-24",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "fork-ts-checker-webpack-plugin",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "repo-inactive",
+   "evidenceCodes": [
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2025-04-03",
+    "repoArchived": false,
+    "commitAtom": "2025-04-03",
+    "commitGit": "2025-04-03",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "pypdf2",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 2,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "osv-advisory",
+    "repo-moved"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": false,
+   "reason": "rename-activity-of-successor-package",
+   "note": "Release 3.0.1 is 3.8 years old and OSV lists a record for 2.12.1 (two records, one vulnerability, counted once), all true. The repository py-pdf/PyPDF2 was renamed py-pdf/pypdf and had a commit on the check day, so by the written criterion there is a sign of life. The commits belong to the successor package pypdf; the PyPDF2 package has had no release since 2022-12. A reviewer would likely accept `dying`. Recorded as not defensible because the criterion is applied literally.",
+   "sources": {
+    "registryLatestDate": "2022-12-31",
+    "repoArchived": false,
+    "commitAtom": "2026-11-04",
+    "commitGit": "2026-11-04",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "ufonormalizer",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "repo-inactive",
+   "evidenceCodes": [
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "Release and commit are both 407 days old; the verdict rests on one year without a commit, the same line as the criterion.",
+   "sources": {
+    "registryLatestDate": "2025-09-23",
+    "repoArchived": false,
+    "commitAtom": "2025-09-23",
+    "commitGit": "2025-09-23",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "documentation",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": null,
+   "sources": {
+    "registryLatestDate": "2024-01-30",
+    "repoArchived": false,
+    "commitAtom": "2025-04-15",
+    "commitGit": "2025-04-15",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "npm",
+   "package": "karma",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 2,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "The README says \"Karma is deprecated\". The engine sees only staleness, so the verdict is `dying` (heuristic), not `dead` (hard): a missed hard signal, not an error.",
+   "sources": {
+    "registryLatestDate": "2024-07-29",
+    "repoArchived": false,
+    "commitAtom": "2024-07-29",
+    "commitGit": "2024-07-29",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "standard-imghdr",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "A deliberate archive of a removed standard-library module; passes the criterion. Finished-package risk.",
+   "sources": {
+    "registryLatestDate": "2024-10-30",
+    "repoArchived": false,
+    "commitAtom": "2025-01-27",
+    "commitGit": "2025-01-27",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "itsdangerous",
+   "verdict": "dying",
+   "basis": "heuristic",
+   "stratum": "dying|heuristic",
+   "sampleSubjects": 1,
+   "decisiveEvidence": "no-release",
+   "evidenceCodes": [
+    "no-release",
+    "repo-inactive",
+    "low-maintenance"
+   ],
+   "wayOut": [],
+   "correct": true,
+   "defensible": true,
+   "reason": null,
+   "note": "A small, stable library of the Pallets project; passes the written criterion (last commit 507 days old). Finished-package risk.",
+   "sources": {
+    "registryLatestDate": "2024-04-16",
+    "repoArchived": false,
+    "commitAtom": "2025-06-14",
+    "commitGit": "2025-06-14",
+    "commitDatesAgree": true
+   },
+   "checkedAt": "2026-11-04"
+  }
+ ],
+ "nearby": [
+  {
+   "ecosystem": "npm",
+   "package": "@codemirror/lang-python",
+   "engine": "alive",
+   "evidenceCodes": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "registryStatus": 200,
+   "pageFinalUrl": "https://github.com/codemirror/lang-python",
+   "archivedOn": "Apr 15, 2026",
+   "readmeMovedNotice": "**This repository has moved to https://code.haverbeke.berlin/codemirror/lang-python**",
+   "engineMovedMessage": "The GitHub copy is archived because the project moved to https://code.haverbeke.berlin/codemirror/lang-python (its README says so). That is not an end of life; activity at the new address is not read.",
+   "osvRecords": null,
+   "engineAdvisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "package": "expr-eval",
+   "engine": "zombie (hard)",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance",
+    "osv-advisory"
+   ],
+   "registryStatus": 200,
+   "pageFinalUrl": "https://github.com/silentmatt/expr-eval",
+   "archivedOn": null,
+   "readmeMovedNotice": null,
+   "engineMovedMessage": null,
+   "osvRecords": [
+    "GHSA-8gw3-rxh4-v6jx",
+    "GHSA-jc85-fpwf-qm7x",
+    "GHSA-q9v2-7m5w-4693"
+   ],
+   "engineAdvisories": [
+    "GHSA-8gw3-rxh4-v6jx",
+    "GHSA-jc85-fpwf-qm7x",
+    "GHSA-q9v2-7m5w-4693"
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "package": "extract-zip",
+   "engine": "zombie (hard)",
+   "evidenceCodes": [
+    "abandoned",
+    "no-release-long",
+    "repo-inactive",
+    "low-maintenance",
+    "osv-advisory",
+    "repo-moved"
+   ],
+   "registryStatus": 200,
+   "pageFinalUrl": "https://github.com/max-mapper/extract-zip",
+   "archivedOn": null,
+   "readmeMovedNotice": null,
+   "engineMovedMessage": "The repository was renamed or moved to max-mapper/extract-zip; GitHub forwards the old address, so the lookup followed it.",
+   "osvRecords": [
+    "GHSA-7pqw-9j4j-h8q3",
+    "GHSA-jmr9-qjv8-65gv"
+   ],
+   "engineAdvisories": [
+    "GHSA-7pqw-9j4j-h8q3",
+    "GHSA-jmr9-qjv8-65gv"
+   ]
+  },
+  {
+   "ecosystem": "npm",
+   "package": "orderedmap",
+   "engine": "dying (heuristic)",
+   "evidenceCodes": [
+    "no-release",
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "registryStatus": 200,
+   "pageFinalUrl": "https://github.com/marijnh/orderedmap",
+   "archivedOn": "Mar 18, 2026",
+   "readmeMovedNotice": "**This repository has moved to https://code.haverbeke.berlin/marijn/orderedmap**",
+   "engineMovedMessage": "The GitHub copy is archived because the project moved to https://code.haverbeke.berlin/marijn/orderedmap (its README says so). That is not an end of life; activity at the new address is not read.",
+   "osvRecords": null,
+   "engineAdvisories": []
+  },
+  {
+   "ecosystem": "npm",
+   "package": "prosemirror-state",
+   "engine": "alive",
+   "evidenceCodes": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "registryStatus": 200,
+   "pageFinalUrl": "https://github.com/prosemirror/prosemirror-state",
+   "archivedOn": "Apr 1, 2026",
+   "readmeMovedNotice": "**This repository has moved to https://code.haverbeke.berlin/prosemirror/prosemirror-state**",
+   "engineMovedMessage": "The GitHub copy is archived because the project moved to https://code.haverbeke.berlin/prosemirror/prosemirror-state (its README says so). That is not an end of life; activity at the new address is not read.",
+   "osvRecords": null,
+   "engineAdvisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "ak-guardian",
+   "engine": "alive",
+   "evidenceCodes": [
+    "registry-not-found",
+    "unchecked"
+   ],
+   "registryStatus": 404,
+   "pageFinalUrl": null,
+   "archivedOn": null,
+   "readmeMovedNotice": null,
+   "engineMovedMessage": null,
+   "osvRecords": null,
+   "engineAdvisories": []
+  },
+  {
+   "ecosystem": "pypi",
+   "package": "reflex-bench",
+   "engine": "alive",
+   "evidenceCodes": [
+    "registry-not-found",
+    "unchecked"
+   ],
+   "registryStatus": 404,
+   "pageFinalUrl": null,
+   "archivedOn": null,
+   "readmeMovedNotice": null,
+   "engineMovedMessage": null,
+   "osvRecords": null,
+   "engineAdvisories": []
+  }
+ ]
+}

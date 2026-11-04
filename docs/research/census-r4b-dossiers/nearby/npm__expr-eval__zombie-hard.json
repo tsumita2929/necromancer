@@ -1,0 +1,125 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "expr-eval",
+  "verdict": "zombie",
+  "basis": "hard",
+  "stratum": "zombie|hard",
+  "subjects": 1,
+  "spec": "2.0.2",
+  "resolved": "2.0.2",
+  "advisories": [
+   "GHSA-8gw3-rxh4-v6jx",
+   "GHSA-jc85-fpwf-qm7x",
+   "GHSA-q9v2-7m5w-4693"
+  ],
+  "advisoryAliases": {
+   "GHSA-8gw3-rxh4-v6jx": [
+    "CVE-2025-13204"
+   ],
+   "GHSA-jc85-fpwf-qm7x": [
+    "CVE-2025-12735"
+   ],
+   "GHSA-q9v2-7m5w-4693": [
+    "CVE-2026-12866"
+   ]
+  },
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.2) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.0.2) is 7.1 years old."
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No push to the repository for 2.2 years (last push 2024-08-15); the default branch's last commit is at least that old. Commit dates were not read."
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags)."
+   },
+   {
+    "code": "osv-advisory",
+    "message": "3 known advisories affect version 2.0.2: GHSA-8gw3-rxh4-v6jx, GHSA-jc85-fpwf-qm7x, GHSA-q9v2-7m5w-4693."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "expr-eval-fork",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "2.0.2",
+   "date": "2019-09-28T21:26:16Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:30:34.709Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.0.2",
+  "latestDate": "2019-09-28T21:26:16.055Z",
+  "latestAgeDays": 2593,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "2.0.2"
+  },
+  "versionInUse": "2.0.2",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2019-09-28T21:26:16.055Z",
+  "repository": "git+https://github.com/silentmatt/expr-eval.git",
+  "homepage": "https://github.com/silentmatt/expr-eval#readme",
+  "versions": 17
+ },
+ "repoPage": {
+  "repo": "silentmatt/expr-eval",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/silentmatt/expr-eval",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2021-10-11T20:42:51Z",
+  "atomLastCommitAgeDays": 1849,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2021-10-11T16:42:51-04:00",
+  "gitLastCommitAgeDays": 1849,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ },
+ "osv": [
+  {
+   "id": "GHSA-8gw3-rxh4-v6jx",
+   "aliases": [
+    "CVE-2025-13204"
+   ],
+   "summary": "expr-eval vulnerable to Prototype Pollution",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-jc85-fpwf-qm7x",
+   "aliases": [
+    "CVE-2025-12735"
+   ],
+   "summary": "expr-eval does not restrict functions passed to the evaluate function",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-q9v2-7m5w-4693",
+   "aliases": [
+    "CVE-2026-12866"
+   ],
+   "summary": "expr-eval vulnerable to Code Execution",
+   "withdrawn": null
+  }
+ ]
+}

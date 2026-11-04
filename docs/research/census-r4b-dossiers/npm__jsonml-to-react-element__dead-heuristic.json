@@ -1,0 +1,80 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "jsonml-to-react-element",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^1.1.11",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.1.11) is 8.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2018-05-07"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.1.11) is 8.5 years old.",
+    "url": "https://www.npmjs.com/package/jsonml-to-react-element",
+    "date": "2018-05-07"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 8.5 years (last commit 2018-05-07).",
+    "url": "https://github.com/benjycui/jsonml-to-react-element",
+    "date": "2018-05-07"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.1.11",
+   "date": "2018-05-07T03:32:28Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:51.414Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.1.11",
+  "latestDate": "2018-05-07T03:32:28.338Z",
+  "latestAgeDays": 3103,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "1.1.11"
+  },
+  "versionInUse": "^1.1.11",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/benjycui/jsonml-to-react-element.git",
+  "homepage": "https://github.com/benjycui/jsonml-to-react-element#readme",
+  "versions": 10
+ },
+ "repoPage": {
+  "repo": "benjycui/jsonml-to-react-element",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/benjycui/jsonml-to-react-element",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2018-05-07T03:27:34Z",
+  "atomLastCommitAgeDays": 3103,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2018-05-07T11:27:34+08:00",
+  "gitLastCommitAgeDays": 3103,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

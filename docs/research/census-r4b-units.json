@@ -1,0 +1,1692 @@
+[
+ {
+  "ecosystem": "pypi",
+  "name": "codecov",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/codecov/codecov-python",
+    "date": "2025-05-21"
+   },
+   {
+    "code": "no-release",
+    "message": "The latest release (2.1.13) is 3.5 years old.",
+    "url": "https://pypi.org/project/codecov/",
+    "date": "2023-04-17"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "codecov-cli",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "2.1.13",
+   "date": "2023-04-17T23:11:39.779882Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "@babel/plugin-proposal-class-properties",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 3,
+  "spec": "^7.18.6",
+  "resolved": "7.18.6",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties inst…\"",
+    "url": "https://www.npmjs.com/package/@babel/plugin-proposal-class-properties",
+    "date": "2022-06-27"
+   },
+   {
+    "code": "no-release",
+    "message": "The latest release (7.18.6) is 4.4 years old.",
+    "url": "https://www.npmjs.com/package/@babel/plugin-proposal-class-properties",
+    "date": "2022-06-27"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "@babel/plugin-transform-class-properties",
+    "confidence": "high"
+   },
+   {
+    "kind": "native",
+    "name": "class fields",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "7.18.6",
+   "date": "2022-06-27T19:50:44Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "level-codec",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "9.0.2",
+  "resolved": "9.0.2",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"Superseded by level-transcoder (https://github.com/Level/community#faq)\"",
+    "url": "https://www.npmjs.com/package/level-codec",
+    "date": "2021-04-09"
+   },
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/Level/codec",
+    "date": "2024-12-20"
+   },
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (10.0.0) is 5.6 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+    "date": "2021-04-09"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (10.0.0) is 5.6 years old.",
+    "url": "https://www.npmjs.com/package/level-codec",
+    "date": "2021-04-09"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "level-transcoder",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "10.0.0",
+   "date": "2021-04-09T13:13:18Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "@types/commander",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "^2.12.5",
+  "resolved": "2.12.5",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"This is a stub types definition. commander provides its own type definitions, so you do not need this installed.\"",
+    "url": "https://www.npmjs.com/package/@types/commander",
+    "date": "2024-10-23"
+   },
+   {
+    "code": "no-release",
+    "message": "The latest release (2.12.5) is 2.0 years old.",
+    "url": "https://www.npmjs.com/package/@types/commander",
+    "date": "2024-10-23"
+   },
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "commander",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "2.12.5",
+   "date": "2024-10-23T01:47:15Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "@types/glob",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "^8.1.0",
+  "resolved": "8.1.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"This is a stub types definition. glob provides its own type definitions, so you do not need this installed.\"",
+    "url": "https://www.npmjs.com/package/@types/glob",
+    "date": "2025-07-01"
+   },
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "glob",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "9.0.0",
+   "date": "2025-07-01T19:03:15Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "@types/earcut",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "^3.0.0",
+  "resolved": "3.0.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"This is a stub types definition. earcut provides its own type definitions, so you do not need this installed.\"",
+    "url": "https://www.npmjs.com/package/@types/earcut",
+    "date": "2026-10-09"
+   },
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "earcut",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "3.2.4",
+   "date": "2026-10-09T21:15:16Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "stream-to-promise",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "1.1.1",
+  "resolved": "1.1.1",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"Deprecated. Use node:stream/promises and node:stream/consumers instead.\"",
+    "url": "https://www.npmjs.com/package/stream-to-promise",
+    "date": "2020-05-25"
+   },
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/bendrucker/stream-to-promise",
+    "date": "2026-06-19"
+   },
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (3.0.0) is 6.4 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+    "date": "2020-05-25"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (3.0.0) is 6.4 years old.",
+    "url": "https://www.npmjs.com/package/stream-to-promise",
+    "date": "2020-05-25"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "native",
+    "name": "node:stream/promises",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "3.0.0",
+   "date": "2020-05-25T19:54:05Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "platform",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "^1.3.3",
+  "resolved": "1.3.5",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/bestiejs/platform.js",
+    "date": "2023-09-29"
+   },
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.3.6) is 6.3 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+    "date": "2020-07-04"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.3.6) is 6.3 years old.",
+    "url": "https://www.npmjs.com/package/platform",
+    "date": "2020-07-04"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "bowser",
+    "confidence": "low"
+   }
+  ],
+  "latest": {
+   "version": "1.3.6",
+   "date": "2020-07-04T11:35:56Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "attrdict",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": ">=2.0.1",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "pypi-inactive",
+    "message": "The project is marked \"Development Status :: 7 - Inactive\" on PyPI.",
+    "url": "https://pypi.org/project/attrdict/"
+   },
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/bcj/AttrDict",
+    "date": "2019-02-01"
+   },
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.1) is 7.8 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+    "date": "2019-02-01"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.0.1) is 7.8 years old.",
+    "url": "https://pypi.org/project/attrdict/",
+    "date": "2019-02-01"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "python-box",
+    "confidence": "medium"
+   },
+   {
+    "kind": "native",
+    "name": "types.SimpleNamespace",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "2.0.1",
+   "date": "2019-02-01T22:33:58.493807Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "@types/inquirer",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "^8.2.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"This is a stub types definition. inquirer provides its own type definitions, so you do not need this installed.\"",
+    "url": "https://www.npmjs.com/package/@types/inquirer",
+    "date": "2026-10-29"
+   },
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "inquirer",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "10.0.0",
+   "date": "2026-10-29T01:33:38Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "ltgt",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "2.2.1",
+  "resolved": "2.2.1",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.2.1) is 8.6 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2018-03-25"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.2.1) is 8.6 years old.",
+    "url": "https://www.npmjs.com/package/ltgt",
+    "date": "2018-03-25"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 8.6 years (last commit 2018-03-25).",
+    "url": "https://github.com/dominictarr/ltgt",
+    "date": "2018-03-25"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.2.1",
+   "date": "2018-03-25T21:26:14Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "express-pouchdb",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "4.2.0",
+  "resolved": "4.2.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (4.2.0) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2019-09-25"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (4.2.0) is 7.1 years old.",
+    "url": "https://www.npmjs.com/package/express-pouchdb",
+    "date": "2019-09-25"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.2 years (last commit 2025-08-27).",
+    "url": "https://github.com/pouchdb/pouchdb-server",
+    "date": "2025-08-27"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "4.2.0",
+   "date": "2019-09-25T22:08:28Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "react-color",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^2.19.3",
+  "resolved": "2.19.3",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.19.3) is 6.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-10-28"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.19.3) is 6.0 years old.",
+    "url": "https://www.npmjs.com/package/react-color",
+    "date": "2020-10-28"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 6.0 years (last commit 2020-11-17).",
+    "url": "https://github.com/casesandberg/react-color",
+    "date": "2020-11-17"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "react-colorful",
+    "confidence": "low"
+   }
+  ],
+  "latest": {
+   "version": "2.19.3",
+   "date": "2020-10-28T05:41:11Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "denodeify",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "1.2.1",
+  "resolved": "1.2.1",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.2.1) is 11 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2015-02-14"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.2.1) is 11 years old.",
+    "url": "https://www.npmjs.com/package/denodeify",
+    "date": "2015-02-14"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 10 years (last commit 2015-12-12).",
+    "url": "https://github.com/matthew-andrews/denodeify",
+    "date": "2015-12-12"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "native",
+    "name": "util.promisify",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "1.2.1",
+   "date": "2015-02-14T05:35:10Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "enzyme",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^3.11.0",
+  "resolved": "3.11.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (3.11.0) is 6.9 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2019-12-20"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (3.11.0) is 6.9 years old.",
+    "url": "https://www.npmjs.com/package/enzyme",
+    "date": "2019-12-20"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.0 years (last commit 2025-10-22).",
+    "url": "https://github.com/airbnb/enzyme",
+    "date": "2025-10-22"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   },
+   {
+    "code": "repo-moved",
+    "message": "The repository was renamed or moved to enzymejs/enzyme; GitHub forwards the old address, so the lookup followed it.",
+    "url": "https://github.com/airbnb/enzyme"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "@testing-library/react",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "3.11.0",
+   "date": "2019-12-20T00:08:40Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "diff-match-patch",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^1.0.5",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.0.5) is 6.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-05-20"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.0.5) is 6.5 years old.",
+    "url": "https://www.npmjs.com/package/diff-match-patch",
+    "date": "2020-05-20"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 3.9 years (last commit 2022-12-07).",
+    "url": "https://github.com/JackuB/diff-match-patch",
+    "date": "2022-12-07"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "diff-match-patch-es",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "1.0.5",
+   "date": "2020-05-20T22:17:53Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "seqeval",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.2.2) is 6.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-10-24"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.2.2) is 6.0 years old.",
+    "url": "https://pypi.org/project/seqeval/",
+    "date": "2020-10-24"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 2.2 years (last commit 2024-08-28).",
+    "url": "https://github.com/chakki-works/seqeval",
+    "date": "2024-08-28"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.2.2",
+   "date": "2020-10-24T00:24:54.926204Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "jsonml-to-react-element",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^1.1.11",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.1.11) is 8.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2018-05-07"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.1.11) is 8.5 years old.",
+    "url": "https://www.npmjs.com/package/jsonml-to-react-element",
+    "date": "2018-05-07"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 8.5 years (last commit 2018-05-07).",
+    "url": "https://github.com/benjycui/jsonml-to-react-element",
+    "date": "2018-05-07"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.1.11",
+   "date": "2018-05-07T03:32:28Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "darglint",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.8.1) is 5.0 years old and nothing shows it is still looked after (no source repository).",
+    "date": "2021-10-18"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.8.1) is 5.0 years old.",
+    "url": "https://pypi.org/project/darglint/",
+    "date": "2021-10-18"
+   },
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "pydoclint",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "1.8.1",
+   "date": "2021-10-18T03:40:37.283691Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "codecov.io",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "~0.1.6",
+  "resolved": "0.1.6",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (0.1.6) is 11 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2015-08-15"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (0.1.6) is 11 years old.",
+    "url": "https://www.npmjs.com/package/codecov.io",
+    "date": "2015-08-15"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 10 years (last commit 2016-02-26).",
+    "url": "https://github.com/cainus/codecov.io",
+    "date": "2016-02-26"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "0.1.6",
+   "date": "2015-08-15T13:17:30Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "rollup-plugin-sourcemaps",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^0.6.3",
+  "resolved": "0.6.3",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (0.6.3) is 6.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-10-07"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (0.6.3) is 6.1 years old.",
+    "url": "https://www.npmjs.com/package/rollup-plugin-sourcemaps",
+    "date": "2020-10-07"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 6.1 years (last commit 2020-10-07).",
+    "url": "https://github.com/maxdavidson/rollup-plugin-sourcemaps",
+    "date": "2020-10-07"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "rollup-plugin-sourcemaps2",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "0.6.3",
+   "date": "2020-10-07T19:22:45Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "rollup-plugin-jscc",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^2.0.0",
+  "resolved": "2.0.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.0) is 6.2 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-08-28"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.0.0) is 6.2 years old.",
+    "url": "https://www.npmjs.com/package/rollup-plugin-jscc",
+    "date": "2020-08-28"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 6.2 years (last commit 2020-08-28).",
+    "url": "https://github.com/aMarCruz/rollup-plugin-jscc",
+    "date": "2020-08-28"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.0.0",
+   "date": "2020-08-28T10:38:18Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "@xmldom/xmldom",
+  "verdict": "dying",
+  "basis": "hard",
+  "stratum": "dying|hard",
+  "subjects": 1,
+  "spec": "^0.8.2",
+  "resolved": "0.8.6",
+  "advisories": [
+   "GHSA-27p8-2357-5qqv",
+   "GHSA-2v35-w6hq-6mfw",
+   "GHSA-4w3w-2rp5-g8jm",
+   "GHSA-6gmq-8vp8-gcm6",
+   "GHSA-6h8r-xr42-gp59",
+   "GHSA-8344-3jmq-59r6",
+   "GHSA-93r5-fhx6-vmg9",
+   "GHSA-965w-775f-mr7g",
+   "GHSA-c7q8-3ch8-vqpv",
+   "GHSA-f6ww-3ggp-fr8h",
+   "GHSA-j759-j44w-7fr8",
+   "GHSA-w2rr-34g9-rvrj",
+   "GHSA-wh4c-j3r5-mjhp",
+   "GHSA-x4fp-j954-r2f4",
+   "GHSA-x6wf-f3px-wcqx"
+  ],
+  "advisoryAliases": {
+   "GHSA-27p8-2357-5qqv": [
+    "CVE-2026-83608"
+   ],
+   "GHSA-2v35-w6hq-6mfw": [
+    "CVE-2026-41673"
+   ],
+   "GHSA-4w3w-2rp5-g8jm": [
+    "CVE-2026-83605"
+   ],
+   "GHSA-6gmq-8vp8-gcm6": [
+    "CVE-2026-83610"
+   ],
+   "GHSA-6h8r-xr42-gp59": [
+    "CVE-2026-83611"
+   ],
+   "GHSA-8344-3jmq-59r6": [
+    "CVE-2026-83613"
+   ],
+   "GHSA-93r5-fhx6-vmg9": [
+    "CVE-2026-83614"
+   ],
+   "GHSA-965w-775f-mr7g": [
+    "CVE-2026-83615"
+   ],
+   "GHSA-c7q8-3ch8-vqpv": [
+    "CVE-2026-83616"
+   ],
+   "GHSA-f6ww-3ggp-fr8h": [
+    "CVE-2026-41674"
+   ],
+   "GHSA-j759-j44w-7fr8": [
+    "CVE-2026-41672"
+   ],
+   "GHSA-w2rr-34g9-rvrj": [
+    "CVE-2026-83607"
+   ],
+   "GHSA-wh4c-j3r5-mjhp": [
+    "CVE-2026-34601"
+   ],
+   "GHSA-x4fp-j954-r2f4": [
+    "CVE-2026-83619"
+   ],
+   "GHSA-x6wf-f3px-wcqx": [
+    "CVE-2026-41675"
+   ]
+  },
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (0.8.6) is deprecated: \"this version has critical issues, please update to the latest version\"",
+    "url": "https://www.npmjs.com/package/@xmldom/xmldom/v/0.8.6"
+   },
+   {
+    "code": "osv-advisory",
+    "message": "15 known advisories affect version 0.8.6: GHSA-27p8-2357-5qqv, GHSA-2v35-w6hq-6mfw, GHSA-4w3w-2rp5-g8jm and 12 more.",
+    "url": "https://osv.dev/vulnerability/GHSA-27p8-2357-5qqv"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "0.9.12",
+   "date": "2026-08-21T22:32:42Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "eslint",
+  "verdict": "dying",
+  "basis": "hard",
+  "stratum": "dying|hard",
+  "subjects": 21,
+  "spec": "^8",
+  "resolved": "8.57.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (8.57.0) is deprecated: \"This version is no longer supported. Please see https://eslint.org/version-support for other options.\"",
+    "url": "https://www.npmjs.com/package/eslint/v/8.57.0"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "10.14.0",
+   "date": "2026-10-30T14:12:27Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "@testing-library/jest-dom",
+  "verdict": "dying",
+  "basis": "hard",
+  "stratum": "dying|hard",
+  "subjects": 1,
+  "spec": "^6.4.8",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (6.10.0) is deprecated: \"Incorrect minor release with breaking changes (Node >=22 and required @testing-library/dom peer). Use 6.9.1 for the 6.x line, or upgrade to…\"",
+    "url": "https://www.npmjs.com/package/@testing-library/jest-dom/v/6.10.0"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "7.0.1",
+   "date": "2026-08-09T23:44:33Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "codemirror",
+  "verdict": "dying",
+  "basis": "hard",
+  "stratum": "dying|hard",
+  "subjects": 1,
+  "spec": "^6.0.2",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (6.65.7) is deprecated: \"This is an accidentally mis-tagged instance of 5.65.7\"",
+    "url": "https://www.npmjs.com/package/codemirror/v/6.65.7"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   },
+   {
+    "code": "repo-moved",
+    "message": "The GitHub copy is archived because the project moved to https://code.haverbeke.berlin/codemirror/basic-setup (its README says so). That is not an end of life; activity at the new address is not read.",
+    "url": "https://github.com/codemirror/basic-setup"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "6.0.2",
+   "date": "2025-06-19T11:48:48Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "@codesandbox/sandpack-react",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^2.20.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.7 years (last commit 2025-02-14).",
+    "url": "https://github.com/codesandbox/sandpack",
+    "date": "2025-02-14"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.20.0",
+   "date": "2025-02-14T13:15:11Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "onnx2torch",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (1.5.15) is 2.2 years old.",
+    "url": "https://pypi.org/project/onnx2torch/",
+    "date": "2024-08-07"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.1 years (last commit 2025-10-14).",
+    "url": "https://github.com/ENOT-AutoDL/onnx2torch",
+    "date": "2025-10-14"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.5.15",
+   "date": "2024-08-07T14:04:09.985592Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "mkdocs",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 2,
+  "spec": ">=1.6.0,<1.7.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (1.6.1) is 2.2 years old.",
+    "url": "https://pypi.org/project/mkdocs/",
+    "date": "2024-08-30"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.0 years (last commit 2025-10-20).",
+    "url": "https://github.com/mkdocs/mkdocs",
+    "date": "2025-10-20"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.6.1",
+   "date": "2024-08-30T12:24:06.899675Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "autodoc-pydantic",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (2.2.0) is 2.5 years old.",
+    "url": "https://pypi.org/project/autodoc-pydantic/",
+    "date": "2024-04-27"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 2.1 years (last commit 2024-09-23).",
+    "url": "https://github.com/mansenfranzen/autodoc_pydantic",
+    "date": "2024-09-23"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.2.0",
+   "date": "2024-04-27T10:57:00.542657Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "pytest-monitor",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 2,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (1.6.6) is 3.4 years old.",
+    "url": "https://pypi.org/project/pytest-monitor/",
+    "date": "2023-06-25"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 2.9 years (last commit 2023-12-25).",
+    "url": "https://github.com/CFMTech/pytest-monitor",
+    "date": "2023-12-25"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.6.6",
+   "date": "2023-06-25T16:01:20.084536Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "remark-frontmatter",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^5.0.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (5.0.0) is 3.1 years old.",
+    "url": "https://www.npmjs.com/package/remark-frontmatter",
+    "date": "2023-09-18"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 3.1 years (last commit 2023-10-02).",
+    "url": "https://github.com/remarkjs/remark-frontmatter",
+    "date": "2023-10-02"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "5.0.0",
+   "date": "2023-09-18T11:12:38Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "throttle-debounce",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^5.0.2",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (5.0.2) is 2.4 years old.",
+    "url": "https://www.npmjs.com/package/throttle-debounce",
+    "date": "2024-06-24"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 2.4 years (last commit 2024-06-24).",
+    "url": "https://github.com/niksy/throttle-debounce",
+    "date": "2024-06-24"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "5.0.2",
+   "date": "2024-06-24T14:06:21Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "fork-ts-checker-webpack-plugin",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^6.2.10",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.6 years (last commit 2025-04-03).",
+    "url": "https://github.com/TypeStrong/fork-ts-checker-webpack-plugin",
+    "date": "2025-04-03"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "9.1.0",
+   "date": "2025-04-03T16:20:14Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "pypdf2",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 2,
+  "spec": "==2.12.1",
+  "resolved": null,
+  "advisories": [
+   "GHSA-4vvm-4w3v-6mr8"
+  ],
+  "advisoryAliases": {
+   "GHSA-4vvm-4w3v-6mr8": [
+    "CVE-2023-36464",
+    "PYSEC-2026-1835",
+    "PYSEC-2026-3008"
+   ]
+  },
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (3.0.1) is 3.8 years old.",
+    "url": "https://pypi.org/project/pypdf2/",
+    "date": "2022-12-31"
+   },
+   {
+    "code": "osv-advisory",
+    "message": "1 known advisory affects version 2.12.1: GHSA-4vvm-4w3v-6mr8.",
+    "url": "https://osv.dev/vulnerability/GHSA-4vvm-4w3v-6mr8"
+   },
+   {
+    "code": "repo-moved",
+    "message": "The repository was renamed or moved to py-pdf/pypdf; GitHub forwards the old address, so the lookup followed it.",
+    "url": "https://github.com/py-pdf/PyPDF2"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "3.0.1",
+   "date": "2022-12-31T10:36:13.130768Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "ufonormalizer",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "==0.6.3",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.1 years (last commit 2025-09-23).",
+    "url": "https://github.com/unified-font-object/ufoNormalizer",
+    "date": "2025-09-23"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "0.6.3",
+   "date": "2025-09-23T19:57:06.050444Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "documentation",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^14.0.3",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (14.0.3) is 2.8 years old.",
+    "url": "https://www.npmjs.com/package/documentation",
+    "date": "2024-01-30"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.5 years (last commit 2025-04-15).",
+    "url": "https://github.com/documentationjs/documentation",
+    "date": "2025-04-15"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "14.0.3",
+   "date": "2024-01-30T18:48:45Z"
+  }
+ },
+ {
+  "ecosystem": "npm",
+  "name": "karma",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 2,
+  "spec": "6.4.4",
+  "resolved": "6.4.4",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (6.4.4) is 2.3 years old.",
+    "url": "https://www.npmjs.com/package/karma",
+    "date": "2024-07-29"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 2.3 years (last commit 2024-07-29).",
+    "url": "https://github.com/karma-runner/karma",
+    "date": "2024-07-29"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "6.4.4",
+   "date": "2024-07-29T17:42:15Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "standard-imghdr",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (3.13.0) is 2.0 years old.",
+    "url": "https://pypi.org/project/standard-imghdr/",
+    "date": "2024-10-30"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.8 years (last commit 2025-01-27).",
+    "url": "https://github.com/youknowone/python-deadlib",
+    "date": "2025-01-27"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "3.13.0",
+   "date": "2024-10-30T16:01:36.412009Z"
+  }
+ },
+ {
+  "ecosystem": "pypi",
+  "name": "itsdangerous",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": ">=2.1.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (2.2.0) is 2.5 years old.",
+    "url": "https://pypi.org/project/itsdangerous/",
+    "date": "2024-04-16"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.4 years (last commit 2025-06-14).",
+    "url": "https://github.com/pallets/itsdangerous",
+    "date": "2025-06-14"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.2.0",
+   "date": "2024-04-16T21:28:15.614771Z"
+  }
+ }
+]

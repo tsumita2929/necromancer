@@ -1,0 +1,67 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "eslint",
+  "verdict": "dying",
+  "basis": "hard",
+  "stratum": "dying|hard",
+  "subjects": 21,
+  "spec": "^8",
+  "resolved": "8.57.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "version-deprecated",
+    "message": "The version in use (8.57.0) is deprecated: \"This version is no longer supported. Please see https://eslint.org/version-support for other options.\"",
+    "url": "https://www.npmjs.com/package/eslint/v/8.57.0"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "10.14.0",
+   "date": "2026-10-30T14:12:27Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:24.707Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "10.14.0",
+  "latestDate": "2026-10-30T14:12:27.179Z",
+  "latestAgeDays": 4,
+  "latestDeprecated": null,
+  "distTags": {
+   "es6jsx": "0.11.0-alpha.0",
+   "next": "10.0.0-rc.2",
+   "maintenance": "9.39.5",
+   "latest": "10.14.0"
+  },
+  "versionInUse": "8.57.0",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": "This version is no longer supported. Please see https://eslint.org/version-support for other options.",
+  "versionInUseDate": "2024-02-23T20:39:43.282Z",
+  "repository": "git+https://github.com/eslint/eslint.git",
+  "homepage": "https://eslint.org",
+  "versions": 433
+ },
+ "repoPage": {
+  "repo": "eslint/eslint",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/eslint/eslint",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-11-04T08:14:41Z",
+  "atomLastCommitAgeDays": 0,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2026-11-04T08:14:41Z",
+  "gitLastCommitAgeDays": 0,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 10
+ }
+}

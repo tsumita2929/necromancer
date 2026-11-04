@@ -1,0 +1,436 @@
+{
+ "description": "Pinned (census), tuned and final engine on the 100 census subjects: the 14 maybe-not-dead packages, repo-moved instances in the final run, and verdict transitions of the pinned run's dead-or-worse dependencies. Package names and counts only.",
+ "maybeNotDead": [
+  {
+   "ecosystem": "pypi",
+   "name": "ldap3",
+   "instances": 3,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "alive"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "recent-activity",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 3,
+    "tuned": 0,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "mkdocs-material",
+   "instances": 2,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "dead (hard)"
+   ],
+   "finalEvidence": [
+    "pypi-inactive"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 2,
+    "tuned": 2,
+    "final": 2
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "cross-env",
+   "instances": 6,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "dead (hard)"
+   ],
+   "finalEvidence": [
+    "repo-archived",
+    "low-maintenance"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 6,
+    "tuned": 6,
+    "final": 6
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/lang-python",
+   "instances": 2,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 2,
+    "tuned": 2,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "codemirror",
+   "instances": 2,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "alive",
+    "dying (hard)"
+   ],
+   "finalEvidence": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 2,
+    "tuned": 2,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "pypi",
+   "name": "pyserial",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "alive"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "recent-activity",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 0,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/lang-json",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 1,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "@codemirror/theme-one-dark",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 1,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "ismobilejs",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "alive"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "recent-activity",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 0,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "load-json-file",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "alive"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "recent-activity",
+    "no-release-long",
+    "low-maintenance"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 0,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "orderedmap",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "dying (heuristic)"
+   ],
+   "finalEvidence": [
+    "no-release",
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 1,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-example-setup",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "dying (heuristic)"
+   ],
+   "finalEvidence": [
+    "no-release",
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 1,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-inputrules",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 1,
+    "final": 0
+   }
+  },
+  {
+   "ecosystem": "npm",
+   "name": "prosemirror-state",
+   "instances": 1,
+   "pinned": [
+    "dead"
+   ],
+   "tuned": [
+    "dead (hard)"
+   ],
+   "final": [
+    "alive"
+   ],
+   "finalEvidence": [
+    "low-maintenance",
+    "repo-moved"
+   ],
+   "stillDeadOrWorse": {
+    "pinned": 1,
+    "tuned": 1,
+    "final": 0
+   }
+  }
+ ],
+ "repoMovedInFinalRun": {
+  "readmeNotice": {
+   "instances": 10,
+   "packages": 8,
+   "byFinalVerdict": {
+    "alive": 7,
+    "dying (hard)": 1,
+    "dying (heuristic)": 2
+   },
+   "pinnedVerdicts": {
+    "dead": 10
+   }
+  },
+  "renamed": {
+   "instances": 37,
+   "packages": 34,
+   "byFinalVerdict": {
+    "dying (heuristic)": 13,
+    "dead (hard)": 5,
+    "zombie (hard)": 1,
+    "dead (heuristic)": 15,
+    "alive": 3
+   },
+   "pinnedVerdicts": {
+    "dying": 16,
+    "dead": 20,
+    "zombie": 1
+   }
+  }
+ },
+ "c1ChangeTunedToFinal": {
+  "projectsLost": 1,
+  "projectsGained": 0,
+  "packagesOfTheLostProjects": [
+   "@codemirror/lang-python",
+   "@codemirror/theme-one-dark",
+   "codemirror",
+   "orderedmap",
+   "prosemirror-example-setup",
+   "prosemirror-inputrules",
+   "prosemirror-state"
+  ]
+ },
+ "notFoundInFinalRun": {
+  "instances": 7,
+  "packages": 7,
+  "names": [
+   "pypi|ak-guardian",
+   "pypi|django-channels-postgres",
+   "pypi|django-dramatiq-postgres",
+   "pypi|django-postgres-cache",
+   "pypi|evo-rlt",
+   "pypi|reflex-bench",
+   "pypi|reflex-workflow"
+  ]
+ },
+ "advisoryAliasesInFinalRun": {
+  "instances": 93,
+  "byVerdict": {
+   "alive": 82,
+   "dying": 9,
+   "zombie": 2
+  }
+ },
+ "versionDeprecatedDyingInFinalRun": {
+  "instances": 42,
+  "packages": 16,
+  "top": [
+   {
+    "name": "npm|eslint",
+    "instances": 21
+   },
+   {
+    "name": "npm|glob",
+    "instances": 4
+   },
+   {
+    "name": "npm|rimraf",
+    "instances": 4
+   },
+   {
+    "name": "npm|@testing-library/jest-dom",
+    "instances": 1
+   },
+   {
+    "name": "npm|@xmldom/xmldom",
+    "instances": 1
+   },
+   {
+    "name": "npm|codemirror",
+    "instances": 1
+   }
+  ]
+ },
+ "transitionsFromPinnedDeadOrWorse": {
+  "dead -> dead (heuristic)": 105,
+  "dead -> dead (hard)": 69,
+  "dead -> alive": 15,
+  "zombie -> zombie (hard)": 4,
+  "dead -> dying (heuristic)": 3,
+  "ghost -> ghost (hard)": 1,
+  "dead -> dying (hard)": 1
+ }
+}

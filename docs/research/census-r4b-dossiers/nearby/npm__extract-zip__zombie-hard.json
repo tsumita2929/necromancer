@@ -1,0 +1,113 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "extract-zip",
+  "verdict": "zombie",
+  "basis": "hard",
+  "stratum": "zombie|hard",
+  "subjects": 1,
+  "spec": "^2.0.1",
+  "resolved": "2.0.1",
+  "advisories": [
+   "GHSA-7pqw-9j4j-h8q3",
+   "GHSA-jmr9-qjv8-65gv"
+  ],
+  "advisoryAliases": {
+   "GHSA-7pqw-9j4j-h8q3": [
+    "CVE-2026-19693"
+   ],
+   "GHSA-jmr9-qjv8-65gv": [
+    "CVE-2026-56876"
+   ]
+  },
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.1) is 6.4 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year)."
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.0.1) is 6.4 years old."
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No push to the repository for 4.7 years (last push 2022-02-06); the default branch's last commit is at least that old. Commit dates were not read."
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags)."
+   },
+   {
+    "code": "osv-advisory",
+    "message": "2 known advisories affect version 2.0.1: GHSA-7pqw-9j4j-h8q3, GHSA-jmr9-qjv8-65gv."
+   },
+   {
+    "code": "repo-moved",
+    "message": "The repository was renamed or moved to max-mapper/extract-zip; GitHub forwards the old address, so the lookup followed it."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "unzipper",
+    "confidence": "low"
+   }
+  ],
+  "latest": {
+   "version": "2.0.1",
+   "date": "2020-06-10T07:10:04Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:30:41.615Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.0.1",
+  "latestDate": "2020-06-10T07:10:04.849Z",
+  "latestAgeDays": 2338,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "2.0.1"
+  },
+  "versionInUse": "2.0.1",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2020-06-10T07:10:04.849Z",
+  "repository": "git+https://github.com/maxogden/extract-zip.git",
+  "homepage": "https://github.com/maxogden/extract-zip#readme",
+  "versions": 24
+ },
+ "repoPage": {
+  "repo": "maxogden/extract-zip",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/max-mapper/extract-zip",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2021-08-01T18:13:25Z",
+  "atomLastCommitAgeDays": 1920,
+  "gitLastCommit": "2021-08-01T11:13:25-07:00",
+  "gitLastCommitAgeDays": 1920,
+  "gitBranch": "master",
+  "scorecardStatus": 404
+ },
+ "osv": [
+  {
+   "id": "GHSA-7pqw-9j4j-h8q3",
+   "aliases": [
+    "CVE-2026-19693"
+   ],
+   "summary": "extract-zip allows arbitrary file writes through symlink archive entries",
+   "withdrawn": null
+  },
+  {
+   "id": "GHSA-jmr9-qjv8-65gv",
+   "aliases": [
+    "CVE-2026-56876"
+   ],
+   "summary": "extract-zip unvalidated symlink path traversal",
+   "withdrawn": null
+  }
+ ]
+}

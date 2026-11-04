@@ -1,0 +1,71 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "@codesandbox/sandpack-react",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^2.20.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.7 years (last commit 2025-02-14).",
+    "url": "https://github.com/codesandbox/sandpack",
+    "date": "2025-02-14"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.20.0",
+   "date": "2025-02-14T13:15:11Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:43.812Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.20.0",
+  "latestDate": "2025-02-14T13:15:11.639Z",
+  "latestAgeDays": 627,
+  "latestDeprecated": null,
+  "distTags": {
+   "beta": "0.1.14-beta.3",
+   "canary": "2.0.1-alpha.0",
+   "latest": "2.20.0"
+  },
+  "versionInUse": "^2.20.0",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/codesandbox/sandpack.git",
+  "homepage": "https://github.com/codesandbox/sandpack#readme",
+  "versions": 385
+ },
+ "repoPage": {
+  "repo": "codesandbox/sandpack",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/codesandbox/sandpack",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-02-14T13:14:40Z",
+  "atomLastCommitAgeDays": 627,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2025-02-14T13:14:40Z",
+  "gitLastCommitAgeDays": 627,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

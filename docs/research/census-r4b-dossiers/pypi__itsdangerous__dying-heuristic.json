@@ -1,0 +1,79 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "itsdangerous",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": ">=2.1.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (2.2.0) is 2.5 years old.",
+    "url": "https://pypi.org/project/itsdangerous/",
+    "date": "2024-04-16"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.4 years (last commit 2025-06-14).",
+    "url": "https://github.com/pallets/itsdangerous",
+    "date": "2025-06-14"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.2.0",
+   "date": "2024-04-16T21:28:15.614771Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:28:06.287Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.2.0",
+  "latestOldestFile": "2024-04-16T21:28:14.499616Z",
+  "latestNewestFile": "2024-04-16T21:28:15.614771Z",
+  "latestAgeDays": 931,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "Changes": "https://itsdangerous.palletsprojects.com/changes/",
+   "Chat": "https://discord.gg/pallets",
+   "Documentation": "https://itsdangerous.palletsprojects.com/",
+   "Donate": "https://palletsprojects.com/donate",
+   "Source": "https://github.com/pallets/itsdangerous/"
+  },
+  "homePage": null
+ },
+ "repoPage": {
+  "repo": "pallets/itsdangerous",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/pallets/itsdangerous",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-06-14T20:35:42Z",
+  "atomLastCommitAgeDays": 507,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2025-06-14T13:35:42-07:00",
+  "gitLastCommitAgeDays": 507,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

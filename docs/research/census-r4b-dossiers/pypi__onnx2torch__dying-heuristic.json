@@ -1,0 +1,68 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "onnx2torch",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (1.5.15) is 2.2 years old.",
+    "url": "https://pypi.org/project/onnx2torch/",
+    "date": "2024-08-07"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.1 years (last commit 2025-10-14).",
+    "url": "https://github.com/ENOT-AutoDL/onnx2torch",
+    "date": "2025-10-14"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "1.5.15",
+   "date": "2024-08-07T14:04:09.985592Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:49.892Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.5.15",
+  "latestOldestFile": "2024-08-07T14:04:01.076049Z",
+  "latestNewestFile": "2024-08-07T14:04:09.985592Z",
+  "latestAgeDays": 818,
+  "latestYanked": false,
+  "statusClassifiers": [
+   "Development Status :: 5 - Production/Stable"
+  ],
+  "projectUrls": {
+   "homepage": "https://enot.ai",
+   "repository": "https://github.com/ENOT-AutoDL/onnx2torch"
+  },
+  "homePage": null
+ },
+ "repoPage": {
+  "repo": "ENOT-AutoDL/onnx2torch",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/ENOT-AutoDL/onnx2torch",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-10-14T10:40:35Z",
+  "atomLastCommitAgeDays": 386,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2025-10-14T17:40:35+07:00",
+  "gitLastCommitAgeDays": 386,
+  "gitBranch": "main",
+  "scorecardStatus": 404
+ }
+}

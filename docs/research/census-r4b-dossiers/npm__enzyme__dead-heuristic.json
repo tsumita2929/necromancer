@@ -1,0 +1,97 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "enzyme",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^3.11.0",
+  "resolved": "3.11.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (3.11.0) is 6.9 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2019-12-20"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (3.11.0) is 6.9 years old.",
+    "url": "https://www.npmjs.com/package/enzyme",
+    "date": "2019-12-20"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.0 years (last commit 2025-10-22).",
+    "url": "https://github.com/airbnb/enzyme",
+    "date": "2025-10-22"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   },
+   {
+    "code": "repo-moved",
+    "message": "The repository was renamed or moved to enzymejs/enzyme; GitHub forwards the old address, so the lookup followed it.",
+    "url": "https://github.com/airbnb/enzyme"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "@testing-library/react",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "3.11.0",
+   "date": "2019-12-20T00:08:40Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:32.375Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "3.11.0",
+  "latestDate": "2019-12-20T00:08:40.725Z",
+  "latestAgeDays": 2511,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "3.11.0",
+   "backport-v2.4": "2.4.2",
+   "backport-v2.5": "2.5.2",
+   "alpha": "3.0.0",
+   "next": "3.0.0"
+  },
+  "versionInUse": "3.11.0",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2019-12-20T00:08:40.725Z",
+  "repository": "git+https://github.com/airbnb/enzyme.git",
+  "homepage": "https://airbnb.io/enzyme/",
+  "versions": 54
+ },
+ "repoPage": {
+  "repo": "airbnb/enzyme",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/enzymejs/enzyme",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-10-22T15:55:01Z",
+  "atomLastCommitAgeDays": 377,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2025-10-22T08:55:01-07:00",
+  "gitLastCommitAgeDays": 377,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

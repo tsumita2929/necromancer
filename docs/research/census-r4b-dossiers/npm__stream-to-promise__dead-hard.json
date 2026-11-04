@@ -1,0 +1,96 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "stream-to-promise",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "1.1.1",
+  "resolved": "1.1.1",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"Deprecated. Use node:stream/promises and node:stream/consumers instead.\"",
+    "url": "https://www.npmjs.com/package/stream-to-promise",
+    "date": "2020-05-25"
+   },
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/bendrucker/stream-to-promise",
+    "date": "2026-06-19"
+   },
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (3.0.0) is 6.4 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+    "date": "2020-05-25"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (3.0.0) is 6.4 years old.",
+    "url": "https://www.npmjs.com/package/stream-to-promise",
+    "date": "2020-05-25"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "native",
+    "name": "node:stream/promises",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "3.0.0",
+   "date": "2020-05-25T19:54:05Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:24:46.935Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "3.0.0",
+  "latestDate": "2020-05-25T19:54:05.040Z",
+  "latestAgeDays": 2353,
+  "latestDeprecated": "Deprecated. Use node:stream/promises and node:stream/consumers instead.",
+  "distTags": {
+   "latest": "3.0.0"
+  },
+  "versionInUse": "1.1.1",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": "Deprecated. Use node:stream/promises and node:stream/consumers instead.",
+  "versionInUseDate": "2016-06-08T02:45:32.303Z",
+  "repository": "git://github.com/bendrucker/stream-to-promise.git",
+  "homepage": "https://github.com/bendrucker/stream-to-promise",
+  "versions": 18
+ },
+ "repoPage": {
+  "repo": "bendrucker/stream-to-promise",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/bendrucker/stream-to-promise",
+  "archivedBanner": true,
+  "archivedOn": "Jun 19, 2026",
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2026-06-19T20:25:18Z",
+  "atomLastCommitAgeDays": 137,
+  "readmeMovedNotice": null,
+  "readmeHints": [
+   "> **Deprecated.** Node.js now ships promise-based stream helpers in core, so this"
+  ],
+  "gitLastCommit": "2026-06-19T13:25:18-07:00",
+  "gitLastCommitAgeDays": 137,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-26",
+  "maintained": 0
+ }
+}

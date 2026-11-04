@@ -1,0 +1,98 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "@types/inquirer",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "^8.2.0",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"This is a stub types definition. inquirer provides its own type definitions, so you do not need this installed.\"",
+    "url": "https://www.npmjs.com/package/@types/inquirer",
+    "date": "2026-10-29"
+   },
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "inquirer",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "10.0.0",
+   "date": "2026-10-29T01:33:38Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:05.410Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "10.0.0",
+  "latestDate": "2026-10-29T01:33:38.772Z",
+  "latestAgeDays": 6,
+  "latestDeprecated": "This is a stub types definition. inquirer provides its own type definitions, so you do not need this installed.",
+  "distTags": {
+   "ts2.9": "6.0.2",
+   "ts2.6": "6.0.2",
+   "ts2.7": "6.0.2",
+   "ts3.1": "6.0.2",
+   "ts3.2": "6.0.2",
+   "ts2.8": "6.0.2",
+   "ts2.0": "6.0.2",
+   "ts2.4": "6.0.2",
+   "ts2.3": "6.0.2",
+   "ts2.5": "6.0.2",
+   "ts2.2": "6.0.2",
+   "ts2.1": "6.0.2",
+   "ts3.0": "6.0.2",
+   "ts3.3": "7.3.1",
+   "ts3.4": "7.3.1",
+   "ts3.5": "7.3.1",
+   "ts3.6": "7.3.3",
+   "ts4.0": "7.3.3",
+   "ts3.7": "7.3.3",
+   "ts4.1": "7.3.3",
+   "ts3.8": "7.3.3",
+   "ts3.9": "7.3.3",
+   "ts4.4": "9.0.3",
+   "ts4.3": "9.0.3",
+   "ts4.2": "9.0.3",
+   "ts4.9": "9.0.7",
+   "ts4.8": "9.0.7",
+   "ts4.7": "9.0.7",
+   "ts4.6": "9.0.7",
+   "ts5.0": "9.0.7",
+   "ts4.5": "9.0.7",
+   "ts5.1": "9.0.8",
+   "ts5.2": "9.0.9",
+   "ts5.4": "9.0.10",
+   "ts5.8": "9.0.10",
+   "ts5.6": "9.0.10",
+   "ts5.9": "9.0.10",
+   "ts5.3": "9.0.10",
+   "ts5.5": "9.0.10",
+   "ts6.0": "9.0.10",
+   "latest": "10.0.0",
+   "ts5.7": "9.0.10",
+   "ts7.1": "9.0.10",
+   "ts7.0": "9.0.10"
+  },
+  "versionInUse": "^8.2.0",
+  "versionInUseKnown": false,
+  "repository": null,
+  "homepage": null,
+  "versions": 65
+ },
+ "repoPage": null
+}

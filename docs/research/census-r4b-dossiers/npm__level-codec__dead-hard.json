@@ -1,0 +1,96 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "level-codec",
+  "verdict": "dead",
+  "basis": "hard",
+  "stratum": "dead|hard",
+  "subjects": 1,
+  "spec": "9.0.2",
+  "resolved": "9.0.2",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "npm-deprecated",
+    "message": "Deprecated on npm: \"Superseded by level-transcoder (https://github.com/Level/community#faq)\"",
+    "url": "https://www.npmjs.com/package/level-codec",
+    "date": "2021-04-09"
+   },
+   {
+    "code": "repo-archived",
+    "message": "The source repository is archived: read-only, no more fixes.",
+    "url": "https://github.com/Level/codec",
+    "date": "2024-12-20"
+   },
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (10.0.0) is 5.6 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+    "date": "2021-04-09"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (10.0.0) is 5.6 years old.",
+    "url": "https://www.npmjs.com/package/level-codec",
+    "date": "2021-04-09"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "level-transcoder",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "10.0.0",
+   "date": "2021-04-09T13:13:18Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:24:38.636Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "10.0.0",
+  "latestDate": "2021-04-09T13:13:18.355Z",
+  "latestAgeDays": 2034,
+  "latestDeprecated": "Superseded by level-transcoder (https://github.com/Level/community#faq)",
+  "distTags": {
+   "latest": "10.0.0"
+  },
+  "versionInUse": "9.0.2",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": "Superseded by level-transcoder (https://github.com/Level/community#faq)",
+  "versionInUseDate": "2020-06-26T07:29:59.514Z",
+  "repository": "git+https://github.com/Level/codec.git",
+  "homepage": "https://github.com/Level/codec",
+  "versions": 31
+ },
+ "repoPage": {
+  "repo": "Level/codec",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/Level/codec",
+  "archivedBanner": true,
+  "archivedOn": "Dec 20, 2024",
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2024-12-20T16:35:51Z",
+  "atomLastCommitAgeDays": 683,
+  "readmeMovedNotice": null,
+  "readmeHints": [
+   "**Superseded by [`level-transcoder`](https://github.com/Level/transcoder). Please see [Frequently Asked Questions](https://github.com/Level/community#faq).**"
+  ],
+  "gitLastCommit": "2024-12-20T17:35:51+01:00",
+  "gitLastCommitAgeDays": 683,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 0
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "unit": {
+  "ecosystem": "pypi",
+  "name": "darglint",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.8.1) is 5.0 years old and nothing shows it is still looked after (no source repository).",
+    "date": "2021-10-18"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.8.1) is 5.0 years old.",
+    "url": "https://pypi.org/project/darglint/",
+    "date": "2021-10-18"
+   },
+   {
+    "code": "no-repository",
+    "message": "No source repository is linked, so nobody can review or fix the code in the open."
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "pydoclint",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "1.8.1",
+   "date": "2021-10-18T03:40:37.283691Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:57.589Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.8.1",
+  "latestOldestFile": "2021-10-18T03:40:35.034675Z",
+  "latestNewestFile": "2021-10-18T03:40:37.283691Z",
+  "latestAgeDays": 1843,
+  "latestYanked": false,
+  "statusClassifiers": [],
+  "projectUrls": null,
+  "homePage": ""
+ },
+ "repoPage": null
+}

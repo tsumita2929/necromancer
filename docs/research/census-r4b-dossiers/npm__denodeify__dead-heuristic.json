@@ -1,0 +1,88 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "denodeify",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "1.2.1",
+  "resolved": "1.2.1",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.2.1) is 11 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2015-02-14"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (1.2.1) is 11 years old.",
+    "url": "https://www.npmjs.com/package/denodeify",
+    "date": "2015-02-14"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 10 years (last commit 2015-12-12).",
+    "url": "https://github.com/matthew-andrews/denodeify",
+    "date": "2015-12-12"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "native",
+    "name": "util.promisify",
+    "confidence": "high"
+   }
+  ],
+  "latest": {
+   "version": "1.2.1",
+   "date": "2015-02-14T05:35:10Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:26.243Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "1.2.1",
+  "latestDate": "2015-02-14T05:35:10.362Z",
+  "latestAgeDays": 4281,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "1.2.1"
+  },
+  "versionInUse": "1.2.1",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2015-02-14T05:35:10.362Z",
+  "repository": "https://github.com/matthew-andrews/denodeify.git",
+  "homepage": "https://github.com/matthew-andrews/denodeify",
+  "versions": 6
+ },
+ "repoPage": {
+  "repo": "matthew-andrews/denodeify",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/matthew-andrews/denodeify",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2015-12-12T10:36:23Z",
+  "atomLastCommitAgeDays": 3980,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2015-12-12T10:36:23Z",
+  "gitLastCommitAgeDays": 3980,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

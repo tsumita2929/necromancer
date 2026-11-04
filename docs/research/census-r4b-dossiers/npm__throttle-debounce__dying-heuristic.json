@@ -1,0 +1,75 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "throttle-debounce",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^5.0.2",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (5.0.2) is 2.4 years old.",
+    "url": "https://www.npmjs.com/package/throttle-debounce",
+    "date": "2024-06-24"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 2.4 years (last commit 2024-06-24).",
+    "url": "https://github.com/niksy/throttle-debounce",
+    "date": "2024-06-24"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "5.0.2",
+   "date": "2024-06-24T14:06:21Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:27:21.653Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "5.0.2",
+  "latestDate": "2024-06-24T14:06:21.768Z",
+  "latestAgeDays": 862,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "5.0.2"
+  },
+  "versionInUse": "^5.0.2",
+  "versionInUseKnown": false,
+  "repository": "git+https://github.com/niksy/throttle-debounce.git",
+  "homepage": "https://github.com/niksy/throttle-debounce#readme",
+  "versions": 18
+ },
+ "repoPage": {
+  "repo": "niksy/throttle-debounce",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/niksy/throttle-debounce",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2024-06-24T14:06:08Z",
+  "atomLastCommitAgeDays": 862,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2024-06-24T16:06:08+02:00",
+  "gitLastCommitAgeDays": 862,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

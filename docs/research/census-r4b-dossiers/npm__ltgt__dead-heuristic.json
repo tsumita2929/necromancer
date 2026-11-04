@@ -1,0 +1,82 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "ltgt",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "2.2.1",
+  "resolved": "2.2.1",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.2.1) is 8.6 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2018-03-25"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (2.2.1) is 8.6 years old.",
+    "url": "https://www.npmjs.com/package/ltgt",
+    "date": "2018-03-25"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 8.6 years (last commit 2018-03-25).",
+    "url": "https://github.com/dominictarr/ltgt",
+    "date": "2018-03-25"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "2.2.1",
+   "date": "2018-03-25T21:26:14Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:05.947Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "2.2.1",
+  "latestDate": "2018-03-25T21:26:14.791Z",
+  "latestAgeDays": 3145,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "2.2.1"
+  },
+  "versionInUse": "2.2.1",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2018-03-25T21:26:14.791Z",
+  "repository": "git://github.com/dominictarr/ltgt.git",
+  "homepage": "https://github.com/dominictarr/ltgt",
+  "versions": 12
+ },
+ "repoPage": {
+  "repo": "dominictarr/ltgt",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/dominictarr/ltgt",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2018-03-25T21:24:41Z",
+  "atomLastCommitAgeDays": 3145,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2018-03-26T10:24:41+13:00",
+  "gitLastCommitAgeDays": 3145,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

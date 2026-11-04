@@ -1,0 +1,83 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "express-pouchdb",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "4.2.0",
+  "resolved": "4.2.0",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (4.2.0) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2019-09-25"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (4.2.0) is 7.1 years old.",
+    "url": "https://www.npmjs.com/package/express-pouchdb",
+    "date": "2019-09-25"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.2 years (last commit 2025-08-27).",
+    "url": "https://github.com/pouchdb/pouchdb-server",
+    "date": "2025-08-27"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "4.2.0",
+   "date": "2019-09-25T22:08:28Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:25:12.262Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "4.2.0",
+  "latestDate": "2019-09-25T22:08:28.717Z",
+  "latestAgeDays": 2596,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "4.2.0",
+   "beta": "5.0.1-rc1.0"
+  },
+  "versionInUse": "4.2.0",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2019-09-25T22:08:28.717Z",
+  "repository": "git+https://github.com/pouchdb/pouchdb-server.git",
+  "homepage": "https://github.com/pouchdb/pouchdb-server#readme",
+  "versions": 85
+ },
+ "repoPage": {
+  "repo": "pouchdb/pouchdb-server",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/pouchdb/pouchdb-server",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "main",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-08-27T12:49:43Z",
+  "atomLastCommitAgeDays": 433,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2025-08-27T14:49:43+02:00",
+  "gitLastCommitAgeDays": 433,
+  "gitBranch": "main",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

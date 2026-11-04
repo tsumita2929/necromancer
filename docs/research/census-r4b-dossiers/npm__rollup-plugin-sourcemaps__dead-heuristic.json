@@ -1,0 +1,88 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "rollup-plugin-sourcemaps",
+  "verdict": "dead",
+  "basis": "heuristic",
+  "stratum": "dead|heuristic",
+  "subjects": 1,
+  "spec": "^0.6.3",
+  "resolved": "0.6.3",
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "abandoned",
+    "message": "Abandoned (a heuristic, not a hard signal): the latest release (0.6.3) is 6.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+    "date": "2020-10-07"
+   },
+   {
+    "code": "no-release-long",
+    "message": "The latest release (0.6.3) is 6.1 years old.",
+    "url": "https://www.npmjs.com/package/rollup-plugin-sourcemaps",
+    "date": "2020-10-07"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 6.1 years (last commit 2020-10-07).",
+    "url": "https://github.com/maxdavidson/rollup-plugin-sourcemaps",
+    "date": "2020-10-07"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [
+   {
+    "kind": "package",
+    "name": "rollup-plugin-sourcemaps2",
+    "confidence": "medium"
+   }
+  ],
+  "latest": {
+   "version": "0.6.3",
+   "date": "2020-10-07T19:22:45Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:26:04.848Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "0.6.3",
+  "latestDate": "2020-10-07T19:22:45.230Z",
+  "latestAgeDays": 2218,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "0.6.3"
+  },
+  "versionInUse": "0.6.3",
+  "versionInUseKnown": true,
+  "versionInUseDeprecated": null,
+  "versionInUseDate": "2020-10-07T19:22:45.230Z",
+  "repository": "git+https://github.com/maxdavidson/rollup-plugin-sourcemaps.git",
+  "homepage": "https://github.com/maxdavidson/rollup-plugin-sourcemaps#readme",
+  "versions": 19
+ },
+ "repoPage": {
+  "repo": "maxdavidson/rollup-plugin-sourcemaps",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/maxdavidson/rollup-plugin-sourcemaps",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2020-10-07T19:08:58Z",
+  "atomLastCommitAgeDays": 2218,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2020-10-07T21:08:58+02:00",
+  "gitLastCommitAgeDays": 2218,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-10-19",
+  "maintained": 0
+ }
+}

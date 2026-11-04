@@ -1,0 +1,77 @@
+{
+ "unit": {
+  "ecosystem": "npm",
+  "name": "documentation",
+  "verdict": "dying",
+  "basis": "heuristic",
+  "stratum": "dying|heuristic",
+  "subjects": 1,
+  "spec": "^14.0.3",
+  "resolved": null,
+  "advisories": [],
+  "advisoryAliases": null,
+  "notFound": false,
+  "evidence": [
+   {
+    "code": "no-release",
+    "message": "The latest release (14.0.3) is 2.8 years old.",
+    "url": "https://www.npmjs.com/package/documentation",
+    "date": "2024-01-30"
+   },
+   {
+    "code": "repo-inactive",
+    "message": "No commit to the default branch for 1.5 years (last commit 2025-04-15).",
+    "url": "https://github.com/documentationjs/documentation",
+    "date": "2025-04-15"
+   },
+   {
+    "code": "low-maintenance",
+    "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+    "url": "https://securityscorecards.dev/",
+    "date": "2026-08-24"
+   }
+  ],
+  "successors": [],
+  "latest": {
+   "version": "14.0.3",
+   "date": "2024-01-30T18:48:45Z"
+  }
+ },
+ "checkedAt": "2026-11-04T11:27:47.246Z",
+ "registry": {
+  "registryStatus": 200,
+  "latest": "14.0.3",
+  "latestDate": "2024-01-30T18:48:45.968Z",
+  "latestAgeDays": 1008,
+  "latestDeprecated": null,
+  "distTags": {
+   "latest": "14.0.3",
+   "prerelease": "10.0.0-alpha.0",
+   "alpha": "14.0.0-alpha.1"
+  },
+  "versionInUse": "^14.0.3",
+  "versionInUseKnown": false,
+  "repository": "git+ssh://git@github.com/documentationjs/documentation.git",
+  "homepage": "https://documentation.js.org",
+  "versions": 119
+ },
+ "repoPage": {
+  "repo": "documentationjs/documentation",
+  "pageStatus": 200,
+  "pageFinalUrl": "https://github.com/documentationjs/documentation",
+  "archivedBanner": false,
+  "archivedOn": null,
+  "defaultBranch": "master",
+  "atomStatus": 200,
+  "atomLastCommit": "2025-04-15T18:50:25Z",
+  "atomLastCommitAgeDays": 567,
+  "readmeMovedNotice": null,
+  "readmeHints": [],
+  "gitLastCommit": "2025-04-15T14:50:25-04:00",
+  "gitLastCommitAgeDays": 567,
+  "gitBranch": "master",
+  "scorecardStatus": 200,
+  "scorecardDate": "2026-11-02",
+  "maintained": 0
+ }
+}
