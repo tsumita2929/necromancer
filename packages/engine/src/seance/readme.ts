@@ -10,6 +10,8 @@ export interface ReadmeInput {
   compares: string[];
   known: KnownDifference[];
   notes?: string[];
+  /** Which project calls run and where; becomes the "Safety" section (QA-08). */
+  safety?: string[];
 }
 
 /** README.md for a séance folder. All text is flattened; code samples come from the recipe. */
@@ -40,6 +42,9 @@ export function renderReadme(r: ReadmeInput): string {
     ...r.compares.map((c) => `- ${comment(c, 240)}`),
     '',
   ];
+  if (r.safety && r.safety.length > 0) {
+    out.push('## Safety', '', ...r.safety.map((line) => `- ${comment(line, 700)}`), '');
+  }
   if (r.known.length > 0) {
     out.push(
       '## Known differences',

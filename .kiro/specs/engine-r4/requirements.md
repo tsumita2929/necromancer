@@ -36,6 +36,10 @@ Source: `docs/verification/qa-round3.md` (QA-01, 07, 08, 16), `docs/research/suc
 - Q4.1 THE message for an invalid package name SHALL name the package and SHALL NOT quote the version as its
   source.
 
+- Q4.2 WHEN the engine skips dependencies because of `maxDependencies`, THE message SHALL say "N more
+  dependencies were not checked" and use the word "transitive" only when every skipped dependency is
+  transitive (QA-14, added by the lead).
+
 ## Q5. Words for dead
 
 - Q5.1 THE text in `types.ts` and `verdict.ts` SHALL describe `dead` as a hard signal or a heuristic by

@@ -14,12 +14,30 @@ import type {
   SeanceFile,
 } from '../types.js';
 import { comment, docText, jsStr, pyIdent, pyStr, slug } from './emit.js';
-import { callsNote, jsProjectCalls, pyProjectCalls } from './examples.js';
+import { callsNote, GUARD_SENTENCE, jsProjectCalls, pyProjectCalls } from './examples.js';
+import { JS_GUARD, JS_GUARD_FILE, PY_GUARD, PY_GUARD_FILE } from './guard.js';
 import { renderReadme } from './readme.js';
 import { makeBundle, type RecipeContext } from './recipe.js';
 import { pythonImportNames } from '../usage/scan-py.js';
 
 const MAX_MEMBERS = 8;
+
+/** The README's Safety section for a generic séance: which project calls run, and where (QA-08). */
+function safetyLines(
+  usage: DependencyUsage | undefined,
+  pick: (member: string) => boolean,
+  language: 'javascript' | 'python',
+): string[] {
+  const guard = language === 'python' ? PY_GUARD_FILE : JS_GUARD_FILE;
+  return [
+    callsNote(usage, pick, true),
+    `\`${guard}\` is imported first by the test file. It switches on only while a call into the old package or the replacement runs.`,
+    language === 'python'
+      ? 'A blocked call raises `SeanceBlocked`; the test compares it like any other exception class.'
+      : 'A blocked call throws an Error with code `SEANCE_BLOCKED`; the test compares it like any other error class.',
+    'Reading files is allowed. A call you want replayed that was left out can be added by hand, once you have checked what it does.',
+  ];
+}
 const SAFE_MEMBER = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*)*$/;
 
 type Kind = LiteralArg['kind'];
@@ -121,7 +139,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     return [
       `  describe(${jsStr(`member ${target}`)}, () => {`,
       `    const path = ${jsStr(target)};`,
-      ...jsProjectCalls(ctx.usage, (x) => x === m.member, 'projectCalls', '    '),
+      ...jsProjectCalls(ctx.usage, (x) => x === m.member, 'projectCalls', '    ', true),
       '    it("the replacement answers like the old package on the project\'s own calls", () => {',
       '      for (const args of projectCalls) expect(outcome(NEW.members[path], args), JSON.stringify(args)).toEqual(outcome(lookup(OLD, path), args));',
       '    });',
@@ -149,6 +167,8 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     '// different answer. The comparisons are skipped until replacement.mjs sets READY to true.',
     '// Compared: the returned value or, when the call throws, the error class (never the message).',
     '// TODO(necromancer): add normalisations if outputs legitimately differ (ordering, timestamps).',
+    '// The guard comes first: it keeps the calls this file makes inside the test (see README, Safety).',
+    `import * as guard from './${JS_GUARD_FILE}';`,
     "import { describe, it, expect } from 'vitest';",
     "import fc from 'fast-check';",
     `import * as OLD from ${jsStr(name)};`,
@@ -156,7 +176,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     '',
     'const outcome = (fn, args) => {',
     '  try {',
-    '    return { ok: true, value: fn(...args) };',
+    '    return { ok: true, value: guard.run(() => fn(...args)) };',
     '  } catch (e) {',
     '    return { ok: false, error: e && e.constructor ? e.constructor.name : typeof e };',
     '  }',
@@ -186,11 +206,13 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     ...(skipped.length > 0
       ? [`Not covered: ${skipped.map((s) => comment(s, 30)).join(', ')}.`]
       : []),
-    callsNote(ctx.usage, (x) => members.some((m) => m.member === x)),
+    callsNote(ctx.usage, (x) => members.some((m) => m.member === x), true),
+    `Safety: ${GUARD_SENTENCE}`,
   ];
   const files: SeanceFile[] = [
     { path: `${dir}/seance.test.mjs`, content: test, role: 'test' },
     { path: `${dir}/replacement.mjs`, content: replacement, role: 'replacement' },
+    { path: `${dir}/${JS_GUARD_FILE}`, content: JS_GUARD, role: 'helper' },
   ];
   files.push({
     path: `${dir}/README.md`,
@@ -204,10 +226,15 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
           what: 'the differential property test (skipped until READY is true)',
         },
         { path: `${dir}/replacement.mjs`, what: 'stubs to fill in with the replacement' },
+        {
+          path: `${dir}/${JS_GUARD_FILE}`,
+          what: 'the guard: blocks network, processes and writes outside a temporary directory while a call runs',
+        },
       ],
       install,
       run,
       compares,
+      safety: safetyLines(ctx.usage, (x) => members.some((m) => m.member === x), 'javascript'),
       known: [],
       notes: [
         'Search for TODO(necromancer): each marker is a decision the generator could not make for you.',
@@ -282,7 +309,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     const test = `test_${n}_${pyIdent(m.member.replace(/\./g, '_'), 'member')}`;
     return [
       `PATH_${test.toUpperCase()} = ${pyStr(m.member)}`,
-      pyProjectCalls(ctx.usage, (x) => x === m.member, `CALLS_${test.toUpperCase()}`),
+      pyProjectCalls(ctx.usage, (x) => x === m.member, `CALLS_${test.toUpperCase()}`, true),
       '',
       `@pytest.mark.parametrize("args", CALLS_${test.toUpperCase()})`,
       `def ${test}_project_calls(args):`,
@@ -308,6 +335,8 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     'Compared: the returned value or, when the call raises, the exception class (never the message).',
     'TODO(necromancer): add normalisations if outputs legitimately differ (ordering, timestamps).',
     '"""',
+    '# The guard comes first: it keeps the calls this file makes inside the test (see README, Safety).',
+    `import ${PY_GUARD_FILE.replace('.py', '')} as guard`,
     'import importlib',
     'from functools import reduce',
     '',
@@ -323,7 +352,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     '',
     'def outcome(fn, *args):',
     '    try:',
-    '        return ("ok", fn(*args))',
+    '        return ("ok", guard.run(fn, *args))',
     '    except Exception as exc:  # the class of the error is the answer',
     '        return ("error", type(exc).__name__)',
     '',
@@ -348,11 +377,13 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     ...(skipped.length > 0
       ? [`Not covered: ${skipped.map((s) => comment(s, 30)).join(', ')}.`]
       : []),
-    callsNote(ctx.usage, (x) => members.some((m) => m.member === x)),
+    callsNote(ctx.usage, (x) => members.some((m) => m.member === x), true),
+    `Safety: ${GUARD_SENTENCE.replace('SEANCE_BLOCKED', 'SeanceBlocked')}`,
   ];
   const files: SeanceFile[] = [
     { path: `${dir}/test_seance_${id}.py`, content: test, role: 'test' },
     { path: `${dir}/${id}_replacement.py`, content: replacement, role: 'replacement' },
+    { path: `${dir}/${PY_GUARD_FILE}`, content: PY_GUARD, role: 'helper' },
   ];
   files.push({
     path: `${dir}/README.md`,
@@ -366,10 +397,15 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
           what: 'the differential property test (skipped until READY is True)',
         },
         { path: `${dir}/${id}_replacement.py`, what: 'stubs to fill in with the replacement' },
+        {
+          path: `${dir}/${PY_GUARD_FILE}`,
+          what: 'the guard: blocks network, processes and writes outside a temporary directory while a call runs',
+        },
       ],
       install,
       run,
       compares,
+      safety: safetyLines(ctx.usage, (x) => members.some((m) => m.member === x), 'python'),
       known: [],
       notes: [
         'Search for TODO(necromancer): each marker is a decision the generator could not make for you.',

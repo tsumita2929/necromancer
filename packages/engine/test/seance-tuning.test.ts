@@ -50,7 +50,7 @@ describe('T5.1 calls without literal arguments are counted, not dropped', () => 
     const b = generateSeance(diagnosis('left-pad'), successor('String.prototype.padStart'), usage);
     const test = content(b, 'test');
     expect(test).toMatch(
-      /\/\/ The project makes 3 calls in src\/a\.js, src\/b\.js; none has only literal arguments/,
+      /\/\/ The project makes 3 calls in src\/a\.js, src\/b\.js; none is replayed: none has only literal arguments/,
     );
     expect(test).toContain('const projectCalls = [];');
     expect(b.compares.join('\n')).toMatch(/The project makes 3 calls in src\/a\.js, src\/b\.js/);
@@ -65,7 +65,7 @@ describe('T5.1 calls without literal arguments are counted, not dropped', () => 
     const b = generateSeance(diagnosis('odd-pkg'), successor('other'), usage2);
     expect(b.recipe).toBeNull();
     expect(content(b, 'test')).toMatch(
-      /The project makes 2 calls in lib\/x\.js; none has only literal arguments/,
+      /The project makes 2 calls in lib\/x\.js; none is replayed: none has only literal arguments/,
     );
     expect(b.compares.join('\n')).toMatch(/2 calls in lib\/x\.js/);
   });
@@ -77,7 +77,7 @@ describe('T5.1 calls without literal arguments are counted, not dropped', () => 
     );
     const b = generateSeance(diagnosis('oddpy', 'pypi'), successor('newpy', 'pypi'), usage3);
     expect(content(b, 'test')).toMatch(
-      /# The project makes 2 calls in app\/m\.py; none has only literal/,
+      /# The project makes 2 calls in app\/m\.py; none is replayed: none has only literal/,
     );
   });
 

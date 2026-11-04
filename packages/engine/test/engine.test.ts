@@ -544,7 +544,54 @@ describe('R4 autopsy', () => {
     expect(report.diagnoses).toHaveLength(4);
     expect(report.diagnoses.some((d) => d.dependency.name === 'top')).toBe(true);
     expect(report.problems.find((p) => p.path === '(scan)')?.message).toMatch(
-      /first 4 of 10.*6 transitive dependencies were not checked/,
+      /first 4 of 10.*6 more transitive dependencies were not checked\.$/,
+    );
+  });
+  it('QA-14 direct dependencies left out are not called transitive', async () => {
+    const names = Array.from({ length: 10 }, (_, i) => `d${i}`);
+    const world = fakeWorld(names.map((n) => fresh(n)));
+    const scan = async (max: number, direct: string[]) => {
+      const report = await engineFor(world.fetch, { maxDependencies: max }).autopsy({
+        subject: 's',
+        files: [
+          {
+            kind: 'package.json',
+            path: 'package.json',
+            content: JSON.stringify({
+              dependencies: Object.fromEntries(direct.map((n) => [n, '1'])),
+            }),
+          },
+        ],
+      });
+      return report.problems.find((p) => p.path === '(scan)')?.message ?? '';
+    };
+    expect(await scan(4, names)).toBe(
+      'Checked the first 4 of 10 dependencies (direct ones first); 6 more dependencies were not checked.',
+    );
+    expect(await scan(9, names)).toMatch(/; 1 more dependency was not checked\.$/);
+    expect(await scan(4, names)).not.toMatch(/transitive/);
+  });
+  it('QA-14 a mix says how many of the skipped ones are direct', async () => {
+    const lock = {
+      lockfileVersion: 3,
+      packages: {
+        '': { dependencies: { a: '1', b: '1', c: '1' } },
+        'node_modules/a': { version: '1.0.0' },
+        'node_modules/b': { version: '1.0.0' },
+        'node_modules/c': { version: '1.0.0' },
+        'node_modules/t1': { version: '1.0.0' },
+        'node_modules/t2': { version: '1.0.0' },
+      },
+    };
+    const world = fakeWorld(['a', 'b', 'c', 't1', 't2'].map((n) => fresh(n)));
+    const report = await engineFor(world.fetch, { maxDependencies: 2 }).autopsy({
+      subject: 's',
+      files: [
+        { kind: 'package-lock.json', path: 'package-lock.json', content: JSON.stringify(lock) },
+      ],
+    });
+    expect(report.problems.find((p) => p.path === '(scan)')?.message).toBe(
+      'Checked the first 2 of 5 dependencies (direct ones first); 3 more dependencies were not checked (1 of them direct).',
     );
   });
   it('R4.5 orders worst first, then direct, then by name', async () => {

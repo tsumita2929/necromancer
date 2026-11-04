@@ -100,10 +100,15 @@ export async function runAutopsy(
   let plan = merged;
   if (merged.length > maxDependencies) {
     plan = merged.slice(0, maxDependencies);
-    const skipped = merged.length - plan.length;
+    const left = merged.slice(maxDependencies);
+    const skipped = left.length;
+    const directLeft = left.filter((d) => d.direct).length;
+    // "Transitive" only when every dependency left out really is (QA-14: 450 direct ones are not).
+    const kind = directLeft === 0 ? 'transitive ' : '';
+    const some = directLeft > 0 && directLeft < skipped ? ` (${directLeft} of them direct)` : '';
     problems.push({
       path: '(scan)',
-      message: `Checked the first ${plan.length} of ${merged.length} dependencies (direct ones first); ${skipped} transitive ${skipped === 1 ? 'dependency was' : 'dependencies were'} not checked.`,
+      message: `Checked the first ${plan.length} of ${merged.length} dependencies (direct ones first); ${skipped} more ${kind}${skipped === 1 ? 'dependency was' : 'dependencies were'} not checked${some}.`,
     });
   }
   const run = newRun();
