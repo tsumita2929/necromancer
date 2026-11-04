@@ -116,11 +116,11 @@ Fresh clone `c1` of `d4e23e2` for the README run; the checks after the edits ran
 | --- | --- | --- |
 | Every README command | `python3 docs/submission/demo/run-readme.py c1 README.md` (Chromium libraries from the host's `env.sh`) | 9 blocks, `FAILED BLOCKS: 0`; block 3 (`npm run dev`) is marked as not run; block 6 `vitest tests=687`; block 7 `394`; block 8 `PASS lines=317 FAIL lines=0` and four `ALL CHECKS PASSED`; block 9 `227` |
 | The browser scripts one by one | `npm run verify:browser`, `verify:live`, `verify:samples`, `verify:seance` | 135, 90, 29 and 63 `PASS` lines |
-| Numbers pass | `node docs/submission/demo/check-drafts.mjs` | RESULT-CHECK |
-| Unit-test counts | `node docs/submission/demo/check-drafts.mjs --run-tests` | RESULT-TESTS |
-| The check can fail | in scratch clones | RESULT-NEG |
-| Local links | `python3 docs/submission/demo/check-links.py <clone> README.md docs/submission/*.md docs/verification/submission-final-b.md` | RESULT-LINKS |
-| Placeholders | `grep -rn PLACEHOLDER README.md docs/submission` | RESULT-PH |
+| Numbers pass | `node docs/submission/demo/check-drafts.mjs` | 238 `ok`, `ALL DRAFT CHECKS PASSED` (clone of `c8b1336`). It compares every Q figure with `recompute.mjs` and with the tagged text, every tag with a row in section 2, the counts of specs (15), hooks (11), steering files (3), tools (11), samples (4) and recipes (6), the shot facts (now also: dvna `csurf` has no upgrade notice), the video timings and the placeholders. |
+| Unit-test counts | `node docs/submission/demo/check-drafts.mjs --run-tests` | `engine: README says 687 tests, vitest ran 687`; `web ... 394`; `crew ... 227`; `ALL DRAFT CHECKS PASSED` |
+| The check can fail | in scratch clones | README test count 687 changed to 686: `FAIL  engine: README says 686 tests, vitest ran 687`; README `35 of 100` changed to `36 of 100`: `FAIL  README.md: the text before the Q01 tag quotes 35, 100  [missing 35]`; `devpost.md` `96 of the 186` changed to `95`: `FAIL  docs/submission/devpost.md: the text before the Q08 tag quotes 96, 186  [missing 96]`; each exits 1 |
+| Local links | `python3 docs/submission/demo/check-links.py <clone> README.md docs/submission/*.md docs/verification/submission-final-b.md` | 147 references (relative links and backticked repository paths) in the README, the five drafts and this record: 0 not found |
+| Placeholders | `grep -rn PLACEHOLDER README.md docs/submission` | Only the video marker: `README.md` (1), `devpost.md` (1), `blog-post.md` (1), `video-script.md` (1) |
 
 ## 4. The video, shot by shot
 
