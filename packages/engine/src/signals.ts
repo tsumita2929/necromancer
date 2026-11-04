@@ -299,6 +299,16 @@ export function repoLinkNote(message: string, repo: RepoRef): Evidence {
   });
 }
 
+/** The README says, in the maintainers' words, that the project itself is deprecated or no longer maintained. */
+export function readmeUnmaintained(sentence: string, url: string): Evidence {
+  return line({
+    code: 'readme-unmaintained',
+    message: `The README of the repository says: "${clip(sentence, 160)}"`,
+    source: 'readme',
+    url,
+  });
+}
+
 export function registryNotFound(source: SourceId, name: string): Evidence {
   return line({
     code: 'registry-not-found',

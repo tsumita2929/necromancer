@@ -22,8 +22,8 @@ import type { Evidence, Verdict } from './types.js';
 
 /**
  * - gone:        the source repository is gone (ghost).
- * - strong:      a fact from a source that ends a package's life: deprecated, archived, inactive or
- *                yanked (dead, `basis` hard).
+ * - strong:      a fact from a source that ends a package's life: deprecated, archived, inactive,
+ *                yanked, or the README saying the project is no longer maintained (dead, `basis` hard).
  * - derived:     the abandoned guess (dead, `basis` heuristic): a very old release and nothing that
  *                shows care. Not a hard signal: never describe it as an end of life that is certain.
  * - notice:      a fact about the version in use: it is deprecated (npm) or yanked (PyPI). An upgrade
@@ -54,6 +54,7 @@ export const EVIDENCE_CLASS: Readonly<Record<string, EvidenceClass>> = {
   'repo-gone': 'gone',
   'npm-deprecated': 'strong',
   'repo-archived': 'strong',
+  'readme-unmaintained': 'strong',
   'pypi-inactive': 'strong',
   'pypi-yanked': 'strong',
   abandoned: 'derived',

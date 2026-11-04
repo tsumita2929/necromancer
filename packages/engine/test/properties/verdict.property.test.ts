@@ -14,6 +14,7 @@ const SOURCES: SourceId[] = [
   'github',
   'module-replacements',
   'curated',
+  'readme',
 ];
 
 const evidence: fc.Arbitrary<Evidence> = fc.record({
@@ -142,7 +143,7 @@ describe('R2.4 zombie if and only if dead-class with an advisory', () => {
     'repo-archived',
     'pypi-inactive',
     'pypi-yanked',
-
+    'readme-unmaintained',
     'repo-gone',
     'abandoned',
   ];
@@ -159,6 +160,7 @@ describe('R2.4 zombie if and only if dead-class with an advisory', () => {
           'repo-archived',
           'pypi-inactive',
           'pypi-yanked',
+          'readme-unmaintained',
           'repo-gone',
         ];
         const corroborated =

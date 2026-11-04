@@ -1,0 +1,8 @@
+{
+ "request": {
+  "method": "GET",
+  "url": "https://raw.githubusercontent.com/jpadilla/pyjwt/HEAD/README.md"
+ },
+ "status": 404,
+ "body": "404: Not Found"
+}

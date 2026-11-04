@@ -8,7 +8,8 @@ import { type ResolvedTuning } from './options.js';
 import * as signals from './signals.js';
 import { getNpmPackage, getProject, getVersionRepo, type ProjectInfo } from './sources/depsdev.js';
 import { getGithubRepo, getLatestCommit, type GithubRepo } from './sources/github.js';
-import { getMovedNotice } from './sources/moved.js';
+import { findMovedNotice } from './sources/moved.js';
+import { findMaintainerStatement, getReadme, type MaintainerStatement } from './sources/readme.js';
 import { getNpmLatest } from './sources/npm.js';
 import { osvKey, queryOsv, type OsvQuery } from './sources/osv.js';
 import { getPypiProject, getPypiReleaseRepo } from './sources/pypi.js';
@@ -67,6 +68,8 @@ interface PackageFacts {
   github?: GithubRepo;
   /** An archived repository whose README says the project moved: where to (QA: moved repositories). */
   movedTo?: string;
+  /** The README says the project itself is deprecated or no longer maintained (round 5). */
+  readmeStatement?: MaintainerStatement;
   /** The default branch's newest commit; null when the repository has none. */
   commit?: { date: string } | null;
   /** Why the commit date was not read, when it was wanted. */
@@ -223,7 +226,9 @@ export class Core {
                     deprecation: f.deprecatedLatest.message,
                     deprecationSource: f.deprecatedLatest.source,
                   }
-                : {}),
+                : f.readmeStatement
+                  ? { deprecation: f.readmeStatement.window, deprecationSource: 'readme' as const }
+                  : {}),
               replacements: index && dep.ecosystem === 'npm' ? index.lookup(dep.name) : [],
               ...(this.tuning.verifySuccessors
                 ? { verifyPackage: (n: string) => this.packageIsAlive(n) }
@@ -588,26 +593,37 @@ export class Core {
       delete f.scorecard;
     }
 
-    // An archived repository may be archived because the project moved. Its README says so at the
-    // top; read it (raw.githubusercontent.com, not the REST API: no GitHub budget) before "archived"
-    // is taken as an end of life.
+    // The README, from raw.githubusercontent.com (not the GitHub REST API: no GitHub budget), for the
+    // packages that look unhealthy enough to be read at all. It is read for two things:
+    //  - an archived repository may be archived because the project moved, which its README says at the top;
+    //  - a README that says the project itself is deprecated or no longer maintained is the maintainers' own
+    //    word, a hard signal (round 5).
     // Not needed when the registry already ends the package's life (deprecated, inactive, yanked).
-    const archived = wanted
+    const readable = wanted
       .map(({ f }) => f)
       .filter(
         (f) =>
-          f.github?.state === 'ok' &&
-          f.github.archived &&
+          f.repo?.host === 'github.com' &&
+          f.github?.state !== 'gone' &&
           !f.deprecatedLatest &&
           !f.inactive &&
           !f.latestYanked,
       );
-    await pool(archived, async (f) => {
-      const m = await guard(() => getMovedNotice(this.http, f.repo as RepoRef));
-      if (m.ok) {
-        if (m.value) f.movedTo = m.value;
-      } else {
-        note(run, 'github', `README of ${repoKey(f.repo as RepoRef)}: ${m.reason}`);
+    await pool(readable, async (f) => {
+      const repo = f.repo as RepoRef;
+      const r = await guard(() => getReadme(this.http, repo));
+      if (!r.ok) {
+        note(run, 'github', `README of ${repoKey(repo)}: ${r.reason}`);
+        return;
+      }
+      if (!r.value) return;
+      if (f.github?.state === 'ok' && f.github.archived) {
+        const moved = findMovedNotice(r.value);
+        if (moved) f.movedTo = moved;
+      }
+      if (!f.movedTo) {
+        const statement = findMaintainerStatement(r.value, [f.name, repo.name]);
+        if (statement) f.readmeStatement = statement;
       }
     });
 
@@ -719,6 +735,9 @@ export class Core {
       }
     } else if (f.github?.state === 'gone' && f.repo) {
       evidence.push(signals.repoGone(repoUrl(f.repo), f.github.reason));
+    }
+    if (f.readmeStatement && f.repo) {
+      evidence.push(signals.readmeUnmaintained(f.readmeStatement.sentence, repoUrl(f.repo)));
     }
     if (f.repoLookedUp && !f.repo && f.gotData)
       evidence.push(signals.noRepository(f.registrySource));
