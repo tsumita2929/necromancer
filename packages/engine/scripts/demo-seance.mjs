@@ -1,13 +1,14 @@
 // End to end on a small project: scan how it uses left-pad, generate the séance with the project's
 // own calls, write it into the scratch directory and run it for real.
 //
-//   npm run build && node scripts/demo-seance.mjs
+//   npm run build && NECROMANCER_SEANCE_SCRATCH=/path/to/scratch node scripts/demo-seance.mjs
 import { spawnSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { createEngine } from '../dist/index.js';
+import { seanceScratch } from './lib/paths.mjs';
 
-const scratch = '/home/ec2-user/.kiro/crew/kiroween2026/scratch/seance/js';
+const scratch = join(seanceScratch(), 'js');
 const source = [
   "import leftPad from 'left-pad';",
   "export const id = (n) => leftPad(n, 6, '0');",

@@ -2,7 +2,7 @@
   "recipe": "querystring",
   "language": "javascript",
   "command": "npx vitest run seance/querystring",
-  "ranAt": "2026-11-04T06:08:39.745Z",
+  "ranAt": "2026-11-04T09:48:21.562Z",
   "versions": {
     "querystring": "0.2.1",
     "vitest": "5.1.0",
@@ -10,12 +10,12 @@
   },
   "real": {
     "exit": 0,
-    "seconds": 1.234,
+    "seconds": 1.298,
     "summary": [
-      "✓ seance/querystring/seance.test.mjs (8 tests) 242ms",
+      "✓ seance/querystring/seance.test.mjs (8 tests) 187ms",
       "Test Files  1 passed (1)",
       "Tests  8 passed (8)",
-      "Duration  949ms (import 70%, tests 29%, transform 1%)"
+      "Duration  975ms (import 73%, tests 22%, transform 4%)"
     ]
   },
   "mutants": [
@@ -26,11 +26,11 @@
       "failed": true,
       "counterexample": [
         "Counterexample: [\"?\"]",
-        "Shrunk 1 time(s)",
-        "Caused by: AssertionError: expected { ok: true, value: [] } to deeply equal { Object (ok, value) }",
-        "Counterexample: [\"toString\"]",
         "Shrunk 0 time(s)",
-        "Caused by: AssertionError: expected { ok: true, value: [ [ …(2) ] ] } to deeply equal { ok: true, value: [ [ …(2) ] ] }"
+        "Caused by: AssertionError: expected { ok: true, value: [] } to deeply equal { Object (ok, value) }",
+        "Counterexample: [\"?\"]",
+        "Shrunk 1 time(s)",
+        "Caused by: AssertionError: expected { ok: true, value: [] } to deeply equal { Object (ok, value) }"
       ],
       "summary": [
         "❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16",
@@ -45,15 +45,15 @@
       "exit": 1,
       "failed": true,
       "counterexample": [
-        "Counterexample: [\"%25&%25&=\"]",
+        "Counterexample: [\"a+b&a+b&=\"]",
         "Shrunk 5 time(s)",
-        "Caused by: AssertionError: expected { ok: true, value: [ …(2) ] } to deeply equal { ok: true, …(1) }",
+        "Caused by: AssertionError: expected { ok: true, value: [ …(2) ] } to deeply equal { ok: true, value: [ …(2) ] }",
         "Counterexample: [{\"\":[\"\",\"\"]}]",
         "Shrunk 5 time(s)",
         "Caused by: AssertionError: expected [ [ '', [ '' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]"
       ],
       "summary": [
-        "Error: Property failed after 3 tests",
+        "Error: Property failed after 4 tests",
         "❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16",
         "❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8",
         "Caused by: AssertionError: expected [ [ '', [ '' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]"

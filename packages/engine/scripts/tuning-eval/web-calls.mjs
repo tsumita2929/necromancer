@@ -1,12 +1,13 @@
 // GitHub calls per scan for the three recorded web samples, before and after the tuning.
 // Usage: node web-calls.mjs > web-calls.json
-// before = packages/engine at commit db17e14 (built in /tmp/engine-before-db17e14)
-// after  = the tuned engine in the repository
+// before = an older engine build: NECROMANCER_BEFORE_ENGINE=<path>/dist/index.js (here: packages/engine at db17e14)
+// after  = the engine under test: NECROMANCER_ENGINE_DIST=<repo>/packages/engine/dist/index.js
 // Two budgets: 20 (what the web app allows per scan) and 1000 (what the engine would ask for).
 // GitHub answers: the census warm cache when it has the repository, else the github.com Atom feed.
 // No request goes to api.github.com.
-import { createEngine as createAfter } from '/home/ec2-user/.kiro/crew/kiroween2026/necromancer/packages/engine/dist/index.js';
-import { createEngine as createBefore } from '/tmp/engine-before-db17e14/packages/engine/dist/index.js';
+import { engineDist } from '../lib/paths.mjs';
+const { createEngine: createAfter } = await import(engineDist());
+const { createEngine: createBefore } = await import(engineDist('NECROMANCER_BEFORE_ENGINE'));
 import { readFileSync } from 'node:fs';
 import { cachedFetch, sleep, ROOT } from './lib.mjs';
 import { makeTunedFetch } from './tuned-lib.mjs';

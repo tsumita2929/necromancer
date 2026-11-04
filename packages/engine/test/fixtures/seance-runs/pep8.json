@@ -2,7 +2,7 @@
   "recipe": "pep8",
   "language": "python",
   "command": "pytest seance/pep8",
-  "ranAt": "2026-11-04T06:09:44.016Z",
+  "ranAt": "2026-11-04T09:49:25.408Z",
   "versions": {
     "pep8": "1.7.1",
     "pycodestyle": "2.14.0",
@@ -11,9 +11,9 @@
   },
   "real": {
     "exit": 0,
-    "seconds": 2.513,
+    "seconds": 2.451,
     "summary": [
-      "13 passed in 2.28s"
+      "13 passed in 2.23s"
     ]
   },
   "mutants": [
@@ -54,7 +54,7 @@
         "FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_reports_what_pep8_reports - AssertionError: assert [] == [(1, 8, 'E203')]",
         "FAILED seance/pep8/test_seance_pep8.py::test_check_files_gives_the_same_counters - AssertionError: assert (0, {'directo...al lines': 1}) == (1, {'E225': ...nes': 1, ...})",
         "FAILED seance/pep8/test_seance_pep8.py::test_the_replacement_keeps_the_pep8_default_ignore_list - AssertionError: assert ('E121', 'E12..., 'E704', ...) == ('E121', 'E12...'E24', 'E704')",
-        "3 failed, 10 passed in 1.01s"
+        "3 failed, 10 passed in 1.00s"
       ]
     }
   ],

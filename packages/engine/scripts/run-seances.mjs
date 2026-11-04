@@ -3,7 +3,7 @@
 //
 //   npm run build && node scripts/run-seances.mjs [recipe-id ...] [--scratch DIR]
 //
-// The scratch directory (default /home/ec2-user/.kiro/crew/kiroween2026/scratch/seance) holds
+// The scratch directory (--scratch DIR or the environment variable NECROMANCER_SEANCE_SCRATCH) holds
 //   js/   a Node project with vitest, fast-check and the old and new packages installed
 //   .venv a Python virtual environment with pytest, hypothesis and the old and new packages
 // The generated files are written there, the test runner is started, and the result is saved in
@@ -14,14 +14,12 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { RECIPES } from '../dist/seance/recipes/index.js';
+import { seanceScratch } from './lib/paths.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const scratchFlag = args.indexOf('--scratch');
-const scratch =
-  scratchFlag >= 0
-    ? args[scratchFlag + 1]
-    : '/home/ec2-user/.kiro/crew/kiroween2026/scratch/seance';
+const scratch = seanceScratch(scratchFlag >= 0 ? args[scratchFlag + 1] : undefined);
 const wanted = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--scratch');
 const out = join(here, '..', 'test', 'fixtures', 'seance-runs');
 mkdirSync(out, { recursive: true });

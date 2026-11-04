@@ -1,9 +1,11 @@
 // Runs the TUNED engine over the same 100 subjects, with the same fixed clock and the same warm cache.
-// Usage: node tuned-run.mjs [--out results-tuned] [--force]
+// Usage: NECROMANCER_ENGINE_DIST=<repo>/packages/engine/dist/index.js node tuned-run.mjs [--out results-tuned] [--force]
+// Runs from a census scratch folder (it imports that folder's lib.mjs); the engine build comes from the variable.
 // Differences from run.mjs: the engine is packages/engine/dist of the repository; GitHub answers come
 // from the warm cache (repo) and the Atom feed (commits) through tuned-lib.mjs; no GitHub API request is sent.
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
-import { createEngine } from '/home/ec2-user/.kiro/crew/kiroween2026/necromancer/packages/engine/dist/index.js';
+import { engineDist } from '../lib/paths.mjs';
+const { createEngine } = await import(engineDist());
 import { stats, sleep, ROOT, cachedFetch } from './lib.mjs';
 import { makeTunedFetch } from './tuned-lib.mjs';
 
