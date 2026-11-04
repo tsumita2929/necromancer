@@ -42,6 +42,80 @@ jobs:
       # Loads the built dist/ the way the Crew app does.
       - run: node scripts/smoke-node.mjs
 
+  seances:
+    name: engine séances (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      # Both Python versions are always run, so one failing version does not hide the other.
+      fail-fast: false
+      matrix:
+        python: ['3.9', '3.12']
+    defaults:
+      run:
+        working-directory: packages/engine
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: packages/engine/package-lock.json
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - run: npm ci
+      - run: npm run build
+      # Every curated séance is run against the real old and new packages (pinned to the versions of the
+      # committed records), and every deliberately wrong replacement must fail. run-seances.mjs builds its own
+      # scratch (npm and a Python virtual environment) and, without --record, writes nothing in the repository.
+      - name: Run all six séance recipes (a failure, a skip, a missing Python or a changed file fails the job)
+        shell: bash
+        timeout-minutes: 15
+        env:
+          EXPECT_PYTHON: ${{ matrix.python }}
+          NECROMANCER_PYTHON: python${{ matrix.python }}
+          NECROMANCER_SEANCE_SCRATCH: ${{ runner.temp }}/necromancer-seance
+        run: |
+          recipes="is-odd left-pad mkdirp pep8 querystring toml"
+          log="$RUNNER_TEMP/run-seances.log"
+          status=0
+          fail() { echo "::error::$1"; status=1; }
+
+          # 1. The Python version asked for must exist and be that version.
+          if ! command -v "$NECROMANCER_PYTHON" > /dev/null; then
+            fail "$NECROMANCER_PYTHON is not installed on this runner."
+            exit 1
+          fi
+          found="$("$NECROMANCER_PYTHON" -c 'import sys; print("%d.%d" % sys.version_info[:2])')"
+          [ "$found" = "$EXPECT_PYTHON" ] || fail "$NECROMANCER_PYTHON is Python $found, not $EXPECT_PYTHON."
+
+          # 2. The built engine must hold exactly the recipes this step runs: a new or a removed recipe is
+          #    a change to this list, not a silent skip.
+          have="$(node -e "import('./dist/seance/recipes/index.js').then((m) => console.log(m.RECIPES.map((r) => r.id).sort().join(' ')))")"
+          [ "$have" = "$recipes" ] || fail "the engine has the recipes [$have] but this step runs [$recipes]."
+
+          # 3. Run them. Without --record nothing is written in the repository.
+          node scripts/run-seances.mjs $recipes 2>&1 | tee "$log" || fail "run-seances.mjs exited with an error."
+
+          # 4. Every recipe must have printed an OK line; a PROBLEM or SKIP line is a failure.
+          if grep -E '^(PROBLEM|SKIP)' "$log"; then
+            fail "a séance failed or was skipped (the line is above)."
+          fi
+          for recipe in $recipes; do
+            grep -Eq "^OK +${recipe}:" "$log" || fail "no OK line for the ${recipe} séance."
+          done
+
+          # 5. The run must not have changed or added any file in the repository.
+          if [ -n "$(git status --porcelain)" ]; then
+            git status --short
+            git diff --stat
+            fail "the run changed or added files in the repository."
+          fi
+          exit "$status"
+
   web:
     name: web (typecheck, test, build, browser checks)
     runs-on: ubuntu-latest
@@ -71,35 +145,47 @@ jobs:
       # The séance the page offers is run for real: unpacked, installed and run with the old package and
       # the replacement, and each deliberately wrong replacement must fail. The script builds its own
       # scratch (npm packages, and a Python virtual environment) from the public registries.
-      # Python 3.9 is the version the Python séances were run and checked on. With 3.12 (and the newer
-      # Hypothesis it allows) the toml séance fails on `0 = [-0.0]`: toml reads 0.0 and tomli reads -0.0.
-      # Move to a newer Python when the toml recipe declares or avoids that difference.
+      # Both Python versions are installed; the check runs once on each.
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
-          python-version: '3.9'
-      - name: Run the web séance check (a skipped language fails the job)
+          python-version: |
+            3.9
+            3.12
+      - name: Run the web séance check on Python 3.9 and 3.12 (a skipped language fails the job)
         shell: bash
-        timeout-minutes: 15
+        timeout-minutes: 20
         env:
-          NECRO_SCRATCH: ${{ runner.temp }}/necromancer-seance
-          NECRO_PYTHON: python3
+          NECRO_ROOT: ${{ runner.temp }}/necromancer-seance
         run: |
-          log="$RUNNER_TEMP/verify-seance.log"
           status=0
-          npm run verify:seance 2>&1 | tee "$log" || status=$?
-          # A language that could not be set up prints a line that starts with SKIP, and the script still
-          # passes. A silent skip would make this check worthless, so it fails here.
-          if grep -E '^SKIP ' "$log"; then
-            echo "::error::verify:seance skipped a language (the SKIP line is above)."
-            status=1
-          fi
-          # Both languages must really have run: a downloaded JavaScript séance (left-pad) and a downloaded
-          # Python séance (toml) must each have passed against the real packages.
-          for recipe in left-pad toml; do
-            if ! grep -Eq "^PASS +.*${recipe}.*the downloaded test passes with the old package" "$log"; then
-              echo "::error::verify:seance printed no passing run for the ${recipe} séance."
+          for py in 3.9 3.12; do
+            echo "::group::verify:seance on Python $py"
+            log="$RUNNER_TEMP/verify-seance-$py.log"
+            if ! command -v "python$py" > /dev/null; then
+              echo "::error::python$py is not installed on this runner."
+              status=1
+              echo "::endgroup::"
+              continue
+            fi
+            NECRO_PYTHON="python$py" NECRO_SCRATCH="$NECRO_ROOT-$py" npm run verify:seance 2>&1 | tee "$log" || {
+              echo "::error::verify:seance failed on Python $py."
+              status=1
+            }
+            # A language that could not be set up prints a line that starts with SKIP, and the script still
+            # passes. A silent skip would make this check worthless, so it fails here.
+            if grep -E '^SKIP ' "$log"; then
+              echo "::error::verify:seance skipped a language on Python $py (the SKIP line is above)."
               status=1
             fi
+            # Both languages must really have run: a downloaded JavaScript séance (left-pad) and a downloaded
+            # Python séance (toml) must each have passed against the real packages.
+            for recipe in left-pad toml; do
+              if ! grep -Eq "^PASS +.*${recipe}.*the downloaded test passes with the old package" "$log"; then
+                echo "::error::verify:seance printed no passing run for the ${recipe} séance on Python $py."
+                status=1
+              fi
+            done
+            echo "::endgroup::"
           done
           exit "$status"
 
