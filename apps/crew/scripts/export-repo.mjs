@@ -164,6 +164,8 @@ pkg.name = 'necromancer-crew-app';
 pkg.description = 'Necromancer: a Kiro Crew app (Graveyard page, Night Watch job, Necromancer agent, resurrection skill, MCP server).';
 pkg.devDependencies['@necromancer/engine'] = 'file:vendor/engine';
 delete pkg.scripts.build;
+delete pkg.scripts.export; // export tooling stays in the main repository
+delete pkg.scripts['verify:export'];
 pkg.repository = { type: 'git', url: `${REPO_URL}.git` };
 pkg.homepage = REPO_URL;
 writeJson(path.join(A, 'package.json'), pkg);

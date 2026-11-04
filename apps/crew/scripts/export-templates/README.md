@@ -55,8 +55,8 @@ redirects, query encoding) and `is-odd`. See the verification records in the mai
 
 ## Install (for a judge)
 
-You need a running Kiro Crew gateway, **Node.js 20.11 or newer** (to run the bundled server; running the development tests needs 22.12+), and
-Python 3. Git is needed for the resurrection itself.
+You need a running Kiro Crew gateway, **Node.js 20.11 or newer** (checked on 20.20 and 22.12), and Python 3. Git is needed for the
+resurrection itself.
 
 ```bash
 git clone {{REPO_URL}}.git necromancer-crew-app
