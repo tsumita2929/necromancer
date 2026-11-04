@@ -193,3 +193,71 @@ describe('the readme source has a name', () => {
     for (const id of ['npm', 'pypi', 'deps.dev', 'osv', 'scorecard', 'github', 'module-replacements', 'curated', 'readme'] as const) expect(SOURCE_NAMES[id]).toBeTruthy();
   });
 });
+
+describe('an alive dependency whose version in use is deprecated or yanked shows an upgrade notice', () => {
+  const dep = (name: string, evidence: Diagnosis['evidence'], upgradeTo?: Diagnosis['upgradeTo'], advisories: string[] = []): Diagnosis => ({
+    ...d(pkg(name, '8.57.1', '8.57.1'), 'alive', { evidence, advisories }),
+    ...(upgradeTo ? { upgradeTo } : {}),
+  });
+  const deprecated = [ev('version-deprecated', 'Version 8.57.1 is deprecated on npm: this version is no longer supported.', 'npm')];
+  const eslint8 = dep('eslint', deprecated, { version: '8.57.2', sameMajor: true });
+  const glob = dep('glob', deprecated, { version: '10.14.0', sameMajor: false });
+  const codemirror = dep('codemirror', deprecated, { version: '6.0.2', sameMajor: true, older: true });
+  const stuck = dep('stuck', deprecated);
+  const yanked = {
+    ...d(pkg('yanked-py', '==2.0', '2.0', { ecosystem: 'pypi' }), 'alive', { evidence: [ev('version-yanked', 'Version 2.0 is yanked on PyPI.', 'pypi')] }),
+    upgradeTo: { version: '2.1', sameMajor: true },
+  } as Diagnosis;
+  const both = dep('both-things', deprecated, { version: '8.57.2', sameMajor: true }, ['GHSA-xxxx-yyyy-zzzz']);
+  const upgradeReport = makeReport({ subject: 'github:x/upgrade', manifests: [], diagnoses: [eslint8, glob, codemirror, stuck, yanked, both, healthy] });
+
+  it('is alive, in the alive group, never dying, and not unchecked', () => {
+    expect(eslint8.verdict).toBe('alive');
+    expect(groupOf(eslint8)).toBe('alive');
+    render(<Harness report={upgradeReport} />);
+    expect(screen.getByTestId('group-alive')).toContainElement(document.querySelector('[data-dep-key="npm:eslint"]'));
+    expect(screen.queryByTestId('group-dying')).not.toBeInTheDocument();
+    expect(screen.getByTestId('count-alive')).toHaveTextContent('7');
+  });
+
+  it('puts "Upgrade to <version>" in the badge, and says "another major" or "older" when the step is not the plain one', () => {
+    render(<Harness report={upgradeReport} />);
+    const text = (name: string) => document.querySelector<HTMLElement>(`[data-dep-key="${name}"]`)!;
+    expect(text('npm:eslint')).toHaveAccessibleName(/Alive.*Upgrade to 8\.57\.2(?! \()/);
+    expect(text('npm:glob')).toHaveAccessibleName(/Upgrade to 10\.14\.0 \(another major\)/);
+    expect(text('npm:codemirror')).toHaveAccessibleName(/Upgrade to 6\.0\.2 \(older\)/);
+    expect(text('npm:stuck').querySelector('.tomb__upgrade')?.textContent).toBe('Upgrade');
+    expect(text('pypi:yanked-py')).toHaveAccessibleName(/Upgrade to 2\.1/);
+    expect(text('npm:eslint')).not.toHaveAccessibleName(/Dying/);
+    expect(text('npm:healthy')).not.toHaveTextContent(/Upgrade/);
+    expect(screen.getByTestId('sub-alive')).toHaveTextContent('1 with advisories · 6 to upgrade');
+  });
+
+  it.each([
+    ['eslint', /the version in use is deprecated\. Upgrade to 8\.57\.2, in the same major version\./],
+    ['glob', /Upgrade to 10\.14\.0, another major version, so read its changelog first\./],
+    ['codemirror', /no newer stable release is free of that; the newest that is, 6\.0\.2, is older than the one in use\./],
+    ['stuck', /no newer stable release is free of that yet\./],
+  ])('the drawer for %s says the step plainly and offers no Resurrect', async (name, pattern) => {
+    const user = userEvent.setup();
+    render(<Harness report={upgradeReport} />);
+    await user.click(document.querySelector<HTMLElement>(`[data-dep-key="npm:${name}"]`)!);
+    const dialog = await screen.findByRole('dialog', { name });
+    expect(dialog.textContent).toMatch(/Still maintained, but the version in use is deprecated/);
+    expect(dialog.textContent).toMatch(pattern);
+    expect(within(dialog).getByTestId('upgrade-note')).toHaveTextContent('This one is alive');
+    expect(within(dialog).queryByRole('button', { name: 'Resurrect' })).not.toBeInTheDocument();
+    expect(dialog.textContent).not.toMatch(/Maintained: no end-of-life signal|dying/i);
+  });
+
+  it('says "yanked" for a PyPI version, and both things when an advisory affects it as well', async () => {
+    const user = userEvent.setup();
+    render(<Harness report={upgradeReport} />);
+    await user.click(document.querySelector<HTMLElement>('[data-dep-key="pypi:yanked-py"]')!);
+    expect((await screen.findByRole('dialog', { name: 'yanked-py' })).textContent).toMatch(/the version in use is yanked\. Upgrade to 2\.1/);
+    await user.keyboard('{Escape}');
+    await user.click(document.querySelector<HTMLElement>('[data-dep-key="npm:both-things"]')!);
+    const dialog = await screen.findByRole('dialog', { name: 'both-things' });
+    expect(dialog.textContent).toMatch(/Upgrade to 8\.57\.2, in the same major version\. Also, 1 known advisory affects the version in use\./);
+  });
+});

@@ -4,7 +4,7 @@ import { Button, ExtLink, formatDate } from '../design/controls';
 import { CloseIcon } from '../design/icons';
 import { meaningOf, VerdictBadge } from '../design/Verdict';
 import { canResurrect as canResurrectDiagnosis, waysOut } from '../data/kit';
-import { basisOf, displayVersion, isUnchecked } from '../state/model';
+import { basisOf, displayVersion, isUnchecked, upgradeInfo, upgradeSentence } from '../state/model';
 import type { SourceContext } from '../data/autopsy';
 import { SpecViewer, kindLabel } from './SpecViewer';
 
@@ -66,6 +66,7 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
   const { dependency, verdict, evidence, advisories, latest } = diagnosis;
   const alive = verdict === 'alive';
   const unchecked = isUnchecked(diagnosis);
+  const upgrade = upgradeInfo(diagnosis);
   const tone = unchecked ? 'unchecked' : verdict;
   const aliases = diagnosis.advisoryAliases ?? {};
   const canResurrect = canResurrectDiagnosis(diagnosis);
@@ -135,6 +136,10 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                 </Button>
               ) : unchecked ? (
                 <p className="panel__nothing">Nothing to resurrect. It was not examined, so there is nothing to move off.</p>
+              ) : upgrade ? (
+                <p className="panel__nothing" data-testid="upgrade-note">
+                  Nothing to resurrect. This one is alive, and {upgradeSentence(upgrade)}.
+                </p>
               ) : alive ? (
                 <p className="panel__nothing">Nothing to resurrect. This one is alive.</p>
               ) : (

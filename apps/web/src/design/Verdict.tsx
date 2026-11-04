@@ -1,5 +1,7 @@
 import type { Diagnosis, Verdict } from '@contract';
+import type { UpgradeTarget } from '@contract';
 import { UncheckedIcon, VerdictIcon } from './icons';
+import { upgradeInfo, upgradeSentence } from '../state/model';
 
 export interface VerdictMeta {
   /** Singular word, shown next to the icon. */
@@ -41,7 +43,7 @@ export const VERDICT_META: Record<Verdict, VerdictMeta> = {
   alive: {
     label: 'Alive',
     plural: 'Alive',
-    meaning: 'Maintained: no end-of-life signal. It can still carry known advisories, which its tombstone shows.',
+    meaning: 'Maintained: no end-of-life signal. It can still carry known advisories or a deprecated version in use; its tombstone shows both.',
     tagline: 'Maintained and quiet',
   },
 };
@@ -60,17 +62,22 @@ export function groupMeta(key: Verdict | 'unchecked'): VerdictMeta {
 
 /** One sentence for one diagnosis: the verdict's meaning, said honestly about its basis and its advisories (QA-02, QA-05). */
 export function meaningOf(
-  diagnosis: Pick<Diagnosis, 'verdict' | 'advisories'> & Partial<Pick<Diagnosis, 'evidence'>>,
+  diagnosis: Pick<Diagnosis, 'verdict' | 'advisories'> & Partial<Pick<Diagnosis, 'evidence'>> & { upgradeTo?: UpgradeTarget | undefined },
   basis: 'hard' | 'heuristic' | undefined,
 ): string {
   const { verdict, advisories } = diagnosis;
   if (verdict === 'alive' && diagnosis.evidence?.some((e) => e.code === 'unchecked')) return UNCHECKED_META.meaning;
   const n = advisories.length;
   switch (verdict) {
-    case 'alive':
-      return n > 0
-        ? `Still maintained, but ${n} known ${n === 1 ? 'advisory affects' : 'advisories affect'} the version in use. Check the advisories below.`
-        : 'Maintained: no end-of-life signal.';
+    case 'alive': {
+      const upgrade = upgradeInfo({ verdict, evidence: diagnosis.evidence ?? [], ...(diagnosis.upgradeTo ? { upgradeTo: diagnosis.upgradeTo } : {}) });
+      const advised = `${n} known ${n === 1 ? 'advisory affects' : 'advisories affect'} the version in use`;
+      if (upgrade) {
+        const step = upgradeSentence(upgrade);
+        return n > 0 ? `Still maintained, but ${step}. Also, ${advised}.` : `Still maintained, but ${step}.`;
+      }
+      return n > 0 ? `Still maintained, but ${advised}. Check the advisories below.` : 'Maintained: no end-of-life signal.';
+    }
     case 'dying':
       return basis === 'hard'
         ? 'A warning from the registry or the maintainer: the version in use or the package is flagged.'

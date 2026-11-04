@@ -23,6 +23,7 @@ import {
   findByKey,
   isFiltering,
   isUnchecked,
+  needsUpgrade,
   totalOf,
   type Controls,
   type GroupKey,
@@ -248,6 +249,7 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
     return out;
   }, [report.diagnoses]);
   // The engine counts a package it could not examine as alive. The page does not: it has its own count.
+  const upgrades = useMemo(() => report.diagnoses.filter(needsUpgrade).length, [report.diagnoses]);
   const counts = useMemo<Record<GroupKey, number>>(
     () => ({ ...report.summary, alive: Math.max(0, report.summary.alive - extras.unchecked), unchecked: extras.unchecked }),
     [report.summary, extras.unchecked],
@@ -360,9 +362,11 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
                     {counts[verdict]}
                   </span>
                   <span className="summary__label">{groupMeta(verdict).plural}</span>
-                  {verdict !== 'unchecked' && extras[verdict] > 0 ? (
+                  {verdict !== 'unchecked' && (extras[verdict] > 0 || (verdict === 'alive' && upgrades > 0)) ? (
                     <span className="summary__sub" data-testid={`sub-${verdict}`}>
-                      {extras[verdict]} {verdict === 'alive' ? 'with advisories' : 'heuristic'}
+                      {verdict === 'alive'
+                        ? [extras.alive > 0 ? `${extras.alive} with advisories` : '', upgrades > 0 ? `${upgrades} to upgrade` : ''].filter(Boolean).join(' · ')
+                        : `${extras[verdict]} heuristic`}
                     </span>
                   ) : null}
                   {verdict === 'unchecked' ? (

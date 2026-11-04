@@ -2,7 +2,7 @@ import { memo } from 'react';
 import type { Diagnosis } from '@contract';
 import { plural } from '../design/controls';
 import { VerdictBadge } from '../design/Verdict';
-import { basisOf, depKey, displayVersion, isUnchecked } from '../state/model';
+import { basisOf, depKey, displayVersion, isUnchecked, upgradeBadge, upgradeInfo } from '../state/model';
 
 interface TombstoneProps {
   diagnosis: Diagnosis;
@@ -21,6 +21,7 @@ export const Tombstone = memo(function Tombstone({ diagnosis, onOpen }: Tombston
   const epitaph = evidence[0]?.message;
   // The engine marks a dependency it could not examine with an "unchecked" line; do not let "Alive" stand alone.
   const unchecked = isUnchecked(diagnosis);
+  const upgrade = upgradeInfo(diagnosis);
   const moved = evidence.some((e) => e.code === 'repo-moved');
   const behind = latest && latest.version !== dependency.resolved ? latest.version : '';
   return (
@@ -34,6 +35,7 @@ export const Tombstone = memo(function Tombstone({ diagnosis, onOpen }: Tombston
         {version ? <span className="tomb__version mono">{version}</span> : null}
         {moved ? <span className="tomb__moved">Repository moved</span> : null}
         {epitaph && (verdict !== 'alive' || unchecked) ? <span className="tomb__epitaph">{epitaph}</span> : null}
+        {upgrade ? <span className="tomb__upgrade">{upgradeBadge(upgrade)}</span> : null}
         {verdict === 'alive' && !unchecked && advisories.length > 0 ? (
           <span className="tomb__advisory tomb__advisory--alive">{plural(advisories.length, 'advisory', 'advisories')}</span>
         ) : null}

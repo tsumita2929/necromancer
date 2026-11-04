@@ -4,7 +4,7 @@
 //   NECRO_SCRATCH   where to work (default: <tmp>/necromancer-web-seance). Reused between runs.
 //   NECRO_PYTHON    the Python 3 to build the virtual environment with (default: python3).
 //
-// JavaScript: a folder with vitest, fast-check, left-pad and is-odd installed with npm.
+// JavaScript: a folder with vitest, fast-check, left-pad, is-odd and mkdirp 3.0.1 (the version josdejong/mathjs uses) installed with npm.
 // Python: a virtual environment with pytest, hypothesis, toml, tomli, pep8 and pycodestyle. When Python
 // or the network is not available the Python séances are skipped with a clear line; the rest still run.
 import { spawnSync } from 'node:child_process';
@@ -21,14 +21,14 @@ function sh(cmd, args, cwd) {
   return { status: r.status, text: `${r.stdout ?? ''}${r.stderr ?? ''}` };
 }
 
-const JS_PACKAGES = ['vitest@^5.1.0', 'fast-check@^4.10.2', 'left-pad@^1.3.0', 'is-odd@^3.0.1'];
+const JS_PACKAGES = ['vitest@^5.1.0', 'fast-check@^4.10.2', 'left-pad@^1.3.0', 'is-odd@^3.0.1', 'mkdirp@3.0.1'];
 const PY_PACKAGES = ['pytest', 'hypothesis', 'toml', 'tomli', 'pep8', 'pycodestyle'];
 
 /** The JavaScript project folder, installed once. Returns { dir } or { error }. */
 export function ensureJavaScript() {
   const dir = join(scratchDir(), 'js');
   const marker = join(dir, '.necromancer-ready');
-  if (existsSync(marker) && existsSync(join(dir, 'node_modules', '.bin', 'vitest'))) return { dir };
+  if (existsSync(marker) && existsSync(join(dir, 'node_modules', '.bin', 'vitest')) && existsSync(join(dir, 'node_modules', 'mkdirp'))) return { dir };
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, 'package.json'), JSON.stringify({ name: 'necromancer-seance-scratch', version: '1.0.0', private: true, type: 'commonjs' }, null, 2));
   const install = sh('npm', ['install', '--no-audit', '--no-fund', '--loglevel=error', ...JS_PACKAGES], dir);

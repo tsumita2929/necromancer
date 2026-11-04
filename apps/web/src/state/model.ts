@@ -1,4 +1,4 @@
-import type { DependencyRef, Diagnosis, Verdict } from '@contract';
+import type { DependencyRef, Diagnosis, UpgradeTarget, Verdict } from '@contract';
 
 /** Display order of the groups: most urgent first. */
 export const GROUP_ORDER: readonly Verdict[] = ['zombie', 'ghost', 'dead', 'dying', 'alive'];
@@ -12,6 +12,44 @@ export const GROUP_KEYS: readonly GroupKey[] = [...GROUP_ORDER, 'unchecked'];
 
 export function isUnchecked(diagnosis: Pick<Diagnosis, 'verdict' | 'evidence'>): boolean {
   return diagnosis.verdict === 'alive' && diagnosis.evidence.some((e) => e.code === 'unchecked');
+}
+
+/**
+ * A maintained package whose version in use is deprecated: alive, with a notice to upgrade. The page shows it like an
+ * alive dependency with advisories (a badge and a sentence) and never calls it dying.
+ */
+export function needsUpgrade(diagnosis: Pick<Diagnosis, 'verdict' | 'evidence'> & { upgradeTo?: UpgradeTarget | undefined }): boolean {
+  return upgradeInfo(diagnosis) !== undefined;
+}
+
+export interface UpgradeInfo {
+  /** Why: the version in use is deprecated on npm or yanked on PyPI. */
+  reason: 'deprecated' | 'yanked';
+  /** The release to move to, when the engine found one. */
+  target?: UpgradeTarget;
+}
+
+export function upgradeInfo(diagnosis: Pick<Diagnosis, 'verdict' | 'evidence'> & { upgradeTo?: UpgradeTarget | undefined }): UpgradeInfo | undefined {
+  if (diagnosis.verdict !== 'alive' || isUnchecked(diagnosis)) return undefined;
+  const yanked = diagnosis.evidence.some((e) => e.code === 'version-yanked');
+  if (!yanked && !diagnosis.evidence.some((e) => e.code === 'version-deprecated') && !diagnosis.upgradeTo) return undefined;
+  return { reason: yanked ? 'yanked' : 'deprecated', ...(diagnosis.upgradeTo ? { target: diagnosis.upgradeTo } : {}) };
+}
+
+/** The short form for a badge: "Upgrade to 9.20.0", with "(another major)" or "(older)" when the step is not the plain one. */
+export function upgradeBadge(info: UpgradeInfo): string {
+  const t = info.target;
+  if (!t) return 'Upgrade';
+  return `Upgrade to ${t.version}${t.older ? ' (older)' : t.sameMajor ? '' : ' (another major)'}`;
+}
+
+/** The sentence for the drawer, said plainly about the step. */
+export function upgradeSentence(info: UpgradeInfo): string {
+  const t = info.target;
+  const what = info.reason === 'yanked' ? 'yanked' : 'deprecated';
+  if (!t) return `the version in use is ${what}, and no newer stable release is free of that yet`;
+  if (t.older) return `the version in use is ${what}, and no newer stable release is free of that; the newest that is, ${t.version}, is older than the one in use`;
+  return `the version in use is ${what}. Upgrade to ${t.version}${t.sameMajor ? ', in the same major version' : ', another major version, so read its changelog first'}`;
 }
 
 export function groupOf(diagnosis: Pick<Diagnosis, 'verdict' | 'evidence'>): GroupKey {

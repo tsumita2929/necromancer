@@ -9,6 +9,7 @@
 // 3. Nearby inputs: the project's own calls from a folder, hostile file names, a very large folder,
 //    a dependency without a curated recipe (the dvna sample, source read from raw.githubusercontent.com),
 //    a Python dependency (toml, from the engine's poetry fixture).
+// 4. A curated séance from a recorded sample: mkdirp 3.0.1 in josdejong/mathjs, run against mkdirp 3.0.1 with its mutants.
 //
 // It sets up its own scratch directory (scripts/lib/scratch.mjs): npm installs vitest, fast-check, left-pad and
 // is-odd; Python builds a virtual environment with pytest, hypothesis, toml, tomli, pep8 and pycodestyle. Set
@@ -367,6 +368,35 @@ console.log('\n== 6. a raise successor: is-odd (the bundle the page offers; the 
   check('is-odd raise: the curated is-odd recipe is chosen', bundle.recipe === 'is-odd', bundle.title);
   const entries = bundle.files.map((f) => ({ path: f.path, content: f.content, bytes: new TextEncoder().encode(f.content) }));
   exercise('is-odd (raise)', entries, bundle, pickRecipe(isOdd, raise), { diagnosis: isOdd, successor: raise, usage: undefined });
+}
+
+// =================================================================================================
+console.log('\n== 7. a curated séance from a sample: mkdirp 3.0.1 in josdejong/mathjs (source read from raw.githubusercontent.com) ==');
+{
+  const recorded = JSON.parse(readFileSync(join(root, 'src/data/recorded/josdejong-mathjs.json'), 'utf8'));
+  const mkdirp = recorded.diagnoses.find((d) => d.dependency.name === 'mkdirp');
+  check('the sample holds mkdirp 3.0.1 as dying, on a heuristic, with fs.mkdir as the first way out', mkdirp?.verdict === 'dying' && mkdirp.basis === 'heuristic' && mkdirp.dependency.spec === '3.0.1' && mkdirp.successors[0]?.name === 'fs.mkdir', `${mkdirp?.verdict}/${mkdirp?.basis}, ${mkdirp?.dependency.spec}, ${mkdirp?.successors.map((s) => s.name).join(', ')}`);
+  const successor = mkdirp.successors[0];
+  const { context, page, errors } = await open(null);
+  await page.locator('.sample', { hasText: 'josdejong/mathjs' }).click();
+  await waitGraveyard(page);
+  await resurrect(page, 'npm:mkdirp');
+  const sources = await crawlModule.readRepositorySources({ owner: 'josdejong', name: 'mathjs' }, (url) => fetch(url), { languages: { js: true, py: false } });
+  const usage = scanUsage(usageModule.candidateFiles(sources.files, mkdirp.dependency), { ecosystem: 'npm', name: 'mkdirp' });
+  const used = usage.imports.some((i) => !i.typeOnly);
+  const reference = generateSeance(mkdirp, successor, used ? usage : undefined);
+  check('the page offers the curated mkdirp recipe', reference.recipe === 'mkdirp' && (await page.getByTestId('seance-recipe').innerText()).startsWith('Curated recipe'), reference.title);
+  const runner = sources.testRunner;
+  const spec = resurrectionSpec(mkdirp, successor, { ...(used ? { usage } : {}), ...(runner ? { project: { testRunner: runner } } : {}) });
+  const shown = await shownFiles(page);
+  const specNames = ['requirements.md', 'design.md', 'tasks.md'];
+  check('the three spec files shown are byte-identical to resurrectionSpec', specNames.every((n) => shown.find((s) => s.path === n)?.text === spec[n]));
+  check('every séance file shown is byte-identical to generateSeance', reference.files.every((f) => shown.find((s) => s.path === f.path)?.text === f.content), reference.files.map((f) => f.path.split('/').pop()).join(', '));
+  const kit = await download(page, 'Download spec and séance (.zip)');
+  check('the zip is named for the move and holds the spec and the séance', kit.name === 'migrate-mkdirp-to-fs-mkdir.zip' && reference.files.every((f) => kit.entries.some((e) => e.path === f.path)), kit.name);
+  exercise('mkdirp 3.0.1 (from the mathjs sample)', kit.entries, reference, pickRecipe(mkdirp, successor), { diagnosis: mkdirp, successor, usage: used ? usage : undefined });
+  check('no page error', errors.length === 0, errors.join('; '));
+  await context.close();
 }
 
 await browser.close();

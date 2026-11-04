@@ -24,13 +24,33 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "recordedAt": "2026-11-04T11:23:39.608Z",
     "total": 19,
     "summary": {
-      "alive": 8,
-      "dying": 5,
+      "alive": 10,
+      "dying": 3,
       "dead": 5,
       "ghost": 0,
       "zombie": 1
     },
     "unavailable": []
+  },
+  {
+    "id": "josdejong-mathjs",
+    "repository": "josdejong/mathjs",
+    "ecosystem": "npm",
+    "recordedAt": "2026-11-04T12:26:00.272Z",
+    "total": 67,
+    "summary": {
+      "alive": 43,
+      "dying": 8,
+      "dead": 15,
+      "ghost": 0,
+      "zombie": 1
+    },
+    "unavailable": [
+      "github"
+    ],
+    "onlyFiles": [
+      "package.json"
+    ]
   },
   {
     "id": "miguelgrinberg-microblog",

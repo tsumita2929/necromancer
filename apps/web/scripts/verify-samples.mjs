@@ -11,7 +11,8 @@ import { createServer } from 'vite';
 import { readdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
-import { loadCassette, replayingFetch } from './lib/cassette.mjs';
+import { loadCassette } from './lib/cassette.mjs';
+import { replaySample } from './lib/replay.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const recordedDir = fileURLToPath(new URL('../src/data/recorded/', import.meta.url));
@@ -69,16 +70,10 @@ for (const id of ids) {
     check(`${id}: a cassette exists`, false, 'run scripts/record-samples.mjs');
     continue;
   }
-  const tape = replayingFetch(cassette.entries);
-  const [owner, name] = cassette.repository.split('/');
-  const read = await github.readRepository({ owner, name }, (url) => tape.fetch(url));
-  const files = cassette.only ? read.files.filter((f) => cassette.only.includes(f.path)) : read.files;
-  const clock = new Date(recorded.scannedAt);
-  const engine = engineModule.createEngine({ fetch: tape.fetch, now: () => clock }, { githubBudget: cassette.budget, concurrency: 8 });
-  const replayed = JSON.parse(JSON.stringify(await engine.autopsy({ subject: `github:${cassette.repository}`, files })));
+  const { report: replayed, missing, files } = await replaySample(github, engineModule, cassette);
   const difference = firstDifference(replayed, recorded);
   check(`${id}: replaying the cassette through the engine at HEAD gives the recorded report, field by field`, difference === null, difference ?? `${recorded.diagnoses.length} diagnoses, ${cassette.entries.length} recorded answers, ${cassette.githubCalls} api.github.com calls, budget ${cassette.budget}`);
-  check(`${id}: the replay asked for nothing outside the cassette`, tape.missing.length === 0, tape.missing.slice(0, 2).join('; '));
+  check(`${id}: the replay asked for nothing outside the cassette`, missing.length === 0, missing.slice(0, 2).join('; '));
   check(`${id}: the files handed to the engine are the ones the report names`, isDeepStrictEqual(files.map((f) => f.path), cassette.files) && isDeepStrictEqual(recorded.manifests.map((m) => m.path).sort(), files.map((f) => f.path).sort()));
 }
 

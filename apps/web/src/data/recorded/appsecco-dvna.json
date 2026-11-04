@@ -317,79 +317,6 @@
     {
       "dependency": {
         "ecosystem": "npm",
-        "name": "bcrypt",
-        "spec": "^1.0.3",
-        "direct": true,
-        "scope": "main",
-        "declaredIn": "package.json"
-      },
-      "verdict": "dying",
-      "evidence": [
-        {
-          "code": "version-deprecated",
-          "message": "The version in use (1.0.3) is deprecated: \"versions < v5.0.0 do not handle NUL in passwords properly\"",
-          "source": "deps.dev",
-          "url": "https://www.npmjs.com/package/bcrypt/v/1.0.3"
-        },
-        {
-          "code": "low-maintenance",
-          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
-          "source": "scorecard",
-          "url": "https://securityscorecards.dev/",
-          "date": "2026-08-24"
-        },
-        {
-          "code": "osv-advisory",
-          "message": "1 known advisory affects version 1.0.3: GHSA-5wg4-74h6-q47v.",
-          "source": "osv",
-          "url": "https://osv.dev/vulnerability/GHSA-5wg4-74h6-q47v"
-        }
-      ],
-      "advisories": [
-        "GHSA-5wg4-74h6-q47v"
-      ],
-      "successors": [
-        {
-          "name": "bcryptjs",
-          "ecosystem": "npm",
-          "kind": "package",
-          "reason": "bcryptjs is the package e18e recommends instead.",
-          "source": "module-replacements",
-          "url": "https://e18e.dev/docs/replacements/bcrypt.html"
-        },
-        {
-          "name": "node:crypto",
-          "ecosystem": "npm",
-          "kind": "native",
-          "reason": "node:crypto is built into the platform, so the package is not needed.",
-          "source": "module-replacements",
-          "url": "https://nodejs.org/api/crypto.html"
-        },
-        {
-          "name": "crypto",
-          "ecosystem": "npm",
-          "kind": "native",
-          "reason": "crypto is built into the platform, so the package is not needed.",
-          "source": "module-replacements",
-          "url": "https://developer.mozilla.org/docs/Web/API/Web_Crypto_API"
-        },
-        {
-          "name": "Bun.CryptoHasher",
-          "ecosystem": "npm",
-          "kind": "native",
-          "reason": "Bun.CryptoHasher is built into the platform, so the package is not needed.",
-          "source": "module-replacements"
-        }
-      ],
-      "basis": "hard",
-      "latest": {
-        "version": "6.0.0",
-        "date": "2025-05-11T18:06:24Z"
-      }
-    },
-    {
-      "dependency": {
-        "ecosystem": "npm",
         "name": "express-fileupload",
         "spec": "^0.4.0",
         "direct": true,
@@ -400,7 +327,7 @@
       "evidence": [
         {
           "code": "version-deprecated",
-          "message": "The version in use (0.4.0) is deprecated: \"Please upgrade express-fileupload to version 1.1.8+ due to a security vulnerability with the parseNested option\"",
+          "message": "The version in use (0.4.0) is deprecated: \"Please upgrade express-fileupload to version 1.1.8+ due to a security vulnerability with the parseNested option\" The package itself is not; this is an upgrade notice. Upgrade to 1.5.2 (another major version).",
           "source": "deps.dev",
           "url": "https://www.npmjs.com/package/express-fileupload/v/0.4.0"
         },
@@ -431,7 +358,11 @@
         "GHSA-w4m6-x6c2-j5c9"
       ],
       "successors": [],
-      "basis": "hard",
+      "basis": "heuristic",
+      "upgradeTo": {
+        "version": "1.5.2",
+        "sameMajor": false
+      },
       "advisoryAliases": {
         "GHSA-9wcg-jrwf-8gg7": [
           "CVE-2020-7699",
@@ -553,56 +484,45 @@
     {
       "dependency": {
         "ecosystem": "npm",
-        "name": "sequelize",
-        "spec": "^4.13.10",
+        "name": "bcrypt",
+        "spec": "^1.0.3",
         "direct": true,
         "scope": "main",
         "declaredIn": "package.json"
       },
-      "verdict": "dying",
+      "verdict": "alive",
       "evidence": [
         {
           "code": "version-deprecated",
-          "message": "The version in use (4.44.4) is deprecated: \"Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html\"",
+          "message": "The version in use (1.0.3) is deprecated: \"versions < v5.0.0 do not handle NUL in passwords properly\" The package itself is not; this is an upgrade notice. Upgrade to 6.0.0 (another major version).",
           "source": "deps.dev",
-          "url": "https://www.npmjs.com/package/sequelize/v/4.44.4"
+          "url": "https://www.npmjs.com/package/bcrypt/v/1.0.3"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
         },
         {
           "code": "osv-advisory",
-          "message": "5 known advisories affect version 4.44.4: GHSA-8c25-f3mj-v6h8, GHSA-f598-mfpv-gmfx, GHSA-v8fg-2rw7-q452 and 2 more.",
+          "message": "1 known advisory affects version 1.0.3: GHSA-5wg4-74h6-q47v.",
           "source": "osv",
-          "url": "https://osv.dev/vulnerability/GHSA-8c25-f3mj-v6h8"
+          "url": "https://osv.dev/vulnerability/GHSA-5wg4-74h6-q47v"
         }
       ],
       "advisories": [
-        "GHSA-8c25-f3mj-v6h8",
-        "GHSA-f598-mfpv-gmfx",
-        "GHSA-v8fg-2rw7-q452",
-        "GHSA-vqfx-gj96-3w95",
-        "GHSA-wrh9-cjv3-2hpw"
+        "GHSA-5wg4-74h6-q47v"
       ],
       "successors": [],
-      "basis": "hard",
-      "advisoryAliases": {
-        "GHSA-8c25-f3mj-v6h8": [
-          "CVE-2023-22580"
-        ],
-        "GHSA-f598-mfpv-gmfx": [
-          "CVE-2023-22578"
-        ],
-        "GHSA-v8fg-2rw7-q452": [
-          "CVE-2026-69240"
-        ],
-        "GHSA-vqfx-gj96-3w95": [
-          "CVE-2023-22579"
-        ],
-        "GHSA-wrh9-cjv3-2hpw": [
-          "CVE-2023-25813"
-        ]
+      "upgradeTo": {
+        "version": "6.0.0",
+        "sameMajor": false
       },
       "latest": {
-        "version": "6.37.8",
-        "date": "2026-03-07T18:44:43Z"
+        "version": "6.0.0",
+        "date": "2025-05-11T18:06:24Z"
       }
     },
     {
@@ -795,6 +715,64 @@
     {
       "dependency": {
         "ecosystem": "npm",
+        "name": "sequelize",
+        "spec": "^4.13.10",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "version-deprecated",
+          "message": "The version in use (4.44.4) is deprecated: \"Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html\" The package itself is not; this is an upgrade notice. Upgrade to 6.37.8 (another major version).",
+          "source": "deps.dev",
+          "url": "https://www.npmjs.com/package/sequelize/v/4.44.4"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "5 known advisories affect version 4.44.4: GHSA-8c25-f3mj-v6h8, GHSA-f598-mfpv-gmfx, GHSA-v8fg-2rw7-q452 and 2 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-8c25-f3mj-v6h8"
+        }
+      ],
+      "advisories": [
+        "GHSA-8c25-f3mj-v6h8",
+        "GHSA-f598-mfpv-gmfx",
+        "GHSA-v8fg-2rw7-q452",
+        "GHSA-vqfx-gj96-3w95",
+        "GHSA-wrh9-cjv3-2hpw"
+      ],
+      "successors": [],
+      "upgradeTo": {
+        "version": "6.37.8",
+        "sameMajor": false
+      },
+      "advisoryAliases": {
+        "GHSA-8c25-f3mj-v6h8": [
+          "CVE-2023-22580"
+        ],
+        "GHSA-f598-mfpv-gmfx": [
+          "CVE-2023-22578"
+        ],
+        "GHSA-v8fg-2rw7-q452": [
+          "CVE-2026-69240"
+        ],
+        "GHSA-vqfx-gj96-3w95": [
+          "CVE-2023-22579"
+        ],
+        "GHSA-wrh9-cjv3-2hpw": [
+          "CVE-2023-25813"
+        ]
+      },
+      "latest": {
+        "version": "6.37.8",
+        "date": "2026-03-07T18:44:43Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
         "name": "winston",
         "spec": "^3.0.0",
         "direct": true,
@@ -847,8 +825,8 @@
   "problems": [],
   "unavailable": [],
   "summary": {
-    "alive": 8,
-    "dying": 5,
+    "alive": 10,
+    "dying": 3,
     "dead": 5,
     "ghost": 0,
     "zombie": 1

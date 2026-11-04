@@ -281,6 +281,9 @@ export function Landing({ go, notice }: LandingProps) {
                         ? `${sample.summary.zombie > 0 ? `${plural(sample.summary.zombie, 'zombie')}, ` : ''}${sample.summary.ghost > 0 ? `${plural(sample.summary.ghost, 'ghost')}, ` : ''}${sample.summary.dead} dead, ${sample.summary.dying} dying.`
                         : `${sample.summary.dying} dying, ${sample.summary.alive} alive.`}
                     </span>
+                    {sample.onlyFiles ? (
+                      <span className="sample__scope">Direct dependencies only: read from {sample.onlyFiles.join(', ')}.</span>
+                    ) : null}
                     {sample.unavailable.length > 0 ? (
                       <span className="sample__partial">
                         Partial report: {sample.unavailable.map((id) => SOURCE_NAMES[id] ?? id).join(' and ')} was not fully checked, so

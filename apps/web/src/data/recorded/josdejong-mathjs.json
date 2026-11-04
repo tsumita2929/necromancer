@@ -1,0 +1,2201 @@
+{
+  "subject": "github:josdejong/mathjs",
+  "scannedAt": "2026-11-04T12:26:00.272Z",
+  "manifests": [
+    {
+      "kind": "package.json",
+      "path": "package.json"
+    }
+  ],
+  "diagnoses": [
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "expr-eval",
+        "spec": "2.0.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "zombie",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.2) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2019-09-28"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (2.0.2) is 7.1 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/expr-eval",
+          "date": "2019-09-28"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 2.2 years (last push 2024-08-15); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/silentmatt/expr-eval",
+          "date": "2024-08-15"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "3 known advisories affect version 2.0.2: GHSA-8gw3-rxh4-v6jx, GHSA-jc85-fpwf-qm7x, GHSA-q9v2-7m5w-4693.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-8gw3-rxh4-v6jx"
+        }
+      ],
+      "advisories": [
+        "GHSA-8gw3-rxh4-v6jx",
+        "GHSA-jc85-fpwf-qm7x",
+        "GHSA-q9v2-7m5w-4693"
+      ],
+      "successors": [
+        {
+          "name": "expr-eval-fork",
+          "kind": "package",
+          "reason": "Community fork of expr-eval that keeps the API (`Parser.parse(expr).evaluate(scope)`) and fixes the advisories on the original. Update the import and the version pin.",
+          "source": "curated",
+          "url": "https://www.npmjs.com/package/expr-eval-fork",
+          "ecosystem": "npm",
+          "confidence": "medium"
+        }
+      ],
+      "basis": "hard",
+      "advisoryAliases": {
+        "GHSA-8gw3-rxh4-v6jx": [
+          "CVE-2025-13204"
+        ],
+        "GHSA-jc85-fpwf-qm7x": [
+          "CVE-2025-12735"
+        ],
+        "GHSA-q9v2-7m5w-4693": [
+          "CVE-2026-12866"
+        ]
+      },
+      "latest": {
+        "version": "2.0.2",
+        "date": "2019-09-28T21:26:16Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "codecov",
+        "spec": "3.8.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "npm-deprecated",
+          "message": "Deprecated on npm: \"https://about.codecov.io/blog/codecov-uploader-deprecation-plan/\"",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/codecov",
+          "date": "2021-07-19"
+        },
+        {
+          "code": "repo-archived",
+          "message": "The source repository is archived: read-only, no more fixes.",
+          "source": "github",
+          "url": "https://github.com/codecov/codecov-node",
+          "date": "2023-01-06"
+        },
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (3.8.3) is 5.3 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2021-07-19"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (3.8.3) is 5.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/codecov",
+          "date": "2021-07-19"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "hard",
+      "latest": {
+        "version": "3.8.3",
+        "date": "2021-07-19T18:15:27Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "javascript-natural-sort",
+        "spec": "^0.7.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (0.7.1) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2014-01-02"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (0.7.1) is 12 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/javascript-natural-sort",
+          "date": "2014-01-02"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 12 years (last commit 2014-01-02).",
+          "source": "github",
+          "url": "https://github.com/Bill4Time/javascript-natural-sort",
+          "date": "2014-01-02"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [
+        {
+          "name": "Intl.Collator",
+          "kind": "native",
+          "reason": "Natural ordering is built in: `array.sort(new Intl.Collator(undefined, { numeric: true }).compare)` or `a.localeCompare(b, undefined, { numeric: true })`. Case and accent handling follow the locale.",
+          "source": "curated",
+          "url": "https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator",
+          "ecosystem": "npm",
+          "confidence": "high"
+        }
+      ],
+      "basis": "heuristic",
+      "latest": {
+        "version": "0.7.1",
+        "date": "2014-01-02T17:54:40Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma-mocha",
+        "spec": "2.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "repo-archived",
+          "message": "The source repository is archived: read-only, no more fixes.",
+          "source": "github",
+          "url": "https://github.com/karma-runner/karma-mocha",
+          "date": "2022-12-07"
+        },
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.0.1) is 6.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2020-04-29"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (2.0.1) is 6.5 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/karma-mocha",
+          "date": "2020-04-29"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [
+        {
+          "name": "@web/test-runner",
+          "kind": "package",
+          "reason": "Karma is deprecated; its README lists Web Test Runner as a direct alternative for browser tests. Mocha tests run unchanged through the `@web/test-runner-mocha` framework; the config moves from karma.conf.js to web-test-runner.config.mjs.",
+          "source": "readme",
+          "url": "https://github.com/karma-runner/karma#karma-is-deprecated-and-is-no-longer-maintained-or-accepting-new-features",
+          "ecosystem": "npm",
+          "confidence": "medium"
+        }
+      ],
+      "basis": "hard",
+      "latest": {
+        "version": "2.0.1",
+        "date": "2020-04-29T14:38:36Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma-mocha-reporter",
+        "spec": "2.2.5",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.2.5) is 9.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2017-10-17"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (2.2.5) is 9.0 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/karma-mocha-reporter",
+          "date": "2017-10-17"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 9.0 years (last commit 2017-10-17).",
+          "source": "github",
+          "url": "https://github.com/litixsoft/karma-mocha-reporter",
+          "date": "2017-10-17"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "2.2.5",
+        "date": "2017-10-17T08:22:15Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma-webdriver-launcher",
+        "spec": "1.0.8",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "repo-archived",
+          "message": "The source repository is archived: read-only, no more fixes.",
+          "source": "github",
+          "url": "https://github.com/karma-runner/karma-webdriver-launcher",
+          "date": "2020-05-21"
+        },
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.0.8) is 6.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "source": "npm",
+          "date": "2020-05-21"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.8) is 6.5 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/karma-webdriver-launcher",
+          "date": "2020-05-21"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "hard",
+      "latest": {
+        "version": "1.0.8",
+        "date": "2020-05-21T16:24:35Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "ndarray-determinant",
+        "spec": "1.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.0.0) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2014-09-27"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.0) is 12 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/ndarray-determinant",
+          "date": "2014-09-27"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 12 years (last commit 2014-09-27).",
+          "source": "github",
+          "url": "https://github.com/mikolalysenko/ndarray-determinant",
+          "date": "2014-09-27"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "repo-moved",
+          "message": "The repository was renamed or moved to scijs/ndarray-determinant; GitHub forwards the old address, so the lookup followed it.",
+          "source": "github",
+          "url": "https://github.com/mikolalysenko/ndarray-determinant"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "1.0.0",
+        "date": "2014-09-27T17:48:48Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "ndarray-gemm",
+        "spec": "1.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.0.0) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2016-01-07"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.0) is 10 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/ndarray-gemm",
+          "date": "2016-01-07"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 10 years (last commit 2016-01-07).",
+          "source": "github",
+          "url": "https://github.com/scijs/ndarray-gemm",
+          "date": "2016-01-07"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "1.0.0",
+        "date": "2016-01-07T01:47:56Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "ndarray-ops",
+        "spec": "1.2.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.2.2) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2014-05-07"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.2.2) is 12 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/ndarray-ops",
+          "date": "2014-05-07"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 6.9 years (last commit 2019-12-19).",
+          "source": "github",
+          "url": "https://github.com/mikolalysenko/ndarray-ops",
+          "date": "2019-12-19"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "repo-moved",
+          "message": "The repository was renamed or moved to scijs/ndarray-ops; GitHub forwards the old address, so the lookup followed it.",
+          "source": "github",
+          "url": "https://github.com/mikolalysenko/ndarray-ops"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "1.2.2",
+        "date": "2014-05-07T21:04:59Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "ndarray-pack",
+        "spec": "1.2.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.2.1) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2016-08-02"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.2.1) is 10 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/ndarray-pack",
+          "date": "2016-08-02"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 10 years (last commit 2016-08-02).",
+          "source": "github",
+          "url": "https://github.com/mikolalysenko/ndarray-pack",
+          "date": "2016-08-02"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "repo-moved",
+          "message": "The repository was renamed or moved to scijs/ndarray-pack; GitHub forwards the old address, so the lookup followed it.",
+          "source": "github",
+          "url": "https://github.com/mikolalysenko/ndarray-pack"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "1.2.1",
+        "date": "2016-08-02T16:11:32Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "numericjs",
+        "spec": "1.2.6",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.2.6) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2016-06-13"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.2.6) is 10 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/numericjs",
+          "date": "2016-06-13"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 10 years (last commit 2016-06-13).",
+          "source": "github",
+          "url": "https://github.com/darshit-shah/numericjs",
+          "date": "2016-06-13"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "1.2.6",
+        "date": "2016-06-13T08:56:53Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "process",
+        "spec": "0.11.10",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (0.11.10) is 9.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2017-04-26"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (0.11.10) is 9.5 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/process",
+          "date": "2017-04-26"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 8.9 years (last commit 2017-12-21).",
+          "source": "github",
+          "url": "https://github.com/shtylman/node-process",
+          "date": "2017-12-21"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "repo-moved",
+          "message": "The repository was renamed or moved to defunctzombie/node-process; GitHub forwards the old address, so the lookup followed it.",
+          "source": "github",
+          "url": "https://github.com/shtylman/node-process"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "0.11.10",
+        "date": "2017-04-26T12:34:27Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "seedrandom",
+        "spec": "^3.0.5",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (3.0.5) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2019-09-17"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (3.0.5) is 7.1 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/seedrandom",
+          "date": "2019-09-17"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 2.5 years (last push 2024-04-25); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/davidbau/seedrandom",
+          "date": "2024-04-25"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [
+        {
+          "name": "pure-rand",
+          "kind": "package",
+          "reason": "Maintained seedable PRNG library (the generator behind fast-check). The API differs: you create a generator from a seed (`prand.xoroshiro128plus(seed)`) and draw numbers through distribution functions, instead of calling a seeded `Math.random`.",
+          "source": "curated",
+          "url": "https://www.npmjs.com/package/pure-rand",
+          "ecosystem": "npm",
+          "confidence": "medium"
+        }
+      ],
+      "basis": "heuristic",
+      "latest": {
+        "version": "3.0.5",
+        "date": "2019-09-17T10:37:28Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "sylvester",
+        "spec": "0.0.21",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (0.0.21) is 14 years old and nothing shows it is still looked after (no source repository).",
+          "source": "npm",
+          "date": "2012-01-03"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (0.0.21) is 14 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/sylvester",
+          "date": "2012-01-03"
+        },
+        {
+          "code": "no-repository",
+          "message": "No source repository is linked, so nobody can review or fix the code in the open.",
+          "source": "npm"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "0.0.21",
+        "date": "2012-01-03T02:19:02Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "tiny-emitter",
+        "spec": "^2.1.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (2.1.0) is 7.7 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2019-02-05"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (2.1.0) is 7.7 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/tiny-emitter",
+          "date": "2019-02-05"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 5.2 years (last push 2021-08-11); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/scottcorgan/tiny-emitter",
+          "date": "2021-08-11"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [
+        {
+          "name": "EventTarget",
+          "kind": "native",
+          "reason": "Node 15+ and browsers have `EventTarget` and `CustomEvent`: `target.addEventListener(name, fn)` and `target.dispatchEvent(new CustomEvent(name, { detail }))` replace `on` and `emit` (data moves to `event.detail`).",
+          "source": "curated",
+          "url": "https://developer.mozilla.org/docs/Web/API/EventTarget",
+          "ecosystem": "npm",
+          "confidence": "medium"
+        }
+      ],
+      "basis": "heuristic",
+      "latest": {
+        "version": "2.1.0",
+        "date": "2019-02-05T15:40:52Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "zeros",
+        "spec": "1.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "abandoned",
+          "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.0.0) is 11 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
+          "source": "npm",
+          "date": "2015-04-30"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.0.0) is 11 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/zeros",
+          "date": "2015-04-30"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 11 years (last push 2015-05-07); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/mikolalysenko/zeros",
+          "date": "2015-05-07"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "repo-moved",
+          "message": "The repository was renamed or moved to scijs/zeros; GitHub forwards the old address, so the lookup followed it.",
+          "source": "github",
+          "url": "https://github.com/mikolalysenko/zeros"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "1.0.0",
+        "date": "2015-04-30T23:55:48Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "assert",
+        "spec": "2.1.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (2.1.0) is 3.2 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/assert",
+          "date": "2023-09-07"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 1.9 years (last push 2024-12-21); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/browserify/commonjs-assert",
+          "date": "2024-12-21"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "2.1.0",
+        "date": "2023-09-07T18:24:30Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eigen",
+        "spec": "0.2.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (0.2.2) is 3.6 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/eigen",
+          "date": "2023-04-13"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 3.0 years (last push 2023-10-27); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/BertrandBev/eigen-js",
+          "date": "2023-10-27"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "0.2.2",
+        "date": "2023-04-13T14:18:28Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma",
+        "spec": "6.4.4",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (6.4.4) is 2.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/karma",
+          "date": "2024-07-29"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 2.3 years (last commit 2024-07-29).",
+          "source": "github",
+          "url": "https://github.com/karma-runner/karma",
+          "date": "2024-07-29"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "6.4.4",
+        "date": "2024-07-29T17:42:15Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma-firefox-launcher",
+        "spec": "2.1.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (2.1.3) is 2.7 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/karma-firefox-launcher",
+          "date": "2024-03-03"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the default branch for 2.7 years (last commit 2024-03-03).",
+          "source": "github",
+          "url": "https://github.com/karma-runner/karma-firefox-launcher",
+          "date": "2024-03-03"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "2.1.3",
+        "date": "2024-03-03T23:32:01Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma-webpack",
+        "spec": "5.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (5.0.1) is 2.8 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/karma-webpack",
+          "date": "2024-02-01"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 2.2 years (last push 2024-08-31); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/webpack-contrib/karma-webpack",
+          "date": "2024-08-31"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        },
+        {
+          "code": "repo-moved",
+          "message": "The repository was renamed or moved to codymikol/karma-webpack; GitHub forwards the old address, so the lookup followed it.",
+          "source": "github",
+          "url": "https://github.com/webpack-contrib/karma-webpack"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "5.0.1",
+        "date": "2024-02-01T17:01:48Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "mkdirp",
+        "spec": "3.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (3.0.1) is 3.5 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/mkdirp",
+          "date": "2023-04-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 3.1 years (last push 2023-09-15); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/isaacs/node-mkdirp",
+          "date": "2023-09-15"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [
+        {
+          "name": "fs.mkdir",
+          "kind": "native",
+          "reason": "fs.mkdir with { recursive: true } does what mkdirp does.",
+          "ecosystem": "npm",
+          "source": "curated"
+        },
+        {
+          "name": "fs.promises.mkdir",
+          "ecosystem": "npm",
+          "kind": "native",
+          "reason": "fs.promises.mkdir is built into the platform, so the package is not needed.",
+          "source": "module-replacements",
+          "url": "https://nodejs.org/api/fs.html#fspromisesmkdirpath-options"
+        }
+      ],
+      "basis": "heuristic",
+      "latest": {
+        "version": "3.0.1",
+        "date": "2023-04-24T17:27:38Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "mocha-junit-reporter",
+        "spec": "2.2.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (2.2.1) is 3.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/mocha-junit-reporter",
+          "date": "2023-07-12"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 2.5 years (last push 2024-05-22); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/michaelleeallen/mocha-junit-reporter",
+          "date": "2024-05-22"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "2.2.1",
+        "date": "2023-07-12T18:14:12Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "ts-node",
+        "spec": "10.9.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dying",
+      "evidence": [
+        {
+          "code": "no-release",
+          "message": "The latest release (10.9.2) is 2.9 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/ts-node",
+          "date": "2023-12-08"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No push to the repository for 2.3 years (last push 2024-07-18); the default branch's last commit is at least that old. Commit dates were not read.",
+          "source": "github",
+          "url": "https://github.com/TypeStrong/ts-node",
+          "date": "2024-07-18"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "heuristic",
+      "latest": {
+        "version": "10.9.2",
+        "date": "2023-12-08T12:04:46Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/core",
+        "spec": "7.29.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "1 known advisory affects version 7.29.0: GHSA-4x5r-pxfx-6jf8.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-4x5r-pxfx-6jf8"
+        }
+      ],
+      "advisories": [
+        "GHSA-4x5r-pxfx-6jf8"
+      ],
+      "successors": [],
+      "latest": {
+        "version": "8.1.0",
+        "date": "2026-11-02T12:07:55Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/plugin-transform-object-assign",
+        "spec": "7.27.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.29.7",
+        "date": "2026-05-25T11:16:05Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/plugin-transform-optional-catch-binding",
+        "spec": "7.28.6",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.0.1",
+        "date": "2026-06-17T09:44:56Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/plugin-transform-runtime",
+        "spec": "7.29.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.0.6",
+        "date": "2026-09-18T13:47:28Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/preset-env",
+        "spec": "7.29.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.0.7",
+        "date": "2026-10-07T09:59:22Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/register",
+        "spec": "7.28.6",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.0.6",
+        "date": "2026-09-18T13:49:10Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@babel/runtime",
+        "spec": "^7.26.10",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.1.0",
+        "date": "2026-11-02T12:08:32Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@types/assert",
+        "spec": "1.5.11",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "recent-activity",
+          "message": "The default branch had a commit 0 days ago (2026-11-04), so stale signals alone do not make this dying.",
+          "source": "github",
+          "url": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+          "date": "2026-11-04"
+        },
+        {
+          "code": "no-release",
+          "message": "The latest release (1.5.11) is 2.0 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/@types/assert",
+          "date": "2024-10-23"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.5.11",
+        "date": "2024-10-23T03:37:19Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@types/mocha",
+        "spec": "10.0.10",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "10.0.10",
+        "date": "2024-11-20T18:38:25Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@typescript-eslint/eslint-plugin",
+        "spec": "8.55.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.72.1",
+        "date": "2026-10-26T17:10:26Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "@typescript-eslint/parser",
+        "spec": "8.55.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.72.1",
+        "date": "2026-10-26T17:09:27Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "babel-loader",
+        "spec": "10.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "10.1.1",
+        "date": "2026-03-09T17:58:03Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "c8",
+        "spec": "10.1.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "12.0.0",
+        "date": "2026-07-14T13:51:32Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "complex.js",
+        "spec": "^2.2.5",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.4.3",
+        "date": "2025-11-14T00:08:49Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "decimal.js",
+        "spec": "^10.4.3",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "recent-activity",
+          "message": "The default branch had a commit 2 months ago (2026-08-30), so stale signals alone do not make this dying.",
+          "source": "github",
+          "url": "https://github.com/MikeMcl/decimal.js",
+          "date": "2026-08-30"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 2 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "10.6.0",
+        "date": "2025-07-06T22:50:38Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "del",
+        "spec": "8.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "9.0.1",
+        "date": "2026-10-08T17:36:49Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "es-check",
+        "spec": "9.5.4",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "9.8.1",
+        "date": "2026-09-21T20:34:13Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "escape-latex",
+        "spec": "^1.2.0",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "recent-activity",
+          "message": "The default branch had a commit 2 days ago (2026-11-01), so stale signals alone do not make this dying.",
+          "source": "github",
+          "url": "https://github.com/dangmai/escape-latex",
+          "date": "2026-11-01"
+        },
+        {
+          "code": "no-release-long",
+          "message": "The latest release (1.2.0) is 8.0 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/escape-latex",
+          "date": "2018-10-27"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.2.0",
+        "date": "2018-10-27T19:03:26Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint",
+        "spec": "8.57.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "version-deprecated",
+          "message": "The version in use (8.57.1) is deprecated: \"This version is no longer supported. Please see https://eslint.org/version-support for other options.\" The package itself is not; this is an upgrade notice. Upgrade to 10.14.0 (another major version).",
+          "source": "deps.dev",
+          "url": "https://www.npmjs.com/package/eslint/v/8.57.1"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "upgradeTo": {
+        "version": "10.14.0",
+        "sameMajor": false
+      },
+      "latest": {
+        "version": "10.14.0",
+        "date": "2026-10-30T14:12:27Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint-config-prettier",
+        "spec": "9.1.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "10.1.8",
+        "date": "2025-07-18T18:40:08Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint-config-standard",
+        "spec": "17.1.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "recent-activity",
+          "message": "The default branch had a commit 12 months ago (2025-11-11), so stale signals alone do not make this dying.",
+          "source": "github",
+          "url": "https://github.com/standard/eslint-config-standard",
+          "date": "2025-11-11"
+        },
+        {
+          "code": "no-release",
+          "message": "The latest release (17.1.0) is 3.4 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/eslint-config-standard",
+          "date": "2023-05-29"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "17.1.0",
+        "date": "2023-05-29T16:07:25Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint-plugin-import",
+        "spec": "2.32.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.32.0",
+        "date": "2025-06-20T21:59:09Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint-plugin-mocha",
+        "spec": "10.5.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "12.0.2",
+        "date": "2026-08-04T07:29:22Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint-plugin-n",
+        "spec": "16.6.2",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "18.5.0",
+        "date": "2026-10-18T05:29:01Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint-plugin-prettier",
+        "spec": "5.5.4",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.5.7",
+        "date": "2026-10-13T12:38:26Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "eslint-plugin-promise",
+        "spec": "6.6.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.3.0",
+        "date": "2026-04-27T05:06:55Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "expect-type",
+        "spec": "1.3.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.4.0",
+        "date": "2026-06-25T13:41:23Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "fancy-log",
+        "spec": "2.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "recent-activity",
+          "message": "The default branch had a commit 6 days ago (2026-10-28), so stale signals alone do not make this dying.",
+          "source": "github",
+          "url": "https://github.com/gulpjs/fancy-log",
+          "date": "2026-10-28"
+        },
+        {
+          "code": "no-release",
+          "message": "The latest release (2.0.0) is 4.8 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/fancy-log",
+          "date": "2022-01-07"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "2.0.0",
+        "date": "2022-01-07T19:09:44Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "fraction.js",
+        "spec": "^5.2.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.3.4",
+        "date": "2025-08-22T11:44:45Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "glob",
+        "spec": "11.0.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "version-deprecated",
+          "message": "The version in use (11.0.3) is deprecated: \"Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current versio…\" The package itself is not; this is an upgrade notice. Upgrade to 14.0.3 (another major version).",
+          "source": "deps.dev",
+          "url": "https://www.npmjs.com/package/glob/v/11.0.3"
+        },
+        {
+          "code": "osv-advisory",
+          "message": "2 known advisories affect version 11.0.3: GHSA-3g3m-2fjr-6pw4, GHSA-5j98-mcp5-4vw2.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-3g3m-2fjr-6pw4"
+        }
+      ],
+      "advisories": [
+        "GHSA-3g3m-2fjr-6pw4",
+        "GHSA-5j98-mcp5-4vw2"
+      ],
+      "successors": [],
+      "upgradeTo": {
+        "version": "14.0.3",
+        "sameMajor": false
+      },
+      "advisoryAliases": {
+        "GHSA-3g3m-2fjr-6pw4": [
+          "CVE-2026-118773"
+        ],
+        "GHSA-5j98-mcp5-4vw2": [
+          "CVE-2025-64756"
+        ]
+      },
+      "latest": {
+        "version": "14.0.3",
+        "date": "2026-10-28T04:08:39Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "gulp",
+        "spec": "5.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "recent-activity",
+          "message": "The default branch had a commit 9 months ago (2026-02-09), so stale signals alone do not make this dying.",
+          "source": "github",
+          "url": "https://github.com/gulpjs/gulp",
+          "date": "2026-02-09"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.0.1",
+        "date": "2025-06-01T21:54:34Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "gulp-babel",
+        "spec": "8.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "8.1.0",
+        "date": "2026-06-19T11:48:37Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "handlebars",
+        "spec": "4.7.8",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [
+        {
+          "code": "osv-advisory",
+          "message": "11 known advisories affect version 4.7.8: GHSA-2qvq-rjwj-gvw9, GHSA-2w6w-674q-4c4q, GHSA-3mfm-83xf-c92r and 8 more.",
+          "source": "osv",
+          "url": "https://osv.dev/vulnerability/GHSA-2qvq-rjwj-gvw9"
+        }
+      ],
+      "advisories": [
+        "GHSA-2qvq-rjwj-gvw9",
+        "GHSA-2w6w-674q-4c4q",
+        "GHSA-3mfm-83xf-c92r",
+        "GHSA-442j-39wm-28r2",
+        "GHSA-7rx3-28cr-v5wh",
+        "GHSA-8r5x-fm3f-whwj",
+        "GHSA-9cx6-37pm-9jff",
+        "GHSA-p8wg-vrv2-v86f",
+        "GHSA-xhpv-hc6g-r9c6",
+        "GHSA-xjpj-3mr7-gcpf",
+        "GHSA-xw65-4hp5-5hc7"
+      ],
+      "successors": [],
+      "advisoryAliases": {
+        "GHSA-2qvq-rjwj-gvw9": [
+          "CVE-2026-33916"
+        ],
+        "GHSA-2w6w-674q-4c4q": [
+          "CVE-2026-33937"
+        ],
+        "GHSA-3mfm-83xf-c92r": [
+          "CVE-2026-33938"
+        ],
+        "GHSA-8r5x-fm3f-whwj": [
+          "CVE-2026-106446"
+        ],
+        "GHSA-9cx6-37pm-9jff": [
+          "CVE-2026-33939"
+        ],
+        "GHSA-p8wg-vrv2-v86f": [
+          "CVE-2026-106445"
+        ],
+        "GHSA-xhpv-hc6g-r9c6": [
+          "CVE-2026-33940"
+        ],
+        "GHSA-xjpj-3mr7-gcpf": [
+          "CVE-2026-33941"
+        ],
+        "GHSA-xw65-4hp5-5hc7": [
+          "CVE-2026-106444"
+        ]
+      },
+      "latest": {
+        "version": "4.7.10",
+        "date": "2026-10-05T22:37:37Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "jsep",
+        "spec": "1.4.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.6.0",
+        "date": "2026-10-11T18:55:19Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma-spec-reporter",
+        "spec": "0.0.36",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "0.0.37",
+        "date": "2026-09-03T18:34:37Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "mocha",
+        "spec": "11.7.5",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "12.0.3",
+        "date": "2026-10-01T04:37:57Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "ndarray",
+        "spec": "1.0.19",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "1.1.1",
+        "date": "2026-08-26T04:00:02Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "prettier",
+        "spec": "3.8.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "3.9.10",
+        "date": "2026-10-10T08:35:28Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "sinon",
+        "spec": "21.0.1",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "22.1.0",
+        "date": "2026-07-20T17:59:28Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "tinybench",
+        "spec": "6.0.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "6.2.3",
+        "date": "2026-11-01T15:14:20Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "typed-function",
+        "spec": "^4.2.1",
+        "direct": true,
+        "scope": "main",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "4.2.2",
+        "date": "2025-11-26T09:45:12Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "typescript",
+        "spec": "5.9.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "7.0.2",
+        "date": "2026-07-08T15:55:18Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "webpack",
+        "spec": "5.105.0",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "alive",
+      "evidence": [],
+      "advisories": [],
+      "successors": [],
+      "latest": {
+        "version": "5.112.2",
+        "date": "2026-10-23T12:18:11Z"
+      }
+    }
+  ],
+  "problems": [],
+  "unavailable": [
+    {
+      "source": "github",
+      "reason": "GitHub budget reached (48 calls per scan, limit is 60 per hour): 9 commit dates were not read"
+    }
+  ],
+  "summary": {
+    "alive": 43,
+    "dying": 8,
+    "dead": 15,
+    "ghost": 0,
+    "zombie": 1
+  }
+}

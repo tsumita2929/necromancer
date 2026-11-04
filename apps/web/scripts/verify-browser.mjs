@@ -6,7 +6,7 @@ import { chromium } from 'playwright';
 import { execFileSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { mkdir, mkdtemp, readFile } from 'node:fs/promises';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,6 +19,9 @@ const MICROBLOG = recorded('miguelgrinberg-microblog');
 // First dependency with a way out, in the order the page shows them (worst verdict first).
 const ORDER = ['zombie', 'ghost', 'dead', 'dying', 'alive'];
 const RESURRECTABLE = ORDER.flatMap((v) => DVNA.diagnoses.filter((d) => d.verdict === v && d.successors.length > 0))[0];
+const ALL_SAMPLES = readdirSync(fileURLToPath(new URL('../src/data/recorded/', import.meta.url)))
+  .filter((n) => n.endsWith('.json'))
+  .map((n) => recorded(n.replace(/\.json$/, '')));
 const MKEY = `${MICROBLOG.diagnoses[0].dependency.ecosystem}:${MICROBLOG.diagnoses[0].dependency.name}`;
 const RKEY = `${RESURRECTABLE.dependency.ecosystem}:${RESURRECTABLE.dependency.name}`;
 
@@ -269,6 +272,52 @@ for (const vp of VIEWPORTS) {
   await page.getByTestId('basis-all').click();
   check(`${tag} basis: the legend does not call every Dead definitive`, !/definitive/i.test(await page.evaluate(() => document.body.textContent ?? '')));
   check(`${tag} basis: axe finds no violation with the basis control`, (await axeRun(page)).length === 0);
+
+  // every landing card against its graveyard (R4b)
+  await page.goto(server.url);
+  await page.waitForSelector('h1');
+  check(`${tag} samples: the landing page has one card per recorded report (${ALL_SAMPLES.length})`, (await page.locator('.sample').count()) === ALL_SAMPLES.length);
+  for (const report of ALL_SAMPLES) {
+    const repository = report.subject.replace('github:', '');
+    const card = ((await page.locator('.sample', { hasText: repository }).textContent()) ?? '').replace(/\s+/g, ' ');
+    await page.locator('.sample', { hasText: repository }).click();
+    await page.waitForSelector('[data-testid^="count-"]');
+    const shown = {};
+    for (const verdict of ['zombie', 'ghost', 'dead', 'dying', 'alive']) shown[verdict] = Number((await page.getByTestId(`count-${verdict}`).textContent()) ?? '0');
+    const unchecked = (await page.getByTestId('count-unchecked').count()) > 0 ? Number(await page.getByTestId('count-unchecked').textContent()) : 0;
+    const num = (word) => Number((card.match(new RegExp(`(\\d+) ${word}`)) ?? [0, 0])[1]);
+    const total = Number((card.match(/(\d+) dependenc/) ?? [0, -1])[1]);
+    check(`${tag} samples: ${repository} card (${total} deps, ${num('zombie')} zombie, ${num('dead')} dead, ${num('dying')} dying) equals its graveyard`, total === report.diagnoses.length && num('dead') === shown.dead && num('dying') === shown.dying && num('zombie') === shown.zombie && shown.alive + unchecked === report.summary.alive && Object.values(shown).reduce((a, b) => a + b, 0) + unchecked === report.diagnoses.length, JSON.stringify({ ...shown, unchecked }));
+    await page.goto(server.url);
+    await page.waitForSelector('h1');
+  }
+
+  // the mathjs sample: an upgrade notice on a living package, a curated way out for mkdirp
+  await page.goto(`${server.url}#/graveyard?src=sample:josdejong-mathjs`);
+  await page.reload();
+  await page.waitForSelector('[data-testid^="group-"]');
+  const MATHJS = ALL_SAMPLES.find((r) => r.subject === 'github:josdejong/mathjs');
+  const eslint = MATHJS.diagnoses.find((x) => x.dependency.name === 'eslint');
+  const eslintTomb = ((await page.locator('[data-dep-key="npm:eslint"]').textContent()) ?? '');
+  check(`${tag} mathjs: eslint reads Alive with "Upgrade to ${eslint.upgradeTo.version}", never dying`, eslint.verdict === 'alive' && eslintTomb.includes(`Upgrade to ${eslint.upgradeTo.version}`) && (await page.locator('[data-testid="group-alive"] [data-dep-key="npm:eslint"]').count()) === 1, eslintTomb.slice(0, 60));
+  await page.locator('[data-dep-key="npm:eslint"]').click();
+  await page.waitForSelector('dialog[open]');
+  const eslintText = (await page.locator('dialog[open]').textContent()) ?? '';
+  check(`${tag} mathjs: the eslint drawer names the step (${eslint.upgradeTo.sameMajor ? 'same major' : 'another major'}) and offers no Resurrect`, /Upgrade to \d/.test(eslintText) && (eslint.upgradeTo.sameMajor || /another major version/.test(eslintText)) && (await page.locator('dialog[open]').getByRole('button', { name: 'Resurrect' }).count()) === 0);
+  await page.keyboard.press('Escape');
+  await page.locator('dialog[open]').waitFor({ state: 'detached' });
+  check(`${tag} mathjs: mkdirp 3.0.1 is Dying on a heuristic, and Resurrect is offered`, /Dying/.test((await page.locator('[data-dep-key="npm:mkdirp"]').textContent()) ?? '') && /heuristic/.test((await page.locator('[data-dep-key="npm:mkdirp"]').textContent()) ?? ''));
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna&open=npm:sequelize`);
+  await page.reload();
+  await page.waitForSelector('dialog[open]');
+  const aliasLines = await page.locator('dialog[open] [data-testid="advisory-aliases"]').count();
+  const sequelize = DVNA.diagnoses.find((x) => x.dependency.name === 'sequelize');
+  check(`${tag} advisories: the sequelize drawer lists ${Object.keys(sequelize.advisoryAliases ?? {}).length} merged vulnerabilit${Object.keys(sequelize.advisoryAliases ?? {}).length === 1 ? 'y' : 'ies'} with their other ids`, aliasLines === Object.keys(sequelize.advisoryAliases ?? {}).length && aliasLines > 0, `${aliasLines} alias lines for ${sequelize.advisories.length} advisories`);
+  await page.keyboard.press('Escape');
+  await page.locator('dialog[open]').waitFor({ state: 'detached' });
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna`);
+  await page.reload();
+  await page.waitForSelector('[data-testid="group-zombie"]');
 
   // alive with advisories: badge, and no "no blocking signal" next to it
   const mathjs = page.locator('[data-dep-key="npm:mathjs"]');
