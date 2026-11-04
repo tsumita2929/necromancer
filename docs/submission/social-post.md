@@ -35,13 +35,13 @@ My favorite thing about Kiro: [OWNER: your own words].
 
 How it changed the way I build: [OWNER: your own words].
 
-I built Necromancer for the Resurrection category. It reads a project's dependencies, marks the dead ones, and writes a Kiro spec and a property-based test for the way out. We counted 33 of 100 real projects that depend directly on a deprecated, archived, inactive or gone package. The test found a bug in left-pad itself.
+I built Necromancer for the Resurrection category. It reads a project's dependencies, marks the dead ones, and writes a Kiro spec and a property-based test for the way out. We counted 35 of 100 real projects that depend directly on a deprecated, archived, inactive or gone package. The test found a bug in left-pad itself.
 
 Try it, no login: https://tsumita2929.github.io/necromancer/
 Code: https://github.com/tsumita2929/necromancer
 ```
 
-Facts in the long version: 33 of 100 projects (95% CI 24.6% to 42.7%) <!-- claim:Q01 -->, and the left-pad bug <!-- claim:S01 -->.
+Facts in the long version: 35 of 100 projects (95% CI 26.4% to 44.7%) <!-- claim:Q01 -->, and the left-pad bug <!-- claim:S01 -->.
 
 ## Candidate ideas for the two sentences (from what the build showed)
 

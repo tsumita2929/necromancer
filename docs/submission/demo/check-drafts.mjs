@@ -5,7 +5,7 @@
 //   node docs/submission/demo/check-drafts.mjs --run-tests     # also runs the three unit-test suites (needs npm ci in each part)
 //
 // It prints one line per check (ok / FAIL) and exits 1 when anything fails. It is the "numbers pass" of
-// docs/verification/submission-drafts-r4.md section 10: after the engine and the census change, run it, fix what it
+// docs/verification/submission-final.md section 8: after the engine and the census change, run it, fix what it
 // names, run it again.
 import { execFileSync } from 'node:child_process';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
@@ -14,7 +14,7 @@ import { join } from 'node:path';
 const root = process.cwd();
 const read = (p) => readFileSync(join(root, p), 'utf8');
 const DRAFTS = ['README.md', 'docs/submission/devpost.md', 'docs/submission/blog-post.md', 'docs/submission/social-post.md'];
-const RECORD = 'docs/verification/submission-drafts-r4.md';
+const RECORD = 'docs/verification/submission-final.md';
 let failures = 0;
 const ok = (msg) => console.log(`ok    ${msg}`);
 const fail = (msg) => {
@@ -31,36 +31,40 @@ const plain = (s) => s.replace(/(\d),(\d)/g, '$1$2');
 // all of them together must appear in the tagged text blocks of the drafts.
 // HEAD: the figure(s) every tagged block must carry (the headline of that sentence).
 const FULL = {
-  Q01: ['33', '100', '24.6', '42.7'],
+  Q01: ['35', '100', '26.4', '44.7'],
   Q02: ['26', '50'],
-  Q03: ['7', '50'],
-  Q04: ['179', '3201', '5.6', '18'],
-  Q05: ['74', '105'],
+  Q03: ['9', '50'],
+  Q04: ['186', '3201', '5.8', '17'],
+  Q05: ['81', '105'],
   Q06: ['4', '3'],
   Q07: ['50', '100'],
-  Q08: ['95', '179', '53.1'],
+  Q08: ['96', '186', '51.6'],
   Q09: ['91', '175'],
   Q10: ['41', '26', '36'],
   Q11: ['eslint', '21', '20'],
   Q14: ['100', '3201', '25'],
   Q15: ['36', '40', '35', '97.2', '85.8', '99.5'],
-  Q19: ['10'],
+  Q19: ['12'],
+  Q20: ['48', '7.4'],
+  Q21: ['coveralls'],
 };
 const HEAD = {
-  Q01: ['33', '100'],
+  Q01: ['35', '100'],
   Q02: ['26', '50'],
-  Q03: ['7', '50'],
-  Q04: ['179', '3201'],
+  Q03: ['9', '50'],
+  Q04: ['186', '3201'],
   Q05: ['105'],
   Q06: ['4', '3'],
   Q07: ['50', '100'],
-  Q08: ['95', '179'],
+  Q08: ['96', '186'],
   Q09: ['91', '175'],
   Q10: ['41'],
   Q11: ['eslint', '21', '20'],
   Q14: ['100', '3201'],
   Q15: ['36', '40'],
-  Q19: ['10'],
+  Q19: ['12'],
+  Q20: ['48'],
+  Q21: ['coveralls'],
 };
 let recompute = '';
 try {
@@ -164,6 +168,10 @@ const up = ['eslint', 'glob'].map((n) => dep(mathjs, n)).filter((d) => d?.verdic
 check(up.length > 0, 'shot 2: mathjs holds an alive package with an upgrade notice (eslint or glob)', up.map((d) => d.dependency.name).join(', '));
 const cs = dep(dvna, 'csurf');
 check(cs && cs.verdict === 'dead' && cs.basis === 'hard' && cs.successors.length === 0, 'shot 5: dvna holds csurf as dead, hard signal, no successor', cs ? `${cs.verdict}/${cs.basis}/${cs.successors.length}` : 'csurf missing');
+const globNote = dep(mathjs, 'glob')?.evidence.find((e) => e.code === 'version-deprecated')?.message ?? '';
+check(/engines\.node/.test(globNote) && /fs\.glob/.test(globNote), 'shot 2: the glob notice in mathjs names the Node it needs (engines.node) and fs.glob', globNote.slice(-120));
+const eslintNote = dep(mathjs, 'eslint')?.upgradeTo;
+check(eslintNote?.version === '10.14.0', 'shot 2: the eslint notice in mathjs says Upgrade to 10.14.0', JSON.stringify(eslintNote));
 check(mathjs.diagnoses.some((d) => d.basis === 'heuristic' && d.verdict === 'dying'), 'shot 2: mathjs has a dying verdict on a heuristic (the dashed pill)');
 
 // ---------------------------------------------------------------- 5. video timings and pace

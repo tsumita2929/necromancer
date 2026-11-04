@@ -82,10 +82,10 @@ with no active maintainer is easy to take over. It happened with event-stream in
 in 2024.
 
 We wanted to know how common this is, so we counted. Of 100 active open-source projects, drawn at
-random from npm and Python, popular and long-tail, **33 depend directly on a package that is
-deprecated, archived, inactive or gone** (95% confidence interval 24.6% to 42.7%). By the engine's
-own rule, which also counts a package with no sign of life for years, 179 of their 3,201 direct
-dependencies (about 1 in 18) are dead or worse.
+random from npm and Python, popular and long-tail, **35 depend directly on a package that is
+deprecated (by its registry, or in its maintainers' own README), archived, inactive or gone** (95%
+confidence interval 26.4% to 44.7%). By the engine's own rule, which also counts a package with no
+sign of life for years, 186 of their 3,201 direct dependencies (about 1 in 17) are dead or worse.
 <!-- claim:Q01 --><!-- claim:Q04 --><!-- claim:Q14 -->
 
 The advice "just replace it" hides the hard part. Replacing a dead package with its successor
@@ -100,16 +100,20 @@ often changes behavior. We wanted a tool that tells you how.
    (dead and its repository is gone) or `zombie` (dead and a known advisory affects the version in
    use). Each tombstone has an epitaph, such as the registry's own deprecation message, and a
    **Heuristic** mark when the verdict is a guess from staleness and not a hard fact. In the census,
-   74 of the 179 dead-or-worse dependencies rest on a hard fact and 105 on that guess.
+   81 of the 186 dead-or-worse dependencies rest on a hard fact and 105 on that guess.
    <!-- claim:Q05 -->
 3. **Upgrade, not resurrection.** A living package whose version in use is deprecated (or yanked) is
    shown as alive with an upgrade notice (`eslint` 8 reads "Upgrade to 10"), and nothing offers to
    migrate it. 41 census dependencies carry such a notice.
    <!-- claim:Q10 -->
+   The notice names the release to move to, says whether it is inside your declared range, and gives
+   the Node version it needs; where Node has a built-in (`fs.glob`, `fs.rm`, `crypto.randomUUID()`)
+   it says so.
+   <!-- claim:R52 -->
 4. **Resurrection.** For a dead dependency, Necromancer finds a way out: a living successor, a
    built-in (`left-pad` to `String.prototype.padStart`), or, when there is none, a small
    dependency-free module the project owns ("raise"). It writes a Kiro spec (requirements, design,
-   tasks) and the séance. The engine names a way out for 95 of the 179 flagged dependencies, from
+   tasks) and the séance. The engine names a way out for 96 of the 186 flagged dependencies, from
    curated lists, the e18e dataset, deprecation messages and our own research; a low-confidence
    one is shown as a suggestion.
    <!-- claim:Q08 -->
@@ -165,8 +169,17 @@ worker session took each one. See the next section for how each Kiro feature was
   recent commit lifts a stale package, each verdict says which basis it rests on, and a deprecated
   version of a living package is an upgrade notice. We checked the result on 40 flagged packages the
   tuning had never seen: of the 36 still flagged, all 36 were right and 35 also held up against recent
-  activity. We did not measure how many dead packages the engine misses.
-  <!-- claim:Q15 -->
+  activity. We also checked 48 units the engine called alive: none was really dead or dying
+  (95% interval 0.0% to 7.4%). That check is not independent, because the one miss it found
+  (`coveralls`) led us to add a rule: when a package's own README says it is deprecated or no longer
+  maintained, the verdict is `dead` on a hard signal. The rule changed 6 census verdicts, all checked
+  right, and flagged no living package.
+  <!-- claim:Q15 --><!-- claim:Q20 --><!-- claim:Q21 --><!-- claim:R51 -->
+- **Never an all-clear for a project we did not read.** A monorepo root made of `workspace:` links
+  and `catalog:` entries used to read as "no dead dependency". Now the page says "Most of this
+  project was not read", and reads pnpm catalogs from `pnpm-workspace.yaml`. In the Crew tools a
+  package the registry does not know is `not-found`, never alive.
+  <!-- claim:R53 --><!-- claim:R57 --><!-- claim:R54 -->
 - **A browser has no server to hide behind.** GitHub allows 60 unauthenticated calls an hour per IP.
   The engine keeps a budget, and a report says which repositories it could not check.
 - **Generated code is the risky part.** The parsers held up; the bugs were in the generated output.
@@ -191,8 +204,9 @@ worker session took each one. See the next section for how each Kiro feature was
 Properties find what their generators can reach. A reviewer subagent that had not seen our design
 reached other places: it found 11 issues in the parsers and rules, including a 34-second hang on a
 long run of spaces. A tester who had built none of the code ran the finished product and wrote 21
-findings; 20 are fixed. We needed all three.
-<!-- claim:K03 --><!-- claim:A01 -->
+findings; 20 are fixed. A second tester ran the final product and wrote 10 more; 9 are fixed. We
+needed all of it.
+<!-- claim:K03 --><!-- claim:A01 --><!-- claim:A02 -->
 
 ### What's next
 
@@ -207,7 +221,7 @@ work, and a worker session did each item and reported its status as structured d
 Kiro IDE, CLI or Web for this build, so we cannot say how they differ.
 <!-- claim:K01 -->
 
-**Spec-driven development.** Thirteen features, thirteen specs in `.kiro/specs/`. Each has
+**Spec-driven development.** Fifteen features, fifteen specs in `.kiro/specs/`. Each has
 `requirements.md` (user stories with EARS acceptance criteria and numbered ids; the ids are cited by
 tests), `design.md`, and `tasks.md`, which we ticked as work finished. A rule ran through all of them:
 a record in `docs/verification/` is written only after the checks pass, and it lists the commands,

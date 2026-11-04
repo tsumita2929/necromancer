@@ -16,11 +16,11 @@ docs/verification/submission-drafts-r4.md. Replace the video placeholder before 
 
 Every project stands on packages that nobody looks after. Some are deprecated, some are archived, and some carry advisories that will never be patched. A dead package fails quietly, and a package with no active maintainer is easy to take over. That happened with event-stream in 2018 and xz-utils in 2024.
 
-So we counted. We drew 100 active open-source projects at random from npm and Python, popular and long-tail, and read their direct dependencies. **33 of the 100 depend directly on a package that is deprecated, archived, inactive or gone** (95% confidence interval 24.6% to 42.7%). <!-- claim:Q01 -->
-If you also count packages the tool calls dead by its own rule (no sign of life for years), 179 of the 3,201 direct dependencies are dead or worse, about 1 in 18. 105 of those 179 rest on that rule alone, and the tool labels them "heuristic". <!-- claim:Q04 --><!-- claim:Q05 -->
+So we counted. We drew 100 active open-source projects at random from npm and Python, popular and long-tail, and read their direct dependencies. **35 of the 100 depend directly on a package that is deprecated (by its registry, or in its maintainers' own README), archived, inactive or gone** (95% confidence interval 26.4% to 44.7%). <!-- claim:Q01 -->
+If you also count packages the tool calls dead by its own rule (no sign of life for years), 186 of the 3,201 direct dependencies are dead or worse, about 1 in 17. 105 of those 186 rest on that rule alone, and the tool labels them "heuristic". <!-- claim:Q04 --><!-- claim:Q05 -->
 
 We checked the tool's answers by hand. Of 40 flagged packages that our tuning had never seen, the final engine still flags 36. All 36 were right, and 35 also held up when we asked whether anyone had touched the project in the last year. <!-- claim:Q15 -->
-We did not measure how many dead packages the tool misses, so these numbers are lower bounds.
+We also checked 48 units it called alive: none was really dead or dying (95% interval 0.0% to 7.4%). That check is not independent. The one miss it found, `coveralls`, led us to add a rule (a package whose own README says it is deprecated or no longer maintained is dead on a hard signal), so read it as "no known miss", not as a recall figure. <!-- claim:Q20 --><!-- claim:Q21 --><!-- claim:R51 -->
 
 ## The hard part is the way out
 
@@ -41,11 +41,11 @@ A tool that says "dead" has to be right, or say how sure it is. Every verdict sa
 
 We built the whole product in Kiro Crew, spec first. A lead session split the work into items. A worker session took each one and reported its status as data, and each item ended with a verification record that lists the commands, the result lines and the gaps.
 
-- **Specs.** Thirteen features, thirteen specs: requirements with numbered ids, a design, and a task list we ticked as we went. A test called `R6.5 untrusted text cannot add requirement ids` fails for a reason you can read. <!-- claim:K04 --><!-- claim:K07 -->
+- **Specs.** Fifteen features, fifteen specs: requirements with numbered ids, a design, and a task list we ticked as we went. A test called `R6.5 untrusted text cannot add requirement ids` fails for a reason you can read. <!-- claim:K04 --><!-- claim:K07 -->
 - **Steering and hooks.** Three always-on steering files, and eleven hooks. The hooks are written and valid, but we have not fired them: that needs the Kiro IDE, and we built in Kiro Crew. <!-- claim:K01 -->
 - **MCP and a custom agent.** The Crew app is an MCP server with eleven tools, and the Necromancer agent must ask it for every verdict. The tool that writes files is apart from the read-only preview, and refuses unless the project is on a `resurrect/` branch. Fresh subagents followed the agent's prompt and skill on a demo app and raised `left-pad`, `request` and `is-odd` on local branches. They listed what the skill got wrong, and we fixed the skill from those lists. <!-- claim:K05 --><!-- claim:C01 -->
 - **Property tests.** They found a Python template that was not valid Python, and a way for a package name to break out of a docstring. Example tests had missed both. <!-- claim:K02 -->
-- **People who had not seen the design.** A reviewer subagent that saw only the source attacked our parsers and found 11 issues, including a 34-second hang on a long run of spaces. Later a tester who had built none of the code ran the finished product and wrote 21 findings; 20 are fixed. Properties find what their generators can reach; a fresh reader reaches other places. We needed all of it. <!-- claim:K03 --><!-- claim:A01 -->
+- **People who had not seen the design.** A reviewer subagent that saw only the source attacked our parsers and found 11 issues, including a 34-second hang on a long run of spaces. Later a tester who had built none of the code ran the finished product and wrote 21 findings; 20 are fixed. A second tester ran the final product and wrote 10 more; 9 are fixed. Properties find what their generators can reach; a fresh reader reaches other places. We needed all of it. <!-- claim:K03 --><!-- claim:A01 --><!-- claim:A02 -->
 
 OWNER: add one or two sentences here about what it was like to work this way, in your own words. Say what surprised you, or what you would do differently. Remove this line.
 

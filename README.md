@@ -30,18 +30,19 @@ We counted. We drew 100 active open-source projects at random from npm and Pytho
 long-tail, and read their direct dependencies (3,201 of them, a median of 25 per project).
 <!-- claim:Q14 -->
 
-> **33 of 100 depend directly on a package that is deprecated, archived, inactive or gone**
-> (95% confidence interval 24.6% to 42.7%): 26 of 50 npm projects and 7 of 50 Python projects.
+> **35 of 100 depend directly on a package that is deprecated (by its registry, or in its
+> maintainers' own README), archived, inactive or gone** (95% confidence interval 26.4% to 44.7%):
+> 26 of 50 npm projects and 9 of 50 Python projects.
 > <!-- claim:Q01 --><!-- claim:Q02 --><!-- claim:Q03 -->
 
 - **By the engine's rule** (which counts a package with no sign of life for years as dead),
-  50 of 100 projects have a dead-or-worse direct dependency, and 179 of the 3,201 direct
-  dependencies are (5.6%, about 1 in 18). 74 of those 179 rest on a hard signal. 105 rest on the
+  50 of 100 projects have a dead-or-worse direct dependency, and 186 of the 3,201 direct
+  dependencies are (5.8%, about 1 in 17). 81 of those 186 rest on a hard signal. 105 rest on the
   abandoned heuristic, and the app labels them so.
   <!-- claim:Q07 --><!-- claim:Q04 --><!-- claim:Q05 -->
 - **4 zombies** (dead, with a known advisory against the version in use) in 3 projects.
   <!-- claim:Q06 -->
-- **Ways out.** The engine names a way out for 95 of the 179 flagged dependencies (53.1%), and for
+- **Ways out.** The engine names a way out for 96 of the 186 flagged dependencies (51.6%), and for
   4 of the 4 zombies. The ways out come from curated lists, the e18e module-replacements dataset,
   deprecation messages and our own research of 91 of the 175 dead packages.
   <!-- claim:Q08 --><!-- claim:Q09 -->
@@ -52,18 +53,22 @@ long-tail, and read their direct dependencies (3,201 of them, a median of 25 per
 - **Trust.** On 40 flagged packages that the engine tuning never saw, hand-checked against the
   registry, the repository and the advisory record: of the 36 the final engine still flags, all 36
   were right and 35 were also defensible (97.2%, 95% interval 85.8% to 99.5%). Among the units
-  that rest on a hard signal and that the tuning never saw, 10 of 10 were right and defensible. The
+  that rest on a hard signal and that the tuning never saw, 12 of 12 were right and defensible. The
   4 other units the earlier engine had flagged are no longer flagged: the rule that dropped them is
   the upgrade notice.
   <!-- claim:Q15 --><!-- claim:Q19 -->
-- **Not measured:** recall. A package whose latest release is under a year old reads `alive`
-  unless an advisory affects it, so an abandoned package with a recent release is missed. The
-  numbers are lower bounds.
+- **Recall is only partly measured.** A package whose latest release is under a year old reads
+  `alive` unless an advisory affects it, so an abandoned package with a recent release can be
+  missed. We checked 48 units the engine called alive against the registries and repositories: none
+  was really dead or dying (95% interval 0.0% to 7.4%). That check is not independent: the one
+  miss it found, `coveralls`, led us to add the README rule below, and `coveralls` is now flagged.
+  Read it as "no known miss", not as a recall figure. The numbers above are lower bounds.
+  <!-- claim:Q20 --><!-- claim:Q21 -->
 
 How the census was drawn, run and checked: [`docs/research/census.md`](docs/research/census.md)
 (section 9 is the final engine; section 9.8 lists every number with its recompute line) and
 [`docs/verification/census.md`](docs/verification/census.md). The numbers are for the final
-engine (commit `52c808c`) and one sample of 100 projects.
+engine (commit `f0dfc7a`) and one sample of 100 projects.
 <!-- claim:Qengine -->
 
 ## What the séance found
@@ -103,6 +108,34 @@ Every other pair gets a generic template, which is a skeleton (see Known limits)
 test leaves out project calls that name a host, a path or a command, and runs the rest behind a
 guard: no network, no process, no write outside a temporary directory.
 <!-- claim:S10 -->
+
+## What the last round added
+
+Independent testers ran the product twice and found what the builders missed. These came out of that and out of the census:
+
+- **README maintainer statements.** When a package's own README says it is deprecated or no longer
+  maintained, the verdict is `dead` on a hard signal, and the evidence quotes the sentence. On the
+  census this changed 6 verdicts (for example `coveralls` and `karma`); all 6 were checked against
+  the READMEs and are right, and no living package was flagged.
+  <!-- claim:R51 -->
+- **Upgrade notices say more.** For a living package whose version in use is deprecated, the notice
+  names the release to move to, says whether it is inside your declared range, and gives the Node
+  version it needs. Where Node has a built-in, it says so (`fs.glob`, `fs.rm`, `crypto.randomUUID()`).
+  <!-- claim:R52 -->
+- **A zombie's basis is the basis of its death.** Two of the four census zombies rest on the
+  abandoned heuristic for the "dead" half, and now say so. A repository renamed to a different
+  package gives that package as the way out (`PyPDF2` to `pypdf`).
+  <!-- claim:R55 -->
+- **No all-clear for a project that was mostly not read.** A monorepo root whose dependencies are
+  `workspace:` links or `catalog:` entries shows "Most of this project was not read", never "no
+  dead dependency". Catalog versions are read from `pnpm-workspace.yaml` for a GitHub repository.
+  <!-- claim:R53 --><!-- claim:R57 -->
+- **A package the registry does not know is "not found", never alive.** The Crew tools and the
+  Graveyard page say so.
+  <!-- claim:R54 -->
+- **The generic séance README adds up.** It says how many calls it replays, leaves out and cannot
+  replay, and the three counts sum to the calls found.
+  <!-- claim:R56 -->
 
 ## The three parts
 
@@ -278,18 +311,18 @@ ended with a verification record that lists the commands, their result lines and
 
 | Kiro feature | What we did with it | Where |
 |---|---|---|
-| Specs | One spec per feature: requirements in EARS notation with numbered ids, a design, and a task list that was ticked as the work went. Thirteen specs. | [`.kiro/specs/`](.kiro/specs/) |
+| Specs | One spec per feature: requirements in EARS notation with numbered ids, a design, and a task list that was ticked as the work went. Fifteen specs. | [`.kiro/specs/`](.kiro/specs/) |
 | Steering | Three files, always included: what the product is and the rules that bind every change; the stack and quality gates; who owns which path. | [`.kiro/steering/`](.kiro/steering/) |
 | Hooks | Eleven hooks that fire on a file edit: run the tests, guard the shared contract, re-run the séances when a recipe changes, check contrast when the design tokens change, keep recorded reports from being hand-edited. | [`.kiro/hooks/`](.kiro/hooks/) |
 | MCP | The Crew app is an MCP server with eleven tools. The agent asks it for every verdict and never guesses one. | [`apps/crew/src/server.ts`](apps/crew/src/server.ts), [`apps/crew/src/tools.ts`](apps/crew/src/tools.ts) |
 | Custom agent and skill | The Necromancer agent and the `resurrection` skill: scan, branch, preview and write the séance, run it, prove it can fail, replace the dependency, never push. Fresh subagents followed them on a demo app and listed what the skill got wrong; those problems were fixed in the skill. | [`apps/crew/agents/necromancer.json`](apps/crew/agents/necromancer.json), [`apps/crew/skills/resurrection/SKILL.md`](apps/crew/skills/resurrection/SKILL.md), [`docs/verification/crew-live.md`](docs/verification/crew-live.md) |
 | Property-based tests | Every requirement that states a rule over many inputs has a property test whose name cites its id. Properties found a real bug in the generator's output (an invalid Python template; a docstring breakout) that example tests missed. | [`packages/engine/test/properties/`](packages/engine/test/properties/), [`docs/verification/seance.md`](docs/verification/seance.md) section 5 |
-| Kiro Crew workers | A lead and workers, one verified record per item. A reviewer subagent that saw only the source, not the design or tests, attacked the parsers and found 11 issues, among them a 34-second hang. A tester who had built none of the code ran the product and wrote 21 findings; 20 are fixed. | [`docs/verification/engine.md`](docs/verification/engine.md) section 2.4, [`docs/verification/qa-round3.md`](docs/verification/qa-round3.md) |
+| Kiro Crew workers | A lead and workers, one verified record per item. A reviewer subagent that saw only the source, not the design or tests, attacked the parsers and found 11 issues, among them a 34-second hang. A tester who had built none of the code ran the product and wrote 21 findings; 20 are fixed. A second tester ran the final product and wrote 10 (QA-22 to QA-31); 9 are fixed and one, about the author identity of a single commit, is open. | [`docs/verification/engine.md`](docs/verification/engine.md) section 2.4, [`docs/verification/qa-round3.md`](docs/verification/qa-round3.md), [`docs/verification/qa-round4.md`](docs/verification/qa-round4.md) |
 
 Kiro IDE, CLI and Web were not used for this build, and Kiro powers were not used. The hooks are
 written and parse as JSON, but a hook fires in the Kiro IDE, which we did not run; they have not
 been fired.
-<!-- claim:K01 --><!-- claim:K04 -->
+<!-- claim:K01 --><!-- claim:K04 --><!-- claim:A01 --><!-- claim:A02 -->
 
 ## Known limits
 
@@ -297,12 +330,12 @@ been fired.
   validator and the tools run over stdio. The sidebar page, the registered cron job and the agent
   loading the skill are not proven live. Steps: [`docs/verification/crew-app.md`](docs/verification/crew-app.md).
   <!-- claim:C02 -->
-- **"Dead" by age is a heuristic.** 105 of the 179 dead-or-worse dependencies in the census rest on
+- **"Dead" by age is a heuristic.** 105 of the 186 dead-or-worse dependencies in the census rest on
   the engine's "abandoned" rule alone (a release 5 or more years old plus a quiet repository, or
   no sign of life for a year). It can wrong a finished package. Every such verdict is labelled
   "heuristic" in the app, the tools and Night Watch notices.
   <!-- claim:Q05 --><!-- claim:L01 -->
-- **Few sure ways out.** The engine names a way out for 95 of the 179 flagged dependencies, and a
+- **Few sure ways out.** The engine names a way out for 96 of the 186 flagged dependencies, and a
   part of them are suggestions with a low confidence that the tools and the page show as such.
   <!-- claim:Q08 --><!-- claim:L02 -->
 - **The generic séance is a skeleton.** Only six pairs have curated recipes. For any other pair the
@@ -327,7 +360,7 @@ been fired.
 - **Platforms.** Developed and tested on Linux with Node 22.12. macOS and Windows were not tested
   for the commands above. The web app itself is a static site.
 - **Unit of the numbers.** The census covers 100 projects (25 per group), one checker, and its
-  intervals are wide. It ran on engine commit `52c808c`.
+  intervals are wide. It ran on engine commit `f0dfc7a`.
   <!-- claim:Qengine -->
 - **"Never push" is an instruction to a model.** Nothing technical blocks `git push` in the agent's shell.
 
