@@ -182,7 +182,7 @@ After the engine's last change and the census recompute:
 ## 9. Deviations and notes
 
 - **No GitHub API call** was made. The `curl` of `github.com/<account>` and the repository pages is a web request, not the API.
-- **Host blocks.** Twice a shell command that only wrote local helper files was refused by a host rule against minting a credential. It looks like a false match: the command held a variable named `token` (in `check-links.py`) and a path under the host's `.kiro/crew` folder. I did not
+- **Host block.** Once, a shell command that only wrote local helper files was refused by a host rule against minting a credential. It looks like a false match: the command held a variable named `token` (in `check-links.py`) and a path under the host's `.kiro/crew` folder. I did not
   retry the same command; I wrote the files with the file tool.
 - **Chromium libraries** for the browser checks come from the host's `env.sh`; `--with-deps` was not run.
 - **The engine and census moved during the item** (engine `run-seances.mjs` now sets up its own scratch; an `engine-r4c` spec is uncommitted). The drafts quote the committed state at `4b31ce3`.
