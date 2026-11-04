@@ -315,7 +315,7 @@ function build(_ctx: RecipeContext): SeanceBundle {
     'The source is built from a pool of 40 Python 3 fragments (imports, definitions, comparisons, escapes, long lines, continuation lines) with random blank lines; options: default, longer lines, ignore lists, select lists. Both sides get the same options.',
     'Not compared: E301 to E304, E402 and E721 (they fire on different patterns now), Python 2 constructs (pycodestyle dropped W601 to W604) and async def (pep8 does not know it), the command line interface and configuration files.',
   ];
-  const install = ['pip install pytest hypothesis pep8 pycodestyle'];
+  const install = ['pip install pytest hypothesis pycodestyle'];
   const run = 'pytest seance/pep8';
   files.push({
     path: `${DIR}/README.md`,

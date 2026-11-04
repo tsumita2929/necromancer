@@ -2,7 +2,7 @@
   "recipe": "toml",
   "language": "python",
   "command": "pytest seance/toml",
-  "ranAt": "2026-11-04T00:21:34.660Z",
+  "ranAt": "2026-11-04T05:24:28.089Z",
   "versions": {
     "toml": "0.10.2",
     "tomli": "2.5.0",
@@ -11,9 +11,9 @@
   },
   "real": {
     "exit": 0,
-    "seconds": 7.999,
+    "seconds": 8.018,
     "summary": [
-      "64 passed, 1 skipped in 7.77s"
+      "64 passed, 1 skipped in 7.78s"
     ]
   },
   "mutants": [
@@ -34,7 +34,7 @@
         "-     'TypeError',",
         "+     'AttributeError',",
         "FAILED seance/toml/test_seance_toml.py::test_the_dict_argument_builds_the_requested_tables - TypeError: loads() got an unexpected keyword argument '_dict'",
-        "3 failed, 61 passed, 1 skipped in 13.26s"
+        "3 failed, 61 passed, 1 skipped in 13.44s"
       ]
     },
     {
@@ -54,7 +54,7 @@
         "At index 0 diff: 'ok' != 'error'",
         "-     'error',",
         "-     'DecodeError',",
-        "7 failed, 57 passed, 1 skipped in 23.17s"
+        "7 failed, 57 passed, 1 skipped in 23.46s"
       ]
     }
   ],

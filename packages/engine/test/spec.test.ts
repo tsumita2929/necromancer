@@ -47,7 +47,8 @@ describe('R6 resurrectionSpec on the real left-pad diagnosis', () => {
       reason: 'one line',
       source: 'module-replacements',
     });
-    expect(raise['tasks.md']).toContain('src/vendor/is-odd.ts');
+    // The curated is-odd recipe writes src/vendor/is-odd.mjs, and the tasks name that file.
+    expect(raise['tasks.md']).toContain('src/vendor/is-odd.mjs');
     expect(raise['requirements.md']).toContain('GHSA-1');
     const pkg = resurrectionSpec(diagnosis, {
       name: 'newer',

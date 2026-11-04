@@ -6,8 +6,16 @@
  * cite a requirement that exists.
  */
 
+import { codeCell } from './seance/emit.js';
 import { generateSeance } from './seance/index.js';
-import type { DependencyUsage, Diagnosis, KiroSpec, SeanceBundle, Successor } from './types.js';
+import type {
+  DependencyRef,
+  DependencyUsage,
+  Diagnosis,
+  KiroSpec,
+  SeanceBundle,
+  Successor,
+} from './types.js';
 
 interface Criterion {
   id: string;
@@ -18,6 +26,17 @@ interface Requirement {
   title: string;
   story: string;
   criteria: Criterion[];
+}
+
+/** Facts about the project that several parts of the spec repeat. */
+interface Project {
+  ecosystem: 'npm' | 'pypi';
+  /** Where the usage inventory is saved (R1.2 and the task that cites it). */
+  usagePath: string;
+  /** Where the owned replacement goes, as inline code, with a note when the extension is unknown. */
+  vendor: string;
+  /** The project's own test runner, when the caller named it. */
+  testRunner?: string;
 }
 
 /** Text that is safe inside a Markdown line and inline code. */
@@ -54,8 +73,65 @@ function slug(text: string): string {
   return s === '' ? 'dependency' : s.slice(0, 60);
 }
 
-function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): Requirement[] {
+/** The language of the project's code, from the files that use the dependency. */
+function codeExtension(ecosystem: 'npm' | 'pypi', usage: DependencyUsage | undefined): string {
+  if (ecosystem === 'pypi') return '.py';
+  const files = [...(usage?.filesUsing ?? []), ...(usage?.imports ?? []).map((i) => i.file)].filter(
+    (f): f is string => typeof f === 'string',
+  );
+  if (files.some((f) => /\.(?:ts|tsx|mts|cts)$/i.test(f))) return '.ts';
+  if (files.some((f) => /\.(?:js|jsx|mjs|cjs)$/i.test(f))) return '.js';
+  return '';
+}
+
+/** The path of the owned replacement, in the language of the project (T4.3). */
+function vendorPath(
+  old: string,
+  ecosystem: 'npm' | 'pypi',
+  usage: DependencyUsage | undefined,
+  bundle: SeanceBundle,
+): string {
+  const fromBundle = bundle.files.find(
+    (f) => f.role === 'replacement' && f.path.startsWith('src/vendor/'),
+  );
+  if (fromBundle) return `\`${safe(fromBundle.path, 'file', 100)}\``;
+  const ext = codeExtension(ecosystem, usage);
+  if (ecosystem === 'pypi') return `\`vendor/${slug(old).replace(/-/g, '_')}${ext}\``;
+  if (ext === '') {
+    return `\`src/vendor/${slug(old)}\` (give it the file extension and folder the project already uses)`;
+  }
+  return `\`src/vendor/${slug(old)}${ext}\``;
+}
+
+/** Version in use, from the lockfile when there is one, never "latest". */
+function versionInUse(dep: DependencyRef): string {
+  const resolved = safe(dep.resolved, '', 40);
+  if (dep.resolved && resolved) return `${resolved} (from the lockfile)`;
+  const range = safe(dep.spec, '', 60);
+  if (dep.spec && !/^(?:\*|latest|next)$/i.test(range))
+    return `declared as \`${range}\`, no lockfile version`;
+  return 'unknown (no lockfile version, and the manifest names no range)';
+}
+
+/** What the séance needs, whatever runner the project uses for its own tests (T4.1). */
+function seanceTooling(project: Project): string {
+  const own = project.testRunner
+    ? `\`${safe(project.testRunner, 'its test runner', 40)}\``
+    : 'whatever it uses';
+  return project.ecosystem === 'npm'
+    ? `The séance runs on Vitest and fast-check and needs Node 22.12 or newer. The project's own tests stay on ${own}; the séance is a separate command.`
+    : `The séance runs on pytest and Hypothesis. The project's own tests stay on ${own}; the séance is a separate command.`;
+}
+
+function buildRequirements(
+  old: string,
+  next: Successor,
+  diagnosis: Diagnosis,
+  project: Project,
+): Requirement[] {
   const nextName = safe(next.name, 'the successor');
+  // A raised replacement has no name of its own: it is code the project owns.
+  const nextRef = next.kind === 'raise' ? 'the owned replacement' : `\`${nextName}\``;
   const reqs: Requirement[] = [];
   reqs.push({
     id: 'R1',
@@ -68,18 +144,18 @@ function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): 
       },
       {
         id: 'R1.2',
-        text: 'THE list SHALL be saved in the repository so reviewers can check it against the diff.',
+        text: `THE list SHALL be saved in the repository at \`${project.usagePath}\` so reviewers can check it against the diff.`,
       },
     ],
   });
   reqs.push({
     id: 'R2',
     title: 'Same behaviour before and after',
-    story: `As a maintainer, I want proof that \`${nextName}\` answers like \`${old}\` for the way the project uses it, so that the switch is safe.`,
+    story: `As a maintainer, I want proof that ${nextRef} answers like \`${old}\` for the way the project uses it, so that the switch is safe.`,
     criteria: [
       {
         id: 'R2.1',
-        text: `THE project SHALL have a differential property-based test (a séance) that asks \`${old}\` and \`${nextName}\` the same generated questions over each API in R1.1.`,
+        text: `THE project SHALL have a differential property-based test (a séance) that asks \`${old}\` and ${nextRef} the same generated questions over each API in R1.1.`,
       },
       {
         id: 'R2.2',
@@ -116,7 +192,7 @@ function buildRequirements(old: string, next: Successor, diagnosis: Diagnosis): 
       criteria: [
         {
           id: 'R3.1',
-          text: `THE project SHALL contain its own typed, dependency-free implementation of the APIs listed in R1.1 at \`src/vendor/${slug(old)}.ts\`.`,
+          text: `THE project SHALL contain its own dependency-free implementation of the APIs listed in R1.1 at ${project.vendor}.`,
         },
         {
           id: 'R3.2',
@@ -189,10 +265,14 @@ function renderRequirements(
   diagnosis: Diagnosis,
   reqs: Requirement[],
 ): string {
+  const chosen =
+    next.kind === 'raise'
+      ? 'the way out is to rebuild it as code the project owns (a raise)'
+      : `the chosen successor is \`${safe(next.name, 'the successor')}\` (${safe(next.kind, 'package', 20)})`;
   const lines: string[] = [
     `# Requirements: Move off ${old}`,
     '',
-    `Generated by Necromancer. \`${old}\` is **${safe(diagnosis.verdict, 'dead', 20)}**; the chosen successor is \`${safe(next.name, 'the successor')}\` (${safe(next.kind, 'package', 20)}).`,
+    `Generated by Necromancer. \`${old}\` is **${safe(diagnosis.verdict, 'dead', 20)}**; ${chosen}.`,
     '',
     '## Why',
     '',
@@ -214,8 +294,14 @@ function renderRequirements(
   return lines.join('\n');
 }
 
-function renderDesign(old: string, next: Successor, diagnosis: Diagnosis): string {
+function renderDesign(
+  old: string,
+  next: Successor,
+  diagnosis: Diagnosis,
+  project: Project,
+): string {
   const nextName = safe(next.name, 'the successor');
+  const nextRef = next.kind === 'raise' ? 'the owned replacement' : `\`${nextName}\``;
   const eco = diagnosis.dependency.ecosystem === 'npm' ? 'JavaScript / TypeScript' : 'Python';
   const test =
     diagnosis.dependency.ecosystem === 'npm' ? 'fast-check with Vitest' : 'Hypothesis with pytest';
@@ -223,12 +309,15 @@ function renderDesign(old: string, next: Successor, diagnosis: Diagnosis): strin
     next.kind === 'native'
       ? `Replace calls to \`${old}\` with \`${nextName}\`. No package is added.`
       : next.kind === 'raise'
-        ? `Write \`src/vendor/${slug(old)}.ts\`, a small module with the same exported names the project uses, and import it where \`${old}\` was imported.`
+        ? `Write ${project.vendor}, a small module with the same exported names the project uses, and import it where \`${old}\` was imported.`
         : `Add \`${nextName}\` and adapt each call site to its API.`;
   return [
     `# Design: Move off ${old}`,
     '',
-    `Ecosystem: ${eco}. Current version in use: ${diagnosis.latest ? `latest is ${safe(diagnosis.latest.version, 'unknown', 40)}` : 'unknown'}.`,
+    `Ecosystem: ${eco}.`,
+    '',
+    `- Version in use: ${versionInUse(diagnosis.dependency)}.`,
+    `- Latest release: ${diagnosis.latest ? safe(diagnosis.latest.version, 'unknown', 40) : 'unknown'}.`,
     '',
     '## Approach',
     '',
@@ -236,13 +325,13 @@ function renderDesign(old: string, next: Successor, diagnosis: Diagnosis): strin
     '',
     '## The séance (differential test)',
     '',
-    `Both implementations are loaded in one test file (${test}). For each API from the inventory the test:`,
+    `Both implementations are loaded in one test file (${test}). ${seanceTooling(project)} For each API from the inventory the test:`,
     '',
     '1. builds an arbitrary that generates inputs of the types the API accepts, biased toward edge cases (empty, zero, negative, very long, unicode, `null` and `undefined`);',
-    `2. calls \`${old}\` and \`${nextName}\` with the same input;`,
+    `2. calls \`${old}\` and ${nextRef} with the same input;`,
     '3. fails if the results differ, or if exactly one of them throws, and shows the shrunk input and both outputs.',
     '',
-    `While \`${old}\` is still installed, it is the oracle. Before it is removed, record its outputs for the failing and edge inputs as a golden file, so the test keeps guarding the new code.`,
+    `While \`${old}\` is still installed, it is the oracle. It stays installed until the last step. Before it is removed, record its outputs for the failing and edge inputs as a golden file, so the test keeps guarding the new code.`,
     '',
     '## Risks',
     '',
@@ -259,8 +348,9 @@ function renderDesign(old: string, next: Successor, diagnosis: Diagnosis): strin
   ].join('\n');
 }
 
-function renderTasks(old: string, next: Successor, reqs: Requirement[]): string {
+function renderTasks(old: string, next: Successor, reqs: Requirement[], project: Project): string {
   const nextName = safe(next.name, 'the successor');
+  const nextRef = next.kind === 'raise' ? 'the owned replacement' : `\`${nextName}\``;
   const has = (id: string): boolean => reqs.some((r) => r.criteria.some((c) => c.id === id));
   const cite = (...ids: string[]): string => `_Requirements: ${ids.filter(has).join(', ')}_`;
   const install =
@@ -272,7 +362,7 @@ function renderTasks(old: string, next: Successor, reqs: Requirement[]): string 
       : next.kind === 'raise'
         ? [
             `- [ ] 3. Build the replacement`,
-            `  - [ ] 3.1 Write \`src/vendor/${slug(old)}.ts\` with the APIs from the inventory ${cite('R3.1')}`,
+            `  - [ ] 3.1 Write ${project.vendor} with the APIs from the inventory ${cite('R3.1')}`,
             `  - [ ] 3.2 Add example tests for the edge cases found in the inventory ${cite('R3.2')}`,
             `  - [ ] 3.3 Keep the licence attribution if \`${old}\` requires it ${cite('R3.3')}`,
           ]
@@ -285,10 +375,10 @@ function renderTasks(old: string, next: Successor, reqs: Requirement[]): string 
     '',
     `- [ ] 1. Inventory the usage of \`${old}\``,
     `  - [ ] 1.1 Search for every import, require and call; list the exported names used ${cite('R1.1')}`,
-    `  - [ ] 1.2 Save the list in \`docs/migration/${slug(old)}-usage.md\` ${cite('R1.2')}`,
+    `  - [ ] 1.2 Save the list in \`${project.usagePath}\` ${cite('R1.2')}`,
     `- [ ] 2. Write the séance: a differential property-based test, old versus new`,
     `  - [ ] 2.1 For each API in the inventory, write an arbitrary that generates its inputs ${cite('R2.1')}`,
-    `  - [ ] 2.2 Assert that \`${old}\` and \`${nextName}\` return equal results, or both throw the same kind of error ${cite('R2.1', 'R2.3')}`,
+    `  - [ ] 2.2 Assert that \`${old}\` and ${nextRef} return equal results, or both throw the same kind of error ${cite('R2.1', 'R2.3')}`,
     `  - [ ] 2.3 Make a failure print the shrunk input and both answers ${cite('R2.2')}`,
     `  - [ ] 2.4 Run it with \`${old}\` on both sides; it must pass before any code changes ${cite('R2.4')}`,
     ...install,
@@ -303,20 +393,57 @@ function renderTasks(old: string, next: Successor, reqs: Requirement[]): string 
   ].join('\n');
 }
 
+/** What `resurrectionSpec` reads beyond the diagnosis and the successor. */
+export interface SpecOptions {
+  usage?: DependencyUsage;
+  /** Facts about the project. `testRunner` is named in the spec, e.g. "jest" or "unittest". */
+  project?: { testRunner?: string };
+}
+
+function isSuccessor(value: unknown): value is Successor {
+  return (
+    typeof value === 'object' &&
+    value !== null &&
+    typeof (value as { name?: unknown }).name === 'string' &&
+    (value as { name: string }).name.trim() !== ''
+  );
+}
+
+/**
+ * The successor to write the spec for: the one given, else the diagnosis's best, else a `raise`
+ * successor built from the dependency itself (T4.5).
+ */
+function chooseSuccessor(diagnosis: Diagnosis | undefined, given: unknown): Successor {
+  if (isSuccessor(given)) return given;
+  const listed = Array.isArray(diagnosis?.successors)
+    ? diagnosis.successors.find(isSuccessor)
+    : undefined;
+  if (listed) return listed;
+  return {
+    name: safe(diagnosis?.dependency?.name, 'the dependency', 80),
+    ecosystem: diagnosis?.dependency?.ecosystem === 'pypi' ? 'pypi' : 'npm',
+    kind: 'raise',
+    reason: 'No successor is known. Rebuild the small utility as code the project owns.',
+    source: 'curated',
+  };
+}
+
 /**
  * A Kiro spec for moving the project off `diagnosis.dependency` onto `successor`. With a usage
  * scan it also describes the séance written for this project (files, command, what it compares).
+ * When no successor is given, the diagnosis's first one is used, else the spec rebuilds the
+ * dependency as code the project owns.
  */
 export function resurrectionSpec(
   diagnosis: Diagnosis,
-  successor: Successor,
-  options?: { usage?: DependencyUsage },
+  successor?: Successor,
+  options?: SpecOptions,
 ): KiroSpec {
   try {
-    return buildSpec(diagnosis, successor, options?.usage);
+    return buildSpec(diagnosis, successor, options);
   } catch {
     // Malformed input (for example an object whose properties throw): spec the bare names.
-    return buildSpec(undefined as never, undefined as never, undefined);
+    return buildSpec(undefined as never, undefined, undefined);
   }
 }
 
@@ -331,7 +458,7 @@ function seanceSection(bundle: SeanceBundle): string {
     '',
     ...bundle.files.map((f) => `- \`${safe(f.path, 'file', 100)}\` (${safe(f.role, 'file', 20)})`),
     '',
-    'Install and run:',
+    'Install and run (the old package is already installed and stays so until the last step):',
     '',
     '```sh',
     ...bundle.install.map((c) => safe(c, '', 160)),
@@ -349,8 +476,10 @@ function seanceSection(bundle: SeanceBundle): string {
       '| --- | --- | --- | --- |',
     );
     for (const k of bundle.knownDifferences) {
-      const cell = (t: string) => safe(t, '-', 110).replace(/\|/g, '/');
-      out.push(`| ${cell(k.input)} | ${cell(k.old)} | ${cell(k.naive)} | ${cell(k.handled)} |`);
+      // Code spans keep runs of spaces: the old package's answer may be several.
+      out.push(
+        `| ${codeCell(k.input, 110)} | ${codeCell(k.old, 160)} | ${codeCell(k.naive, 160)} | ${safe(k.handled, '-', 160).replace(/\|/g, '/')} |`,
+      );
     }
   }
   out.push('');
@@ -359,14 +488,16 @@ function seanceSection(bundle: SeanceBundle): string {
 
 function buildSpec(
   diagnosis: Diagnosis,
-  successor: Successor,
-  usage: DependencyUsage | undefined,
+  given: Successor | undefined,
+  options: SpecOptions | undefined,
 ): KiroSpec {
+  const usage = options?.usage;
   const old = safe(diagnosis?.dependency?.name, 'the dependency', 80);
+  const chosen = chooseSuccessor(diagnosis, given);
   const next: Successor = {
-    ...successor,
-    name: safe(successor?.name, 'the successor', 80),
-    reason: safe(successor?.reason, 'no reason recorded', 220),
+    ...chosen,
+    name: safe(chosen.name, 'the successor', 80),
+    reason: safe(chosen.reason, 'no reason recorded', 220),
   };
   const safeDiagnosis: Diagnosis = {
     dependency: diagnosis?.dependency ?? {
@@ -385,14 +516,22 @@ function buildSpec(
     successors: [],
     ...(diagnosis?.latest ? { latest: diagnosis.latest } : {}),
   };
-  const reqs = buildRequirements(old, next, safeDiagnosis);
-  const bundle = generateSeance(safeDiagnosis, successor ?? next, usage);
+  const bundle = generateSeance(safeDiagnosis, chosen, usage);
+  const ecosystem = safeDiagnosis.dependency.ecosystem === 'pypi' ? 'pypi' : 'npm';
+  const runner = options?.project?.testRunner;
+  const project: Project = {
+    ecosystem,
+    usagePath: `docs/migration/${slug(old)}-usage.md`,
+    vendor: vendorPath(old, ecosystem, usage, bundle),
+    ...(typeof runner === 'string' && runner.trim() !== '' ? { testRunner: runner } : {}),
+  };
+  const reqs = buildRequirements(old, next, safeDiagnosis, project);
   const r2 = reqs.find((r) => r.id === 'R2');
   if (r2) {
     const paths = bundle.files.map((f) => `\`${safe(f.path, 'file', 100)}\``).join(', ');
     r2.criteria.push({
       id: 'R2.5',
-      text: `THE séance SHALL be added to the project as ${paths || 'the generated files'} and run with \`${safe(bundle.run, 'the test runner', 100)}\`.`,
+      text: `THE séance SHALL be added to the project as ${paths || 'the generated files'} and run with \`${safe(bundle.run, 'the test runner', 100)}\`. ${seanceTooling(project)}`,
     });
     if (bundle.knownDifferences.length > 0) {
       r2.criteria.push({
@@ -401,13 +540,17 @@ function buildSpec(
       });
     }
   }
-  const tasks = renderTasks(old, next, reqs).replace(
+  const needs =
+    ecosystem === 'npm'
+      ? 'needs Vitest, fast-check and Node 22.12 or newer'
+      : 'needs pytest and Hypothesis';
+  const tasks = renderTasks(old, next, reqs, project).replace(
     /(  - \[ \] 2\.4 [^\n]*\n)/,
-    `$1  - [ ] 2.5 Add the generated séance files and run \`${safe(bundle.run, 'the test runner', 100).replace(/\$/g, '$$$$')}\`; read every TODO(necromancer) marker ${r2 ? '_Requirements: R2.5' + (bundle.knownDifferences.length > 0 ? ', R2.6' : '') + '_' : ''}\n`,
+    `$1  - [ ] 2.5 Add the generated séance files and run \`${safe(bundle.run, 'the test runner', 100).replace(/\$/g, '$$$$')}\` (${needs}); read every TODO(necromancer) marker ${r2 ? '_Requirements: R2.5' + (bundle.knownDifferences.length > 0 ? ', R2.6' : '') + '_' : ''}\n`,
   );
   return {
     'requirements.md': renderRequirements(old, next, safeDiagnosis, reqs),
-    'design.md': renderDesign(old, next, safeDiagnosis) + seanceSection(bundle),
+    'design.md': renderDesign(old, next, safeDiagnosis, project) + seanceSection(bundle),
     'tasks.md': tasks,
   };
 }

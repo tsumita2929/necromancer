@@ -310,12 +310,14 @@ export interface Engine {
   autopsy(input: { subject: string; files: ManifestFile[] }): Promise<AutopsyReport>;
   /**
    * A Kiro spec for moving the project off one dead dependency onto one successor. With a usage
-   * it also describes the séance for that project.
+   * it also describes the séance for that project. Without a successor it uses the diagnosis's
+   * first, else builds a `raise` successor from the dependency. `project.testRunner` names the
+   * project's own test runner in the spec.
    */
   resurrectionSpec(
     diagnosis: Diagnosis,
-    successor: Successor,
-    options?: { usage?: DependencyUsage },
+    successor?: Successor,
+    options?: { usage?: DependencyUsage; project?: { testRunner?: string } },
   ): KiroSpec;
   /** How the given source files use a dependency. Never throws. */
   scanUsage?(files: SourceFile[], target: UsageTarget): DependencyUsage;

@@ -5,7 +5,9 @@
   "type": "module",
   "license": "MIT",
   "description": "Vital-signs engine: finds dead dependencies and writes the migration spec.",
-  "engines": { "node": ">=22.12" },
+  "engines": {
+    "node": ">=22.12"
+  },
   "exports": {
     ".": {
       "types": "./src/index.ts",
@@ -28,7 +30,11 @@
   "devDependencies": {
     "@types/node": "^26.6.6",
     "fast-check": "^4.10.2",
+    "is-odd": "^3.0.1",
+    "left-pad": "^1.3.0",
+    "mkdirp": "^1.0.4",
     "prettier": "^3.9.10",
+    "querystring": "^0.2.1",
     "typescript": "^7.0.2",
     "vitest": "^5.1.0"
   }

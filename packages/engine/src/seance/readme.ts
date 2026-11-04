@@ -1,5 +1,5 @@
 import type { KnownDifference } from '../types.js';
-import { comment } from './emit.js';
+import { codeCell, comment } from './emit.js';
 
 export interface ReadmeInput {
   title: string;
@@ -33,6 +33,8 @@ export function renderReadme(r: ReadmeInput): string {
     r.run,
     '```',
     '',
+    'The old package stays installed until the last step: the séance asks it the questions.',
+    '',
     '## What it compares',
     '',
     ...r.compares.map((c) => `- ${comment(c, 240)}`),
@@ -50,7 +52,7 @@ export function renderReadme(r: ReadmeInput): string {
       '| --- | --- | --- | --- |',
     );
     for (const k of r.known) {
-      const cell = (t: string) => `\`${comment(t, 80).replace(/\|/g, '/').replace(/`/g, "'")}\``;
+      const cell = (t: string) => codeCell(t, 160);
       out.push(
         `| ${cell(k.input)} | ${cell(k.old)} | ${cell(k.naive)} | ${comment(k.handled, 120).replace(/\|/g, '/')} |`,
       );

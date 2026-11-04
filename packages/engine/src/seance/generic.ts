@@ -14,7 +14,7 @@ import type {
   SeanceFile,
 } from '../types.js';
 import { comment, docText, jsStr, pyIdent, pyStr, slug } from './emit.js';
-import { jsExamples, pyExamples } from './examples.js';
+import { callsNote, jsProjectCalls, pyProjectCalls } from './examples.js';
 import { renderReadme } from './readme.js';
 import { makeBundle, type RecipeContext } from './recipe.js';
 import { pythonImportNames } from '../usage/scan-py.js';
@@ -117,13 +117,11 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     const kinds = kindsByPosition(m);
     const width = Math.max(1, ...m.argCounts);
     const arbs = Array.from({ length: width }, (_, i) => jsArb(kinds[i])).join(',\n        ');
-    const examples = jsExamples(ctx.usage, (x) => x === m.member);
     const target = m.member === 'default' ? 'default' : m.member;
     return [
       `  describe(${jsStr(`member ${target}`)}, () => {`,
       `    const path = ${jsStr(target)};`,
-      "    // The project's own calls (empty when no usage scan was given).",
-      `    const projectCalls = ${examples};`,
+      ...jsProjectCalls(ctx.usage, (x) => x === m.member, 'projectCalls', '    '),
       '    it("the replacement answers like the old package on the project\'s own calls", () => {',
       '      for (const args of projectCalls) expect(outcome(NEW.members[path], args), JSON.stringify(args)).toEqual(outcome(lookup(OLD, path), args));',
       '    });',
@@ -175,9 +173,9 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     '',
   ].join('\n');
 
-  const install = [
-    `npm install --save-dev vitest fast-check ${/^[@A-Za-z0-9._/~-]+$/.test(name) ? name : '<the old package>'}`,
-  ];
+  // The old package is already installed (it is still a dependency); the successor is the user's
+  // choice, so it is not named here.
+  const install = ['npm install --save-dev vitest fast-check'];
   const run = `npx vitest run ${dir}`;
   const compares = [
     'The returned value, or the error class when the call throws (never the message).',
@@ -188,6 +186,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     ...(skipped.length > 0
       ? [`Not covered: ${skipped.map((s) => comment(s, 30)).join(', ')}.`]
       : []),
+    callsNote(ctx.usage, (x) => members.some((m) => m.member === x)),
   ];
   const files: SeanceFile[] = [
     { path: `${dir}/seance.test.mjs`, content: test, role: 'test' },
@@ -281,10 +280,9 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     const width = Math.max(1, ...m.argCounts);
     const arbs = Array.from({ length: width }, (_, i) => pyArbLine(kinds[i])).join('\n');
     const test = `test_${n}_${pyIdent(m.member.replace(/\./g, '_'), 'member')}`;
-    const examples = pyExamples(ctx.usage, (x) => x === m.member);
     return [
       `PATH_${test.toUpperCase()} = ${pyStr(m.member)}`,
-      `CALLS_${test.toUpperCase()} = ${examples}  # the project's own calls`,
+      pyProjectCalls(ctx.usage, (x) => x === m.member, `CALLS_${test.toUpperCase()}`),
       '',
       `@pytest.mark.parametrize("args", CALLS_${test.toUpperCase()})`,
       `def ${test}_project_calls(args):`,
@@ -338,9 +336,8 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     ...tests.flatMap((t) => [t, '']),
   ].join('\n');
 
-  const install = [
-    `pip install pytest hypothesis ${/^[A-Za-z0-9._-]+$/.test(name) ? name : '<the old package>'}`,
-  ];
+  // The old package is already installed (it is still a dependency).
+  const install = ['pip install pytest hypothesis'];
   const run = `pytest ${dir}`;
   const compares = [
     'The returned value, or the exception class when the call raises (never the message).',
@@ -351,6 +348,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     ...(skipped.length > 0
       ? [`Not covered: ${skipped.map((s) => comment(s, 30)).join(', ')}.`]
       : []),
+    callsNote(ctx.usage, (x) => members.some((m) => m.member === x)),
   ];
   const files: SeanceFile[] = [
     { path: `${dir}/test_seance_${id}.py`, content: test, role: 'test' },

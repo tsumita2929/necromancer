@@ -81,6 +81,20 @@ export function comment(text: unknown, max = 120): string {
 }
 
 /**
+ * Text for a Markdown table cell, in a code span. Unlike `comment`, runs of spaces are kept: the old
+ * package's real answer may be several spaces. No line breaks, no control characters, no backtick or
+ * pipe that would end the span or the cell.
+ */
+export function codeCell(text: unknown, max = 140): string {
+  const s = toText(text)
+    .replace(/[\u0000-\u001f\u007f-\u009f\u2028\u2029]/g, ' ')
+    .replace(/\|/g, '/')
+    .replace(/`/g, "'");
+  const cut = s.length > max ? `${s.slice(0, max - 1)}…` : s;
+  return `\`${cut === '' ? '-' : cut}\``;
+}
+
+/**
  * Text for the inside of a Python docstring: one flat line, and no quote or backslash, so the text
  * cannot close the docstring or start an escape.
  */

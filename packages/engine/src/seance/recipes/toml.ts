@@ -9,7 +9,7 @@
  */
 
 import type { KnownDifference, SeanceBundle, SeanceFile } from '../../types.js';
-import { pyExamples } from '../examples.js';
+import { callsNote, pyProjectCalls } from '../examples.js';
 import { renderReadme } from '../readme.js';
 import { makeBundle, type Mutant, type Recipe, type RecipeContext } from '../recipe.js';
 
@@ -461,7 +461,7 @@ def test_the_naive_call_is_not_a_drop_in():
 
 # --- calls this project makes today, from the usage scan (empty when none was given) --------------
 
-PROJECT_CALLS = __PROJECT_LOADS__
+__PROJECT_LOADS__
 
 
 @pytest.mark.parametrize("args", PROJECT_CALLS)
@@ -470,11 +470,11 @@ def test_the_replacement_answers_like_toml_on_the_calls_this_project_makes(args)
 `;
 
 function build(ctx: RecipeContext): SeanceBundle {
-  const examples = pyExamples(ctx.usage, (m) => m === 'loads');
+  const pick = (m: string): boolean => m === 'loads';
   const files: SeanceFile[] = [
     {
       path: `${DIR}/test_seance_toml.py`,
-      content: TEST.replace('__PROJECT_LOADS__', () => examples),
+      content: TEST.replace('__PROJECT_LOADS__', () => pyProjectCalls(ctx.usage, pick)),
       role: 'test',
     },
     { path: `${DIR}/toml_replacement.py`, content: REPLACEMENT, role: 'replacement' },
@@ -485,8 +485,9 @@ function build(ctx: RecipeContext): SeanceBundle {
     'Damaged documents (random edits) and arbitrary text: where both accept they agree (apart from the documented faults of toml); where only one accepts, TOML 1.0 decides and the case is counted; where both refuse the error kinds agree unless toml crashed. The replacement must answer exactly like tomli.loads.',
     'load: a path (str, bytes), a text file and a binary file; bad arguments. loads: non-text arguments, the _dict argument.',
     'Not covered: toml.dumps (use tomli-w), a list of paths for toml.load, the decoder argument.',
+    callsNote(ctx.usage, pick),
   ];
-  const install = ['pip install pytest hypothesis toml tomli'];
+  const install = ['pip install pytest hypothesis tomli'];
   const run = 'pytest seance/toml';
   files.push({
     path: `${DIR}/README.md`,
