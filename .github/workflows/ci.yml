@@ -90,12 +90,18 @@ jobs:
             exit 1
           fi
           found="$("$NECROMANCER_PYTHON" -c 'import sys; print("%d.%d" % sys.version_info[:2])')"
-          [ "$found" = "$EXPECT_PYTHON" ] || fail "$NECROMANCER_PYTHON is Python $found, not $EXPECT_PYTHON."
+          if [ "$found" != "$EXPECT_PYTHON" ]; then
+            fail "$NECROMANCER_PYTHON is Python $found, not $EXPECT_PYTHON."
+            exit 1
+          fi
 
           # 2. The built engine must hold exactly the recipes this step runs: a new or a removed recipe is
           #    a change to this list, not a silent skip.
           have="$(node -e "import('./dist/seance/recipes/index.js').then((m) => console.log(m.RECIPES.map((r) => r.id).sort().join(' ')))")"
-          [ "$have" = "$recipes" ] || fail "the engine has the recipes [$have] but this step runs [$recipes]."
+          if [ "$have" != "$recipes" ]; then
+            fail "the engine has the recipes [$have] but this step runs [$recipes]."
+            exit 1
+          fi
 
           # 3. Run them. Without --record nothing is written in the repository.
           node scripts/run-seances.mjs $recipes 2>&1 | tee "$log" || fail "run-seances.mjs exited with an error."
