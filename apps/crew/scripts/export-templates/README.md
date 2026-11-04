@@ -19,7 +19,7 @@ live in the main repository: **{{MAIN_URL}}**.
 | **Night Watch** | A scheduled job (daily, 03:00 Asia/Tokyo, silent) that re-scans the watched projects and notifies **only when a dependency's verdict got worse**, once per dependency. Detection is plain code with property tests, not a model's opinion; the agent only relays the result. | `crons` in `app.json`, `send_notification` |
 | **Necromancer agent** | Runs Night Watch and the resurrection. Hard rules in its prompt: never push, never add a remote, work only on a local `resurrect/<dependency>` branch, stop on a dirty tree or a non-git folder. | `agents/necromancer.json` |
 | **`resurrection` skill** | The procedure: scan before branching, write the spec, run the **generated séance first**, prove it can fail, migrate task by task, keep a golden guard after the old package is gone, report. | `skills/resurrection/SKILL.md` |
-| **MCP server** (10 tools) | `autopsy`, `diagnose`, `successors`, `resurrection_spec`, `seance`, `watch_add`, `watch_list`, `watch_remove`, `nightwatch_run`, `graveyard`. The real [Necromancer engine](#the-engine) is bundled; it reads public data only (npm, PyPI, deps.dev, OSV, OpenSSF Scorecard). | `mcpServers` in `app.json`, started by `mcp/launch.py` |
+| **MCP server** (11 tools) | `autopsy`, `diagnose`, `successors`, `resurrection_spec`, `seance` (read-only preview), `seance_write` (writes, on a `resurrect/` branch only), `watch_add`, `watch_list`, `watch_remove`, `nightwatch_run`, `graveyard`. The real [Necromancer engine](#the-engine) is bundled; it reads public data only (npm, PyPI, deps.dev, OSV, OpenSSF Scorecard). | `mcpServers` in `app.json`, started by `mcp/launch.py` |
 | **Minimal permissions** | `api: /apps/necromancer/api` and `cron`. No `network`, `spawn`, `sessionApproval`, `memory` or `storage`. | `permissions` |
 
 ### How a resurrection goes
@@ -30,7 +30,7 @@ agent:   diagnose  -> left-pad 1.3.0 is dead (deprecated; no release in 8 years)
          successors -> String.prototype.padStart (native)
          seance (scan)   -> 4 calls in src/receipt.js, no warnings
          git switch -c resurrect/left-pad
-         seance (write)  -> seance/left-pad/{seance.test.mjs, replacement.mjs, README.md}
+         seance_write    -> seance/left-pad/{seance.test.mjs, replacement.mjs, README.md}
          run the séance  -> passes against left-pad
          swap in the plain padStart as a mutant -> FAILS with a shrunk counterexample:
                             leftPad("", 1, "")      is " "   but padStart gives ""

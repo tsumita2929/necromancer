@@ -6,7 +6,7 @@
 //
 // Prints one line per check (PASS / FAIL / SKIP, with the result line) and exits 1 on any FAIL.
 import { execFileSync, spawnSync } from 'node:child_process';
-import { existsSync, mkdtempSync, readFileSync, readdirSync, statSync } from 'node:fs';
+import { cpSync, existsSync, mkdtempSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 
@@ -155,7 +155,7 @@ const manifest = JSON.parse(readFileSync(path.join(V, 'app.json'), 'utf8'));
   }
 }
 
-// ---- the MCP server answers all 10 tools on the haunted app (scripts/mcp-call.mjs -> mcp/launch.py) ----------------
+// ---- the MCP server answers all 11 tools on the haunted app (scripts/mcp-call.mjs -> mcp/launch.py) ----------------
 {
   const haunted = path.join(V, 'examples/haunted-app');
   const data = mkdtempSync(path.join(os.tmpdir(), 'necro-data-'));
@@ -163,7 +163,7 @@ const manifest = JSON.parse(readFileSync(path.join(V, 'app.json'), 'utf8'));
   const call = (tool, argsObj) => sh(process.execPath, [path.join(V, 'scripts/mcp-call.mjs'), tool, JSON.stringify(argsObj)], V, env);
   const listed = sh(process.execPath, [path.join(V, 'scripts/mcp-call.mjs'), '--list'], V, env);
   const names = listed.out.split('\n').map((l) => l.split(':')[0]).filter((n) => /^[a-z_]+$/.test(n));
-  report(names.length === 10 ? 'PASS' : 'FAIL', 'MCP server lists its tools', `${names.length}: ${names.join(', ')}`);
+  report(names.length === 11 ? 'PASS' : 'FAIL', 'MCP server lists its tools', `${names.length}: ${names.join(', ')}`);
   const dep = { ecosystem: 'npm', name: 'left-pad' };
   const steps = [
     ['autopsy', { path: haunted }],
@@ -192,6 +192,23 @@ const manifest = JSON.parse(readFileSync(path.join(V, 'app.json'), 'utf8'));
       : r.out.slice(0, 160);
     report(r.status === 0 && engineOk ? 'PASS' : 'FAIL', `tool ${tool}`, detail);
   }
+  // the write tool: refused off a resurrect/ branch, written on one; the preview never writes
+  const gitIn = (cwd, ...a) => sh('git', ['-c', 'user.name=verify', '-c', 'user.email=verify@invalid', ...a], cwd);
+  const scratch = mkdtempSync(path.join(os.tmpdir(), 'necro-write-'));
+  const proj = path.join(scratch, 'haunted');
+  cpSync(haunted, proj, { recursive: true });
+  gitIn(proj, 'init', '-q', '-b', 'main');
+  gitIn(proj, 'add', '.');
+  gitIn(proj, 'commit', '-q', '-m', 'start');
+  const preview = call('seance', { ...dep, path: proj });
+  report(preview.status === 0 && gitIn(proj, 'status', '--porcelain').out.trim() === '' ? 'PASS' : 'FAIL', 'seance (preview) leaves git status clean', 'status empty');
+  const refused = call('seance_write', { ...dep, path: proj });
+  report(refused.status !== 0 && /branch "main"/.test(refused.out) && gitIn(proj, 'status', '--porcelain').out.trim() === '' ? 'PASS' : 'FAIL', 'seance_write is refused on main', refused.out.slice(0, 120));
+  gitIn(proj, 'checkout', '-q', '-b', 'resurrect/left-pad');
+  const written = call('seance_write', { ...dep, path: proj });
+  let wbody;
+  try { wbody = JSON.parse(written.out); } catch { /* not JSON */ }
+  report(written.status === 0 && wbody?.wrote === true && wbody.written.length > 0 ? 'PASS' : 'FAIL', 'seance_write writes on resurrect/left-pad', wbody ? `wrote ${wbody.written.length} file(s)` : written.out.slice(0, 160));
 }
 
 console.log(failures === 0 ? 'VERIFY OK' : `VERIFY FAILED: ${failures} check(s)`);
