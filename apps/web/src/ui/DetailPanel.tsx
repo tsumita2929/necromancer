@@ -4,7 +4,7 @@ import { Button, ExtLink, formatDate } from '../design/controls';
 import { CloseIcon } from '../design/icons';
 import { meaningOf, VerdictBadge } from '../design/Verdict';
 import { canResurrect as canResurrectDiagnosis, waysOut } from '../data/kit';
-import { basisOf, displayVersion, isUnchecked, upgradeInfo, upgradeSentence } from '../state/model';
+import { basisOf, displayVersion, isUnchecked, orderedEvidence, upgradeInfo, upgradeNotice, upgradeSentence, upgradeWay } from '../state/model';
 import type { SourceContext } from '../data/autopsy';
 import { SpecViewer, kindLabel } from './SpecViewer';
 
@@ -67,6 +67,11 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
   const alive = verdict === 'alive';
   const unchecked = isUnchecked(diagnosis);
   const upgrade = upgradeInfo(diagnosis);
+  const way = (() => {
+    const notice = upgradeNotice(diagnosis);
+    return notice ? upgradeWay(notice) : undefined;
+  })();
+  const shownEvidence = orderedEvidence(diagnosis);
   const tone = unchecked ? 'unchecked' : verdict;
   const aliases = diagnosis.advisoryAliases ?? {};
   const canResurrect = canResurrectDiagnosis(diagnosis);
@@ -160,7 +165,7 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                 <p className="quiet">No sign of decline was found.</p>
               ) : (
                 <ol className="evidence">
-                  {evidence.map((item, index) => (
+                  {shownEvidence.map((item, index) => (
                     <li key={`${item.code}-${index}`}>
                       <p className="evidence__msg">{item.message}</p>
                       <p className="evidence__meta">
@@ -211,7 +216,7 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
 
             <section aria-labelledby={`${titleId}-ways`}>
               <h3 id={`${titleId}-ways`}>Ways out</h3>
-              {successors.length === 0 ? (
+              {successors.length === 0 && !way ? (
                 <p className="quiet">{alive ? 'None needed.' : 'No successor is known.'}</p>
               ) : (
                 <>
@@ -241,6 +246,13 @@ export function DetailPanel({ diagnosis, specIndex, context, onClose, onSpec }: 
                       </p>
                     </li>
                   ))}
+                  {way ? (
+                    <li className="ways__upgrade" data-testid="upgrade-way">
+                      <p className="ways__kind">Stay, and upgrade</p>
+                      <p className="ways__name">{way.name}</p>
+                      <p className="ways__reason">{way.reason}</p>
+                    </li>
+                  ) : null}
                 </ul>
                 </>
               )}

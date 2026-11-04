@@ -12,6 +12,8 @@ export interface Catalogs {
   default: Record<string, string>;
   /** `catalogs: { name: { pkg: version } }`. */
   named: Record<string, Record<string, string>>;
+  /** What in the file the reader could not understand, for the catalog sections only (QA-34). Empty when it understood all. */
+  issues: string[];
 }
 
 function unquote(text: string): string {
@@ -51,7 +53,11 @@ function splitEntry(line: string): { key: string; value: string } | null {
 }
 
 export function parseCatalogs(yaml: string): Catalogs {
-  const out: Catalogs = { default: {}, named: {} };
+  const out: Catalogs = { default: {}, named: {}, issues: [] };
+  const issue = (text: string): void => {
+    if (!out.issues.includes(text)) out.issues.push(text);
+  };
+  const ANCHOR = /(^|\s)[&*][\w-]+/;
   type Frame = { indent: number; target: 'top' | 'default' | 'catalogs' | 'named'; name?: string };
   const stack: Frame[] = [{ indent: -1, target: 'top' }];
   for (const rawLine of yaml.replace(/\r/g, '').split('\n')) {
@@ -68,8 +74,12 @@ export function parseCatalogs(yaml: string): Catalogs {
     if (parent.target === 'top') {
       if (value === '' && key === 'catalog') stack.push({ indent, target: 'default' });
       else if (value === '' && key === 'catalogs') stack.push({ indent, target: 'catalogs' });
+      else if (key === 'catalog' || key === 'catalogs') issue(ANCHOR.test(value) ? 'it uses YAML anchors or aliases' : 'its catalog is written in flow style or on one line');
       continue;
     }
+    if (key === '<<') issue('it uses YAML merge keys');
+    if (ANCHOR.test(value)) issue('it uses YAML anchors or aliases');
+    else if (/^[[{|>]/.test(value)) issue('its catalog is written in flow style or as a text block');
     if (parent.target === 'default') {
       if (value !== '' && !/^[[{&*|>]/.test(value)) out.default[key] = unquote(value);
       continue;

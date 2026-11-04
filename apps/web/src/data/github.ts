@@ -126,19 +126,23 @@ async function readOne(
   return { state: 'found', file: { kind: entry.kind, path: entry.file, content } };
 }
 
-type TextOutcome = { state: 'found'; text: string } | { state: 'missing' } | { state: 'failed' };
+type TextOutcome = { state: 'found'; text: string } | { state: 'missing' } | { state: 'failed'; why: string };
 
-/** One small text file next to the manifests. Never throws except for a cancelled run. */
+const MAX_TEXT_BYTES = 1024 * 1024;
+
+/** One small text file next to the manifests. Never throws except for a cancelled run. `why` says what went wrong, in words. */
 async function readText(fetchRaw: RawFetch, url: string): Promise<TextOutcome> {
   try {
     const response = await fetchRaw(url);
     if (response.status === 404 || response.status === 410) return { state: 'missing' };
-    if (!response.ok) return { state: 'failed' };
+    if (!response.ok) return { state: 'failed', why: `GitHub answered HTTP ${response.status}` };
+    const declared = Number(response.headers?.get('content-length') ?? '');
+    if (Number.isFinite(declared) && declared > MAX_TEXT_BYTES) return { state: 'failed', why: `it is ${mib(declared)}, over the 1 MiB limit for this file` };
     const text = await response.text();
-    return text.length > 1024 * 1024 ? { state: 'failed' } : { state: 'found', text };
+    return text.length > MAX_TEXT_BYTES ? { state: 'failed', why: `it is ${mib(text.length)}, over the 1 MiB limit for this file` } : { state: 'found', text };
   } catch (error) {
     if (isAbort(error)) throw error;
-    return { state: 'failed' };
+    return { state: 'failed', why: 'the connection failed' };
   }
 }
 
@@ -193,27 +197,53 @@ export async function readRepository(repo: RepoRef, fetchRaw: RawFetch): Promise
         text: `Read ${files.map((f) => f.path).join(', ') || 'nothing'} from the root of ${label} on ${where}. Manifests in sub-folders are not read.${ignored}`,
       },
     ];
-    // pnpm catalogs: the versions are in pnpm-workspace.yaml (QA-22).
+    // pnpm catalogs: the versions are in pnpm-workspace.yaml (QA-22). Every way it can fail says why (QA-34).
     const rootPackage = files.find((f) => f.kind === 'package.json' && f.path === 'package.json');
     if (rootPackage && hasCatalogEntries(rootPackage.content)) {
       const yaml = await readText(fetchRaw, rawUrl(repo.owner, repo.name, candidate.ref, 'pnpm-workspace.yaml'));
       if (yaml.state === 'found') {
-        const result = resolveCatalogs(rootPackage, parseCatalogs(yaml.text));
+        const catalogs = parseCatalogs(yaml.text);
+        const result = resolveCatalogs(rootPackage, catalogs);
         files[files.indexOf(rootPackage)] = result.file;
+        const issues = catalogs.issues.length > 0 ? ` Part of the file was not understood: ${catalogs.issues.join('; ')}.` : '';
         if (result.resolved > 0) {
           notes.push({
             kind: 'info',
+            code: 'catalog-resolved',
             title: 'Catalog versions read',
-            text: `${result.resolved} catalog: ${result.resolved === 1 ? 'entry' : 'entries'} in package.json took ${result.resolved === 1 ? 'its' : 'their'} version from pnpm-workspace.yaml.${result.unresolved > 0 ? ` ${result.unresolved} could not be resolved there and ${result.unresolved === 1 ? 'is' : 'are'} not read.` : ''}`,
+            text: `${result.resolved} catalog: ${result.resolved === 1 ? 'entry' : 'entries'} in package.json took ${result.resolved === 1 ? 'its' : 'their'} version from pnpm-workspace.yaml.${result.unresolved > 0 ? ` ${result.unresolved} could not be resolved there and ${result.unresolved === 1 ? 'is' : 'are'} not read.` : ''}${issues}`,
+          });
+        } else if (catalogs.issues.length > 0) {
+          notes.push({
+            kind: 'warning',
+            code: 'catalog-unusable',
+            title: 'pnpm-workspace.yaml was found but could not be used',
+            text: `The file at the root of the repository was read, but ${catalogs.issues.join('; ')}, and Necromancer does not read that. The catalog: entries in package.json are not examined.`,
           });
         } else {
-          notes.push({ kind: 'warning', title: 'Catalog versions not found', text: 'package.json uses catalog: entries, but pnpm-workspace.yaml has no catalog that names them, so their versions are unknown.' });
+          const hasAny = Object.keys(catalogs.default).length > 0 || Object.keys(catalogs.named).length > 0;
+          notes.push({
+            kind: 'warning',
+            code: 'catalog-no-match',
+            title: 'Catalog versions not found',
+            text: hasAny
+              ? 'pnpm-workspace.yaml has catalogs, but none names the packages that package.json takes from a catalog, so their versions are unknown.'
+              : 'pnpm-workspace.yaml was found, but no catalog could be read from it (it may have none, or may not be valid YAML), so the versions of the catalog: entries are unknown.',
+          });
         }
+      } else if (yaml.state === 'missing') {
+        notes.push({
+          kind: 'warning',
+          code: 'catalog-missing',
+          title: 'pnpm-workspace.yaml was not found',
+          text: 'package.json uses catalog: entries, whose versions are written in pnpm-workspace.yaml at the root, but the repository has no such file there. Those dependencies are not examined.',
+        });
       } else {
         notes.push({
           kind: 'warning',
-          title: 'pnpm-workspace.yaml was not read',
-          text: `package.json uses catalog: entries, whose versions are written in pnpm-workspace.yaml at the root, but that file ${yaml.state === 'missing' ? 'was not found' : 'could not be read'}. Those dependencies are not examined.`,
+          code: 'catalog-unusable',
+          title: 'pnpm-workspace.yaml was found but could not be read',
+          text: `pnpm-workspace.yaml is at the root of the repository, but ${yaml.why}. The catalog: entries in package.json are not examined.`,
         });
       }
     }

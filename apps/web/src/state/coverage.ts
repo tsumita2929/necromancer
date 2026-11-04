@@ -82,8 +82,27 @@ export interface LeftOutLine {
   todo: string;
 }
 
+/** Where the manifest came from, and what the read said about pnpm-workspace.yaml (QA-34). */
+export interface LeftOutContext {
+  /** A GitHub repository scan (the file can be fetched). Otherwise an upload or a recorded sample. */
+  repo: boolean;
+  /** The note the read made about pnpm-workspace.yaml, if any. */
+  catalogNote?: { code?: string | undefined; title?: string | undefined; text: string } | undefined;
+}
+
+/** What to say about catalog entries that are still out: the true reason, not advice that does not apply (QA-34). */
+function catalogTodo(context: LeftOutContext | undefined): string {
+  if (!context?.repo) {
+    return 'Necromancer reads pnpm-workspace.yaml for a GitHub repository. For an uploaded package.json, put the versions into the file, or use the repository address.';
+  }
+  const note = context.catalogNote;
+  if (!note) return 'pnpm-workspace.yaml could not be used for them.';
+  if (note.code === 'catalog-resolved') return 'pnpm-workspace.yaml was read, and it holds no version for these.';
+  return note.title ? `${note.title}. ${note.text}` : note.text;
+}
+
 /** One explanation per kind that occurs. */
-export function leftOutLines(coverage: Coverage): LeftOutLine[] {
+export function leftOutLines(coverage: Coverage, context?: LeftOutContext): LeftOutLine[] {
   const count = (kind: LeftOutKind): number => coverage.entries.filter((e) => e.kind === kind).length;
   const lines: LeftOutLine[] = [];
   const workspace = count('workspace');
@@ -101,7 +120,7 @@ export function leftOutLines(coverage: Coverage): LeftOutLine[] {
       kind: 'catalog',
       count: catalog,
       what: `${plural(catalog, 'entry uses', 'entries use')} catalog: (pnpm). ${catalog === 1 ? 'Its version is' : 'Their versions are'} written in pnpm-workspace.yaml, not in package.json.`,
-      todo: 'Necromancer reads pnpm-workspace.yaml for a GitHub repository. For an uploaded package.json, put the versions into the file, or use the repository address.',
+      todo: catalogTodo(context),
     });
   }
   const elsewhere = count('elsewhere');

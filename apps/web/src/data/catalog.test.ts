@@ -26,14 +26,27 @@ describe('QA-22 pnpm catalogs', () => {
   it('reads the default catalog and the named ones, with plain and quoted keys, and ignores comments', () => {
     const catalogs = parseCatalogs(yaml);
     expect(catalogs.default).toEqual({ react: '^18.2.0', '@types/node': '^20.1.0', typescript: '5.4.5' });
+    expect(catalogs.issues).toEqual([]);
     expect(catalogs.named).toEqual({ react17: { react: '^17.0.2', 'react-dom': '^17.0.2' }, legacy: { 'left-pad': '1.3.0' } });
   });
 
   it('reads nothing from a file that has no catalog, or from flow style it does not understand', () => {
-    expect(parseCatalogs('packages:\n  - a\n')).toEqual({ default: {}, named: {} });
-    expect(parseCatalogs('catalog: { react: ^18 }\n')).toEqual({ default: {}, named: {} });
-    expect(parseCatalogs('')).toEqual({ default: {}, named: {} });
+    expect(parseCatalogs('packages:\n  - a\n')).toEqual({ default: {}, named: {}, issues: [] });
+    expect(parseCatalogs('catalog: { react: ^18 }\n')).toMatchObject({ default: {}, named: {}, issues: ['its catalog is written in flow style or on one line'] });
+    expect(parseCatalogs('')).toEqual({ default: {}, named: {}, issues: [] });
     expect(parseCatalogs('catalog:\n  __proto__: x\n  ok: 1.0.0\n').default).toEqual({ ok: '1.0.0' });
+  });
+
+  it('says what it could not understand: anchors, aliases, merge keys, flow style, block text', () => {
+    const anchored = parseCatalogs('catalog: &c\n  react: ^18.0.0\ncatalogs:\n  next: *c\n');
+    expect(anchored.issues).toEqual(['it uses YAML anchors or aliases']);
+    expect(anchored.default).toEqual({});
+    expect(parseCatalogs('catalog:\n  <<: *base\n  react: ^18.0.0\n').issues).toEqual(['it uses YAML merge keys', 'it uses YAML anchors or aliases']);
+    expect(parseCatalogs('catalog:\n  react: [^18, ^17]\n').issues).toEqual(['its catalog is written in flow style or as a text block']);
+    expect(parseCatalogs('catalog:\n  react: |\n    ^18\n').issues).toEqual(['its catalog is written in flow style or as a text block']);
+    // An anchor outside the catalog sections is none of the reader's business.
+    expect(parseCatalogs('x: &a 1\ny: *a\ncatalog:\n  react: ^18.0.0\n').issues).toEqual([]);
+    expect(parseCatalogs('catalog:\n  react: ^18.0.0 # *not an alias\n')).toMatchObject({ default: { react: '^18.0.0' }, issues: [] });
   });
 
   it('replaces catalog: and catalog:<name> entries and keeps everything else', () => {
@@ -52,10 +65,10 @@ describe('QA-22 pnpm catalogs', () => {
 
   it('leaves the file as it is when nothing resolves, when it is not JSON, and for a catalog that points at a catalog', () => {
     const unresolved = manifest({ dependencies: { a: 'catalog:' } });
-    expect(resolveCatalogs(unresolved, { default: {}, named: {} }).file).toBe(unresolved);
+    expect(resolveCatalogs(unresolved, { default: {}, named: {}, issues: [] }).file).toBe(unresolved);
     const broken: ManifestFile = { kind: 'package.json', path: 'package.json', content: '{ not json' };
     expect(resolveCatalogs(broken, parseCatalogs(yaml)).file).toBe(broken);
-    const loop = resolveCatalogs(unresolved, { default: { a: 'catalog:other' }, named: {} });
+    const loop = resolveCatalogs(unresolved, { default: { a: 'catalog:other' }, named: {}, issues: [] });
     expect(loop.resolved).toBe(0);
   });
 

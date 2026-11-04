@@ -206,13 +206,40 @@ describe('QA-22 catalog versions from pnpm-workspace.yaml', () => {
     expect(note?.text).toBe('1 catalog: entry in package.json took its version from pnpm-workspace.yaml. 1 could not be resolved there and is not read.');
   });
 
-  it('says so when the file is missing or unreadable, and leaves package.json as it is', async () => {
-    const missing = await readRepository({ owner: 'o', name: 'r' }, fake({ 'HEAD/package.json': pkg }).impl);
-    expect(missing.files[0]?.content).toBe(pkg);
-    expect(missing.notes.find((n) => n.title === 'pnpm-workspace.yaml was not read')?.text).toMatch(/that file was not found\. Those dependencies are not examined\./);
-    const broken = await readRepository({ owner: 'o', name: 'r' }, fake({ 'HEAD/package.json': pkg, 'HEAD/pnpm-workspace.yaml': status(500) }).impl);
-    expect(broken.notes.find((n) => n.title === 'pnpm-workspace.yaml was not read')?.text).toMatch(/could not be read/);
-    const noMatch = await readRepository({ owner: 'o', name: 'r' }, fake({ 'HEAD/package.json': pkg, 'HEAD/pnpm-workspace.yaml': 'packages:\n  - a\n' }).impl);
-    expect(noMatch.notes.some((n) => n.title === 'Catalog versions not found')).toBe(true);
+  it('QA-34 says what is wrong with the file, in words, and leaves package.json as it is', async () => {
+    const note = async (file: string | RawResponse | undefined) => {
+      const read = await readRepository({ owner: 'o', name: 'r' }, fake({ 'HEAD/package.json': pkg, ...(file === undefined ? {} : { 'HEAD/pnpm-workspace.yaml': file }) }).impl);
+      expect(read.files[0]?.content).toBe(pkg);
+      return read.notes.find((n) => n.code?.startsWith('catalog-'));
+    };
+    const missing = await note(undefined);
+    expect(missing).toMatchObject({ code: 'catalog-missing', title: 'pnpm-workspace.yaml was not found' });
+    expect(missing?.text).toMatch(/the repository has no such file there/);
+    const anchors = await note('catalog: &c\n  react: ^18.0.0\ncatalogs:\n  next: *c\n');
+    expect(anchors).toMatchObject({ code: 'catalog-unusable', title: 'pnpm-workspace.yaml was found but could not be used' });
+    expect(anchors?.text).toMatch(/was read, but it uses YAML anchors or aliases, and Necromancer does not read that/);
+    const malformed = await note('}{ not : [yaml\n\u0000\n');
+    expect(malformed).toMatchObject({ code: 'catalog-no-match' });
+    expect(malformed?.text).toMatch(/was found, but no catalog could be read from it \(it may have none, or may not be valid YAML\)/);
+    const otherCatalogs = await note('catalogs:\n  x:\n    react: ^18\n');
+    expect(otherCatalogs?.text).toMatch(/has catalogs, but none names the packages/);
+    const broken = await note(status(500));
+    expect(broken).toMatchObject({ code: 'catalog-unusable', title: 'pnpm-workspace.yaml was found but could not be read' });
+    expect(broken?.text).toMatch(/but GitHub answered HTTP 500\./);
+    const huge = await note(ok('x'.repeat(8 * 1024 * 1024), { 'content-length': String(8 * 1024 * 1024) }));
+    expect(huge?.text).toMatch(/but it is 8\.0 MiB, over the 1 MiB limit for this file\./);
+    const hugeNoHeader = await note(ok('x'.repeat(2 * 1024 * 1024)));
+    expect(hugeNoHeader?.text).toMatch(/it is 2\.0 MiB, over the 1 MiB limit/);
+  });
+
+  it('QA-34 does not download a file that says it is over the limit', async () => {
+    let read = false;
+    const impl: RawFetch = async (url) => {
+      if (url.endsWith('/HEAD/package.json')) return ok(pkg);
+      if (url.endsWith('pnpm-workspace.yaml')) return { ok: true, status: 200, headers: { get: (n: string) => (n.toLowerCase() === 'content-length' ? String(9 * 1024 * 1024) : null) }, text: async () => ((read = true), 'x') };
+      return status(404);
+    };
+    await readRepository({ owner: 'o', name: 'r' }, impl);
+    expect(read).toBe(false);
   });
 });

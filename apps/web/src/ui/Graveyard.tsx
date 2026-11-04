@@ -31,7 +31,7 @@ import {
   type Basis,
   basisOf,
 } from '../state/model';
-import { allClear, coverageOf, leftOutLines, readSummary, type Coverage } from '../state/coverage';
+import { allClear, coverageOf, leftOutLines, readSummary, type Coverage, type LeftOutContext } from '../state/coverage';
 import { MAX_SHARE_PAYLOAD, defaultView, formatSource, type Route, type ViewState } from '../state/url';
 import { DetailPanel, SOURCE_NAMES } from './DetailPanel';
 import { Tombstone } from './Tombstone';
@@ -257,6 +257,10 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
   );
   const coverage = useMemo(() => coverageOf(report), [report]);
   const workspaceRoot = notes.some((note) => note.code === 'workspace-root');
+  const leftOutContext: LeftOutContext = {
+    repo: view.source.kind === 'repo',
+    catalogNote: notes.find((note) => note.code?.startsWith('catalog-')),
+  };
   const urgent = report.summary.zombie + report.summary.ghost + report.summary.dead;
   const opened = findByKey(report.diagnoses, view.open);
   const sourceContext = useMemo(
@@ -313,7 +317,7 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
       ) : null}
 
       <div className="notices">
-      <LeftOutNotice coverage={coverage} />
+      <LeftOutNotice coverage={coverage} context={leftOutContext} />
       {sample ? (
         <Callout kind="info" title={`Recorded on ${formatDate(report.scannedAt)}`} role="status">
           <p>
@@ -339,7 +343,7 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
         </Callout>
       ) : null}
 
-      {notes.map((note, index) => (
+      {notes.filter((note) => !(coverage.notRead > 0 && note.code !== undefined && note.code.startsWith('catalog-') && note.code !== 'catalog-resolved')).map((note, index) => (
         <Callout key={`${note.title}-${index}`} kind={note.kind} title={note.title} role="status">
           <p>{note.text}</p>
         </Callout>
@@ -518,9 +522,9 @@ export function problemText(message: string, report: Pick<AutopsyReport, 'diagno
 }
 
 /** What was left out on purpose, said as what it is and what to do, not as a manifest problem (QA-22). */
-function LeftOutNotice({ coverage }: { coverage: Coverage }) {
+function LeftOutNotice({ coverage, context }: { coverage: Coverage; context: LeftOutContext }) {
   if (coverage.notRead === 0) return null;
-  const lines = leftOutLines(coverage);
+  const lines = leftOutLines(coverage, context);
   const shown = coverage.entries.slice(0, 100);
   return (
     <Callout kind={coverage.notRead * 10 > coverage.read ? 'warning' : 'info'} title={`${coverage.notRead.toLocaleString('en')} ${coverage.notRead === 1 ? 'dependency was' : 'dependencies were'} not read`} role="status">

@@ -365,7 +365,7 @@ const upload = (page, files) => page.locator('input[aria-label="Manifest and sou
     check('QA-22 monorepo root: "Most of this project was not read", never "No dead dependency found"', /Most of this project was not read/.test(body) && !/No dead dependency found|Nothing here is dead/.test(body));
     check('QA-22 monorepo root: the skips are explained (workspace links, catalog), not listed as manifest problems', /40 entries are workspace links/.test(body) && /16 entries use catalog: \(pnpm\)/.test(body) && !/manifest problems/.test(body));
     check('QA-22 monorepo root: the workspaces field is noted, with what to do', /This project is a workspace/.test(body) && /drop its package\.json on the start page/.test(body));
-    check('QA-22 monorepo root: pnpm-workspace.yaml was looked for (catalog entries) and its absence said', /pnpm-workspace\.yaml was not read/.test(body));
+    check('QA-22 monorepo root: pnpm-workspace.yaml was looked for (catalog entries) and its absence said', /pnpm-workspace\.yaml was not found/.test(body));
     await page.addScriptTag({ path: AXE });
     const violations = await page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } })).violations.map((v) => `${v.id}: ${v.nodes[0]?.target.join(' ')}`));
     check('QA-22 monorepo root: axe finds no violation on the report with the left-out notice', violations.length === 0, violations.join('; '));
@@ -413,6 +413,33 @@ const upload = (page, files) => page.locator('input[aria-label="Manifest and sou
     check(`QA-29 "${input}": reads the repository root and says the part "${ignored}" was ignored`, body.includes(`The address also named "${ignored}", which was ignored: only the root is read.`) && page.url().includes('src=repo:o/small'), page.url().split('#')[1]);
     await context.close();
   }
+}
+
+// --- R5 (QA-34): a pnpm-workspace.yaml that was found but cannot be used says so, and why
+{
+  const pkgJson = JSON.stringify({ name: 'pnpmroot', devDependencies: { react: 'catalog:', 'react-dom': 'catalog:', next: 'catalog:', zod: 'catalog:' } });
+  const cases = [
+    ['anchors and aliases', 'catalog: &c\n  react: ^18.0.0\ncatalogs:\n  next: *c\n', /was found but could not be used/, /it uses YAML anchors or aliases, and Necromancer does not read that/],
+    ['malformed', '}{ not : [yaml\n', /Catalog versions not found/, /no catalog could be read from it \(it may have none, or may not be valid YAML\)/],
+    ['8 MB', 'x'.repeat(8 * 1024 * 1024), /was found but could not be read/, /it is 8\.0 MiB, over the 1 MiB limit for this file/],
+  ];
+  for (const [label, yaml, title, reason] of cases) {
+    const { context, page, errors } = await newPage(DESKTOP, { raw: { 'acme/pnpmroot/HEAD/package.json': pkgJson, 'acme/pnpmroot/HEAD/pnpm-workspace.yaml': yaml } });
+    await submitRepo(page, 'acme/pnpmroot');
+    await page.waitForSelector('[data-testid="left-out"]');
+    const left = ((await page.getByTestId('left-out').textContent()) ?? '').replace(/\s+/g, ' ');
+    const body = ((await page.locator('main').textContent()) ?? '').replace(/\s+/g, ' ');
+    check(`QA-34 pnpm-workspace.yaml (${label}): the page says the file was found and why it could not be used`, title.test(body) && reason.test(left), left.slice(0, 200));
+    check(`QA-34 pnpm-workspace.yaml (${label}): no "use the repository address" for a repository scan, and still no all-clear`, !/use the repository address|reads pnpm-workspace\.yaml for a GitHub repository/.test(left) && !/No dead dependency found|Nothing found/.test(body) && /Nothing was examined/.test(body));
+    check(`QA-34 pnpm-workspace.yaml (${label}): no page error`, errors.length === 0, errors.join('; '));
+    await context.close();
+  }
+  const { context, page } = await newPage(DESKTOP, { raw: {} });
+  await upload(page, { name: 'package.json', mimeType: 'application/json', buffer: Buffer.from(pkgJson) });
+  await page.waitForSelector('[data-testid="left-out"]');
+  const left = ((await page.getByTestId('left-out').textContent()) ?? '').replace(/\s+/g, ' ');
+  check('QA-34 an uploaded manifest keeps the upload wording ("put the versions into the file, or use the repository address")', /For an uploaded package\.json, put the versions into the file, or use the repository address/.test(left));
+  await context.close();
 }
 
 if (LIVE) {

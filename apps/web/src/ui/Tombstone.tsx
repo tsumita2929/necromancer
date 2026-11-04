@@ -2,7 +2,7 @@ import { memo } from 'react';
 import type { Diagnosis } from '@contract';
 import { plural } from '../design/controls';
 import { VerdictBadge } from '../design/Verdict';
-import { basisOf, depKey, displayVersion, isUnchecked, upgradeBadge, upgradeInfo } from '../state/model';
+import { basisOf, depKey, displayVersion, isUnchecked, orderedEvidence, upgradeBadge, upgradeInfo } from '../state/model';
 
 interface TombstoneProps {
   diagnosis: Diagnosis;
@@ -18,7 +18,7 @@ export const Tombstone = memo(function Tombstone({ diagnosis, onOpen }: Tombston
   const key = depKey(dependency);
   const basis = basisOf(diagnosis);
   const version = displayVersion(dependency);
-  const epitaph = evidence[0]?.message;
+  const epitaph = orderedEvidence(diagnosis)[0]?.message;
   // The engine marks a dependency it could not examine with an "unchecked" line; do not let "Alive" stand alone.
   const unchecked = isUnchecked(diagnosis);
   const upgrade = upgradeInfo(diagnosis);

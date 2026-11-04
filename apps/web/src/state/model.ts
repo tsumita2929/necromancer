@@ -31,16 +31,66 @@ export interface UpgradeInfo {
 
 export function upgradeInfo(diagnosis: Pick<Diagnosis, 'verdict' | 'evidence'> & { upgradeTo?: UpgradeTarget | undefined }): UpgradeInfo | undefined {
   if (diagnosis.verdict !== 'alive' || isUnchecked(diagnosis)) return undefined;
+  return upgradeNotice(diagnosis);
+}
+
+/** The upgrade notice of any verdict (the badge is only for the living, the notice is not). */
+export function upgradeNotice(diagnosis: Pick<Diagnosis, 'evidence'> & { upgradeTo?: UpgradeTarget | undefined }): UpgradeInfo | undefined {
   const yanked = diagnosis.evidence.some((e) => e.code === 'version-yanked');
   if (!yanked && !diagnosis.evidence.some((e) => e.code === 'version-deprecated') && !diagnosis.upgradeTo) return undefined;
   return { reason: yanked ? 'yanked' : 'deprecated', ...(diagnosis.upgradeTo ? { target: diagnosis.upgradeTo } : {}) };
 }
+
+const NOTICE_CODES: ReadonlySet<string> = new Set(['version-deprecated', 'version-yanked']);
+
+/**
+ * Evidence in the order the page shows it (QA-35). A card and its drawer lead with the line that decides the verdict; an upgrade
+ * notice is about the version in use, not about the package, so it comes after the lines that decide, never first. The engine
+ * ranks a notice above the weak signals; for a living package the notice stays first, because it is the news.
+ */
+export function orderedEvidence<T extends { code: string }>(diagnosis: { verdict: Verdict; evidence: readonly T[] }): T[] {
+  const lines = [...diagnosis.evidence];
+  if (diagnosis.verdict === 'alive') return lines;
+  const notices = lines.filter((e) => NOTICE_CODES.has(e.code));
+  if (notices.length === 0) return lines;
+  const deciding = new Set(DECIDING_CODES);
+  const rest = lines.filter((e) => !NOTICE_CODES.has(e.code));
+  const lastDeciding = rest.reduce((last, e, i) => (deciding.has(e.code) ? i : last), -1);
+  return [...rest.slice(0, lastDeciding + 1), ...notices, ...rest.slice(lastDeciding + 1)];
+}
+
+/** The evidence codes that cause a verdict other than alive (gone, strong, derived, conditional and weak in the engine). */
+const DECIDING_CODES = [
+  'repo-gone',
+  'npm-deprecated',
+  'repo-archived',
+  'readme-unmaintained',
+  'pypi-inactive',
+  'pypi-yanked',
+  'abandoned',
+  'no-release-long',
+  'no-release',
+  'repo-inactive',
+];
 
 /** The short form for a badge: "Upgrade to 9.20.0", with "(another major)" or "(older)" when the step is not the plain one. */
 export function upgradeBadge(info: UpgradeInfo): string {
   const t = info.target;
   if (!t) return 'Upgrade';
   return `Upgrade to ${t.version}${t.older ? ' (older)' : t.sameMajor ? '' : ' (another major)'}`;
+}
+
+/** The upgrade as one of the ways out (QA-35): the same package, a release without the notice. Undefined when there is no target. */
+export function upgradeWay(info: UpgradeInfo): { name: string; reason: string } | undefined {
+  const t = info.target;
+  if (!t) return undefined;
+  const what = info.reason === 'yanked' ? 'yanked' : 'deprecated';
+  const reason = t.older
+    ? `The version in use is ${what}, and no newer stable release is free of that. ${t.version}, the newest that is, is older than the one in use.`
+    : t.sameMajor
+      ? `The version in use is ${what}. ${t.version} is the newest release in the same major version that is not.`
+      : `The version in use is ${what}. ${t.version} is the next release that is not, in another major version, so read its changelog first.`;
+  return { name: `Upgrade to ${t.version}`, reason };
 }
 
 /** The sentence for the drawer, said plainly about the step. */

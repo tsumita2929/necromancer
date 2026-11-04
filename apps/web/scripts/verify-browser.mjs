@@ -292,6 +292,24 @@ for (const vp of VIEWPORTS) {
     await page.waitForSelector('h1');
   }
 
+  // QA-35: a dying card and its drawer lead with the line that decides, the upgrade notice follows, and Ways out lists the upgrade
+  await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna`);
+  await page.reload();
+  await page.waitForSelector('[data-testid="group-zombie"]');
+  const fileupload = DVNA.diagnoses.find((x) => x.dependency.name === 'express-fileupload');
+  const decider = fileupload.evidence.find((e) => !['version-deprecated', 'version-yanked'].includes(e.code));
+  const epitaph = (await page.locator('[data-dep-key="npm:express-fileupload"] .tomb__epitaph').textContent()) ?? '';
+  check(`${tag} QA-35: the express-fileupload card (dying) leads with the line that decides it, not the upgrade notice`, fileupload.verdict === 'dying' && epitaph === decider.message && !/upgrade notice/.test(epitaph), epitaph.slice(0, 70));
+  await page.locator('[data-dep-key="npm:express-fileupload"]').click();
+  await page.waitForSelector('dialog[open]');
+  const lines = await page.locator('dialog[open] ol.evidence > li .evidence__msg').allTextContents();
+  check(`${tag} QA-35: its drawer lists that line first and the upgrade notice second`, lines[0] === decider.message && /upgrade notice/.test(lines[1] ?? ''), lines.map((l) => l.slice(0, 30)).join(' | '));
+  const way = ((await page.locator('dialog[open] [data-testid="upgrade-way"]').textContent()) ?? '');
+  check(`${tag} QA-35: Ways out lists the upgrade to ${fileupload.upgradeTo.version}`, way.includes(`Upgrade to ${fileupload.upgradeTo.version}`) && !/No successor is known\./.test((await page.locator('dialog[open]').textContent()) ?? ''), way.slice(0, 80));
+  await page.keyboard.press('Escape');
+  await page.locator('dialog[open]').waitFor({ state: 'detached' });
+  await page.waitForFunction(() => !location.hash.includes('open='));
+
   // the mathjs sample: an upgrade notice on a living package, a curated way out for mkdirp
   await page.goto(`${server.url}#/graveyard?src=sample:josdejong-mathjs`);
   await page.reload();

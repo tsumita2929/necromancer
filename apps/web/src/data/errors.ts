@@ -32,7 +32,7 @@ export function isAbort(error: unknown): boolean {
 export interface Note {
   kind: 'info' | 'warning';
   /** A stable name for notes the page reacts to. */
-  code?: 'workspace-root';
+  code?: 'workspace-root' | 'catalog-resolved' | 'catalog-missing' | 'catalog-unusable' | 'catalog-no-match';
   title: string;
   text: string;
 }

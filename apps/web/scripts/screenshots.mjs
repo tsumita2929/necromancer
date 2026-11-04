@@ -51,6 +51,31 @@ for (const size of SIZES) {
     await page.getByRole('button', { name: 'Resurrect' }).click();
     await page.waitForSelector('pre.spec__text');
     await page.screenshot({ path: `${out}spec-${size.tag}.png` });
+    // QA-35: a dying card leads with the line that decides it; the upgrade notice follows and is listed as a way out
+    await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna&open=npm:express-fileupload`);
+    await page.reload();
+    await page.waitForSelector('dialog[open]');
+    await page.waitForTimeout(150);
+    await page.screenshot({ path: `${out}drawer-upgrade-way-${size.tag}.png` });
+    await page.locator('dialog[open] .ways').scrollIntoViewIfNeeded();
+    await page.waitForTimeout(100);
+    await page.screenshot({ path: `${out}drawer-upgrade-way-ways-${size.tag}.png` });
+    await context.close();
+  }
+
+  // --- a pnpm-workspace.yaml that was found but cannot be used (QA-34), stubbed
+  {
+    const context = await browser.newContext(options);
+    const pkgJson = JSON.stringify({ name: 'pnpmroot', devDependencies: { react: 'catalog:', 'react-dom': 'catalog:', next: 'catalog:', zod: 'catalog:' } });
+    await installWorld(context, { raw: { 'acme/pnpmroot/HEAD/package.json': pkgJson, 'acme/pnpmroot/HEAD/pnpm-workspace.yaml': 'catalog: &c\n  react: ^18.0.0\ncatalogs:\n  next: *c\n' } });
+    const page = await context.newPage();
+    await page.goto(server.url);
+    await page.waitForSelector('h1');
+    await page.getByLabel('GitHub repository').fill('acme/pnpmroot');
+    await page.getByRole('button', { name: /begin the autopsy/i }).click();
+    await page.waitForSelector('[data-testid="left-out"]');
+    await page.waitForTimeout(200);
+    await page.screenshot({ path: `${out}pnpm-unusable-${size.tag}.png` });
     await context.close();
   }
 
