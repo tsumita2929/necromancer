@@ -1,0 +1,12 @@
+QA-01  advisory counts (distinct vulnerabilities, from the live OSV records)
+  django ==1.4: 55 advisories, 55 with aliases; verdict alive
+  flask ==1.0: 2 advisories, 2 with aliases; verdict alive
+  pyjwt ==2.8.0: 15 advisories, 14 with aliases; verdict alive
+  unavailable: [{"source":"github","reason":"GitHub budget reached (0 calls per scan, limit is 60 per hour): 3 repositories were not checked"}]
+QA-07  a package that does not exist
+  verdict alive, notFound true, evidence registry-not-found, unchecked
+  "Not found: the npm registry has no package named "zzz-no-such-pkg-qa-91827". It may be removed, private or misspelled; Necromancer cannot tell which."
+QA-16  the skipped-entry message
+  Skipped "@a/<b>": it is not a valid package name, so it is not checked against a registry.
+QA-14  the skipped-dependency message (450 direct dependencies, limit 400)
+  Checked the first 400 of 450 dependencies (direct ones first); 50 more dependencies were not checked.

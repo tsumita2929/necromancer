@@ -1,0 +1,56 @@
+Python 3.9.25; hypothesis==6.141.1, pep8==1.7.1, pycodestyle==2.14.0, pytest==8.4.2, toml==0.10.2, tomli==2.5.0
+run  1: PASS  64 passed, 1 skipped in 9.14s
+run  2: FAIL  1 failed, 63 passed, 1 skipped in 50.94s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Falsifying example: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run  3: FAIL  1 failed, 63 passed, 1 skipped in 15.42s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Falsifying example: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run  4: FAIL  1 failed, 63 passed, 1 skipped in 18.42s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Falsifying example: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run  5: PASS  64 passed, 1 skipped in 9.17s
+run  6: PASS  64 passed, 1 skipped in 9.52s
+run  7: PASS  64 passed, 1 skipped in 9.03s
+run  8: PASS  64 passed, 1 skipped in 9.51s
+run  9: PASS  64 passed, 1 skipped in 9.90s
+run 10: PASS  64 passed, 1 skipped in 9.74s
+run 11: PASS  64 passed, 1 skipped in 9.34s
+run 12: PASS  64 passed, 1 skipped in 9.84s
+run 13: FAIL  1 failed, 63 passed, 1 skipped in 21.25s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Falsifying example: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 14: PASS  64 passed, 1 skipped in 9.64s
+run 15: PASS  64 passed, 1 skipped in 9.78s
+run 16: PASS  64 passed, 1 skipped in 9.88s
+run 17: PASS  64 passed, 1 skipped in 9.67s
+run 18: PASS  64 passed, 1 skipped in 9.25s
+run 19: PASS  64 passed, 1 skipped in 9.22s
+run 20: PASS  64 passed, 1 skipped in 9.87s
+run 21: PASS  64 passed, 1 skipped in 9.87s
+run 22: PASS  64 passed, 1 skipped in 9.43s
+run 23: PASS  64 passed, 1 skipped in 9.92s
+run 24: PASS  64 passed, 1 skipped in 9.22s
+run 25: PASS  64 passed, 1 skipped in 9.39s
+run 26: PASS  64 passed, 1 skipped in 9.60s
+run 27: PASS  64 passed, 1 skipped in 9.48s
+run 28: PASS  64 passed, 1 skipped in 9.42s
+run 29: PASS  64 passed, 1 skipped in 9.47s
+run 30: PASS  64 passed, 1 skipped in 9.43s
+26 of 30 runs passed (CI unset)

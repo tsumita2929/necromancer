@@ -2,7 +2,7 @@
   "recipe": "querystring",
   "language": "javascript",
   "command": "npx vitest run seance/querystring",
-  "ranAt": "2026-11-04T09:48:21.562Z",
+  "ranAt": "2026-11-04T11:12:29.035Z",
   "versions": {
     "querystring": "0.2.1",
     "vitest": "5.1.0",
@@ -10,12 +10,12 @@
   },
   "real": {
     "exit": 0,
-    "seconds": 1.298,
+    "seconds": 1.25,
     "summary": [
-      "✓ seance/querystring/seance.test.mjs (8 tests) 187ms",
+      "✓ seance/querystring/seance.test.mjs (8 tests) 249ms",
       "Test Files  1 passed (1)",
       "Tests  8 passed (8)",
-      "Duration  975ms (import 73%, tests 22%, transform 4%)"
+      "Duration  964ms (import 70%, tests 29%, transform 1%)"
     ]
   },
   "mutants": [
@@ -26,10 +26,10 @@
       "failed": true,
       "counterexample": [
         "Counterexample: [\"?\"]",
-        "Shrunk 0 time(s)",
+        "Shrunk 1 time(s)",
         "Caused by: AssertionError: expected { ok: true, value: [] } to deeply equal { Object (ok, value) }",
         "Counterexample: [\"?\"]",
-        "Shrunk 1 time(s)",
+        "Shrunk 0 time(s)",
         "Caused by: AssertionError: expected { ok: true, value: [] } to deeply equal { Object (ok, value) }"
       ],
       "summary": [
@@ -45,15 +45,15 @@
       "exit": 1,
       "failed": true,
       "counterexample": [
-        "Counterexample: [\"a+b&a+b&=\"]",
-        "Shrunk 5 time(s)",
-        "Caused by: AssertionError: expected { ok: true, value: [ …(2) ] } to deeply equal { ok: true, value: [ …(2) ] }",
+        "Counterexample: [\"=&=\"]",
+        "Shrunk 7 time(s)",
+        "Caused by: AssertionError: expected { ok: true, value: [ [ '', [ '' ] ] ] } to deeply equal { ok: true, …(1) }",
         "Counterexample: [{\"\":[\"\",\"\"]}]",
         "Shrunk 5 time(s)",
         "Caused by: AssertionError: expected [ [ '', [ '' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]"
       ],
       "summary": [
-        "Error: Property failed after 4 tests",
+        "Error: Property failed after 7 tests",
         "❯ buildError node_modules/fast-check/lib/fast-check.js:2469:16",
         "❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8",
         "Caused by: AssertionError: expected [ [ '', [ '' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]"

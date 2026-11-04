@@ -10,7 +10,12 @@ import os from 'node:os';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
-import type { KnownDifference } from '../src/index.js';
+import {
+  generateSeance,
+  type Diagnosis,
+  type KnownDifference,
+  type Successor,
+} from '../src/index.js';
 import { IS_ODD_KNOWN } from '../src/seance/recipes/is-odd.js';
 import { LEFT_PAD_KNOWN } from '../src/seance/recipes/left-pad.js';
 import { MKDIRP_KNOWN } from '../src/seance/recipes/mkdirp.js';
@@ -193,6 +198,89 @@ describe.skipIf(!pyHas('toml') || !pyHas('tomli'))('toml known differences', () 
     const esc = py(script('a = "\\x41"'));
     expect(esc).toBe("TomlDecodeError {'a': 'A'}");
     expect(known(TOML_KNOWN, 'toml.loads("a = \\"\\\\x41\\"")').old).toContain('TomlDecodeError');
+  });
+  it('a negative zero: toml answers 0.0, tomli answers -0.0 (found by CI on Python 3.12)', () => {
+    const out = py(
+      [
+        'import toml, tomli',
+        'print(toml.loads("a = [-0.0]")["a"], tomli.loads("a = [-0.0]")["a"])',
+        'print(toml.loads("0 = [-0.0]"), tomli.loads("0 = [-0.0]"))',
+      ].join('\n'),
+    );
+    expect(out).toBe("[0.0] [-0.0]\n{'0': [0.0]} {'0': [-0.0]}");
+    const known = TOML_KNOWN.find((k) => k.input === 'toml.loads("a = [-0.0]")');
+    expect(known?.old).toContain('[0.0]');
+    expect(known?.old).not.toContain('-0.0');
+    expect(known?.naive).toContain('[-0.0]');
+  });
+  it('strings toml mangles: a comma-first array string is split, a lone quote is lost', () => {
+    const out = py(
+      [
+        'import toml, tomli',
+        'print(toml.loads(\'a = [","]\')["a"], tomli.loads(\'a = [","]\')["a"])',
+        'print(toml.loads(\'a = "\\\\""\')["a"] == "", tomli.loads(\'a = "\\\\""\')["a"] == \'"\')',
+      ].join('\n'),
+    );
+    expect(out).toBe("['', ''] [',']\nTrue True");
+    const comma = TOML_KNOWN.find((k) => k.input === 'toml.loads(\'a = [","]\')');
+    expect(comma?.old).toContain('["", ""]');
+    expect(comma?.naive).toBe('{"a": [","]}');
+    const quote = TOML_KNOWN.find((k) => k.input === 'toml.loads(\'a = "\\\\""\')');
+    expect(quote?.old).toContain('{"a": ""}');
+  });
+  it('a string with a control character and a backslash followed by u: toml refuses it, tomli reads it', () => {
+    const out = py(
+      [
+        'import toml, tomli',
+        'doc = \'a = "\\\\u001f\\\\\\\\u"\'',
+        'try:',
+        '    toml.loads(doc)',
+        '    old = "read"',
+        'except toml.TomlDecodeError:',
+        '    old = "TomlDecodeError"',
+        'print(old, repr(tomli.loads(doc)["a"]))',
+      ].join('\n'),
+    );
+    expect(out).toBe("TomlDecodeError '\\x1f\\\\u'");
+    const known = TOML_KNOWN.find((k) => k.old.includes('a control character and a backslash'));
+    expect(known?.old).toContain('raises TomlDecodeError');
+  });
+  it('a space before the dot of a dotted key stays in the key with toml', () => {
+    const out = py(
+      ['import toml, tomli', 'print(toml.loads("a .b = 1"), tomli.loads("a .b = 1"))'].join('\n'),
+    );
+    expect(out).toBe("{'a ': {'b': 1}} {'a': {'b': 1}}");
+    const known = TOML_KNOWN.find((k) => k.input === 'toml.loads("a .b = 1")');
+    expect(known?.old).toContain('{"a ": {"b": 1}}');
+    expect(known?.naive).toBe('{"a": {"b": 1}}');
+  });
+  it('the generated test file treats the sign of zero as the known difference it is', () => {
+    const dead: Diagnosis = {
+      dependency: {
+        ecosystem: 'pypi',
+        name: 'toml',
+        spec: '',
+        direct: true,
+        scope: 'main',
+        declaredIn: 'x',
+      },
+      verdict: 'dead',
+      evidence: [],
+      advisories: [],
+      successors: [],
+    };
+    const next: Successor = {
+      name: 'tomli',
+      ecosystem: 'pypi',
+      kind: 'package',
+      reason: 'x',
+      source: 'curated',
+    };
+    const bundle = generateSeance(dead, next);
+    const test = bundle.files.find((f) => f.role === 'test')?.content ?? '';
+    expect(test).toContain('repr(value + 0.0)');
+    expect(test).toContain('math.copysign(1.0, get(loads(doc))) == -1.0');
+    expect(bundle.knownDifferences.map((k) => k.input)).toContain('toml.loads("a = [-0.0]")');
   });
   it('the old error class is TomlDecodeError, the new one TOMLDecodeError', () => {
     expect(

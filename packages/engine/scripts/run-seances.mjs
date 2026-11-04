@@ -186,7 +186,8 @@ for (const recipe of RECIPES) {
   const again = runTests(recipe, root);
   record.restoredExit = again.status;
   writeFileSync(join(out, `${recipe.id}.json`), `${JSON.stringify(record, null, 2)}\n`);
-  writeFileSync(join(out, `${recipe.id}.log`), log);
+  // The logs are committed: they name the scratch folder as <scratch>, not as a path of this machine.
+  writeFileSync(join(out, `${recipe.id}.log`), log.split(scratch).join('<scratch>'));
   results.push(record);
   const bad = record.real.exit !== 0 || record.mutants.some((m) => !m.failed) || again.status !== 0;
   console.log(

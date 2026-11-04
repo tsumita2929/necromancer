@@ -1,0 +1,140 @@
+Python 3.12.15; hypothesis==6.170.14, pytest==9.2.0, toml==0.10.2, tomli==2.5.0
+run  1: PASS  64 passed, 1 skipped in 6.17s
+run  2: FAIL  1 failed, 63 passed, 1 skipped in 7.52s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run  3: FAIL  1 failed, 63 passed, 1 skipped in 8.05s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run  4: PASS  64 passed, 1 skipped in 5.64s
+run  5: PASS  64 passed, 1 skipped in 5.60s
+run  6: PASS  64 passed, 1 skipped in 5.79s
+run  7: FAIL  1 failed, 63 passed, 1 skipped in 7.56s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run  8: FAIL  2 failed, 62 passed, 1 skipped in 8.05s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run  9: FAIL  1 failed, 63 passed, 1 skipped in 8.42s
+E           AssertionError: different values: '0= [","]'
+E           assert (('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E             
+E             At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E             Use -v to get more diff or False)
+E            +  where False = toml_is_wrong('0= [","]')
+run 10: FAIL  1 failed, 63 passed, 1 skipped in 6.90s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 11: FAIL  1 failed, 63 passed, 1 skipped in 6.06s
+E       assert ('ok', ('tabl...str', '"'))])) == ('ok', ('tabl...'str', ''))]))
+E         
+E         At index 1 diff: ('table', [('0', ('str', '"'))]) != ('table', [('0', ('str', ''))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = "\\""',
+run 12: PASS  64 passed, 1 skipped in 5.65s
+run 13: FAIL  1 failed, 63 passed, 1 skipped in 6.80s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 14: FAIL  2 failed, 62 passed, 1 skipped in 8.62s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 15: PASS  64 passed, 1 skipped in 5.60s
+run 16: PASS  64 passed, 1 skipped in 5.55s
+run 17: FAIL  1 failed, 63 passed, 1 skipped in 6.45s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 18: PASS  64 passed, 1 skipped in 5.89s
+run 19: PASS  64 passed, 1 skipped in 5.70s
+run 20: FAIL  1 failed, 63 passed, 1 skipped in 7.05s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 21: PASS  64 passed, 1 skipped in 5.62s
+run 22: PASS  64 passed, 1 skipped in 5.79s
+run 23: FAIL  1 failed, 63 passed, 1 skipped in 8.34s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 24: FAIL  1 failed, 63 passed, 1 skipped in 7.26s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 25: FAIL  1 failed, 63 passed, 1 skipped in 6.86s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 26: FAIL  1 failed, 63 passed, 1 skipped in 6.76s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 27: FAIL  1 failed, 63 passed, 1 skipped in 9.21s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 28: PASS  64 passed, 1 skipped in 5.70s
+run 29: FAIL  1 failed, 63 passed, 1 skipped in 7.81s
+E       AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E         
+E         At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E         Use -v to get more diff
+E       Failing test case: test_valid_documents_parse_to_the_same_value(
+E           doc='0 = [","]',
+run 30: FAIL  1 failed, 63 passed, 1 skipped in 7.44s
+E           AssertionError: assert ('ok', ('tabl..., [(...)]))])) == ('ok', ('tabl...), (...)]))]))
+E             
+E             At index 1 diff: ('table', [('0', ('list', [('str', ',')]))]) != ('table', [('0', ('list', [('str', ''), ('str', '')]))])
+E             Use -v to get more diff
+E           Failing test case: test_load_from_a_path_a_text_file_and_a_binary_file(
+E               doc='0 = [","]',
+12 of 30 runs passed (CI unset)

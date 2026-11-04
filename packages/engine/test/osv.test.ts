@@ -205,3 +205,58 @@ describe('Q1 through the engine', () => {
     expect(world.osvQueries).toEqual([]);
   });
 });
+
+describe('nearby input: a PyPI name that is not normalised', () => {
+  it('the registry and OSV are asked by the PEP 503 name, and aliases still merge', async () => {
+    const asked: string[] = [];
+    const json = (body: unknown) => ({
+      ok: true,
+      status: 200,
+      json: async () => body,
+      text: async () => JSON.stringify(body),
+    });
+    const fetch: FetchLike = async (url, init) => {
+      asked.push(`${init?.method ?? 'GET'} ${url} ${init?.body ?? ''}`.trim());
+      if (url === 'https://pypi.org/pypi/django-rest.framework/json') {
+        return { ok: false, status: 404, json: async () => ({}), text: async () => '' };
+      }
+      if (url === 'https://pypi.org/pypi/django-rest-framework/json') {
+        return json({
+          info: { version: '3.0', classifiers: [] },
+          releases: { '3.0': [{ upload_time_iso_8601: daysAgo(100), yanked: false }] },
+        });
+      }
+      if (url === 'https://api.osv.dev/v1/querybatch') {
+        return json({ results: [{ vulns: [{ id: 'PYSEC-1' }, { id: 'GHSA-1' }] }] });
+      }
+      if (url === 'https://api.osv.dev/v1/query') {
+        return json({
+          vulns: [
+            { id: 'PYSEC-1', aliases: ['CVE-1'] },
+            { id: 'GHSA-1', aliases: ['CVE-1'] },
+          ],
+        });
+      }
+      return { ok: false, status: 404, json: async () => ({}), text: async () => '' };
+    };
+    const report = await engineFor(fetch).autopsy({
+      subject: 's',
+      files: [
+        {
+          kind: 'requirements.txt',
+          path: 'requirements.txt',
+          content: 'Django_Rest.Framework==3.0\n',
+        },
+      ],
+    });
+    const d = report.diagnoses[0];
+    expect(d?.dependency.name).toBe('django-rest-framework');
+    expect(d?.advisories).toEqual(['GHSA-1']);
+    expect(d?.advisoryAliases).toEqual({ 'GHSA-1': ['CVE-1', 'PYSEC-1'] });
+    expect(asked.some((a) => a.includes('django-rest-framework/json'))).toBe(true);
+    expect(asked.find((a) => a.includes('/v1/querybatch'))).toContain(
+      '"name":"django-rest-framework"',
+    );
+    expect(asked.find((a) => a.includes('/v1/query '))).toContain('"name":"django-rest-framework"');
+  });
+});

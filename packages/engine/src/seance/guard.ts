@@ -139,6 +139,7 @@ process, or write, delete or rename a file outside the temporary directory. Read
 blocked call raises SeanceBlocked.
 """
 import builtins
+import io
 import os
 import shutil
 import socket
@@ -241,4 +242,18 @@ def _open_check(args, kwargs):
 
 
 _wrap(builtins, "open", _open_check)
+_wrap(io, "open", _open_check)  # pathlib and others call io.open, which is a separate name
+
+
+_WRITE_FLAGS = os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_APPEND | os.O_TRUNC
+
+
+def _os_open_check(args, kwargs):
+    flags = args[1] if len(args) > 1 else kwargs.get("flags", 0)
+    if isinstance(flags, int) and flags & _WRITE_FLAGS and args and not _inside(args[0]):
+        return "a file change outside the temporary directory"
+    return ""
+
+
+_wrap(os, "open", _os_open_check)
 `;

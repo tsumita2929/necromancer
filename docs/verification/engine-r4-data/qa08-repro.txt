@@ -1,0 +1,4 @@
+control (no guard, call put back by hand): server log ["GET /danger/delete-all"]; [2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m | [2m      Tests [22m [1m[31m2 failed[39m[22m[90m (2)[39m | [31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+generated séance: server log []; [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m | [2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+test file projectCalls: const projectCalls = [["plain-value"]];
+QA-08 OK: the control reached the server; the generated séance did not.

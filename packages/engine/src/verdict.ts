@@ -20,7 +20,7 @@ import type { Evidence, Verdict } from './types.js';
  * - strong:      a fact from a source that ends a package's life: deprecated, archived, inactive or
  *                yanked (dead, `basis` hard).
  * - derived:     the abandoned guess (dead, `basis` heuristic): a very old release and nothing that
- *                shows care. Not a hard signal, and not to be described as definitive.
+ *                shows care. Not a hard signal: never describe it as an end of life that is certain.
  * - notice:      a fact that makes the dependency dying and is not a staleness guess: the version in
  *                use is deprecated or yanked. A hard signal.
  * - conditional: counts as death only together with a supporting signal (see `decide`).

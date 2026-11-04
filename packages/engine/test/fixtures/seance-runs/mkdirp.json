@@ -2,7 +2,7 @@
   "recipe": "mkdirp",
   "language": "javascript",
   "command": "npx vitest run seance/mkdirp",
-  "ranAt": "2026-11-04T09:48:26.042Z",
+  "ranAt": "2026-11-04T11:12:33.551Z",
   "versions": {
     "mkdirp": "1.0.4",
     "vitest": "5.1.0",
@@ -10,12 +10,12 @@
   },
   "real": {
     "exit": 0,
-    "seconds": 0.81,
+    "seconds": 0.788,
     "summary": [
-      "✓ seance/mkdirp/seance.test.mjs (6 tests) 362ms",
+      "✓ seance/mkdirp/seance.test.mjs (6 tests) 367ms",
       "Test Files  1 passed (1)",
       "Tests  6 passed (6)",
-      "Duration  528ms (tests 85%, transform 7%, import 7%, worker 1%)"
+      "Duration  512ms (tests 89%, import 7%, transform 2%, worker 1%)"
     ]
   },
   "mutants": [
@@ -25,11 +25,11 @@
       "exit": 1,
       "failed": true,
       "counterexample": [
-        "Counterexample: [[],[\"a\"],\"\",493]",
-        "Shrunk 2 time(s)",
+        "Counterexample: [[],[\"a\"],\"\",448]",
+        "Shrunk 4 time(s)",
         "Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }",
-        "Counterexample: [[],[\"a\",\"\"],{\"mode\":448}]",
-        "Shrunk 5 time(s)",
+        "Counterexample: [[],[\"a\"],{\"mode\":448}]",
+        "Shrunk 1 time(s)",
         "Caused by: AssertionError: expected { ok: true, made: 'a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
       ],
       "summary": [
@@ -45,11 +45,11 @@
       "exit": 1,
       "failed": true,
       "counterexample": [
-        "Counterexample: [[],[\"a\",\"a\",\"\"],\"\",undefined]",
-        "Shrunk 5 time(s)",
+        "Counterexample: [[],[\"a\",\"a\"],\"\",undefined]",
+        "Shrunk 7 time(s)",
         "Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }",
-        "Counterexample: [[],[\"a\",\"a\",\"\"],undefined]",
-        "Shrunk 4 time(s)",
+        "Counterexample: [[],[\"a\",\"a\"],undefined]",
+        "Shrunk 5 time(s)",
         "Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
       ],
       "summary": [
