@@ -133,18 +133,43 @@ describe('Q1 through the engine', () => {
     expect(d?.advisories).toEqual(['GHSA-x']);
   });
 
-  it('Q1.4 a withdrawn advisory does not count: no advisory, no zombie', async () => {
-    const world = fakeWorld([
+  it('Q1.4 withdrawn records do not count: all withdrawn means no advisory and no zombie; one live one still counts', async () => {
+    const withdrawn = '2026-01-01T00:00:00Z';
+    const all = fakeWorld([
       pkg({
         latestDeprecated: 'gone',
         advisoryRecords: {
-          '1.0.0': [{ id: 'GHSA-w', aliases: ['CVE-1'], withdrawn: '2026-01-01T00:00:00Z' }],
+          '1.0.0': [
+            { id: 'GHSA-w1', aliases: ['CVE-1'], withdrawn },
+            { id: 'GHSA-w2', aliases: ['CVE-2'], withdrawn },
+          ],
         },
       }),
     ]);
+    const [none] = await engineFor(all.fetch).diagnose([dep('vuln')]);
+    expect(none?.advisories).toEqual([]);
+    expect(none?.verdict).toBe('dead');
+    const one = fakeWorld([
+      pkg({
+        latestDeprecated: 'gone',
+        advisoryRecords: {
+          '1.0.0': [
+            { id: 'GHSA-w1', aliases: ['CVE-1'], withdrawn },
+            { id: 'GHSA-ok', aliases: ['CVE-2'] },
+          ],
+        },
+      }),
+    ]);
+    const [d] = await engineFor(one.fetch).diagnose([dep('vuln')]);
+    expect(d?.advisories).toEqual(['GHSA-ok']);
+    expect(d?.verdict).toBe('zombie');
+  });
+
+  it('a single record is not read in full: it cannot duplicate itself', async () => {
+    const world = fakeWorld([pkg({ advisories: { '1.0.0': ['GHSA-solo'] } })]);
     const [d] = await engineFor(world.fetch).diagnose([dep('vuln')]);
-    expect(d?.advisories).toEqual([]);
-    expect(d?.verdict).toBe('dead');
+    expect(d?.advisories).toEqual(['GHSA-solo']);
+    expect(world.osvQueries).toEqual([]);
   });
 
   it('Q1.5 when the full records cannot be read, the ids are counted as listed and the report says so', async () => {

@@ -191,3 +191,14 @@ describe('T5.2 known differences keep their spaces', () => {
     );
   });
 });
+
+describe('Q5 the spec says what the verdict rests on', () => {
+  it('a heuristic verdict is called a heuristic; a hard one a hard signal; none says definitive', () => {
+    const d = diag(dep('left-pad'));
+    const h = resurrectionSpec({ ...d, basis: 'heuristic' }, pkg('x'))['requirements.md'];
+    const hard = resurrectionSpec({ ...d, basis: 'hard' }, pkg('x'))['requirements.md'];
+    expect(h).toMatch(/is \*\*dead\*\* \(a heuristic from staleness, not a hard signal\)/);
+    expect(hard).toMatch(/is \*\*dead\*\* \(a hard signal: see the evidence\)/);
+    expect(h + hard).not.toMatch(/definitive/i);
+  });
+});

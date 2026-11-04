@@ -11,7 +11,7 @@ export interface OsvQuery {
 export const osvKey = (q: OsvQuery): string => `${q.ecosystem}:${q.name}@${q.version}`;
 
 const BATCH = 1000;
-/** Full records are read for a package version only when the batch says it has advisories. */
+/** Full records are read for a package version only when the batch lists two or more records for it. */
 const EXPAND_POOL = 4;
 const MAX_PAGES = 5;
 
@@ -133,7 +133,7 @@ async function fetchRecords(http: Http, q: OsvQuery): Promise<OsvRecord[] | stri
   return records;
 }
 
-/** One batch request per 1000 queries, then the full records for the versions that have advisories. */
+/** One batch request per 1000 queries, then the full records for the versions that have two or more records. */
 export async function queryOsv(http: Http, queries: OsvQuery[]): Promise<OsvOutcome> {
   const outcome: OsvOutcome = {
     advisories: new Map(),
@@ -177,7 +177,8 @@ export async function queryOsv(http: Http, queries: OsvQuery[]): Promise<OsvOutc
         : [];
       const sorted = [...new Set(ids)].sort();
       outcome.advisories.set(osvKey(q), sorted);
-      if (sorted.length > 0) affected.push({ q, ids: sorted });
+      // One record cannot duplicate itself: only versions with two or more records are read in full.
+      if (sorted.length >= 2) affected.push({ q, ids: sorted });
     });
   }
 

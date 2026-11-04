@@ -12,7 +12,8 @@ Source: `docs/verification/qa-round3.md` (QA-01, 07, 08, 16), `docs/research/suc
 - Q1.3 `Diagnosis.advisories` SHALL list one id per vulnerability (the GHSA id, else the CVE id, else the
   first of the others; the list is sorted);
   `Diagnosis.advisoryAliases` SHALL map that id to the other ids of the same vulnerability.
-- Q1.4 A withdrawn record SHALL NOT count.
+- Q1.4 A withdrawn record SHALL NOT count. Full records are read only for a version the batch lists two or
+  more records for (one record cannot duplicate itself), so a lone withdrawn record is not detected.
 - Q1.5 WHEN the alias data cannot be read, THE engine SHALL count the ids it has and say in `unavailable`
   that aliases were not merged.
 
