@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { AutopsyReport, Diagnosis } from '@contract';
 import { runAutopsy } from '../data/autopsy';
 import { resetEngine } from '../data/engine';
-import { buildGroups, groupOf, isUnchecked, DEFAULT_CONTROLS } from '../state/model';
+import { basisOf, buildGroups, groupOf, isUnchecked, DEFAULT_CONTROLS } from '../state/model';
 import { defaultView, formatHash, parseHash, type ViewState } from '../state/url';
 import { diagnosis as d, ev, pkg, report as makeReport, successor } from '../test/fixtures/build';
 import { SOURCE_NAMES } from './DetailPanel';
@@ -274,5 +274,21 @@ describe('a repository found in an unusual PyPI field is explained, not alarming
     const dialog = await screen.findByRole('dialog', { name: 'mako' });
     expect(dialog.textContent).toMatch(/Where the source was found/);
     expect(dialog.textContent).toMatch(/Maintained: no end-of-life signal\./);
+  });
+});
+
+describe('a README that says the project is no longer maintained is a hard signal', () => {
+  it('reads as hard for a report recorded without a basis, and says so in the drawer', async () => {
+    const user = userEvent.setup();
+    const karma = d(pkg('karma', '6.4.4', '6.4.4'), 'dead', {
+      evidence: [ev('readme-unmaintained', 'The README says: "This project is no longer maintained."', 'readme', { url: 'https://github.com/karma-runner/karma#readme' }), ev('no-release', 'No release for 2 years.', 'npm')],
+    });
+    expect(basisOf(karma)).toBe('hard');
+    render(<Harness report={makeReport({ subject: 'x', manifests: [], diagnoses: [karma] })} />);
+    expect(document.querySelector('[data-dep-key="npm:karma"]')).not.toHaveAccessibleName(/heuristic/);
+    await user.click(document.querySelector<HTMLElement>('[data-dep-key="npm:karma"]')!);
+    const dialog = await screen.findByRole('dialog', { name: 'karma' });
+    expect(dialog.textContent).toMatch(/or a README that says it is no longer maintained/);
+    expect(dialog.textContent).toMatch(/README or migration guide/);
   });
 });

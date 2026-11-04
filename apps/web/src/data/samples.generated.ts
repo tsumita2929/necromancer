@@ -21,7 +21,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "appsecco-dvna",
     "repository": "appsecco/dvna",
     "ecosystem": "npm",
-    "recordedAt": "2026-11-04T11:23:39.608Z",
+    "recordedAt": "2026-11-04T16:29:51.355Z",
     "total": 19,
     "summary": {
       "alive": 10,
@@ -36,12 +36,12 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "josdejong-mathjs",
     "repository": "josdejong/mathjs",
     "ecosystem": "npm",
-    "recordedAt": "2026-11-04T15:08:28.790Z",
+    "recordedAt": "2026-11-04T16:29:54.347Z",
     "total": 67,
     "summary": {
       "alive": 43,
-      "dying": 8,
-      "dead": 15,
+      "dying": 6,
+      "dead": 17,
       "ghost": 0,
       "zombie": 1
     },
@@ -54,7 +54,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "miguelgrinberg-microblog",
     "repository": "miguelgrinberg/microblog",
     "ecosystem": "pypi",
-    "recordedAt": "2026-11-04T15:14:45.431Z",
+    "recordedAt": "2026-11-04T16:29:58.670Z",
     "total": 54,
     "summary": {
       "alive": 43,
@@ -69,7 +69,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "sickchill-sickchill",
     "repository": "SickChill/sickchill",
     "ecosystem": "both",
-    "recordedAt": "2026-11-04T15:15:03.210Z",
+    "recordedAt": "2026-11-04T16:30:03.173Z",
     "total": 105,
     "summary": {
       "alive": 78,

@@ -79,6 +79,7 @@ const HARD_CODES: ReadonlySet<string> = new Set([
   'registry-not-found',
   'version-deprecated',
   'version-yanked',
+  'readme-unmaintained',
 ]);
 
 /**

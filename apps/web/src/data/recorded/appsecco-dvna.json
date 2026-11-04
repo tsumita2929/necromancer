@@ -1,6 +1,6 @@
 {
   "subject": "github:appsecco/dvna",
-  "scannedAt": "2026-11-04T11:23:39.608Z",
+  "scannedAt": "2026-11-04T16:29:51.355Z",
   "manifests": [
     {
       "kind": "package.json",
@@ -57,7 +57,7 @@
         "GHSA-q4v7-4rhw-9hqm"
       ],
       "successors": [],
-      "basis": "hard",
+      "basis": "heuristic",
       "latest": {
         "version": "0.0.4",
         "date": "2014-05-26T12:10:25Z"
@@ -327,7 +327,7 @@
       "evidence": [
         {
           "code": "version-deprecated",
-          "message": "The version in use (0.4.0) is deprecated: \"Please upgrade express-fileupload to version 1.1.8+ due to a security vulnerability with the parseNested option\" The package itself is not; this is an upgrade notice. Upgrade to 1.5.2 (another major version).",
+          "message": "The version in use (0.4.0) is deprecated: \"Please upgrade express-fileupload to version 1.1.8+ due to a security vulnerability with the parseNested option\" The package itself is not; this is an upgrade notice. Upgrade to 1.5.2: no release in this major version is free of the deprecation, and this is the next major version that has one, outside your declared range (^0.4.0). Its engines.node is \">=12.0.0\".",
           "source": "deps.dev",
           "url": "https://www.npmjs.com/package/express-fileupload/v/0.4.0"
         },
@@ -494,7 +494,7 @@
       "evidence": [
         {
           "code": "version-deprecated",
-          "message": "The version in use (1.0.3) is deprecated: \"versions < v5.0.0 do not handle NUL in passwords properly\" The package itself is not; this is an upgrade notice. Upgrade to 6.0.0 (another major version).",
+          "message": "The version in use (1.0.3) is deprecated: \"versions < v5.0.0 do not handle NUL in passwords properly\" The package itself is not; this is an upgrade notice. Upgrade to 5.1.1: no release in this major version is free of the deprecation, and this is the next major version that has one, outside your declared range (^1.0.3). Its engines.node is \">= 10.0.0\".",
           "source": "deps.dev",
           "url": "https://www.npmjs.com/package/bcrypt/v/1.0.3"
         },
@@ -517,7 +517,7 @@
       ],
       "successors": [],
       "upgradeTo": {
-        "version": "6.0.0",
+        "version": "5.1.1",
         "sameMajor": false
       },
       "latest": {
@@ -725,7 +725,7 @@
       "evidence": [
         {
           "code": "version-deprecated",
-          "message": "The version in use (4.44.4) is deprecated: \"Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html\" The package itself is not; this is an upgrade notice. Upgrade to 6.37.8 (another major version).",
+          "message": "The version in use (4.44.4) is deprecated: \"Please update to v6 or higher! A migration guide can be found here: https://sequelize.org/v6/manual/upgrade-to-v6.html\" The package itself is not; this is an upgrade notice. Upgrade to 6.37.8: no release in this major version is free of the deprecation, and this is the next major version that has one, outside your declared range (^4.13.10). Its engines.node is \">=10.0.0\".",
           "source": "deps.dev",
           "url": "https://www.npmjs.com/package/sequelize/v/4.44.4"
         },

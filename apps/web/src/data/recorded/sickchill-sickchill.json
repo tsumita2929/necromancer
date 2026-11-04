@@ -1,6 +1,6 @@
 {
   "subject": "github:SickChill/sickchill",
-  "scannedAt": "2026-11-04T15:15:03.210Z",
+  "scannedAt": "2026-11-04T16:30:03.173Z",
   "manifests": [
     {
       "kind": "package.json",
@@ -24,6 +24,12 @@
       "verdict": "dead",
       "evidence": [
         {
+          "code": "readme-unmaintained",
+          "message": "The README of the repository says: \"Note: This project has been officially deprecated.\"",
+          "source": "readme",
+          "url": "https://github.com/ActiveState/appdirs"
+        },
+        {
           "code": "abandoned",
           "message": "Abandoned (a heuristic, not a hard signal): the latest release (1.4.4) is 6.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for a year).",
           "source": "pypi",
@@ -38,7 +44,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No commit to the default branch for 3.7 years (last commit 2023-02-10).",
+          "message": "No push to the repository for 3.7 years (last push 2023-02-10); the default branch's last commit is at least that old. Commit dates were not read.",
           "source": "github",
           "url": "https://github.com/ActiveState/appdirs",
           "date": "2023-02-10"
@@ -53,7 +59,7 @@
       ],
       "advisories": [],
       "successors": [],
-      "basis": "heuristic",
+      "basis": "hard",
       "latest": {
         "version": "1.4.4",
         "date": "2020-05-11T07:59:51.037820Z"

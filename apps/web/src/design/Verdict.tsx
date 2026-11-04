@@ -31,7 +31,7 @@ export const VERDICT_META: Record<Verdict, VerdictMeta> = {
     label: 'Dead',
     plural: 'Dead',
     meaning:
-      'A hard end-of-life signal (deprecated, archived, yanked or gone), or, when marked "heuristic", a guess from age and silence: it looks abandoned.',
+      'A hard end-of-life signal (deprecated, archived, yanked, gone, or a README that says it is no longer maintained), or, when marked "heuristic", a guess from age and silence: it looks abandoned.',
     tagline: 'Ended, or looks abandoned',
   },
   dying: {
@@ -85,7 +85,7 @@ export function meaningOf(
     case 'dead':
       return basis === 'heuristic'
         ? 'Looks abandoned: no release for years and no sign of work. A heuristic, not a hard end-of-life signal. Check before you act.'
-        : 'A hard end-of-life signal: deprecated, archived, yanked or gone.';
+        : 'A hard end-of-life signal: deprecated, archived, yanked, gone, or a README that says it is no longer maintained.';
     case 'ghost':
       return 'Dead, and its source repository is gone. You cannot read, fork or fix it.';
     case 'zombie':

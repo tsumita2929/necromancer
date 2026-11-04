@@ -318,7 +318,7 @@ export function Landing({ go, notice }: LandingProps) {
           </p>
           <p className="band__note">
             <strong>Hard signal or heuristic.</strong> A hard signal is stated by the registry or the maintainer:
-            deprecated, archived, yanked, gone. A heuristic is Necromancer's own reading of age and silence. It is
+            deprecated, archived, yanked, gone, or a README that says the project is no longer maintained. A heuristic is Necromancer's own reading of age and silence. It is
             marked <span className="verdict__basis">heuristic</span> on the tombstone, in the drawer and in the filter.
             An alive dependency can still carry known advisories; its tombstone shows them.
           </p>

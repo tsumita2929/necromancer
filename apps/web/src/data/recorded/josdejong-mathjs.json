@@ -1,6 +1,6 @@
 {
   "subject": "github:josdejong/mathjs",
-  "scannedAt": "2026-11-04T15:08:28.790Z",
+  "scannedAt": "2026-11-04T16:29:54.347Z",
   "manifests": [
     {
       "kind": "package.json",
@@ -69,7 +69,7 @@
           "confidence": "medium"
         }
       ],
-      "basis": "hard",
+      "basis": "heuristic",
       "advisoryAliases": {
         "GHSA-8gw3-rxh4-v6jx": [
           "CVE-2025-13204"
@@ -195,6 +195,86 @@
       "latest": {
         "version": "0.7.1",
         "date": "2014-01-02T17:54:40Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma",
+        "spec": "6.4.4",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "readme-unmaintained",
+          "message": "The README of the repository says: \"Karma is deprecated and is not accepting new features or general bug fixes.\"",
+          "source": "readme",
+          "url": "https://github.com/karma-runner/karma"
+        },
+        {
+          "code": "no-release",
+          "message": "The latest release (6.4.4) is 2.3 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/karma",
+          "date": "2024-07-29"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "hard",
+      "latest": {
+        "version": "6.4.4",
+        "date": "2024-07-29T17:42:15Z"
+      }
+    },
+    {
+      "dependency": {
+        "ecosystem": "npm",
+        "name": "karma-firefox-launcher",
+        "spec": "2.1.3",
+        "direct": true,
+        "scope": "dev",
+        "declaredIn": "package.json"
+      },
+      "verdict": "dead",
+      "evidence": [
+        {
+          "code": "readme-unmaintained",
+          "message": "The README of the repository says: \"karma-firefox-launcher is deprecated and is not accepting new features or general bug fixes.\"",
+          "source": "readme",
+          "url": "https://github.com/karma-runner/karma-firefox-launcher"
+        },
+        {
+          "code": "no-release",
+          "message": "The latest release (2.1.3) is 2.7 years old.",
+          "source": "npm",
+          "url": "https://www.npmjs.com/package/karma-firefox-launcher",
+          "date": "2024-03-03"
+        },
+        {
+          "code": "low-maintenance",
+          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
+          "source": "scorecard",
+          "url": "https://securityscorecards.dev/",
+          "date": "2026-08-24"
+        }
+      ],
+      "advisories": [],
+      "successors": [],
+      "basis": "hard",
+      "latest": {
+        "version": "2.1.3",
+        "date": "2024-03-03T23:32:01Z"
       }
     },
     {
@@ -944,88 +1024,6 @@
     {
       "dependency": {
         "ecosystem": "npm",
-        "name": "karma",
-        "spec": "6.4.4",
-        "direct": true,
-        "scope": "dev",
-        "declaredIn": "package.json"
-      },
-      "verdict": "dying",
-      "evidence": [
-        {
-          "code": "no-release",
-          "message": "The latest release (6.4.4) is 2.3 years old.",
-          "source": "npm",
-          "url": "https://www.npmjs.com/package/karma",
-          "date": "2024-07-29"
-        },
-        {
-          "code": "repo-inactive",
-          "message": "No commit to the default branch for 2.3 years (last commit 2024-07-29).",
-          "source": "github",
-          "url": "https://github.com/karma-runner/karma",
-          "date": "2024-07-29"
-        },
-        {
-          "code": "low-maintenance",
-          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
-          "source": "scorecard",
-          "url": "https://securityscorecards.dev/",
-          "date": "2026-08-24"
-        }
-      ],
-      "advisories": [],
-      "successors": [],
-      "basis": "heuristic",
-      "latest": {
-        "version": "6.4.4",
-        "date": "2024-07-29T17:42:15Z"
-      }
-    },
-    {
-      "dependency": {
-        "ecosystem": "npm",
-        "name": "karma-firefox-launcher",
-        "spec": "2.1.3",
-        "direct": true,
-        "scope": "dev",
-        "declaredIn": "package.json"
-      },
-      "verdict": "dying",
-      "evidence": [
-        {
-          "code": "no-release",
-          "message": "The latest release (2.1.3) is 2.7 years old.",
-          "source": "npm",
-          "url": "https://www.npmjs.com/package/karma-firefox-launcher",
-          "date": "2024-03-03"
-        },
-        {
-          "code": "repo-inactive",
-          "message": "No commit to the default branch for 2.7 years (last commit 2024-03-03).",
-          "source": "github",
-          "url": "https://github.com/karma-runner/karma-firefox-launcher",
-          "date": "2024-03-03"
-        },
-        {
-          "code": "low-maintenance",
-          "message": "OpenSSF Scorecard rates maintenance 0 out of 10 (shown, not decisive: the score lags).",
-          "source": "scorecard",
-          "url": "https://securityscorecards.dev/",
-          "date": "2026-08-24"
-        }
-      ],
-      "advisories": [],
-      "successors": [],
-      "basis": "heuristic",
-      "latest": {
-        "version": "2.1.3",
-        "date": "2024-03-03T23:32:01Z"
-      }
-    },
-    {
-      "dependency": {
-        "ecosystem": "npm",
         "name": "karma-webpack",
         "spec": "5.0.1",
         "direct": true,
@@ -1600,7 +1598,7 @@
       "evidence": [
         {
           "code": "version-deprecated",
-          "message": "The version in use (8.57.1) is deprecated: \"This version is no longer supported. Please see https://eslint.org/version-support for other options.\" The package itself is not; this is an upgrade notice. Upgrade to 10.14.0 (another major version).",
+          "message": "The version in use (8.57.1) is deprecated: \"This version is no longer supported. Please see https://eslint.org/version-support for other options.\" The package itself is not; this is an upgrade notice. Upgrade to 10.14.0: no release in this major version is free of the deprecation, and this is the next major version that has one, outside your declared range (8.57.1). Its engines.node is \"^20.19.0 || ^22.13.0 || >=24\".",
           "source": "deps.dev",
           "url": "https://www.npmjs.com/package/eslint/v/8.57.1"
         }
@@ -1853,7 +1851,7 @@
       "evidence": [
         {
           "code": "version-deprecated",
-          "message": "The version in use (11.0.3) is deprecated: \"Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current versio…\" The package itself is not; this is an upgrade notice. Upgrade to 14.0.3 (another major version).",
+          "message": "The version in use (11.0.3) is deprecated: \"Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current versio…\" The package itself is not; this is an upgrade notice. Upgrade to 12.0.0: no release in this major version is free of the deprecation, and this is the next major version that has one, outside your declared range (11.0.3). Its engines.node is \"20 || >=22\". Node 22.17 or later (added in Node 22.0, experimental until 22.17; stable in Node 24.0) also has fs.glob (and fs.globSync, fs.promises.glob), so the package may not be needed; its options are fewer than the package has, so check your patterns.",
           "source": "deps.dev",
           "url": "https://www.npmjs.com/package/glob/v/11.0.3"
         },
@@ -1870,7 +1868,7 @@
       ],
       "successors": [],
       "upgradeTo": {
-        "version": "14.0.3",
+        "version": "12.0.0",
         "sameMajor": false
       },
       "advisoryAliases": {
@@ -2188,8 +2186,8 @@
   "unavailable": [],
   "summary": {
     "alive": 43,
-    "dying": 8,
-    "dead": 15,
+    "dying": 6,
+    "dead": 17,
     "ghost": 0,
     "zombie": 1
   }
