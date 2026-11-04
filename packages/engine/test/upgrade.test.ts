@@ -687,6 +687,31 @@ describe('U6 through the engine: the declared range and the engines of the next 
     expect(d?.evidence[0]?.message).toContain('Its engines.node could not be read.');
   });
 
+  it('U6.5 a release that declares no engines.node says so', async () => {
+    const w = fakeWorld(
+      [
+        living('eslinty', [
+          { version: '9.31.0', date: daysAgo(400), deprecated: 'old' },
+          { version: '10.14.0', date: daysAgo(20) },
+        ]),
+      ],
+      {
+        override: (url) =>
+          url === 'https://registry.npmjs.org/eslinty/10.14.0'
+            ? {
+                ok: true,
+                status: 200,
+                json: async () => ({ name: 'eslinty', version: '10.14.0' }),
+                text: async () => '',
+              }
+            : undefined,
+      },
+    );
+    const [d] = await engineFor(w.fetch).diagnose([at('^9.0.0', '9.31.0')]);
+    expect(d?.evidence[0]?.message).toContain('It declares no engines.node.');
+    expect(d?.evidence[0]?.message).not.toContain('could not be read');
+  });
+
   it('U6.4 two dependencies on one package share the request', async () => {
     const w = fakeWorld(
       [

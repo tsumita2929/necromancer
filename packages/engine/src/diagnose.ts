@@ -474,7 +474,7 @@ export class Core {
               f.registrySource === 'npm' ? 'deps.dev' : f.registrySource,
               f.name,
               choice,
-              choice ? (f.engines?.get(choice.target.version) ?? undefined) : undefined,
+              choice ? f.engines?.get(choice.target.version) : undefined,
             ),
           );
         if (yanked) out.push(signals.versionYanked(f.name, inUse, used.yankedReason, choice));
