@@ -10,25 +10,30 @@ local link was checked and the video timings were added up. Host: Linux aarch64,
 | `README.md` | The repository front page: what Necromancer is, the census headline, the séance finds, the three parts with a quick start, the test commands, the Kiro-usage table, known limits, the pre-existing-code declaration. |
 | `docs/submission/devpost.md` | Every Devpost field the rules ask for, the Kiro-usage write-up, the Kiro Crew app description, judge instructions, the pre-existing-code declaration. |
 | `docs/submission/video-script.md` | A 2 min 45 s demo, seven shots with timings, terminal scripts, a recording checklist. |
+| `docs/submission/blog-post.md` | Draft of the Bonus Blog Prize post (owner edits, then publishes). |
+| `docs/submission/social-post.md` | Draft of the Social Blitz post (owner rewrites in their own voice). |
 | `docs/submission/demo/summarize-autopsy.mjs`, `summarize-seance.mjs` | Two small filters that make the Crew tool output readable on camera. |
 | `/home/ec2-user/.kiro/crew/kiroween2026/.status/necromancer-submission-ja.md` | The owner's guide in Japanese (outside the repository). |
 | this file | The checks. |
 
-Commits: `f9a5fa1` (README, Devpost text, video script, filters), `2a523da` (Best Kiro Crew App needs a separate repository);
-this record is the last commit of the item. Nothing under `packages/`, `apps/`, `docs/research/`, `.kiro/` or `.github/` was changed.
+Commits: `f9a5fa1` (README, Devpost text, video script, filters), `2a523da` (Best Kiro Crew App needs a separate repository),
+`653defe` (this record, first version); the lead's ruling and the blog and social drafts are in the commit after it. Nothing under `packages/`, `apps/`, `docs/research/`, `.kiro/` or `.github/` was changed.
 No `api.github.com` call was made on purpose; see section 8 for the one run that was not blocked.
 
 ## 2. Placeholders
 
 Four links do not exist yet. Each is one marker, found with `grep -rn PLACEHOLDER README.md docs/submission`.
-Counts are lines that contain the marker (`devpost.md` lists each marker once in its own table, too).
+Counts are lines that contain the marker (`devpost.md` lists each marker once in its own table, too). The blog and social drafts
+use the same markers; the owner needs to fix only the files they use.
 
-| Marker | Lines in `README.md` / `devpost.md` / `video-script.md` | Becomes |
+| Marker | `README.md` / `devpost.md` / `video-script.md` / `blog-post.md` / `social-post.md` | Becomes |
 | --- | --- | --- |
-| `[[PLACEHOLDER: PAGES_URL]]` | 1 / 3 / 0 (the video's end card says to type the address) | the Pages address after the owner creates the repository |
-| `[[PLACEHOLDER: YOUTUBE_URL]]` | 1 / 2 / 1 | the public YouTube address |
-| `[[PLACEHOLDER: REPO_URL]]` | 0 / 2 / 0 | the public repository |
-| `[[PLACEHOLDER: CREW_REPO_URL]]` | 0 / 3 / 0 | the separate Crew app repository (open question, section 5) |
+| `[[PLACEHOLDER: PAGES_URL]]` | 1 / 3 / 0 / 1 / 2 (the video's end card says to type the address) | the Pages address after the owner creates the repository |
+| `[[PLACEHOLDER: YOUTUBE_URL]]` | 1 / 2 / 1 / 1 / 0 | the public YouTube address |
+| `[[PLACEHOLDER: REPO_URL]]` | 0 / 2 / 0 / 1 / 1 | the public repository |
+| `[[PLACEHOLDER: CREW_REPO_URL]]` | 0 / 4 / 0 / 1 / 0 | the separate Crew app repository (section 5) |
+
+The blog and social drafts also hold `OWNER:` lines for text only the owner can write.
 
 ## 3. What could not be read or confirmed
 
@@ -57,21 +62,22 @@ Quoted from `kiroween.devpost.com/rules` (Official Rules), read 2026-11-04.
 | R9 | "Identify which category and bonus category you are submitting into." | `devpost.md` "Category" and "Bonus prizes to select". |
 | R10 | "Provide a write up on how Kiro was used" with the eight example topics (IDE/CLI/Web/Crew, custom agents, hooks, spec-driven, steering, MCP, PBT, powers). | `devpost.md` "How we used Kiro" answers all eight, in that order, with "None used" for powers and "not used" for IDE, CLI and Web. README has the same as a table with paths. |
 | R11 | "All Submission materials must be in English or ... an English translation". | All drafts in English. The Japanese guide is for the owner only and is not submitted. |
-| R12 | Best Kiro Crew App: prize table says "All Eligible Submissions that include a separate repo submission to a Kiro Crew app (GitHub account must match overall submission)". Section 4: "provide a writeup describing the features and functionality of your Kiro Crew app with a public URL to the code repository for the app on GitHub. Your Kiro Crew app must be newly created during the Submission Period." | `devpost.md` has the description and a `CREW_REPO_URL` placeholder. **Not met yet**: the app is `apps/crew` in the main repository. See section 5. |
-| R13 | Bonus Blog Prize: post "must mention it is being written as part of the Kiroween 2026 hackathon", published in the Submission Period. Social Blitz: "post must start with the hashtag" `#KiroweenHackathon26`; "original thoughts vs AI writing" is judged. | Not drafted on purpose; the owner writes them. Both are in the guide with the conditions. |
+| R12 | Best Kiro Crew App: prize table says "All Eligible Submissions that include a separate repo submission to a Kiro Crew app (GitHub account must match overall submission)". Section 4: "provide a writeup describing the features and functionality of your Kiro Crew app with a public URL to the code repository for the app on GitHub. Your Kiro Crew app must be newly created during the Submission Period." | `devpost.md` selects the prize, has the description and `CREW_REPO_URL`. By the lead's ruling a second public repository is made from a standalone export of `apps/crew` (`necromancer-crew-app`, steps in `docs/verification/crew-repo.md`, written by the Crew worker). **Met in the drafts; the repository does not exist until the owner pushes it.** |
+| R13 | Bonus Blog Prize: "write and publish a public blog post about Kiro and your project build on any third-party blog platform during the Submission Period"; it "must mention it is being written as part of the Kiroween 2026 hackathon". Social Blitz: post "starting your post with required hashtag #KiroweenHackathon26 ... must start with the hashtag before the rest of the post content"; "Include your favorite thing about Kiro with a description of how it changed the way you approached development"; judged on "original thoughts vs AI writing". Best Ghost: "confirm that you registered for Kiroween 2025 in the Submission Form". | `blog-post.md`: its second paragraph says it was written as part of the Kiroween 2026 hackathon; it is about Kiro and the build. `social-post.md`: the post blocks begin with `#KiroweenHackathon26`; the favorite thing and the change are left as `OWNER:` brackets, with the note that the post is judged on original thoughts. The guide gives the dates (2026-10-31 01:00 JST to 2026-12-05 07:00 JST) and the Ghost check. |
 | R14 | Kiro credits: request "by Tuesday, December 1, 2026 at 12:00 pm Pacific Time"; "Credits must be redeemed by Friday, December 4, 2026"; "48 business hours" for review. | Guide step 2: 2026-12-02 05:00 JST, redeem by 12-04 (Pacific). |
 | R15 | Eligibility: age of majority; teams of at most 3 with one Representative; list of excluded places. Japan is not in the list. "Entrants are solely responsible for reviewing ... Regional Restrictions" on Kiro features. | Guide section 7; `devpost.md` "Team and eligibility". |
 | R16 | Judging: Stage One pass/fail on theme and use of Kiro; Stage Two five criteria at 20% each (Potential Impact, Technological Implementation, Design, Innovation/Idea, Presentation). | `devpost.md` sections map to them: problem and census (Impact), the Kiro write-up (Implementation), the app (Design), séance and datasets (Innovation), the video (Presentation). |
 | R17 | "Judges are not required to test the Project and may choose to judge based solely on the text description, images, and video". | The video and the gallery images carry the whole story; judge steps are optional. |
 | R18 | Product rules in `.kiro/steering/product.md` that bind the drafts: English only; public APIs and public data only; no paid services; no server-side LLM in the web app; no third-party trademarks as product names. | Drafts claim nothing against these. The web app runs the engine in the browser; no key is used. |
 
-## 5. Open question for the lead: Best Kiro Crew App
+## 5. Best Kiro Crew App (resolved by the lead)
 
-R12 reads as asking for a **second, separate** public repository for the Crew app, under the same GitHub account.
-The app is `apps/crew` in the main repository. Its `dist/` is ignored, and `@necromancer/engine` is a
-`file:../../packages/engine` dependency, so a straight copy of the folder would not install. The engine is bundled
-into `dist/server.mjs`, so a repository holding the built `dist/` and the manifest could. The drafts use a
-placeholder and say the prize needs a decision. A `question` report was sent for this.
+R12 asks for a **separate** public repository for the Crew app, under the same GitHub account. The lead ruled (2026-11-04): go for the
+prize with a separate repository. The Crew worker builds a standalone export of `apps/crew` (app at its root, built output committed,
+its own README) at `/home/ec2-user/.kiro/crew/kiroween2026/necromancer-crew-app` and writes the push steps in
+`docs/verification/crew-repo.md`. The owner creates the second repository and pushes it. This item did not write in the export
+directory or in `apps/crew`. The drafts keep `[[PLACEHOLDER: CREW_REPO_URL]]`, mark the prize as selected, and the guide step 6b
+points to `crew-repo.md`. `crew-repo.md` did not exist when this record was written; the guide says to wait for it.
 
 ## 6. Every command in the README runs
 
@@ -152,6 +158,8 @@ sits. "Checked" says what I did against the source file. The engine commit is th
 | N06 | Engine commit `bfd86f1`; 100 projects; engine has changed since | README | `census.md` header; `docs/verification/census.md` section 1 | `git log` shows the commit; later engine commits (the séance) exist |
 | L01 | 116 of the 198 rest on the "abandoned" rule alone | README | `census.md` section 4.3 | `recompute.mjs` Table 4: `abandoned: 116` |
 | L02 | Successors for 22 of 198; none for Python | README, devpost | `census.md` section 4.5 | `recompute.mjs` Table 3: npm `22 / 160`, PyPI `0 / 38` |
+| L03 | The generic séance is a skeleton; only six pairs have recipes; on `request` a model wrote a 305-line replacement and a 500-line test by hand in about 40 minutes | README, blog | `docs/verification/seance.md` section 8 gap 5; `crew-seance.md` section 4 | Read |
+| L04 | GitHub allows 60 unauthenticated calls an hour; at most 400 dependencies are checked | README, blog | `engine.md` section 6 gap 11; `web-live.md` section 9 gap 1 | Read |
 | N07 | The 16 hard-signal packages drawn for the hand check were all right | not quoted | `census.md` section 5 (C1 support) | not used in the drafts |
 
 ### Séance finds (engine record `docs/verification/seance.md`)
@@ -187,6 +195,18 @@ sits. "Checked" says what I did against the source file. The engine commit is th
 | K05 | Fresh subagents followed the agent prompt and skill and raised `left-pad`, `request` and `is-odd` on local branches with passing tests | README, devpost | `crew-live.md` section 4; `crew-seance.md` sections 3 and 4 | Read. They ran through a stdio stand-in, not the installed app; the drafts say so |
 | K06 | Several workers changed one repository at once without overwriting each other (one owner per path) | devpost | `.kiro/steering/structure.md` rule; my own item ran beside other workers' commits | Qualitative; no measurement |
 | K07 | Every requirement id is cited by a test name; EARS notation | devpost | `.kiro/specs/seance/requirements.md` opening; test names such as `R6.5 ...` in `engine.md` | Read two specs and `engine.md`; not checked for all nine |
+
+### Blog and social drafts
+
+| ID | Claim | Drafts | Source | Checked |
+| --- | --- | --- | --- | --- |
+| B01 | The blog says it was written as part of the Kiroween 2026 hackathon and is about Kiro and the build | `blog-post.md` | Official Rules section 4 (Bonus Blog Prize) | Read: second paragraph, and the comment at the top tells the owner to keep it |
+| B02 | Every number in the blog and social drafts is one of N01, N03, S01, S02, S03, K01 to K05, K07, C02, L03, L04 | both | rows above | Tags present in the text; each row is checked above |
+| B03 | "Fresh subagents ... raised `left-pad`, `request` and `is-odd` on local branches" | `blog-post.md` | K05 | As K05 |
+| X01 | The short post is 223 characters with its brackets | `social-post.md` | counted with `len()` | Printed 223. The claim is about the draft, not the final post |
+| X02 | The Social Blitz judging criteria (original thoughts vs AI writing; images) | `social-post.md`, guide | Official Rules section 6 | Read |
+| X03 | Submission Period in JST: 2026-10-31 01:00 to 2026-12-05 07:00 | guide, drafts | AWS blog schedule table; rules section 1 (10/30 09:00 PT to 12/4 14:00 PT) | Read; Pacific Standard Time (UTC-8) applies from 11/1, Pacific Daylight Time (UTC-7) before. The AWS blog gives 10/31 01:00 JST for the start and 12/5 07:00 JST for the end |
+| X04 | The favorite-thing ideas in `social-post.md` point to real evidence | `social-post.md` | `.kiro/specs/seance/requirements.md`; `seance.md` section 4; `engine.md` section 2.4 | Read each; they are ideas, not the owner's claims |
 
 ### Other facts
 
@@ -226,7 +246,7 @@ sits. "Checked" says what I did against the source file. The engine commit is th
 
 ## 12. Findings for the lead
 
-1. **Best Kiro Crew App needs a separate repository** (section 5). Question sent.
+1. **Best Kiro Crew App needs a separate repository** (section 5). The lead ruled to make it; the drafts follow. `docs/verification/crew-repo.md` was not there yet when this was written, so the guide points to it by name.
 2. **CI does not run `npm run verify:seance`** in `apps/web`, though `package.json` has it and it passes on the current tree. I did not edit `.github/`.
 3. `docs/verification/web.md` gap 1 ("Fixtures, not the engine") is out of date; `web-live.md` replaced it. Not edited (not my path).
 4. The hooks have never fired and Kiro IDE/CLI were not used; the Technological Implementation write-up says so. If the owner opens the repository in the Kiro IDE and fires a hook, the sentence can be improved only with that evidence.

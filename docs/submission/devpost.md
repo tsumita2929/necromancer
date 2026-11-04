@@ -39,11 +39,11 @@ Resurrection
 
 | Prize | Select? | What the form needs |
 |---|---|---|
-| Best Kiro Crew App | Yes, if the separate repository is made | Section 8 of the Official Rules lists this prize for submissions "that include a separate repo submission to a Kiro Crew app (GitHub account must match overall submission)". Section 4 asks for a public GitHub URL of the app's repository and a description of its features. `apps/crew` in the main repository holds the app, so a second public repository under the same GitHub account is needed. Open question, see `docs/verification/submission-drafts.md`. Use the description in the section "Kiro Crew app" below. The app was newly created in the submission period. |
+| Best Kiro Crew App | **Yes (selected)** | A separate public repository for the app under the same GitHub account as the main repository: Official Rules section 8 lists the prize for submissions "that include a separate repo submission to a Kiro Crew app (GitHub account must match overall submission)". Section 4 asks for its public GitHub URL and a description of its features. The URL goes in `[[PLACEHOLDER: CREW_REPO_URL]]`; the description is the section "Kiro Crew app" below. The app was newly created in the submission period. The export and the push steps are in `docs/verification/crew-repo.md`. |
 | Best Demo | Yes | Nothing; every eligible submission is considered. |
-| Bonus Blog Prize | Owner's choice | A public blog post about Kiro and this build, published between 2026-10-30 and 2026-12-04 Pacific Time, that says it was written for the Kiroween 2026 hackathon. Its URL goes in the form. |
-| Social Blitz Prize | Owner's choice | A public post that starts with `#KiroweenHackathon26`, in your own words: your favorite thing about Kiro and how it changed the way you build. Its URL goes in the form. |
-| Best Ghost of Kiroween Past | Only if true | You registered for Kiroween 2025. The rules verify this against 2025 records. |
+| Bonus Blog Prize | Owner's choice; draft ready | A public blog post about Kiro and this build, published between 2026-10-30 and 2026-12-04 Pacific Time, that says it was written as part of the Kiroween 2026 hackathon. Draft: `docs/submission/blog-post.md`. Its URL goes in the form. |
+| Social Blitz Prize | Owner's choice; draft ready | A public post that starts with `#KiroweenHackathon26`, in your own words: your favorite thing about Kiro and how it changed the way you build. Draft to rewrite: `docs/submission/social-post.md`. Its URL goes in the form. |
+| Best Ghost of Kiroween Past | Only if true | Select it only if the owner registered for Kiroween 2025 (the form asks you to confirm; Devpost checks the 2025 records). The 2026 project is new, which the rules require. |
 | Best Startup Project, Best Student Project | No | Only for a startup founder, or a team where everyone is a student. |
 
 ## Links
