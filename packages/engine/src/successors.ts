@@ -150,5 +150,9 @@ export async function findSuccessors(input: SuccessorInputs): Promise<Successor[
     seen.add(key);
     out.push(successor);
   }
-  return out;
+  // A low-confidence mapping is a suggestion: it goes after the others (stable otherwise).
+  return [
+    ...out.filter((s) => s.confidence !== 'low'),
+    ...out.filter((s) => s.confidence === 'low'),
+  ];
 }

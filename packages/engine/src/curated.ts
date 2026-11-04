@@ -3,6 +3,7 @@
  * Each entry says why. Names for PyPI are PEP 503 normalised.
  */
 
+import { RESEARCHED } from './researched.js';
 import type { Ecosystem, Successor } from './types.js';
 
 type Entry = Omit<Successor, 'ecosystem' | 'source'>;
@@ -281,8 +282,24 @@ const INDEX = new Map<string, Entry[]>(
   CURATED.map((c) => [`${c.ecosystem}:${c.name}`, c.successors]),
 );
 
-/** Curated successors for a dependency, best first. */
+/** The researched ways out (`docs/research/successors.json`), by dependency. */
+const RESEARCHED_INDEX = new Map(RESEARCHED.map((r) => [`${r.ecosystem}:${r.name}`, r]));
+
+/**
+ * Curated successors for a dependency, best first: the hand-picked list, then the researched one
+ * (each researched way out carries its source and its confidence).
+ */
 export function curatedSuccessors(ecosystem: Ecosystem, name: string): Successor[] {
-  const entries = INDEX.get(`${ecosystem}:${name}`) ?? [];
-  return entries.map((e) => ({ ...e, ecosystem, source: 'curated' as const }));
+  const picked = (INDEX.get(`${ecosystem}:${name}`) ?? []).map((e) => ({
+    ...e,
+    ecosystem,
+    source: 'curated' as const,
+  }));
+  const researched = RESEARCHED_INDEX.get(`${ecosystem}:${name}`);
+  const more: Successor[] = (researched?.successors ?? []).map((s) => ({
+    ...s,
+    ecosystem,
+    confidence: researched?.confidence ?? 'medium',
+  }));
+  return [...picked, ...more];
 }

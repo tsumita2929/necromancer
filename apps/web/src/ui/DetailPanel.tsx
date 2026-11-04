@@ -17,6 +17,7 @@ export const SOURCE_NAMES: Record<SourceId, string> = {
   github: 'GitHub',
   'module-replacements': 'e18e module replacements',
   curated: 'Curated list',
+  readme: 'README or migration guide',
 };
 
 interface DetailPanelProps {

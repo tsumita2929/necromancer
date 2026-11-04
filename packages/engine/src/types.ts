@@ -59,9 +59,20 @@ export interface ParseResult {
 export const VERDICTS = ['alive', 'dying', 'dead', 'ghost', 'zombie'] as const;
 export type Verdict = (typeof VERDICTS)[number];
 
-/** Public sources the engine reads. */
+/**
+ * Public sources the engine reads. "readme" is a notice in the dead project's README or a migration
+ * guide that names the way out; the `url` of the successor says which.
+ */
 export type SourceId =
-  'npm' | 'pypi' | 'deps.dev' | 'osv' | 'scorecard' | 'github' | 'module-replacements' | 'curated';
+  | 'npm'
+  | 'pypi'
+  | 'deps.dev'
+  | 'osv'
+  | 'scorecard'
+  | 'github'
+  | 'module-replacements'
+  | 'curated'
+  | 'readme';
 
 /** One signal behind a verdict. Rendered as an epitaph line. */
 export interface Evidence {
@@ -90,6 +101,11 @@ export interface Successor {
   reason: string;
   source: SourceId;
   url?: string;
+  /**
+   * How sure the mapping is, for researched successors. "low" is a plausible fit with a different API or
+   * scope: show it as a suggestion, not as the answer. Absent for other sources.
+   */
+  confidence?: 'high' | 'medium' | 'low';
 }
 
 /** The engine's finding for one dependency. */

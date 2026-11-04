@@ -6,7 +6,7 @@ import { summarize } from '../test/fixtures/build';
 import { defaultView } from '../state/url';
 import { ReportView } from './Graveyard';
 
-const SOURCES: SourceId[] = ['npm', 'pypi', 'deps.dev', 'osv', 'scorecard', 'github', 'module-replacements', 'curated'];
+const SOURCES: SourceId[] = ['npm', 'pypi', 'deps.dev', 'osv', 'scorecard', 'github', 'module-replacements', 'curated', 'readme'];
 
 // Text that cannot be confused with the "undefined" bug marker the test looks for.
 const text = (max: number, min = 0) => fc.string({ minLength: min, maxLength: max }).filter((s) => !/undefined|NaN|null/.test(s));
