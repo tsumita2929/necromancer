@@ -18,6 +18,7 @@ import { callsNote, GUARD_SENTENCE, jsProjectCalls, pyProjectCalls } from './exa
 import { JS_GUARD, JS_GUARD_FILE, PY_GUARD, PY_GUARD_FILE } from './guard.js';
 import { renderReadme } from './readme.js';
 import { makeBundle, type RecipeContext } from './recipe.js';
+import { depOfContext, genericVersions } from './versions.js';
 import { pythonImportNames } from '../usage/scan-py.js';
 
 const MAX_MEMBERS = 8;
@@ -196,6 +197,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
   // The old package is already installed (it is still a dependency); the successor is the user's
   // choice, so it is not named here.
   const install = ['npm install --save-dev vitest fast-check'];
+  const oldVersions = genericVersions(depOfContext(ctx));
   const run = `npx vitest run ${dir}`;
   const compares = [
     'The returned value, or the error class when the call throws (never the message).',
@@ -209,6 +211,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     callsNote(ctx.usage, (x) => members.some((m) => m.member === x), true),
     `Safety: ${GUARD_SENTENCE}`,
   ];
+  compares.push(`Versions: ${oldVersions.note}`);
   const files: SeanceFile[] = [
     { path: `${dir}/seance.test.mjs`, content: test, role: 'test' },
     { path: `${dir}/replacement.mjs`, content: replacement, role: 'replacement' },
@@ -236,6 +239,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
       compares,
       safety: safetyLines(ctx.usage, (x) => members.some((m) => m.member === x), 'javascript'),
       known: [],
+      versions: oldVersions.note,
       notes: [
         'Search for TODO(necromancer): each marker is a decision the generator could not make for you.',
       ],
@@ -250,6 +254,7 @@ function jsBundle(ctx: RecipeContext): SeanceBundle {
     run,
     compares,
     members: members.map((m) => m.member),
+    oldVersions,
   });
 }
 
@@ -367,6 +372,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
 
   // The old package is already installed (it is still a dependency).
   const install = ['pip install pytest hypothesis'];
+  const oldVersions = genericVersions(depOfContext(ctx));
   const run = `pytest ${dir}`;
   const compares = [
     'The returned value, or the exception class when the call raises (never the message).',
@@ -380,6 +386,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     callsNote(ctx.usage, (x) => members.some((m) => m.member === x), true),
     `Safety: ${GUARD_SENTENCE.replace('SEANCE_BLOCKED', 'SeanceBlocked')}`,
   ];
+  compares.push(`Versions: ${oldVersions.note}`);
   const files: SeanceFile[] = [
     { path: `${dir}/test_seance_${id}.py`, content: test, role: 'test' },
     { path: `${dir}/${id}_replacement.py`, content: replacement, role: 'replacement' },
@@ -407,6 +414,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
       compares,
       safety: safetyLines(ctx.usage, (x) => members.some((m) => m.member === x), 'python'),
       known: [],
+      versions: oldVersions.note,
       notes: [
         'Search for TODO(necromancer): each marker is a decision the generator could not make for you.',
       ],
@@ -421,6 +429,7 @@ function pyBundle(ctx: RecipeContext): SeanceBundle {
     run,
     compares,
     members: members.map((m) => m.member),
+    oldVersions,
   });
 }
 

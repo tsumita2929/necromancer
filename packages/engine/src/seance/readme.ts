@@ -12,6 +12,8 @@ export interface ReadmeInput {
   notes?: string[];
   /** Which project calls run and where; becomes the "Safety" section (QA-08). */
   safety?: string[];
+  /** Which versions of the old package the séance was run against; becomes the "Versions" section. */
+  versions?: string;
 }
 
 /** README.md for a séance folder. All text is flattened; code samples come from the recipe. */
@@ -42,6 +44,7 @@ export function renderReadme(r: ReadmeInput): string {
     ...r.compares.map((c) => `- ${comment(c, 240)}`),
     '',
   ];
+  if (r.versions) out.push('## Versions', '', comment(r.versions, 900), '');
   if (r.safety && r.safety.length > 0) {
     out.push('## Safety', '', ...r.safety.map((line) => `- ${comment(line, 700)}`), '');
   }

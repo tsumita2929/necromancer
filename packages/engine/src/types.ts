@@ -331,6 +331,34 @@ export interface SeanceBundle {
   members: string[];
   /** Number of `TODO(necromancer)` markers left in the files. */
   todos: number;
+  /** Which versions of the old package this séance was run against, and whether the one in use is among them. */
+  oldVersions?: SeanceVersions;
+}
+
+/**
+ * The versions of the old package a séance was checked against (round 4b). A curated recipe was run for
+ * real against each version listed in `testedAgainst`: the real replacement passed and every deliberately
+ * wrong replacement failed. A version outside the list may behave differently, so the bundle says so.
+ */
+export interface SeanceVersions {
+  /** The old package. */
+  package: string;
+  /** Versions the recipe was run against and fits. Empty for the generic template. */
+  testedAgainst: string[];
+  /** Versions it was run against that it does not fit, with the reason. */
+  doesNotFit?: Array<{ version: string; why: string }>;
+  /** The version in use as far as the diagnosis knows: a lockfile version, a range, or absent. */
+  inUse?: string;
+  /** Where `inUse` comes from: the lockfile, the declared range, or nowhere. */
+  inUseFrom: 'lockfile' | 'range' | 'unknown';
+  /** True when the version in use is covered; false when it is outside; absent when it is not known. */
+  covered?: boolean;
+  /** Successor versions the recipe was run against (when the successor is a package). */
+  successor?: { package: string; testedAgainst: string[] };
+  /** The date the runs were made. */
+  testedOn?: string;
+  /** One or two plain sentences, also written into the README and the spec. */
+  note: string;
 }
 
 /** The engine's public surface. */

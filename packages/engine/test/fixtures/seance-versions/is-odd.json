@@ -1,0 +1,80 @@
+{
+  "recipe": "is-odd",
+  "package": "is-odd",
+  "ecosystem": "npm",
+  "checkedOn": "2026-11-04",
+  "published": ["0.1.0", "0.1.1", "0.1.2", "1.0.0", "2.0.0", "3.0.0", "3.0.1"],
+  "runs": [
+    {
+      "version": "0.1.2",
+      "pass": false,
+      "real": {
+        "exit": 1,
+        "summary": "-   \"error\": \"RangeError\", | +   \"error\": \"Error\","
+      },
+      "mutants": [],
+      "why": "Error: Property failed after 2 tests"
+    },
+    {
+      "version": "1.0.0",
+      "pass": false,
+      "real": {
+        "exit": 1,
+        "summary": "-   \"error\": \"RangeError\", | +   \"error\": \"Error\","
+      },
+      "mutants": [],
+      "why": "Error: Property failed after 7 tests"
+    },
+    {
+      "version": "2.0.0",
+      "pass": false,
+      "real": {
+        "exit": 1,
+        "summary": "-   \"error\": \"RangeError\", | +   \"error\": \"Error\","
+      },
+      "mutants": [],
+      "why": "Error: Property failed after 2 tests"
+    },
+    {
+      "version": "3.0.0",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  4 passed (4) | Duration  260ms (tests 63%, import 18%, transform 17%, worker 2%)"
+      },
+      "mutants": [
+        {
+          "id": "no-conversion",
+          "failed": true,
+          "summary": "AssertionError: 3.5: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' } | -   \"error\": \"Error\","
+        },
+        {
+          "id": "missing-safe-integer-check",
+          "failed": true,
+          "summary": "AssertionError: 9007199254740992: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' } | -   \"error\": \"Error\","
+        }
+      ]
+    },
+    {
+      "version": "3.0.1",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  4 passed (4) | Duration  265ms (tests 62%, import 18%, transform 17%, worker 3%)"
+      },
+      "mutants": [
+        {
+          "id": "no-conversion",
+          "failed": true,
+          "summary": "AssertionError: 3.5: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' } | -   \"error\": \"Error\","
+        },
+        {
+          "id": "missing-safe-integer-check",
+          "failed": true,
+          "summary": "AssertionError: 9007199254740992: expected { ok: true, value: false } to deeply equal { ok: false, error: 'Error' } | -   \"error\": \"Error\","
+        }
+      ]
+    }
+  ],
+  "successorRuns": []
+}

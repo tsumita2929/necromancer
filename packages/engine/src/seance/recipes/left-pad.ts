@@ -11,6 +11,7 @@ import type { KnownDifference, SeanceBundle, SeanceFile } from '../../types.js';
 import { callsNote, jsProjectCalls } from '../examples.js';
 import { renderReadme } from '../readme.js';
 import { makeBundle, type Mutant, type Recipe, type RecipeContext } from '../recipe.js';
+import { depOfContext, oldVersionsFor } from '../versions.js';
 
 const DIR = 'seance/left-pad';
 
@@ -195,6 +196,8 @@ function build(ctx: RecipeContext): SeanceBundle {
     callsNote(ctx.usage, pick),
   ];
   const install = ['npm install --save-dev vitest fast-check'];
+  const oldVersions = oldVersionsFor('left-pad', depOfContext(ctx));
+  compares.push(`Versions: ${oldVersions.note}`);
   const run = 'npx vitest run seance/left-pad';
   const readme = renderReadme({
     title: 'left-pad to String.prototype.padStart',
@@ -210,6 +213,7 @@ function build(ctx: RecipeContext): SeanceBundle {
     run,
     compares,
     known: LEFT_PAD_KNOWN,
+    versions: oldVersions.note,
   });
   files.push({ path: `${DIR}/README.md`, content: readme, role: 'readme' });
   return makeBundle({
@@ -222,6 +226,7 @@ function build(ctx: RecipeContext): SeanceBundle {
     compares,
     knownDifferences: LEFT_PAD_KNOWN,
     members: ['default'],
+    oldVersions,
   });
 }
 

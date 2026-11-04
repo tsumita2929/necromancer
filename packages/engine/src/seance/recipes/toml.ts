@@ -12,6 +12,7 @@ import type { KnownDifference, SeanceBundle, SeanceFile } from '../../types.js';
 import { callsNote, pyProjectCalls } from '../examples.js';
 import { renderReadme } from '../readme.js';
 import { makeBundle, type Mutant, type Recipe, type RecipeContext } from '../recipe.js';
+import { depOfContext, oldVersionsFor } from '../versions.js';
 
 const DIR = 'seance/toml';
 
@@ -582,6 +583,8 @@ function build(ctx: RecipeContext): SeanceBundle {
     callsNote(ctx.usage, pick),
   ];
   const install = ['pip install pytest hypothesis tomli'];
+  const oldVersions = oldVersionsFor('toml', depOfContext(ctx));
+  compares.push(`Versions: ${oldVersions.note}`);
   const run = 'pytest seance/toml';
   files.push({
     path: `${DIR}/README.md`,
@@ -603,6 +606,7 @@ function build(ctx: RecipeContext): SeanceBundle {
       run,
       compares,
       known: TOML_KNOWN,
+      versions: oldVersions.note,
       notes: [
         'On Python 3.11 or later use tomllib from the standard library instead of tomli; the API is the same.',
       ],
@@ -618,6 +622,7 @@ function build(ctx: RecipeContext): SeanceBundle {
     compares,
     knownDifferences: TOML_KNOWN,
     members: ['loads', 'load', 'TomlDecodeError'],
+    oldVersions,
   });
 }
 

@@ -13,6 +13,7 @@ import type { KnownDifference, SeanceBundle, SeanceFile } from '../../types.js';
 import { callsNote, jsProjectCalls } from '../examples.js';
 import { renderReadme } from '../readme.js';
 import { makeBundle, type Mutant, type Recipe, type RecipeContext } from '../recipe.js';
+import { depOfContext, oldVersionsFor } from '../versions.js';
 
 const DIR = 'seance/querystring';
 
@@ -280,6 +281,8 @@ function build(ctx: RecipeContext): SeanceBundle {
     `stringify: ${callsNote(ctx.usage, pickStringify)}`,
   ];
   const install = ['npm install --save-dev vitest fast-check'];
+  const oldVersions = oldVersionsFor('querystring', depOfContext(ctx));
+  compares.push(`Versions: ${oldVersions.note}`);
   const run = 'npx vitest run seance/querystring';
   files.push({
     path: `${DIR}/README.md`,
@@ -298,6 +301,7 @@ function build(ctx: RecipeContext): SeanceBundle {
       run,
       compares,
       known: QUERYSTRING_KNOWN,
+      versions: oldVersions.note,
       notes: [
         'Node has a built-in module named querystring. import "querystring" gets the built-in; the séance loads the npm package with require("querystring/").',
       ],
@@ -313,6 +317,7 @@ function build(ctx: RecipeContext): SeanceBundle {
     compares,
     knownDifferences: QUERYSTRING_KNOWN,
     members: ['parse', 'stringify', 'decode', 'encode'],
+    oldVersions,
   });
 }
 

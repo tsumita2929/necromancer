@@ -11,6 +11,7 @@
 import type { KnownDifference, SeanceBundle, SeanceFile } from '../../types.js';
 import { renderReadme } from '../readme.js';
 import { makeBundle, type Mutant, type Recipe, type RecipeContext } from '../recipe.js';
+import { depOfContext, oldVersionsFor } from '../versions.js';
 
 const DIR = 'seance/pep8';
 
@@ -316,6 +317,8 @@ function build(_ctx: RecipeContext): SeanceBundle {
     'Not compared: E301 to E304, E402 and E721 (they fire on different patterns now), Python 2 constructs (pycodestyle dropped W601 to W604) and async def (pep8 does not know it), the command line interface and configuration files.',
   ];
   const install = ['pip install pytest hypothesis pycodestyle'];
+  const oldVersions = oldVersionsFor('pep8', depOfContext(_ctx));
+  compares.push(`Versions: ${oldVersions.note}`);
   const run = 'pytest seance/pep8';
   files.push({
     path: `${DIR}/README.md`,
@@ -337,6 +340,7 @@ function build(_ctx: RecipeContext): SeanceBundle {
       run,
       compares,
       known: PEP8_KNOWN,
+      versions: oldVersions.note,
       notes: [
         'The new checks are valuable. Once the migration is done, remove codes from NEW_CODES one at a time and fix what they report.',
       ],
@@ -352,6 +356,7 @@ function build(_ctx: RecipeContext): SeanceBundle {
     compares,
     knownDifferences: PEP8_KNOWN,
     members: ['StyleGuide', 'Checker'],
+    oldVersions,
   });
 }
 

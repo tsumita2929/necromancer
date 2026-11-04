@@ -1,0 +1,124 @@
+{
+  "recipe": "toml",
+  "package": "toml",
+  "ecosystem": "pypi",
+  "checkedOn": "2026-11-04",
+  "published": [
+    "0.10.0",
+    "0.10.1",
+    "0.10.2",
+    "0.6.0",
+    "0.6.5",
+    "0.7.0",
+    "0.7.1",
+    "0.8.0",
+    "0.8.1",
+    "0.8.2",
+    "0.9.0",
+    "0.9.1",
+    "0.9.2",
+    "0.9.3",
+    "0.9.4",
+    "0.9.6"
+  ],
+  "runs": [
+    {
+      "version": "0.9.4",
+      "pass": false,
+      "real": {
+        "exit": 1,
+        "summary": "FAILED seance/toml/test_seance_toml.py::test_toml_bugs_that_tomli_fixes - toml.TomlDecodeError: Weirdness with leading zeroes or underscores in your number. | 6 failed, 58 passed, 1 skipped in 95.62s (0:01:35)"
+      },
+      "mutants": [],
+      "why": ">       assert outcome(loads, doc) == outcome(old.loads, doc)"
+    },
+    {
+      "version": "0.9.6",
+      "pass": false,
+      "real": {
+        "exit": 1,
+        "summary": "FAILED seance/toml/test_seance_toml.py::test_toml_bugs_that_tomli_fixes - toml.TomlDecodeError: Weirdness with leading zeroes or underscores in your number. | 5 failed, 59 passed, 1 skipped in 24.00s"
+      },
+      "mutants": [],
+      "why": ">       assert outcome(loads, doc) == outcome(old.loads, doc)"
+    },
+    {
+      "version": "0.10.0",
+      "pass": false,
+      "real": {
+        "exit": 1,
+        "summary": "-     'TypeError', | 2 failed, 62 passed, 1 skipped in 17.12s"
+      },
+      "mutants": [],
+      "why": ">           assert outcome(old.loads, doc) == (\"error\", \"DecodeError\")"
+    },
+    {
+      "version": "0.10.1",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "64 passed, 1 skipped in 10.09s"
+      },
+      "mutants": [
+        {
+          "id": "naive-tomli",
+          "failed": true,
+          "summary": "FAILED seance/toml/test_seance_toml.py::test_the_dict_argument_builds_the_requested_tables - TypeError: loads() got an unexpected keyword argument '_dict' | 3 failed, 61 passed, 1 skipped in 13.76s"
+        },
+        {
+          "id": "swallows-errors",
+          "failed": true,
+          "summary": "-     'DecodeError', | 7 failed, 57 passed, 1 skipped in 8.98s"
+        }
+      ]
+    },
+    {
+      "version": "0.10.2",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "64 passed, 1 skipped in 10.11s"
+      },
+      "mutants": [
+        {
+          "id": "naive-tomli",
+          "failed": true,
+          "summary": "FAILED seance/toml/test_seance_toml.py::test_the_dict_argument_builds_the_requested_tables - TypeError: loads() got an unexpected keyword argument '_dict' | 3 failed, 61 passed, 1 skipped in 13.73s"
+        },
+        {
+          "id": "swallows-errors",
+          "failed": true,
+          "summary": "-     'DecodeError', | 7 failed, 57 passed, 1 skipped in 8.88s"
+        }
+      ]
+    }
+  ],
+  "successor": {
+    "package": "tomli",
+    "pinned": "2.5.0",
+    "latest": "2.5.0"
+  },
+  "successorRuns": [
+    {
+      "version": "0.10.2",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "64 passed, 1 skipped in 10.14s"
+      },
+      "mutants": [
+        {
+          "id": "naive-tomli",
+          "failed": true,
+          "summary": "FAILED seance/toml/test_seance_toml.py::test_the_dict_argument_builds_the_requested_tables - TypeError: loads() got an unexpected keyword argument '_dict' | 3 failed, 61 passed, 1 skipped in 13.71s"
+        },
+        {
+          "id": "swallows-errors",
+          "failed": true,
+          "summary": "-     'DecodeError', | 7 failed, 57 passed, 1 skipped in 8.91s"
+        }
+      ],
+      "successorVersion": "2.5.0"
+    }
+  ]
+}

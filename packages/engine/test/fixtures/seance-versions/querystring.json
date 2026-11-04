@@ -1,0 +1,50 @@
+{
+  "recipe": "querystring",
+  "package": "querystring",
+  "ecosystem": "npm",
+  "checkedOn": "2026-11-04",
+  "published": ["0.0.1", "0.0.4", "0.1.0", "0.2.0", "0.2.1"],
+  "runs": [
+    {
+      "version": "0.1.0",
+      "pass": false,
+      "real": {
+        "exit": 1,
+        "summary": "Caused by: AssertionError: expected { ok: true, value: ':' } to deeply equal { ok: true, value: ';:' } | AssertionError: expected [ Array(1001) ] to have a length of 1000 but got 1001"
+      },
+      "mutants": [],
+      "why": "Error: Property failed after 6 tests"
+    },
+    {
+      "version": "0.2.0",
+      "pass": false,
+      "real": {
+        "exit": 1,
+        "summary": "❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8 | Caused by: AssertionError: expected { ok: true, value: '%20:' } to deeply equal { ok: true, value: ';%20:' }"
+      },
+      "mutants": [],
+      "why": "Error: Property failed after 13 tests"
+    },
+    {
+      "version": "0.2.1",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  8 passed (8) | Duration  983ms (import 68%, tests 28%, transform 4%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-URLSearchParams",
+          "failed": true,
+          "summary": "Caused by: AssertionError: expected [ [ '', [ ',' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ] | AssertionError: {\"a\":\"x y\"}: expected { ok: true, value: 'a=x+y' } to deeply equal { ok: true, value: 'a=x%20y' }"
+        },
+        {
+          "id": "drops-repeated-keys",
+          "failed": true,
+          "summary": "❯ throwIfFailed node_modules/fast-check/lib/fast-check.js:2476:8 | Caused by: AssertionError: expected [ [ '', [ '' ] ] ] to deeply equal [ [ '', [ '', '' ] ] ]"
+        }
+      ]
+    }
+  ],
+  "successorRuns": []
+}

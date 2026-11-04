@@ -10,6 +10,7 @@ import type { KnownDifference, SeanceBundle, SeanceFile } from '../../types.js';
 import { callsNote, jsProjectCalls } from '../examples.js';
 import { renderReadme } from '../readme.js';
 import { makeBundle, type Mutant, type Recipe, type RecipeContext } from '../recipe.js';
+import { depOfContext, oldVersionsFor } from '../versions.js';
 
 const DIR = 'seance/is-odd';
 const VENDOR = 'src/vendor/is-odd.mjs';
@@ -133,6 +134,8 @@ function build(ctx: RecipeContext): SeanceBundle {
     callsNote(ctx.usage, pick),
   ];
   const install = ['npm install --save-dev vitest fast-check'];
+  const oldVersions = oldVersionsFor('is-odd', depOfContext(ctx));
+  compares.push(`Versions: ${oldVersions.note}`);
   const run = 'npx vitest run seance/is-odd';
   files.push({
     path: `${DIR}/README.md`,
@@ -151,6 +154,7 @@ function build(ctx: RecipeContext): SeanceBundle {
       run,
       compares,
       known: IS_ODD_KNOWN,
+      versions: oldVersions.note,
       notes: [
         'After the switch, remove is-odd (and is-number) from package.json and keep this test, with the original recorded or still installed as a dev dependency.',
       ],
@@ -166,6 +170,7 @@ function build(ctx: RecipeContext): SeanceBundle {
     compares,
     knownDifferences: IS_ODD_KNOWN,
     members: ['default'],
+    oldVersions,
   });
 }
 

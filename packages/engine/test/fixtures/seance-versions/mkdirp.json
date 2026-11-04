@@ -1,0 +1,493 @@
+{
+  "recipe": "mkdirp",
+  "package": "mkdirp",
+  "ecosystem": "npm",
+  "checkedOn": "2026-11-04",
+  "published": [
+    "0.0.1",
+    "0.0.2",
+    "0.0.3",
+    "0.0.4",
+    "0.0.5",
+    "0.0.6",
+    "0.0.7",
+    "0.1.0",
+    "0.2.0",
+    "0.2.1",
+    "0.2.2",
+    "0.3.0",
+    "0.3.1",
+    "0.3.2",
+    "0.3.3",
+    "0.3.4",
+    "0.3.5",
+    "0.4.0",
+    "0.4.1",
+    "0.4.2",
+    "0.5.0",
+    "0.5.1",
+    "0.5.2",
+    "0.5.3",
+    "0.5.4",
+    "0.5.5",
+    "0.5.6",
+    "1.0.0",
+    "1.0.1",
+    "1.0.2",
+    "1.0.3",
+    "1.0.4",
+    "2.0.0",
+    "2.1.0",
+    "2.1.1",
+    "2.1.2",
+    "2.1.3",
+    "2.1.4",
+    "2.1.5",
+    "2.1.6",
+    "3.0.0",
+    "3.0.1"
+  ],
+  "runs": [
+    {
+      "version": "0.5.0",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  543ms (tests 84%, transform 7%, import 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "0.5.1",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  536ms (tests 84%, transform 7%, import 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "0.5.2",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  527ms (tests 84%, transform 8%, import 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "0.5.3",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  527ms (tests 84%, transform 8%, import 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "0.5.4",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  510ms (tests 84%, transform 8%, import 8%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "0.5.5",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  525ms (tests 84%, transform 8%, import 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "0.5.6",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  514ms (tests 85%, transform 7%, import 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  570ms (tests 85%, import 7%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  536ms (tests 84%, transform 7%, import 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "1.0.2",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  534ms (tests 84%, import 8%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "1.0.3",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  549ms (tests 84%, import 7%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "1.0.4",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  536ms (tests 85%, import 7%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "2.0.0",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  540ms (tests 84%, import 7%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "2.1.0",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  562ms (tests 85%, import 7%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "2.1.1",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  537ms (tests 84%, import 7%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "2.1.2",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  535ms (tests 84%, import 8%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "2.1.3",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  542ms (tests 84%, import 8%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "2.1.4",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  530ms (tests 84%, import 8%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "2.1.5",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  540ms (tests 84%, import 8%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "2.1.6",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  524ms (tests 85%, import 8%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "3.0.0",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  550ms (tests 85%, import 7%, transform 7%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    },
+    {
+      "version": "3.0.1",
+      "pass": true,
+      "real": {
+        "exit": 0,
+        "summary": "Tests  7 passed (7) | Duration  515ms (tests 89%, import 8%, transform 2%, worker 1%)"
+      },
+      "mutants": [
+        {
+          "id": "naive-mkdir-recursive",
+          "failed": true,
+          "summary": "Error: ENOENT: no such file or directory, mkdir '' | AssertionError: expected 509 to be 448 // Object.is equality"
+        },
+        {
+          "id": "returns-last-directory",
+          "failed": true,
+          "summary": "❯ asyncThrowIfFailed node_modules/fast-check/lib/fast-check.js:2481:8 | Caused by: AssertionError: expected { ok: true, made: 'a/a', …(1) } to deeply equal { ok: true, made: 'a', …(1) }"
+        }
+      ]
+    }
+  ],
+  "successorRuns": []
+}
