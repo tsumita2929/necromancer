@@ -90,10 +90,11 @@ jobs:
             echo "::error::verify:seance skipped a language (the SKIP line is above)."
             status=1
           fi
-          # Both languages must really have run: one PASS line from a JavaScript recipe and one from Python.
+          # Both languages must really have run: a downloaded JavaScript séance (left-pad) and a downloaded
+          # Python séance (toml) must each have passed against the real packages.
           for recipe in left-pad toml; do
-            if ! grep -Eq "^PASS +.*${recipe}" "$log"; then
-              echo "::error::verify:seance printed no PASS line for ${recipe}."
+            if ! grep -Eq "^PASS +.*${recipe}.*the downloaded test passes with the old package" "$log"; then
+              echo "::error::verify:seance printed no passing run for the ${recipe} séance."
               status=1
             fi
           done
