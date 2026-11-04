@@ -23,7 +23,8 @@ for (const f of readdirSync(dir)) {
       if (m) repos.set(`${m[1]}/${m[2]}`, d.dependency.name);
     }
 }
-const WORDS = /deprecated|unmaintained|no longer (?:being )?(?:actively )?(?:maintained|supported|developed)|not (?:actively )?maintained|abandoned|end[\s-]of[\s-]life|obsolete|archived/i;
+const WORDS =
+  /deprecated|unmaintained|no longer (?:being )?(?:actively )?(?:maintained|supported|developed)|not (?:actively )?maintained|abandoned|end[\s-]of[\s-]life|obsolete|archived/i;
 const flagged = [];
 const near = [];
 let readmes = 0;
@@ -48,7 +49,9 @@ for (const [slug, pkg] of repos) {
         near.push({ slug, package: pkg, sentence: s.trim().slice(0, 220) });
     }
 }
-console.log(`repositories ${repos.size}; READMEs in the cache ${readmes}; flagged ${flagged.length}; near misses ${near.length}`);
+console.log(
+  `repositories ${repos.size}; READMEs in the cache ${readmes}; flagged ${flagged.length}; near misses ${near.length}`,
+);
 for (const f of flagged) console.log(`FLAG  ${f.slug} (${f.package}) [${f.kind}] ${f.sentence}`);
 for (const n of near) console.log(`near  ${n.slug} (${n.package}) ${n.sentence}`);
 if (out) writeFileSync(out, `${JSON.stringify({ readmes, flagged, near }, null, 1)}\n`);
