@@ -101,7 +101,7 @@ left-pad (dead) -> String.prototype.padStart
 recipe: left-pad   template: curated   comparisons skipped: false   TODOs: 0
 project calls found: default x4 in src/receipt.js
 known differences: 5
-versions: ... (the old versions it was run against)
+versions: in use 1.3.0; run against 6 version(s)
 run: npx vitest run seance/left-pad
 ```
 
@@ -109,7 +109,7 @@ The third command exits 1 and prints: `The project is on branch "main". The séa
 branch named resurrect/<dependency>. ... Nothing was changed.` The last command prints nothing.
 
 If time allows, show that on a branch it writes: `git -C /tmp/haunted switch -c resurrect/left-pad`, then
-the same `seance_write` call returns the three files. (Not needed for the 167 s; cut first.)
+the same `seance_write` call answers `wrote: true` and `git status` shows the new `seance/` folder. (Not needed for the 167 s; cut first.)
 
 **If the owner has installed the app** in the dashboard before recording, replace the last 10 s of
 shot 6 with the dashboard: the sidebar entry **Graveyard**, the page, and the Schedule page with

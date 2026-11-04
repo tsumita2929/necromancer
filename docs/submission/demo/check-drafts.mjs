@@ -108,6 +108,10 @@ for (const [id, figures] of Object.entries(FULL)) {
   check(missing.length === 0, `${id}: the tagged text of the drafts, taken together, quotes ${figures.join(', ')}`, `missing ${missing.join(', ')}`);
 }
 
+// The engine commit the census was run on (the "Final" row of the table at the top of census.md section 9).
+const finalEngine = read('docs/research/census.md').match(/\| \*\*Final\*\* \| `([0-9a-f]{7,40})`/)?.[1];
+check(Boolean(finalEngine) && read('README.md').includes(`\`${finalEngine}\``), 'README names the engine commit of the census (Qengine)', `census.md says ${finalEngine}`);
+
 // ---------------------------------------------------------------- 2. every tag has a row in the claim table
 const record = existsSync(join(root, RECORD)) ? read(RECORD) : '';
 const rows = new Set([...record.matchAll(/^\| ([A-Za-z0-9]+) \|/gm)].map((m) => m[1]));
