@@ -255,7 +255,7 @@ npm run build
 node scripts/smoke-node.mjs
 ```
 
-Engine: 521 tests, including property tests with fast-check. They never touch the network.
+Engine: 632 tests, including property tests with fast-check. They never touch the network.
 <!-- claim:T01 -->
 
 ```sh
@@ -266,7 +266,7 @@ npm test
 npm run build
 ```
 
-Web: 337 unit tests.
+Web: 376 unit tests.
 <!-- claim:T02 -->
 The browser checks need Chromium (`npx playwright install --with-deps chromium` on Linux,
 `npx playwright install chromium` elsewhere). They run the built app in a real browser. The last
@@ -284,7 +284,7 @@ npm run verify:seance
 ```
 
 `verify:browser` is 129 checks on the recorded samples: axe accessibility scans, keyboard use,
-reduced motion and a sub-path build. `verify:live` is 67 checks of the live autopsy against a
+reduced motion and a sub-path build. `verify:live` is 80 checks of the live autopsy against a
 stubbed internet, so it calls no real service. `verify:samples` replays the recordings of the four
 samples through the engine and compares every field (29 checks). `verify:seance` is 63 checks.
 <!-- claim:T03 -->
@@ -299,7 +299,7 @@ npm run build
 npm run smoke
 ```
 
-Crew app: 200 tests.
+Crew app: 219 tests.
 <!-- claim:T04 -->
 
 ## How Kiro was used
