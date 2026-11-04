@@ -188,7 +188,7 @@ export class Core {
         key,
         (async () => {
           const r = await guard(() => getNpmEngines(this.http, f.name, target));
-          (f.engines ??= new Map()).set(target, r.ok ? r.value : null);
+          if (r.ok) (f.engines ??= new Map()).set(target, r.value);
         })(),
       );
     });

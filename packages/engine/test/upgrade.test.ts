@@ -535,6 +535,7 @@ describe('U5 the target follows the declared range (round 5)', () => {
       /Upgrade to 10\.14\.0: no release in this major version is free of the deprecation, and this is the next major version that has one, outside your declared range \(\^9\.0\.0\)\. Its engines\.node is "\^20\.19\.0 \|\| \^22\.13\.0 \|\| >=24"\./,
     );
     expect(upgradeSentence(next)).toMatch(/Its engines\.node could not be read\./);
+    expect(upgradeSentence(next, null)).toMatch(/It declares no engines\.node\./);
   });
 
   it('U5.6 property: a target inside the range is never a deprecated, yanked or pre-release version, and is newer', () => {

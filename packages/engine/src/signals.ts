@@ -75,7 +75,11 @@ export function npmDeprecated(
 }
 
 /** The sentence that says where to upgrade to; same text for deprecated and yanked versions. */
-export function upgradeSentence(choice: UpgradeChoice | undefined, engines?: string): string {
+export function upgradeSentence(
+  choice: UpgradeChoice | undefined,
+  /** `engines.node` of the target: a string, null when the release declares none, undefined when unknown. */
+  engines?: string | null,
+): string {
   if (!choice) return 'No newer stable release that is not deprecated or yanked is known.';
   const { target, tier, declaredRange } = choice;
   const v = target.version;
@@ -92,9 +96,12 @@ export function upgradeSentence(choice: UpgradeChoice | undefined, engines?: str
       const where = declaredRange
         ? `, outside your declared range (${clip(declaredRange, 80)})`
         : '';
-      const need = engines
-        ? ` Its engines.node is "${clip(engines, 80)}".`
-        : ' Its engines.node could not be read.';
+      const need =
+        engines === null
+          ? ' It declares no engines.node.'
+          : engines
+            ? ` Its engines.node is "${clip(engines, 80)}".`
+            : ' Its engines.node could not be read.';
       return `Upgrade to ${v}: no release in this major version is free of the deprecation, and this is the next major version that has one${where}.${need}`;
     }
     default:
@@ -108,7 +115,7 @@ export function versionDeprecated(
   source: SourceId,
   name: string,
   choice?: UpgradeChoice,
-  engines?: string,
+  engines?: string | null,
 ): Evidence {
   return line({
     code: 'version-deprecated',
