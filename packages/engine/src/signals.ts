@@ -4,6 +4,7 @@
 
 import type { Evidence, SourceId, UpgradeTarget } from './types.js';
 import { repoUrl, type RepoRef } from './sources/repo.js';
+import { nativeAlternativeSentence } from './native-alternatives.js';
 import { clip } from './util/guards.js';
 
 export const DAY_MS = 86_400_000;
@@ -90,7 +91,7 @@ export function versionDeprecated(
 ): Evidence {
   return line({
     code: 'version-deprecated',
-    message: `The version in use (${version}) is deprecated: "${clip(message, 140)}" The package itself is not; this is an upgrade notice. ${upgradeSentence(upgradeTo)}`,
+    message: `The version in use (${version}) is deprecated: "${clip(message, 140)}" The package itself is not; this is an upgrade notice. ${upgradeSentence(upgradeTo)}${nativeAlternativeSentence(name)}`,
     source,
     url: `https://www.npmjs.com/package/${name}/v/${version}`,
   });
