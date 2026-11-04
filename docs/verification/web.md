@@ -162,9 +162,10 @@ as `AutopsyReport`. Their summaries are checked against their diagnoses.
 
 ## 9. Known gaps
 
-1. **Fixtures, not the engine.** Repository and file input return a borrowed sample report under the real subject.
-   The graveyard says so ("Preview data"). The engine is wired in by replacing the body of `runAutopsy` and
-   `resurrectionSpec`; the UI does not change. The spec text is a stand-in in `src/data/spec.ts`.
+1. **(Closed in round 2; text updated in round 4a.)** This round-1 report used fixtures. Since round 2 the page runs the
+   real engine in the browser: repository and file input give a live autopsy (`src/data/engine.ts` is the only file
+   that imports it), and the three landing samples are the engine's own recorded reports. The remaining fixtures are
+   test data only (`src/test/fixtures`). See `web-live.md`, `web-seance.md` and `web-r4.md`.
 2. **Fixture facts are illustrative.** Some package names are invented, and some advisory ids are real (for example
    `GHSA-p8p7-x288-28g6`, `CVE-2020-24025`). The credits page says so.
 3. **No screen reader was run.** Names, roles and the live region are checked by test, axe and `toHaveAccessibleName`,
