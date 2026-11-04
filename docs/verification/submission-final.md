@@ -124,13 +124,13 @@ Fresh clones of the local repository, no `node_modules` at the start (`c2` for t
 
 | Check | Command | Result |
 | --- | --- | --- |
-| Numbers pass | `node docs/submission/demo/check-drafts.mjs` | RESULT-CHECK |
-| Unit-test counts | `node docs/submission/demo/check-drafts.mjs --run-tests` (clone with `npm ci` done) | RESULT-TESTS |
+| Numbers pass | `node docs/submission/demo/check-drafts.mjs` | 232 `ok`, `ALL DRAFT CHECKS PASSED` (clone of `21c3ca7`). It compares every Q figure with `recompute.mjs` and with the tagged text, every tag with a row in section 3, the counts of specs, hooks, steering files, tools, samples and recipes, the shot facts, the video timings and the placeholders. |
+| Unit-test counts | `node docs/submission/demo/check-drafts.mjs --run-tests` (clone with `npm ci` done) | `engine: README says 632 tests, vitest ran 632`; `web ... 376`; `crew ... 219`; `ALL DRAFT CHECKS PASSED` |
 | Every README command | `python3 docs/submission/demo/run-readme.py c2 README.md` (Chromium libraries from the host's `env.sh`) | 9 blocks, `FAILED BLOCKS: 0`; block 3 (`npm run dev`) is marked as not run; block 6 `vitest tests=632`; block 7 `376`; block 8 `PASS lines=301 FAIL lines=0` and four `ALL CHECKS PASSED`; block 9 `219` |
 | The browser scripts one by one | `npm run verify:browser`, `verify:live`, `verify:samples`, `verify:seance` | 129, 80, 29 and 63 `PASS` lines |
-| Local links | `python3 docs/submission/demo/check-links.py <clone> README.md docs/submission/*.md docs/verification/submission-final.md` | RESULT-LINKS |
-| Placeholders | `grep -rn PLACEHOLDER README.md docs/submission` | RESULT-PH |
-| The check can fail | in a scratch clone: README `35 of 100` changed to `36 of 100`; a long sentence added to the shot-3 voice-over | RESULT-NEG |
+| Local links | `python3 docs/submission/demo/check-links.py <clone> README.md docs/submission/*.md docs/verification/submission-final.md` | 149 references (relative links and backticked repository paths) in the README, the five drafts and this record: 0 not found |
+| Placeholders | `grep -rn PLACEHOLDER README.md docs/submission` | Only the video marker: `README.md` (1), `devpost.md` (1), `blog-post.md` (1), `video-script.md` (1) |
+| The check can fail | in a scratch clone: README `35 of 100` changed to `36 of 100`; a long sentence added to the shot-3 voice-over | `FAIL  README.md: the text before the Q01 tag quotes 35, 100  [missing 35]`, exit 1; `FAIL  video shot 3: 68 words in 23 s (2.96 per second, at most 2.4)`, exit 1; and with the README test count changed from 632 to 631, `--run-tests` printed `FAIL  engine: README says 631 tests, vitest ran 632`, exit 1 |
 | URLs | `curl` status of the three addresses | 404, 404, 404 (the account `https://github.com/tsumita2929` answers 200) |
 
 ## 5. The video, shot by shot, on the final tree
@@ -172,7 +172,7 @@ The finding: `.github/scripts/check-subpath.mjs` had a `#` comment on line 2 (my
 | --- | --- | --- |
 | A judge who reads only the Devpost text and watches the video | by reading and by `check-drafts.mjs` | Every number in `devpost.md` has a tag and a row above; the round-5 lines are in "What it does" and "Challenges". The recall number is in the text only with its caveat (`Q20`). The video itself does not exist yet |
 | A reader on the Pages site who never installs Kiro Crew | yes | The web app, the séance download and the raise path need no Crew; README blocks 4 and 5 ran with only Node and Python; the drafts say the Crew page, cron and agent are not proven live |
-| Links that answer 404 until the owner pushes | yes | The three addresses answer 404 now; the guide says so in its first table; all relative links resolve in a clone (RESULT-LINKS) |
+| Links that answer 404 until the owner pushes | yes | The three addresses answer 404 now; the guide says so in its first table; all relative links resolve in a clone (149 references (relative links and backticked repository paths) in the README, the five drafts and this record: 0 not found) |
 | A wrong census number | yes | `check-drafts.mjs` names the file and the tag (section 4) |
 | A re-recorded sample moves a shot fact | yes | `check-drafts.mjs` names the shot |
 | QA moves a number later | prepared | Section 8 is the short re-run |
