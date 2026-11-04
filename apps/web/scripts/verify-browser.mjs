@@ -306,6 +306,7 @@ for (const vp of VIEWPORTS) {
   check(`${tag} mathjs: the eslint drawer names the step (${eslint.upgradeTo.sameMajor ? 'same major' : 'another major'}) and offers no Resurrect`, /Upgrade to \d/.test(eslintText) && (eslint.upgradeTo.sameMajor || /another major version/.test(eslintText)) && (await page.locator('dialog[open]').getByRole('button', { name: 'Resurrect' }).count()) === 0);
   await page.keyboard.press('Escape');
   await page.locator('dialog[open]').waitFor({ state: 'detached' });
+  await page.waitForFunction(() => !location.hash.includes('open='));
   check(`${tag} mathjs: mkdirp 3.0.1 is Dying on a heuristic, and Resurrect is offered`, /Dying/.test((await page.locator('[data-dep-key="npm:mkdirp"]').textContent()) ?? '') && /heuristic/.test((await page.locator('[data-dep-key="npm:mkdirp"]').textContent()) ?? ''));
   await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna&open=npm:sequelize`);
   await page.reload();
@@ -315,6 +316,7 @@ for (const vp of VIEWPORTS) {
   check(`${tag} advisories: the sequelize drawer lists ${Object.keys(sequelize.advisoryAliases ?? {}).length} merged vulnerabilit${Object.keys(sequelize.advisoryAliases ?? {}).length === 1 ? 'y' : 'ies'} with their other ids`, aliasLines === Object.keys(sequelize.advisoryAliases ?? {}).length && aliasLines > 0, `${aliasLines} alias lines for ${sequelize.advisories.length} advisories`);
   await page.keyboard.press('Escape');
   await page.locator('dialog[open]').waitFor({ state: 'detached' });
+  await page.waitForFunction(() => !location.hash.includes('open='));
   await page.goto(`${server.url}#/graveyard?src=sample:appsecco-dvna`);
   await page.reload();
   await page.waitForSelector('[data-testid="group-zombie"]');
@@ -363,14 +365,15 @@ for (const vp of VIEWPORTS) {
   check(`${tag} focus: 14 Shift+Tab presses stay inside as well`, [...seenBack].join() === 'dialog', [...seenBack].join());
   await page.keyboard.press('Escape');
   await page.locator('dialog[open]').waitFor({ state: 'detached' });
+  await page.waitForFunction(() => !location.hash.includes('open='));
 
   // damaged links say so
   for (const hash of ['#/graveyard?src=sample:nope', '#/graveyard?src=files:AAAA', '#/graveyard?src=repo:', '#/graveyard?src=repo:a/b/../c', '#/graveyard?src=repo:a/./b']) {
     await page.goto(`${server.url}${hash}`);
     await page.reload();
-    await page.locator('[role="alert"], li.tomb').first().waitFor();
+    await page.locator('[role="alert"]').first().waitFor({ timeout: 8000 }).catch(() => undefined);
     const alert = await page.getByRole('alert').filter({ hasText: /That link could not be read/ }).count();
-    check(`${tag} damaged link ${hash.replace('#/graveyard?src=', '')}: the landing page says the link could not be read`, alert === 1 && (await page.locator('li.tomb').count()) === 0);
+    check(`${tag} damaged link ${hash.replace('#/graveyard?src=', '')}: the landing page says the link could not be read`, alert === 1 && (await page.locator('li.tomb').count()) === 0, `${alert} alerts, ${await page.locator('li.tomb').count()} tombstones, ${page.url().split('#')[1]}`);
   }
   await page.goto(server.url);
   await page.waitForSelector('h1');
