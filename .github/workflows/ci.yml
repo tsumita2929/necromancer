@@ -1,0 +1,96 @@
+name: CI
+
+# Runs on every push and every pull request (forks included). The token is
+# read-only and no secret is used, so a pull request from a fork runs the same
+# jobs without any extra permission.
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  # The packages declare "engines": { "node": ">=22.12" }, so 22 is the floor.
+  NODE_VERSION: '22'
+
+jobs:
+  engine:
+    name: engine (typecheck, test, build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: packages/engine
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: packages/engine/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      # Loads the built dist/ the way the Crew app does.
+      - run: node scripts/smoke-node.mjs
+
+  web:
+    name: web (typecheck, test, build, browser checks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: apps/web/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+      # Offline checks on the recorded samples (also builds a sub-path copy).
+      - run: npm run verify:browser
+      # Live autopsy against a stubbed internet. No real service is called.
+      - run: npm run verify:live
+
+  crew:
+    name: crew app (typecheck, test, build, smoke)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: apps/crew
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: |
+            apps/crew/package-lock.json
+            apps/crew/ui/package-lock.json
+      - run: npm ci
+      - run: npm ci --prefix ui
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      # Starts the MCP server over stdio with the offline stub engine.
+      - run: npm run smoke
