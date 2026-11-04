@@ -1,5 +1,5 @@
-// Serves a built dist/ the way Pages serves a project site (only under /<repo>/) and opens it.
-# Local stand-in for the runner: serves a built apps/web/dist under <base> like Pages and opens it.
+// Serves a built dist/ the way Pages serves a project site (only under /<repo>/) and opens it in Chromium.
+// A local stand-in for the Pages check. Needs a build made with VITE_BASE=<base> and Playwright with Chromium.
 // usage: node check-subpath.mjs <clone>/apps/web <base>
 import { createRequire } from 'node:module';
 import { pathToFileURL } from 'node:url';
