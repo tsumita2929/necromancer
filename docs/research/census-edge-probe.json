@@ -1,0 +1,58 @@
+{
+ "noFiles": {
+  "diagnoses": 0,
+  "manifests": 0,
+  "problems": 0,
+  "summary": {
+   "alive": 0,
+   "dying": 0,
+   "dead": 0,
+   "ghost": 0,
+   "zombie": 0
+  }
+ },
+ "raw404": {
+  "status": 404,
+  "ok": false
+ },
+ "hugeLockfileGuard": {
+  "status": 413,
+  "skippedHeader": "too large (26214400 bytes)"
+ },
+ "archivedProjects": {
+  "npm": {
+   "archivedProject": true,
+   "diagnoses": 0,
+   "summary": {
+    "alive": 0,
+    "dying": 0,
+    "dead": 0,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "unavailable": [],
+   "githubRefused": 0
+  },
+  "pypi": {
+   "archivedProject": true,
+   "diagnoses": 8,
+   "summary": {
+    "alive": 6,
+    "dying": 1,
+    "dead": 1,
+    "ghost": 0,
+    "zombie": 0
+   },
+   "unavailable": [],
+   "githubRefused": 0
+  }
+ },
+ "ledgerWaitSeconds": 0,
+ "stats": {
+  "network": 13,
+  "cacheHits": 8,
+  "githubCore": 1,
+  "refused": 0,
+  "search": 2
+ }
+}

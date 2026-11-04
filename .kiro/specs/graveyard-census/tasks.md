@@ -4,8 +4,8 @@ Tick each box when the task is done.
 
 - [x] 1. Spec: requirements.md, design.md, this file
 - [x] 2. Pin the engine in the scratch space, note the commit, install, build (R3.1)
-- [ ] 3. Cached, ledger-limited fetch (R2.1 to R2.7)
-- [ ] 4. Sample: window counts, seeded draw, manifest walk, sample list (R1.1 to R1.7)
+- [x] 3. Cached, ledger-limited fetch (R2.1 to R2.7); also stops when the shared 60/hour has 20 or fewer left
+- [x] 4. Sample: window counts, seeded draw, manifest walk (R1.1 to R1.5, R1.7); 200 subjects drawn; list to commit (R1.6) after the run
 - [ ] 5. Edge probe inputs: no manifest, monorepo, archived, 404, huge lockfile (R7)
 - [ ] 6. Runner: pass 1 (no GitHub), pass 2 (GitHub at the ledger rate), reruns (R2.3, R3.x)
 - [ ] 7. Census halfway: progress report

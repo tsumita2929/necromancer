@@ -1,0 +1,2274 @@
+{
+ "description": "Sampled repositories of the graveyard census (names only, no results). inScope=true: the 100 subjects the census ran.",
+ "drawDate": "2026-11-03",
+ "pushedSince": "2025-11-03",
+ "seedText": "necromancer-census-2026-11",
+ "queryTemplate": "language:<L> stars:<range> pushed:>=2025-11-03 archived:false fork:false created:<window>",
+ "inScopeCount": 100,
+ "inScopeSha256": "a0c46482361fbb8ee7e8202d8d4b6894c9e0473f6603b410a0ac6a66ef8e40c9",
+ "subjects": [
+  {
+   "id": "apache/pouchdb",
+   "cell": "npm-popular",
+   "stars": 17624,
+   "drawNumber": 1,
+   "indexInCell": 0,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "sirmalloc/ccstatusline",
+   "cell": "npm-popular",
+   "stars": 13504,
+   "drawNumber": 2,
+   "indexInCell": 1,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "vercel/chatbot",
+   "cell": "npm-popular",
+   "stars": 21029,
+   "drawNumber": 3,
+   "indexInCell": 2,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "styled-components/styled-components",
+   "cell": "npm-popular",
+   "stars": 41054,
+   "drawNumber": 4,
+   "indexInCell": 3,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "n8n-io/n8n",
+   "cell": "npm-popular",
+   "stars": 209439,
+   "drawNumber": 5,
+   "indexInCell": 4,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "creativetimofficial/ui",
+   "cell": "npm-popular",
+   "stars": 12106,
+   "drawNumber": 6,
+   "indexInCell": 5,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "statelyai/xstate",
+   "cell": "npm-popular",
+   "stars": 30403,
+   "drawNumber": 8,
+   "indexInCell": 6,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "graphile/crystal",
+   "cell": "npm-popular",
+   "stars": 12934,
+   "drawNumber": 9,
+   "indexInCell": 7,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "feathersjs/feathers",
+   "cell": "npm-popular",
+   "stars": 15256,
+   "drawNumber": 10,
+   "indexInCell": 8,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "Turfjs/turf",
+   "cell": "npm-popular",
+   "stars": 10529,
+   "drawNumber": 11,
+   "indexInCell": 9,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "pixijs/pixijs",
+   "cell": "npm-popular",
+   "stars": 48621,
+   "drawNumber": 12,
+   "indexInCell": 10,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "josdejong/mathjs",
+   "cell": "npm-popular",
+   "stars": 15101,
+   "drawNumber": 14,
+   "indexInCell": 11,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "chalk/chalk",
+   "cell": "npm-popular",
+   "stars": 23337,
+   "drawNumber": 15,
+   "indexInCell": 12,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "js-cookie/js-cookie",
+   "cell": "npm-popular",
+   "stars": 22570,
+   "drawNumber": 16,
+   "indexInCell": 13,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "ant-design/ant-design",
+   "cell": "npm-popular",
+   "stars": 100059,
+   "drawNumber": 17,
+   "indexInCell": 14,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "NapNeko/NapCatQQ",
+   "cell": "npm-popular",
+   "stars": 12230,
+   "drawNumber": 18,
+   "indexInCell": 15,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "peers/peerjs",
+   "cell": "npm-popular",
+   "stars": 13503,
+   "drawNumber": 19,
+   "indexInCell": 16,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "triggerdotdev/jsonhero-web",
+   "cell": "npm-popular",
+   "stars": 10884,
+   "drawNumber": 20,
+   "indexInCell": 17,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "strapi/strapi",
+   "cell": "npm-popular",
+   "stars": 73426,
+   "drawNumber": 21,
+   "indexInCell": 18,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "expo/expo",
+   "cell": "npm-popular",
+   "stars": 53310,
+   "drawNumber": 22,
+   "indexInCell": 19,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "YishenTu/claudian",
+   "cell": "npm-popular",
+   "stars": 15896,
+   "drawNumber": 23,
+   "indexInCell": 20,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "wenzhixin/bootstrap-table",
+   "cell": "npm-popular",
+   "stars": 11810,
+   "drawNumber": 24,
+   "indexInCell": 21,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "shipshapecode/shepherd",
+   "cell": "npm-popular",
+   "stars": 13830,
+   "drawNumber": 25,
+   "indexInCell": 22,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "lodash/lodash",
+   "cell": "npm-popular",
+   "stars": 61268,
+   "drawNumber": 26,
+   "indexInCell": 23,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "louislam/dockge",
+   "cell": "npm-popular",
+   "stars": 24752,
+   "drawNumber": 27,
+   "indexInCell": 24,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "jina-ai/reader",
+   "cell": "npm-popular",
+   "stars": 12229,
+   "drawNumber": 28,
+   "indexInCell": 25,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "koodo-reader/koodo-reader",
+   "cell": "npm-popular",
+   "stars": 28708,
+   "drawNumber": 29,
+   "indexInCell": 26,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "nestjs/nest",
+   "cell": "npm-popular",
+   "stars": 76972,
+   "drawNumber": 30,
+   "indexInCell": 27,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "electron-react-boilerplate/electron-react-boilerplate",
+   "cell": "npm-popular",
+   "stars": 24255,
+   "drawNumber": 31,
+   "indexInCell": 28,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "sql-js/sql.js",
+   "cell": "npm-popular",
+   "stars": 13679,
+   "drawNumber": 32,
+   "indexInCell": 29,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "jestjs/jest",
+   "cell": "npm-popular",
+   "stars": 45470,
+   "drawNumber": 33,
+   "indexInCell": 30,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "pixel-agents-hq/pixel-agents",
+   "cell": "npm-popular",
+   "stars": 10032,
+   "drawNumber": 34,
+   "indexInCell": 31,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "better-auth/better-auth",
+   "cell": "npm-popular",
+   "stars": 30572,
+   "drawNumber": 35,
+   "indexInCell": 32,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "tldraw/tldraw",
+   "cell": "npm-popular",
+   "stars": 51213,
+   "drawNumber": 36,
+   "indexInCell": 33,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "fathah/hermes-desktop",
+   "cell": "npm-popular",
+   "stars": 14522,
+   "drawNumber": 37,
+   "indexInCell": 34,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "kysely-org/kysely",
+   "cell": "npm-popular",
+   "stars": 14325,
+   "drawNumber": 38,
+   "indexInCell": 35,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "invertase/react-native-firebase",
+   "cell": "npm-popular",
+   "stars": 12325,
+   "drawNumber": 39,
+   "indexInCell": 36,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "jackyzha0/quartz",
+   "cell": "npm-popular",
+   "stars": 13519,
+   "drawNumber": 40,
+   "indexInCell": 37,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "Dogfalo/materialize",
+   "cell": "npm-popular",
+   "stars": 38771,
+   "drawNumber": 41,
+   "indexInCell": 38,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "web-infra-dev/midscene",
+   "cell": "npm-popular",
+   "stars": 15489,
+   "drawNumber": 42,
+   "indexInCell": 39,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "dream-num/univer",
+   "cell": "npm-popular",
+   "stars": 22865,
+   "drawNumber": 43,
+   "indexInCell": 40,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "trekhleb/javascript-algorithms",
+   "cell": "npm-popular",
+   "stars": 196721,
+   "drawNumber": 44,
+   "indexInCell": 41,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "Unitech/pm2",
+   "cell": "npm-popular",
+   "stars": 43328,
+   "drawNumber": 45,
+   "indexInCell": 42,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "aidenybai/react-scan",
+   "cell": "npm-popular",
+   "stars": 21879,
+   "drawNumber": 46,
+   "indexInCell": 43,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "react-dropzone/react-dropzone",
+   "cell": "npm-popular",
+   "stars": 11022,
+   "drawNumber": 47,
+   "indexInCell": 44,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "chenglou/pretext",
+   "cell": "npm-popular",
+   "stars": 50986,
+   "drawNumber": 48,
+   "indexInCell": 45,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "EveryInc/compound-engineering-plugin",
+   "cell": "npm-popular",
+   "stars": 25883,
+   "drawNumber": 49,
+   "indexInCell": 46,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "mantinedev/mantine",
+   "cell": "npm-popular",
+   "stars": 31901,
+   "drawNumber": 50,
+   "indexInCell": 47,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "JedWatson/react-select",
+   "cell": "npm-popular",
+   "stars": 28014,
+   "drawNumber": 51,
+   "indexInCell": 48,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "zenorocha/clipboard.js",
+   "cell": "npm-popular",
+   "stars": 34092,
+   "drawNumber": 52,
+   "indexInCell": 49,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "franciscop/react-text",
+   "cell": "npm-tail",
+   "stars": 129,
+   "drawNumber": 1,
+   "indexInCell": 0,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "Nutlope/news-summarizer",
+   "cell": "npm-tail",
+   "stars": 377,
+   "drawNumber": 2,
+   "indexInCell": 1,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "Quramy/eslint-plugin-tutorial",
+   "cell": "npm-tail",
+   "stars": 204,
+   "drawNumber": 5,
+   "indexInCell": 2,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "PokemonWorkshop/PokemonStudio",
+   "cell": "npm-tail",
+   "stars": 223,
+   "drawNumber": 6,
+   "indexInCell": 3,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "cypress-io/cypress-chrome-recorder",
+   "cell": "npm-tail",
+   "stars": 249,
+   "drawNumber": 7,
+   "indexInCell": 4,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "hallettj/git-format-staged",
+   "cell": "npm-tail",
+   "stars": 251,
+   "drawNumber": 10,
+   "indexInCell": 5,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "royxue/obsidian-things3-sync",
+   "cell": "npm-tail",
+   "stars": 105,
+   "drawNumber": 11,
+   "indexInCell": 6,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "QwenLM/Qwen-Live-Harness",
+   "cell": "npm-tail",
+   "stars": 257,
+   "drawNumber": 13,
+   "indexInCell": 7,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "TrigenSoftware/masonry-grid",
+   "cell": "npm-tail",
+   "stars": 104,
+   "drawNumber": 14,
+   "indexInCell": 8,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "juniorrojas/algovivo",
+   "cell": "npm-tail",
+   "stars": 388,
+   "drawNumber": 16,
+   "indexInCell": 9,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "hanabi/hanabi.github.io",
+   "cell": "npm-tail",
+   "stars": 188,
+   "drawNumber": 17,
+   "indexInCell": 10,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "joshfrench/react-mobiledoc-editor",
+   "cell": "npm-tail",
+   "stars": 138,
+   "drawNumber": 19,
+   "indexInCell": 11,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "sdkasper/lean-obsidian-terminal",
+   "cell": "npm-tail",
+   "stars": 138,
+   "drawNumber": 20,
+   "indexInCell": 12,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "TeamWertarbyte/mdi-material-ui",
+   "cell": "npm-tail",
+   "stars": 327,
+   "drawNumber": 21,
+   "indexInCell": 13,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "yuanbw2025/storyforge",
+   "cell": "npm-tail",
+   "stars": 961,
+   "drawNumber": 22,
+   "indexInCell": 14,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "lio-mengxiang/mx-design-cli",
+   "cell": "npm-tail",
+   "stars": 100,
+   "drawNumber": 23,
+   "indexInCell": 15,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "langfuse/langfuse-js",
+   "cell": "npm-tail",
+   "stars": 175,
+   "drawNumber": 24,
+   "indexInCell": 16,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "ray-pH/diagramatics",
+   "cell": "npm-tail",
+   "stars": 153,
+   "drawNumber": 26,
+   "indexInCell": 17,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "iyzico/iyzipay-node",
+   "cell": "npm-tail",
+   "stars": 246,
+   "drawNumber": 27,
+   "indexInCell": 18,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "glaucia86/repocheckai",
+   "cell": "npm-tail",
+   "stars": 121,
+   "drawNumber": 28,
+   "indexInCell": 19,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "zodiaceco/zodiac-modifier-roles",
+   "cell": "npm-tail",
+   "stars": 144,
+   "drawNumber": 29,
+   "indexInCell": 20,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "yamcodes/arkenv",
+   "cell": "npm-tail",
+   "stars": 151,
+   "drawNumber": 30,
+   "indexInCell": 21,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "Davronov-Alimardon/canva-clone",
+   "cell": "npm-tail",
+   "stars": 543,
+   "drawNumber": 31,
+   "indexInCell": 22,
+   "inScope": true,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "Brendonovich/MacroGraph",
+   "cell": "npm-tail",
+   "stars": 303,
+   "drawNumber": 33,
+   "indexInCell": 23,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "postcss/postcss-mixins",
+   "cell": "npm-tail",
+   "stars": 486,
+   "drawNumber": 34,
+   "indexInCell": 24,
+   "inScope": true,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "sergioazoc/oxlint-tailwindcss",
+   "cell": "npm-tail",
+   "stars": 108,
+   "drawNumber": 35,
+   "indexInCell": 25,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "nuxt-modules/style-resources",
+   "cell": "npm-tail",
+   "stars": 598,
+   "drawNumber": 36,
+   "indexInCell": 26,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "the-wayee/OpenTV",
+   "cell": "npm-tail",
+   "stars": 180,
+   "drawNumber": 38,
+   "indexInCell": 27,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "chigwell/Penelopa.ai",
+   "cell": "npm-tail",
+   "stars": 140,
+   "drawNumber": 40,
+   "indexInCell": 28,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "bailinghub/bailinghub",
+   "cell": "npm-tail",
+   "stars": 129,
+   "drawNumber": 41,
+   "indexInCell": 29,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "pajasevi/UnCSS-Online",
+   "cell": "npm-tail",
+   "stars": 265,
+   "drawNumber": 43,
+   "indexInCell": 30,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "nodeca/image-blob-reduce",
+   "cell": "npm-tail",
+   "stars": 316,
+   "drawNumber": 44,
+   "indexInCell": 31,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "manchenkoff/nuxt-auth-sanctum",
+   "cell": "npm-tail",
+   "stars": 286,
+   "drawNumber": 46,
+   "indexInCell": 32,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "JoseRFelix/react-toggle-dark-mode",
+   "cell": "npm-tail",
+   "stars": 191,
+   "drawNumber": 47,
+   "indexInCell": 33,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "rbardini/resumed",
+   "cell": "npm-tail",
+   "stars": 551,
+   "drawNumber": 49,
+   "indexInCell": 34,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "KarlZhu-ZXC/ark-funds-monitor",
+   "cell": "npm-tail",
+   "stars": 179,
+   "drawNumber": 52,
+   "indexInCell": 35,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "skyschub/chrome-mask",
+   "cell": "npm-tail",
+   "stars": 236,
+   "drawNumber": 54,
+   "indexInCell": 36,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "Romanchuk/angular-i18next",
+   "cell": "npm-tail",
+   "stars": 135,
+   "drawNumber": 55,
+   "indexInCell": 37,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "G4brym/R2-Explorer",
+   "cell": "npm-tail",
+   "stars": 657,
+   "drawNumber": 56,
+   "indexInCell": 38,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "hongyuan007/tapword-translator",
+   "cell": "npm-tail",
+   "stars": 271,
+   "drawNumber": 57,
+   "indexInCell": 39,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "anthumchris/fetch-stream-audio",
+   "cell": "npm-tail",
+   "stars": 397,
+   "drawNumber": 58,
+   "indexInCell": 40,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "convex/better-auth",
+   "cell": "npm-tail",
+   "stars": 764,
+   "drawNumber": 59,
+   "indexInCell": 41,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "saaranshM/unsnooze",
+   "cell": "npm-tail",
+   "stars": 227,
+   "drawNumber": 60,
+   "indexInCell": 42,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "AerialWindows/Aerial",
+   "cell": "npm-tail",
+   "stars": 860,
+   "drawNumber": 61,
+   "indexInCell": 43,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "gitpod-io/browser-extension",
+   "cell": "npm-tail",
+   "stars": 184,
+   "drawNumber": 64,
+   "indexInCell": 44,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "BoardUI/boardui",
+   "cell": "npm-tail",
+   "stars": 916,
+   "drawNumber": 65,
+   "indexInCell": 45,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "Samyssmile/notectl",
+   "cell": "npm-tail",
+   "stars": 209,
+   "drawNumber": 66,
+   "indexInCell": 46,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "lidofinance/core",
+   "cell": "npm-tail",
+   "stars": 502,
+   "drawNumber": 67,
+   "indexInCell": 47,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "igrlk/storybook-addon-test-codegen",
+   "cell": "npm-tail",
+   "stars": 155,
+   "drawNumber": 68,
+   "indexInCell": 48,
+   "inScope": false,
+   "rootFiles": [
+    "package.json"
+   ]
+  },
+  {
+   "id": "wppconnect-team/wa-js",
+   "cell": "npm-tail",
+   "stars": 832,
+   "drawNumber": 69,
+   "indexInCell": 49,
+   "inScope": false,
+   "rootFiles": [
+    "package.json",
+    "package-lock.json"
+   ]
+  },
+  {
+   "id": "optuna/optuna",
+   "cell": "pypi-popular",
+   "stars": 15008,
+   "drawNumber": 1,
+   "indexInCell": 0,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "browser-use/browser-use",
+   "cell": "pypi-popular",
+   "stars": 119931,
+   "drawNumber": 3,
+   "indexInCell": 1,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "google-deepmind/alphafold",
+   "cell": "pypi-popular",
+   "stars": 14925,
+   "drawNumber": 6,
+   "indexInCell": 2,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "harry0703/MoneyPrinterTurbo",
+   "cell": "pypi-popular",
+   "stars": 138063,
+   "drawNumber": 7,
+   "indexInCell": 3,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "subframe7536/maple-font",
+   "cell": "pypi-popular",
+   "stars": 29630,
+   "drawNumber": 9,
+   "indexInCell": 4,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "huggingface/sentence-transformers",
+   "cell": "pypi-popular",
+   "stars": 19251,
+   "drawNumber": 11,
+   "indexInCell": 5,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "PaddlePaddle/PaddleNLP",
+   "cell": "pypi-popular",
+   "stars": 12987,
+   "drawNumber": 12,
+   "indexInCell": 6,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "browser-use/video-use",
+   "cell": "pypi-popular",
+   "stars": 30467,
+   "drawNumber": 13,
+   "indexInCell": 7,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "fishaudio/fish-speech",
+   "cell": "pypi-popular",
+   "stars": 33560,
+   "drawNumber": 14,
+   "indexInCell": 8,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "Data-Centric-AI-Community/fg-data-profiling",
+   "cell": "pypi-popular",
+   "stars": 13747,
+   "drawNumber": 15,
+   "indexInCell": 9,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "sherlock-project/sherlock",
+   "cell": "pypi-popular",
+   "stars": 95471,
+   "drawNumber": 16,
+   "indexInCell": 10,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "resemble-ai/chatterbox",
+   "cell": "pypi-popular",
+   "stars": 27527,
+   "drawNumber": 18,
+   "indexInCell": 11,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "reflex-dev/reflex",
+   "cell": "pypi-popular",
+   "stars": 28985,
+   "drawNumber": 19,
+   "indexInCell": 12,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "tinygrad/tinygrad",
+   "cell": "pypi-popular",
+   "stars": 33823,
+   "drawNumber": 22,
+   "indexInCell": 13,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "Yorko/mlcourse.ai",
+   "cell": "pypi-popular",
+   "stars": 10775,
+   "drawNumber": 23,
+   "indexInCell": 14,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "gradio-app/gradio",
+   "cell": "pypi-popular",
+   "stars": 43974,
+   "drawNumber": 25,
+   "indexInCell": 15,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "Chia-Network/chia-blockchain",
+   "cell": "pypi-popular",
+   "stars": 10797,
+   "drawNumber": 28,
+   "indexInCell": 16,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "goauthentik/authentik",
+   "cell": "pypi-popular",
+   "stars": 26214,
+   "drawNumber": 29,
+   "indexInCell": 17,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "amueller/word_cloud",
+   "cell": "pypi-popular",
+   "stars": 10544,
+   "drawNumber": 30,
+   "indexInCell": 18,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "caronc/apprise",
+   "cell": "pypi-popular",
+   "stars": 17700,
+   "drawNumber": 31,
+   "indexInCell": 19,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "Huanshere/VideoLingo",
+   "cell": "pypi-popular",
+   "stars": 19051,
+   "drawNumber": 33,
+   "indexInCell": 20,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "onyx-dot-app/onyx",
+   "cell": "pypi-popular",
+   "stars": 33181,
+   "drawNumber": 34,
+   "indexInCell": 21,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "binary-husky/gpt_academic",
+   "cell": "pypi-popular",
+   "stars": 71601,
+   "drawNumber": 35,
+   "indexInCell": 22,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "getzep/graphiti",
+   "cell": "pypi-popular",
+   "stars": 32480,
+   "drawNumber": 36,
+   "indexInCell": 23,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "getpelican/pelican",
+   "cell": "pypi-popular",
+   "stars": 13363,
+   "drawNumber": 37,
+   "indexInCell": 24,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "threat9/routersploit",
+   "cell": "pypi-popular",
+   "stars": 13283,
+   "drawNumber": 38,
+   "indexInCell": 25,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "TencentCloud/Octop",
+   "cell": "pypi-popular",
+   "stars": 11526,
+   "drawNumber": 39,
+   "indexInCell": 26,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "camel-ai/camel",
+   "cell": "pypi-popular",
+   "stars": 18012,
+   "drawNumber": 40,
+   "indexInCell": 27,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "k2-fsa/OmniVoice",
+   "cell": "pypi-popular",
+   "stars": 16238,
+   "drawNumber": 42,
+   "indexInCell": 28,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "smicallef/spiderfoot",
+   "cell": "pypi-popular",
+   "stars": 24284,
+   "drawNumber": 43,
+   "indexInCell": 29,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "google/artemis",
+   "cell": "pypi-popular",
+   "stars": 16349,
+   "drawNumber": 46,
+   "indexInCell": 30,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "FujiwaraChoki/MoneyPrinter",
+   "cell": "pypi-popular",
+   "stars": 14141,
+   "drawNumber": 48,
+   "indexInCell": 31,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "mingrammer/diagrams",
+   "cell": "pypi-popular",
+   "stars": 42779,
+   "drawNumber": 49,
+   "indexInCell": 32,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "BerriAI/litellm",
+   "cell": "pypi-popular",
+   "stars": 62629,
+   "drawNumber": 51,
+   "indexInCell": 33,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "OpenMOSS/MOSS",
+   "cell": "pypi-popular",
+   "stars": 12335,
+   "drawNumber": 53,
+   "indexInCell": 34,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "HKUDS/LightRAG",
+   "cell": "pypi-popular",
+   "stars": 40509,
+   "drawNumber": 56,
+   "indexInCell": 35,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "streamlit/streamlit",
+   "cell": "pypi-popular",
+   "stars": 46225,
+   "drawNumber": 57,
+   "indexInCell": 36,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "kedro-org/kedro",
+   "cell": "pypi-popular",
+   "stars": 11042,
+   "drawNumber": 58,
+   "indexInCell": 37,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "666ghj/BettaFish",
+   "cell": "pypi-popular",
+   "stars": 42578,
+   "drawNumber": 59,
+   "indexInCell": 38,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "Thysrael/Horizon",
+   "cell": "pypi-popular",
+   "stars": 12216,
+   "drawNumber": 61,
+   "indexInCell": 39,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "PKU-YuanGroup/Open-Sora-Plan",
+   "cell": "pypi-popular",
+   "stars": 12203,
+   "drawNumber": 62,
+   "indexInCell": 40,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "abetlen/llama-cpp-python",
+   "cell": "pypi-popular",
+   "stars": 10667,
+   "drawNumber": 64,
+   "indexInCell": 41,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "rushter/MLAlgorithms",
+   "cell": "pypi-popular",
+   "stars": 11182,
+   "drawNumber": 65,
+   "indexInCell": 42,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "Graphify-Labs/graphify",
+   "cell": "pypi-popular",
+   "stars": 141598,
+   "drawNumber": 66,
+   "indexInCell": 43,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "sapientinc/HRM",
+   "cell": "pypi-popular",
+   "stars": 12668,
+   "drawNumber": 67,
+   "indexInCell": 44,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "fastapi/fastapi",
+   "cell": "pypi-popular",
+   "stars": 104375,
+   "drawNumber": 68,
+   "indexInCell": 45,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "EleutherAI/lm-evaluation-harness",
+   "cell": "pypi-popular",
+   "stars": 14386,
+   "drawNumber": 70,
+   "indexInCell": 46,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "python-poetry/poetry",
+   "cell": "pypi-popular",
+   "stars": 34320,
+   "drawNumber": 71,
+   "indexInCell": 47,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "HKUDS/OpenHarness",
+   "cell": "pypi-popular",
+   "stars": 16160,
+   "drawNumber": 72,
+   "indexInCell": 48,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "blacklanternsecurity/bbot",
+   "cell": "pypi-popular",
+   "stars": 10922,
+   "drawNumber": 74,
+   "indexInCell": 49,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "Archmonger/ServeStatic",
+   "cell": "pypi-tail",
+   "stars": 107,
+   "drawNumber": 3,
+   "indexInCell": 0,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "koda-dernet/Side-Step",
+   "cell": "pypi-tail",
+   "stars": 163,
+   "drawNumber": 4,
+   "indexInCell": 1,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "suimuc/InstructAV2AV",
+   "cell": "pypi-tail",
+   "stars": 160,
+   "drawNumber": 5,
+   "indexInCell": 2,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "baobach/hft_papers",
+   "cell": "pypi-tail",
+   "stars": 112,
+   "drawNumber": 6,
+   "indexInCell": 3,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "UrbanGround/UrbanGround",
+   "cell": "pypi-tail",
+   "stars": 126,
+   "drawNumber": 7,
+   "indexInCell": 4,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "PShlyundin/ldap_shell",
+   "cell": "pypi-tail",
+   "stars": 415,
+   "drawNumber": 8,
+   "indexInCell": 5,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "superagentxai/superagentx",
+   "cell": "pypi-tail",
+   "stars": 204,
+   "drawNumber": 13,
+   "indexInCell": 6,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "linuxscout/pyarabic",
+   "cell": "pypi-tail",
+   "stars": 494,
+   "drawNumber": 14,
+   "indexInCell": 7,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "NeuroTechX/EEG-ExPy",
+   "cell": "pypi-tail",
+   "stars": 579,
+   "drawNumber": 15,
+   "indexInCell": 8,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "adamchainz/django-perf-rec",
+   "cell": "pypi-tail",
+   "stars": 355,
+   "drawNumber": 19,
+   "indexInCell": 9,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "agentic-box/memora",
+   "cell": "pypi-tail",
+   "stars": 747,
+   "drawNumber": 20,
+   "indexInCell": 10,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "bryanzhang1024/etf-dashboard-auto",
+   "cell": "pypi-tail",
+   "stars": 130,
+   "drawNumber": 21,
+   "indexInCell": 11,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "mvelazc0/BadZure",
+   "cell": "pypi-tail",
+   "stars": 530,
+   "drawNumber": 22,
+   "indexInCell": 12,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "lucidrains/ema-pytorch",
+   "cell": "pypi-tail",
+   "stars": 659,
+   "drawNumber": 23,
+   "indexInCell": 13,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "qq456cvb/Point-Transformers",
+   "cell": "pypi-tail",
+   "stars": 729,
+   "drawNumber": 25,
+   "indexInCell": 14,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "FalkorDB/code-graph",
+   "cell": "pypi-tail",
+   "stars": 350,
+   "drawNumber": 26,
+   "indexInCell": 15,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "maubot/maubot",
+   "cell": "pypi-tail",
+   "stars": 901,
+   "drawNumber": 27,
+   "indexInCell": 16,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "lightseekorg/TorchSpec",
+   "cell": "pypi-tail",
+   "stars": 267,
+   "drawNumber": 29,
+   "indexInCell": 17,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "teaxyz/chai",
+   "cell": "pypi-tail",
+   "stars": 206,
+   "drawNumber": 30,
+   "indexInCell": 18,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "obi-ontology/obi",
+   "cell": "pypi-tail",
+   "stars": 113,
+   "drawNumber": 35,
+   "indexInCell": 19,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "adamtheturtle/pip-check-reqs",
+   "cell": "pypi-tail",
+   "stars": 134,
+   "drawNumber": 36,
+   "indexInCell": 20,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "databrickslabs/ontobricks",
+   "cell": "pypi-tail",
+   "stars": 458,
+   "drawNumber": 37,
+   "indexInCell": 21,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "MAX-API-Next/Academic-Agents-Studio",
+   "cell": "pypi-tail",
+   "stars": 168,
+   "drawNumber": 38,
+   "indexInCell": 22,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "aru-labs/lossless-memory",
+   "cell": "pypi-tail",
+   "stars": 169,
+   "drawNumber": 39,
+   "indexInCell": 23,
+   "inScope": true,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "MINT-SJTU/Evo-RLT",
+   "cell": "pypi-tail",
+   "stars": 154,
+   "drawNumber": 40,
+   "indexInCell": 24,
+   "inScope": true,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "wenbochang888/github-trending-spider",
+   "cell": "pypi-tail",
+   "stars": 161,
+   "drawNumber": 41,
+   "indexInCell": 25,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "MotrixLab/insactor",
+   "cell": "pypi-tail",
+   "stars": 138,
+   "drawNumber": 43,
+   "indexInCell": 26,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "cgtuebingen/3D-RE-GEN",
+   "cell": "pypi-tail",
+   "stars": 638,
+   "drawNumber": 47,
+   "indexInCell": 27,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "riponcm/projectmem",
+   "cell": "pypi-tail",
+   "stars": 876,
+   "drawNumber": 48,
+   "indexInCell": 28,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "Ali-Marandi/FinAnalyzer",
+   "cell": "pypi-tail",
+   "stars": 108,
+   "drawNumber": 49,
+   "indexInCell": 29,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "cswry/VOSR",
+   "cell": "pypi-tail",
+   "stars": 350,
+   "drawNumber": 50,
+   "indexInCell": 30,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "runpod-workers/worker-a1111",
+   "cell": "pypi-tail",
+   "stars": 100,
+   "drawNumber": 53,
+   "indexInCell": 31,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "gildasio/h2t",
+   "cell": "pypi-tail",
+   "stars": 412,
+   "drawNumber": 54,
+   "indexInCell": 32,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "DynamicTimeWarping/dtw-python",
+   "cell": "pypi-tail",
+   "stars": 346,
+   "drawNumber": 57,
+   "indexInCell": 33,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "The-Art-of-Hacking/websploit",
+   "cell": "pypi-tail",
+   "stars": 611,
+   "drawNumber": 58,
+   "indexInCell": 34,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "scverse/decoupler",
+   "cell": "pypi-tail",
+   "stars": 301,
+   "drawNumber": 60,
+   "indexInCell": 35,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "metauto-ai/HGM",
+   "cell": "pypi-tail",
+   "stars": 446,
+   "drawNumber": 61,
+   "indexInCell": 36,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "Cornices/cornice",
+   "cell": "pypi-tail",
+   "stars": 388,
+   "drawNumber": 62,
+   "indexInCell": 37,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "KHwang9883/MobileModels-csv",
+   "cell": "pypi-tail",
+   "stars": 205,
+   "drawNumber": 63,
+   "indexInCell": 38,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "phplaber/yawf",
+   "cell": "pypi-tail",
+   "stars": 145,
+   "drawNumber": 67,
+   "indexInCell": 39,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "Mathews-Tom/armory",
+   "cell": "pypi-tail",
+   "stars": 340,
+   "drawNumber": 70,
+   "indexInCell": 40,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "hunterirving/macproxy_plus",
+   "cell": "pypi-tail",
+   "stars": 223,
+   "drawNumber": 71,
+   "indexInCell": 41,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "dbfixtures/pytest-postgresql",
+   "cell": "pypi-tail",
+   "stars": 532,
+   "drawNumber": 73,
+   "indexInCell": 42,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "bensynapse/jsonrpcserver",
+   "cell": "pypi-tail",
+   "stars": 208,
+   "drawNumber": 75,
+   "indexInCell": 43,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "Net-Maker/GaussiAnimate",
+   "cell": "pypi-tail",
+   "stars": 203,
+   "drawNumber": 76,
+   "indexInCell": 44,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "QuantumNovice/awesome-civil-engineering",
+   "cell": "pypi-tail",
+   "stars": 111,
+   "drawNumber": 77,
+   "indexInCell": 45,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "henryklunaris/hey-jev",
+   "cell": "pypi-tail",
+   "stars": 121,
+   "drawNumber": 84,
+   "indexInCell": 46,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  },
+  {
+   "id": "NetX-lab/Libra",
+   "cell": "pypi-tail",
+   "stars": 309,
+   "drawNumber": 85,
+   "indexInCell": 47,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt",
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "jupyter/nbclient",
+   "cell": "pypi-tail",
+   "stars": 186,
+   "drawNumber": 87,
+   "indexInCell": 48,
+   "inScope": false,
+   "rootFiles": [
+    "pyproject.toml"
+   ]
+  },
+  {
+   "id": "zabbix/python-zabbix-utils",
+   "cell": "pypi-tail",
+   "stars": 210,
+   "drawNumber": 89,
+   "indexInCell": 49,
+   "inScope": false,
+   "rootFiles": [
+    "requirements.txt"
+   ]
+  }
+ ]
+}
