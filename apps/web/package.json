@@ -13,7 +13,8 @@
     "screenshots": "node scripts/screenshots.mjs",
     "verify:browser": "node scripts/verify-browser.mjs",
     "verify:live": "node scripts/verify-live.mjs",
-    "verify:seance": "node scripts/verify-seance.mjs"
+    "verify:seance": "node scripts/verify-seance.mjs",
+    "verify:samples": "node scripts/verify-samples.mjs"
   },
   "dependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.3.0",

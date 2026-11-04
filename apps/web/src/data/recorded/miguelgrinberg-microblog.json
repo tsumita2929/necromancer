@@ -1,6 +1,6 @@
 {
   "subject": "github:miguelgrinberg/microblog",
-  "scannedAt": "2026-11-04T11:25:05.292Z",
+  "scannedAt": "2026-11-04T12:59:55.893Z",
   "manifests": [
     {
       "kind": "requirements.txt",
@@ -34,10 +34,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.2 years (last push 2024-09-03); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 3.0 years (last commit 2023-10-25).",
           "source": "github",
           "url": "https://github.com/tiran/defusedxml",
-          "date": "2024-09-03"
+          "date": "2023-10-25"
         },
         {
           "code": "low-maintenance",
@@ -81,7 +81,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 1.7 years (last push 2025-03-03); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 1.7 years (last commit 2025-03-03).",
           "source": "github",
           "url": "https://github.com/Mimino666/langdetect",
           "date": "2025-03-03"
@@ -128,10 +128,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 3.3 years (last push 2023-07-17); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 7.1 years (last commit 2019-09-20).",
           "source": "github",
           "url": "https://github.com/Anorov/PySocks",
-          "date": "2023-07-17"
+          "date": "2019-09-20"
         },
         {
           "code": "low-maintenance",
@@ -225,10 +225,10 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 2.2 years (last push 2024-08-07); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 2.4 years (last commit 2024-06-19).",
           "source": "github",
           "url": "https://github.com/python-babel/flask-babel",
-          "date": "2024-08-07"
+          "date": "2024-06-19"
         },
         {
           "code": "low-maintenance",
@@ -355,7 +355,7 @@
         },
         {
           "code": "repo-inactive",
-          "message": "No push to the repository for 1.4 years (last push 2025-06-14); the default branch's last commit is at least that old. Commit dates were not read.",
+          "message": "No commit to the default branch for 1.4 years (last commit 2025-06-14).",
           "source": "github",
           "url": "https://github.com/pallets/itsdangerous",
           "date": "2025-06-14"
@@ -1807,12 +1807,7 @@
     }
   ],
   "problems": [],
-  "unavailable": [
-    {
-      "source": "github",
-      "reason": "GitHub budget reached (40 calls per scan, limit is 60 per hour): 5 commit dates were not read"
-    }
-  ],
+  "unavailable": [],
   "summary": {
     "alive": 43,
     "dying": 8,

@@ -56,7 +56,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "miguelgrinberg-microblog",
     "repository": "miguelgrinberg/microblog",
     "ecosystem": "pypi",
-    "recordedAt": "2026-11-04T11:25:05.292Z",
+    "recordedAt": "2026-11-04T12:59:55.893Z",
     "total": 54,
     "summary": {
       "alive": 43,
@@ -65,19 +65,17 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
       "ghost": 0,
       "zombie": 0
     },
-    "unavailable": [
-      "github"
-    ]
+    "unavailable": []
   },
   {
     "id": "sickchill-sickchill",
     "repository": "SickChill/sickchill",
     "ecosystem": "both",
-    "recordedAt": "2026-11-04T00:06:20.919Z",
+    "recordedAt": "2026-11-04T14:00:22.465Z",
     "total": 105,
     "summary": {
-      "alive": 64,
-      "dying": 28,
+      "alive": 78,
+      "dying": 14,
       "dead": 13,
       "ghost": 0,
       "zombie": 0
