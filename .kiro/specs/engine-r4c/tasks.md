@@ -9,4 +9,4 @@ Tick each box when the task is done and its tests pass. Resume at the first unch
 - [x] 5. Record the PyPI release and GitHub answers the python fixture now asks for (`npm run record-fixtures`)
 - [x] 6. Census before and after; darglint against its PyPI page and repository page (L3)
 - [x] 7. Engine suite, web and Crew suites with no edit there
-- [ ] 8. `docs/verification/engine-r4c.md`; commit; report done
+- [x] 8. `docs/verification/engine-r4c.md`; commit; report done
