@@ -205,6 +205,14 @@ const manifest = JSON.parse(readFileSync(path.join(V, 'app.json'), 'utf8'));
       : r.out.slice(0, 160);
     report(r.status === 0 && engineOk ? 'PASS' : 'FAIL', `tool ${tool}`, detail);
   }
+  // a package the registry does not know reads "not-found" in the answer, never "alive"
+  {
+    const r = call('diagnose', { dependencies: [{ ecosystem: 'npm', name: 'necromancer-no-such-pkg-zzq9', spec: '1.0.0' }] });
+    let body;
+    try { body = JSON.parse(r.out); } catch { /* not JSON */ }
+    const ok = body?.summaries?.[0]?.verdict === 'not-found' && body?.diagnoses?.[0]?.verdict === 'not-found' && body?.diagnoses?.[0]?.engineVerdict === 'alive';
+    report(ok ? 'PASS' : 'FAIL', 'diagnose of an unknown package says not-found, never alive', body ? `verdict=${body.summaries?.[0]?.verdict} engineVerdict=${body.diagnoses?.[0]?.engineVerdict}` : r.out.slice(0, 160));
+  }
   // the write tool: refused off a resurrect/ branch, written on one; the preview never writes
   const gitIn = (cwd, ...a) => sh('git', ['-c', 'user.name=verify', '-c', 'user.email=verify@invalid', ...a], cwd);
   const scratch = mkdtempSync(path.join(os.tmpdir(), 'necro-write-'));
