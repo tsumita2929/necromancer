@@ -122,6 +122,24 @@ for (const size of SIZES) {
     await context.close();
   }
 
+  // --- a workspace root, stubbed (QA-22): most dependencies were not read, so there is no all-clear
+  {
+    const context = await browser.newContext(options);
+    const entries = (n, spec, prefix) => Object.fromEntries(Array.from({ length: n }, (_, i) => [`${prefix}-${i}`, spec]));
+    const mono = JSON.stringify({ name: 'docs-site', private: true, workspaces: ['packages/*'], devDependencies: { typescript: 'npm:typescript@5.4.5', rimraf: '^5.0.0', ...entries(40, 'workspace:*', '@acme/pkg'), ...entries(16, 'catalog:', 'tool') } });
+    await installWorld(context, { raw: { 'acme/docs-site/HEAD/package.json': mono } });
+    const page = await context.newPage();
+    await page.goto(server.url);
+    await page.waitForSelector('h1');
+    await page.getByLabel('GitHub repository').fill('acme/docs-site');
+    await page.getByRole('button', { name: /begin the autopsy/i }).click();
+    await page.waitForSelector('[data-testid^="group-"]');
+    await page.addStyleTag({ content: STILL });
+    await page.waitForTimeout(200);
+    await page.screenshot({ path: `${out}workspace-root-${size.tag}.png` });
+    await context.close();
+  }
+
   // --- errors, stubbed
   {
     const context = await browser.newContext(options);

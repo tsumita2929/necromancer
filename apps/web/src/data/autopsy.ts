@@ -16,6 +16,7 @@ import type {
 } from '@contract';
 import { loadEngine, setActiveRun, getActiveRun } from './engine';
 import { AutopsyError, isAbort, type Note } from './errors';
+import { workspaceNote } from './workspaces';
 import { MAX_FILE_BYTES, MAX_FILE_LABEL, parseRepoInput, readRepository, type RawFetch } from './github';
 import { createRun, emptyProgress, type Progress } from './net';
 import { RECORDED_SAMPLES, type RecordedSample } from './samples.generated';
@@ -143,6 +144,8 @@ export async function runAutopsy(input: AutopsyInput, options: AutopsyOptions = 
           });
         }
       }
+      const workspace = workspaceNote(files);
+      if (workspace) onNote?.(workspace);
       let engine;
       try {
         engine = await enginePromise;

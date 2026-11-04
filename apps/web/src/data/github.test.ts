@@ -155,3 +155,64 @@ describe('R2 reading a repository', () => {
     expect(rawUrl('o', 'r', 'feature/a b', 'package.json')).toBe('https://raw.githubusercontent.com/o/r/feature/a%20b/package.json');
   });
 });
+
+describe('QA-29 the part of an address that is not read', () => {
+  it.each([
+    ['a/b/c/d', 'c/d'],
+    ['github.com/a/b/blob/main/package.json', 'blob/main/package.json'],
+    ['https://github.com/a/b/issues/4?x=1#top', 'issues/4'],
+    ['a/b/tree', 'tree'],
+    ['a/b', undefined],
+    ['github.com/a/b/', undefined],
+    ['https://github.com/a/b/tree/main', undefined],
+    ['https://github.com/a/b/tree/feature/x', undefined],
+  ])('%s gives %j', async (input, expected) => {
+    const { ignoredPathOf } = await import('./github');
+    expect(ignoredPathOf(input)).toBe(expected);
+  });
+
+  it('the read says what was ignored and what to do, and says nothing more when the address was the repository', async () => {
+    const { rememberIgnoredPath } = await import('./github');
+    const world = fake({ 'HEAD/package.json': '{"name":"x"}' });
+    rememberIgnoredPath({ owner: 'o', name: 'r' }, 'blob/main/package.json');
+    const named = await readRepository({ owner: 'o', name: 'r' }, world.impl);
+    expect(named.notes[0]?.text).toMatch(/The address also named "blob\/main\/package\.json", which was ignored: only the root is read\. To check a sub-folder, drop its package\.json on the start page\./);
+    rememberIgnoredPath({ owner: 'o', name: 'r' }, undefined);
+    const plain = await readRepository({ owner: 'o', name: 'r' }, world.impl);
+    expect(plain.notes[0]?.text).not.toMatch(/also named/);
+  });
+});
+
+describe('QA-22 catalog versions from pnpm-workspace.yaml', () => {
+  const pkg = JSON.stringify({ name: 'root', devDependencies: { react: 'catalog:', typescript: 'catalog:', inside: 'workspace:*' } });
+  const yaml = 'catalog:\n  react: ^18.2.0\n';
+
+  it('reads the file only when package.json has catalog: entries', async () => {
+    const plain = fake({ 'HEAD/package.json': '{"name":"x","dependencies":{"a":"^1.0.0"}}' });
+    await readRepository({ owner: 'o', name: 'r' }, plain.impl);
+    expect(plain.urls.some((u) => u.endsWith('pnpm-workspace.yaml'))).toBe(false);
+    const withCatalog = fake({ 'HEAD/package.json': pkg, 'HEAD/pnpm-workspace.yaml': yaml });
+    await readRepository({ owner: 'o', name: 'r' }, withCatalog.impl);
+    expect(withCatalog.urls.some((u) => u.endsWith('/HEAD/pnpm-workspace.yaml'))).toBe(true);
+    expect(withCatalog.urls.some((u) => u.includes('api.github.com'))).toBe(false);
+  });
+
+  it('puts the versions into package.json and says how many, and how many stay unread', async () => {
+    const world = fake({ 'HEAD/package.json': pkg, 'HEAD/pnpm-workspace.yaml': yaml });
+    const read = await readRepository({ owner: 'o', name: 'r' }, world.impl);
+    const json = JSON.parse(read.files[0]!.content) as { devDependencies: Record<string, string> };
+    expect(json.devDependencies).toEqual({ react: '^18.2.0', typescript: 'catalog:', inside: 'workspace:*' });
+    const note = read.notes.find((n) => n.title === 'Catalog versions read');
+    expect(note?.text).toBe('1 catalog: entry in package.json took its version from pnpm-workspace.yaml. 1 could not be resolved there and is not read.');
+  });
+
+  it('says so when the file is missing or unreadable, and leaves package.json as it is', async () => {
+    const missing = await readRepository({ owner: 'o', name: 'r' }, fake({ 'HEAD/package.json': pkg }).impl);
+    expect(missing.files[0]?.content).toBe(pkg);
+    expect(missing.notes.find((n) => n.title === 'pnpm-workspace.yaml was not read')?.text).toMatch(/that file was not found\. Those dependencies are not examined\./);
+    const broken = await readRepository({ owner: 'o', name: 'r' }, fake({ 'HEAD/package.json': pkg, 'HEAD/pnpm-workspace.yaml': status(500) }).impl);
+    expect(broken.notes.find((n) => n.title === 'pnpm-workspace.yaml was not read')?.text).toMatch(/could not be read/);
+    const noMatch = await readRepository({ owner: 'o', name: 'r' }, fake({ 'HEAD/package.json': pkg, 'HEAD/pnpm-workspace.yaml': 'packages:\n  - a\n' }).impl);
+    expect(noMatch.notes.some((n) => n.title === 'Catalog versions not found')).toBe(true);
+  });
+});

@@ -31,6 +31,8 @@ export function isAbort(error: unknown): boolean {
 /** A fact about the result that is not part of the report. */
 export interface Note {
   kind: 'info' | 'warning';
+  /** A stable name for notes the page reacts to. */
+  code?: 'workspace-root';
   title: string;
   text: string;
 }

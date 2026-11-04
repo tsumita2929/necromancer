@@ -1,5 +1,6 @@
 import type { ManifestFile, ManifestKind } from '@contract';
 import { AutopsyError, type Note } from './errors';
+import { hasCatalogEntries, parseCatalogs, resolveCatalogs } from './catalog';
 
 export interface RepoRef {
   owner: string;
@@ -44,6 +45,28 @@ export function parseRepoInput(raw: string): RepoRef | null {
     return { owner, name, ref };
   }
   return { owner, name };
+}
+
+/**
+ * The part of an address after owner/name that is not a `/tree/<branch>` (QA-29): `a/b/c/d` gives "c/d",
+ * `github.com/a/b/blob/main/package.json` gives "blob/main/package.json". Undefined when there is none.
+ */
+export function ignoredPathOf(raw: string): string | undefined {
+  let text = raw.trim().replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+  if (/^github\.com\//i.test(text)) text = text.slice('github.com/'.length);
+  const parts = (text.split(/[?#]/)[0] ?? '').split('/').filter((part) => part.length > 0);
+  if (parts.length <= 2) return undefined;
+  if (parts[2] === 'tree' && parts.length > 3) return undefined; // a branch: handled with the ref
+  return parts.slice(2).join('/').slice(0, 120);
+}
+
+// The address the visitor typed is not in the link (the link names owner/name only), so the part that was ignored is
+// kept here for this page visit, and the read says so. Nothing is stored on the device.
+const ignoredPaths = new Map<string, string>();
+const repoKey = (repo: { owner: string; name: string }): string => `${repo.owner}/${repo.name}`.toLowerCase();
+export function rememberIgnoredPath(repo: { owner: string; name: string }, path: string | undefined): void {
+  if (path) ignoredPaths.set(repoKey(repo), path);
+  else ignoredPaths.delete(repoKey(repo));
 }
 
 export const ROOT_FILES: ReadonlyArray<{ file: string; kind: ManifestKind }> = [
@@ -103,6 +126,22 @@ async function readOne(
   return { state: 'found', file: { kind: entry.kind, path: entry.file, content } };
 }
 
+type TextOutcome = { state: 'found'; text: string } | { state: 'missing' } | { state: 'failed' };
+
+/** One small text file next to the manifests. Never throws except for a cancelled run. */
+async function readText(fetchRaw: RawFetch, url: string): Promise<TextOutcome> {
+  try {
+    const response = await fetchRaw(url);
+    if (response.status === 404 || response.status === 410) return { state: 'missing' };
+    if (!response.ok) return { state: 'failed' };
+    const text = await response.text();
+    return text.length > 1024 * 1024 ? { state: 'failed' } : { state: 'found', text };
+  } catch (error) {
+    if (isAbort(error)) throw error;
+    return { state: 'failed' };
+  }
+}
+
 const mib = (bytes: number): string => `${(bytes / 1024 / 1024).toFixed(1)} MiB`;
 
 export interface RepositoryRead {
@@ -143,7 +182,10 @@ export async function readRepository(repo: RepoRef, fetchRaw: RawFetch): Promise
     if (files.length === 0 && big.length === 0) continue;
 
     const where = candidate.ref === 'HEAD' ? 'the default branch' : `branch ${candidate.ref}`;
-    const ignored = candidate.ignored ? ` The folder path "${candidate.ignored}" was ignored.` : '';
+    const addressPath = ignoredPaths.get(repoKey(repo));
+    const ignored =
+      (candidate.ignored ? ` The folder path "${candidate.ignored}" was ignored.` : '') +
+      (addressPath ? ` The address also named "${addressPath}", which was ignored: only the root is read. To check a sub-folder, drop its package.json on the start page.` : '');
     const notes: Note[] = [
       {
         kind: 'info',
@@ -151,6 +193,30 @@ export async function readRepository(repo: RepoRef, fetchRaw: RawFetch): Promise
         text: `Read ${files.map((f) => f.path).join(', ') || 'nothing'} from the root of ${label} on ${where}. Manifests in sub-folders are not read.${ignored}`,
       },
     ];
+    // pnpm catalogs: the versions are in pnpm-workspace.yaml (QA-22).
+    const rootPackage = files.find((f) => f.kind === 'package.json' && f.path === 'package.json');
+    if (rootPackage && hasCatalogEntries(rootPackage.content)) {
+      const yaml = await readText(fetchRaw, rawUrl(repo.owner, repo.name, candidate.ref, 'pnpm-workspace.yaml'));
+      if (yaml.state === 'found') {
+        const result = resolveCatalogs(rootPackage, parseCatalogs(yaml.text));
+        files[files.indexOf(rootPackage)] = result.file;
+        if (result.resolved > 0) {
+          notes.push({
+            kind: 'info',
+            title: 'Catalog versions read',
+            text: `${result.resolved} catalog: ${result.resolved === 1 ? 'entry' : 'entries'} in package.json took ${result.resolved === 1 ? 'its' : 'their'} version from pnpm-workspace.yaml.${result.unresolved > 0 ? ` ${result.unresolved} could not be resolved there and ${result.unresolved === 1 ? 'is' : 'are'} not read.` : ''}`,
+          });
+        } else {
+          notes.push({ kind: 'warning', title: 'Catalog versions not found', text: 'package.json uses catalog: entries, but pnpm-workspace.yaml has no catalog that names them, so their versions are unknown.' });
+        }
+      } else {
+        notes.push({
+          kind: 'warning',
+          title: 'pnpm-workspace.yaml was not read',
+          text: `package.json uses catalog: entries, whose versions are written in pnpm-workspace.yaml at the root, but that file ${yaml.state === 'missing' ? 'was not found' : 'could not be read'}. Those dependencies are not examined.`,
+        });
+      }
+    }
     for (const item of big) {
       notes.push({
         kind: 'warning',

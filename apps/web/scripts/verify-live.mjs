@@ -4,10 +4,12 @@
 // Exits 1 when a check fails.
 import { chromium } from 'playwright';
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { serveDist } from './serve.mjs';
 import { installWorld, projectFile } from './lib/world.mjs';
 import { bigLockfile } from './lib/biglock.mjs';
 
+const AXE = createRequire(import.meta.url).resolve('axe-core/axe.min.js');
 const LIVE = process.argv.includes('--live');
 // --only=microblog,acceptance,notfound limits the real-internet part (GitHub allows 60 calls an hour per IP).
 const ONLY = (process.argv.find((a) => a.startsWith('--only=')) ?? '').slice(7).split(',').filter(Boolean);
@@ -346,6 +348,71 @@ const upload = (page, files) => page.locator('input[aria-label="Manifest and sou
   check('R4b notFound: the drawer says no claim is made and offers no Resurrect', /Treat it as unknown, not as healthy/.test(text) && /No claim made/.test(text) && (await page.locator('dialog[open]').getByRole('button', { name: 'Resurrect' }).count()) === 0);
   check('R4b notFound: no page error', errors.length === 0, errors.join('; '));
   await context.close();
+}
+
+// --- R5 (QA-22, QA-29): a monorepo root is never an all-clear; a dropped part of an address is said
+{
+  const workspaceEntries = Object.fromEntries(Array.from({ length: 40 }, (_, i) => [`@acme/pkg-${i}`, 'workspace:*']));
+  const catalogEntries = Object.fromEntries(Array.from({ length: 16 }, (_, i) => [`tool-${i}`, 'catalog:']));
+  const mono = JSON.stringify({ name: 'mono', private: true, workspaces: ['packages/*'], devDependencies: { typescript: 'npm:typescript@5.4.5', rimraf: '^5.0.0', ...workspaceEntries, ...catalogEntries } });
+  {
+    const { context, page, errors } = await newPage(DESKTOP, { raw: { 'o/mono/HEAD/package.json': mono } });
+    await submitRepo(page, 'o/mono');
+    await graveyard(page);
+    const meta = (await page.locator('.report__meta').textContent()) ?? '';
+    const body = ((await page.locator('main').textContent()) ?? '').replace(/\s+/g, ' ');
+    check('QA-22 monorepo root: the header says 2 read and 56 not read', /2 dependencies read in 1 manifest, 56 not read/.test(meta), meta);
+    check('QA-22 monorepo root: "Most of this project was not read", never "No dead dependency found"', /Most of this project was not read/.test(body) && !/No dead dependency found|Nothing here is dead/.test(body));
+    check('QA-22 monorepo root: the skips are explained (workspace links, catalog), not listed as manifest problems', /40 entries are workspace links/.test(body) && /16 entries use catalog: \(pnpm\)/.test(body) && !/manifest problems/.test(body));
+    check('QA-22 monorepo root: the workspaces field is noted, with what to do', /This project is a workspace/.test(body) && /drop its package\.json on the start page/.test(body));
+    check('QA-22 monorepo root: pnpm-workspace.yaml was looked for (catalog entries) and its absence said', /pnpm-workspace\.yaml was not read/.test(body));
+    await page.addScriptTag({ path: AXE });
+    const violations = await page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] } })).violations.map((v) => `${v.id}: ${v.nodes[0]?.target.join(' ')}`));
+    check('QA-22 monorepo root: axe finds no violation on the report with the left-out notice', violations.length === 0, violations.join('; '));
+    check('QA-22 monorepo root: no page error', errors.length === 0, errors.join('; '));
+    await context.close();
+  }
+  {
+    const yaml = `packages:\n  - 'packages/*'\ncatalog:\n${Array.from({ length: 16 }, (_, i) => `  tool-${i}: ^1.${i}.0`).join('\n')}\n`;
+    const { context, page } = await newPage(DESKTOP, { raw: { 'o/mono/HEAD/package.json': mono, 'o/mono/HEAD/pnpm-workspace.yaml': yaml } });
+    await submitRepo(page, 'o/mono');
+    await graveyard(page);
+    const body = ((await page.locator('main').textContent()) ?? '').replace(/\s+/g, ' ');
+    check('QA-22 catalog from pnpm-workspace.yaml: 16 catalog entries are read and examined; only the 40 workspace links stay out', (await tombCount(page)) === 18 && /16 catalog: entries in package\.json took their version from pnpm-workspace\.yaml/.test(body) && /40 dependencies were not read/.test(body), `${await tombCount(page)} tombstones`);
+    await context.close();
+  }
+  {
+    {
+      const mobile = await newPage(MOBILE, { raw: { 'o/mono/HEAD/package.json': mono } });
+      await submitRepo(mobile.page, 'o/mono');
+      await graveyard(mobile.page);
+      const overflow = await mobile.page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      check('QA-22 monorepo root on a phone: no sideways scroll', overflow <= 0, `${overflow}px`);
+      await mobile.context.close();
+    }
+    const { context, page } = await newPage(DESKTOP, { raw: { 'o/small/HEAD/package.json': JSON.stringify({ dependencies: { a: '^1.0.0', b: '^2.0.0', fork: 'github:x/y' } }) } });
+    await submitRepo(page, 'o/small');
+    await graveyard(page);
+    const body = ((await page.locator('main').textContent()) ?? '').replace(/\s+/g, ' ');
+    check('QA-22 normal project with one skipped entry: "among the 2 read", the entry explained', /No dead dependency among the 2 read/.test(body) && /1 dependency was not read/.test(body) && /1 entry comes from git/.test(body));
+    await context.close();
+  }
+  {
+    const { context, page } = await newPage(DESKTOP, { raw: {} });
+    await upload(page, { name: 'package.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify({ devDependencies: workspaceEntries })) });
+    await page.waitForSelector('[data-testid="left-out"], [data-testid^="group-"], .empty');
+    const body = ((await page.locator('main').textContent()) ?? '').replace(/\s+/g, ' ');
+    check('QA-22 an upload of only workspace entries: "Nothing was examined", not an all-clear', /Nothing was examined/.test(body) && !/No dead dependency found|Nothing found/.test(body) && /40 entries are workspace links/.test(body));
+    await context.close();
+  }
+  for (const [input, ignored] of [['o/small/c/d', 'c/d'], ['github.com/o/small/blob/main/package.json', 'blob/main/package.json']]) {
+    const { context, page } = await newPage(DESKTOP, { raw: { 'o/small/HEAD/package.json': JSON.stringify({ dependencies: { a: '^1.0.0' } }) } });
+    await submitRepo(page, input);
+    await graveyard(page);
+    const body = ((await page.locator('main').textContent()) ?? '').replace(/\s+/g, ' ');
+    check(`QA-29 "${input}": reads the repository root and says the part "${ignored}" was ignored`, body.includes(`The address also named "${ignored}", which was ignored: only the root is read.`) && page.url().includes('src=repo:o/small'), page.url().split('#')[1]);
+    await context.close();
+  }
 }
 
 if (LIVE) {

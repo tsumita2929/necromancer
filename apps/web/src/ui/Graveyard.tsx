@@ -31,6 +31,7 @@ import {
   type Basis,
   basisOf,
 } from '../state/model';
+import { allClear, coverageOf, leftOutLines, readSummary, type Coverage } from '../state/coverage';
 import { MAX_SHARE_PAYLOAD, defaultView, formatSource, type Route, type ViewState } from '../state/url';
 import { DetailPanel, SOURCE_NAMES } from './DetailPanel';
 import { Tombstone } from './Tombstone';
@@ -254,6 +255,8 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
     () => ({ ...report.summary, alive: Math.max(0, report.summary.alive - extras.unchecked), unchecked: extras.unchecked }),
     [report.summary, extras.unchecked],
   );
+  const coverage = useMemo(() => coverageOf(report), [report]);
+  const workspaceRoot = notes.some((note) => note.code === 'workspace-root');
   const urgent = report.summary.zombie + report.summary.ghost + report.summary.dead;
   const opened = findByKey(report.diagnoses, view.open);
   const sourceContext = useMemo(
@@ -301,9 +304,16 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
 
   return (
     <div className="page">
-      <ReportHeader report={report} canShare={!filesPayloadTooLong} />
+      <ReportHeader report={report} canShare={!filesPayloadTooLong} notRead={coverage.notRead} />
+
+      {coverage.mostlyNotRead && coverage.read > 0 ? (
+        <Callout kind="warning" title={allClear(coverage, workspaceRoot, urgent > 0).title} role="status">
+          <p data-testid="all-clear">{allClear(coverage, workspaceRoot, urgent > 0).text}</p>
+        </Callout>
+      ) : null}
 
       <div className="notices">
+      <LeftOutNotice coverage={coverage} />
       {sample ? (
         <Callout kind="info" title={`Recorded on ${formatDate(report.scannedAt)}`} role="status">
           <p>
@@ -335,7 +345,7 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
         </Callout>
       ))}
 
-        <PartialNotice report={report} />
+        <PartialNotice report={report} coverage={coverage} />
       </div>
 
       {filesPayloadTooLong ? (
@@ -393,17 +403,21 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
         onClear={() => update({ q: '', verdicts: [], basis: undefined })}
       />
 
-      {summaryTotal > 0 && urgent === 0 ? (
-        <Callout kind="info" title="No dead dependency found" role="status">
-          <p>Nothing here is dead, ghost or zombie. The living are listed below.</p>
+      {summaryTotal > 0 && urgent === 0 && !coverage.mostlyNotRead ? (
+        <Callout kind={allClear(coverage, workspaceRoot).warning ? 'warning' : 'info'} title={allClear(coverage, workspaceRoot).title} role="status">
+          <p data-testid="all-clear">{allClear(coverage, workspaceRoot).text}</p>
         </Callout>
       ) : null}
 
       {total === 0 ? (
         <div className="empty">
-          <h2>Nothing found</h2>
-          <p>No dependencies were found in this project, so there is nothing to examine.</p>
-          {report.problems.length > 0 ? <p>The problems listed above may explain why.</p> : null}
+          <h2>{coverage.notRead > 0 ? 'Nothing was examined' : 'Nothing found'}</h2>
+          <p>
+            {coverage.notRead > 0
+              ? `All ${coverage.notRead.toLocaleString('en')} dependencies in this project were left out (see above), so nothing was examined. This is not an all-clear.`
+              : 'No dependencies were found in this project, so there is nothing to examine.'}
+          </p>
+          {coverage.remaining.length > 0 ? <p>The problems listed above may explain why.</p> : null}
         </div>
       ) : shown === 0 ? (
         <div className="empty">
@@ -460,7 +474,7 @@ export function ReportView({ report, view, update, navigate, notes = [] }: Ready
   );
 }
 
-function ReportHeader({ report, canShare }: { report: AutopsyReport; canShare: boolean }) {
+function ReportHeader({ report, canShare, notRead }: { report: AutopsyReport; canShare: boolean; notRead: number }) {
   const announce = useAnnounce();
   const total = report.diagnoses.length;
   const copy = async () => {
@@ -477,7 +491,7 @@ function ReportHeader({ report, canShare }: { report: AutopsyReport; canShare: b
         <p className="eyebrow">Autopsy report</p>
         <h1 className={`report__title${report.subject.startsWith('github:') ? ' report__title--repo' : ''}`}>{subjectLabel(report.subject)}</h1>
         <p className="report__meta">
-          {plural(total, 'dependency', 'dependencies')} in {plural(report.manifests.length, 'manifest')}
+          {readSummary(total, report.manifests.length, notRead)}
           {report.scannedAt ? <> · examined {formatDate(report.scannedAt)}</> : null}
         </p>
       </div>
@@ -503,8 +517,41 @@ export function problemText(message: string, report: Pick<AutopsyReport, 'diagno
   );
 }
 
-function PartialNotice({ report }: { report: AutopsyReport }) {
-  if (report.unavailable.length === 0 && report.problems.length === 0) return null;
+/** What was left out on purpose, said as what it is and what to do, not as a manifest problem (QA-22). */
+function LeftOutNotice({ coverage }: { coverage: Coverage }) {
+  if (coverage.notRead === 0) return null;
+  const lines = leftOutLines(coverage);
+  const shown = coverage.entries.slice(0, 100);
+  return (
+    <Callout kind="warning" title={`${coverage.notRead.toLocaleString('en')} ${coverage.notRead === 1 ? 'dependency was' : 'dependencies were'} not read`} role="status">
+      <div data-testid="left-out">
+        {lines.map((line, index) => (
+          <p key={`${line.kind}-${index}`}>
+            {line.what} {line.todo}
+          </p>
+        ))}
+        {shown.length > 0 ? (
+          <details className="problems">
+            <summary>Which entries</summary>
+            <ul>
+              {shown.map((entry, index) => (
+                <li key={`${entry.name}-${index}`}>
+                  <span className="mono">{entry.name}</span> <span className="mono">{entry.spec}</span>
+                  {entry.path !== 'package.json' ? <> in <span className="mono">{entry.path}</span></> : null}
+                </li>
+              ))}
+              {coverage.entries.length > shown.length ? <li>and {coverage.entries.length - shown.length} more</li> : null}
+            </ul>
+          </details>
+        ) : null}
+      </div>
+    </Callout>
+  );
+}
+
+function PartialNotice({ report, coverage }: { report: AutopsyReport; coverage: Coverage }) {
+  const problems = coverage.remaining;
+  if (report.unavailable.length === 0 && problems.length === 0 && coverage.notRead === 0) return null;
   return (
     <>
       {report.unavailable.length > 0 ? (
@@ -522,14 +569,14 @@ function PartialNotice({ report }: { report: AutopsyReport }) {
           </ul>
         </Callout>
       ) : null}
-      {report.problems.length > 0 ? (
+      {problems.length > 0 ? (
         <Callout kind="warning" role="status">
           <details className="problems">
             <summary>
-              {plural(report.problems.length, 'manifest problem')}: some content was not read
+              {plural(problems.length, 'manifest problem')}: some content was not read
             </summary>
             <ul>
-              {report.problems.map((problem, index) => (
+              {problems.map((problem, index) => (
                 <li key={`${problem.path}-${index}`}>
                   <span className="mono">{problem.path}</span>: {problemText(problem.message, report)}
                 </li>

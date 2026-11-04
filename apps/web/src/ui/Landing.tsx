@@ -6,6 +6,7 @@ import { UploadIcon } from '../design/icons';
 import { VERDICT_META, VerdictBadge } from '../design/Verdict';
 import { SOURCE_NAMES } from './DetailPanel';
 import { SAMPLES, parseRepoInput, type SampleId } from '../data/autopsy';
+import { ignoredPathOf, rememberIgnoredPath } from '../data/github';
 import { dropEntries, fileEntries, readProject } from '../data/folder';
 import { rememberSources, type ProjectSources } from '../data/sources';
 import { formatDate, plural } from '../design/controls';
@@ -44,6 +45,7 @@ export function Landing({ go, notice }: LandingProps) {
       return;
     }
     setRepoError('');
+    rememberIgnoredPath(parsed, ignoredPathOf(repo));
     go({ name: 'graveyard', view: defaultView({ kind: 'repo', ...parsed }) });
   };
 
