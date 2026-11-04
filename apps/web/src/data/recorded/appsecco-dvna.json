@@ -1,6 +1,6 @@
 {
   "subject": "github:appsecco/dvna",
-  "scannedAt": "2026-11-03T14:14:40.549Z",
+  "scannedAt": "2026-11-04T00:06:14.482Z",
   "manifests": [
     {
       "kind": "package.json",
@@ -21,7 +21,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (0.0.4) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (0.0.4) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "npm",
           "date": "2014-05-26"
         },
@@ -38,6 +38,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 9.4 years.",
+          "source": "github",
+          "url": "https://github.com/luin/serialize",
+          "date": "2017-06-04"
         },
         {
           "code": "osv-advisory",
@@ -72,6 +79,13 @@
           "source": "npm",
           "url": "https://www.npmjs.com/package/csurf",
           "date": "2020-01-19"
+        },
+        {
+          "code": "repo-archived",
+          "message": "The source repository is archived: read-only, no more fixes.",
+          "source": "github",
+          "url": "https://github.com/expressjs/csurf",
+          "date": "2025-05-14"
         },
         {
           "code": "abandoned",
@@ -113,6 +127,13 @@
       "verdict": "dead",
       "evidence": [
         {
+          "code": "repo-archived",
+          "message": "The source repository is archived: read-only, no more fixes.",
+          "source": "github",
+          "url": "https://github.com/RGBboy/express-flash",
+          "date": "2019-11-06"
+        },
+        {
           "code": "abandoned",
           "message": "Abandoned: the latest release (0.0.2) is 13 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
           "source": "npm",
@@ -151,6 +172,13 @@
       },
       "verdict": "dead",
       "evidence": [
+        {
+          "code": "repo-archived",
+          "message": "The source repository is archived: read-only, no more fixes.",
+          "source": "github",
+          "url": "https://github.com/expressjs/flash",
+          "date": "2025-05-14"
+        },
         {
           "code": "abandoned",
           "message": "Abandoned: the latest release (1.1.0) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
@@ -240,7 +268,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (1.0.0) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (1.0.0) is 12 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "npm",
           "date": "2014-03-08"
         },
@@ -257,6 +285,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 2.7 years.",
+          "source": "github",
+          "url": "https://github.com/jaredhanson/passport-local",
+          "date": "2024-02-09"
         }
       ],
       "advisories": [],
@@ -701,7 +736,7 @@
   "unavailable": [
     {
       "source": "github",
-      "reason": "GitHub budget reached (0 calls per scan, limit is 60 per hour): 15 repositories were not checked"
+      "reason": "GitHub budget reached (7 calls per scan, limit is 60 per hour): 8 repositories were not checked"
     }
   ],
   "summary": {

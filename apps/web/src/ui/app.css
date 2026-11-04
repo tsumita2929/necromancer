@@ -1260,3 +1260,16 @@
 .notices .callout__action {
   margin-top: var(--space-2);
 }
+
+/* Long URLs in an epitaph must wrap inside the tombstone. */
+.tomb__epitaph,
+.evidence__msg {
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.report__share {
+  flex: none;
+}
+.report__share .btn {
+  white-space: nowrap;
+}

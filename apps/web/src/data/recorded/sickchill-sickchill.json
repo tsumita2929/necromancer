@@ -1,6 +1,6 @@
 {
   "subject": "github:SickChill/sickchill",
-  "scannedAt": "2026-11-03T14:14:44.192Z",
+  "scannedAt": "2026-11-04T00:06:20.919Z",
   "manifests": [
     {
       "kind": "package.json",
@@ -25,7 +25,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (1.4.4) is 6.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (1.4.4) is 6.5 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "pypi",
           "date": "2020-05-11"
         },
@@ -42,6 +42,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 3.7 years.",
+          "source": "github",
+          "url": "https://github.com/ActiveState/appdirs",
+          "date": "2023-02-10"
         }
       ],
       "advisories": [],
@@ -64,7 +71,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (3.3.0) is 7.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (3.3.0) is 7.0 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "npm",
           "date": "2019-11-05"
         },
@@ -81,6 +88,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 6.8 years.",
+          "source": "github",
+          "url": "https://github.com/lukechilds/browser-env",
+          "date": "2020-02-02"
         }
       ],
       "advisories": [],
@@ -101,6 +115,13 @@
       },
       "verdict": "dead",
       "evidence": [
+        {
+          "code": "repo-archived",
+          "message": "The source repository is archived: read-only, no more fixes.",
+          "source": "github",
+          "url": "https://github.com/kfdm/gntp",
+          "date": "2016-03-06"
+        },
         {
           "code": "abandoned",
           "message": "Abandoned: the latest release (1.0.3) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
@@ -142,7 +163,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (1.0.0) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (1.0.0) is 10 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "npm",
           "date": "2016-03-04"
         },
@@ -159,6 +180,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 4.2 years.",
+          "source": "github",
+          "url": "https://github.com/gruntjs/grunt-contrib-copy",
+          "date": "2022-08-26"
         }
       ],
       "advisories": [],
@@ -181,7 +209,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (3.0.0) is 9.3 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (3.0.0) is 9.3 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "npm",
           "date": "2017-07-27"
         },
@@ -198,6 +226,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 5.6 years.",
+          "source": "github",
+          "url": "https://github.com/jharding/grunt-exec",
+          "date": "2021-03-25"
         }
       ],
       "advisories": [],
@@ -298,7 +333,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (0.2.2) is 7.6 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (0.2.2) is 7.6 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "pypi",
           "date": "2019-03-13"
         },
@@ -315,6 +350,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 7.6 years.",
+          "source": "github",
+          "url": "https://github.com/eventray/po2json",
+          "date": "2019-03-13"
         }
       ],
       "advisories": [],
@@ -2124,8 +2166,8 @@
       "advisories": [],
       "successors": [],
       "latest": {
-        "version": "2.1.6",
-        "date": "2026-10-21T16:25:06.497882Z"
+        "version": "2.1.7",
+        "date": "2026-11-03T20:34:34.104864Z"
       }
     },
     {
@@ -2436,8 +2478,8 @@
       "advisories": [],
       "successors": [],
       "latest": {
-        "version": "21.15.2",
-        "date": "2026-10-30T19:18:01.134751Z"
+        "version": "21.15.3",
+        "date": "2026-11-03T18:01:09.880075Z"
       }
     },
     {
@@ -2544,7 +2586,7 @@
   "unavailable": [
     {
       "source": "github",
-      "reason": "GitHub budget reached (0 calls per scan, limit is 60 per hour): 39 repositories were not checked"
+      "reason": "GitHub budget reached (7 calls per scan, limit is 60 per hour): 32 repositories were not checked"
     }
   ],
   "summary": {

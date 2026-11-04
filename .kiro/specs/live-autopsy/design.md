@@ -53,7 +53,7 @@ Notes carry facts that are not in the report: "only the root was read", "a file 
 | Manifests | `raw.githubusercontent.com/<owner>/<repo>/…` |
 | Package registries | `registry.npmjs.org`, `pypi.org`, `api.deps.dev/v3/systems/…` |
 | Advisories | `api.osv.dev` |
-| Repository checks | `api.github.com`, `api.deps.dev/v3/projects/…`, and the e18e dataset on `raw.githubusercontent.com/e18e/…` |
+| Repository checks | `api.github.com`, `api.deps.dev/v3/projects/…`, and the e18e dataset on `raw.githubusercontent.com/es-tooling/module-replacements/…` |
 
 Each stage shows a count of answers and the number in flight. A stage with failures shows the
 count in words ("2 did not answer"). The bar is indeterminate because the engine finds new

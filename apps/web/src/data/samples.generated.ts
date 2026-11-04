@@ -17,7 +17,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "appsecco-dvna",
     "repository": "appsecco/dvna",
     "ecosystem": "npm",
-    "recordedAt": "2026-11-03T14:14:40.549Z",
+    "recordedAt": "2026-11-04T00:06:14.482Z",
     "total": 19,
     "summary": {
       "alive": 6,
@@ -31,7 +31,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "miguelgrinberg-microblog",
     "repository": "miguelgrinberg/microblog",
     "ecosystem": "pypi",
-    "recordedAt": "2026-11-03T14:14:42.127Z",
+    "recordedAt": "2026-11-04T00:06:16.945Z",
     "total": 54,
     "summary": {
       "alive": 36,
@@ -45,7 +45,7 @@ export const RECORDED_SAMPLES: readonly RecordedSample[] = [
     "id": "sickchill-sickchill",
     "repository": "SickChill/sickchill",
     "ecosystem": "both",
-    "recordedAt": "2026-11-03T14:14:44.192Z",
+    "recordedAt": "2026-11-04T00:06:20.919Z",
     "total": 105,
     "summary": {
       "alive": 64,

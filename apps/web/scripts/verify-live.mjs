@@ -9,6 +9,9 @@ import { installWorld, projectFile } from './lib/world.mjs';
 import { bigLockfile } from './lib/biglock.mjs';
 
 const LIVE = process.argv.includes('--live');
+// --only=microblog,acceptance,notfound limits the real-internet part (GitHub allows 60 calls an hour per IP).
+const ONLY = (process.argv.find((a) => a.startsWith('--only=')) ?? '').slice(7).split(',').filter(Boolean);
+const want = (name) => ONLY.length === 0 || ONLY.includes(name);
 const server = await serveDist({ base: '/' });
 const browser = await chromium.launch();
 
@@ -50,7 +53,7 @@ const errorText = async (page) => {
   return (await page.locator('[data-testid="autopsy-error"]').innerText()).replace(/\s+/g, ' ');
 };
 const verdictOf = async (page, key) => ((await page.locator(`[data-dep-key="${key}"] .verdict span`).textContent()) ?? '').trim();
-const tombCount = (page) => page.locator('li.tomb').count();
+const tombCount = (page) => page.locator('li.tomb:not(.tomb--skeleton)').count();
 
 console.log('== stubbed internet ==');
 
@@ -293,7 +296,7 @@ if (LIVE) {
     context.on('response', (res) => {
       const { hostname, pathname } = new URL(res.url());
       if (!/(npmjs|pypi\.org|deps\.dev|osv\.dev|github)/.test(hostname)) return;
-      const label = hostname === 'raw.githubusercontent.com' ? `${hostname} (${pathname.startsWith('/e18e/') ? 'e18e dataset' : 'manifests'})` : hostname === 'api.deps.dev' ? `${hostname} (${pathname.startsWith('/v3/projects/') ? 'projects' : 'packages'})` : hostname;
+      const label = hostname === 'raw.githubusercontent.com' ? `${hostname} (${pathname.startsWith('/es-tooling/module-replacements/') ? 'e18e dataset' : 'manifests'})` : hostname === 'api.deps.dev' ? `${hostname} (${pathname.startsWith('/v3/projects/') ? 'projects' : 'packages'})` : hostname;
       if (res.request().method() !== 'OPTIONS') note(label, res.status(), res.headers()['access-control-allow-origin']);
     });
     context.on('requestfailed', (req) => {
@@ -317,29 +320,25 @@ if (LIVE) {
     }
   };
 
-  await run(DESKTOP, async (page) => {
+  // One real repository of about 50 dependencies: the CORS table, the time to the first tombstone, a screenshot.
+  // (Kept to one repository: GitHub allows 60 unauthenticated calls an hour for this IP, shared with other workers.)
+  if (want('microblog')) await run(DESKTOP, async (page) => {
     const t0 = Date.now();
-    await submitRepo(page, 'https://github.com/appsecco/dvna');
-    await page.waitForSelector('li.tomb', { timeout: 120000 });
+    await submitRepo(page, 'https://github.com/miguelgrinberg/microblog');
+    await page.waitForSelector('[data-testid^="group-"]', { timeout: 120000 });
     const ms = Date.now() - t0;
     const n = await tombCount(page);
     const partial = await page.getByText('This report is partial').count();
     const unavailable = partial ? (await page.locator('.callout--warning', { hasText: 'This report is partial' }).innerText()).replace(/\s+/g, ' ') : 'none';
-    check('LIVE appsecco/dvna: the autopsy completes in a real Chromium page', n >= 15, `${n} tombstones in ${ms} ms; unavailable: ${unavailable.slice(0, 160)}`);
+    check('LIVE miguelgrinberg/microblog (about 50 dependencies): the autopsy completes in a real Chromium page', n >= 40, `${n} tombstones; time to the first tombstone ${ms} ms; unavailable: ${unavailable.slice(0, 200)}`);
+    await page.waitForTimeout(300);
     await page.screenshot({ path: new URL('../../../docs/screenshots/live-graveyard-desktop.png', import.meta.url).pathname });
+    await page.screenshot({ path: new URL('../../../docs/screenshots/live-graveyard-full-desktop.png', import.meta.url).pathname, fullPage: true });
   });
-  await run(DESKTOP, async (page) => {
-    const t0 = Date.now();
-    await submitRepo(page, 'miguelgrinberg/microblog');
-    await page.waitForSelector('li.tomb', { timeout: 120000 });
-    const ms = Date.now() - t0;
-    const n = await tombCount(page);
-    check('LIVE miguelgrinberg/microblog (about 50 dependencies): time to the first tombstone', n >= 40, `${n} tombstones, ${ms} ms`);
-  });
-  await run(DESKTOP, async (page) => {
+  if (want('acceptance')) await run(DESKTOP, async (page) => {
     const t0 = Date.now();
     await page.locator('input[type="file"]').setInputFiles([projectFile('acceptance', 'package.json'), projectFile('acceptance', 'package-lock.json')]);
-    await page.waitForSelector('li.tomb', { timeout: 120000 });
+    await page.waitForSelector('[data-testid^="group-"]', { timeout: 120000 });
     const ms = Date.now() - t0;
     const verdicts = Object.fromEntries(await Promise.all(['request', 'node-sass', 'tslint', 'left-pad', 'express'].map(async (n) => [n, await verdictOf(page, `npm:${n}`)])));
     check('LIVE acceptance project upload: same verdicts as the engine test', verdicts.request === 'Zombie' && verdicts['node-sass'] === 'Zombie' && verdicts.tslint === 'Dead' && verdicts['left-pad'] === 'Dead' && verdicts.express === 'Alive', JSON.stringify(verdicts) + ` in ${ms} ms`);
@@ -347,7 +346,7 @@ if (LIVE) {
     await page.waitForSelector('dialog[open]');
     check("LIVE acceptance project: left-pad's first successor is String.prototype.padStart", /String\.prototype\.padStart/.test(await page.locator('dialog .ways li').first().innerText()));
   });
-  await run(DESKTOP, async (page) => {
+  if (want('notfound')) await run(DESKTOP, async (page) => {
     await submitRepo(page, 'no-such-owner-zq81/no-such-repo-zq81');
     const text = await errorText(page);
     check('LIVE a repository that does not exist: "not found, or it is private" (or the limit, if used up)', /not found, or it is private|60 calls an hour/.test(text), text.slice(0, 120));

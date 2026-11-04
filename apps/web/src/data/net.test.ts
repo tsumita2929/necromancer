@@ -6,7 +6,7 @@ const respond = (status: number) => ({ ok: status < 300, status, json: async () 
 describe('R3.1 stages', () => {
   it.each([
     ['https://raw.githubusercontent.com/o/r/HEAD/package.json', 'manifests'],
-    ['https://raw.githubusercontent.com/e18e/module-replacements/main/manifests/native.json', 'repositories'],
+    ['https://raw.githubusercontent.com/es-tooling/module-replacements/main/manifests/native.json', 'repositories'],
     ['https://registry.npmjs.org/left-pad/latest', 'registries'],
     ['https://pypi.org/pypi/six/json', 'registries'],
     ['https://api.deps.dev/v3/systems/npm/packages/left-pad', 'registries'],

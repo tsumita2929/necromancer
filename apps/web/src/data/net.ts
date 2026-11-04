@@ -42,7 +42,7 @@ export function classify(url: string): { stage: Stage | null; label: string } {
   }
   const { hostname, pathname } = parsed;
   if (hostname === 'raw.githubusercontent.com') {
-    return pathname.startsWith('/e18e/')
+    return pathname.startsWith('/es-tooling/module-replacements/')
       ? { stage: 'repositories', label: 'raw.githubusercontent.com (e18e dataset)' }
       : { stage: 'manifests', label: 'raw.githubusercontent.com (manifests)' };
   }

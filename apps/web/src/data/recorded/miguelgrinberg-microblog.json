@@ -1,6 +1,6 @@
 {
   "subject": "github:miguelgrinberg/microblog",
-  "scannedAt": "2026-11-03T14:14:42.127Z",
+  "scannedAt": "2026-11-04T00:06:16.945Z",
   "manifests": [
     {
       "kind": "requirements.txt",
@@ -21,7 +21,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (0.7.1) is 5.7 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (0.7.1) is 5.7 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "pypi",
           "date": "2021-03-08"
         },
@@ -38,6 +38,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 2.2 years.",
+          "source": "github",
+          "url": "https://github.com/tiran/defusedxml",
+          "date": "2024-09-03"
         }
       ],
       "advisories": [],
@@ -99,7 +106,7 @@
       "evidence": [
         {
           "code": "abandoned",
-          "message": "Abandoned: the latest release (1.7.1) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score).",
+          "message": "Abandoned: the latest release (1.7.1) is 7.1 years old and nothing shows it is still looked after (low OpenSSF Maintained score, no commits for 2 years).",
           "source": "pypi",
           "date": "2019-09-20"
         },
@@ -116,6 +123,13 @@
           "source": "scorecard",
           "url": "https://securityscorecards.dev/",
           "date": "2026-08-24"
+        },
+        {
+          "code": "repo-inactive",
+          "message": "No commit to the source repository for 3.3 years.",
+          "source": "github",
+          "url": "https://github.com/Anorov/PySocks",
+          "date": "2023-07-17"
         }
       ],
       "advisories": [],
@@ -809,8 +823,8 @@
       ],
       "successors": [],
       "latest": {
-        "version": "2.9.1",
-        "date": "2026-10-29T18:05:10.206681Z"
+        "version": "2.9.2",
+        "date": "2026-11-03T23:56:52.088419Z"
       }
     },
     {
@@ -1338,8 +1352,8 @@
       "advisories": [],
       "successors": [],
       "latest": {
-        "version": "2.1.6",
-        "date": "2026-10-21T16:25:06.497882Z"
+        "version": "2.1.7",
+        "date": "2026-11-03T20:34:34.104864Z"
       }
     },
     {
@@ -1465,7 +1479,7 @@
   "unavailable": [
     {
       "source": "github",
-      "reason": "GitHub budget reached (0 calls per scan, limit is 60 per hour): 31 repositories were not checked"
+      "reason": "GitHub budget reached (7 calls per scan, limit is 60 per hour): 24 repositories were not checked"
     }
   ],
   "summary": {

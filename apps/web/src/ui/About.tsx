@@ -43,14 +43,19 @@ export function About() {
       </section>
       <section aria-labelledby="about-data">
         <h2 id="about-data">Where the facts come from</h2>
-        <p>Necromancer reads public data only. No account, no key and no server of ours is involved.</p>
+        <p>Necromancer reads public data only, straight from your browser. No account, no key and no server of ours is involved.</p>
         <ul className="plainlist">
           {SOURCES.map((source) => (
             <li key={source}>{source}</li>
           ))}
         </ul>
         <p>
-          The sample projects hold illustrative findings. They are modelled on real events in the npm and PyPI ecosystems, and some package names in them are invented. They say nothing about any maintainer.
+          The samples on the start page are real. The engine examined those public repositories on the day shown, and
+          the reports are kept exactly as the engine wrote them. Nothing in them was written by hand.
+        </p>
+        <p>
+          A verdict is a reading of public signals, not a judgement of a maintainer. A package can be finished rather
+          than dead, so every verdict shows the evidence behind it.
         </p>
       </section>
       <section aria-labelledby="about-privacy">
