@@ -99,9 +99,9 @@ Run in `apps/web`. On this host Chromium needs `. ~/.cache/necromancer-chromelib
 | `node scripts/verify-live.mjs` | `ALL CHECKS PASSED`, 80 PASS (was 67) |
 | `NECRO_SCRATCH=<new dir> node scripts/verify-seance.mjs` | `ALL CHECKS PASSED`, 63 PASS, 0 SKIP (mkdirp 3.0.1 from the mathjs sample: 7 of 7 pass, both mutants fail) |
 
-All of them were repeated from a fresh clone (`git clone`, `npm ci`, `npm run build`, a new séance scratch), at `5725f1f`: vitest 376, typecheck, verify:samples
-(29), verify:resume, browser 129, live 80, séance 63. The final change to the notice (`293bfdc`) was then checked in the working tree with unit tests (376), browser
-(129) and live (80). The clone run for the record's own commit is in the last section.
+All of them were repeated from a fresh clone (`git clone`, `npm ci`, `npm run build`, a new séance scratch) twice: at `5725f1f`, and at `75ff1ea`, which holds every
+change of this item including the quieter notice (`293bfdc`) and this record. Result both times: vitest 376, typecheck, verify:samples (29), verify:resume (16),
+browser 129, live 80, séance 63.
 
 A flaky check was fixed on the way: `verify-browser` took the address of a damaged link before the app had finished closing a drawer (the address of the
 drawer came back after the new address was set), which failed the first "damaged link" check one run in two in a fresh clone. It now waits for the address to
