@@ -10,7 +10,7 @@ search windows (R1.7) --> candidate counts --> seeded draw --> ordered list per 
                                                                    |
                                   pinned engine (autopsy, direct deps only, fixed clock)
                                                                    |
-            cached fetch  <-- sources: npm, PyPI, deps.dev, OSV, GitHub (ledger 36/h), e18e
+            cached fetch  <-- sources: npm, PyPI, deps.dev, OSV, GitHub (ledger, see requirements C2), e18e
                                                                    |
                             scratch/census/results/<subject>.json (per-repo, not committed)
                                                                    |
@@ -56,7 +56,7 @@ repeat on the same subjects, even if a fresh draw would differ.
 ## Rate limits
 
 - `ledger.json` holds the times of recent `api.github.com` core calls. A call is allowed if fewer
-  than 36 are in the last 60 minutes (4 slots stay free for hand checks and the web worker's
+  than the cap (36, later 55; see requirements C2) are in the last 60 minutes (4 slots stayed free for hand checks and the web worker's
   margin; the brief says 40 at most).
 - The engine runs with a fresh `githubBudget` per subject, equal to the free slots (at most 8). Its own fetch
   wrapper records each call to the ledger before sending it and refuses (returns a 0-status failure,

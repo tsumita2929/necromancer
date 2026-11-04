@@ -117,3 +117,12 @@ submission text. Owner: the census item. Output: `docs/research/census.md`,
 **R7.1** The census shall meet, run and record the handling of: a repository with no root manifest; a monorepo (root `package.json` with `workspaces`); an archived repository (in a separate edge probe, kept out of the statistics); a 404 from `raw.githubusercontent.com`; a very large lockfile; a run cut short by the GitHub limit.
 
 **R7.2** Edge-probe inputs shall not be counted in any share of R4.
+
+## Changes made during the run (recorded, not silently applied)
+
+- **C1. Scope (lead ruling, 2026-11-04).** Item scope is the first 25 subjects of each cell (100 subjects). R1.1 stays the draw target (50 per cell); the second halves were drawn and not run. Because the draw order is random, the first halves are a uniform sample.
+- **C2. GitHub rate (lead ruling).** R2.2 allowed 40 core calls in any rolling 60 minutes while the web item ran; the ledger used 36. After the web item finished, the lead allowed 55. The census also stops when GitHub's own `rate_limit` endpoint (free) shows 3 or fewer calls left.
+- **C3. Reruns.** R2.3 reruns a subject until complete (up to 400 attempts) instead of three, because the hourly limit paces the run and each rerun costs nothing for cached answers.
+- **C4. Engine budget per subject.** The pinned engine caps GitHub lookups per scan (`githubBudget`). It was raised from 36 to 400 after two subjects with more than 36 candidate repositories were found partial.
+- **C5. Precision strata.** Because few units were `ghost` (1) or `zombie` (4), the draw used five strata (`dying`, `dead` by a hard signal, `dead` by the abandoned rule, `ghost`, `zombie`) and drew 56 units.
+- **C6. Fairness test.** R5.4's "fair" is defined as "the primary source shows a sign of life in the last 12 months, unless archived or deprecated"; the report calls it "defensible".
