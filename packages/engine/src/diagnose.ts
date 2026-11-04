@@ -11,7 +11,7 @@ import { getGithubRepo, getLatestCommit, type GithubRepo } from './sources/githu
 import { getHeldPackage } from './sources/repo-package.js';
 import { findMovedNotice } from './sources/moved.js';
 import { findMaintainerStatement, getReadme, type MaintainerStatement } from './sources/readme.js';
-import { getNpmLatest } from './sources/npm.js';
+import { getNpmEngines, getNpmLatest } from './sources/npm.js';
 import { osvKey, queryOsv, type OsvQuery } from './sources/osv.js';
 import { getPypiProject, getPypiReleaseRepo } from './sources/pypi.js';
 import { describeLink, nameMatchesRepo, type RepoLink } from './sources/pypi-repo.js';
@@ -30,7 +30,7 @@ import type {
 import { VERDICTS } from './types.js';
 import { errorMessage } from './util/guards.js';
 import { resolveVersionInUse } from './versions/resolve.js';
-import { upgradeTarget } from './versions/upgrade.js';
+import { upgradeChoice } from './versions/upgrade.js';
 import { classOf, decide } from './verdict.js';
 
 interface VersionInfo {
@@ -71,6 +71,8 @@ interface PackageFacts {
   movedTo?: string;
   /** The repository was renamed to a name that is another package: its activity is not this package's (round 5). */
   otherPackage?: { name: string; repo: string };
+  /** npm: `engines.node` of releases that are upgrade targets, by version (null: none declared). */
+  engines?: Map<string, string | null>;
   /** The README says the project itself is deprecated or no longer maintained (round 5). */
   readmeStatement?: MaintainerStatement;
   /** The default branch's newest commit; null when the repository has none. */
@@ -169,6 +171,29 @@ export class Core {
     });
     const osv = await this.guardedOsv(queries, run);
 
+    // Phase B2: a deprecated version whose way out is another major version: say what that release needs.
+    // Only npm declares `engines.node`; one small request per (package, release), shared by every dependency.
+    const engineRequests = new Map<string, Promise<void>>();
+    deps.forEach((dep, i) => {
+      const f = facts.get(pkgKey(dep));
+      const version = inUse[i];
+      if (dep.ecosystem !== 'npm' || !f || !version || f.deprecatedLatest) return;
+      if (!f.versions.find((v) => v.version === version)?.deprecated) return;
+      const choice = upgradeChoice('npm', f.versions, version, dep.spec);
+      if (choice?.tier !== 'next-major') return;
+      const target = choice.target.version;
+      const key = `${f.name}@${target}`;
+      if (engineRequests.has(key)) return;
+      engineRequests.set(
+        key,
+        (async () => {
+          const r = await guard(() => getNpmEngines(this.http, f.name, target));
+          (f.engines ??= new Map()).set(target, r.ok ? r.value : null);
+        })(),
+      );
+    });
+    await Promise.all(engineRequests.values());
+
     // Phase C: repository facts for packages that are not obviously fresh.
     // A package with an advisory against the version in use is always worth a repository
     // check, even when its latest release is fresh: an archived repository plus an advisory
@@ -198,7 +223,7 @@ export class Core {
           : undefined;
         const advisories = osvId ? (osv.advisories.get(osvId) ?? []) : [];
         const advisoryAliases = osvId ? osv.aliases.get(osvId) : undefined;
-        const decision = this.verdictFor(f, version, advisories);
+        const decision = this.verdictFor(f, version, advisories, dep.spec);
         if (decision.verdict !== 'alive') needsSuccessors.add(i);
         return { dep, f, version, advisories, advisoryAliases, decision };
       } catch (error) {
@@ -274,8 +299,8 @@ export class Core {
         };
         if (decision.basis) out.basis = decision.basis;
         if (p.version && decision.evidence.some((e) => classOf(e.code) === 'notice')) {
-          const upgradeTo = upgradeTarget(f.ecosystem, f.versions, p.version);
-          if (upgradeTo) out.upgradeTo = upgradeTo;
+          const choice = upgradeChoice(f.ecosystem, f.versions, p.version, dep.spec);
+          if (choice) out.upgradeTo = choice.target;
         }
         if (advisoryAliases) out.advisoryAliases = advisoryAliases;
         if (f.notFound) out.notFound = true;
@@ -421,7 +446,7 @@ export class Core {
     return age !== undefined && age < signals.THRESHOLDS.freshDays;
   }
 
-  private registryEvidence(f: PackageFacts, inUse: string | undefined): Evidence[] {
+  private registryEvidence(f: PackageFacts, inUse: string | undefined, spec?: string): Evidence[] {
     const out: Evidence[] = [];
     const now = this.now();
     if (f.notFound) out.push(signals.registryNotFound(f.notFound, f.name));
@@ -440,7 +465,7 @@ export class Core {
       const used = f.versions.find((v) => v.version === inUse);
       const yanked = used?.yanked === true && !f.latestYanked;
       if (used && (used.deprecated || yanked)) {
-        const upgradeTo = upgradeTarget(f.ecosystem, f.versions, inUse);
+        const choice = upgradeChoice(f.ecosystem, f.versions, inUse, spec);
         if (used.deprecated)
           out.push(
             signals.versionDeprecated(
@@ -448,10 +473,11 @@ export class Core {
               inUse,
               f.registrySource === 'npm' ? 'deps.dev' : f.registrySource,
               f.name,
-              upgradeTo,
+              choice,
+              choice ? (f.engines?.get(choice.target.version) ?? undefined) : undefined,
             ),
           );
-        if (yanked) out.push(signals.versionYanked(f.name, inUse, used.yankedReason, upgradeTo));
+        if (yanked) out.push(signals.versionYanked(f.name, inUse, used.yankedReason, choice));
       }
     }
     if (f.repoLink && f.repo) {
@@ -768,10 +794,15 @@ export class Core {
 
   // --- Phase D ------------------------------------------------------------------------------
 
-  private verdictFor(f: PackageFacts, version: string | undefined, advisories: string[]) {
+  private verdictFor(
+    f: PackageFacts,
+    version: string | undefined,
+    advisories: string[],
+    spec?: string,
+  ) {
     const now = this.now();
     const evidence = [
-      ...this.registryEvidence(f, version),
+      ...this.registryEvidence(f, version, spec),
       ...(f.otherPackage ? [] : this.scorecardEvidence(f)),
     ];
     let pushedAt: string | undefined;

@@ -48,8 +48,9 @@ describe('N1 the built-in alternative beside an upgrade notice', () => {
       'deps.dev',
       'glob',
       {
-        version: '14.0.3',
-        sameMajor: false,
+        target: { version: '14.0.3', sameMajor: false },
+        tier: 'next-major',
+        inRange: false,
       },
     );
     expect(glob.code).toBe('version-deprecated');
@@ -57,8 +58,9 @@ describe('N1 the built-in alternative beside an upgrade notice', () => {
     expect(glob.message).toContain('Node 22.17 or later');
     expect(glob.message).toContain('fs.glob');
     const eslint = versionDeprecated('x', '8.57.1', 'deps.dev', 'eslint', {
-      version: '10.14.0',
-      sameMajor: false,
+      target: { version: '10.14.0', sameMajor: false },
+      tier: 'next-major',
+      inRange: false,
     });
     expect(eslint.message).not.toMatch(/Node \d/);
   });

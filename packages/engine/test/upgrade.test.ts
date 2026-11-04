@@ -8,7 +8,8 @@ import {
   type FetchLike,
   type Successor,
 } from '../src/index.js';
-import { upgradeTarget } from '../src/versions/upgrade.js';
+import { upgradeChoice, upgradeTarget } from '../src/versions/upgrade.js';
+import { upgradeSentence } from '../src/signals.js';
 import { daysAgo, fakeWorld, NOW, type FakeNpm } from './helpers/fake-world.js';
 
 const dep = (name: string, extra: Partial<DependencyRef> = {}): DependencyRef => ({
@@ -231,7 +232,9 @@ describe('U2 a yanked PyPI version of a living project', () => {
     expect(d?.verdict).toBe('alive');
     expect(d?.evidence[0]?.code).toBe('version-yanked');
     expect(d?.upgradeTo).toEqual({ version: '1.5', sameMajor: true });
-    expect(d?.evidence[0]?.message).toContain('Upgrade to 1.5 (same major version)');
+    expect(d?.evidence[0]?.message).toContain(
+      'Upgrade to 1.5 (same major version, but outside your declared range (==1.0)',
+    );
   });
 
   it('U2.2 from a lockfile: the same', async () => {
@@ -277,7 +280,7 @@ describe('U3 the upgrade target rule', () => {
     ...(bad === 'yanked' ? { yanked: true } : {}),
   });
 
-  it('U3.1 newest in the same major, else newest overall', () => {
+  it('U3.1 newest in the same major, else the newest of the next major', () => {
     const list = [
       rel('1.0.0', 'deprecated'),
       rel('1.2.0'),
@@ -293,7 +296,7 @@ describe('U3 the upgrade target rule', () => {
         '1.0.0',
       ),
     ).toEqual({
-      version: '3.0.0',
+      version: '2.1.0',
       sameMajor: false,
     });
   });
@@ -432,5 +435,271 @@ describe('U4 the generated spec says the rule', () => {
       successor,
     );
     expect(spec['requirements.md']).not.toMatch(/^# injected/m);
+  });
+});
+
+describe('U5 the target follows the declared range (round 5)', () => {
+  const rel = (version: string, bad?: 'deprecated' | 'yanked') => ({
+    version,
+    ...(bad === 'deprecated' ? { deprecated: 'x' } : {}),
+    ...(bad === 'yanked' ? { yanked: true } : {}),
+  });
+  const list = [
+    rel('9.0.0', 'deprecated'),
+    rel('9.31.0', 'deprecated'),
+    rel('9.40.0'),
+    rel('10.0.0', 'deprecated'),
+    rel('10.14.0'),
+    rel('11.2.0'),
+  ];
+
+  it('U5.1 the newest release inside the range that is not deprecated', () => {
+    expect(upgradeChoice('npm', list, '9.31.0', '^9.0.0')).toMatchObject({
+      target: { version: '9.40.0', sameMajor: true },
+      tier: 'range',
+      declaredRange: '^9.0.0',
+      inRange: true,
+    });
+    // A range that spans majors takes the newest one inside it.
+    expect(upgradeChoice('npm', list, '9.31.0', '>=9 <11')?.target).toEqual({
+      version: '10.14.0',
+      sameMajor: false,
+    });
+  });
+
+  it('U5.2 nothing inside the range: the same major outside it, then the next major', () => {
+    const noneIn = [rel('9.0.0', 'deprecated'), rel('9.40.0'), rel('10.14.0')];
+    expect(upgradeChoice('npm', noneIn, '9.0.0', '9.0.0')).toMatchObject({
+      target: { version: '9.40.0' },
+      tier: 'same-major',
+      inRange: false,
+    });
+    const allBad = [
+      rel('9.0.0', 'deprecated'),
+      rel('9.40.0', 'deprecated'),
+      rel('10.0.0', 'deprecated'),
+      rel('11.2.0'),
+      rel('12.0.0'),
+    ];
+    expect(upgradeChoice('npm', allBad, '9.0.0', '^9.0.0')).toMatchObject({
+      target: { version: '11.2.0', sameMajor: false },
+      tier: 'next-major',
+      inRange: false,
+    });
+  });
+
+  it('U5.3 no range declared (nothing, *, latest, a tag): the same major, then the next major', () => {
+    for (const spec of [undefined, '', '*', 'latest', 'next', 'git+https://github.com/x/y'])
+      expect(upgradeChoice('npm', list, '9.31.0', spec), String(spec)).toMatchObject({
+        tier: 'same-major',
+        target: { version: '9.40.0' },
+      });
+    expect(
+      upgradeChoice('npm', list.slice(0, 2).concat([rel('11.2.0')]), '9.0.0', '*'),
+    ).toMatchObject({
+      tier: 'next-major',
+      target: { version: '11.2.0' },
+    });
+  });
+
+  it('U5.4 an npm alias is read as its range; a PyPI specifier too', () => {
+    expect(upgradeChoice('npm', list, '9.31.0', 'npm:eslint@^9.0.0')?.tier).toBe('range');
+    const py = [rel('1.0', 'yanked'), rel('1.4'), rel('2.0')];
+    expect(upgradeChoice('pypi', py, '1.0', '>=1.0,<2')).toMatchObject({
+      tier: 'range',
+      target: { version: '1.4' },
+    });
+    expect(upgradeChoice('pypi', py, '1.0', '==1.0')).toMatchObject({
+      tier: 'same-major',
+      target: { version: '1.4' },
+    });
+  });
+
+  it('U5.5 the sentence says which case it is', () => {
+    const r = (spec: string | undefined, v = '9.31.0') =>
+      upgradeSentence(upgradeChoice('npm', list, v, spec));
+    expect(r('^9.0.0')).toBe(
+      'Upgrade to 9.40.0: the newest release inside your declared range (^9.0.0) that is not deprecated, so the manifest does not need to change.',
+    );
+    expect(r('9.31.0')).toMatch(
+      /Upgrade to 9\.40\.0 \(same major version, but outside your declared range \(9\.31\.0\), so the range has to change\)\./,
+    );
+    expect(r(undefined)).toBe('Upgrade to 9.40.0 (same major version).');
+    const next = upgradeChoice(
+      'npm',
+      [rel('9.0.0', 'deprecated'), rel('10.14.0')],
+      '9.0.0',
+      '^9.0.0',
+    );
+    expect(upgradeSentence(next, '^20.19.0 || ^22.13.0 || >=24')).toMatch(
+      /Upgrade to 10\.14\.0: no release in this major version is free of the deprecation, and this is the next major version that has one, outside your declared range \(\^9\.0\.0\)\. Its engines\.node is "\^20\.19\.0 \|\| \^22\.13\.0 \|\| >=24"\./,
+    );
+    expect(upgradeSentence(next)).toMatch(/Its engines\.node could not be read\./);
+  });
+
+  it('U5.6 property: a target inside the range is never a deprecated, yanked or pre-release version, and is newer', () => {
+    const versions = [
+      '8.0.0',
+      '9.0.0',
+      '9.1.0',
+      '9.2.0',
+      '10.0.0',
+      '10.1.0',
+      '11.0.0-rc.1',
+      '11.0.0',
+    ];
+    fc.assert(
+      fc.property(
+        fc.array(
+          fc.constantFrom<'deprecated' | 'yanked' | undefined>('deprecated', 'yanked', undefined),
+          { minLength: versions.length, maxLength: versions.length },
+        ),
+        fc.constantFrom('9.0.0', '9.1.0', '9.2.0', '10.0.0'),
+        fc.constantFrom<string | undefined>(
+          '^9.0.0',
+          '>=9 <11',
+          '~9.1.0',
+          '9.1.0',
+          '*',
+          undefined,
+          '^10.0.0',
+        ),
+        (marks, inUse, spec) => {
+          const rels = versions.map((v, i) => rel(v, marks[i]));
+          const c = upgradeChoice('npm', rels, inUse, spec);
+          if (!c) return;
+          const t = rels.find((r) => r.version === c.target.version)!;
+          expect('deprecated' in t || 'yanked' in t).toBe(false);
+          expect(c.target.version.includes('-')).toBe(false);
+          if (c.tier === 'range') {
+            expect(c.inRange).toBe(true);
+            expect(c.target.version).not.toBe(inUse);
+          }
+          if (c.tier !== 'older') {
+            const cmp = (a: string, b: string) =>
+              a
+                .split('.')
+                .map(Number)
+                .reduce((acc, n, i) => acc || n - Number(b.split('.')[i]), 0);
+            expect(cmp(c.target.version, inUse)).toBeGreaterThan(0);
+          }
+        },
+      ),
+      { numRuns: 400 },
+    );
+  });
+});
+
+describe('U6 through the engine: the declared range and the engines of the next major', () => {
+  const eslintLike = () =>
+    fakeWorld(
+      [
+        living('eslinty', [
+          {
+            version: '9.31.0',
+            date: daysAgo(400),
+            deprecated: 'This version is no longer supported',
+          },
+          { version: '9.40.0', date: daysAgo(300) },
+          {
+            version: '10.0.0',
+            date: daysAgo(200),
+            deprecated: 'This version is no longer supported',
+          },
+          { version: '10.14.0', date: daysAgo(20) },
+        ]),
+      ],
+      {
+        override: (url) =>
+          url === 'https://registry.npmjs.org/eslinty/10.14.0'
+            ? {
+                ok: true,
+                status: 200,
+                json: async () => ({
+                  name: 'eslinty',
+                  version: '10.14.0',
+                  engines: { node: '^20.19.0 || ^22.13.0 || >=24' },
+                }),
+                text: async () => '',
+              }
+            : undefined,
+      },
+    );
+  const at = (spec: string, resolved: string) => dep('eslinty', { spec, resolved });
+
+  it('U6.1 a release inside the declared range is the target, and the sentence says the manifest need not change', async () => {
+    const w = eslintLike();
+    const [d] = await engineFor(w.fetch).diagnose([at('^9.0.0', '9.31.0')]);
+    expect(d?.verdict).toBe('alive');
+    expect(d?.upgradeTo).toEqual({ version: '9.40.0', sameMajor: true });
+    expect(d?.evidence[0]?.message).toContain(
+      'the newest release inside your declared range (^9.0.0) that is not deprecated',
+    );
+    expect(w.calls.some((c) => c.endsWith('/eslinty/10.14.0'))).toBe(false);
+  });
+
+  it('U6.2 nothing inside the range: the next major, with its engines.node from the packument', async () => {
+    const w = eslintLike();
+    const [d] = await engineFor(w.fetch).diagnose([at('9.31.0', '9.31.0')]);
+    // 9.40.0 is in the same major, outside the exact pin: still the smaller step.
+    expect(d?.upgradeTo).toEqual({ version: '9.40.0', sameMajor: true });
+    const w2 = fakeWorld(
+      [
+        living('eslinty', [
+          { version: '9.31.0', date: daysAgo(400), deprecated: 'old' },
+          { version: '9.40.0', date: daysAgo(300), deprecated: 'old' },
+          { version: '10.14.0', date: daysAgo(20) },
+        ]),
+      ],
+      {
+        override: (url) =>
+          url === 'https://registry.npmjs.org/eslinty/10.14.0'
+            ? {
+                ok: true,
+                status: 200,
+                json: async () => ({ engines: { node: '^20.19.0 || ^22.13.0 || >=24' } }),
+                text: async () => '',
+              }
+            : undefined,
+      },
+    );
+    const [d2] = await engineFor(w2.fetch).diagnose([at('^9.0.0', '9.31.0')]);
+    expect(d2?.upgradeTo).toEqual({ version: '10.14.0', sameMajor: false });
+    expect(d2?.evidence[0]?.message).toContain(
+      'the next major version that has one, outside your declared range (^9.0.0)',
+    );
+    expect(d2?.evidence[0]?.message).toContain(
+      'Its engines.node is "^20.19.0 || ^22.13.0 || >=24".',
+    );
+    expect(w2.calls.filter((c) => c.endsWith('/eslinty/10.14.0'))).toHaveLength(1);
+  });
+
+  it('U6.3 engines.node that cannot be read is said, and nothing breaks', async () => {
+    const w = fakeWorld([
+      living('eslinty', [
+        { version: '9.31.0', date: daysAgo(400), deprecated: 'old' },
+        { version: '10.14.0', date: daysAgo(20) },
+      ]),
+    ]);
+    const [d] = await engineFor(w.fetch).diagnose([at('^9.0.0', '9.31.0')]);
+    expect(d?.verdict).toBe('alive');
+    expect(d?.evidence[0]?.message).toContain('Its engines.node could not be read.');
+  });
+
+  it('U6.4 two dependencies on one package share the request', async () => {
+    const w = fakeWorld(
+      [
+        living('eslinty', [
+          { version: '9.31.0', date: daysAgo(400), deprecated: 'old' },
+          { version: '10.14.0', date: daysAgo(20) },
+        ]),
+      ],
+      {},
+    );
+    await engineFor(w.fetch).diagnose([
+      at('^9.0.0', '9.31.0'),
+      { ...at('^9.1.0', '9.31.0'), scope: 'dev' },
+    ]);
+    expect(w.calls.filter((c) => c.endsWith('/eslinty/10.14.0'))).toHaveLength(1);
   });
 });

@@ -34,3 +34,22 @@ export async function getNpmLatest(http: Http, name: string): Promise<Fetched<Np
   if (repo) out.repo = repo;
   return { ok: true, value: out };
 }
+
+/**
+ * The `engines.node` of one release, from its manifest in the registry (`GET registry.npmjs.org/{name}/{version}`),
+ * or null when it declares none. Used to say what the next major version needs.
+ */
+export async function getNpmEngines(
+  http: Http,
+  name: string,
+  version: string,
+): Promise<Fetched<string | null>> {
+  const r = await http.request(
+    `https://registry.npmjs.org/${encodePackageName(name)}/${encodeURIComponent(version)}`,
+  );
+  if (!r.ok) return fail(r);
+  if (!isRecord(r.data)) return badShape('npm version manifest');
+  const engines = r.data['engines'];
+  const node = isRecord(engines) ? asString(engines['node']) : undefined;
+  return { ok: true, value: node ?? null };
+}

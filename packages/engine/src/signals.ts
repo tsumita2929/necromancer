@@ -2,7 +2,8 @@
  * Turns facts from the sources into Evidence lines. Every threshold lives here.
  */
 
-import type { Evidence, SourceId, UpgradeTarget } from './types.js';
+import type { Evidence, SourceId } from './types.js';
+import type { UpgradeChoice } from './versions/upgrade.js';
 import { repoUrl, type RepoRef } from './sources/repo.js';
 import { nativeAlternativeSentence } from './native-alternatives.js';
 import { clip } from './util/guards.js';
@@ -74,12 +75,31 @@ export function npmDeprecated(
 }
 
 /** The sentence that says where to upgrade to; same text for deprecated and yanked versions. */
-export function upgradeSentence(upgradeTo: UpgradeTarget | undefined): string {
-  if (!upgradeTo) return 'No newer stable release that is not deprecated or yanked is known.';
-  const how = upgradeTo.sameMajor ? 'same major version' : 'another major version';
-  return upgradeTo.older
-    ? `Use ${upgradeTo.version} (${how}). It is older than the version in use: no newer stable release is free of deprecation or yanking.`
-    : `Upgrade to ${upgradeTo.version} (${how}).`;
+export function upgradeSentence(choice: UpgradeChoice | undefined, engines?: string): string {
+  if (!choice) return 'No newer stable release that is not deprecated or yanked is known.';
+  const { target, tier, declaredRange } = choice;
+  const v = target.version;
+  switch (tier) {
+    case 'range':
+      return `Upgrade to ${v}: the newest release inside your declared range (${clip(declaredRange ?? '', 80)}) that is not deprecated, so the manifest does not need to change.`;
+    case 'same-major': {
+      const where = declaredRange
+        ? `, but outside your declared range (${clip(declaredRange, 80)}), so the range has to change`
+        : '';
+      return `Upgrade to ${v} (same major version${where}).`;
+    }
+    case 'next-major': {
+      const where = declaredRange
+        ? `, outside your declared range (${clip(declaredRange, 80)})`
+        : '';
+      const need = engines
+        ? ` Its engines.node is "${clip(engines, 80)}".`
+        : ' Its engines.node could not be read.';
+      return `Upgrade to ${v}: no release in this major version is free of the deprecation, and this is the next major version that has one${where}.${need}`;
+    }
+    default:
+      return `Use ${v} (${target.sameMajor ? 'same major version' : 'another major version'}). It is older than the version in use: no newer stable release is free of deprecation or yanking.`;
+  }
 }
 
 export function versionDeprecated(
@@ -87,11 +107,12 @@ export function versionDeprecated(
   version: string,
   source: SourceId,
   name: string,
-  upgradeTo?: UpgradeTarget,
+  choice?: UpgradeChoice,
+  engines?: string,
 ): Evidence {
   return line({
     code: 'version-deprecated',
-    message: `The version in use (${version}) is deprecated: "${clip(message, 140)}" The package itself is not; this is an upgrade notice. ${upgradeSentence(upgradeTo)}${nativeAlternativeSentence(name)}`,
+    message: `The version in use (${version}) is deprecated: "${clip(message, 140)}" The package itself is not; this is an upgrade notice. ${upgradeSentence(choice, engines)}${nativeAlternativeSentence(name)}`,
     source,
     url: `https://www.npmjs.com/package/${name}/v/${version}`,
   });
@@ -261,11 +282,11 @@ export function versionYanked(
   name: string,
   version: string,
   reason?: string,
-  upgradeTo?: UpgradeTarget,
+  choice?: UpgradeChoice,
 ): Evidence {
   return line({
     code: 'version-yanked',
-    message: `The version in use (${version}) is yanked on PyPI${reason ? `: "${clip(reason, 120)}"` : ''}. The project itself is not; this is an upgrade notice. ${upgradeSentence(upgradeTo)}`,
+    message: `The version in use (${version}) is yanked on PyPI${reason ? `: "${clip(reason, 120)}"` : ''}. The project itself is not; this is an upgrade notice. ${upgradeSentence(choice)}`,
     source: 'pypi',
     url: `https://pypi.org/project/${name}/${version}/`,
   });
