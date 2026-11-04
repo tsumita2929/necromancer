@@ -143,7 +143,7 @@ console.log(`4a: hard + heuristic = ${hardDead + heurDead} (dead-or-worse ${f.de
 console.log('\n## Table 10. Claims side by side');
 const claimRows = [
   ['Projects with a dead-or-worse direct dependency', (a) => `${a.subjectsWithDeadOrWorse} of ${a.subjects}`],
-  ['C1 projects with a deprecated, archived, inactive or gone direct dependency', (a) => `${a.subjectsWithStrongDead} of ${a.subjects} (CI ${pct(wilson(a.subjectsWithStrongDead, a.subjects).lo)} to ${pct(wilson(a.subjectsWithStrongDead, a.subjects).hi)})`],
+  ['C1 projects with a deprecated (README statements included), archived, inactive or gone direct dependency', (a) => `${a.subjectsWithStrongDead} of ${a.subjects} (CI ${pct(wilson(a.subjectsWithStrongDead, a.subjects).lo)} to ${pct(wilson(a.subjectsWithStrongDead, a.subjects).hi)})`],
   ['Projects with a dying-or-worse direct dependency', (a) => `${a.subjectsWithNonAlive} of ${a.subjects}`],
   ['C3 dead-or-worse direct dependencies', (a) => `${a.deadDeps} of ${a.directDependencies} (${pct(a.deadDeps / a.directDependencies)}, about 1 in ${(a.directDependencies / a.deadDeps).toFixed(0)})`],
   ['C3 zombies / projects with a zombie', (a) => `${a.verdicts.zombie} / ${a.subjectsWithZombie}`],
@@ -227,39 +227,43 @@ console.log(`C3  Across ${f.directDependencies} direct dependencies of ${f.subje
 console.log(`C4  The engine now names a way out for ${f.deadDepsWithSuccessor} of ${f.deadDeps} flagged dependencies (${pct(f.deadDepsWithSuccessor / f.deadDeps)}), up from ${tuned.all.deadDepsWithSuccessor} of ${tuned.all.deadDeps}; all ${sc.zombies.total} zombies have one. Fields: all.deadDepsWithSuccessor, all.deadDeps.`);
 
 // ======================================================================================================
-// Part 3 (items R4c and R4d): the final engine is 32cc48d (PyPI repository links); the previous final, 52c808c, is census-aggregate-upgrade.json. Lines that start with Q and
+// Part 3 (items R4c, R4d and R5): the final engine is f0dfc7a (item R5: README maintainer statements, zombie basis, renamed repository,
+// built-in alternatives, range-aware upgrade target); census-aggregate-r5.json. The final engine of item R4c, 32cc48d, is
+// census-aggregate-final.json (the name it had when it was the final one); the one before, 52c808c, is census-aggregate-upgrade.json. Lines that start with Q and
 // two digits are the numbers the README and the Devpost draft may quote (docs/research/census.md section 9.8).
-// Reads: census-aggregate-final.json, census-aggregate-upgrade.json, census-r4d-headrun.json, census-r4d-compare.json,
-// census-r4d-moved.json, census-r4d-rescore.json, successors.json, census-quote-baseline-r4c.txt.
+// Reads: census-aggregate-r5.json, census-aggregate-final.json (32cc48d), census-aggregate-upgrade.json, census-r5-headrun.json,
+// census-r5-compare.json, census-r5-moved.json, census-r5-rescore.json, census-recall-r5.json, successors.json,
+// census-quote-baseline-r4d.txt (the Q lines of the previous table).
 // ======================================================================================================
-const up = JSON.parse(readFileSync(join(here, 'census-aggregate-final.json'), 'utf8')).all;
-const upEco = JSON.parse(readFileSync(join(here, 'census-aggregate-final.json'), 'utf8')).ecosystems;
-const prevUp = JSON.parse(readFileSync(join(here, 'census-aggregate-upgrade.json'), 'utf8')).all;
-const head3 = JSON.parse(readFileSync(join(here, 'census-r4d-headrun.json'), 'utf8'));
-const c4c = JSON.parse(readFileSync(join(here, 'census-r4d-compare.json'), 'utf8'));
-const mv3 = JSON.parse(readFileSync(join(here, 'census-r4d-moved.json'), 'utf8'));
-const rs = JSON.parse(readFileSync(join(here, 'census-r4d-rescore.json'), 'utf8'));
+const up = JSON.parse(readFileSync(join(here, 'census-aggregate-r5.json'), 'utf8')).all;
+const upEco = JSON.parse(readFileSync(join(here, 'census-aggregate-r5.json'), 'utf8')).ecosystems;
+const prevUp = JSON.parse(readFileSync(join(here, 'census-aggregate-final.json'), 'utf8')).all;
+const upgradeEngine = JSON.parse(readFileSync(join(here, 'census-aggregate-upgrade.json'), 'utf8')).all;
+const head3 = JSON.parse(readFileSync(join(here, 'census-r5-headrun.json'), 'utf8'));
+const c4c = JSON.parse(readFileSync(join(here, 'census-r5-compare.json'), 'utf8'));
+const mv3 = JSON.parse(readFileSync(join(here, 'census-r5-moved.json'), 'utf8'));
+const rs = JSON.parse(readFileSync(join(here, 'census-r5-rescore.json'), 'utf8'));
 const sxAll = JSON.parse(readFileSync(join(here, 'successors.json'), 'utf8'));
 const sx = sxAll.summary;
 
 console.log(`\n\n## Table 15. The final engine (${head3.engine.slice(0, 7)}) run over ${head3.run.subjects} projects: ${head3.run.networkRequests} network requests, ${head3.run.githubRestRequests} GitHub REST requests, ${head3.run.cacheHits} cached answers, ${head3.run.commitLookups} commit lookups; fields that differ from ${head3.comparedWith}: ${head3.differingFields}`);
 
-console.log('\n## Table 16. Verdicts, five engines');
-const four = [['pinned (bfd86f1)', agg.all], ['tuned', tuned.all], ['4a (368e98c)', fin.all], ['upgrade (52c808c)', prevUp], ['final (32cc48d)', up]];
+console.log('\n## Table 16. Verdicts, six engines');
+const four = [['pinned (bfd86f1)', agg.all], ['tuned', tuned.all], ['4a (368e98c)', fin.all], ['upgrade (52c808c)', upgradeEngine], ['R4c (32cc48d)', prevUp], ['final (f0dfc7a)', up]];
 for (const [name, a] of four) {
   const v = a.verdicts;
   console.log(`${name.padEnd(26)} alive ${v.alive}  dying ${v.dying}  dead ${v.dead}  ghost ${v.ghost}  zombie ${v.zombie}  total ${a.directDependencies}`);
 }
 const bUp = (k) => up.verdictBasis[k] ?? 0;
-console.log(`final, basis: dying hard ${bUp('dying/hard')}  dying heuristic ${bUp('dying/heuristic')}  dead hard ${bUp('dead/hard')}  dead heuristic ${bUp('dead/heuristic')}  ghost hard ${bUp('ghost/hard')}  zombie hard ${bUp('zombie/hard')}`);
+console.log(`final, basis: dying hard ${bUp('dying/hard')}  dying heuristic ${bUp('dying/heuristic')}  dead hard ${bUp('dead/hard')}  dead heuristic ${bUp('dead/heuristic')}  ghost hard ${bUp('ghost/hard')}  zombie hard ${bUp('zombie/hard')}  zombie heuristic ${bUp('zombie/heuristic')}`);
 const upHard = bUp('dead/hard') + bUp('ghost/hard') + bUp('zombie/hard');
-console.log(`hard-signal dead, two definitions: by basis ${upHard} (dead ${bUp('dead/hard')}, ghost ${bUp('ghost/hard')}, zombie ${bUp('zombie/hard')}); by decisive evidence code (strongDeadDeps) ${up.strongDeadDeps}. They differ by ${upHard - up.strongDeadDeps} zombies whose death rests on the abandoned rule. Heuristic dead (basis) ${bUp('dead/heuristic')}; ${upHard} + ${bUp('dead/heuristic')} = ${upHard + bUp('dead/heuristic')} dead-or-worse. The old census aggregate field heuristicDeadDeps = ${up.heuristicDeadDeps} is the basis count; strongDeadDeps + heuristicDeadDeps = ${up.strongDeadDeps + up.heuristicDeadDeps} is not the total.`);
-const upHeur = bUp('dead/heuristic');
+const upHeur = bUp('dead/heuristic') + bUp('ghost/heuristic') + bUp('zombie/heuristic');
+console.log(`hard-signal dead, two ways to count: by basis ${upHard} (dead ${bUp('dead/hard')}, ghost ${bUp('ghost/hard')}, zombie ${bUp('zombie/hard')}); by evidence code (strongDeadDeps, which counts README maintainer statements as hard, as the engine does) ${up.strongDeadDeps}. ${upHard === up.strongDeadDeps ? 'The two agree.' : `They differ by ${upHard - up.strongDeadDeps}.`} Heuristic dead (basis): dead ${bUp('dead/heuristic')}, zombie ${bUp('zombie/heuristic')} = ${upHeur}; ${upHard} + ${upHeur} = ${upHard + upHeur} dead-or-worse. The aggregate field heuristicDeadDeps = ${up.heuristicDeadDeps}; strongDeadDeps + heuristicDeadDeps = ${up.strongDeadDeps + up.heuristicDeadDeps}.`);
 
-console.log('\n## Table 17. Claims side by side, upgrade (52c808c) against final (32cc48d)');
+console.log('\n## Table 17. Claims side by side, R4c (32cc48d) against final (f0dfc7a)');
 const cmpRows = [
   ['Projects with a dead-or-worse direct dependency', (a) => `${a.subjectsWithDeadOrWorse} of ${a.subjects}`],
-  ['C1 projects with a deprecated, archived, inactive or gone direct dependency', (a) => `${a.subjectsWithStrongDead} of ${a.subjects}`],
+  ['C1 projects with a deprecated (README statements included), archived, inactive or gone direct dependency', (a) => `${a.subjectsWithStrongDead} of ${a.subjects}`],
   ['Projects with a dying-or-worse direct dependency', (a) => `${a.subjectsWithNonAlive} of ${a.subjects}`],
   ['Dead-or-worse direct dependencies', (a) => `${a.deadDeps} of ${a.directDependencies}`],
   ['Dying direct dependencies', (a) => `${a.verdicts.dying}`],
@@ -267,22 +271,35 @@ const cmpRows = [
   ['Flagged with a way out', (a) => `${a.deadDepsWithSuccessor} of ${a.deadDeps}`],
   ['Complete / partial / failed projects', (a) => `${a.statusCounts.complete} / ${a.statusCounts.partial} / ${a.statusCounts.failed}`],
 ];
-for (const [label, fn] of cmpRows) console.log(`${label.padEnd(76)} upgrade: ${fn(prevUp)}  |  final: ${fn(up)}`);
+for (const [label, fn] of cmpRows) console.log(`${label.padEnd(76)} R4c: ${fn(prevUp)}  |  final: ${fn(up)}`);
 console.log(`diagnoses compared ${c4c.diagnosesTotal}: identical ${c4c.diagnosesTotal - c4c.diagnosesDifferentInAnyField}, different in some field ${c4c.diagnosesDifferentInAnyField}`);
-console.log('transitions from the upgrade engine to final, by dependency:', JSON.stringify(c4c.transitions));
-console.log('packages whose verdict changed from the upgrade engine to final (dependencies):', JSON.stringify(c4c.changedPackages));
+const dk = c4c.differenceKinds;
+console.log(`what differs in those ${c4c.diagnosesDifferentInAnyField}: verdict ${dk.verdict}, basis ${dk.basis}, evidence codes ${dk.evidenceCodes}, evidence text only ${dk.evidenceTextOnly}, successors ${dk.successors}, upgrade target ${dk.upgradeTarget}, only text (evidence or notice sentence) ${dk.onlyText}`);
+console.log('transitions from the R4c engine (32cc48d) to final, by dependency:', JSON.stringify(c4c.transitions));
+console.log('packages whose verdict changed from the R4c engine (32cc48d) to final (dependencies):', JSON.stringify(c4c.changedPackages));
+
+const rsm = c4c.readmeStatements;
+console.log(`\n## Table 17b. README maintainer statements (evidence code readme-unmaintained) in the final run: ${rsm.dependencies} dependencies in ${rsm.packages} packages`);
+for (const r of rsm.byPackage) console.log(`${r.ecosystem}:${r.name.padEnd(28)} dependencies ${r.dependencies}  projects ${r.projects}  before ${JSON.stringify(r.before)}  after ${JSON.stringify(r.after)}`);
+const newlyDead = rsm.byPackage.filter((r) => Object.keys(r.before).some((v) => !v.startsWith('dead') && !v.startsWith('zombie') && !v.startsWith('ghost')));
+console.log(`verdict changed by a README statement: ${newlyDead.reduce((n, r) => n + r.dependencies, 0)} dependencies in ${newlyDead.length} packages (${newlyDead.map((r) => r.name).join(', ')}); already dead, statement added to the evidence: ${rsm.dependencies - newlyDead.reduce((n, r) => n + r.dependencies, 0)} dependencies`);
+
+const rcheck = JSON.parse(readFileSync(join(here, 'census-r5-readme-check.json'), 'utf8'));
+console.log(`\n## Table 17c. The README sentence of each verdict that changed, read fresh from the repository on ${rcheck.checkedAt.slice(0, 10)} (scripts/r5-readme-check.mjs)`);
+for (const u of rcheck.units) console.log(`${u.package.padEnd(34)} sentence found in the README: ${u.sentenceFoundInReadme ? 'yes' : 'NO'}; repository archived: ${u.archivedBanner ? 'yes' : 'no'}; newest commit ${u.atomNewestCommitAgeDays} days old`);
+console.log(`sentences found: ${rcheck.units.filter((u) => u.sentenceFoundInReadme).length} of ${rcheck.units.length}; repositories archived: ${rcheck.units.filter((u) => u.archivedBanner).length}; with no commit for a year or more: ${rcheck.units.filter((u) => u.atomNewestCommitAgeDays >= 365).length}`);
 
 console.log('\n## Table 18. Upgrade notices in the final run');
 const nt = c4c.notice;
 console.log(`dependencies that carry a notice ${nt.dependencies} in ${nt.projects} projects and ${nt.packages} packages; still flagged ${nt.stillFlagged}; with an advisory ${nt.withAdvisory}; target in the same major ${nt.sameMajor}, in another major ${nt.anotherMajor}, older than the version in use ${nt.older}, no target ${nt.noTarget}`);
 for (const r of nt.byPackage) console.log(`${r.ecosystem}:${r.name.padEnd(28)} dependencies ${String(r.dependencies).padStart(2)}  projects ${String(r.projects).padStart(2)}  advisory ${r.withAdvisory}  same major ${r.sameMajor}  another major ${r.anotherMajor}  older ${r.older}  verdicts ${JSON.stringify(r.verdicts)}`);
 const changedTotal = Object.values(c4c.changedPackages).reduce((a, b) => a + b, 0);
-console.log(`dependencies whose verdict changed from the previous final engine (52c808c) to this one: ${changedTotal} (${Object.keys(c4c.changedPackages).join(', ')})`);
+console.log(`dependencies whose verdict changed from the previous final engine (32cc48d) to this one: ${changedTotal} (${Object.keys(c4c.changedPackages).join(', ')})`);
 
 const wo3 = mv3.wayOutCoverage;
 console.log('\n## Table 18b. Ways out, final engine');
 console.log(share('of the 198 first flagged: with a way out', wo3.withWayOutNow, wo3.firstFlagged));
-console.log(share('of the 180 flagged now: with a way out', up.deadDepsWithSuccessor, up.deadDeps));
+console.log(share(`of the ${up.deadDeps} flagged now: with a way out`, up.deadDepsWithSuccessor, up.deadDeps));
 console.log(`of the ${wo3.firstFlagged} first flagged: lifted to alive ${wo3.liftedToAlive}, down to dying ${wo3.downToDying}, still flagged ${wo3.stillFlagged} (${wo3.stillFlaggedWithWayOut} with a way out); zombies with a way out ${wo3.zombiesWithWayOut} of ${wo3.zombies}; by kind of the first way out, among the ${up.deadDeps} flagged: ${JSON.stringify(up.deadDepsBestSuccessorKind)}; npm ${upEco.npm.deadDepsWithSuccessor} of ${upEco.npm.deadDeps}, Python ${upEco.pypi.deadDepsWithSuccessor} of ${upEco.pypi.deadDeps}`);
 console.log('\n## Table 19. Moved repositories and the 14 maybe-not-dead packages, final engine');
 for (const r of mv3.maybeNotDead) console.log(`${r.name.padEnd(28)} instances ${r.instances}  final ${r.final.join(' / ')}`);
@@ -295,8 +312,8 @@ console.log('\n## Table 20. Re-scored units under the final engine (no unit judg
 for (const [name, s] of [['first 56 (judged on the pinned engine)', rs.first56], ['second 40 (judged on the 4a engine)', rs.second40]]) {
   console.log(`${name}: no longer flagged ${s.noLongerFlagged} of ${s.units} (by the upgrade rule ${s.noLongerFlaggedByTheUpgradeRule}, by earlier changes ${s.noLongerFlaggedEarlier}; of them defensible when judged ${s.noLongerFlaggedDefensible}); still flagged ${s.stillFlagged}: right ${s.stillFlaggedCorrect} (CI ${pct(s.correctCI.lo)} to ${pct(s.correctCI.hi)}), defensible ${s.stillFlaggedDefensible} (${pct(s.defensibleCI.p)}, CI ${pct(s.defensibleCI.lo)} to ${pct(s.defensibleCI.hi)}); evidence changed for ${s.evidenceChanged.length}: ${s.evidenceChanged.map((e) => `${e.package} (${e.whenJudged} -> ${e.now})`).join('; ') || 'none'}; not defensible and still flagged: ${s.notDefensibleStillFlagged.join(', ') || 'none'}`);
 }
-console.log('evidence changed, second 40, rechecked against the repository page:', (rs.second40.recheckedAgainstDossiers ?? []).map((x) => `${x.package}: decisive line ${x.decisive}, ${x.check}${x.archivedOn ? ' (archived on ' + x.archivedOn + ')' : ''}, ${x.same ? 'holds, judgment kept' : 'does not hold'}`).join('; '));
-console.log('evidence changed, rechecked against the first dossiers:', rs.first56.recheckedAgainstFirstDossiers.map((x) => `${x.package}: engine says last commit ${x.engineDate}, first dossier ${x.dossierDate}, ${x.same ? 'same day, judgment kept' : 'differs'}`).join('; '));
+console.log('evidence changed, second 40, rechecked against the repository page:', (rs.second40.recheckedAgainstDossiers ?? []).map((x) => `${x.package}: decisive line ${x.decisive}, ${x.check}${x.archivedOn ? ' (archived on ' + x.archivedOn + ')' : ''}${x.engineSentence ? ` ("${x.engineSentence}")` : ''}, ${x.same ? 'holds, judgment kept' : 'does not hold'}`).join('; '));
+console.log('evidence changed, rechecked against the first dossiers:', rs.first56.recheckedAgainstFirstDossiers.map((x) => (x.engineSentence ? `${x.package}: the engine quotes the README sentence "${x.engineSentence}", found on the repository page read ${x.dossierDate} (newest commit ${x.lastCommitDays} days old), ${x.same ? 'the earlier judgment (right, not defensible: a commit within the year) is kept' : 'not found'}` : `${x.package}: engine says last commit ${x.engineDate}, first dossier ${x.dossierDate}, ${x.same ? 'same day, judgment kept' : 'differs'}`)).join('; '));
 console.log('left the flagged set, first 56:', rs.first56.leftUnits.map((u) => `${u.package} (${u.leftBy}${u.wasDefensible ? ', was defensible' : ''})`).join(', '));
 console.log('left the flagged set, second 40:', rs.second40.leftUnits.map((u) => `${u.package} (${u.leftBy})`).join(', '));
 console.log(`second 40, population now (without the 56 packages): ${JSON.stringify(rs.second40.populationNow)}`);
@@ -312,11 +329,11 @@ const q = (line) => {
 console.log('\n## Quote-ready numbers (Q lines)');
 const q1 = wilson(up.subjectsWithStrongDead, up.subjects);
 const s40 = rs.second40;
-q(`Q01 ${up.subjectsWithStrongDead} of ${up.subjects} projects depend directly on a package that is deprecated, archived, inactive or gone (95% CI ${pct(q1.lo)} to ${pct(q1.hi)})`);
+q(`Q01 ${up.subjectsWithStrongDead} of ${up.subjects} projects depend directly on a package that is deprecated (by its registry, or in its maintainers' own README), archived, inactive or gone (95% CI ${pct(q1.lo)} to ${pct(q1.hi)})`);
 q(`Q02 npm: ${upEco.npm.subjectsWithStrongDead} of ${upEco.npm.subjects} projects (${pct(upEco.npm.subjectsWithStrongDead / upEco.npm.subjects)})`);
 q(`Q03 Python: ${upEco.pypi.subjectsWithStrongDead} of ${upEco.pypi.subjects} projects (${pct(upEco.pypi.subjectsWithStrongDead / upEco.pypi.subjects)})`);
 q(`Q04 ${up.deadDeps} of ${up.directDependencies} direct dependencies are dead or worse (${pct(up.deadDeps / up.directDependencies)}, about 1 in ${(up.directDependencies / up.deadDeps).toFixed(0)})`);
-q(`Q05 of those ${upHard} (${pct(upHard / up.deadDeps)}) rest on a hard signal (the engine's basis field; ${up.strongDeadDeps} if a zombie that rests on the abandoned rule is not counted) and ${upHeur} (${pct(upHeur / up.deadDeps)}) on the abandoned heuristic`);
+q(`Q05 of those ${upHard} (${pct(upHard / up.deadDeps)}) rest on a hard signal (the engine's basis field, README maintainer statements included${upHard === up.strongDeadDeps ? '; the count by evidence code agrees' : `; by evidence code ${up.strongDeadDeps}`}) and ${upHeur} (${pct(upHeur / up.deadDeps)}) on the abandoned heuristic`);
 q(`Q06 ${up.verdicts.zombie} zombies (dead, with a known advisory against the version in use), in ${up.subjectsWithZombie} projects`);
 q(`Q07 ${up.subjectsWithDeadOrWorse} of ${up.subjects} projects have a dead-or-worse direct dependency of any basis`);
 q(`Q08 the engine names a way out for ${up.deadDepsWithSuccessor} of ${up.deadDeps} flagged dependencies (${pct(up.deadDepsWithSuccessor / up.deadDeps)}); ${sx.zombies.withWayOut.dependencies} of ${sx.zombies.all.dependencies} zombies`);
@@ -329,28 +346,31 @@ q(`Q13 verdicts of ${up.directDependencies} direct dependencies: alive ${up.verd
 q(`Q14 sample: ${up.subjects} projects (25 each of npm popular, npm tail, Python popular, Python tail), ${up.directDependencies} direct dependencies, median ${up.directPerSubjectMedian} per project`);
 q(`Q15 precision on units the tuning never saw, final engine: ${s40.stillFlagged} still flagged of ${s40.units}; ${s40.stillFlaggedCorrect} right (CI ${pct(s40.correctCI.lo)} to ${pct(s40.correctCI.hi)}); ${s40.stillFlaggedDefensible} defensible (${pct(s40.defensibleCI.p)}, CI ${pct(s40.defensibleCI.lo)} to ${pct(s40.defensibleCI.hi)}); weighted by population ${pct(s40.weighted.defensible.p)} (CI ${pct(s40.weighted.defensible.lo)} to ${pct(s40.weighted.defensible.hi)})`);
 q(`Q16 the same 40 units under the round-4a engine: ${p2.pooled.correct} of ${p2.pooled.checked} right, ${p2.pooled.defensible} of ${p2.pooled.checked} defensible (${pct(p2.pooled.defensible / p2.pooled.checked)}); ${s40.noLongerFlaggedByTheUpgradeRule} units are no longer flagged because of the upgrade rule`);
-q(`Q17 ${rs.first56.stillFlagged} of the first 56 units are still flagged, all ${rs.first56.stillFlaggedDefensible} right and defensible (the tuning was fitted on these: do not quote as out-of-sample)`);
+q(`Q17 ${rs.first56.stillFlagged} of the first 56 units are still flagged: ${rs.first56.stillFlaggedCorrect} right, ${rs.first56.stillFlaggedDefensible} defensible${rs.first56.notDefensibleStillFlagged.length ? ` (not defensible: ${rs.first56.notDefensibleStillFlagged.join(', ')})` : ''} (the tuning was fitted on these: do not quote as out-of-sample)`);
 q(`Q18 coverage: ${up.statusCounts.complete} projects complete, ${up.statusCounts.partial} partial, ${up.statusCounts.failed} failed`);
 const h = s40.strataNow['dead|hard'];
 q(`Q19 hard-signal flags: ${h.correct} of ${h.checked} right and ${h.defensible} of ${h.checked} defensible among dead-on-a-hard-signal units the tuning never saw (CI ${pct(wilson(h.defensible, h.checked).lo)} to 100.0%)`);
 
-const rc = JSON.parse(readFileSync(join(here, 'census-recall-r4d.json'), 'utf8'));
-console.log('\n## Table 21. Recall check: alive units judged against the criteria of census-recall-criteria.md');
+const rc = JSON.parse(readFileSync(join(here, 'census-recall-r5.json'), 'utf8'));
+console.log('\n## Table 21. Recall check: alive units judged against the criteria of census-recall-criteria.md (drawn on engine 32cc48d, counted on the final engine)');
 console.log(`engine ${rc.engine.slice(0, 7)}, seed text ${rc.seedText}, check date ${rc.checkDate}; alive units in the population ${rc.population.aliveUnits} (plain ${rc.strata.A.population}, signalled ${rc.strata.B.population})`);
 for (const [st, s] of Object.entries(rc.strata)) {
   console.log(`stratum ${st}: ${s.units} units (npm ${s.byEcosystem.npm}, PyPI ${s.byEcosystem.pypi}), ${s.distinctPackages} distinct packages, not checkable ${s.notCheckable}, checked ${s.checked}: really dead ${s.reallyDead}, really dying ${s.reallyDying}, borderline ${s.borderline}; misses ${s.misses} of ${s.checked} = ${pct(s.missCI.p)} (CI ${pct(s.missCI.lo)} to ${pct(s.missCI.hi)})`);
 }
-console.log(`all: ${rc.total.units} units, ${rc.total.checked} checked, misses ${rc.total.misses} = ${pct(rc.total.missCI.p)} (CI ${pct(rc.total.missCI.lo)} to ${pct(rc.total.missCI.hi)}); weighted by stratum size ${pct(rc.total.weightedMiss.p)} (CI ${pct(rc.total.weightedMiss.lo)} to ${pct(rc.total.weightedMiss.hi)})`);
+console.log(`all: ${rc.total.units} units, ${rc.strata.A.distinctPackages + rc.strata.B.distinctPackages} distinct packages, ${rc.total.checked} checked, misses ${rc.total.misses} = ${pct(rc.total.missCI.p)} (CI ${pct(rc.total.missCI.lo)} to ${pct(rc.total.missCI.hi)}); weighted by stratum size ${pct(rc.total.weightedMiss.p)} (CI ${pct(rc.total.weightedMiss.lo)} to ${pct(rc.total.weightedMiss.hi)})`);
+for (const m of rc.leftAliveSet) console.log(`left the alive set: ${m.ecosystem}:${m.package} (${m.stratum}); by the criteria ${m.outcomeByTheCriteria} (${m.criterion}); the final engine says ${m.engineNow.verdict} (${m.engineNow.basis}), first evidence ${m.engineNow.evidenceCodes[0]}: ${m.engineNow.firstEvidence}`);
+const df = rc.population.drawnFrom.byCell;
+console.log(`population drawn from: ${rc.population.drawnFrom.aliveUnits} alive units of engine 32cc48d (plain ${df['A|npm'] + df['A|pypi']}, signalled ${df['B|npm'] + df['B|pypi']}); population now: ${rc.population.aliveUnits} (${JSON.stringify(rc.population.byCell)})`);
 for (const m of rc.misses) console.log(`miss: ${m.ecosystem}:${m.package} (${m.stratum}, engine evidence ${m.engineEvidence.join(', ')}) ${m.criterion}: ${m.note} Engine rule: ${m.engineRule}`);
 for (const m of rc.borderline) console.log(`borderline: ${m.ecosystem}:${m.package}: ${m.note}`);
 console.log(`not checkable: ${rc.notCheckable.map((x) => x.package).join(', ')}; repositories without README.md at HEAD: ${rc.reposWithoutReadmeMd} (their registry text was read instead)`);
 console.log(`sensitivity: ${rc.sensitivity.unitsWithRecentActivityLift} of the ${rc.strata.B.units} signalled units are alive because of the recent-activity lift; ${rc.sensitivity.ofThemReleaseOlderThan2Years} of those have a release older than 2 years (${rc.sensitivity.aliveUnitsWithReleaseOlderThan2YearsAndActiveRepo.map((x) => x.package + ' ' + x.releaseAgeDays + ' days').join(', ')}); if the release age alone counted, misses would be ${rc.sensitivity.missesIfReleaseAgeAloneCounted} of ${rc.total.checked}`);
-const rcMiss = rc.misses[0];
 q(`Q20 recall of the alive verdict: ${rc.total.checked} alive units checked against the registries and repositories; ${rc.total.misses} really dead or dying (${pct(rc.total.missCI.p)}, CI ${pct(rc.total.missCI.lo)} to ${pct(rc.total.missCI.hi)}); plain alive ${rc.strata.A.misses} of ${rc.strata.A.checked} (CI up to ${pct(rc.strata.A.missCI.hi)}); weighted by stratum size ${pct(rc.total.weightedMiss.p)}`);
-q(`Q21 the one miss: ${rcMiss.package}, alive because of a recent commit, while its README says it is no longer maintained`);
+const gone = rc.leftAliveSet[0];
+q(rc.misses.length ? `Q21 the miss: ${rc.misses.map((m) => m.package).join(', ')}, alive although ${rc.misses[0].note}` : `Q21 the miss of the previous engine, ${gone.package} (alive because of a recent commit while its README says it is no longer maintained), is now ${gone.engineNow.verdict} on a ${gone.engineNow.basis} signal (its README statement); no other alive unit checked is a miss`);
 
-// Which Q figures differ from the previous quote table (docs/research/census-quote-baseline-r4c.txt, printed by recompute.mjs at commit 419b703)?
-const baseline = readFileSync(join(here, 'census-quote-baseline-r4c.txt'), 'utf8').split('\n').filter(Boolean);
+// Which Q figures differ from the previous quote table (docs/research/census-quote-baseline-r4d.txt, the Q lines printed by recompute.mjs at commit d07c468)?
+const baseline = readFileSync(join(here, 'census-quote-baseline-r4d.txt'), 'utf8').split('\n').filter(Boolean);
 const idOf = (l) => l.slice(0, 3);
 const baseById = Object.fromEntries(baseline.map((l) => [idOf(l), l]));
 const changed = qLines.filter((l) => baseById[idOf(l)] !== l);

@@ -1,5 +1,6 @@
 // Re-scores the hand-checked units on the upgrade-notice engine (item R4c). No unit is judged again by this script.
-// Usage: node r4c-rescore.mjs <dirPinned> <dir4a> <dirFinal> <out.json> [firstCheckDossierDir] [recheckDossierDir]
+// Usage: node r4c-rescore.mjs <dirPinned> <dir4a> <dirFinal> <out.json> [firstCheckDossierDir] [recheckDossierDir] [engineLabel]
+// recheckDossierDir holds the dossiers of the units whose decisive line is `repo-archived` or `readme-unmaintained`.
 // Inputs: docs/research/census-precision.json (56 units, judged on the pinned engine) and
 //         docs/research/census-precision-r4b.json (40 units, judged on the round-4a engine).
 // A unit is "flagged" when at least one of its instances has a verdict other than alive. A flagged unit keeps its
@@ -11,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 import { wilson } from './lib.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const [dirPinned, dir4a, dirUp, outFile, dossierDir, recheckDir] = process.argv.slice(2);
+const [dirPinned, dir4a, dirUp, outFile, dossierDir, recheckDir, engineLabel] = process.argv.slice(2);
 const first = JSON.parse(readFileSync(join(here, '..', 'census-precision.json'), 'utf8'));
 const second = JSON.parse(readFileSync(join(here, '..', 'census-precision-r4b.json'), 'utf8'));
 
@@ -97,6 +98,14 @@ function recheck(rows, dir) {
       const archived = dossier?.repoPage?.archivedBanner === true;
       return { package: r.package, decisive, check: 'archived banner on the repository page', archivedOn: dossier?.repoPage?.archivedOn ?? null, same: archived, judgmentKept: archived };
     }
+    if (decisive === 'readme-unmaintained') {
+      // the new decisive line quotes a README sentence: the dossier of the repository page must hold that sentence
+      const quoted = flagged(up.get(key))[0]?.evidence[0]?.message.match(/says: "(.*)"/)?.[1] ?? null;
+      const file = find(recheckDir);
+      const dossier = file ? JSON.parse(readFileSync(join(recheckDir, file), 'utf8')) : null;
+      const found = quoted !== null && (dossier?.repoPage?.readmeHints ?? []).some((h) => h.includes(quoted.replace(/\.$/, '')));
+      return { package: r.package, decisive, check: 'README sentence against the repository page read on the check date', engineSentence: quoted, dossierDate: dossier?.checkedAt?.slice(0, 10) ?? null, lastCommitDays: dossier?.repoPage?.atomLastCommitAgeDays ?? null, same: found, judgmentKept: found };
+    }
     const line = flagged(up.get(key))[0]?.evidence.find((e) => e.code === 'repo-inactive');
     const engineDate = line?.message.match(/last commit (\d{4}-\d{2}-\d{2})/)?.[1] ?? null;
     const file = find(dossierDir);
@@ -158,7 +167,7 @@ both.defensibleCI = wilson(both.stillFlaggedDefensible, both.stillFlagged);
 const strip = ({ rows, ...rest }) => rest;
 const out = {
   schema: 1,
-  engine: 'upgrade-notice engine, see census-r4c-headrun.json',
+  engine: engineLabel ?? 'upgrade-notice engine, see census-r4c-headrun.json',
   rule: 'No unit is judged again by this script. A flagged unit keeps its committed judgment when its verdict and decisive evidence code are unchanged; the others are listed in evidenceChanged and were checked by hand against the dossiers.',
   first56: strip(s56),
   second40: { ...strip(s40), populationNow: population, strataNow: strata, weighted: { correct: weighted('correct'), defensible: weighted('defensible') } },

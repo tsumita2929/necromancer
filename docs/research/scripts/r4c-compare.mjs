@@ -1,11 +1,11 @@
 // The round-4a engine against the upgrade-notice engine on the census's 100 subjects (item R4c).
-// Usage: node r4c-compare.mjs <dir4a> <dirUpgrade> <out.json>
+// Usage: node r4c-compare.mjs <dirBefore> <dirAfter> <out.json> [description]   (any two engines; the notice table is of dirAfter)
 // dir4a = results of engine 368e98c, dirUpgrade = results of engine HEAD (a deprecated or yanked version of a living
 // package is an upgrade notice on an alive verdict, `Diagnosis.upgradeTo`). Output: package names and counts only.
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const [dirA, dirB, outFile] = process.argv.slice(2);
+const [dirA, dirB, outFile, descriptionArg] = process.argv.slice(2);
 const label = (d) => (d ? (d.verdict === 'alive' || !d.basis ? d.verdict : `${d.verdict} (${d.basis})`) : 'missing');
 
 // One entry per direct dependency as the report lists it; the key does not use a position because the engines
@@ -31,10 +31,27 @@ if (a.size !== b.size) throw new Error(`different number of dependencies: ${a.si
 let differentFields = 0;
 const transitions = {};
 const changedPackages = {};
+// What differs in the diagnoses that differ (a diagnosis can differ in more than one way).
+const kinds = { verdict: 0, basis: 0, evidenceCodes: 0, evidenceTextOnly: 0, successors: 0, upgradeTarget: 0, upgradeTextOnly: 0, otherField: 0, onlyText: 0 };
+const same = (x, y) => JSON.stringify(x) === JSON.stringify(y);
 for (const [k, da] of a) {
   const db = b.get(k);
   if (!db) throw new Error(`missing in the upgrade run: ${k}`);
-  if (JSON.stringify(da) !== JSON.stringify(db)) differentFields++;
+  if (JSON.stringify(da) !== JSON.stringify(db)) {
+    differentFields++;
+    const codes = (d) => d.evidence.map((e) => e.code);
+    const v = da.verdict !== db.verdict;
+    const bs = (da.basis ?? null) !== (db.basis ?? null);
+    const ec = !same(codes(da), codes(db));
+    const et = !ec && !same(da.evidence, db.evidence);
+    const su = !same(da.successors, db.successors);
+    const ut = (da.upgradeTo?.version ?? null) !== (db.upgradeTo?.version ?? null);
+    const utx = !ut && !same(da.upgradeTo, db.upgradeTo);
+    const known = new Set(['verdict', 'basis', 'evidence', 'successors', 'upgradeTo']);
+    const other = [...new Set([...Object.keys(da), ...Object.keys(db)])].some((f) => !known.has(f) && !same(da[f], db[f]));
+    for (const [flag, name] of [[v, 'verdict'], [bs, 'basis'], [ec, 'evidenceCodes'], [et, 'evidenceTextOnly'], [su, 'successors'], [ut, 'upgradeTarget'], [utx, 'upgradeTextOnly'], [other, 'otherField']]) if (flag) kinds[name]++;
+    if (!v && !bs && !ec && !su && !ut && !other) kinds.onlyText++;
+  }
   const t = `${label(da)} -> ${label(db)}`;
   transitions[t] = (transitions[t] ?? 0) + 1;
   if (da.verdict !== db.verdict) {
@@ -69,10 +86,28 @@ const sum = (f) => rows.reduce((n, r) => n + f(r), 0);
 const allProjects = new Set();
 for (const [k, d] of b) if (has(d)) allProjects.add(k.split('|')[0]);
 
+// Dependencies whose evidence holds a README maintainer statement ('readme-unmaintained') in dirAfter, and what they were in dirBefore.
+const readmeStatements = {};
+let readmeDependencies = 0;
+for (const [k, d] of b) {
+  if (!d.evidence.some((e) => e.code === 'readme-unmaintained')) continue;
+  readmeDependencies++;
+  const [file, eco, name] = k.split('|');
+  const r = (readmeStatements[`${eco}|${name}`] ??= { ecosystem: eco, name, dependencies: 0, projects: new Set(), before: {}, after: {} });
+  r.dependencies++;
+  r.projects.add(file);
+  const was = label(a.get(k));
+  r.before[was] = (r.before[was] ?? 0) + 1;
+  r.after[label(d)] = (r.after[label(d)] ?? 0) + 1;
+}
+const readmeRows = Object.values(readmeStatements).map((r) => ({ ...r, projects: r.projects.size })).sort((x, y) => x.name.localeCompare(y.name));
+
 const out = {
-  description: 'Round-4a engine (368e98c) against the upgrade-notice engine on the 100 census subjects. Package names and counts only.',
+  description: descriptionArg ?? 'Round-4a engine (368e98c) against the upgrade-notice engine on the 100 census subjects. Package names and counts only.',
   diagnosesTotal: a.size,
   diagnosesDifferentInAnyField: differentFields,
+  differenceKinds: kinds,
+  readmeStatements: { dependencies: readmeDependencies, packages: readmeRows.length, byPackage: readmeRows },
   transitions: Object.fromEntries(Object.entries(transitions).sort((x, y) => y[1] - x[1])),
   changedPackages: Object.fromEntries(Object.entries(changedPackages).sort((x, y) => y[1] - x[1] || x[0].localeCompare(y[0]))),
   notice: {

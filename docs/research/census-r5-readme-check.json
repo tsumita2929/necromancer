@@ -1,0 +1,60 @@
+{
+ "checkedAt": "2026-11-04T16:28:41.970Z",
+ "units": [
+  {
+   "package": "npm|coveralls",
+   "repository": "nickmerwin/node-coveralls",
+   "readmeUrl": "https://raw.githubusercontent.com/nickmerwin/node-coveralls/HEAD/README.md",
+   "sentence": "This repo is no longer maintained.",
+   "sentenceFoundInReadme": true,
+   "repoPageStatus": 200,
+   "archivedBanner": false,
+   "atomNewestCommit": "2026-01-05T23:13:06Z",
+   "atomNewestCommitAgeDays": 302
+  },
+  {
+   "package": "npm|karma",
+   "repository": "karma-runner/karma",
+   "readmeUrl": "https://raw.githubusercontent.com/karma-runner/karma/HEAD/README.md",
+   "sentence": "Karma is deprecated and is not accepting new features or general bug fixes.",
+   "sentenceFoundInReadme": true,
+   "repoPageStatus": 200,
+   "archivedBanner": false,
+   "atomNewestCommit": "2024-07-29T17:42:11Z",
+   "atomNewestCommitAgeDays": 827
+  },
+  {
+   "package": "npm|karma-firefox-launcher",
+   "repository": "karma-runner/karma-firefox-launcher",
+   "readmeUrl": "https://raw.githubusercontent.com/karma-runner/karma-firefox-launcher/HEAD/README.md",
+   "sentence": "karma-firefox-launcher is deprecated and is not accepting new features or general bug fixes.",
+   "sentenceFoundInReadme": true,
+   "repoPageStatus": 200,
+   "archivedBanner": false,
+   "atomNewestCommit": "2024-03-03T23:31:57Z",
+   "atomNewestCommitAgeDays": 975
+  },
+  {
+   "package": "pypi|dotenv",
+   "repository": "pedroburon/dotenv",
+   "readmeUrl": "https://raw.githubusercontent.com/pedroburon/dotenv/HEAD/README.md",
+   "sentence": "THIS LIBRARY IS NO LONGER SUPPORTED, USE theskumer/python-dotenv INSTEAD.",
+   "sentenceFoundInReadme": true,
+   "repoPageStatus": 200,
+   "archivedBanner": false,
+   "atomNewestCommit": "2025-02-07T16:36:00Z",
+   "atomNewestCommitAgeDays": 634
+  },
+  {
+   "package": "pypi|mkdocs-material-extensions",
+   "repository": "facelessuser/mkdocs-material-extensions",
+   "readmeUrl": "https://raw.githubusercontent.com/facelessuser/mkdocs-material-extensions/HEAD/README.md",
+   "sentence": "NOTE: This project is now deprecated as MkDocs for Material now implements this logic directly.",
+   "sentenceFoundInReadme": true,
+   "repoPageStatus": 200,
+   "archivedBanner": false,
+   "atomNewestCommit": "2023-11-22T19:08:12Z",
+   "atomNewestCommitAgeDays": 1077
+  }
+ ]
+}

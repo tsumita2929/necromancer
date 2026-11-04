@@ -88,12 +88,16 @@ const distinctDead = { npm: new Map(), pypi: new Map() }; // package -> {verdict
 
 // A dead-or-worse dependency counts as 'hard-signal dead' (claim C1) when its evidence holds one of the
 // signals the claim names: deprecated, archived, inactive, yanked or gone. Same rule for both engines.
+// 'readme-unmaintained' (engine R5, rule 1) is a deprecation in the maintainers' own words (a README statement
+// that the project is deprecated or no longer maintained), so it counts as a hard signal too. Every engine
+// before R5 never emits that code, so the counts of the older runs do not change.
 const HARD = new Set([
   'npm-deprecated',
   'repo-archived',
   'pypi-inactive',
   'pypi-yanked',
   'repo-gone',
+  'readme-unmaintained',
 ]);
 const isStrong = (d) => d.evidence.some((e) => HARD.has(e.code));
 function addTo(c, s, r, direct, st) {

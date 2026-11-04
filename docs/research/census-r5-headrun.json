@@ -1,0 +1,30 @@
+{
+ "engine": "f0dfc7a35e1b76ac32b426225bd47ac5e0256878",
+ "comparedWith": "docs/verification/engine-r5-data/census-aggregate-after.json (the engine worker's aggregate script counts by code and does not know readme-unmaintained; the differing fields are the strongDead counts, see census.md 9.1)",
+ "differingFields": 13,
+ "differingPaths": [
+  "/cells/pypi-tail/subjectsWithStrongDead",
+  "/cells/pypi-tail/subjectsWithStrongDeadRuntime",
+  "/cells/pypi-tail/strongDeadDeps",
+  "/cells/npm-tail/strongDeadDeps",
+  "/cells/pypi-popular/strongDeadDeps",
+  "/cells/npm-popular/strongDeadDeps",
+  "/ecosystems/npm/strongDeadDeps",
+  "/ecosystems/pypi/subjectsWithStrongDead",
+  "/ecosystems/pypi/subjectsWithStrongDeadRuntime",
+  "/ecosystems/pypi/strongDeadDeps",
+  "/all/subjectsWithStrongDead",
+  "/all/subjectsWithStrongDeadRuntime",
+  "/all/strongDeadDeps"
+ ],
+ "run": {
+  "subjects": 100,
+  "networkRequests": 0,
+  "cacheHits": 7339,
+  "githubRestRequests": 0,
+  "commitLookups": 451,
+  "commitFeedsFetched": 0,
+  "commitFeedsFailed": 0,
+  "repositoryLookupsOutsideCache": 0
+ }
+}

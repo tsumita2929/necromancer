@@ -1,0 +1,423 @@
+{
+ "description": "Final engine of item R4c (32cc48d) against the final engine of item R5 (f0dfc7a) on the 100 census subjects. Package names and counts only.",
+ "diagnosesTotal": 3201,
+ "diagnosesDifferentInAnyField": 58,
+ "differenceKinds": {
+  "verdict": 6,
+  "basis": 9,
+  "evidenceCodes": 13,
+  "evidenceTextOnly": 43,
+  "successors": 4,
+  "upgradeTarget": 14,
+  "upgradeTextOnly": 0,
+  "otherField": 0,
+  "onlyText": 26
+ },
+ "readmeStatements": {
+  "dependencies": 13,
+  "packages": 12,
+  "byPackage": [
+   {
+    "ecosystem": "pypi",
+    "name": "codecov",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dead (hard)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "npm",
+    "name": "coveralls",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "alive": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "dotenv",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dying (heuristic)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "npm",
+    "name": "eslint-plugin-node",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dead (heuristic)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "npm",
+    "name": "karma",
+    "dependencies": 2,
+    "projects": 2,
+    "before": {
+     "dying (heuristic)": 2
+    },
+    "after": {
+     "dead (hard)": 2
+    }
+   },
+   {
+    "ecosystem": "npm",
+    "name": "karma-firefox-launcher",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dying (heuristic)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "mkdocs-material-extensions",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dying (heuristic)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "npm",
+    "name": "node-loader",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dead (hard)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "pytest-dotenv",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dead (hard)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "pypi",
+    "name": "recommonmark",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dead (hard)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "npm",
+    "name": "style-loader",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dead (hard)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   },
+   {
+    "ecosystem": "npm",
+    "name": "wdio-geckodriver-service",
+    "dependencies": 1,
+    "projects": 1,
+    "before": {
+     "dead (hard)": 1
+    },
+    "after": {
+     "dead (hard)": 1
+    }
+   }
+  ]
+ },
+ "transitions": {
+  "alive -> alive": 2808,
+  "dying (heuristic) -> dying (heuristic)": 207,
+  "dead (heuristic) -> dead (heuristic)": 103,
+  "dead (hard) -> dead (hard)": 71,
+  "dying (heuristic) -> dead (hard)": 5,
+  "zombie (hard) -> zombie (heuristic)": 2,
+  "zombie (hard) -> zombie (hard)": 2,
+  "ghost (hard) -> ghost (hard)": 1,
+  "alive -> dead (hard)": 1,
+  "dead (heuristic) -> dead (hard)": 1
+ },
+ "changedPackages": {
+  "npm|karma": 2,
+  "npm|coveralls": 1,
+  "npm|karma-firefox-launcher": 1,
+  "pypi|dotenv": 1,
+  "pypi|mkdocs-material-extensions": 1
+ },
+ "notice": {
+  "dependencies": 41,
+  "projects": 26,
+  "packages": 15,
+  "withAdvisory": 7,
+  "sameMajor": 4,
+  "anotherMajor": 36,
+  "older": 1,
+  "noTarget": 0,
+  "stillFlagged": 1,
+  "byPackage": [
+   {
+    "ecosystem": "npm",
+    "name": "eslint",
+    "dependencies": 21,
+    "projects": 20,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 21,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 21
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "glob",
+    "dependencies": 4,
+    "projects": 4,
+    "withAdvisory": 1,
+    "sameMajor": 0,
+    "anotherMajor": 4,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 4
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "rimraf",
+    "dependencies": 4,
+    "projects": 4,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 4,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 4
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "@testing-library/jest-dom",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "@xmldom/xmldom",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 1,
+    "anotherMajor": 0,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "codemirror",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 0,
+    "older": 1,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "jquery",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 1,
+    "anotherMajor": 0,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "miniflare",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "next",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 1,
+    "anotherMajor": 0,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "prettier-standard",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "dead (heuristic)": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "puppeteer",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "ua-parser-js",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 0,
+    "sameMajor": 1,
+    "anotherMajor": 0,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "uuid",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "vue-i18n",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   },
+   {
+    "ecosystem": "npm",
+    "name": "wrangler",
+    "dependencies": 1,
+    "projects": 1,
+    "withAdvisory": 1,
+    "sameMajor": 0,
+    "anotherMajor": 1,
+    "older": 0,
+    "noTarget": 0,
+    "verdicts": {
+     "alive": 1
+    },
+    "wayOut": 0
+   }
+  ]
+ }
+}

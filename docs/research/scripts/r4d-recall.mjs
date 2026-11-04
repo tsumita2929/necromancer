@@ -10,8 +10,51 @@ import { wilson } from './lib.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const judgeDir = process.argv[2];
-const units = JSON.parse(readFileSync(join(judgeDir, 'units-recall.json'), 'utf8'));
-const population = JSON.parse(readFileSync(join(judgeDir, 'population-recall.json'), 'utf8'));
+const opt = (name) => {
+  const i = process.argv.indexOf(`--${name}`);
+  return i >= 0 ? process.argv[i + 1] : null;
+};
+const laterResults = opt('results');
+const engineCommit = opt('engine') ?? '32cc48dc07565a78af1767e6d4c79128b8ffb038';
+const outName = opt('out') ?? 'census-recall-r4d.json';
+const allUnits = JSON.parse(readFileSync(join(judgeDir, 'units-recall.json'), 'utf8'));
+let population = JSON.parse(readFileSync(join(judgeDir, 'population-recall.json'), 'utf8'));
+let units = allUnits;
+const leftAliveSet = [];
+if (laterResults) {
+  // Same strata rule as r4d-draw.mjs.
+  const SIGNAL = new Set(['recent-activity', 'repo-moved', 'version-deprecated', 'version-yanked', 'registry-not-found', 'unchecked', 'activity-unchecked', 'low-maintenance', 'no-release', 'no-release-long', 'repo-inactive', 'no-repository']);
+  const sampleCells = JSON.parse(readFileSync(join(laterResults, '..', 'sample.json'), 'utf8')).cells;
+  const idOfRef = {};
+  for (const c of Object.values(sampleCells)) c.subjects.forEach((s, i) => (idOfRef[`${c.id}#${i}`] = s.id));
+  const bySubject = {};
+  const byCell = {};
+  let aliveUnits = 0;
+  for (const f of readdirSync(laterResults).sort()) {
+    const r = JSON.parse(readFileSync(join(laterResults, f), 'utf8'));
+    const seen = new Set();
+    bySubject[r.subject.id] = {};
+    for (const d of r.report?.diagnoses ?? []) {
+      if (!d.dependency.direct) continue;
+      const key = `${d.dependency.ecosystem}|${d.dependency.name}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      bySubject[r.subject.id][key] = { verdict: d.verdict, basis: d.basis ?? null, codes: d.evidence.map((e) => e.code), first: d.evidence[0]?.message ?? null };
+      if (d.verdict !== 'alive') continue;
+      const cell = `${d.evidence.some((e) => SIGNAL.has(e.code)) ? 'B' : 'A'}|${d.dependency.ecosystem}`;
+      byCell[cell] = (byCell[cell] ?? 0) + 1;
+      aliveUnits++;
+    }
+  }
+  units = [];
+  for (const u of allUnits) {
+    const now = bySubject[idOfRef[u.subjectRef]]?.[`${u.ecosystem}|${u.name}`];
+    if (!now) throw new Error(`unit ${u.subjectRef} ${u.name} not found in ${laterResults}`);
+    if (now.verdict === 'alive') units.push(u);
+    else leftAliveSet.push({ ...u, now });
+  }
+  population = { ...population, aliveUnits, byCell, engineOfPopulation: engineCommit, drawnFrom: { aliveUnits: population.aliveUnits, byCell: population.byCell } };
+}
 
 // Judgments that need a person. Everything else follows from the facts and the criteria.
 const MANUAL = {
@@ -38,7 +81,7 @@ const NOTES = {
 };
 
 const dossierFile = (u) => `${u.ecosystem}__${u.name.replace(/[^A-Za-z0-9_.-]/g, '_')}__${u.cell.replace('|', '-')}-${u.subjectRef.replace('#', '_')}.json`;
-const rows = units.map((u) => {
+const judge = (u) => {
   const d = JSON.parse(readFileSync(join(judgeDir, 'dossiers-recall', dossierFile(u)), 'utf8'));
   const r = d.registry;
   const p = d.repoPage;
@@ -82,7 +125,8 @@ const rows = units.map((u) => {
     note: manual?.note ?? NOTES[key] ?? null,
     engineRule: manual?.rule ?? null,
   };
-});
+};
+const rows = units.map(judge);
 
 const strata = {};
 for (const st of ['A', 'B']) {
@@ -133,11 +177,17 @@ const sensitivity = {
   aliveUnitsWithReleaseOlderThan2YearsAndActiveRepo: rows.filter((r) => r.outcome === 'alive' && r.facts.releaseAgeDays >= 730).map((r) => ({ package: r.package, releaseAgeDays: r.facts.releaseAgeDays, commitAgeDays: r.facts.commitAgeDays })),
   missesIfReleaseAgeAloneCounted: all.filter((r) => r.outcome === 'dead' || r.outcome === 'dying' || r.facts.releaseAgeDays >= 730).length,
 };
+const left = leftAliveSet.map((u) => {
+  const j = judge(u);
+  return { ecosystem: j.ecosystem, package: j.package, subjectRef: j.subjectRef, stratum: j.stratum, outcomeByTheCriteria: j.outcome, criterion: j.criterion, engineNow: { verdict: u.now.verdict, basis: u.now.basis, evidenceCodes: u.now.codes, firstEvidence: u.now.first }, note: j.note, engineRuleWhenItWasAMiss: j.engineRule };
+});
 const readmeGap = rows.filter((r) => r.facts.repoFound && !r.facts.readmeRead).length;
 const out = {
   schema: 1,
   checkDate: rows.length ? readdirSync(join(judgeDir, 'dossiers-recall')).length && JSON.parse(readFileSync(join(judgeDir, 'dossiers-recall', dossierFile(units[0])), 'utf8')).checkedAt.slice(0, 10) : null,
-  engine: '32cc48dc07565a78af1767e6d4c79128b8ffb038',
+  engine: engineCommit,
+  drawnOn: laterResults ? 'the alive units of engine 32cc48d; the units that engine ' + engineCommit.slice(0, 7) + ' no longer calls alive are listed under leftAliveSet and are not counted as alive units' : undefined,
+  leftAliveSet: laterResults ? left : undefined,
   criteria: 'docs/research/census-recall-criteria.md',
   seedText: population.seedText,
   population,
@@ -150,5 +200,5 @@ const out = {
   notCheckable: rows.filter((r) => r.outcome === 'notCheckable').map((r) => ({ ecosystem: r.ecosystem, package: r.package })),
   units: rows,
 };
-writeFileSync(join(here, '..', 'census-recall-r4d.json'), JSON.stringify(out, null, 1));
+writeFileSync(join(here, '..', outName), JSON.stringify(out, null, 1));
 console.log(JSON.stringify({ strata, total, sensitivity, readmeGap }, null, 0));

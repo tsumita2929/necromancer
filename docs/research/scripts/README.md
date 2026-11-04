@@ -33,6 +33,23 @@ node docs/research/scripts/r4d-recall.mjs $J     # rewrites docs/research/census
 git diff --stat docs/research/census-recall-r4d.json   # empty when the data agree
 ```
 
+The same, counted on a later engine (item R5): the units are not drawn again; a unit that engine no longer calls `alive` leaves the alive set, and the population is counted from that engine's results (a folder of per-project results in the census scratch folder).
+
+```
+node docs/research/scripts/r4d-recall.mjs $J --results "$NECROMANCER_CENSUS_DIR/results-r5c" --engine <commit> --out census-recall-r5.json
+```
+
+Numbers of the final engine (item R5), in the order they were made. `<R>` is a folder of per-project results, for example `$NECROMANCER_CENSUS_DIR/results-r5c`, written by `packages/engine/scripts/tuning-eval/tuned-run.mjs`:
+
+```
+node packages/engine/scripts/tuning-eval/aggregate-tuned.mjs <R> census-aggregate-r5.json     # copy beside lib.mjs, see docs/verification/census-r5.md
+node docs/research/scripts/r4b-diff.mjs ...                                                   # against the engine worker's aggregate
+node docs/research/scripts/r4c-compare.mjs <previous R> <R> docs/research/census-r5-compare.json
+node docs/research/scripts/r4b-compare.mjs <pinned R> <tuned R> <R> docs/research/census-r5-moved.json
+node docs/research/scripts/r4c-rescore.mjs <pinned R> <4a R> <R> docs/research/census-r5-rescore.json <first dossiers> <recheck dossiers> "<engine label>"
+node docs/research/scripts/r5-readme-check.mjs docs/research/census-r5-readme-check.json      # fetches 5 READMEs from raw.githubusercontent.com
+```
+
 Successor list and validation:
 
 ```
