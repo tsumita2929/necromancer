@@ -322,6 +322,12 @@ if (LIVE) {
 
   // One real repository of about 50 dependencies: the CORS table, the time to the first tombstone, a screenshot.
   // (Kept to one repository: GitHub allows 60 unauthenticated calls an hour for this IP, shared with other workers.)
+  if (want('notfound')) await run(DESKTOP, async (page) => {
+    await submitRepo(page, 'no-such-owner-zq81/no-such-repo-zq81');
+    const text = await errorText(page);
+    check('LIVE a repository that does not exist: "not found, or it is private" (or the limit, if used up)', /not found, or it is private|60 calls an hour/.test(text), text.slice(0, 120));
+  });
+
   if (want('microblog')) await run(DESKTOP, async (page) => {
     const t0 = Date.now();
     await submitRepo(page, 'https://github.com/miguelgrinberg/microblog');
@@ -333,7 +339,6 @@ if (LIVE) {
     check('LIVE miguelgrinberg/microblog (about 50 dependencies): the autopsy completes in a real Chromium page', n >= 40, `${n} tombstones; time to the first tombstone ${ms} ms; unavailable: ${unavailable.slice(0, 200)}`);
     await page.waitForTimeout(300);
     await page.screenshot({ path: new URL('../../../docs/screenshots/live-graveyard-desktop.png', import.meta.url).pathname });
-    await page.screenshot({ path: new URL('../../../docs/screenshots/live-graveyard-full-desktop.png', import.meta.url).pathname, fullPage: true });
   });
   if (want('acceptance')) await run(DESKTOP, async (page) => {
     const t0 = Date.now();
@@ -346,12 +351,6 @@ if (LIVE) {
     await page.waitForSelector('dialog[open]');
     check("LIVE acceptance project: left-pad's first successor is String.prototype.padStart", /String\.prototype\.padStart/.test(await page.locator('dialog .ways li').first().innerText()));
   });
-  if (want('notfound')) await run(DESKTOP, async (page) => {
-    await submitRepo(page, 'no-such-owner-zq81/no-such-repo-zq81');
-    const text = await errorText(page);
-    check('LIVE a repository that does not exist: "not found, or it is private" (or the limit, if used up)', /not found, or it is private|60 calls an hour/.test(text), text.slice(0, 120));
-  });
-
   console.log('\nCORS in a real Chromium page (every request the app made):');
   console.log('| Service | Requests | Status codes seen | Access-Control-Allow-Origin | Network errors |');
   console.log('| --- | --- | --- | --- | --- |');
