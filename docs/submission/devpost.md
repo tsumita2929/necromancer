@@ -5,9 +5,9 @@ a login, so its exact field names could not be read. The fields below follow wha
 rules and the contest page ask for, plus the usual Devpost project fields. Paste each block into
 the field with the matching heading.
 
-One link does not exist yet: the demo video. It appears as `[[PLACEHOLDER: YOUTUBE_URL]]` and is filled in
-when the video is public on YouTube. Before submitting, search this file for `PLACEHOLDER`: the only
-result must be that marker's own explanation, and none inside a block you paste.
+One link does not exist yet: the demo video. It is written in double square brackets (see the Links table) and is
+filled in when the video is public on YouTube. Before submitting, search the files of this folder and the README for the
+word in capitals that starts that marker (see `grep` in the owner's guide): the only results must be that one link.
 
 The other three links are real addresses that answer 404 until the owner pushes the two repositories and
 turns on GitHub Pages (see the owner's guide):

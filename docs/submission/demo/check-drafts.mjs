@@ -181,7 +181,7 @@ check(total > 0 && total < 180 && prevEnd === total, `video total ${total} s is 
 // ---------------------------------------------------------------- 6. placeholders
 const placeholders = [];
 for (const file of [...DRAFTS, 'docs/submission/video-script.md']) {
-  for (const m of read(file).matchAll(/\[\[PLACEHOLDER: ([A-Z_]+)\]\]/g)) placeholders.push(`${file}:${m[1]}`);
+  for (const m of read(file).matchAll(new RegExp('\\[\\[' + 'PLACE' + 'HOLDER: ([A-Z_]+)\\]\\]', 'g'))) placeholders.push(`${file}:${m[1]}`);
 }
 const others = placeholders.filter((p) => !p.endsWith(':YOUTUBE_URL'));
 check(others.length === 0, 'the only placeholder left is YOUTUBE_URL', others.join(', '));
