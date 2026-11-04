@@ -15,15 +15,16 @@ What the rules ask (Official Rules, section 4 and the Resources page):
   written by a tool is less likely to win. So the favorite thing and the change must be yours.
 
 The two sentences in brackets are the ones only you can write. The facts around them come from the build;
-each number has a tag, and the claim table in `docs/verification/submission-drafts.md` says where it is from.
+each number has a tag, and the claim table in `docs/verification/submission-drafts-r4.md` says where it is from.
 
 ## Short version (for X; 280 characters or fewer once you fill in the brackets)
 
 ```
-#KiroweenHackathon26 My favorite thing about Kiro: [OWNER: one sentence]. It changed how I build: [OWNER: one sentence]. Necromancer finds dead dependencies and tests the way out. [[PLACEHOLDER: PAGES_URL]]
+#KiroweenHackathon26 My favorite thing about Kiro: [OWNER: one sentence]. It changed how I build: [OWNER: one sentence]. Necromancer finds dead dependencies and tests the way out. tsumita2929.github.io/necromancer
 ```
 
-(223 characters with the brackets as written. X counts a link as 23 characters.)
+(Without the brackets filled in it is 213 characters. X counts a link as 23 characters.)
+<!-- claim:X01 -->
 
 ## Longer version (LinkedIn, Mastodon, a blog-style thread)
 
@@ -34,13 +35,13 @@ My favorite thing about Kiro: [OWNER: your own words].
 
 How it changed the way I build: [OWNER: your own words].
 
-I built Necromancer for the Resurrection category. It reads a project's dependencies, marks the dead ones, and writes a Kiro spec and a property-based test for the way out. We counted 34 of 100 real projects that depend directly on a deprecated, archived, inactive or gone package. The test found a bug in left-pad itself.
+I built Necromancer for the Resurrection category. It reads a project's dependencies, marks the dead ones, and writes a Kiro spec and a property-based test for the way out. We counted 33 of 100 real projects that depend directly on a deprecated, archived, inactive or gone package. The test found a bug in left-pad itself.
 
-Try it, no login: [[PLACEHOLDER: PAGES_URL]]
-Code: [[PLACEHOLDER: REPO_URL]]
+Try it, no login: https://tsumita2929.github.io/necromancer/
+Code: https://github.com/tsumita2929/necromancer
 ```
 
-<!-- claim:N01 --><!-- claim:S01 -->
+<!-- claim:Q01 --><!-- claim:S01 -->
 
 ## Candidate ideas for the two sentences (from what the build showed)
 
@@ -58,6 +59,7 @@ Use one only if it is true for you. Change it freely or drop it.
 A post with a picture does better with the judges. Files you can use, from this repository:
 
 - `docs/screenshots/graveyard-full-desktop.png`
+- `docs/screenshots/mathjs-graveyard-desktop.png`
 - `docs/screenshots/seance-top-desktop.png`
 
 Check them before use; they were made by a script.

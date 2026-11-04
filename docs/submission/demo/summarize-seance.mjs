@@ -8,4 +8,5 @@ console.log(`recipe: ${s.recipe}   template: ${s.template}   comparisons skipped
 console.log(`project calls found: ${s.usage.members.map((m) => `${m.member} x${m.calls}`).join(', ')} in ${s.usage.filesUsing.join(', ')}`);
 console.log(`known differences: ${s.knownDifferences.length}`);
 for (const k of s.knownDifferences.slice(0, 3)) console.log(`  ${k.input}: old ${k.old}`);
+if (s.versions) console.log(`versions: in use ${s.versions.inUse ?? 'unknown'}; run against ${s.versions.testedAgainst.length} version(s)${s.versionNotTested ? '; THE VERSION IN USE WAS NOT TESTED' : ''}`);
 console.log(`run: ${s.run}`);
