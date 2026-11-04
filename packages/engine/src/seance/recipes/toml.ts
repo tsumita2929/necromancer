@@ -474,7 +474,7 @@ function build(ctx: RecipeContext): SeanceBundle {
   const files: SeanceFile[] = [
     {
       path: `${DIR}/test_seance_toml.py`,
-      content: TEST.replace('__PROJECT_LOADS__', examples),
+      content: TEST.replace('__PROJECT_LOADS__', () => examples),
       role: 'test',
     },
     { path: `${DIR}/toml_replacement.py`, content: REPLACEMENT, role: 'replacement' },

@@ -80,6 +80,14 @@ export function comment(text: unknown, max = 120): string {
   return s.length > max ? `${s.slice(0, max - 1)}…` : s;
 }
 
+/**
+ * Text for the inside of a Python docstring: one flat line, and no quote or backslash, so the text
+ * cannot close the docstring or start an escape.
+ */
+export function docText(text: unknown, max = 120): string {
+  return comment(text, max).replace(/["\\]/g, "'");
+}
+
 /** A number literal for a finite number text, or null. Used for the project's own examples. */
 export function numberLiteral(text: unknown): string | null {
   const n = Number(toText(text).replace(/_/g, ''));
